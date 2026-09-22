@@ -60,7 +60,8 @@
   <div class="flex flex-col md:flex-row min-h-screen">
     
     <!-- ==================== LEFT SIDEBAR ==================== -->
-    <aside class="w-full md:w-72 lg:w-80 shrink-0 bg-slate-900/95 border-r border-slate-800/80 p-5 flex flex-col justify-between backdrop-blur-xl md:sticky md:top-0 md:h-screen z-30">
+    <!-- ==================== LEFT SIDEBAR ==================== -->
+    <aside class="w-full md:w-72 lg:w-80 shrink-0 bg-slate-900/95 border-r border-slate-800/80 p-5 flex flex-col justify-between backdrop-blur-xl md:sticky md:top-0 md:h-screen z-30 md:overflow-y-auto">
       <div class="space-y-6">
         
         <!-- Brand & Logo -->
@@ -79,85 +80,79 @@
         </div>
 
         <!-- Bookmarks Navigation Section -->
-        <div class="space-y-2.5">
-          <div class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-semibold px-2 flex justify-between items-center">
+        <div class="space-y-2">
+          <div class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-semibold px-2 flex justify-between items-center mb-1.5">
             <span>Закладки контуров</span>
-            <span class="text-slate-400 text-[9px]">Онтология</span>
+            <span class="text-slate-500 text-[9px]">Онтология</span>
           </div>
 
           <!-- Tab 1: Pain-First Navigator -->
-          <button id="nav-tab-pains" onclick="switchTab('pains')" class="w-full text-left p-3.5 rounded-xl border transition-all duration-200 flex items-start gap-3 group relative overflow-hidden bg-slate-950/40 border-slate-800 hover:border-slate-700 cursor-pointer">
-            <span class="text-2xl shrink-0 mt-0.5" id="nav-icon-pains">🚨</span>
+          <button id="nav-tab-pains" onclick="switchTab('pains')" class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden bg-slate-950/40 border-slate-800 hover:border-slate-700 cursor-pointer">
+            <span class="text-xl shrink-0" id="nav-icon-pains">🚨</span>
             <div class="flex-1 min-w-0">
               <div class="flex items-center justify-between gap-1">
-                <span class="text-sm font-bold text-slate-200 group-hover:text-rose-300 transition truncate" id="nav-title-pains">
+                <span class="text-xs font-bold text-slate-200 group-hover:text-rose-300 transition truncate" id="nav-title-pains">
                   1. Навигатор болей
                 </span>
-                <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">Где болит?</span>
+                <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">Боли</span>
               </div>
-              <p class="text-[11px] text-slate-400 mt-1 leading-snug">
-                5 болей несчастья • Физика причин • Исцеление
-              </p>
-              <div class="text-[10px] text-rose-400/90 font-mono mt-1.5 flex items-center gap-1">
-                <span>⚡</span> Выгорание, Самозванец, Крах, Апатия...
-              </div>
+              <p class="text-[10px] text-slate-400 truncate mt-0.5">5 болей несчастья • Ремонт</p>
             </div>
           </button>
 
-          <!-- Tab 2: Ideal State & Happiness (Superconductivity R -> 0) -->
-          <button id="nav-tab-ideal" onclick="switchTab('ideal')" class="w-full text-left p-3.5 rounded-xl border transition-all duration-200 flex items-start gap-3 group relative overflow-hidden bg-slate-950/40 border-slate-800 hover:border-slate-700 cursor-pointer">
-            <span class="text-2xl shrink-0 mt-0.5" id="nav-icon-ideal">✨</span>
+          <!-- Tab 2: Happiness Dashboard (Dedicated bookmark) -->
+          <button id="nav-tab-dashboard" onclick="switchTab('dashboard')" class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden bg-slate-950/40 border-slate-800 hover:border-slate-700 cursor-pointer">
+            <span class="text-xl shrink-0" id="nav-icon-dashboard">⚡</span>
             <div class="flex-1 min-w-0">
               <div class="flex items-center justify-between gap-1">
-                <span class="text-sm font-bold text-slate-200 group-hover:text-amber-300 transition truncate" id="nav-title-ideal">
-                  2. Атлас счастья
+                <span class="text-xs font-bold text-slate-200 group-hover:text-amber-300 transition truncate" id="nav-title-dashboard">
+                  2. Дашборд счастья
                 </span>
-                <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">Идеал: R→0</span>
+                <span id="nav-hud-score-pill" class="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">Live HUD</span>
               </div>
-              <p class="text-[11px] text-slate-400 mt-1 leading-snug">
-                Сверхпроводимость • Мусин • Тандэн • Щит
-              </p>
-              <div class="text-[10px] text-amber-400/90 font-mono mt-1.5 flex items-center gap-1">
-                <span>✦</span> К чему ведёт система
-              </div>
+              <p class="text-[10px] text-slate-400 truncate mt-0.5">Телеметрия цепи • КПД • R, I, Q</p>
             </div>
           </button>
 
-          <!-- Tab 3: Original Base Circuit -->
-          <button id="nav-tab-single" onclick="switchTab('single')" class="w-full text-left p-3.5 rounded-xl border transition-all duration-200 flex items-start gap-3 group relative overflow-hidden bg-slate-950/40 border-slate-800 hover:border-slate-700 cursor-pointer">
-            <span class="text-2xl shrink-0 mt-0.5" id="nav-icon-single">🌀</span>
+          <!-- Tab 3: Ideal State & Happiness (Superconductivity R -> 0) -->
+          <button id="nav-tab-ideal" onclick="switchTab('ideal')" class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden bg-slate-950/40 border-slate-800 hover:border-slate-700 cursor-pointer">
+            <span class="text-xl shrink-0" id="nav-icon-ideal">✨</span>
             <div class="flex-1 min-w-0">
               <div class="flex items-center justify-between gap-1">
-                <span class="text-sm font-bold text-slate-200 group-hover:text-amber-300 transition truncate" id="nav-title-single">
-                  3. Схема: Контур ядра
+                <span class="text-xs font-bold text-slate-200 group-hover:text-cyan-300 transition truncate" id="nav-title-ideal">
+                  3. Атлас счастья
+                </span>
+                <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">Идеал</span>
+              </div>
+              <p class="text-[10px] text-slate-400 truncate mt-0.5">Сверхпроводимость R→0 • Мусин</p>
+            </div>
+          </button>
+
+          <!-- Tab 4: Original Base Circuit -->
+          <button id="nav-tab-single" onclick="switchTab('single')" class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden bg-slate-950/40 border-slate-800 hover:border-slate-700 cursor-pointer">
+            <span class="text-xl shrink-0" id="nav-icon-single">🌀</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between gap-1">
+                <span class="text-xs font-bold text-slate-200 group-hover:text-amber-300 transition truncate" id="nav-title-single">
+                  4. Контур ядра
                 </span>
                 <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">v1.0</span>
               </div>
-              <p class="text-[11px] text-slate-400 mt-1 leading-snug">
-                Тандэн • Внимание • Дзансин • Нагрузка
-              </p>
-              <div class="text-[10px] text-amber-400/90 font-mono mt-1.5 flex items-center gap-1">
-                <span>◀</span> Одноканальная цепь
-              </div>
+              <p class="text-[10px] text-slate-400 truncate mt-0.5">Тандэн • Проводка • Дзансин</p>
             </div>
           </button>
 
-          <!-- Tab 4: Multi-channel Circuit (6 bulbs) -->
-          <button id="nav-tab-multi" onclick="switchTab('multi')" class="w-full text-left p-3.5 rounded-xl border transition-all duration-200 flex items-start gap-3 group relative overflow-hidden bg-slate-950/40 border-slate-800 hover:border-slate-700 cursor-pointer">
-            <span class="text-2xl shrink-0 mt-0.5" id="nav-icon-multi">💡</span>
+          <!-- Tab 5: Multi-channel Circuit (6 bulbs) -->
+          <button id="nav-tab-multi" onclick="switchTab('multi')" class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden bg-slate-950/40 border-slate-800 hover:border-slate-700 cursor-pointer">
+            <span class="text-xl shrink-0" id="nav-icon-multi">💡</span>
             <div class="flex-1 min-w-0">
               <div class="flex items-center justify-between gap-1">
-                <span class="text-sm font-bold text-slate-200 group-hover:text-cyan-300 transition truncate" id="nav-title-multi">
-                  4. Схема: Щит 6 ламп
+                <span class="text-xs font-bold text-slate-200 group-hover:text-cyan-300 transition truncate" id="nav-title-multi">
+                  5. Щит 6 ламп
                 </span>
                 <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">v1.1</span>
               </div>
-              <p class="text-[11px] text-slate-400 mt-1 leading-snug">
-                6 ламп жизни • Токораспределение • Щит
-              </p>
-              <div class="text-[10px] text-cyan-400/90 font-mono mt-1.5 flex items-center gap-1">
-                <span>✦</span> Машина, Дом, Карьера, Здоровье...
-              </div>
+              <p class="text-[10px] text-slate-400 truncate mt-0.5">6 ламп жизни • Токораспределение</p>
             </div>
           </button>
         </div>
@@ -183,11 +178,11 @@
       <div class="pt-4 border-t border-slate-800 space-y-3">
         <div class="p-2.5 rounded-lg bg-slate-950/60 border border-slate-800/80 text-[11px] text-slate-400 font-mono flex items-center gap-2">
           <span class="text-amber-400">⌨️</span>
-          <span>Клавиши <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200 border border-slate-700">1</kbd> (Боли), <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200 border border-slate-700">2</kbd> (Идеал), <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200 border border-slate-700">3</kbd> (Ядро), <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200 border border-slate-700">4</kbd> (Щит)</span>
+          <span>Клавиши <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200 border border-slate-700">1</kbd>–<kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200 border border-slate-700">5</kbd> переключают закладки</span>
         </div>
         <div class="flex items-center justify-between text-[10px] text-slate-500 font-mono">
           <span>Zen-Engineering</span>
-          <span>Inner Current v1.2</span>
+          <span>Inner Current v1.3</span>
         </div>
       </div>
     </aside>
@@ -1629,7 +1624,7 @@
                   <td class="p-3 text-slate-400">Шина внимания (L_past, C_future)</td>
                   <td class="p-3 text-amber-300">Джоуль — Ленц (Q = I²Rt)</td>
                   <td class="p-3 text-emerald-300 font-sans">Заземление в стопы и дыхание</td>
-                  <td class="p-3 text-cyan-300 font-sans">Протокол «Мусин»</td>
+                  <td class="p-3 text-cyan-300 font-sans">«Мусин» (無心)</td>
                 </tr>
                 <tr class="hover:bg-purple-950/20 transition cursor-pointer" onclick="scrollToPainCard('card-pain-02')">
                   <td class="p-3 font-bold text-purple-300 flex items-center gap-1.5">
@@ -1639,7 +1634,7 @@
                   <td class="p-3 text-slate-400">Узел нагрузки (ожидание признания)</td>
                   <td class="p-3 text-amber-300">Закон полярности (лампа не генератор)</td>
                   <td class="p-3 text-emerald-300 font-sans">Сброс меча эго, разрыв обратной цепи</td>
-                  <td class="p-3 text-cyan-300 font-sans">Протокол «Нидзиригути»</td>
+                  <td class="p-3 text-cyan-300 font-sans">«Нидзиригути» (躙口)</td>
                 </tr>
                 <tr class="hover:bg-amber-950/20 transition cursor-pointer" onclick="scrollToPainCard('card-pain-03')">
                   <td class="p-3 font-bold text-amber-300 flex items-center gap-1.5">
@@ -1649,7 +1644,7 @@
                   <td class="p-3 text-slate-400">Circuit Breaker (Не был взведен)</td>
                   <td class="p-3 text-amber-300">Энтропия внешней материи</td>
                   <td class="p-3 text-emerald-300 font-sans">Изоляция Тандэна: проект умер, я жив</td>
-                  <td class="p-3 text-cyan-300 font-sans">«Дзансин + Ваби-саби + Кинцуги»</td>
+                  <td class="p-3 text-cyan-300 font-sans">«Кинцуги» (金継ぎ)</td>
                 </tr>
                 <tr class="hover:bg-indigo-950/20 transition cursor-pointer" onclick="scrollToPainCard('card-pain-04')">
                   <td class="p-3 font-bold text-indigo-300 flex items-center gap-1.5">
@@ -1659,7 +1654,7 @@
                   <td class="p-3 text-slate-400">Ключ нагрузки (разомкнут)</td>
                   <td class="p-3 text-amber-300">Застой нерастраченной ЭДС</td>
                   <td class="p-3 text-emerald-300 font-sans">Зажечь 10 Вт: заварить чай, помыть чашку</td>
-                  <td class="p-3 text-cyan-300 font-sans">«Чайный светодиод»</td>
+                  <td class="p-3 text-cyan-300 font-sans">«Тяною» (茶の湯)</td>
                 </tr>
                 <tr class="hover:bg-cyan-950/20 transition cursor-pointer" onclick="scrollToPainCard('card-pain-05')">
                   <td class="p-3 font-bold text-cyan-300 flex items-center gap-1.5">
@@ -1669,7 +1664,7 @@
                   <td class="p-3 text-slate-400">Щит 6 ламп (Здоровье = 0W)</td>
                   <td class="p-3 text-amber-300">Баланс мощности (P_demanded &gt; P_avail)</td>
                   <td class="p-3 text-emerald-300 font-sans">Обесточить балласт, подать 25W в Здоровье</td>
-                  <td class="p-3 text-cyan-300 font-sans">Балансировка щита</td>
+                  <td class="p-3 text-cyan-300 font-sans">«Кансо» (簡素)</td>
                 </tr>
               </tbody>
             </table>
@@ -1693,6 +1688,448 @@
             <span>✨</span> Открыть Атлас счастья (Идеал)
             <span>➔</span>
           </button>
+        </div>
+
+      </div>
+
+      <!-- ==================== VIEW 2: DEDICATED HAPPINESS DASHBOARD ==================== -->
+      <div id="view-happiness-dashboard" class="space-y-6 hidden">
+        
+        <!-- Top Header & Presets -->
+        <header class="bg-slate-900/90 border border-amber-500/30 rounded-2xl p-6 backdrop-blur-md shadow-2xl flex flex-col lg:flex-row justify-between items-start lg:items-center gap-5 relative overflow-hidden">
+          <div class="absolute -right-10 -top-10 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="space-y-1 relative z-10">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl p-2.5 rounded-xl bg-gradient-to-br from-amber-500/20 to-cyan-500/20 border border-amber-500/40 text-amber-300 shadow-lg shadow-amber-500/10">⚡</span>
+              <div>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h1 class="text-2xl md:text-3xl font-bold tracking-tight bg-gradient-to-r from-amber-300 via-yellow-200 to-cyan-300 bg-clip-text text-transparent">
+                    Дашборд счастья: Телеметрия контура
+                  </h1>
+                  <span class="text-xs uppercase tracking-widest px-2.5 py-0.5 bg-amber-500/15 text-amber-300 border border-amber-500/30 rounded-full font-mono font-bold">
+                    Live Telemetry HUD
+                  </span>
+                </div>
+                <p class="text-slate-400 text-xs md:text-sm mt-1">
+                  Объективный физический мониторинг: КПД сверхпроводимости H, вектор генерации I, омические потери Q и баланс 6 ламп жизни.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Scenario Presets -->
+          <div class="flex flex-wrap items-center gap-2 relative z-10">
+            <span class="text-xs uppercase tracking-wider text-slate-500 font-mono">Сценарии:</span>
+            <button onclick="sc_applyPreset('mushin'); if (typeof updateHappinessHUD==='function') updateHappinessHUD();" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-950/80 border border-cyan-700/60 text-cyan-300 hover:bg-cyan-900 transition flex items-center gap-1.5 cursor-pointer">
+              <span>🍵</span> Мусин (100%)
+            </button>
+            <button onclick="sc_applyPreset('flow_code'); if (typeof updateHappinessHUD==='function') updateHappinessHUD();" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-950/80 border border-emerald-700/60 text-emerald-300 hover:bg-emerald-900 transition flex items-center gap-1.5 cursor-pointer">
+              <span>💻</span> Flow Code (85%)
+            </button>
+            <button onclick="sc_applyPreset('overheat'); if (typeof updateHappinessHUD==='function') updateHappinessHUD();" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-rose-950/80 border border-rose-700/60 text-rose-300 hover:bg-rose-900 transition flex items-center gap-1.5 cursor-pointer">
+              <span>🔥</span> Перегрев (25%)
+            </button>
+            <button onclick="sc_applyPreset('reverse'); if (typeof updateHappinessHUD==='function') updateHappinessHUD();" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-purple-950/80 border border-purple-700/60 text-purple-300 hover:bg-purple-900 transition flex items-center gap-1.5 cursor-pointer">
+              <span>🪤</span> Обратный ток (18%)
+            </button>
+            <button onclick="sc_applyPreset('kintsugi'); if (typeof updateHappinessHUD==='function') updateHappinessHUD();" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-950/80 border border-amber-700/60 text-amber-300 hover:bg-amber-900 transition flex items-center gap-1.5 cursor-pointer">
+              <span>🏺</span> Кинцуги (65%)
+            </button>
+          </div>
+        </header>
+
+        <!-- Hero Card: Master Happiness Gauge & Superconductivity Status -->
+        <div class="bg-gradient-to-b from-slate-900/90 via-slate-900/70 to-slate-950/90 border border-slate-800 rounded-2xl p-6 md:p-8 backdrop-blur-md shadow-2xl relative overflow-hidden">
+          
+          <!-- Background Ambient Lights -->
+          <div id="dash-glow-orb" class="absolute -right-16 -top-16 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none transition-all duration-700"></div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center relative z-10">
+            
+            <!-- Left: Giant Score Gauge -->
+            <div class="lg:col-span-1 flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-950/80 border border-slate-800/80 text-center shadow-xl">
+              <div class="text-[11px] font-mono uppercase tracking-widest text-slate-400 font-bold mb-2 flex items-center gap-2">
+                <span id="dash-status-emoji" class="text-xl">✨</span>
+                <span>Индекс Счастья H</span>
+              </div>
+              <div class="my-2">
+                <span id="dash-score-value" class="text-6xl md:text-7xl font-black font-mono tracking-tight bg-gradient-to-r from-amber-400 via-yellow-300 to-cyan-300 bg-clip-text text-transparent">
+                  98%
+                </span>
+              </div>
+              <div id="dash-state-label" class="text-sm font-bold font-mono text-cyan-300 uppercase tracking-wide mt-1">
+                СВЕРХПРОВОДИМОСТЬ
+              </div>
+              <div id="dash-state-sub" class="text-xs text-slate-400 font-mono mt-0.5">
+                Мусин (Чистый ток R → 0)
+              </div>
+
+              <!-- Bar in Card -->
+              <div class="w-full bg-slate-900 rounded-full h-2 mt-4 overflow-hidden border border-slate-800 relative">
+                <div id="dash-progress-bar" class="h-full rounded-full bg-gradient-to-r from-amber-400 via-cyan-400 to-sky-300 transition-all duration-500" style="width: 98%;"></div>
+              </div>
+            </div>
+
+            <!-- Middle & Right: Physics Equation & Live Description -->
+            <div class="lg:col-span-2 space-y-5">
+              
+              <!-- Formula Banner -->
+              <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 font-mono text-xs text-slate-300 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+                <div>
+                  <span class="text-slate-400 uppercase tracking-widest text-[10px] block mb-1">Формула КПД контура:</span>
+                  <span class="text-amber-300 font-bold text-sm">КПД H = η(мусин) × η(полярность) × η(дзансин) × η(щит)</span>
+                </div>
+                <span id="dash-mode-pill" class="px-3 py-1 rounded-full text-xs font-bold font-mono border bg-cyan-500/20 text-cyan-300 border-cyan-500/40 shrink-0">
+                  R → 0 • Сверхпроводимость
+                </span>
+              </div>
+
+              <!-- State Explanation -->
+              <div class="text-slate-300 text-sm leading-relaxed" id="dash-state-desc">
+                Сопротивление проводки внимания сведено к нулю (R ≈ 0.2 Ом). Симуляции прошлого и тревоги будущего отключены. Реактор Тандэн напрямую питает текущее созидательное действие без рассеивания мощности в тепловое трение по закону Джоуля — Ленца.
+              </div>
+
+              <!-- Action Calibration Button -->
+              <div class="flex flex-wrap items-center gap-3 pt-2">
+                <button id="dash-btn-calibrate" onclick="hud_calibrateMushin()" class="py-3 px-6 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-cyan-400 hover:opacity-95 text-slate-950 font-bold text-sm shadow-xl shadow-amber-500/20 transition flex items-center gap-2 cursor-pointer active:scale-98">
+                  <span>⚡</span>
+                  <span>Аппаратная калибровка: Мусин (R → 0)</span>
+                </button>
+                <button onclick="switchTab('ideal')" class="py-3 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs transition border border-slate-700 flex items-center gap-1.5 cursor-pointer">
+                  <span>✨</span>
+                  <span>Перейти в Атлас идеала</span>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Human Sensation Translator & Quick Check-in (No physics required!) -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 backdrop-blur-md shadow-xl space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-800">
+            <div class="flex items-center gap-2.5">
+              <span class="text-2xl">🧭</span>
+              <div>
+                <h3 class="text-base font-bold text-slate-100 flex items-center gap-2">
+                  <span>Переводчик ощущений: Как пользоваться дашбордом без знания физики</span>
+                  <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">3 простых клика</span>
+                </h3>
+                <p class="text-xs text-slate-400">Вам не нужны приборы, Омы и Амперы. Просто отметьте, что вы чувствуете прямо сейчас — система сама откалибрует схему:</p>
+              </div>
+            </div>
+            <button onclick="hud_calibrateMushin()" class="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-amber-500/20 to-cyan-500/20 border border-cyan-500/40 text-cyan-200 hover:bg-cyan-500/30 text-xs font-bold transition flex items-center gap-1.5 self-start sm:self-auto cursor-pointer">
+              <span>⚡</span> Сбросить всё в Мусин (100%)
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            
+            <!-- Question 1: Attention Focus (Sets R) -->
+            <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2.5">
+              <div class="text-xs font-bold text-slate-200 flex items-center justify-between">
+                <span>1. Где ваше внимание?</span>
+                <span class="text-[10px] font-mono text-cyan-400 uppercase">Шум R</span>
+              </div>
+              <div class="space-y-1.5" id="human-check-focus">
+                <button onclick="humanCheck_setFocus('now')" id="hbtn-focus-now" class="w-full text-left p-2.5 rounded-xl text-xs font-medium border transition cursor-pointer flex items-center gap-2.5 bg-cyan-500/15 border-cyan-500/50 text-cyan-200 ring-1 ring-cyan-500/30">
+                  <span class="text-lg">🍵</span>
+                  <div class="flex-1 min-w-0">
+                    <div class="font-bold">В моменте (делаю дело)</div>
+                    <div class="text-[10px] text-slate-400 truncate">R ≈ 0 • Сверхпроводимость</div>
+                  </div>
+                </button>
+                <button onclick="humanCheck_setFocus('past')" id="hbtn-focus-past" class="w-full text-left p-2.5 rounded-xl text-xs font-medium border transition cursor-pointer flex items-center gap-2.5 bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700">
+                  <span class="text-lg">⏪</span>
+                  <div class="flex-1 min-w-0">
+                    <div class="font-bold">В прошлом (споры, обиды)</div>
+                    <div class="text-[10px] text-slate-400 truncate">Руминации • R + 18 Ом</div>
+                  </div>
+                </button>
+                <button onclick="humanCheck_setFocus('future')" id="hbtn-focus-future" class="w-full text-left p-2.5 rounded-xl text-xs font-medium border transition cursor-pointer flex items-center gap-2.5 bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700">
+                  <span class="text-lg">⏩</span>
+                  <div class="flex-1 min-w-0">
+                    <div class="font-bold">В будущем (тревога, дедлайн)</div>
+                    <div class="text-[10px] text-slate-400 truncate">Страх неизвестности • R + 25 Ом</div>
+                  </div>
+                </button>
+                <button onclick="humanCheck_setFocus('critic')" id="hbtn-focus-critic" class="w-full text-left p-2.5 rounded-xl text-xs font-medium border transition cursor-pointer flex items-center gap-2.5 bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700">
+                  <span class="text-lg">🗣️</span>
+                  <div class="flex-1 min-w-0">
+                    <div class="font-bold">Грызу себя (самозванец)</div>
+                    <div class="text-[10px] text-slate-400 truncate">Критик × 2 • Омический перегрев</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Question 2: Motive (Sets Polarity I) -->
+            <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2.5">
+              <div class="text-xs font-bold text-slate-200 flex items-center justify-between">
+                <span>2. Зачем вы это делаете?</span>
+                <span class="text-[10px] font-mono text-emerald-400 uppercase">Вектор I</span>
+              </div>
+              <div class="space-y-1.5" id="human-check-motive">
+                <button onclick="humanCheck_setMotive('creation')" id="hbtn-motive-creation" class="w-full text-left p-2.5 rounded-xl text-xs font-medium border transition cursor-pointer flex items-center gap-2.5 bg-emerald-500/15 border-emerald-500/50 text-emerald-200 ring-1 ring-emerald-500/30">
+                  <span class="text-lg">🚀</span>
+                  <div class="flex-1 min-w-0">
+                    <div class="font-bold">Ради кайфа и созидания</div>
+                    <div class="text-[10px] text-slate-400 truncate">Прямой ток (I &gt; 0) • Отдача</div>
+                  </div>
+                </button>
+                <button onclick="humanCheck_setMotive('validation')" id="hbtn-motive-validation" class="w-full text-left p-2.5 rounded-xl text-xs font-medium border transition cursor-pointer flex items-center gap-2.5 bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700">
+                  <span class="text-lg">🪤</span>
+                  <div class="flex-1 min-w-0">
+                    <div class="font-bold">Жду похвалы / боюсь критики</div>
+                    <div class="text-[10px] text-slate-400 truncate">Обратный ток (I &lt; 0) • Ловушка</div>
+                  </div>
+                </button>
+                <button onclick="humanCheck_setMotive('apathy')" id="hbtn-motive-apathy" class="w-full text-left p-2.5 rounded-xl text-xs font-medium border transition cursor-pointer flex items-center gap-2.5 bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700">
+                  <span class="text-lg">🔌</span>
+                  <div class="flex-1 min-w-0">
+                    <div class="font-bold">Ничего не хочу (апатия)</div>
+                    <div class="text-[10px] text-slate-400 truncate">Холостой ход • Ток I = 0</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Question 3: Body & Crisis (Sets Zanshin & Shield) -->
+            <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2.5">
+              <div class="text-xs font-bold text-slate-200 flex items-center justify-between">
+                <span>3. Состояние тела и стресс</span>
+                <span class="text-[10px] font-mono text-amber-400 uppercase">Дзансин & Тело</span>
+              </div>
+              <div class="space-y-1.5" id="human-check-body">
+                <button onclick="humanCheck_setBody('ok')" id="hbtn-body-ok" class="w-full text-left p-2.5 rounded-xl text-xs font-medium border transition cursor-pointer flex items-center gap-2.5 bg-amber-500/15 border-amber-500/50 text-amber-200 ring-1 ring-amber-500/30">
+                  <span class="text-lg">🟢</span>
+                  <div class="flex-1 min-w-0">
+                    <div class="font-bold">Сплю, ем, держу фокус</div>
+                    <div class="text-[10px] text-slate-400 truncate">Здоровье 25 Вт • Дзансин взведён</div>
+                  </div>
+                </button>
+                <button onclick="humanCheck_setBody('failed')" id="hbtn-body-failed" class="w-full text-left p-2.5 rounded-xl text-xs font-medium border transition cursor-pointer flex items-center gap-2.5 bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700">
+                  <span class="text-lg">🏺</span>
+                  <div class="flex-1 min-w-0">
+                    <div class="font-bold">Сбой проекта / задачи</div>
+                    <div class="text-[10px] text-slate-400 truncate">Изоляция сбоя • Кинцуги</div>
+                  </div>
+                </button>
+                <button onclick="humanCheck_setBody('exhausted')" id="hbtn-body-exhausted" class="w-full text-left p-2.5 rounded-xl text-xs font-medium border transition cursor-pointer flex items-center gap-2.5 bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700">
+                  <span class="text-lg">🔴</span>
+                  <div class="flex-1 min-w-0">
+                    <div class="font-bold">Не спал, не ел, истощен</div>
+                    <div class="text-[10px] text-slate-400 truncate">Здоровье &lt; 10 Вт • Авария сети</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Live Insight & Actionable Advice -->
+          <div class="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+            <div class="flex items-center gap-2.5 text-slate-300" id="human-check-summary">
+              <span class="text-cyan-400 text-base">✨</span>
+              <span><strong>Чистый Мусин:</strong> Вы в потоке прямого созидания. Сопротивление проводки сведено к нулю.</span>
+            </div>
+            <div class="text-slate-400 text-[11px] font-mono">
+              Мгновенная калибровка цепи в 1 клик
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Primary Physical Telemetry Sensors -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <!-- Sensor 1: R (Impedance) -->
+          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 backdrop-blur-md shadow-xl flex flex-col justify-between space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold">1. Сопротивление ума</span>
+              <span id="dash-r-badge" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">R ≈ 0</span>
+            </div>
+            <div>
+              <div id="dash-r-value" class="text-3xl font-black font-mono text-cyan-300 tracking-tight">0.2 Ω</div>
+              <p class="text-xs text-slate-400 mt-1" id="dash-r-desc">Шум ума: t(прошлое) + t(будущее) + критик</p>
+            </div>
+            <div class="pt-2 border-t border-slate-800/80 text-[11px] text-slate-400">
+              Идеал: <strong class="text-cyan-300 font-mono">0.0 – 2.0 Ω</strong> (Мусин)
+            </div>
+          </div>
+
+          <!-- Sensor 2: I (Polarity) -->
+          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 backdrop-blur-md shadow-xl flex flex-col justify-between space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold">2. Вектор генерации</span>
+              <span id="dash-i-badge" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">I &gt; 0</span>
+            </div>
+            <div>
+              <div id="dash-i-value" class="text-2xl font-black font-mono text-emerald-400 tracking-tight">ПРЯМОЙ (I &gt; 0)</div>
+              <p class="text-xs text-slate-400 mt-1" id="dash-i-desc">Тандэн ⟶ Внешний мир (созидание)</p>
+            </div>
+            <div class="pt-2 border-t border-slate-800/80 text-[11px] text-slate-400">
+              Полярность: <strong class="text-emerald-300 font-mono">100% созидание</strong> (0% валидация)
+            </div>
+          </div>
+
+          <!-- Sensor 3: Q (Joule Heat) -->
+          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 backdrop-blur-md shadow-xl flex flex-col justify-between space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold">3. Потери Джоуля</span>
+              <span id="dash-q-badge" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-slate-800 text-slate-300 border border-slate-700">0 Дж</span>
+            </div>
+            <div>
+              <div id="dash-q-value" class="text-3xl font-black font-mono text-slate-100 tracking-tight">0 Дж</div>
+              <p class="text-xs text-slate-400 mt-1" id="dash-q-desc">Паразитный нагрев Q = I² · R · t</p>
+            </div>
+            <div class="pt-2 border-t border-slate-800/80 text-[11px] text-slate-400">
+              Тепловой режим: <strong class="text-slate-300 font-mono">Холодный контур</strong>
+            </div>
+          </div>
+
+          <!-- Sensor 4: Zanshin Breaker -->
+          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 backdrop-blur-md shadow-xl flex flex-col justify-between space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold">4. Защита Дзансин</span>
+              <span id="dash-breaker-badge" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">ARMED</span>
+            </div>
+            <div>
+              <div id="dash-breaker-value" class="text-2xl font-black font-mono text-amber-400 tracking-tight">ARMED</div>
+              <p class="text-xs text-slate-400 mt-1" id="dash-breaker-desc">Circuit Breaker готов к сбоям нагрузки</p>
+            </div>
+            <div class="pt-2 border-t border-slate-800/80 text-[11px] text-slate-400">
+              Статус: <strong class="text-amber-300 font-mono">Антихрупкость (Ваби-саби)</strong>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 6-Bulb Load Distribution Spectrum (Chowa) -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 backdrop-blur-md shadow-xl space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-800">
+            <div class="flex items-center gap-2.5">
+              <span class="text-xl">🎛️</span>
+              <div>
+                <h3 class="text-base font-bold text-slate-100">Многоканальный щит распределения (6 ламп жизни)</h3>
+                <p class="text-xs text-slate-400">Баланс токов по закону Кирхгофа: отсутствие просадки сети и непрекословная защита здоровья</p>
+              </div>
+            </div>
+            <span id="dash-shield-status" class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 self-start sm:self-auto">
+              Баланс в норме
+            </span>
+          </div>
+
+          <!-- 6 Grid Columns -->
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+            
+            <!-- Car -->
+            <div class="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-slate-200">🚗 Машина</span>
+                <span id="dash-power-car" class="font-mono text-cyan-300 text-[11px]">30 Вт</span>
+              </div>
+              <div class="w-full bg-slate-900 rounded-full h-1.5 overflow-hidden border border-slate-800">
+                <div id="dash-bar-car" class="h-full rounded-full bg-cyan-400 transition-all duration-300" style="width: 50%;"></div>
+              </div>
+              <div class="text-[10px] text-slate-400">Мобильность, автономия</div>
+            </div>
+
+            <!-- Home -->
+            <div class="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-slate-200">🏡 Дом</span>
+                <span id="dash-power-home" class="font-mono text-cyan-300 text-[11px]">15 Вт</span>
+              </div>
+              <div class="w-full bg-slate-900 rounded-full h-1.5 overflow-hidden border border-slate-800">
+                <div id="dash-bar-home" class="h-full rounded-full bg-cyan-400 transition-all duration-300" style="width: 25%;"></div>
+              </div>
+              <div class="text-[10px] text-slate-400">Безопасность, уют</div>
+            </div>
+
+            <!-- Career -->
+            <div class="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-slate-200">💼 Карьера</span>
+                <span id="dash-power-career" class="font-mono text-amber-300 text-[11px]">45 Вт</span>
+              </div>
+              <div class="w-full bg-slate-900 rounded-full h-1.5 overflow-hidden border border-slate-800">
+                <div id="dash-bar-career" class="h-full rounded-full bg-amber-400 transition-all duration-300" style="width: 75%;"></div>
+              </div>
+              <div class="text-[10px] text-slate-400">Созидание, масштаб</div>
+            </div>
+
+            <!-- Relationships -->
+            <div class="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-slate-200">❤️ Отношения</span>
+                <span id="dash-power-rel" class="font-mono text-rose-300 text-[11px]">20 Вт</span>
+              </div>
+              <div class="w-full bg-slate-900 rounded-full h-1.5 overflow-hidden border border-slate-800">
+                <div id="dash-bar-rel" class="h-full rounded-full bg-rose-400 transition-all duration-300" style="width: 35%;"></div>
+              </div>
+              <div class="text-[10px] text-slate-400">Любовь, близость</div>
+            </div>
+
+            <!-- Health (Critical) -->
+            <div class="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2 relative overflow-hidden">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-emerald-300 flex items-center gap-1">🩺 Здоровье</span>
+                <span id="dash-power-health" class="font-mono text-emerald-300 text-[11px]">25 Вт</span>
+              </div>
+              <div class="w-full bg-slate-900 rounded-full h-1.5 overflow-hidden border border-slate-800">
+                <div id="dash-bar-health" class="h-full rounded-full bg-emerald-400 transition-all duration-300" style="width: 50%;"></div>
+              </div>
+              <div class="text-[10px] text-emerald-400 font-semibold flex items-center justify-between">
+                <span>Биоскафандр</span>
+                <span>Критично</span>
+              </div>
+            </div>
+
+            <!-- Entertainment -->
+            <div class="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-slate-200">🎉 Развлечения</span>
+                <span id="dash-power-ent" class="font-mono text-purple-300 text-[11px]">15 Вт</span>
+              </div>
+              <div class="w-full bg-slate-900 rounded-full h-1.5 overflow-hidden border border-slate-800">
+                <div id="dash-bar-ent" class="h-full rounded-full bg-purple-400 transition-all duration-300" style="width: 25%;"></div>
+              </div>
+              <div class="text-[10px] text-slate-400">Игра, свежий дофамин</div>
+            </div>
+
+          </div>
+
+          <div class="pt-2 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-2">
+            <div>
+              Для детальной настройки автоматов щита перейдите во вкладку <button onclick="switchTab('multi')" class="text-cyan-400 hover:underline font-semibold cursor-pointer">5. Щит 6 ламп ➔</button>
+            </div>
+            <div class="font-mono text-[11px] text-slate-400">
+              Σ P(ламп) = P(общ) (Закон Кирхгофа)
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Diagnostic Terminal -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 backdrop-blur-md shadow-xl space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-bold text-slate-200 flex items-center gap-2">
+              <span>📟</span>
+              <span>Инженерный терминал диагностики контура</span>
+            </h3>
+            <span id="dash-verdict-code" class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
+              OK_00_SUPERCONDUCTING_MUSHIN
+            </span>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 font-mono text-xs space-y-2">
+            <div class="text-amber-300 font-bold text-sm" id="dash-verdict-title">
+              Сверхпроводимость: чистое состояние Мусин
+            </div>
+            <div class="text-slate-300 leading-relaxed" id="dash-verdict-physics">
+              Сопротивление проводки упало почти до нуля. Ток реактора без потерь питает текущее действие. Потери мощности Джоуля — Ленца минимальны.
+            </div>
+          </div>
         </div>
 
       </div>
@@ -2312,11 +2749,13 @@
   <script>
     function switchTab(tabId) {
       const viewPains = document.getElementById('view-pains');
+      const viewDash = document.getElementById('view-happiness-dashboard');
       const viewIdeal = document.getElementById('view-ideal');
       const viewSingle = document.getElementById('view-single-circuit');
       const viewMulti = document.getElementById('view-multi-circuit');
 
       const navPains = document.getElementById('nav-tab-pains');
+      const navDash = document.getElementById('nav-tab-dashboard');
       const navIdeal = document.getElementById('nav-tab-ideal');
       const navSingle = document.getElementById('nav-tab-single');
       const navMulti = document.getElementById('nav-tab-multi');
@@ -2332,29 +2771,42 @@
 
       // Hide all views first
       if (viewPains) viewPains.classList.add('hidden');
+      if (viewDash) viewDash.classList.add('hidden');
       if (viewIdeal) viewIdeal.classList.add('hidden');
       if (viewSingle) viewSingle.classList.add('hidden');
       if (viewMulti) viewMulti.classList.add('hidden');
 
       // Reset all nav buttons
-      if (navPains) navPains.className = 'w-full text-left p-3.5 rounded-xl border transition-all duration-200 flex items-start gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
-      if (navIdeal) navIdeal.className = 'w-full text-left p-3.5 rounded-xl border transition-all duration-200 flex items-start gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
-      if (navSingle) navSingle.className = 'w-full text-left p-3.5 rounded-xl border transition-all duration-200 flex items-start gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
-      if (navMulti) navMulti.className = 'w-full text-left p-3.5 rounded-xl border transition-all duration-200 flex items-start gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
+      if (navPains) navPains.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
+      if (navDash) navDash.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
+      if (navIdeal) navIdeal.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
+      if (navSingle) navSingle.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
+      if (navMulti) navMulti.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
 
       if (tabId === 'pains' || tabId === 'errors') {
         if (viewPains) viewPains.classList.remove('hidden');
-        if (navPains) navPains.className = 'w-full text-left p-3.5 rounded-xl border transition-all duration-200 flex items-start gap-3 group relative overflow-hidden cursor-pointer ' + activeClassRose;
+        if (navPains) navPains.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + activeClassRose;
 
         activeBadge.textContent = 'НАВИГАТОР БОЛЕЙ';
         activeBadge.className = 'text-rose-400 font-bold';
         modeDesc.textContent = 'Навигатор 5 болей человеческого несчастья: выгорание (R≫0), синдром самозванца (I<0), экзистенциальный крах (КЗ), апатия (I=0) и перегрузка щита.';
-      } else if (tabId === 'ideal' || tabId === 'happiness') {
+      } else if (tabId === 'dashboard' || tabId === 'happiness' || tabId === 'hud') {
+        if (viewDash) viewDash.classList.remove('hidden');
+        if (navDash) navDash.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + activeClassGold;
+
+        activeBadge.textContent = 'ДАШБОРД СЧАСТЬЯ';
+        activeBadge.className = 'text-amber-400 font-bold';
+        modeDesc.textContent = 'Оперативный дашборд счастья: объективная телеметрия сверхпроводимости η, датчики R, I, Q, защита Дзансин и баланс 6 ламп жизни.';
+
+        if (typeof updateHappinessHUD === 'function') {
+          updateHappinessHUD();
+        }
+      } else if (tabId === 'ideal') {
         if (viewIdeal) viewIdeal.classList.remove('hidden');
-        if (navIdeal) navIdeal.className = 'w-full text-left p-3.5 rounded-xl border transition-all duration-200 flex items-start gap-3 group relative overflow-hidden cursor-pointer ' + activeClassGold;
+        if (navIdeal) navIdeal.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + activeClassCyan;
 
         activeBadge.textContent = 'АТЛАС СЧАСТЬЯ (R → 0)';
-        activeBadge.className = 'text-amber-400 font-bold';
+        activeBadge.className = 'text-cyan-400 font-bold';
         modeDesc.textContent = 'Идеальное состояние цепи: сверхпроводимость внимания (R=0), автономия Тандэна (I>0), неуязвимость Дзансин и гармония 6 ламп жизни.';
 
         if (typeof idl_initCircuit === 'function') {
@@ -2382,6 +2834,10 @@
         if (typeof mc_updateCircuit === 'function') {
           mc_updateCircuit();
         }
+      }
+
+      if (typeof updateHappinessHUD === 'function') {
+        updateHappinessHUD();
       }
 
       try {
@@ -2485,7 +2941,7 @@
       },
       kintsugi: {
         icon: '🏺',
-        title: 'Триада «Дзансин + Ваби-саби + Кинцуги»',
+        title: 'Протокол «Кинцуги» (金継ぎ, Kintsugi): Дзансин & Золотой шов',
         desc: 'Размыкатель изолировал аварию. Тандэн защищен на 100%. Трещина заливается золотом опыта.',
         cardId: 'card-pain-03',
         targetTab: 'single',
@@ -2511,11 +2967,11 @@
             g1: '100% OK', g2: 'ГОТОВ', g3: 'ПРОВОДИТ', g4: '120%'
           }
         ],
-        cardTag: '✓ ТРИАДА КИНЦУГИ ВЫПОЛНЕНА • ТАНДЭН СОХРАНЕН НА 100%'
+        cardTag: '✓ ПРОТОКОЛ «КИНЦУГИ» ВЫПОЛНЕН • ТАНДЭН СОХРАНЕН НА 100%'
       },
       monk: {
         icon: '🧘',
-        title: 'Протокол «Чайный светодиод»: Ток I > 0',
+        title: 'Протокол «Тяною» (茶の湯, Chanoyu): Запуск тока I > 0',
         desc: 'Контур замкнут на микронагрузку 10 Вт (чаша чая, 10 вдохов). Циркуляция жизненной силы восстановлена!',
         cardId: 'card-pain-04',
         targetTab: 'multi',
@@ -2541,11 +2997,11 @@
             g1: '2.5 А', g2: '15 Вт', g3: 'АКТИВНОЕ', g4: 'ЖИВАЯ ЦЕПЬ'
           }
         ],
-        cardTag: '✓ ПРОТОКОЛ «ЧАЙНЫЙ СВЕТОДИОД» ВЫПОЛНЕН • ТОК I > 0'
+        cardTag: '✓ ПРОТОКОЛ «ТЯНОЮ» ВЫПОЛНЕН • ТОК I > 0'
       },
       careerist: {
         icon: '🩺',
-        title: 'Балансировка щита: Канал «Здоровье» запитан!',
+        title: 'Протокол «Кансо» (簡素, Kanso): Гармония щита Тёва',
         desc: 'Второстепенный балласт отключен. В скафандр физического тела подано 30 Вт. Напряжение сети стабилизировано.',
         cardId: 'card-pain-05',
         targetTab: 'multi',
@@ -2571,7 +3027,7 @@
             g1: '100 Вт', g2: '30 Вт (НОРМА)', g3: '100% (ИДЕАЛ)', g4: 'ГАРМОНИЯ'
           }
         ],
-        cardTag: '✓ БАЛАНСИРОВКА ЩИТА ВЫПОЛНЕНА • ЗДОРОВЬЕ ЗАПИТАНО'
+        cardTag: '✓ ПРОТОКОЛ «КАНСО» ВЫПОЛНЕН • ЗДОРОВЬЕ ЗАПИТАНО'
       }
     };
 
@@ -2734,16 +3190,18 @@
       }, 100);
     }
 
-    // Keyboard Shortcuts: 1 (Pains), 2 (Ideal), 3 (Single), 4 (Multi)
+    // Keyboard Shortcuts: 1 (Pains), 2 (Dashboard), 3 (Ideal), 4 (Single), 5 (Multi)
     window.addEventListener('keydown', (e) => {
       if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
       if (e.key === '1') {
         switchTab('pains');
       } else if (e.key === '2') {
-        switchTab('ideal');
+        switchTab('dashboard');
       } else if (e.key === '3') {
-        switchTab('single');
+        switchTab('ideal');
       } else if (e.key === '4') {
+        switchTab('single');
+      } else if (e.key === '5') {
         switchTab('multi');
       }
     });
@@ -3238,6 +3696,10 @@
             </div>
           </div>
         `).join('');
+      }
+
+      if (typeof updateHappinessHUD === 'function') {
+        updateHappinessHUD();
       }
     }
 
@@ -3797,6 +4259,10 @@
           </div>
         `).join('');
       }
+
+      if (typeof updateHappinessHUD === 'function') {
+        updateHappinessHUD();
+      }
     }
 
     function mc_autoRemediate() {
@@ -3849,9 +4315,522 @@
       }, 50);
     }
 
+    // =========================================================================
+    // ⚡ ДАШБОРД СЧАСТЬЯ (HAPPINESS TELEMETRY HUD) LOGIC
+    // =========================================================================
+    function updateHappinessHUD() {
+      const sc = (typeof sc_state !== 'undefined') ? sc_state : null;
+      const mc = (typeof mc_state !== 'undefined') ? mc_state : null;
+      if (!sc) return;
+
+      // Calculate raw mental impedance
+      const rawR = (sc.baseR || 1) + (sc.pastL || 0) + (sc.futureC || 0);
+      const effectiveR = Math.max(0.1, rawR * (1 + (sc.critic || 0)) * (1 - 0.2 * (sc.grounding || 0.8)));
+
+      // Polarity and failure flags
+      const isReverse = sc.validationTrap || (mc && mc.bulbs && Object.values(mc.bulbs).some(b => b.trap));
+      const isFailed = sc.loadFailed || (mc && mc.loadFailed);
+
+      // Multi-channel load metrics
+      let totalShieldPower = 0;
+      let healthPower = 25;
+      if (mc && mc.bulbs) {
+        totalShieldPower = Object.values(mc.bulbs).reduce((acc, b) => acc + (b.power || 0), 0);
+        healthPower = (mc.bulbs.health && typeof mc.bulbs.health.power === 'number') ? mc.bulbs.health.power : 25;
+      }
+
+      // Calculation of Happiness Score (0-100%)
+      let score = 100;
+      let statusEmoji = '✨';
+      let statusText = 'СВЕРХПРОВОДИМОСТЬ';
+      let statusSub = 'Мусин (R → 0)';
+      let pillText = 'R → 0 • Сверхпроводимость';
+      let pillClass = 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40';
+      let orbClass = 'bg-cyan-500/20';
+      let progressGrad = 'from-amber-400 via-cyan-400 to-sky-300';
+      let rBadgeColor = 'text-cyan-400 font-bold';
+      let rSubText = 'Мусин (R ≈ 0)';
+      let iBadgeText = 'I > 0';
+      let iBadgeColor = 'text-emerald-400 font-bold';
+      let iSubText = 'Прямая отдача (Тандэн ⟶ Мир)';
+      let qText = '0 Дж';
+      let qBadgeColor = 'text-slate-300';
+      let qSubText = 'Без перегрева (Холодный контур)';
+      let breakerText = 'ARMED';
+      let breakerColor = 'text-amber-400 font-bold';
+      let breakerSub = 'Антихрупкость (Ваби-саби)';
+      let stateDesc = 'Сопротивление проводки внимания сведено к нулю (R ≈ 0.2 Ω). Симуляции прошлого и тревоги будущего отключены. Реактор Тандэн напрямую питает созидательное действие без рассеивания мощности в паразитное тепло по закону Джоуля — Ленца.';
+      let verdictCode = 'OK_00_SUPERCONDUCTING_MUSHIN';
+      let verdictTitle = 'Сверхпроводимость: чистое состояние Мусин';
+      let verdictPhysics = 'Сопротивление проводки упало почти до нуля. Ток реактора без потерь питает текущее действие. Омические потери Джоуля — Ленца минимальны.';
+
+      if (isReverse) {
+        score = 18;
+        statusEmoji = '🪤';
+        statusText = 'ОБРАТНЫЙ ТОК';
+        statusSub = 'Ловушка валидации';
+        pillText = 'I < 0 • Обратный ток';
+        pillClass = 'bg-purple-500/20 text-purple-300 border-purple-500/40 animate-pulse';
+        orbClass = 'bg-purple-500/30';
+        progressGrad = 'from-purple-600 via-fuchsia-500 to-rose-500';
+        iBadgeText = 'I < 0 (ОБРАТНЫЙ)';
+        iBadgeColor = 'text-purple-400 font-bold';
+        iSubText = 'Поиск похвалы (отток энергии)';
+        qText = '1450 Дж';
+        qBadgeColor = 'text-purple-400 font-bold';
+        qSubText = 'Накал эго и тревоги';
+        stateDesc = 'Обнаружен паразитный обратный ток (I < 0): внимание направлено не на созидание, а на вымогание валидации и одобрения от внешнего мира. Эго накаляется докрасна, вызывая истощение.';
+        verdictCode = 'ERR_02_REVERSE_VALIDATION_TRAP';
+        verdictTitle = 'Обратный ток: ловушка валидации';
+        verdictPhysics = 'Попытка зарядить внутренний реактор от внешней нагрузки переворачивает полярность диода. Вектор тока отрицателен, что вызывает быстрое выгорание и синдром самозванца.';
+      } else if (isFailed) {
+        score = 65;
+        statusEmoji = '🏺';
+        statusText = 'ИЗОЛЯЦИЯ СБОЯ';
+        statusSub = 'Кинцуги & Дзансин';
+        pillText = 'TRIPPED • Защита активна';
+        pillClass = 'bg-amber-500/20 text-amber-300 border-amber-500/40';
+        orbClass = 'bg-amber-500/25';
+        progressGrad = 'from-amber-500 via-yellow-500 to-amber-600';
+        breakerText = 'TRIPPED';
+        breakerColor = 'text-yellow-400 font-bold';
+        breakerSub = 'Ядро защищено (Кинцуги)';
+        qText = '45 Дж';
+        qSubText = 'Сбой нагрузки локализован';
+        stateDesc = 'Внешняя нагрузка рухнула (провал проекта/задачи), но предохранитель Дзансин мгновенно разомкнул цепь, предотвратив внутреннее короткое замыкание. Реактор цел. Доступен ремонт золотом Кинцуги.';
+        verdictCode = 'ISOLATED_ZANSHIN_TRIP';
+        verdictTitle = 'Изоляция сбоя: предохранитель Дзансин сработал';
+        verdictPhysics = 'Circuit Breaker изолировал крах внешней нагрузки от ядра личности. Короткое замыкание предотвращено, энергия сохранена.';
+      } else if (effectiveR > 25) {
+        const penalty = Math.min(65, Math.round((effectiveR - 25) * 1.5));
+        score = Math.max(12, 55 - penalty);
+        statusEmoji = '🔥';
+        statusText = 'ОМИЧЕСКИЙ ПЕРЕГРЕВ';
+        statusSub = 'Ментальное выгорание';
+        pillText = 'Q >> 0 • Перегрев';
+        pillClass = 'bg-rose-500/20 text-rose-300 border-rose-500/40 animate-pulse';
+        orbClass = 'bg-rose-500/30';
+        progressGrad = 'from-rose-600 via-amber-500 to-rose-500';
+        rBadgeColor = 'text-rose-400 font-bold';
+        rSubText = 'Шум симуляций и руминаций';
+        qText = Math.round(effectiveR * 42) + ' Дж';
+        qBadgeColor = 'text-rose-400 font-bold';
+        qSubText = 'Паразитное тепло Джоуля';
+        stateDesc = 'Критический перегрев цепи по закону Джоуля — Ленца: высокое омическое сопротивление проводки (R > 25 Ω) из-за мысленной жвачки прошлого и тревоги за будущее превращает всю энергию в паразитное тепло выгорания.';
+        verdictCode = 'ERR_01_OHMIC_OVERHEAT';
+        verdictTitle = 'Омический перегрев: ментальное выгорание';
+        verdictPhysics = 'Закон Джоуля — Ленца Q = I^2 * R * t: при высоком сопротивлении проводки внимание не доходит до ламп жизни, сжигая нервную систему впустую.';
+      } else if (effectiveR > 5) {
+        score = Math.max(58, Math.round(92 - (effectiveR - 5) * 2));
+        statusEmoji = '⚡';
+        statusText = 'ТЕПЛОВОЕ ТРЕНИЕ';
+        statusSub = 'Шум прошлого/будущего';
+        pillText = 'R > 5Ω • Тепловые потери';
+        pillClass = 'bg-amber-500/20 text-amber-300 border-amber-500/40';
+        orbClass = 'bg-amber-500/20';
+        progressGrad = 'from-amber-400 via-yellow-400 to-amber-500';
+        rBadgeColor = 'text-amber-400 font-bold';
+        rSubText = 'Легкий шум мыслей';
+        qText = Math.round(effectiveR * 12) + ' Дж';
+        qBadgeColor = 'text-amber-300';
+        qSubText = 'Умеренные потери';
+        stateDesc = 'Умеренное сопротивление проводки: присутствуют реактивные шумы мыслей о прошлом или тревоги за будущее. Контур работоспособен, но часть энергии рассеивается. Рекомендуется заземление (Тандэн).';
+        verdictCode = 'WARN_THERMAL_FRICTION';
+        verdictTitle = 'Тепловое трение: легкая турбулентность';
+        verdictPhysics = 'Реактансы внимания не скомпенсированы. Небольшие омические потери снижают общий КПД цепи.';
+      }
+
+      // Health channel penalty on shield
+      if (healthPower < 10) {
+        score = Math.max(10, score - 25);
+        if (!isReverse && effectiveR <= 25) {
+          statusText = 'ИСТОЩЕНИЕ ЗДОРОВЬЯ';
+          statusSub = 'Канал Health обесточен';
+          pillText = 'P_health < 10W';
+          pillClass = 'bg-rose-500/20 text-rose-300 border-rose-500/40 animate-pulse';
+          orbClass = 'bg-rose-500/25';
+          verdictCode = 'WARN_HEALTH_STARVATION';
+          verdictTitle = 'Критическое истощение здоровья';
+          verdictPhysics = 'Биоскафандр обесточен (P < 10 Вт). Нарушено правило 5: здоровье — фундаментальная несущая частота всей системы.';
+        }
+      }
+
+      // Undervoltage check
+      if (totalShieldPower > 160) {
+        score = Math.max(15, score - 15);
+      }
+
+      // 1. Update Sidebar Score Pill
+      const sideScorePill = document.getElementById('nav-hud-score-pill');
+      if (sideScorePill) {
+        sideScorePill.textContent = score + '%';
+        if (score >= 90) {
+          sideScorePill.className = 'text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30';
+        } else if (score >= 60) {
+          sideScorePill.className = 'text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30';
+        } else if (isReverse) {
+          sideScorePill.className = 'text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/30 animate-pulse';
+        } else {
+          sideScorePill.className = 'text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 animate-pulse';
+        }
+      }
+
+      // 2. Update Master Dashboard elements (dash-*)
+      const dashScore = document.getElementById('dash-score-value');
+      if (dashScore) dashScore.textContent = score + '%';
+
+      const dashBar = document.getElementById('dash-progress-bar');
+      if (dashBar) {
+        dashBar.style.width = score + '%';
+        dashBar.className = 'h-full rounded-full bg-gradient-to-r ' + progressGrad + ' transition-all duration-500';
+      }
+
+      const dashOrb = document.getElementById('dash-glow-orb');
+      if (dashOrb) {
+        dashOrb.className = 'absolute -right-16 -top-16 w-80 h-80 rounded-full blur-3xl pointer-events-none transition-all duration-700 ' + orbClass;
+      }
+
+      const dashEmoji = document.getElementById('dash-status-emoji');
+      if (dashEmoji) dashEmoji.textContent = statusEmoji;
+
+      const dashState = document.getElementById('dash-state-label');
+      if (dashState) dashState.textContent = statusText;
+
+      const dashSub = document.getElementById('dash-state-sub');
+      if (dashSub) dashSub.textContent = statusSub;
+
+      const dashPill = document.getElementById('dash-mode-pill');
+      if (dashPill) {
+        dashPill.textContent = pillText;
+        dashPill.className = 'px-3 py-1 rounded-full text-xs font-bold font-mono border shrink-0 ' + pillClass;
+      }
+
+      const dashDesc = document.getElementById('dash-state-desc');
+      if (dashDesc) dashDesc.textContent = stateDesc;
+
+      // 4 Primary Sensors
+      const dashRVal = document.getElementById('dash-r-value');
+      if (dashRVal) dashRVal.textContent = effectiveR.toFixed(1) + ' Ω';
+      const dashRBadge = document.getElementById('dash-r-badge');
+      if (dashRBadge) {
+        dashRBadge.textContent = effectiveR <= 2 ? 'R ≈ 0' : (effectiveR > 25 ? 'R ≫ 0' : 'R = ' + effectiveR.toFixed(1) + 'Ω');
+        dashRBadge.className = 'px-2 py-0.5 rounded text-[10px] font-mono font-bold border ' + pillClass;
+      }
+      const dashRDesc = document.getElementById('dash-r-desc');
+      if (dashRDesc) dashRDesc.textContent = rSubText;
+
+      const dashIVal = document.getElementById('dash-i-value');
+      if (dashIVal) dashIVal.textContent = isReverse ? 'ОБРАТНЫЙ (I < 0)' : 'ПРЯМОЙ (I > 0)';
+      const dashIBadge = document.getElementById('dash-i-badge');
+      if (dashIBadge) {
+        dashIBadge.textContent = isReverse ? 'I < 0' : 'I > 0';
+        dashIBadge.className = 'px-2 py-0.5 rounded text-[10px] font-mono font-bold border ' + (isReverse ? 'bg-purple-500/20 text-purple-300 border-purple-500/40 animate-pulse' : 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40');
+      }
+      const dashIDesc = document.getElementById('dash-i-desc');
+      if (dashIDesc) dashIDesc.textContent = iSubText;
+
+      const dashQVal = document.getElementById('dash-q-value');
+      if (dashQVal) dashQVal.textContent = qText;
+      const dashQBadge = document.getElementById('dash-q-badge');
+      if (dashQBadge) {
+        dashQBadge.textContent = qText;
+        dashQBadge.className = 'px-2 py-0.5 rounded text-[10px] font-mono font-bold border ' + (effectiveR > 25 || isReverse ? 'bg-rose-500/20 text-rose-300 border-rose-500/40 animate-pulse' : 'bg-slate-800 text-slate-300 border border-slate-700');
+      }
+      const dashQDesc = document.getElementById('dash-q-desc');
+      if (dashQDesc) dashQDesc.textContent = qSubText;
+
+      const dashBreakerVal = document.getElementById('dash-breaker-value');
+      if (dashBreakerVal) dashBreakerVal.textContent = breakerText;
+      const dashBreakerBadge = document.getElementById('dash-breaker-badge');
+      if (dashBreakerBadge) {
+        dashBreakerBadge.textContent = breakerText;
+        dashBreakerBadge.className = 'px-2 py-0.5 rounded text-[10px] font-mono font-bold border ' + (isFailed ? 'bg-amber-500/20 text-yellow-300 border-amber-500/40 animate-pulse' : 'bg-amber-500/20 text-amber-300 border border-amber-500/40');
+      }
+      const dashBreakerDesc = document.getElementById('dash-breaker-desc');
+      if (dashBreakerDesc) dashBreakerDesc.textContent = breakerSub;
+
+      // 6-Bulb Equalizer
+      if (mc && mc.bulbs) {
+        const maxP = 60;
+        ['car', 'home', 'career', 'rel', 'health', 'ent'].forEach(k => {
+          const powerElem = document.getElementById('dash-power-' + k);
+          const barElem = document.getElementById('dash-bar-' + k);
+          if (mc.bulbs[k]) {
+            const p = mc.bulbs[k].power;
+            const pct = Math.min(100, Math.max(10, Math.round((p / maxP) * 100)));
+            if (powerElem) powerElem.textContent = p + ' Вт';
+            if (barElem) {
+              barElem.style.width = pct + '%';
+              if (mc.bulbs[k].trap) {
+                barElem.className = 'h-full rounded-full bg-purple-500 transition-all duration-300 animate-pulse';
+              } else if (k === 'health' && p < 10) {
+                barElem.className = 'h-full rounded-full bg-rose-500 transition-all duration-300 animate-pulse';
+              } else if (p === 0) {
+                barElem.className = 'h-full rounded-full bg-slate-700 transition-all duration-300 opacity-40';
+              } else if (k === 'health') {
+                barElem.className = 'h-full rounded-full bg-emerald-400 transition-all duration-300';
+              } else if (k === 'career') {
+                barElem.className = 'h-full rounded-full bg-amber-400 transition-all duration-300';
+              } else if (k === 'rel') {
+                barElem.className = 'h-full rounded-full bg-rose-400 transition-all duration-300';
+              } else if (k === 'ent') {
+                barElem.className = 'h-full rounded-full bg-purple-400 transition-all duration-300';
+              } else {
+                barElem.className = 'h-full rounded-full bg-cyan-400 transition-all duration-300';
+              }
+            }
+          }
+        });
+
+        const dashShieldStatus = document.getElementById('dash-shield-status');
+        if (dashShieldStatus) {
+          if (healthPower < 10) {
+            dashShieldStatus.textContent = 'Здоровье обесточено!';
+            dashShieldStatus.className = 'px-3 py-1 rounded-full text-xs font-mono font-semibold bg-rose-500/20 text-rose-300 border border-rose-500/40 animate-pulse self-start sm:self-auto';
+          } else if (totalShieldPower > 160) {
+            dashShieldStatus.textContent = 'Перегрузка сети!';
+            dashShieldStatus.className = 'px-3 py-1 rounded-full text-xs font-mono font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/40 self-start sm:self-auto';
+          } else if (totalShieldPower === 0) {
+            dashShieldStatus.textContent = 'Режим отшельника';
+            dashShieldStatus.className = 'px-3 py-1 rounded-full text-xs font-mono font-semibold bg-slate-800 text-slate-400 border border-slate-700 self-start sm:self-auto';
+          } else {
+            dashShieldStatus.textContent = 'Баланс в норме';
+            dashShieldStatus.className = 'px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 self-start sm:self-auto';
+          }
+        }
+      }
+
+      // Diagnostic Terminal
+      const codeElem = document.getElementById('dash-verdict-code');
+      if (codeElem) {
+        codeElem.textContent = verdictCode;
+        if (isReverse) {
+          codeElem.className = 'px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-purple-500/20 text-purple-300 border border-purple-500/40';
+        } else if (effectiveR > 25 || healthPower < 10) {
+          codeElem.className = 'px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40';
+        } else if (isFailed || effectiveR > 5) {
+          codeElem.className = 'px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40';
+        } else {
+          codeElem.className = 'px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40';
+        }
+      }
+
+      const titleElem = document.getElementById('dash-verdict-title');
+      if (titleElem) titleElem.textContent = verdictTitle;
+
+      const physicsElem = document.getElementById('dash-verdict-physics');
+      if (physicsElem) physicsElem.textContent = verdictPhysics;
+
+      // Legacy hud-* support
+      const legacyScore = document.getElementById('hud-score-value');
+      if (legacyScore) legacyScore.textContent = score + '%';
+      const legacyBar = document.getElementById('hud-progress-bar');
+      if (legacyBar) {
+        legacyBar.style.width = score + '%';
+        legacyBar.className = 'h-full rounded-full bg-gradient-to-r ' + progressGrad + ' transition-all duration-500';
+      }
+    }
+
+    // =========================================================================
+    // 🧭 HUMAN SENSATION TRANSLATOR (ЧЕК-АП ЗА 30 СЕКУНД)
+    // =========================================================================
+    let humanCheckState = {
+      focus: 'now',
+      motive: 'creation',
+      body: 'ok'
+    };
+
+    function humanCheck_updateUI() {
+      // 1. Focus buttons
+      ['now', 'past', 'future', 'critic'].forEach(k => {
+        const btn = document.getElementById('hbtn-focus-' + k);
+        if (btn) {
+          if (humanCheckState.focus === k) {
+            btn.className = 'w-full text-left p-2.5 rounded-xl text-xs font-medium border transition cursor-pointer flex items-center gap-2.5 bg-cyan-500/15 border-cyan-500/50 text-cyan-200 ring-1 ring-cyan-500/30';
+          } else {
+            btn.className = 'w-full text-left p-2.5 rounded-xl text-xs font-medium border transition cursor-pointer flex items-center gap-2.5 bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700';
+          }
+        }
+      });
+
+      // 2. Motive buttons
+      ['creation', 'validation', 'apathy'].forEach(k => {
+        const btn = document.getElementById('hbtn-motive-' + k);
+        if (btn) {
+          if (humanCheckState.motive === k) {
+            btn.className = 'w-full text-left p-2.5 rounded-xl text-xs font-medium border transition cursor-pointer flex items-center gap-2.5 bg-emerald-500/15 border-emerald-500/50 text-emerald-200 ring-1 ring-emerald-500/30';
+          } else {
+            btn.className = 'w-full text-left p-2.5 rounded-xl text-xs font-medium border transition cursor-pointer flex items-center gap-2.5 bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700';
+          }
+        }
+      });
+
+      // 3. Body buttons
+      ['ok', 'failed', 'exhausted'].forEach(k => {
+        const btn = document.getElementById('hbtn-body-' + k);
+        if (btn) {
+          if (humanCheckState.body === k) {
+            btn.className = 'w-full text-left p-2.5 rounded-xl text-xs font-medium border transition cursor-pointer flex items-center gap-2.5 bg-amber-500/15 border-amber-500/50 text-amber-200 ring-1 ring-amber-500/30';
+          } else {
+            btn.className = 'w-full text-left p-2.5 rounded-xl text-xs font-medium border transition cursor-pointer flex items-center gap-2.5 bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700';
+          }
+        }
+      });
+
+      // 4. Live Advice Summary
+      const summaryElem = document.getElementById('human-check-summary');
+      if (summaryElem) {
+        if (humanCheckState.motive === 'validation') {
+          summaryElem.innerHTML = '<span class="text-purple-400 text-base">🪤</span><span><strong>Ловушка валидации (I &lt; 0):</strong> Вы делаете действие ради похвалы. Решение: сфокусируйтесь на полезности процесса, а не на чужом мнении.</span>';
+        } else if (humanCheckState.body === 'exhausted') {
+          summaryElem.innerHTML = '<span class="text-rose-400 text-base">🔴</span><span><strong>Истощение биоскафандра:</strong> Несущая частота обесточена. Немедленно отложите задачи и восстановите сон и питание.</span>';
+        } else if (humanCheckState.focus === 'critic') {
+          summaryElem.innerHTML = '<span class="text-rose-400 text-base">🗣️</span><span><strong>Внутренний критик:</strong> Самообесценивание удваивает омическое трение. Включите заземление (3 выдоха в Тандэн).</span>';
+        } else if (humanCheckState.focus === 'future') {
+          summaryElem.innerHTML = '<span class="text-amber-400 text-base">⏩</span><span><strong>Тревога за будущее:</strong> Внимание ушло в виртуальные симуляции. Вернитесь к одному текущему физическому действию.</span>';
+        } else if (humanCheckState.focus === 'past') {
+          summaryElem.innerHTML = '<span class="text-amber-400 text-base">⏪</span><span><strong>Руминация прошлого:</strong> Прокручивание прошлых споров греет проводку вхолостую. Сбросьте багаж прошлого в ноль.</span>';
+        } else if (humanCheckState.body === 'failed') {
+          summaryElem.innerHTML = '<span class="text-yellow-400 text-base">🏺</span><span><strong>Сбой нагрузки изолирован:</strong> Сработал Дзансин. Задача провалилась, но ваше ядро цело. Доступен ремонт Кинцуги.</span>';
+        } else {
+          summaryElem.innerHTML = '<span class="text-cyan-400 text-base">✨</span><span><strong>Чистый Мусин:</strong> Вы в моменте прямого созидания. Сопротивление проводки сведено к нулю. Наслаждайтесь потоком!</span>';
+        }
+      }
+    }
+
+    function humanCheck_setFocus(type) {
+      humanCheckState.focus = type;
+      if (typeof sc_state !== 'undefined') {
+        if (type === 'now') {
+          sc_state.pastL = 0; sc_state.futureC = 0; sc_state.critic = 0; sc_state.grounding = 0.95;
+        } else if (type === 'past') {
+          sc_state.pastL = 22; sc_state.futureC = 2; sc_state.critic = 0.3; sc_state.grounding = 0.4;
+        } else if (type === 'future') {
+          sc_state.pastL = 2; sc_state.futureC = 28; sc_state.critic = 0.4; sc_state.grounding = 0.3;
+        } else if (type === 'critic') {
+          sc_state.pastL = 12; sc_state.futureC = 12; sc_state.critic = 0.9; sc_state.grounding = 0.2;
+        }
+        if (typeof sc_syncInputs === 'function') sc_syncInputs();
+        if (typeof sc_updateCircuit === 'function') sc_updateCircuit();
+      }
+      updateHappinessHUD();
+      humanCheck_updateUI();
+    }
+
+    function humanCheck_setMotive(type) {
+      humanCheckState.motive = type;
+      if (typeof sc_state !== 'undefined') {
+        if (type === 'creation') {
+          sc_state.validationTrap = false;
+          sc_state.emf = 80;
+          if (typeof mc_state !== 'undefined' && mc_state.bulbs) {
+            Object.values(mc_state.bulbs).forEach(b => b.trap = false);
+          }
+        } else if (type === 'validation') {
+          sc_state.validationTrap = true;
+          if (typeof mc_state !== 'undefined' && mc_state.bulbs && mc_state.bulbs.career) {
+            mc_state.bulbs.career.trap = true;
+          }
+        } else if (type === 'apathy') {
+          sc_state.validationTrap = false;
+          sc_state.emf = 10;
+        }
+        if (typeof sc_syncInputs === 'function') sc_syncInputs();
+        if (typeof sc_updateCircuit === 'function') sc_updateCircuit();
+      }
+      if (typeof mc_syncInputs === 'function') mc_syncInputs();
+      if (typeof mc_updateCircuit === 'function') mc_updateCircuit();
+      updateHappinessHUD();
+      humanCheck_updateUI();
+    }
+
+    function humanCheck_setBody(type) {
+      humanCheckState.body = type;
+      if (typeof sc_state !== 'undefined') {
+        if (type === 'ok') {
+          sc_state.loadFailed = false;
+          if (typeof mc_state !== 'undefined' && mc_state.bulbs && mc_state.bulbs.health) {
+            mc_state.bulbs.health.power = 25;
+          }
+        } else if (type === 'failed') {
+          sc_state.loadFailed = true;
+        } else if (type === 'exhausted') {
+          sc_state.loadFailed = false;
+          if (typeof mc_state !== 'undefined' && mc_state.bulbs && mc_state.bulbs.health) {
+            mc_state.bulbs.health.power = 5;
+          }
+        }
+        if (typeof sc_syncInputs === 'function') sc_syncInputs();
+        if (typeof sc_updateCircuit === 'function') sc_updateCircuit();
+      }
+      if (typeof mc_syncInputs === 'function') mc_syncInputs();
+      if (typeof mc_updateCircuit === 'function') mc_updateCircuit();
+      updateHappinessHUD();
+      humanCheck_updateUI();
+    }
+
+    function hud_calibrateMushin() {
+      humanCheckState = {
+        focus: 'now',
+        motive: 'creation',
+        body: 'ok'
+      };
+      humanCheck_updateUI();
+
+      if (typeof sc_state !== 'undefined') {
+        sc_state.pastL = 0;
+        sc_state.futureC = 0;
+        sc_state.critic = 0;
+        sc_state.grounding = 0.95;
+        sc_state.validationTrap = false;
+        sc_state.loadFailed = false;
+        if (typeof sc_syncInputs === 'function') sc_syncInputs();
+        if (typeof sc_updateCircuit === 'function') sc_updateCircuit();
+      }
+
+      if (typeof mc_state !== 'undefined') {
+        mc_state.pastL = 0;
+        mc_state.futureC = 0;
+        mc_state.critic = 0;
+        mc_state.grounding = 0.95;
+        mc_state.loadFailed = false;
+        if (mc_state.bulbs) {
+          Object.keys(mc_state.bulbs).forEach(k => {
+            mc_state.bulbs[k].trap = false;
+            if (k === 'health' && mc_state.bulbs[k].power < 20) {
+              mc_state.bulbs[k].power = 25;
+            }
+          });
+        }
+        if (typeof mc_syncInputs === 'function') mc_syncInputs();
+        if (typeof mc_updateCircuit === 'function') mc_updateCircuit();
+      }
+
+      updateHappinessHUD();
+
+      if (typeof playZenChime === 'function') {
+        playZenChime(528);
+      }
+
+      const btn1 = document.getElementById('dash-btn-calibrate');
+      const btn2 = document.getElementById('hud-btn-calibrate');
+      [btn1, btn2].forEach(btn => {
+        if (btn) {
+          const origHTML = btn.innerHTML;
+          btn.innerHTML = '<span>✨</span><span>Мусин откалиброван: 100%!</span>';
+          btn.classList.add('ring-2', 'ring-cyan-400', 'bg-cyan-500/30');
+          setTimeout(() => {
+            btn.innerHTML = origHTML;
+            btn.classList.remove('ring-2', 'ring-cyan-400', 'bg-cyan-500/30');
+          }, 2200);
+        }
+      });
+    }
+
     // Initial load
     mc_syncInputs();
     mc_updateCircuit();
+    updateHappinessHUD();
   
   </script>
 
@@ -3860,15 +4839,18 @@
     window.addEventListener('DOMContentLoaded', () => {
       let initialTab = 'pains';
       const hash = window.location.hash.replace('#', '');
-      if (hash === 'pains' || hash === 'ideal' || hash === 'happiness' || hash === 'single' || hash === 'multi' || hash === 'errors') {
-        initialTab = (hash === 'errors') ? 'pains' : (hash === 'happiness' ? 'ideal' : hash);
+      if (hash === 'pains' || hash === 'dashboard' || hash === 'ideal' || hash === 'happiness' || hash === 'single' || hash === 'multi' || hash === 'errors') {
+        initialTab = (hash === 'errors') ? 'pains' : ((hash === 'happiness' || hash === 'dashboard') ? 'dashboard' : hash);
       } else {
         const saved = localStorage.getItem('inner_current_active_tab');
-        if (saved === 'pains' || saved === 'ideal' || saved === 'happiness' || saved === 'single' || saved === 'multi' || saved === 'errors') {
-          initialTab = (saved === 'errors') ? 'pains' : (saved === 'happiness' ? 'ideal' : saved);
+        if (saved === 'pains' || saved === 'dashboard' || saved === 'ideal' || saved === 'happiness' || saved === 'single' || saved === 'multi' || saved === 'errors') {
+          initialTab = (saved === 'errors') ? 'pains' : ((saved === 'happiness' || saved === 'dashboard') ? 'dashboard' : saved);
         }
       }
       switchTab(initialTab);
+      if (typeof updateHappinessHUD === 'function') {
+        updateHappinessHUD();
+      }
     });
   </script>
 
