@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inner Current — 6 Лампочек & Электродинамика Контура</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @keyframes pulse-glow {
+      0%, 100% { filter: drop-shadow(0 0 15px rgba(234, 179, 8, 0.6)); }
+      50% { filter: drop-shadow(0 0 35px rgba(234, 179, 8, 0.9)); }
+    }
+    @keyframes pulse-superconduct {
+      0%, 100% { filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.7)); }
+      50% { filter: drop-shadow(0 0 40px rgba(56, 189, 248, 1)); }
+    }
+    @keyframes pulse-overheat {
+      0%, 100% { filter: drop-shadow(0 0 20px rgba(239, 68, 68, 0.7)); }
+      50% { filter: drop-shadow(0 0 45px rgba(239, 68, 68, 1)); }
+    }
+    @keyframes pulse-purple {
+      0%, 100% { filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.7)); }
+      50% { filter: drop-shadow(0 0 35px rgba(168, 85, 247, 1)); }
+    }
+    .flow-line {
+      stroke-dasharray: 8 8;
+      animation: dash 1s linear infinite;
+    }
+    .flow-reverse {
+      stroke-dasharray: 8 8;
+      animation: dash-reverse 1s linear infinite;
+    }
+    @keyframes dash {
+      from { stroke-dashoffset: 32; }
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes dash-reverse {
+      from { stroke-dashoffset: 0; }
+      to { stroke-dashoffset: 32; }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen p-4 md:p-8 font-sans antialiased selection:bg-amber-500 selection:text-black">
+  <div class="max-w-7xl mx-auto space-y-6">
+    
+    <!-- Top Header & Philosophy -->
+    <header class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 backdrop-blur-md shadow-2xl flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+      <div>
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">⚡</span>
+          <h1 class="text-2xl md:text-3xl font-bold tracking-tight bg-gradient-to-r from-amber-400 via-cyan-400 to-sky-300 bg-clip-text text-transparent">
+            Inner Current (Внутренний ток)
+          </h1>
+          <span class="text-xs uppercase tracking-widest px-2.5 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-full font-mono">
+            6 Лампочек Контура
+          </span>
+        </div>
+        <p class="text-slate-400 text-sm mt-1">
+          Электродинамика распределения мощности: Реактор (Тандэн) ⟶ Шина внимания ⟶ 6 Главных Лампочек жизни
+        </p>
+      </div>
+
+      <!-- Presets Selector -->
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="text-xs uppercase tracking-wider text-slate-500 font-mono">Пресеты:</span>
+        <button onclick="applyPreset('careerist')" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-amber-950 border border-amber-700/50 text-amber-300 hover:bg-amber-900 transition">
+          💼 Карьерист (Здоровье 0W)
+        </button>
+        <button onclick="applyPreset('family')" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-emerald-950 border border-emerald-700/50 text-emerald-300 hover:bg-emerald-900 transition">
+          🏡 Семьянин (Дом & Отношения)
+        </button>
+        <button onclick="applyPreset('overload')" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-rose-950 border border-rose-700/50 text-rose-300 hover:bg-rose-900 transition">
+          🚨 Просадка 6 ламп (Перегруз)
+        </button>
+        <button onclick="applyPreset('harmony')" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-cyan-950 border border-cyan-700/50 text-cyan-300 hover:bg-cyan-900 transition">
+          ⚖️ Гармония (Здоровая сеть)
+        </button>
+        <button onclick="applyPreset('mushin')" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-sky-950 border border-sky-700/50 text-sky-300 hover:bg-sky-900 transition">
+          🍵 Мусин (Чай, R→0)
+        </button>
+        <button onclick="applyPreset('reverse')" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-purple-950 border border-purple-700/50 text-purple-300 hover:bg-purple-900 transition">
+          🪤 Обратный ток
+        </button>
+      </div>
+    </header>
+
+    <!-- Interactive Circuit Visualizer (SVG Stage with 6 parallel branches) -->
+    <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-sm font-semibold tracking-wider uppercase text-slate-400 flex items-center gap-2">
+          <span>📡</span> Принципиальная схема многоканального контура
+        </h2>
+        <div id="statusBadge" class="px-3 py-1 rounded-full text-xs font-mono font-semibold tracking-wide border">
+          Инициализация...
+        </div>
+      </div>
+
+      <div class="w-full aspect-[21/9] min-h-[380px] max-h-[500px] bg-slate-950/80 rounded-xl border border-slate-800/80 p-4 relative flex items-center justify-center">
+        <svg id="circuitSvg" viewBox="0 0 1100 460" class="w-full h-full">
+          <!-- Gradients & Filters -->
+          <defs>
+            <radialGradient id="reactorGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.9"/>
+              <stop offset="60%" stop-color="#f59e0b" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#d97706" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="bulbWarmGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.8"/>
+              <stop offset="70%" stop-color="#d97706" stop-opacity="0.2"/>
+              <stop offset="100%" stop-color="#78350f" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="bulbPurpleGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#c084fc" stop-opacity="0.9"/>
+              <stop offset="70%" stop-color="#9333ea" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#581c87" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="glowEffect" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="6" result="blur"/>
+              <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- Main Feed Wire (From Reactor through Resistor and Breaker to Parallel Hub) -->
+          <path id="wireMainOut" d="M 220 230 L 360 230" fill="none" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
+          <path id="wireMainOutFlow" d="M 220 230 L 360 230" fill="none" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" class="flow-line opacity-80"/>
+
+          <!-- Middle Section through Resistor & Breaker -->
+          <path id="wireMid" d="M 480 230 L 590 230" fill="none" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
+          <path id="wireMidFlow" d="M 480 230 L 590 230" fill="none" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" class="flow-line opacity-80"/>
+
+          <path id="wireToHub" d="M 670 230 L 730 230" fill="none" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
+          <path id="wireToHubFlow" d="M 670 230 L 730 230" fill="none" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" class="flow-line opacity-80"/>
+
+          <!-- Distribution Bus Vertical Line (x = 730) -->
+          <line x1="730" y1="45" x2="730" y2="415" stroke="#475569" stroke-width="6" stroke-linecap="round"/>
+
+          <!-- Resistor (Parasitic Resistance R_eff) -->
+          <g transform="translate(360, 205)">
+            <rect x="0" y="0" width="120" height="50" rx="8" fill="#1e293b" stroke="#475569" stroke-width="2" id="resistorBox"/>
+            <text x="60" y="22" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace">ПАРАЗИТНОЕ R</text>
+            <text x="60" y="40" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold" font-family="monospace" id="rValueText">0.82 Ω</text>
+          </g>
+
+          <!-- Circuit Breaker (Дзансин Switch) -->
+          <g transform="translate(590, 195)">
+            <circle cx="15" cy="35" r="7" fill="#475569"/>
+            <circle cx="75" cy="35" r="7" fill="#475569"/>
+            <line id="breakerArm" x1="15" y1="35" x2="75" y2="35" stroke="#10b981" stroke-width="6" stroke-linecap="round"/>
+            <text x="45" y="15" text-anchor="middle" fill="#64748b" font-size="9" font-family="monospace">ДЗАНСИН</text>
+            <text id="breakerLabel" x="45" y="58" text-anchor="middle" fill="#10b981" font-size="10" font-family="monospace">ARMED</text>
+          </g>
+
+          <!-- TANDEN (Core Reactor / Generator) -->
+          <g transform="translate(140, 230)">
+            <circle id="tandenAura" cx="0" cy="0" r="75" fill="url(#reactorGlow)" class="transition-all duration-500"/>
+            <circle cx="0" cy="0" r="55" fill="#0f172a" stroke="#fbbf24" stroke-width="4" id="tandenBorder"/>
+            <circle cx="0" cy="0" r="35" fill="#d97706" opacity="0.3"/>
+            <!-- Kanji -->
+            <text x="0" y="10" text-anchor="middle" fill="#fef08a" font-size="28" font-weight="bold" font-family="sans-serif">丹田</text>
+            <text x="0" y="85" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="bold" font-family="monospace">ТАНДЭН (ЭДС)</text>
+            <text id="emfText" x="0" y="102" text-anchor="middle" fill="#cbd5e1" font-size="11" font-family="monospace">E = 85V | 68W</text>
+          </g>
+
+          <!-- 6 BULBS (BRANCHES & LAMPS) -->
+          <!-- 1. CAR (y=45) -->
+          <g id="branch_car">
+            <path d="M 730 45 L 850 45" stroke="#334155" stroke-width="4" fill="none"/>
+            <path id="flow_car" d="M 730 45 L 850 45" stroke="#38bdf8" stroke-width="3" fill="none" class="flow-line"/>
+            <g transform="translate(900, 45)">
+              <circle id="aura_car" cx="0" cy="0" r="28" fill="url(#bulbWarmGlow)" opacity="0.8"/>
+              <circle id="node_car" cx="0" cy="0" r="20" fill="#0f172a" stroke="#fbbf24" stroke-width="3"/>
+              <text x="0" y="5" text-anchor="middle" font-size="14">🚗</text>
+              <text x="35" y="4" fill="#cbd5e1" font-size="12" font-family="monospace" font-weight="bold">Машина</text>
+              <text id="watts_car" x="125" y="4" fill="#fbbf24" font-size="11" font-family="monospace">30W</text>
+            </g>
+          </g>
+
+          <!-- 2. HOME (y=118) -->
+          <g id="branch_home">
+            <path d="M 730 118 L 850 118" stroke="#334155" stroke-width="4" fill="none"/>
+            <path id="flow_home" d="M 730 118 L 850 118" stroke="#38bdf8" stroke-width="3" fill="none" class="flow-line"/>
+            <g transform="translate(900, 118)">
+              <circle id="aura_home" cx="0" cy="0" r="28" fill="url(#bulbWarmGlow)" opacity="0.8"/>
+              <circle id="node_home" cx="0" cy="0" r="20" fill="#0f172a" stroke="#fbbf24" stroke-width="3"/>
+              <text x="0" y="5" text-anchor="middle" font-size="14">🏡</text>
+              <text x="35" y="4" fill="#cbd5e1" font-size="12" font-family="monospace" font-weight="bold">Дом</text>
+              <text id="watts_home" x="125" y="4" fill="#fbbf24" font-size="11" font-family="monospace">15W</text>
+            </g>
+          </g>
+
+          <!-- 3. CAREER (y=191) -->
+          <g id="branch_career">
+            <path d="M 730 191 L 850 191" stroke="#334155" stroke-width="4" fill="none"/>
+            <path id="flow_career" d="M 730 191 L 850 191" stroke="#38bdf8" stroke-width="3" fill="none" class="flow-line"/>
+            <g transform="translate(900, 191)">
+              <circle id="aura_career" cx="0" cy="0" r="32" fill="url(#bulbWarmGlow)" opacity="0.9"/>
+              <circle id="node_career" cx="0" cy="0" r="20" fill="#0f172a" stroke="#fbbf24" stroke-width="3"/>
+              <text x="0" y="5" text-anchor="middle" font-size="14">💼</text>
+              <text x="35" y="4" fill="#cbd5e1" font-size="12" font-family="monospace" font-weight="bold">Карьера</text>
+              <text id="watts_career" x="125" y="4" fill="#fbbf24" font-size="11" font-family="monospace">45W</text>
+            </g>
+          </g>
+
+          <!-- 4. RELATIONSHIPS (y=264) -->
+          <g id="branch_rel">
+            <path d="M 730 264 L 850 264" stroke="#334155" stroke-width="4" fill="none"/>
+            <path id="flow_rel" d="M 730 264 L 850 264" stroke="#38bdf8" stroke-width="3" fill="none" class="flow-line"/>
+            <g transform="translate(900, 264)">
+              <circle id="aura_rel" cx="0" cy="0" r="28" fill="url(#bulbWarmGlow)" opacity="0.8"/>
+              <circle id="node_rel" cx="0" cy="0" r="20" fill="#0f172a" stroke="#fbbf24" stroke-width="3"/>
+              <text x="0" y="5" text-anchor="middle" font-size="14">❤️</text>
+              <text x="35" y="4" fill="#cbd5e1" font-size="12" font-family="monospace" font-weight="bold">Отношения</text>
+              <text id="watts_rel" x="125" y="4" fill="#fbbf24" font-size="11" font-family="monospace">20W</text>
+            </g>
+          </g>
+
+          <!-- 5. HEALTH (y=337) -->
+          <g id="branch_health">
+            <path d="M 730 337 L 850 337" stroke="#334155" stroke-width="4" fill="none"/>
+            <path id="flow_health" d="M 730 337 L 850 337" stroke="#38bdf8" stroke-width="3" fill="none" class="flow-line"/>
+            <g transform="translate(900, 337)">
+              <circle id="aura_health" cx="0" cy="0" r="28" fill="url(#bulbWarmGlow)" opacity="0.8"/>
+              <circle id="node_health" cx="0" cy="0" r="20" fill="#0f172a" stroke="#fbbf24" stroke-width="3"/>
+              <text x="0" y="5" text-anchor="middle" font-size="14">🩺</text>
+              <text x="35" y="4" fill="#cbd5e1" font-size="12" font-family="monospace" font-weight="bold">Здоровье</text>
+              <text id="watts_health" x="125" y="4" fill="#fbbf24" font-size="11" font-family="monospace">25W</text>
+            </g>
+          </g>
+
+          <!-- 6. ENTERTAINMENT (y=410) -->
+          <g id="branch_ent">
+            <path d="M 730 410 L 850 410" stroke="#334155" stroke-width="4" fill="none"/>
+            <path id="flow_ent" d="M 730 410 L 850 410" stroke="#38bdf8" stroke-width="3" fill="none" class="flow-line"/>
+            <g transform="translate(900, 410)">
+              <circle id="aura_ent" cx="0" cy="0" r="28" fill="url(#bulbWarmGlow)" opacity="0.8"/>
+              <circle id="node_ent" cx="0" cy="0" r="20" fill="#0f172a" stroke="#fbbf24" stroke-width="3"/>
+              <text x="0" y="5" text-anchor="middle" font-size="14">🎉</text>
+              <text x="35" y="4" fill="#cbd5e1" font-size="12" font-family="monospace" font-weight="bold">Развлечения</text>
+              <text id="watts_ent" x="125" y="4" fill="#fbbf24" font-size="11" font-family="monospace">15W</text>
+            </g>
+          </g>
+        </svg>
+
+        <!-- Dynamic Overlay Indicators -->
+        <div class="absolute bottom-4 left-6 flex items-center gap-2 text-xs font-mono text-slate-400">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
+          <span>Ток сети: <span id="vectorDirection" class="text-amber-300 font-bold">ПРЯМОЙ (I > 0)</span></span>
+        </div>
+
+        <div class="absolute bottom-4 right-6 text-xs font-mono text-slate-400">
+          <span>Сверхпроводимость: <span id="flowPercent" class="text-cyan-400 font-bold">100%</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Power Balance Bar (Kirchhoff Law: Demanded vs Available) -->
+    <div id="powerBalanceAlert" class="p-4 rounded-2xl bg-slate-900 border border-slate-800 shadow-xl transition-all">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2 mb-2">
+        <div class="flex items-center gap-2">
+          <span id="powerIcon" class="text-xl">⚖️</span>
+          <span class="text-xs uppercase tracking-wider font-mono font-bold text-slate-300">Баланс мощности сети (1-й закон Кирхгофа)</span>
+        </div>
+        <div class="text-xs font-mono">
+          <span>Запрошено: <strong id="lblDemandedPower" class="text-amber-400">125 Вт</strong></span>
+          <span class="text-slate-600 mx-2">|</span>
+          <span>Генератор выдает: <strong id="lblAvailablePower" class="text-cyan-400">68 Вт</strong></span>
+        </div>
+      </div>
+      
+      <!-- Progress Bar -->
+      <div class="w-full bg-slate-950 rounded-full h-3 overflow-hidden border border-slate-800">
+        <div id="powerProgressBar" class="h-full bg-gradient-to-r from-cyan-500 to-amber-500 transition-all duration-300" style="width: 70%;"></div>
+      </div>
+      <div id="undervoltageText" class="text-xs text-slate-400 mt-2 font-mono">
+        Сеть стабильна: мощность Реактора полностью покрывает аппетит подключенных ламп.
+      </div>
+    </div>
+
+    <!-- 6 BULBS SWITCHBOARD (ШЕСТИКАНАЛЬНЫЙ РАСПРЕДЕЛИТЕЛЬНЫЙ ЩИТ) -->
+    <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-2xl space-y-4">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+        <div>
+          <h2 class="text-base font-bold text-slate-100 flex items-center gap-2">
+            <span>💡</span> 6 Главных Лампочек (Распределительный щит нагрузок)
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">
+            Регулируйте подачу тока по каждому каналу жизни. Наблюдайте, как перегруз одних каналов обесточивает другие.
+          </p>
+        </div>
+        <div class="text-xs font-mono text-slate-400 bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800">
+          Активных ламп: <strong id="activeBulbsCount" class="text-amber-400">4 / 6</strong>
+        </div>
+      </div>
+
+      <!-- 6 Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        
+        <!-- 1. CAR -->
+        <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-4 flex flex-col justify-between space-y-3 hover:border-slate-700 transition" id="card_car">
+          <div>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center gap-2">
+                <span class="text-2xl">🚗</span>
+                <div>
+                  <h3 class="font-bold text-sm text-slate-200">1. Машина</h3>
+                  <div class="text-[11px] text-slate-400">Мобильность, автономия</div>
+                </div>
+              </div>
+              <span id="badge_car" class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">30 Вт</span>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-[11px] font-mono text-slate-400 mb-1">
+              <span>Подача тока:</span>
+              <span id="sliderVal_car" class="text-amber-400 font-bold">30 Вт</span>
+            </div>
+            <input type="range" min="0" max="100" value="30" class="w-full accent-amber-400 cursor-pointer" id="input_car" oninput="onBulbChange('car')">
+          </div>
+          <label class="flex items-center gap-2 text-[11px] text-slate-400 cursor-pointer hover:text-slate-300">
+            <input type="checkbox" id="trap_car" class="w-3.5 h-3.5 accent-purple-500 rounded" onchange="onBulbChange('car')">
+            <span>⚠️ Ждать статуса / одобрения</span>
+          </label>
+        </div>
+
+        <!-- 2. HOME -->
+        <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-4 flex flex-col justify-between space-y-3 hover:border-slate-700 transition" id="card_home">
+          <div>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center gap-2">
+                <span class="text-2xl">🏡</span>
+                <div>
+                  <h3 class="font-bold text-sm text-slate-200">2. Дом</h3>
+                  <div class="text-[11px] text-slate-400">Очаг, среда, крепость</div>
+                </div>
+              </div>
+              <span id="badge_home" class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">15 Вт</span>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-[11px] font-mono text-slate-400 mb-1">
+              <span>Подача тока:</span>
+              <span id="sliderVal_home" class="text-amber-400 font-bold">15 Вт</span>
+            </div>
+            <input type="range" min="0" max="100" value="15" class="w-full accent-amber-400 cursor-pointer" id="input_home" oninput="onBulbChange('home')">
+          </div>
+          <label class="flex items-center gap-2 text-[11px] text-slate-400 cursor-pointer hover:text-slate-300">
+            <input type="checkbox" id="trap_home" class="w-3.5 h-3.5 accent-purple-500 rounded" onchange="onBulbChange('home')">
+            <span>⚠️ Ждать уюта без отдачи</span>
+          </label>
+        </div>
+
+        <!-- 3. CAREER -->
+        <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-4 flex flex-col justify-between space-y-3 hover:border-slate-700 transition" id="card_career">
+          <div>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center gap-2">
+                <span class="text-2xl">💼</span>
+                <div>
+                  <h3 class="font-bold text-sm text-slate-200">3. Карьера</h3>
+                  <div class="text-[11px] text-slate-400">Ремесло, созидание, масштаб</div>
+                </div>
+              </div>
+              <span id="badge_career" class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">45 Вт</span>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-[11px] font-mono text-slate-400 mb-1">
+              <span>Подача тока:</span>
+              <span id="sliderVal_career" class="text-amber-400 font-bold">45 Вт</span>
+            </div>
+            <input type="range" min="0" max="100" value="45" class="w-full accent-amber-400 cursor-pointer" id="input_career" oninput="onBulbChange('career')">
+          </div>
+          <label class="flex items-center gap-2 text-[11px] text-slate-400 cursor-pointer hover:text-slate-300">
+            <input type="checkbox" id="trap_career" class="w-3.5 h-3.5 accent-purple-500 rounded" onchange="onBulbChange('career')">
+            <span>⚠️ Ожидание похвалы / наград</span>
+          </label>
+        </div>
+
+        <!-- 4. RELATIONSHIPS -->
+        <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-4 flex flex-col justify-between space-y-3 hover:border-slate-700 transition" id="card_rel">
+          <div>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center gap-2">
+                <span class="text-2xl">❤️</span>
+                <div>
+                  <h3 class="font-bold text-sm text-slate-200">4. Отношения</h3>
+                  <div class="text-[11px] text-slate-400">Любовь, близость, резонанс</div>
+                </div>
+              </div>
+              <span id="badge_rel" class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">20 Вт</span>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-[11px] font-mono text-slate-400 mb-1">
+              <span>Подача тока:</span>
+              <span id="sliderVal_rel" class="text-amber-400 font-bold">20 Вт</span>
+            </div>
+            <input type="range" min="0" max="100" value="20" class="w-full accent-amber-400 cursor-pointer" id="input_rel" oninput="onBulbChange('rel')">
+          </div>
+          <label class="flex items-center gap-2 text-[11px] text-slate-400 cursor-pointer hover:text-slate-300">
+            <input type="checkbox" id="trap_rel" class="w-3.5 h-3.5 accent-purple-500 rounded" onchange="onBulbChange('rel')">
+            <span>⚠️ Требовать любовь от партнера</span>
+          </label>
+        </div>
+
+        <!-- 5. HEALTH -->
+        <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-4 flex flex-col justify-between space-y-3 hover:border-slate-700 transition" id="card_health">
+          <div>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center gap-2">
+                <span class="text-2xl">🩺</span>
+                <div>
+                  <h3 class="font-bold text-sm text-slate-200">5. Здоровье</h3>
+                  <div class="text-[11px] text-slate-400">Витальность, сон, тело</div>
+                </div>
+              </div>
+              <span id="badge_health" class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">25 Вт</span>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-[11px] font-mono text-slate-400 mb-1">
+              <span>Подача тока:</span>
+              <span id="sliderVal_health" class="text-emerald-400 font-bold">25 Вт</span>
+            </div>
+            <input type="range" min="0" max="100" value="25" class="w-full accent-emerald-400 cursor-pointer" id="input_health" oninput="onBulbChange('health')">
+          </div>
+          <div class="text-[11px] text-slate-500 italic">
+            Базовый контур жизни: нельзя обесточивать!
+          </div>
+        </div>
+
+        <!-- 6. ENTERTAINMENT -->
+        <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-4 flex flex-col justify-between space-y-3 hover:border-slate-700 transition" id="card_ent">
+          <div>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center gap-2">
+                <span class="text-2xl">🎉</span>
+                <div>
+                  <h3 class="font-bold text-sm text-slate-200">6. Развлечения</h3>
+                  <div class="text-[11px] text-slate-400">Игра, дофамин, радость</div>
+                </div>
+              </div>
+              <span id="badge_ent" class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">15 Вт</span>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-[11px] font-mono text-slate-400 mb-1">
+              <span>Подача тока:</span>
+              <span id="sliderVal_ent" class="text-amber-400 font-bold">15 Вт</span>
+            </div>
+            <input type="range" min="0" max="100" value="15" class="w-full accent-amber-400 cursor-pointer" id="input_ent" oninput="onBulbChange('ent')">
+          </div>
+          <label class="flex items-center gap-2 text-[11px] text-slate-400 cursor-pointer hover:text-slate-300">
+            <input type="checkbox" id="trap_ent" class="w-3.5 h-3.5 accent-purple-500 rounded" onchange="onBulbChange('ent')">
+            <span>⚠️ Искать спасения в дофамине</span>
+          </label>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Telemetry Metrics Cards -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 shadow-lg">
+        <div class="text-xs uppercase tracking-wider text-slate-500 font-mono">Сила тока (I)</div>
+        <div class="text-2xl md:text-3xl font-bold font-mono text-sky-400 mt-1" id="metricCurrent">46.7 A</div>
+        <div class="text-xs text-slate-400 mt-1">Определяет поток мощности</div>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 shadow-lg">
+        <div class="text-xs uppercase tracking-wider text-slate-500 font-mono">Сопротивление (R_eff)</div>
+        <div class="text-2xl md:text-3xl font-bold font-mono text-emerald-400 mt-1" id="metricResistance">0.82 Ω</div>
+        <div class="text-xs text-slate-400 mt-1">Трение мыслей о времени</div>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 shadow-lg">
+        <div class="text-xs uppercase tracking-wider text-slate-500 font-mono">Тепло Джоуля (Q)</div>
+        <div class="text-2xl md:text-3xl font-bold font-mono text-amber-400 mt-1" id="metricHeat">1788 J</div>
+        <div class="text-xs text-slate-400 mt-1">Паразитный омический нагрев</div>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 shadow-lg">
+        <div class="text-xs uppercase tracking-wider text-slate-500 font-mono">КПД Мусин (Flow)</div>
+        <div class="text-2xl md:text-3xl font-bold font-mono text-cyan-400 mt-1" id="metricFlow">100%</div>
+        <div class="text-xs text-slate-400 mt-1">Сверхпроводящий контакт</div>
+      </div>
+    </div>
+
+    <!-- Split Grid: Controls & Diagnostics -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      
+      <!-- Controls Panel (Left, 7 Cols) -->
+      <div class="lg:col-span-7 bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-6">
+        <h2 class="text-sm font-semibold tracking-wider uppercase text-slate-400 flex items-center gap-2">
+          <span>🎛️</span> Пульт управления генератором Тандэн & сопротивлением проводки
+        </h2>
+
+        <!-- Sliders Group -->
+        <div class="space-y-4">
+          <!-- EMF -->
+          <div>
+            <div class="flex justify-between text-xs font-mono text-slate-300 mb-1">
+              <span>ЭДС Тандэна (Автономное напряжение):</span>
+              <span id="labelEmf" class="text-amber-400 font-bold">85 V</span>
+            </div>
+            <input type="range" min="10" max="100" value="85" id="sliderEmf" class="w-full accent-amber-400 cursor-pointer" oninput="updateCircuit()">
+          </div>
+
+          <!-- Reserve -->
+          <div>
+            <div class="flex justify-between text-xs font-mono text-slate-300 mb-1">
+              <span>Запас заряда аккумулятора (Reserve %):</span>
+              <span id="labelReserve" class="text-amber-400 font-bold">80 %</span>
+            </div>
+            <input type="range" min="10" max="100" value="80" id="sliderReserve" class="w-full accent-amber-400 cursor-pointer" oninput="updateCircuit()">
+          </div>
+
+          <!-- Grounding -->
+          <div>
+            <div class="flex justify-between text-xs font-mono text-slate-300 mb-1">
+              <span>Телесное заземление (Осанка / Дыхание):</span>
+              <span id="labelGrounding" class="text-cyan-400 font-bold">0.90</span>
+            </div>
+            <input type="range" min="0" max="1" step="0.05" value="0.9" id="sliderGrounding" class="w-full accent-cyan-400 cursor-pointer" oninput="updateCircuit()">
+          </div>
+
+          <!-- Past Resistors -->
+          <div>
+            <div class="flex justify-between text-xs font-mono text-slate-300 mb-1">
+              <span>Индуктивность Прошлого (Обиды, вина, «надо было»):</span>
+              <span id="labelPast" class="text-rose-400 font-bold">0 Ω</span>
+            </div>
+            <input type="range" min="0" max="50" value="0" id="sliderPast" class="w-full accent-rose-400 cursor-pointer" oninput="updateCircuit()">
+          </div>
+
+          <!-- Future Resistors -->
+          <div>
+            <div class="flex justify-between text-xs font-mono text-slate-300 mb-1">
+              <span>Емкость Будущего (Тревога, катастрофизация):</span>
+              <span id="labelFuture" class="text-purple-400 font-bold">0 Ω</span>
+            </div>
+            <input type="range" min="0" max="50" value="0" id="sliderFuture" class="w-full accent-purple-400 cursor-pointer" oninput="updateCircuit()">
+          </div>
+
+          <!-- Inner Critic Noise -->
+          <div>
+            <div class="flex justify-between text-xs font-mono text-slate-300 mb-1">
+              <span>Шум внутреннего критика (Суд над собой):</span>
+              <span id="labelCritic" class="text-amber-400 font-bold">0.00</span>
+            </div>
+            <input type="range" min="0" max="1" step="0.05" value="0" id="sliderCritic" class="w-full accent-amber-400 cursor-pointer" oninput="updateCircuit()">
+          </div>
+        </div>
+
+        <!-- Toggles & Switches -->
+        <div class="pt-4 border-t border-slate-800">
+          <label class="flex items-center gap-3 p-3 bg-slate-950/60 border border-slate-800 rounded-xl cursor-pointer hover:border-slate-700 transition">
+            <input type="checkbox" id="checkFailed" class="w-4 h-4 accent-rose-500 rounded" onchange="updateCircuit()">
+            <div class="text-xs">
+              <div class="font-semibold text-rose-300">Внешняя нагрузка разрушена (Авария проекта / Крах)</div>
+              <div class="text-slate-500">Тестирование аварийного выключателя Дзансин и шва Кинцуги</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Diagnostic Engine HUD & Remediation (Right, 5 Cols) -->
+      <div class="lg:col-span-5 bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+        <div>
+          <h2 class="text-sm font-semibold tracking-wider uppercase text-slate-400 flex items-center gap-2">
+            <span>🩺</span> Инженерный Вердикт Диагностической Машины
+          </h2>
+
+          <div class="mt-4 p-4 rounded-xl border" id="verdictBox">
+            <div class="text-xs font-mono tracking-widest text-cyan-400 font-bold" id="verdictCode">OK_00_SUPERCONDUCTING_MUSHIN</div>
+            <div class="text-base font-bold text-slate-100 mt-1" id="verdictTitle">Сверхпроводимость контура: чистое состояние Мусин</div>
+            <p class="text-xs text-slate-300 mt-2 leading-relaxed" id="verdictPhysics">
+              Сопротивление проводки упало до нуля (R ≈ 0). Ток реактора без задержек и омических потерь питает распределительную сеть.
+            </p>
+          </div>
+
+          <!-- Multi-Channel Warnings -->
+          <div class="mt-4 space-y-2" id="channelWarnings"></div>
+
+          <!-- Actionable Remediation Checklist -->
+          <div class="mt-4">
+            <div class="text-xs font-mono uppercase text-slate-400 tracking-wider mb-2 flex items-center justify-between">
+              <span>Регламент починки цепи:</span>
+              <span id="remediationCount" class="text-amber-400">0 шагов</span>
+            </div>
+            <div id="remediationList" class="space-y-2 max-h-56 overflow-y-auto pr-1">
+              <div class="text-xs text-slate-500 italic p-3 bg-slate-950/40 rounded-lg border border-slate-800/60">
+                Цепь в идеальном состоянии. Корректировка не требуется.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Auto-Fix Button -->
+        <button onclick="autoRemediate()" id="btnRemediate" class="w-full py-3 px-4 rounded-xl font-semibold text-sm bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 shadow-lg shadow-amber-500/20 transition flex items-center justify-center gap-2">
+          <span>⚡</span> Запустить протокол калибровки Мусин
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    // State Model
+    const state = {
+      emf: 85,
+      reserve: 80,
+      grounding: 0.9,
+      baseR: 1,
+      pastL: 0,
+      futureC: 0,
+      critic: 0,
+      loadFailed: false,
+      durationMinutes: 15,
+      // 6 Bulbs
+      bulbs: {
+        car: { power: 30, trap: false },
+        home: { power: 15, trap: false },
+        career: { power: 45, trap: false },
+        rel: { power: 20, trap: false },
+        health: { power: 25, trap: false },
+        ent: { power: 15, trap: false }
+      }
+    };
+
+    function onBulbChange(key) {
+      state.bulbs[key].power = parseFloat(document.getElementById('input_' + key).value);
+      const trapElem = document.getElementById('trap_' + key);
+      if (trapElem) {
+        state.bulbs[key].trap = trapElem.checked;
+      }
+      document.getElementById('sliderVal_' + key).textContent = state.bulbs[key].power + ' Вт';
+      updateCircuit();
+    }
+
+    function applyPreset(type) {
+      if (type === 'careerist') {
+        state.emf = 80; state.reserve = 70; state.grounding = 0.4;
+        state.baseR = 3; state.pastL = 10; state.futureC = 30; state.critic = 0.4;
+        state.loadFailed = false;
+        state.bulbs.career.power = 75; state.bulbs.career.trap = true;
+        state.bulbs.car.power = 30; state.bulbs.car.trap = false;
+        state.bulbs.health.power = 0; state.bulbs.health.trap = false; // Здоровье 0W!
+        state.bulbs.rel.power = 5; state.bulbs.rel.trap = false;
+        state.bulbs.home.power = 10; state.bulbs.home.trap = false;
+        state.bulbs.ent.power = 15; state.bulbs.ent.trap = false;
+      } else if (type === 'family') {
+        state.emf = 80; state.reserve = 85; state.grounding = 0.8;
+        state.baseR = 2; state.pastL = 0; state.futureC = 5; state.critic = 0.1;
+        state.loadFailed = false;
+        state.bulbs.home.power = 50; state.bulbs.home.trap = false;
+        state.bulbs.rel.power = 50; state.bulbs.rel.trap = false;
+        state.bulbs.health.power = 25; state.bulbs.health.trap = false;
+        state.bulbs.career.power = 15; state.bulbs.career.trap = false;
+        state.bulbs.car.power = 10; state.bulbs.car.trap = false;
+        state.bulbs.ent.power = 10; state.bulbs.ent.trap = false;
+      } else if (type === 'overload') {
+        state.emf = 65; state.reserve = 60; state.grounding = 0.2;
+        state.baseR = 15; state.pastL = 25; state.futureC = 40; state.critic = 0.7;
+        state.loadFailed = false;
+        state.bulbs.car.power = 50; state.bulbs.home.power = 50;
+        state.bulbs.career.power = 70; state.bulbs.rel.power = 50;
+        state.bulbs.health.power = 40; state.bulbs.ent.power = 50;
+      } else if (type === 'harmony') {
+        state.emf = 85; state.reserve = 90; state.grounding = 0.9;
+        state.baseR = 1; state.pastL = 0; state.futureC = 0; state.critic = 0.05;
+        state.loadFailed = false;
+        state.bulbs.health.power = 30; state.bulbs.health.trap = false;
+        state.bulbs.career.power = 35; state.bulbs.career.trap = false;
+        state.bulbs.home.power = 15; state.bulbs.home.trap = false;
+        state.bulbs.rel.power = 20; state.bulbs.rel.trap = false;
+        state.bulbs.car.power = 15; state.bulbs.car.trap = false;
+        state.bulbs.ent.power = 15; state.bulbs.ent.trap = false;
+      } else if (type === 'mushin') {
+        state.emf = 85; state.reserve = 95; state.grounding = 0.95;
+        state.baseR = 1; state.pastL = 0; state.futureC = 0; state.critic = 0;
+        state.loadFailed = false;
+        Object.keys(state.bulbs).forEach(k => { state.bulbs[k].power = 5; state.bulbs[k].trap = false; });
+        state.bulbs.health.power = 20;
+      } else if (type === 'reverse') {
+        state.emf = 60; state.reserve = 50; state.grounding = 0.3;
+        state.baseR = 8; state.pastL = 10; state.futureC = 20; state.critic = 0.5;
+        state.loadFailed = false;
+        state.bulbs.career.power = 60; state.bulbs.career.trap = true;
+        state.bulbs.car.power = 30; state.bulbs.car.trap = true;
+      }
+
+      syncInputs();
+      updateCircuit();
+    }
+
+    function syncInputs() {
+      document.getElementById('sliderEmf').value = state.emf;
+      document.getElementById('sliderReserve').value = state.reserve;
+      document.getElementById('sliderGrounding').value = state.grounding;
+      document.getElementById('sliderPast').value = state.pastL;
+      document.getElementById('sliderFuture').value = state.futureC;
+      document.getElementById('sliderCritic').value = state.critic;
+      document.getElementById('checkFailed').checked = state.loadFailed;
+
+      Object.keys(state.bulbs).forEach(k => {
+        document.getElementById('input_' + k).value = state.bulbs[k].power;
+        document.getElementById('sliderVal_' + k).textContent = state.bulbs[k].power + ' Вт';
+        const trapElem = document.getElementById('trap_' + k);
+        if (trapElem) {
+          trapElem.checked = state.bulbs[k].trap;
+        }
+      });
+    }
+
+    function updateCircuit() {
+      // Read Inputs
+      state.emf = parseFloat(document.getElementById('sliderEmf').value);
+      state.reserve = parseFloat(document.getElementById('sliderReserve').value);
+      state.grounding = parseFloat(document.getElementById('sliderGrounding').value);
+      state.pastL = parseFloat(document.getElementById('sliderPast').value);
+      state.futureC = parseFloat(document.getElementById('sliderFuture').value);
+      state.critic = parseFloat(document.getElementById('sliderCritic').value);
+      state.loadFailed = document.getElementById('checkFailed').checked;
+
+      // Update Labels
+      document.getElementById('labelEmf').textContent = state.emf + ' V';
+      document.getElementById('labelReserve').textContent = state.reserve + ' %';
+      document.getElementById('labelGrounding').textContent = state.grounding.toFixed(2);
+      document.getElementById('labelPast').textContent = state.pastL + ' Ω';
+      document.getElementById('labelFuture').textContent = state.futureC + ' Ω';
+      document.getElementById('labelCritic').textContent = state.critic.toFixed(2);
+
+      // Available power from generator (P_available = EMF * Reserve / 100)
+      const availablePower = Math.round((state.emf * (state.reserve / 100)) * 10) / 10;
+      document.getElementById('emfText').textContent = `E = ${state.emf}V | ${availablePower}W`;
+      document.getElementById('lblAvailablePower').textContent = availablePower + ' Вт';
+
+      // Total Demanded Power
+      let totalDemandedPower = 0;
+      let activeBulbs = 0;
+      let anyReverseTrap = false;
+      const bulbKeys = ['car', 'home', 'career', 'rel', 'health', 'ent'];
+      const bulbNamesRu = { car: 'Машина', home: 'Дом', career: 'Карьера', rel: 'Отношения', health: 'Здоровье', ent: 'Развлечения' };
+
+      bulbKeys.forEach(k => {
+        const p = state.bulbs[k].power;
+        totalDemandedPower += p;
+        if (p >= 15) activeBulbs++;
+        if (state.bulbs[k].trap) anyReverseTrap = true;
+      });
+
+      document.getElementById('lblDemandedPower').textContent = totalDemandedPower + ' Вт';
+      document.getElementById('activeBulbsCount').textContent = activeBulbs + ' / 6';
+
+      const isUndervoltage = totalDemandedPower > availablePower;
+
+      // Update Power Progress Bar
+      const powerRatio = availablePower > 0 ? (totalDemandedPower / availablePower) * 100 : 100;
+      const clampedPercent = Math.min(100, powerRatio);
+      const progressBar = document.getElementById('powerProgressBar');
+      const powerAlert = document.getElementById('powerBalanceAlert');
+      const undervoltageText = document.getElementById('undervoltageText');
+      const powerIcon = document.getElementById('powerIcon');
+
+      if (isUndervoltage) {
+        powerAlert.className = 'p-4 rounded-2xl bg-rose-950/40 border border-rose-700/60 shadow-xl transition-all';
+        progressBar.className = 'h-full bg-rose-500 transition-all duration-300';
+        progressBar.style.width = clampedPercent + '%';
+        powerIcon.textContent = '🚨';
+        undervoltageText.textContent = `ПРОСАДКА СЕТИ (UNDERVOLTAGE)! Запрошено ${totalDemandedPower} Вт при доступных ${availablePower} Вт. Генератор не справляется, лампы тлеют вполнакала.`;
+        undervoltageText.className = 'text-xs text-rose-300 mt-2 font-mono font-bold';
+      } else {
+        powerAlert.className = 'p-4 rounded-2xl bg-slate-900 border border-slate-800 shadow-xl transition-all';
+        progressBar.className = 'h-full bg-gradient-to-r from-cyan-500 to-amber-500 transition-all duration-300';
+        progressBar.style.width = clampedPercent + '%';
+        powerIcon.textContent = '⚖️';
+        undervoltageText.textContent = `Сеть сбалансирована: мощность Реактора (${availablePower} Вт) устойчиво питает нагрузку (${totalDemandedPower} Вт).`;
+        undervoltageText.className = 'text-xs text-slate-400 mt-2 font-mono';
+      }
+
+      // Physics Calculation
+      const rawR = state.baseR + state.pastL + state.futureC;
+      const effectiveR = Math.max(0.2, (rawR * (1 + state.critic) * (1 - 0.2 * state.grounding)));
+      const equivalentLoadR = Math.max(0.5, totalDemandedPower > 0 ? 500 / totalDemandedPower : 50);
+      
+      let current = 0;
+      let heat = 0;
+      let flowIndex = 0;
+      let status = 'SUPERCONDUCTING';
+      let code = 'OK_00_SUPERCONDUCTING_MUSHIN';
+      let title = 'Сверхпроводимость контура: чистое состояние Мусин';
+      let physics = 'Сопротивление проводки упало почти до нуля. Ток реактора без потерь питает распределительную сеть ламп.';
+      let badgeClass = 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40';
+      let boxClass = 'bg-cyan-950/40 border-cyan-700/60';
+      let remediation = [];
+
+      const breakerArm = document.getElementById('breakerArm');
+      const breakerLabel = document.getElementById('breakerLabel');
+      const wireMainOutFlow = document.getElementById('wireMainOutFlow');
+      const wireMidFlow = document.getElementById('wireMidFlow');
+      const wireToHubFlow = document.getElementById('wireToHubFlow');
+
+      if (state.loadFailed) {
+        status = 'SHORT_CIRCUIT';
+        code = 'ERR_03_SHORT_CIRCUIT';
+        current = 0;
+        heat = 50;
+        flowIndex = 0.05;
+        title = 'Отказ нагрузки: сработал Circuit Breaker (Дзансин)';
+        physics = 'Внешняя нагрузка разрушена. Предохранитель Дзансин мгновенно разомкнул цепь, сохранив целостность Тандэна.';
+        badgeClass = 'bg-amber-500/20 text-amber-300 border-amber-500/40';
+        boxClass = 'bg-amber-950/40 border-amber-700/60';
+        remediation = [
+          { title: 'Изоляция Дзансин', desc: 'Убедиться, что скол формы не задевает автономное ядро Тандэна.' },
+          { title: 'Принятие Ваби-саби', desc: 'Признать смертность любой внешней формы.' },
+          { title: 'Золотой шов Кинцуги', desc: 'Интегрировать урок ошибки золотым швом.' }
+        ];
+
+        breakerArm.setAttribute('x2', '60');
+        breakerArm.setAttribute('y2', '15');
+        breakerArm.setAttribute('stroke', '#fbbf24');
+        breakerLabel.textContent = 'TRIPPED';
+        breakerLabel.setAttribute('fill', '#fbbf24');
+
+        [wireMainOutFlow, wireMidFlow, wireToHubFlow].forEach(w => {
+          w.className = '';
+          w.setAttribute('stroke', '#475569');
+        });
+        document.getElementById('vectorDirection').textContent = 'ЦЕПЬ РАЗОМКНУТА (I = 0)';
+        document.getElementById('vectorDirection').className = 'text-amber-400 font-bold';
+      } else if (anyReverseTrap) {
+        status = 'REVERSE_POLARITY';
+        code = 'ERR_02_REVERSE_POLARITY';
+        current = -(totalDemandedPower / (effectiveR + 10));
+        heat = Math.round(Math.pow(current, 2) * (effectiveR + 50) * state.durationMinutes);
+        flowIndex = 0;
+        title = 'Паразитный обратный ток: попытка зарядки от потребителя';
+        physics = 'Полярность инвертирована на одной или нескольких лампах. Вы пытаетесь запитать Тандэн от внешнего одобрения или признания.';
+        badgeClass = 'bg-purple-500/20 text-purple-300 border-purple-500/40';
+        boxClass = 'bg-purple-950/40 border-purple-700/60';
+        remediation = [
+          { title: 'Размыкание обратной линии', desc: 'Осознать: лампочки — это потребители, в них нет генератора.' },
+          { title: 'Проход Нидзиригути', desc: 'Снять социальные доспехи и регалии у входа.' },
+          { title: 'Разворот полярности', desc: 'Отдавать свет в форму, а не просить подпитки.' }
+        ];
+
+        breakerArm.setAttribute('x2', '75');
+        breakerArm.setAttribute('y2', '35');
+        breakerArm.setAttribute('stroke', '#10b981');
+        breakerLabel.textContent = 'ARMED';
+        breakerLabel.setAttribute('fill', '#10b981');
+
+        [wireMainOutFlow, wireMidFlow, wireToHubFlow].forEach(w => {
+          w.className = 'flow-reverse';
+          w.setAttribute('stroke', '#a855f7');
+        });
+        document.getElementById('vectorDirection').textContent = 'ОБРАТНЫЙ (I < 0)';
+        document.getElementById('vectorDirection').className = 'text-purple-400 font-bold';
+      } else if (effectiveR > 25) {
+        status = 'OHMIC_OVERHEAT';
+        code = 'ERR_01_OHMIC_OVERHEAT';
+        current = state.emf / (effectiveR + equivalentLoadR);
+        heat = Math.round(Math.pow(current, 2) * effectiveR * state.durationMinutes * 5);
+        flowIndex = 1 / (1 + (effectiveR / 8));
+        title = 'Омический перегрев проводки: ментальное выгорание';
+        physics = `Паразитное сопротивление ума (R = ${effectiveR.toFixed(1)}Ω) сжигает ток намерения в тепловом трении по закону Джоуля — Ленца.`;
+        badgeClass = 'bg-rose-500/20 text-rose-300 border-rose-500/40';
+        boxClass = 'bg-rose-950/40 border-rose-700/60';
+        remediation = [
+          { title: 'Отсечь симуляции', desc: 't_past → 0, t_future → 0. Запрет на внутренний суд.' },
+          { title: 'Сенсорное заземление', desc: 'Почувствовать стопы, дыхание, температуру кожи.' },
+          { title: 'Вход в Мусин', desc: 'Вернуть сопротивление R к нулю.' }
+        ];
+
+        breakerArm.setAttribute('x2', '75');
+        breakerArm.setAttribute('y2', '35');
+        breakerArm.setAttribute('stroke', '#10b981');
+        breakerLabel.textContent = 'ARMED';
+        breakerLabel.setAttribute('fill', '#10b981');
+
+        [wireMainOutFlow, wireMidFlow, wireToHubFlow].forEach(w => {
+          w.className = 'flow-line';
+          w.setAttribute('stroke', '#f87171');
+        });
+        document.getElementById('vectorDirection').textContent = 'ПРЯМОЙ (ПЕРЕГРЕВ)';
+        document.getElementById('vectorDirection').className = 'text-rose-400 font-bold';
+      } else {
+        current = state.emf / (effectiveR + equivalentLoadR);
+        heat = Math.round(Math.pow(current, 2) * effectiveR);
+        flowIndex = isUndervoltage ? 0.6 : 1.0;
+        status = isUndervoltage ? 'UNDERVOLTAGE' : 'SUPERCONDUCTING';
+        code = isUndervoltage ? 'WARN_05_UNDERVOLTAGE' : 'OK_00_SUPERCONDUCTING_MUSHIN';
+        title = isUndervoltage ? 'Просадка сети: перегрузка многоканальной цепи' : 'Сверхпроводимость контура: чистое состояние Мусин';
+        physics = isUndervoltage
+          ? `Запрошено ${totalDemandedPower} Вт при мощности реактора ${availablePower} Вт. Напряжение просело, нити накала остывают.`
+          : `Сопротивление R = ${effectiveR.toFixed(2)}Ω ≈ 0. Вся мощность без омического трения подается в горящие лампы.`;
+        badgeClass = isUndervoltage ? 'bg-amber-500/20 text-amber-300 border-amber-500/40' : 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40';
+        boxClass = isUndervoltage ? 'bg-amber-950/40 border-amber-700/60' : 'bg-cyan-950/40 border-cyan-700/60';
+
+        breakerArm.setAttribute('x2', '75');
+        breakerArm.setAttribute('y2', '35');
+        breakerArm.setAttribute('stroke', '#10b981');
+        breakerLabel.textContent = 'ARMED';
+        breakerLabel.setAttribute('fill', '#10b981');
+
+        [wireMainOutFlow, wireMidFlow, wireToHubFlow].forEach(w => {
+          w.className = 'flow-line';
+          w.setAttribute('stroke', isUndervoltage ? '#fbbf24' : '#38bdf8');
+        });
+        document.getElementById('vectorDirection').textContent = isUndervoltage ? 'ПРЯМОЙ (ПРОСАДКА)' : 'ПРЯМОЙ (СВЕРХПРОВОДИМОСТЬ)';
+        document.getElementById('vectorDirection').className = isUndervoltage ? 'text-amber-400 font-bold' : 'text-cyan-400 font-bold';
+      }
+
+      // Update Individual SVG Bulbs Visual State
+      bulbKeys.forEach(k => {
+        const bulb = state.bulbs[k];
+        const p = bulb.power;
+        const aura = document.getElementById('aura_' + k);
+        const node = document.getElementById('node_' + k);
+        const wattsText = document.getElementById('watts_' + k);
+        const flowWire = document.getElementById('flow_' + k);
+        const badge = document.getElementById('badge_' + k);
+
+        wattsText.textContent = p + 'W';
+        badge.textContent = p + ' Вт';
+
+        if (state.loadFailed || p === 0) {
+          // Off
+          aura.setAttribute('opacity', '0');
+          node.setAttribute('stroke', '#475569');
+          flowWire.setAttribute('stroke', '#334155');
+          flowWire.className = '';
+          badge.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700';
+          badge.textContent = p === 0 ? 'ОБЕСТОЧЕНА' : 'ОТКЛЮЧЕНА';
+        } else if (bulb.trap) {
+          // Reverse Trap
+          aura.setAttribute('opacity', '0.9');
+          aura.setAttribute('fill', 'url(#bulbPurpleGlow)');
+          node.setAttribute('stroke', '#c084fc');
+          flowWire.setAttribute('stroke', '#c084fc');
+          flowWire.className = 'flow-reverse';
+          badge.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/30';
+          badge.textContent = p + ' Вт (ОБРАТНЫЙ)';
+        } else if (isUndervoltage) {
+          // Dim / Flicker under Undervoltage
+          const opacity = Math.max(0.2, (p / 100) * 0.5);
+          aura.setAttribute('opacity', opacity.toFixed(2));
+          aura.setAttribute('fill', 'url(#bulbWarmGlow)');
+          node.setAttribute('stroke', '#d97706');
+          flowWire.setAttribute('stroke', '#d97706');
+          flowWire.className = 'flow-line';
+          badge.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30';
+          badge.textContent = p + ' Вт (ТЛЕЕТ)';
+        } else {
+          // Normal bright glow
+          const opacity = Math.min(1.0, 0.3 + (p / 100) * 0.7);
+          aura.setAttribute('opacity', opacity.toFixed(2));
+          aura.setAttribute('fill', 'url(#bulbWarmGlow)');
+          node.setAttribute('stroke', p > 60 ? '#f59e0b' : '#38bdf8');
+          flowWire.setAttribute('stroke', '#38bdf8');
+          flowWire.className = 'flow-line';
+          badge.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30';
+          badge.textContent = p + ' Вт (СВЕТИТ)';
+        }
+      });
+
+      // Multi-channel Warnings Check
+      const warningsDiv = document.getElementById('channelWarnings');
+      warningsDiv.innerHTML = '';
+      if (state.bulbs.health.power < 5 && totalDemandedPower > 30) {
+        warningsDiv.innerHTML += `
+          <div class="p-3 rounded-lg bg-rose-950/60 border border-rose-500/50 text-xs text-rose-300 flex items-start gap-2">
+            <span class="text-base">🚨</span>
+            <div><strong>Критический перекос:</strong> Канал «🩺 Здоровье» полностью обесточен (0 Вт) ради форсирования других дел. Риск скорого отключения генератора!</div>
+          </div>
+        `;
+      }
+      if (isUndervoltage) {
+        warningsDiv.innerHTML += `
+          <div class="p-3 rounded-lg bg-amber-950/60 border border-amber-500/50 text-xs text-amber-300 flex items-start gap-2">
+            <span class="text-base">⚠️</span>
+            <div><strong>Просадка напряжения:</strong> Реактор (${availablePower} Вт) не тянет 6 ламп одновременно (${totalDemandedPower} Вт). Обесточьте фоновые задачи!</div>
+          </div>
+        `;
+      }
+
+      // Update HUD Metrics
+      document.getElementById('metricCurrent').textContent = Math.abs(current).toFixed(1) + ' A';
+      document.getElementById('metricResistance').textContent = effectiveR.toFixed(2) + ' Ω';
+      document.getElementById('metricHeat').textContent = heat + ' J';
+      document.getElementById('metricFlow').textContent = Math.round(flowIndex * 100) + '%';
+      document.getElementById('flowPercent').textContent = Math.round(flowIndex * 100) + '%';
+      document.getElementById('rValueText').textContent = effectiveR.toFixed(2) + ' Ω';
+
+      // Update Badge & Box
+      const badge = document.getElementById('statusBadge');
+      badge.textContent = status;
+      badge.className = 'px-3 py-1 rounded-full text-xs font-mono font-semibold tracking-wide border ' + badgeClass;
+
+      const vBox = document.getElementById('verdictBox');
+      vBox.className = 'mt-4 p-4 rounded-xl border ' + boxClass;
+      document.getElementById('verdictCode').textContent = code;
+      document.getElementById('verdictTitle').textContent = title;
+      document.getElementById('verdictPhysics').textContent = physics;
+
+      // Update Remediation List
+      const remList = document.getElementById('remediationList');
+      const remCount = document.getElementById('remediationCount');
+      if (remediation.length === 0) {
+        remCount.textContent = '0 шагов';
+        remList.innerHTML = '<div class="text-xs text-slate-500 italic p-3 bg-slate-950/40 rounded-lg border border-slate-800/60">Цепь в идеальном состоянии. Корректировка не требуется.</div>';
+      } else {
+        remCount.textContent = remediation.length + ' шага';
+        remList.innerHTML = remediation.map((item, idx) => `
+          <div class="p-2.5 bg-slate-950/80 rounded-lg border border-slate-800 text-xs flex gap-2.5 items-start">
+            <span class="w-5 h-5 rounded-full bg-amber-500/20 text-amber-400 font-mono font-bold flex items-center justify-center shrink-0 text-[10px]">${idx + 1}</span>
+            <div>
+              <div class="font-bold text-slate-200">${item.title}</div>
+              <div class="text-slate-400 text-[11px] mt-0.5">${item.desc}</div>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    function autoRemediate() {
+      // Smoothly animate sliders back to zero resistance (Mushin)
+      const interval = setInterval(() => {
+        let changed = false;
+        if (state.pastL > 0) { state.pastL = Math.max(0, state.pastL - 5); changed = true; }
+        if (state.futureC > 0) { state.futureC = Math.max(0, state.futureC - 5); changed = true; }
+        if (state.critic > 0) { state.critic = Math.max(0, state.critic - 0.1); changed = true; }
+        if (state.grounding < 0.95) { state.grounding = Math.min(0.95, state.grounding + 0.1); changed = true; }
+        state.loadFailed = false;
+        Object.keys(state.bulbs).forEach(k => { state.bulbs[k].trap = false; });
+
+        syncInputs();
+        updateCircuit();
+
+        if (!changed) {
+          clearInterval(interval);
+        }
+      }, 50);
+    }
+
+    // Initial load
+    syncInputs();
+    updateCircuit();
+  </script>
+</body>
+</html>

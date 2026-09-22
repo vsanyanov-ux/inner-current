@@ -1,0 +1,27 @@
+{
+  "name": "inner-current",
+  "version": "1.1.0",
+  "description": "Electrodynamic human state ontology and diagnostic machine",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "node --test --experimental-strip-types tests/**/*.test.ts",
+    "demo": "node --experimental-strip-types src/cli/demo.ts",
+    "start": "node -e \"import('node:http').then(({createServer}) => import('node:fs').then(({createReadStream}) => createServer((req, res) => { res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'}); createReadStream('public/index.html').pipe(res); }).listen(3333, () => console.log('⚡ Inner Current Visualizer running at http://localhost:3333'))))\"",
+    "build": "tsc"
+  },
+  "keywords": [
+    "inner-current",
+    "zen-engineering",
+    "diagnostic-engine",
+    "electrodynamics",
+    "mushin",
+    "zanshin"
+  ],
+  "author": "Vladimir Anyanov",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^26.6.2",
+    "typescript": "^7.0.2"
+  }
+}
