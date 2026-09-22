@@ -13,6 +13,8 @@ import type {
   TandenCore
 } from '../types/circuit.types.ts';
 import {
+  CHANOYU_TEA_PROTOCOL,
+  KANSO_SHIELD_BALANCING_PROTOCOL,
   KINTSUGI_CIRCUIT_BREAKER_PROTOCOL,
   MICRO_LOAD_TEA_PROTOCOL,
   MUSHIN_GROUNDING_PROTOCOL,
@@ -254,7 +256,7 @@ export const PAIN_REGISTRY: Record<HumanPainArchetype, HumanPainDefinition> = {
       explanation: 'Ваше внимание застряло в симуляциях того, чего сейчас физически нет: сожаления о прошлом (L_past) и тревога о будущем (C_future). Проводка раскалена докрасна.'
     },
     remediationSolution: {
-      protocolName: 'Протокол «Мусин» (Сенсорное заземление R → 0)',
+      protocolName: 'Протокол «Мусин» (無心, Mushin — Сенсорное заземление R → 0)',
       actionHeadline: 'Мгновенный сброс сопротивления проводки в ноль',
       immediateAction: 'Отсечь виртуальные ветки времени (t_past → 0, t_future → 0). Перенести 100% фокуса в физические рецепторы тела прямо сейчас.',
       steps: MUSHIN_GROUNDING_PROTOCOL
@@ -274,7 +276,7 @@ export const PAIN_REGISTRY: Record<HumanPainArchetype, HumanPainDefinition> = {
       explanation: 'Вы пытаетесь согреться и зарядить свой Тандэн от внешней лампочки (одобрение, деньги, лайки, похвала). Но в лампочке нет генератора! Попытка сосать энергию извне разворачивает ток вспять, глушит реактор и плавит изоляцию.'
     },
     remediationSolution: {
-      protocolName: 'Протокол «Нидзиригути» (Сброс эго и разворот полярности)',
+      protocolName: 'Протокол «Нидзиригути» (躙口, Nijiriguchi — Сброс эго и разворот полярности)',
       actionHeadline: 'Размыкание обратной линии и разворот вектора тока на отдачу',
       immediateAction: 'Осознать: лампочка не способна вас согреть. Оставить социальный меч у метрового входа и отдавать свет в форму ради чистоты действия.',
       steps: NIJIRIGUCHI_POLARITY_PROTOCOL
@@ -294,7 +296,7 @@ export const PAIN_REGISTRY: Record<HumanPainArchetype, HumanPainDefinition> = {
       explanation: 'Вы припаяли свою личность намертво к внешнему проекту. Когда проект разбился, ударная волна короткого замыкания беспрепятственно ударила прямо в реактор личности.'
     },
     remediationSolution: {
-      protocolName: 'Триада «Дзансин + Ваби-саби + Кинцуги»',
+      protocolName: 'Протокол «Кинцуги» (金継ぎ, Kintsugi — Дзансин-предохранитель и золотой шов)',
       actionHeadline: 'Изоляция аварийного узла и заливка трещины золотом опыта',
       immediateAction: 'Взвести предохранитель Дзансин: отделить себя от погибшего проекта. Принять неидеальность материи (Ваби-саби) и положить золотой шов Кинцуги.',
       steps: KINTSUGI_CIRCUIT_BREAKER_PROTOCOL
@@ -314,10 +316,10 @@ export const PAIN_REGISTRY: Record<HumanPainArchetype, HumanPainDefinition> = {
       explanation: 'Вы боитесь ошибиться и разомкнули цепь. ЭДС в ядре вырабатывается, но ток не течёт никуда. Нерастраченная энергия застаивается и субъективно переживается как болото апатии и бессмысленности.'
     },
     remediationSolution: {
-      protocolName: 'Протокол «Чайный светодиод» (Микронагрузка 10 Вт)',
+      protocolName: 'Протокол «Тяною» (茶の湯, Chanoyu — Искусство чая / Микронагрузка 10 Вт)',
       actionHeadline: 'Замыкание контура на простейшем сенсорном действии',
       immediateAction: 'Не строить империю. Зажечь один микро-светодиод: заварить чашку чая, помыть чашку, сделать 10 вдохов. Запустить циркуляцию тока I > 0.',
-      steps: MICRO_LOAD_TEA_PROTOCOL
+      steps: CHANOYU_TEA_PROTOCOL
     }
   },
 
@@ -334,15 +336,12 @@ export const PAIN_REGISTRY: Record<HumanPainArchetype, HumanPainDefinition> = {
       explanation: 'Вы включили сразу все лампы на максимум при ограниченной емкости аккумулятора. Напряжение просело, нити накала остыли, а канал «Здоровье» полностью обесточен ради карьеры.'
     },
     remediationSolution: {
-      protocolName: 'Регламент балансировки щита мощности',
+      protocolName: 'Протокол «Кансо» (簡素, Kanso — Отсечение избытка и гармония щита Тёва)',
       actionHeadline: 'Принудительное отключение балласта и запитка канала Здоровья',
       immediateAction: 'Обесточить 3–4 второстепенные лампы. Подать гарантированные 20–30 Вт в канал «🩺 Здоровье» (сон, прогулка, вода, питание).',
-      steps: [
-        { order: 1, title: 'Аварийное отключение балласта', description: 'Снизить мощность второстепенных ламп до нуля.', protocolName: 'SHIELD_TRIM' },
-        { order: 2, title: 'Восстановление питания Здоровья', description: 'Подать минимум 20 Вт на сон, физическое тело и питание.', protocolName: 'HEALTH_FEED' },
-        { order: 3, title: 'Фокусировка на главном', description: 'Удерживать яркое горение только 1–2 ключевых ламп.', protocolName: 'FOCUS_MONOPOLY' }
-      ]
+      steps: KANSO_SHIELD_BALANCING_PROTOCOL
     }
   }
 };
+
 

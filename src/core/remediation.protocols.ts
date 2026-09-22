@@ -68,23 +68,47 @@ export const KINTSUGI_CIRCUIT_BREAKER_PROTOCOL: RemediationStep[] = [
   }
 ];
 
-export const MICRO_LOAD_TEA_PROTOCOL: RemediationStep[] = [
+export const CHANOYU_TEA_PROTOCOL: RemediationStep[] = [
   {
     order: 1,
-    protocolName: 'MICRO_LOAD_CALIBRATION',
+    protocolName: 'CHANOYU_MICRO_ACTION',
     title: 'Запрет на запуск мегаваттных нагрузок',
     description: 'При обрыве цепи запрещено браться за глобальные империи. Это вызовет лишь прокрастинацию и холодный ступор.'
   },
   {
     order: 2,
-    protocolName: 'MICRO_LOAD_CALIBRATION',
-    title: 'Подключение низковольтного светодиода (Чай)',
+    protocolName: 'CHANOYU_MICRO_ACTION',
+    title: 'Ритуал Тяною (茶の湯): заваривание одной чашки',
     description: 'Выбрать предельно простое физическое действие: заварить чашку чая, помыть кружку, написать 3 строки чистого кода.'
   },
   {
     order: 3,
-    protocolName: 'MICRO_LOAD_CALIBRATION',
-    title: 'Калибровка сверхпроводимости на малом токе',
-    description: 'Выполнить действие с идеальным присутствием Мусин. Как только светодиод загорится — плавно повышать нагрузку.'
+    protocolName: 'CHANOYU_MICRO_ACTION',
+    title: 'Замыкание контура и запуск тока (I > 0)',
+    description: 'Выполнить действие с идеальным присутствием Мусин. Как только микро-нагрузка загорится — плавно повышать ток.'
+  }
+];
+
+// Alias for backwards compatibility
+export const MICRO_LOAD_TEA_PROTOCOL = CHANOYU_TEA_PROTOCOL;
+
+export const KANSO_SHIELD_BALANCING_PROTOCOL: RemediationStep[] = [
+  {
+    order: 1,
+    protocolName: 'KANSO_TRIM_BALAST',
+    title: 'Отсечение избытка Кансо (簡素)',
+    description: 'Безжалостно обесточить второстепенные каналы щита. Отключить балластные потребители, устранить распыление энергии.'
+  },
+  {
+    order: 2,
+    protocolName: 'KANSO_HEALTH_PRIORITY',
+    title: 'Восстановление шины Здоровья',
+    description: 'Подать гарантированные 20–30 Вт в критический канал «🩺 Здоровье» (сон, вода, дыхание, прогулка). Без реактора тела все остальные лампы бессмысленны.'
+  },
+  {
+    order: 3,
+    protocolName: 'CHOWA_MONOPOLY_FOCUS',
+    title: 'Достижение баланса Тёва (調和)',
+    description: 'Удерживать яркое горение только 1–2 ключевых ламп в единицу времени. Перевести нагрузку из хаотичного перегруза в гармоничный последовательный резонанс.'
   }
 ];

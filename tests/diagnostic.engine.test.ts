@@ -6,7 +6,8 @@ import {
   CircuitStatus,
   LoadScale,
   CanonicalLoadDomain,
-  HumanPainArchetype
+  HumanPainArchetype,
+  ZenOntologyCanon
 } from '../src/types/circuit.types.ts';
 import type { CircuitTelemetry, SixBulbPanel } from '../src/types/circuit.types.ts';
 
@@ -211,7 +212,7 @@ describe('Inner Current Diagnostic Engine Test Suite', () => {
     assert.equal(result.status, CircuitStatus.OPEN_CIRCUIT);
     assert.equal(result.currentAmperes, 0);
     assert.equal(result.code, 'ERR_04_OPEN_CIRCUIT');
-    assert.equal(result.remediationProtocols[0].protocolName, 'MICRO_LOAD_CALIBRATION');
+    assert.equal(result.remediationProtocols[0].protocolName, 'CHANOYU_MICRO_ACTION');
   });
 
   it('7. Validates Scale Invariance (Tea vs Enterprise follow identical Ohm laws)', () => {
@@ -413,35 +414,41 @@ describe('Inner Current Diagnostic Engine Test Suite', () => {
     const allPains = engine.getAllPains();
     assert.equal(allPains.length, 5, 'Must contain exactly 5 fundamental human pain archetypes');
 
-    // 1. Burnout & overthinking
+    // 1. Burnout & overthinking (Mushin)
     const burnout = engine.diagnosePain(HumanPainArchetype.BURNOUT_OVERTHINKING);
     assert.equal(burnout.electrodynamicCause.faultCode, 'ERR_01_OHMIC_OVERHEAT');
     assert.ok(burnout.electrodynamicCause.physicsLaw.includes('Джоуля — Ленца'));
     assert.ok(burnout.remediationSolution.protocolName.includes('Мусин'));
+    assert.ok(burnout.remediationSolution.protocolName.includes('無心'));
     assert.ok(burnout.humanSymptom.includes('Голова кипит'));
 
-    // 2. Impostor & validation hunger
+    // 2. Impostor & validation hunger (Nijiriguchi)
     const impostor = engine.diagnosePain(HumanPainArchetype.IMPOSTOR_VALIDATION);
     assert.equal(impostor.electrodynamicCause.faultCode, 'ERR_02_REVERSE_POLARITY');
     assert.ok(impostor.electrodynamicCause.physicsLaw.includes('полярности'));
     assert.ok(impostor.remediationSolution.protocolName.includes('Нидзиригути'));
+    assert.ok(impostor.remediationSolution.protocolName.includes('躙口'));
     assert.ok(impostor.humanSymptom.includes('самозванцем'));
 
-    // 3. Project collapse shock
+    // 3. Project collapse shock (Kintsugi)
     const shock = engine.diagnosePain(HumanPainArchetype.COLLAPSE_SHOCK);
     assert.equal(shock.electrodynamicCause.faultCode, 'ERR_03_SHORT_CIRCUIT');
-    assert.ok(shock.remediationSolution.protocolName.includes('Дзансин'));
     assert.ok(shock.remediationSolution.protocolName.includes('Кинцуги'));
+    assert.ok(shock.remediationSolution.protocolName.includes('金継ぎ'));
+    assert.ok(shock.remediationSolution.protocolName.includes('Дзансин'));
 
-    // 4. Apathy & stagnation
+    // 4. Apathy & stagnation (Chanoyu)
     const apathy = engine.diagnosePain(HumanPainArchetype.APATHY_STAGNATION);
     assert.equal(apathy.electrodynamicCause.faultCode, 'ERR_04_OPEN_CIRCUIT');
-    assert.ok(apathy.remediationSolution.protocolName.includes('Чайный светодиод'));
+    assert.ok(apathy.remediationSolution.protocolName.includes('Тяною'));
+    assert.ok(apathy.remediationSolution.protocolName.includes('茶の湯'));
 
-    // 5. Overload & health drain
+    // 5. Overload & health drain (Kanso)
     const overload = engine.diagnosePain(HumanPainArchetype.OVERLOAD_HEALTH_DRAIN);
     assert.equal(overload.electrodynamicCause.faultCode, 'WARN_05_UNDERVOLTAGE');
-    assert.ok(overload.remediationSolution.protocolName.includes('балансировки'));
+    assert.ok(overload.remediationSolution.protocolName.includes('Кансо'));
+    assert.ok(overload.remediationSolution.protocolName.includes('簡素'));
+    assert.ok(overload.remediationSolution.protocolName.includes('Тёва'));
   });
 
   it('13. Pain-First Architecture: Every pain definition provides non-empty immediate action and step guidance', () => {
@@ -452,6 +459,44 @@ describe('Inner Current Diagnostic Engine Test Suite', () => {
       assert.ok(pain.remediationSolution.immediateAction.length > 15, `Pain ${pain.id} must have an immediate action`);
       assert.ok(pain.remediationSolution.steps.length >= 2, `Pain ${pain.id} must provide actionable steps`);
     }
+  });
+
+  it('14. Zen Ontological Atlas: Verifies all 23 bijective canons across all 5 ontological levels', () => {
+    const canons = Object.values(ZenOntologyCanon);
+    assert.equal(canons.length, 23, 'Must contain exactly 23 bijective Zen canons');
+
+    // Level 1: Generator
+    assert.ok(canons.includes('TANDEN'));
+    assert.ok(canons.includes('BUSSHO'));
+    assert.ok(canons.includes('SHUNYATA'));
+
+    // Level 2: Conduction
+    assert.ok(canons.includes('MUSHIN'));
+    assert.ok(canons.includes('FUDOSHIN'));
+    assert.ok(canons.includes('ZANSHIN'));
+    assert.ok(canons.includes('SHOSHIN'));
+    assert.ok(canons.includes('JIKISHININSHIN'));
+
+    // Level 3: Failures & Losses
+    assert.ok(canons.includes('JIGA'));
+    assert.ok(canons.includes('MAKYO'));
+    assert.ok(canons.includes('DUKKHA'));
+    assert.ok(canons.includes('BONNO'));
+
+    // Level 4: Remediation
+    assert.ok(canons.includes('SATORI'));
+    assert.ok(canons.includes('KOAN'));
+    assert.ok(canons.includes('SAMU'));
+    assert.ok(canons.includes('ICHIGO_ICHIE'));
+    assert.ok(canons.includes('NIJIRIGUCHI'));
+
+    // Level 5: Aesthetics & Form
+    assert.ok(canons.includes('KANSO'));
+    assert.ok(canons.includes('WABI_SABI'));
+    assert.ok(canons.includes('KINTSUGI'));
+    assert.ok(canons.includes('SHIBUMI'));
+    assert.ok(canons.includes('YUGEN'));
+    assert.ok(canons.includes('FUKINZOKU'));
   });
 });
 

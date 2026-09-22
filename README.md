@@ -34,6 +34,7 @@
 * **[10. Релятивизм счастья и инвариантная физика цепи](file:///c:/Users/vanya/Antigravity%20Projects/Apps/Inner%20Current/wiki/10-happiness-relativity-vs-circuit-invariance.md)** — разбор тезиса «Счастье у каждого своё»: аналогия электросети и приборов, объективная физика аварий и состояние Мусин как $R \to 0$.
 * **[11. Архитектурная новизна и практическая польза](file:///c:/Users/vanya/Antigravity%20Projects/Apps/Inner%20Current/wiki/11-novelty-and-value-proposition.md)** — архитектурный манифест системы: 6 уровней парадигмального сдвига, прикладная ценность для созидателей и исполняемость в коде.
 * **[12. Дзен как фундамент Архитектуры счастья](file:///c:/Users/vanya/Antigravity%20Projects/Apps/Inner%20Current/wiki/12-zen-as-happiness-architecture-foundation.md)** — инженерная демистификация высшего духа человечества: 5 канонов Дзен как физический базис, матрица изоморфизма и Кодекс Дзен-инженера.
+* **[13. Полный онтологический атлас: Биекция 23 канонов Дзен и электродинамики](file:///c:/Users/vanya/Antigravity%20Projects/Apps/Inner%20Current/wiki/13-complete-zen-electrodynamic-ontological-atlas.md)** — исчерпывающее взаимно-однозначное соответствие 23 понятий Дзен и физики цепи (Тандэн, Мусин, Макио, Сатори, Кинцуги, Дзансин и др.) по 5 уровням и Расширенный Кодекс инженера духа.
 
 ---
 
