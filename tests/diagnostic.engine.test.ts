@@ -5,7 +5,8 @@ import {
   BreakerStatus,
   CircuitStatus,
   LoadScale,
-  CanonicalLoadDomain
+  CanonicalLoadDomain,
+  HumanPainArchetype
 } from '../src/types/circuit.types.ts';
 import type { CircuitTelemetry, SixBulbPanel } from '../src/types/circuit.types.ts';
 
@@ -386,4 +387,71 @@ describe('Inner Current Diagnostic Engine Test Suite', () => {
     assert.ok(analysis.diagnostics.some(d => d.includes('Здоровье')));
     assert.ok(analysis.diagnostics.some(d => d.includes('Паразитная утечка')));
   });
+
+  it('11. Detects Monk Mode warning when all six bulbs are turned off (0 / 6 active)', () => {
+    const monkPanel: SixBulbPanel = {
+      bulbs: {
+        [CanonicalLoadDomain.CAR]: { domain: CanonicalLoadDomain.CAR, name: 'Машина', icon: '🚗', allocatedPower: 0, expectationOfValidation: false },
+        [CanonicalLoadDomain.HOME]: { domain: CanonicalLoadDomain.HOME, name: 'Дом', icon: '🏡', allocatedPower: 0, expectationOfValidation: false },
+        [CanonicalLoadDomain.CAREER]: { domain: CanonicalLoadDomain.CAREER, name: 'Карьера', icon: '💼', allocatedPower: 0, expectationOfValidation: false },
+        [CanonicalLoadDomain.RELATIONSHIPS]: { domain: CanonicalLoadDomain.RELATIONSHIPS, name: 'Отношения', icon: '❤️', allocatedPower: 0, expectationOfValidation: false },
+        [CanonicalLoadDomain.HEALTH]: { domain: CanonicalLoadDomain.HEALTH, name: 'Здоровье', icon: '🩺', allocatedPower: 0, expectationOfValidation: false },
+        [CanonicalLoadDomain.ENTERTAINMENT]: { domain: CanonicalLoadDomain.ENTERTAINMENT, name: 'Развлечения', icon: '🎉', allocatedPower: 0, expectationOfValidation: false }
+      }
+    };
+
+    const core = { emf: 80, reserve: 80, grounding: 0.8 };
+    const analysis = engine.analyzeSixBulbs(core, monkPanel);
+
+    assert.equal(analysis.totalDemandedPower, 0);
+    assert.equal(analysis.activeBulbsCount, 0);
+    assert.ok(analysis.diagnostics.some(d => d.includes('Режим монаха')));
+    assert.ok(analysis.diagnostics.some(d => d.includes('все лампы обесточены')));
+  });
+
+  it('12. Pain-First Architecture: Correctly maps all 5 archetypes of human pain to electrodynamic causes and protocols', () => {
+    const allPains = engine.getAllPains();
+    assert.equal(allPains.length, 5, 'Must contain exactly 5 fundamental human pain archetypes');
+
+    // 1. Burnout & overthinking
+    const burnout = engine.diagnosePain(HumanPainArchetype.BURNOUT_OVERTHINKING);
+    assert.equal(burnout.electrodynamicCause.faultCode, 'ERR_01_OHMIC_OVERHEAT');
+    assert.ok(burnout.electrodynamicCause.physicsLaw.includes('Джоуля — Ленца'));
+    assert.ok(burnout.remediationSolution.protocolName.includes('Мусин'));
+    assert.ok(burnout.humanSymptom.includes('Голова кипит'));
+
+    // 2. Impostor & validation hunger
+    const impostor = engine.diagnosePain(HumanPainArchetype.IMPOSTOR_VALIDATION);
+    assert.equal(impostor.electrodynamicCause.faultCode, 'ERR_02_REVERSE_POLARITY');
+    assert.ok(impostor.electrodynamicCause.physicsLaw.includes('полярности'));
+    assert.ok(impostor.remediationSolution.protocolName.includes('Нидзиригути'));
+    assert.ok(impostor.humanSymptom.includes('самозванцем'));
+
+    // 3. Project collapse shock
+    const shock = engine.diagnosePain(HumanPainArchetype.COLLAPSE_SHOCK);
+    assert.equal(shock.electrodynamicCause.faultCode, 'ERR_03_SHORT_CIRCUIT');
+    assert.ok(shock.remediationSolution.protocolName.includes('Дзансин'));
+    assert.ok(shock.remediationSolution.protocolName.includes('Кинцуги'));
+
+    // 4. Apathy & stagnation
+    const apathy = engine.diagnosePain(HumanPainArchetype.APATHY_STAGNATION);
+    assert.equal(apathy.electrodynamicCause.faultCode, 'ERR_04_OPEN_CIRCUIT');
+    assert.ok(apathy.remediationSolution.protocolName.includes('Чайный светодиод'));
+
+    // 5. Overload & health drain
+    const overload = engine.diagnosePain(HumanPainArchetype.OVERLOAD_HEALTH_DRAIN);
+    assert.equal(overload.electrodynamicCause.faultCode, 'WARN_05_UNDERVOLTAGE');
+    assert.ok(overload.remediationSolution.protocolName.includes('балансировки'));
+  });
+
+  it('13. Pain-First Architecture: Every pain definition provides non-empty immediate action and step guidance', () => {
+    const allPains = engine.getAllPains();
+    for (const pain of allPains) {
+      assert.ok(pain.humanCry.length > 10, `Pain ${pain.id} must have a rich human cry`);
+      assert.ok(pain.electrodynamicCause.explanation.length > 20, `Pain ${pain.id} must have a clear physical explanation`);
+      assert.ok(pain.remediationSolution.immediateAction.length > 15, `Pain ${pain.id} must have an immediate action`);
+      assert.ok(pain.remediationSolution.steps.length >= 2, `Pain ${pain.id} must provide actionable steps`);
+    }
+  });
 });
+

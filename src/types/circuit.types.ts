@@ -187,3 +187,36 @@ export interface SixBulbAnalysis {
   diagnostics: string[];
 }
 
+/**
+ * 5 ключевых архетипов человеческой боли (типичные виды несчастья)
+ */
+export const HumanPainArchetype = {
+  BURNOUT_OVERTHINKING: 'BURNOUT_OVERTHINKING',       // Голова кипит, выгорание, тревога о будущем и самоедство за прошлое
+  IMPOSTOR_VALIDATION: 'IMPOSTOR_VALIDATION',         // Самозванец, страх критики, зависимость от оценок, ступор перед показом
+  COLLAPSE_SHOCK: 'COLLAPSE_SHOCK',                   // Крах внешнего дела/отношений — земля ушла из-под ног, жизнь кончена
+  APATHY_STAGNATION: 'APATHY_STAGNATION',             // Хроническая лень, апатия, нет сил встать, всё бессмысленно (I = 0)
+  OVERLOAD_HEALTH_DRAIN: 'OVERLOAD_HEALTH_DRAIN'      // Разрываюсь между делами, здоровье посыпалось, сеть просела
+} as const;
+export type HumanPainArchetype = typeof HumanPainArchetype[keyof typeof HumanPainArchetype];
+
+export interface HumanPainDefinition {
+  id: HumanPainArchetype;
+  humanSymptom: string;      // Живая фраза человека («Голова взрывается, куча мыслей...»)
+  humanCry: string;          // Субъективное переживание боли
+  electrodynamicCause: {
+    faultCode: string;
+    headline: string;
+    physicsLaw: string;      // Закон Джоуля — Ленца, закон полярности, закон сохранения масштаба
+    affectedNode: string;    // Шина внимания, узел нагрузки, входной размыкатель, ключ коммутации
+    parameterState: string;  // R >> 0, I < 0, Breaker tripped, I = 0, P_demanded > P_available
+    explanation: string;     // Доступное физико-инженерное объяснение причины
+  };
+  remediationSolution: {
+    protocolName: string;
+    actionHeadline: string;
+    immediateAction: string; // Что сделать прямо в эту секунду
+    steps: RemediationStep[];
+  };
+}
+
+

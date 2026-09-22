@@ -227,5 +227,41 @@ for (const diag of sixBulbAnalysis.diagnostics) {
   console.log(`  ${diag}`);
 }
 
+// Демонстрация Режима Монаха (все лампы 0 Вт)
+const monkPanel: SixBulbPanel = {
+  bulbs: {
+    [CanonicalLoadDomain.CAR]: { domain: CanonicalLoadDomain.CAR, name: 'Машина', icon: '🚗', allocatedPower: 0, expectationOfValidation: false },
+    [CanonicalLoadDomain.HOME]: { domain: CanonicalLoadDomain.HOME, name: 'Дом', icon: '🏡', allocatedPower: 0, expectationOfValidation: false },
+    [CanonicalLoadDomain.CAREER]: { domain: CanonicalLoadDomain.CAREER, name: 'Карьера', icon: '💼', allocatedPower: 0, expectationOfValidation: false },
+    [CanonicalLoadDomain.RELATIONSHIPS]: { domain: CanonicalLoadDomain.RELATIONSHIPS, name: 'Отношения', icon: '❤️', allocatedPower: 0, expectationOfValidation: false },
+    [CanonicalLoadDomain.HEALTH]: { domain: CanonicalLoadDomain.HEALTH, name: 'Здоровье', icon: '🩺', allocatedPower: 0, expectationOfValidation: false },
+    [CanonicalLoadDomain.ENTERTAINMENT]: { domain: CanonicalLoadDomain.ENTERTAINMENT, name: 'Развлечения', icon: '🎉', allocatedPower: 0, expectationOfValidation: false }
+  }
+};
+
+const monkAnalysis = engine.analyzeSixBulbs(userCore, monkPanel);
+console.log(`\n🧘 Тест сценария «Режим монаха» (0 Вт на всех лампах):`);
+console.log(`  Активных ламп: ${monkAnalysis.activeBulbsCount} из 6 | Нагрузка: ${monkAnalysis.totalDemandedPower} Вт`);
+for (const diag of monkAnalysis.diagnostics) {
+  console.log(`  ${diag}`);
+}
+
 console.log('\n' + '='.repeat(70));
+console.log('🚨 PAIN-FIRST НАВИГАТОР: 5 КЛЮЧЕВЫХ БОЛЕЙ И ИХ ИСЦЕЛЕНИЕ');
+console.log('='.repeat(70));
+
+const allPains = engine.getAllPains();
+allPains.forEach((p, idx) => {
+  console.log(`\n[Боль #${idx + 1}]: ${p.humanSymptom}`);
+  console.log(`  🗣️ Переживание: ${p.humanCry}`);
+  console.log(`  ⚡ Физика сбоя: ${p.electrodynamicCause.headline} (${p.electrodynamicCause.faultCode})`);
+  console.log(`  📍 Узел цепи: ${p.electrodynamicCause.affectedNode} [${p.electrodynamicCause.parameterState}]`);
+  console.log(`  ⚙️ Закон: ${p.electrodynamicCause.physicsLaw}`);
+  console.log(`  💡 Почему болит: ${p.electrodynamicCause.explanation}`);
+  console.log(`  🔧 Рецепт: ${p.remediationSolution.protocolName}`);
+  console.log(`  🚀 Действие СЕЙЧАС: ${p.remediationSolution.immediateAction}`);
+});
+
+console.log('\n' + '='.repeat(70));
+
 

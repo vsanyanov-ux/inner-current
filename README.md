@@ -31,6 +31,9 @@
 * **[07. Природа и иллюзия эго](file:///c:/Users/vanya/Antigravity%20Projects/Apps/Inner%20Current/wiki/07-nature-and-illusion-of-ego.md)** — демистификация мировых религий (Анатта, Майя, Мусин, У-вэй, Кенозис) через 4 измеримых физических факта и протокол шунтирования $R_{ego}$.
 * **[08. Система Аньянова: Внутренний ток и Внешний магнетизм](file:///c:/Users/vanya/Antigravity%20Projects/Apps/Inner%20Current/wiki/08-impression-architecture-and-impedance-matching.md)** — зонтичная мета-система целостности, объединяющая генерацию счастья внутри и поле притяжения снаружи.
 * **[09. Кейс-стади: Двойной разлад инженера (Романтический контур)](file:///c:/Users/vanya/Antigravity%20Projects/Apps/Inner%20Current/wiki/09-case-study-engineer-romance-approach.md)** — разбор ступора перед девушками: паразитный обратный ток, взрыв симуляций $R_{future} \gg 0$, согласование импедансов и протокол сверхпроводящего знакомства.
+* **[10. Релятивизм счастья и инвариантная физика цепи](file:///c:/Users/vanya/Antigravity%20Projects/Apps/Inner%20Current/wiki/10-happiness-relativity-vs-circuit-invariance.md)** — разбор тезиса «Счастье у каждого своё»: аналогия электросети и приборов, объективная физика аварий и состояние Мусин как $R \to 0$.
+* **[11. Архитектурная новизна и практическая польза](file:///c:/Users/vanya/Antigravity%20Projects/Apps/Inner%20Current/wiki/11-novelty-and-value-proposition.md)** — архитектурный манифест системы: 6 уровней парадигмального сдвига, прикладная ценность для созидателей и исполняемость в коде.
+* **[12. Дзен как фундамент Архитектуры счастья](file:///c:/Users/vanya/Antigravity%20Projects/Apps/Inner%20Current/wiki/12-zen-as-happiness-architecture-foundation.md)** — инженерная демистификация высшего духа человечества: 5 канонов Дзен как физический базис, матрица изоморфизма и Кодекс Дзен-инженера.
 
 ---
 
@@ -71,10 +74,10 @@ npm run demo
 ```bash
 npm test
 ```
-*10 из 10 инженерных тестов проходят на 100% со средней скоростью < 5ms.*
+*13 из 13 инженерных тестов проходят на 100% со средней скоростью < 5ms (включая Pain-First маппинг и калибровку Дзен-контура).*
 
 ---
 
 ## 📄 История версий
-См. подробный журнал изменений в [CHANGELOG.md](file:///c:/Users/vanya/Antigravity%20Projects/Apps/Inner%20Current/CHANGELOG.md).
+См. подробный журнал изменений в [CHANGELOG.md](file:///c:/Users/vanya/Antigravity%20Projects/Apps/Inner%20Current/CHANGELOG.md) (текущая версия: **v1.2.0**).
 

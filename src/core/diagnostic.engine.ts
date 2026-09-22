@@ -3,10 +3,11 @@
  * Diagnostic Engine & Circuit Fault Classifier
  */
 
-import { CircuitStatus, CanonicalLoadDomain } from '../types/circuit.types.ts';
+import { CircuitStatus, CanonicalLoadDomain, HumanPainArchetype } from '../types/circuit.types.ts';
 import type {
   CircuitTelemetry,
   DiagnosticResult,
+  HumanPainDefinition,
   SixBulbPanel,
   SixBulbAnalysis,
   TandenCore
@@ -214,4 +215,134 @@ export class DiagnosticEngine {
       diagnostics
     };
   }
+
+  /**
+   * Pain-First Диагностика: локализация первопричины боли человека в электродинамической цепи
+   * и выдача точного инженерного решения (протокола ремонта).
+   */
+  public diagnosePain(painId: HumanPainArchetype): HumanPainDefinition {
+    const definition = PAIN_REGISTRY[painId];
+    if (!definition) {
+      throw new Error(`Неизвестный архетип человеческой боли: ${painId}`);
+    }
+    return definition;
+  }
+
+  /**
+   * Возвращает весь реестр человеческих болей для навигатора и каталога
+   */
+  public getAllPains(): HumanPainDefinition[] {
+    return Object.values(PAIN_REGISTRY);
+  }
 }
+
+/**
+ * Реестр 5 ключевых человеческих болей:
+ * Живая фраза ➔ Физика цепи (причина) ➔ Немедленное действие (решение)
+ */
+export const PAIN_REGISTRY: Record<HumanPainArchetype, HumanPainDefinition> = {
+  [HumanPainArchetype.BURNOUT_OVERTHINKING]: {
+    id: HumanPainArchetype.BURNOUT_OVERTHINKING,
+    humanSymptom: '«Голова кипит, куча мыслей о дедлайнах и прошлых ошибках, хроническая усталость»',
+    humanCry: '«Я физически почти ничего тяжелого не делал, но чувствую себя выжатым как лимон. Мысли крутятся без остановки, голова тяжелая.»',
+    electrodynamicCause: {
+      faultCode: 'ERR_01_OHMIC_OVERHEAT',
+      headline: 'Омический перегрев шины внимания (R ≫ 0)',
+      physicsLaw: 'Закон Джоуля — Ленца: Q = I² · R · t. Энергия намерения сгорает в трении о виртуальные симуляции, не доходя до полезной нагрузки.',
+      affectedNode: 'Шина внимания (нейронная проводка между Тандэном и действием)',
+      parameterState: 'R_eff = 25...100+ Ом (высокие реактансы L_past и C_future)',
+      explanation: 'Ваше внимание застряло в симуляциях того, чего сейчас физически нет: сожаления о прошлом (L_past) и тревога о будущем (C_future). Проводка раскалена докрасна.'
+    },
+    remediationSolution: {
+      protocolName: 'Протокол «Мусин» (Сенсорное заземление R → 0)',
+      actionHeadline: 'Мгновенный сброс сопротивления проводки в ноль',
+      immediateAction: 'Отсечь виртуальные ветки времени (t_past → 0, t_future → 0). Перенести 100% фокуса в физические рецепторы тела прямо сейчас.',
+      steps: MUSHIN_GROUNDING_PROTOCOL
+    }
+  },
+
+  [HumanPainArchetype.IMPOSTOR_VALIDATION]: {
+    id: HumanPainArchetype.IMPOSTOR_VALIDATION,
+    humanSymptom: '«Чувствую себя самозванцем, панически боюсь критики, жду одобрения, откладываю релиз»',
+    humanCry: '«Мне кажется, что меня вот-вот разоблачат. Я не могу выпустить проект, пока не буду на 100% уверен, что все будут в восторге.»',
+    electrodynamicCause: {
+      faultCode: 'ERR_02_REVERSE_POLARITY',
+      headline: 'Паразитный обратный ток (I < 0)',
+      physicsLaw: 'Закон однонаправленности тока и закон полярности питания. Нагрузка является пассивным потребителем и не имеет собственного генератора.',
+      affectedNode: 'Узел подключения внешней нагрузки (инверсия вектора питания)',
+      parameterState: 'I < 0 (обратная ЭДС, ток течёт из внешнего мира в ядро)',
+      explanation: 'Вы пытаетесь согреться и зарядить свой Тандэн от внешней лампочки (одобрение, деньги, лайки, похвала). Но в лампочке нет генератора! Попытка сосать энергию извне разворачивает ток вспять, глушит реактор и плавит изоляцию.'
+    },
+    remediationSolution: {
+      protocolName: 'Протокол «Нидзиригути» (Сброс эго и разворот полярности)',
+      actionHeadline: 'Размыкание обратной линии и разворот вектора тока на отдачу',
+      immediateAction: 'Осознать: лампочка не способна вас согреть. Оставить социальный меч у метрового входа и отдавать свет в форму ради чистоты действия.',
+      steps: NIJIRIGUCHI_POLARITY_PROTOCOL
+    }
+  },
+
+  [HumanPainArchetype.COLLAPSE_SHOCK]: {
+    id: HumanPainArchetype.COLLAPSE_SHOCK,
+    humanSymptom: '«Проект сорвался / бизнес рухнул / меня бросили — земля ушла из-под ног, жизнь кончена»',
+    humanCry: '«Всё, во что я вкладывал душу, разбилось вдребезги. Я раздавлен, чувствую полную пустоту и бессилие.»',
+    electrodynamicCause: {
+      faultCode: 'ERR_03_SHORT_CIRCUIT',
+      headline: 'Короткое замыкание при крахе нагрузки без предохранителя',
+      physicsLaw: 'Принцип энтропии внешней материи: любые внешние формы бренны и смертны. Без ментального размыкателя авария нагрузки сжигает автономный реактор.',
+      affectedNode: 'Защитный модуль цепи (Circuit Breaker)',
+      parameterState: 'Breaker DISABLED / zanshinAwareness < tripThreshold',
+      explanation: 'Вы припаяли свою личность намертво к внешнему проекту. Когда проект разбился, ударная волна короткого замыкания беспрепятственно ударила прямо в реактор личности.'
+    },
+    remediationSolution: {
+      protocolName: 'Триада «Дзансин + Ваби-саби + Кинцуги»',
+      actionHeadline: 'Изоляция аварийного узла и заливка трещины золотом опыта',
+      immediateAction: 'Взвести предохранитель Дзансин: отделить себя от погибшего проекта. Принять неидеальность материи (Ваби-саби) и положить золотой шов Кинцуги.',
+      steps: KINTSUGI_CIRCUIT_BREAKER_PROTOCOL
+    }
+  },
+
+  [HumanPainArchetype.APATHY_STAGNATION]: {
+    id: HumanPainArchetype.APATHY_STAGNATION,
+    humanSymptom: '«Хроническая лень, апатия, нет сил встать с дивана, всё потеряло смысл»',
+    humanCry: '«Я просто лежу, листаю ленту, ничего не хочу. Любое действие кажется бессмысленным и неподъемным.»',
+    electrodynamicCause: {
+      faultCode: 'ERR_04_OPEN_CIRCUIT',
+      headline: 'Обрыв цепи / Холостой ход реактора (I = 0)',
+      physicsLaw: 'Закон сохранения и циркуляции энергии: потенциал ЭДС без замыкания на полезную нагрузку вызывает застой и внутреннюю коррозию аккумулятора.',
+      affectedNode: 'Ключ коммутации цепи (размыкание линии нагрузки)',
+      parameterState: 'I = 0 А, P_load = 0 Вт, все каналы обесточены',
+      explanation: 'Вы боитесь ошибиться и разомкнули цепь. ЭДС в ядре вырабатывается, но ток не течёт никуда. Нерастраченная энергия застаивается и субъективно переживается как болото апатии и бессмысленности.'
+    },
+    remediationSolution: {
+      protocolName: 'Протокол «Чайный светодиод» (Микронагрузка 10 Вт)',
+      actionHeadline: 'Замыкание контура на простейшем сенсорном действии',
+      immediateAction: 'Не строить империю. Зажечь один микро-светодиод: заварить чашку чая, помыть чашку, сделать 10 вдохов. Запустить циркуляцию тока I > 0.',
+      steps: MICRO_LOAD_TEA_PROTOCOL
+    }
+  },
+
+  [HumanPainArchetype.OVERLOAD_HEALTH_DRAIN]: {
+    id: HumanPainArchetype.OVERLOAD_HEALTH_DRAIN,
+    humanSymptom: '«Разрываюсь между делами, здоровье посыпалось, ни на что не хватает сил, всё валится из рук»',
+    humanCry: '«Я пытаюсь тащить работу, семью, быт, проекты одновременно, сплю по 4 часа, тело дает сбои, ничего не довожу до конца.»',
+    electrodynamicCause: {
+      faultCode: 'WARN_05_UNDERVOLTAGE',
+      headline: 'Просадка сети (Undervoltage) и обесточивание канала Здоровья',
+      physicsLaw: 'Закон сохранения мощности: P_total = sum(P_i). Если суммарный отбор ламп превышает мощность генератора, напряжение сети падает и все лампы тлеют.',
+      affectedNode: 'Распределительный щит 6 ламп (шина распределения питания)',
+      parameterState: 'P_demanded > P_available, P_health < 5 Вт',
+      explanation: 'Вы включили сразу все лампы на максимум при ограниченной емкости аккумулятора. Напряжение просело, нити накала остыли, а канал «Здоровье» полностью обесточен ради карьеры.'
+    },
+    remediationSolution: {
+      protocolName: 'Регламент балансировки щита мощности',
+      actionHeadline: 'Принудительное отключение балласта и запитка канала Здоровья',
+      immediateAction: 'Обесточить 3–4 второстепенные лампы. Подать гарантированные 20–30 Вт в канал «🩺 Здоровье» (сон, прогулка, вода, питание).',
+      steps: [
+        { order: 1, title: 'Аварийное отключение балласта', description: 'Снизить мощность второстепенных ламп до нуля.', protocolName: 'SHIELD_TRIM' },
+        { order: 2, title: 'Восстановление питания Здоровья', description: 'Подать минимум 20 Вт на сон, физическое тело и питание.', protocolName: 'HEALTH_FEED' },
+        { order: 3, title: 'Фокусировка на главном', description: 'Удерживать яркое горение только 1–2 ключевых ламп.', protocolName: 'FOCUS_MONOPOLY' }
+      ]
+    }
+  }
+};
+
