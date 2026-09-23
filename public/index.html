@@ -155,6 +155,20 @@
               <p class="text-[10px] text-slate-400 truncate mt-0.5">6 ламп жизни • Токораспределение</p>
             </div>
           </button>
+
+          <!-- Tab 6: The Book / Reader -->
+          <button id="nav-tab-book" onclick="switchTab('book')" class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden bg-slate-950/40 border-slate-800 hover:border-slate-700 cursor-pointer">
+            <span class="text-xl shrink-0" id="nav-icon-book">📖</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between gap-1">
+                <span class="text-xs font-bold text-slate-200 group-hover:text-amber-300 transition truncate" id="nav-title-book">
+                  6. Книга: Архитектура счастья
+                </span>
+                <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">100%</span>
+              </div>
+              <p class="text-[10px] text-slate-400 truncate mt-0.5">Все 22 главы • Веб-ридер • PDF</p>
+            </div>
+          </button>
         </div>
 
         <!-- Active Mode Info Card in Sidebar -->
@@ -178,7 +192,7 @@
       <div class="pt-4 border-t border-slate-800 space-y-3">
         <div class="p-2.5 rounded-lg bg-slate-950/60 border border-slate-800/80 text-[11px] text-slate-400 font-mono flex items-center gap-2">
           <span class="text-amber-400">⌨️</span>
-          <span>Клавиши <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200 border border-slate-700">1</kbd>–<kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200 border border-slate-700">5</kbd> переключают закладки</span>
+          <span>Клавиши <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200 border border-slate-700">1</kbd>–<kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200 border border-slate-700">6</kbd> переключают закладки</span>
         </div>
         <div class="flex items-center justify-between text-[10px] text-slate-500 font-mono">
           <span>Zen-Engineering</span>
@@ -224,7 +238,7 @@
           🔥 Выгорание (Q >> 0)
         </button>
         <button onclick="sc_applyPreset('reverse')" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-purple-950 border border-purple-700/50 text-purple-300 hover:bg-purple-900 transition">
-          🪤 Обратный ток
+          🪤 КЗ на Эго
         </button>
         <button onclick="sc_applyPreset('kintsugi')" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-amber-950 border border-amber-700/50 text-amber-300 hover:bg-amber-900 transition">
           🏺 Крах & Кинцуги
@@ -421,7 +435,7 @@
             <input type="checkbox" id="sc_checkValidation" class="w-4 h-4 accent-purple-500 rounded" onchange="sc_updateCircuit()">
             <div class="text-xs">
               <div class="font-semibold text-purple-300">Жажда внешнего одобрения</div>
-              <div class="text-slate-500">Попытка зарядиться от лампочки (Обратный ток)</div>
+              <div class="text-slate-500">Ожидание подпитки от пустой лампочки (КЗ на Эго)</div>
             </div>
           </label>
 
@@ -525,7 +539,7 @@
           🍵 Мусин (Чай, R→0)
         </button>
         <button onclick="mc_applyPreset('reverse')" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-purple-950 border border-purple-700/50 text-purple-300 hover:bg-purple-900 transition">
-          🪤 Обратный ток
+          🪤 КЗ на Эго
         </button>
         <button onclick="mc_applyPreset('monk')" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-indigo-950 border border-indigo-700/50 text-indigo-300 hover:bg-indigo-900 transition">
           🧘 Режим монаха (0W)
@@ -1318,7 +1332,7 @@
                     <span class="text-xs font-mono font-bold text-purple-400 px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20">
                       Боль #2
                     </span>
-                    <span class="text-xs font-mono text-slate-400">ERR_02_REVERSE_POLARITY</span>
+                    <span class="text-xs font-mono text-slate-400">ERR_02_EGO_SHORT_CIRCUIT</span>
                   </div>
                   <h2 class="text-lg font-bold text-slate-100 mt-0.5">
                     «Чувствую себя самозванцем, панически боюсь критики, жду одобрения»
@@ -1326,7 +1340,7 @@
                 </div>
               </div>
               <span class="text-xs font-mono px-2.5 py-1 rounded bg-purple-950 border border-purple-800 text-purple-300 self-start md:self-auto">
-                Обратный ток (I &lt; 0)
+                Короткое замыкание на Эго
               </span>
             </div>
 
@@ -1342,13 +1356,13 @@
                   <span>⚡</span> Физическая первопричина боли:
                 </div>
                 <div class="text-slate-300 leading-relaxed">
-                  Полярность цепи инвертирована. Вы пытаетесь <strong>зарядить свой Тандэн от внешней лампочки</strong> (признания, статуса, денег, похвалы).
+                  Лампочка пуста (Шуньята, \(\mathcal{E}_{\text{load}} \equiv 0\)). Вы пытаетесь <strong>получить подтверждение своей ценности от внешнего потребителя</strong> (признания, статуса, лайков).
                   <div class="mt-1.5 p-2 bg-slate-900 rounded border border-purple-900/40 text-purple-200 font-mono text-[11px]">
                     Формула невроза: «Вот когда меня похвалят — я наконец стану ценным».
                   </div>
                 </div>
                 <div class="pt-2 border-t border-slate-800/80 font-mono text-[11px] text-purple-300">
-                  <strong>Закон полярности:</strong> Лампочка — это пассивный потребитель. В ней нет генератора! Попытка высосать ток меняет его знак (<span class="text-rose-400 font-bold">I &lt; 0</span>), глушит реактор и сжигает внимание.
+                  <strong>Закон Шуньяты:</strong> Лампочка — пассивный рассеиватель, а не аккумулятор. Ожидание валидации замыкает внимание в паразитную внутреннюю петлю Эго (Дзига) до нагрузки. Ток КЗ (\(I_{\text{КЗ}} = \mathcal{E} / r_{\text{int}}\)) кипятит проводку, пока лампа остаётся тёмной (\(I_{\text{load}} = 0\)).
                 </div>
               </div>
 
@@ -1360,16 +1374,16 @@
                   <div class="text-slate-200 mt-1 leading-relaxed">
                     <strong>Что сделать прямо в эту секунду:</strong>
                     <ol class="list-decimal list-inside mt-1 space-y-1 text-[11px] text-slate-300">
-                      <li><strong>Размыкание обратной линии:</strong> осознать: «В лампочке нет питания. Мой Тандэн автономен».</li>
+                      <li><strong>Размыкание петли Эго:</strong> осознать: «В лампочке нет накопленного заряда. Мой Тандэн автономен».</li>
                       <li><strong>Лаз Нидзиригути:</strong> мысленно оставить социальный меч, регалии и страх оценки за дверью.</li>
-                      <li><strong>Разворот вектора:</strong> отдавать свет и мастерство в проект ради совершенства формы, не прося ничего взамен.</li>
+                      <li><strong>Прямой ток в форму:</strong> направить энергию в чистое действие ради совершенства формы, не требуя подпитки.</li>
                     </ol>
                   </div>
                 </div>
 
                 <div class="pt-2 flex flex-wrap gap-2">
                   <button onclick="executePainRemediation('reverse')" class="flex-1 py-2 px-3 rounded-lg bg-purple-500 hover:bg-purple-400 text-slate-950 font-bold text-xs shadow-lg transition flex items-center justify-center gap-1.5 cursor-pointer">
-                    <span>⚡</span> Развернуть полярность на отдачу
+                    <span>⚡</span> Разрубить петлю Эго и дать ток
                   </button>
                   <button onclick="switchAndSimulate('single', 'reverse')" class="py-2 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium text-xs border border-slate-700 transition flex items-center gap-1 cursor-pointer">
                     <span>📡</span> Схема Контура
@@ -1630,10 +1644,10 @@
                   <td class="p-3 font-bold text-purple-300 flex items-center gap-1.5">
                     <span>🪤</span> 2. Самозванец (Страх критики)
                   </td>
-                  <td class="p-3 text-purple-400 font-bold">I &lt; 0 (Паразитный обратный ток)</td>
+                  <td class="p-3 text-purple-400 font-bold">I_load = 0 (КЗ на Эго / Шунт Дзига)</td>
                   <td class="p-3 text-slate-400">Узел нагрузки (ожидание признания)</td>
-                  <td class="p-3 text-amber-300">Закон полярности (лампа не генератор)</td>
-                  <td class="p-3 text-emerald-300 font-sans">Сброс меча эго, разрыв обратной цепи</td>
+                  <td class="p-3 text-amber-300">Закон Шуньяты (лампа пуста, E=0)</td>
+                  <td class="p-3 text-emerald-300 font-sans">Сброс меча эго, разрыв петли рефлексии</td>
                   <td class="p-3 text-cyan-300 font-sans">«Нидзиригути» (躙口)</td>
                 </tr>
                 <tr class="hover:bg-amber-950/20 transition cursor-pointer" onclick="scrollToPainCard('card-pain-03')">
@@ -1681,7 +1695,7 @@
               Куда ведёт исцеление? От боли — к Сверхпроводимости и Счастью (R → 0)
             </h3>
             <p class="text-xs text-slate-300 max-w-2xl leading-relaxed">
-              Устранив омический перегрев, обратный ток самозванца и просадки сети, цепь переходит в режим золотого потока. Узнайте, как функционирует идеальное состояние человека.
+              Устранив омический перегрев, замыкание на эго самозванца и просадки сети, цепь переходит в режим золотого потока. Узнайте, как функционирует идеальное состояние человека.
             </p>
           </div>
           <button onclick="switchTab('ideal')" class="px-5 py-3 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-cyan-400 hover:opacity-95 text-slate-950 font-bold text-xs shadow-xl shadow-amber-500/20 transition flex items-center gap-2 shrink-0 cursor-pointer">
@@ -1730,7 +1744,7 @@
               <span>🔥</span> Перегрев (25%)
             </button>
             <button onclick="sc_applyPreset('reverse'); if (typeof updateHappinessHUD==='function') updateHappinessHUD();" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-purple-950/80 border border-purple-700/60 text-purple-300 hover:bg-purple-900 transition flex items-center gap-1.5 cursor-pointer">
-              <span>🪤</span> Обратный ток (18%)
+              <span>🪤</span> Замыкание на Эго (18%)
             </button>
             <button onclick="sc_applyPreset('kintsugi'); if (typeof updateHappinessHUD==='function') updateHappinessHUD();" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-950/80 border border-amber-700/60 text-amber-300 hover:bg-amber-900 transition flex items-center gap-1.5 cursor-pointer">
               <span>🏺</span> Кинцуги (65%)
@@ -1883,7 +1897,7 @@
                   <span class="text-lg">🪤</span>
                   <div class="flex-1 min-w-0">
                     <div class="font-bold">Жду похвалы / боюсь критики</div>
-                    <div class="text-[10px] text-slate-400 truncate">Обратный ток (I &lt; 0) • Ловушка</div>
+                    <div class="text-[10px] text-slate-400 truncate">КЗ на Эго (I_load = 0) • Ловушка</div>
                   </div>
                 </button>
                 <button onclick="humanCheck_setMotive('apathy')" id="hbtn-motive-apathy" class="w-full text-left p-2.5 rounded-xl text-xs font-medium border transition cursor-pointer flex items-center gap-2.5 bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700">
@@ -2573,7 +2587,7 @@
               <tbody class="divide-y divide-slate-800/60 font-mono text-[11px]">
                 <tr class="hover:bg-slate-800/30 transition">
                   <td class="p-3.5 font-bold text-slate-200">1. Источник энергии</td>
-                  <td class="p-3.5 text-rose-300 font-sans">Зависимость от признания, страх критики, обратный ток (I &lt; 0)</td>
+                  <td class="p-3.5 text-rose-300 font-sans">Зависимость от признания, страх критики, КЗ на Эго</td>
                   <td class="p-3.5 text-amber-300 font-sans">Разворот полярности: опора на внутреннее ядро</td>
                   <td class="p-3.5 text-emerald-300 font-sans font-bold">Автономный Тандэн: созидание из избытка (I &gt; 0)</td>
                 </tr>
@@ -2626,7 +2640,7 @@
               </p>
               <ul class="list-disc list-inside space-y-1 text-slate-300">
                 <li>Если в проводке мегаомное сопротивление сомнений — провод плавится (выгорание).</li>
-                <li>Если подан обратный ток ожидания лайков — сгорает управляющая плата (самозванец).</li>
+                <li>Если замкнута петля ожидания лайков на Эго — сгорает управляющая плата (самозванец).</li>
                 <li>Если на линии КЗ без предохранителя — сгорает весь дом (депрессия).</li>
               </ul>
               <div class="pt-2 font-mono text-[11px] text-amber-300">
@@ -2741,24 +2755,66 @@
 
       </div>
 
-    </main>
+      <!-- VIEW 6: THE BOOK (FULL READER) -->
+      <div id="view-book" class="space-y-6 hidden">
+        <header class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 backdrop-blur-md shadow-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">📖</span>
+              <h1 class="text-2xl md:text-3xl font-bold tracking-tight bg-gradient-to-r from-amber-400 via-amber-300 to-sky-300 bg-clip-text text-transparent">
+                Внутренний ток: Архитектура счастья
+              </h1>
+              <span class="text-xs uppercase tracking-widest px-2.5 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-full font-mono">
+                Полная книга (100%)
+              </span>
+            </div>
+            <p class="text-slate-400 text-sm mt-1">
+              Автор: Владимир Аньянов • 22 главы, манифест, практикум-воркбук и канонические приложения
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <a href="/book/" target="_blank" class="px-4 py-2 rounded-xl text-xs font-semibold bg-amber-500 hover:bg-amber-400 text-slate-950 transition flex items-center gap-1.5 shadow-lg shadow-amber-500/20">
+              <span>↗</span> Открыть в отдельной вкладке
+            </a>
+            <button onclick="book_printBook()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center gap-1.5 cursor-pointer">
+              <span>📄</span> Печать в PDF
+            </button>
+          </div>
+        </header>
+
+        <!-- Book Reader Container Card with embedded Reader -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl h-[calc(100vh-230px)] min-h-[600px] flex flex-col">
+          <iframe id="bookIframe" src="/book/" class="w-full flex-1 border-none bg-[#090d16]" title="Книга Внутренний ток: Архитектура счастья"></iframe>
+        </div>
+      </div>
 
   </div>
 
   <!-- Global Tab Router Script -->
   <script>
+    function book_printBook() {
+      const iframe = document.getElementById('bookIframe');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.print();
+      } else {
+        window.open('/book/', '_blank');
+      }
+    }
+
     function switchTab(tabId) {
       const viewPains = document.getElementById('view-pains');
       const viewDash = document.getElementById('view-happiness-dashboard');
       const viewIdeal = document.getElementById('view-ideal');
       const viewSingle = document.getElementById('view-single-circuit');
       const viewMulti = document.getElementById('view-multi-circuit');
+      const viewBook = document.getElementById('view-book');
 
       const navPains = document.getElementById('nav-tab-pains');
       const navDash = document.getElementById('nav-tab-dashboard');
       const navIdeal = document.getElementById('nav-tab-ideal');
       const navSingle = document.getElementById('nav-tab-single');
       const navMulti = document.getElementById('nav-tab-multi');
+      const navBook = document.getElementById('nav-tab-book');
 
       const activeBadge = document.getElementById('sidebarActiveBadge');
       const modeDesc = document.getElementById('sidebarModeDesc');
@@ -2775,6 +2831,7 @@
       if (viewIdeal) viewIdeal.classList.add('hidden');
       if (viewSingle) viewSingle.classList.add('hidden');
       if (viewMulti) viewMulti.classList.add('hidden');
+      if (viewBook) viewBook.classList.add('hidden');
 
       // Reset all nav buttons
       if (navPains) navPains.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
@@ -2782,6 +2839,7 @@
       if (navIdeal) navIdeal.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
       if (navSingle) navSingle.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
       if (navMulti) navMulti.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
+      if (navBook) navBook.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
 
       if (tabId === 'pains' || tabId === 'errors') {
         if (viewPains) viewPains.classList.remove('hidden');
@@ -2834,6 +2892,13 @@
         if (typeof mc_updateCircuit === 'function') {
           mc_updateCircuit();
         }
+      } else if (tabId === 'book' || tabId === 'reader') {
+        if (viewBook) viewBook.classList.remove('hidden');
+        if (navBook) navBook.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + activeClassGold;
+
+        activeBadge.textContent = 'КНИГА: АРХИТЕКТУРА СЧАСТЬЯ';
+        activeBadge.className = 'text-amber-400 font-bold';
+        modeDesc.textContent = 'Полное издание книги Владимира Аньянова: 22 главы, манифест, 21-дневный воркбук-практикум и канонические приложения.';
       }
 
       if (typeof updateHappinessHUD === 'function') {
@@ -2844,6 +2909,15 @@
         localStorage.setItem('inner_current_active_tab', tabId);
         window.location.hash = tabId;
       } catch (e) {}
+    }
+
+    function book_printBook() {
+      const iframe = document.getElementById('bookIframe');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.print();
+      } else {
+        window.open('/book/', '_blank');
+      }
     }
 
     // Helper to jump to a specific pain card and flash it
@@ -2911,18 +2985,18 @@
       },
       reverse: {
         icon: '🪤',
-        title: 'Протокол «Нидзиригути»: Разворот полярности',
-        desc: 'Меч эго оставлен за дверью. Обратная линия разомкнута. Вектор тока переключен на чистую отдачу.',
+        title: 'Протокол «Нидзиригути»: Размыкание петли Эго',
+        desc: 'Меч эго оставлен за дверью. Петля рефлексии разомкнута. Ток направлен в чистое ремесло.',
         cardId: 'card-pain-02',
         targetTab: 'single',
         preset: 'mushin',
-        labels: ['Обратный ток (I_rev)', 'Внешняя валидация', 'Полярность', 'КПД Тандэна'],
+        labels: ['Шунт Эго (I_ego)', 'Внешняя валидация', 'Вектор тока', 'КПД Тандэна'],
         phases: [
           {
             progress: 25,
             badge: 'ФАЗА 1/3: РАЗМЫКАНИЕ ЦЕПИ',
-            cue: '🛑 Размыкаем обратную линию: чужое одобрение не может зарядить ядро...',
-            g1: '-8.5 А', g2: 'ОБРЫВ', g3: 'НЕЙТРАЛЬ', g4: '35%'
+            cue: '🛑 Размыкаем петлю Эго: пустая лампа не может зарядить ядро...',
+            g1: '0.0 А', g2: 'ОБРЫВ', g3: 'ПРЯМОЙ', g4: '35%'
           },
           {
             progress: 65,
@@ -3203,6 +3277,8 @@
         switchTab('single');
       } else if (e.key === '5') {
         switchTab('multi');
+      } else if (e.key === '6') {
+        switchTab('book');
       }
     });
   </script>
@@ -3346,7 +3422,7 @@
         if (subQ) { subQ.textContent = 'Выгорание проводки'; }
         if (hudP) { hudP.textContent = '5.8 Вт'; hudP.className = 'text-base font-bold text-rose-300'; }
         if (subP) { subP.textContent = 'КПД цепи: 5.8%'; }
-        if (hudI) { hudI.textContent = 'I < 0 (Обратный)'; hudI.className = 'text-base font-bold text-purple-400'; }
+        if (hudI) { hudI.textContent = 'I_load = 0 (КЗ на Эго)'; hudI.className = 'text-base font-bold text-purple-400'; }
         if (subI) { subI.textContent = 'Ожидание похвалы'; }
 
         // Wire Visuals (Hot Crimson)
@@ -3557,27 +3633,28 @@
       const loadAura = document.getElementById('sc_loadAura');
 
       if (sc_state.validationTrap) {
-        // REVERSE CURRENT TRAP
-        status = 'REVERSE_POLARITY';
-        code = 'ERR_02_REVERSE_POLARITY';
-        current = -(sc_state.loadPower / (effectiveR + 10));
-        heat = Math.round(Math.pow(current, 2) * (effectiveR + 50) * sc_state.durationMinutes);
+        // EGO SHORT CIRCUIT LOOP
+        status = 'EGO_SHORT_CIRCUIT';
+        code = 'ERR_02_EGO_SHORT_CIRCUIT';
+        current = 0; // Ток в полезную нагрузку не доходит
+        const internalShortCurrent = sc_state.emf / 10;
+        heat = Math.round(Math.pow(internalShortCurrent, 2) * (effectiveR + 50) * sc_state.durationMinutes);
         flowIndex = 0;
-        title = 'Паразитный обратный ток: попытка зарядки от потребителя';
-        physics = 'Полярность инвертирована. Вы пытаетесь запитать Тандэн от внешней похвалы/результата. Это блокирует генератор и накаляет проводку.';
+        title = 'Короткое замыкание на Эго: иллюзия внешнего источника';
+        physics = 'Лампа пуста (E=0). Ожидание признания замыкает внимание во внутреннюю петлю Эго (Дзига). Полезный ток I_load = 0, а ток КЗ кипятит нервную систему.';
         badgeClass = 'bg-purple-500/20 text-purple-300 border-purple-500/40';
         boxClass = 'bg-purple-950/40 border-purple-700/60';
         remediation = [
-          { title: 'Размыкание обратной линии', desc: 'Осознать: внешняя лампочка — потребитель, в ней нет генератора.' },
+          { title: 'Размыкание петли Эго', desc: 'Осознать: внешняя лампа пуста (E=0), в ней нет накопленного заряда.' },
           { title: 'Проход Нидзиригути', desc: 'Снять социальные доспехи и регалии у входа.' },
-          { title: 'Разворот полярности', desc: 'Отдавать свет в форму, а не просить подпитки.' }
+          { title: 'Прямой ток в форму', desc: 'Направить энергию в чистое действие ради совершенства формы.' }
         ];
 
         wireOutFlow.className = 'flow-reverse';
         wireReturnFlow.className = 'flow-reverse';
         wireOutFlow.setAttribute('stroke', '#a855f7');
         wireReturnFlow.setAttribute('stroke', '#a855f7');
-        document.getElementById('sc_vectorDirection').textContent = 'ОБРАТНЫЙ (I < 0)';
+        document.getElementById('sc_vectorDirection').textContent = 'ПЕТЛЯ ЭГО (I_load = 0, КЗ)';
         document.getElementById('sc_vectorDirection').className = 'text-purple-400 font-bold';
       } else if (sc_state.loadFailed) {
         // SHORT CIRCUIT / FAILED LOAD
@@ -4045,19 +4122,20 @@
         document.getElementById('mc_vectorDirection').textContent = 'ХОЛОСТОЙ ХОД (I = 0, РЕЖИМ МОНАХА)';
         document.getElementById('mc_vectorDirection').className = 'text-amber-400 font-bold';
       } else if (anyReverseTrap) {
-        status = 'REVERSE_POLARITY';
-        code = 'ERR_02_REVERSE_POLARITY';
-        current = -(totalDemandedPower / (effectiveR + 10));
-        heat = Math.round(Math.pow(current, 2) * (effectiveR + 50) * mc_state.durationMinutes);
+        status = 'EGO_SHORT_CIRCUIT';
+        code = 'ERR_02_EGO_SHORT_CIRCUIT';
+        current = 0; // Нагрузка замкнута на эго
+        const internalShortCurrent = mc_state.emf / 10;
+        heat = Math.round(Math.pow(internalShortCurrent, 2) * (effectiveR + 50) * mc_state.durationMinutes);
         flowIndex = 0;
-        title = 'Паразитный обратный ток: попытка зарядки от потребителя';
-        physics = 'Полярность инвертирована на одной или нескольких лампах. Вы пытаетесь запитать Тандэн от внешнего одобрения или признания.';
+        title = 'Короткое замыкание на Эго: иллюзия внешнего источника';
+        physics = 'Лампы пусты (E=0). Ожидание подпитки или признания замкнуло внимание в петлю Эго (Дзига). Полезный ток I_load = 0, нервная система кипит.';
         badgeClass = 'bg-purple-500/20 text-purple-300 border-purple-500/40';
         boxClass = 'bg-purple-950/40 border-purple-700/60';
         remediation = [
-          { title: 'Размыкание обратной линии', desc: 'Осознать: лампочки — это потребители, в них нет генератора.' },
+          { title: 'Размыкание петли Эго', desc: 'Осознать: лампочки пусты (E=0), в них нет накопленного заряда.' },
           { title: 'Проход Нидзиригути', desc: 'Снять социальные доспехи и регалии у входа.' },
-          { title: 'Разворот полярности', desc: 'Отдавать свет в форму, а не просить подпитки.' }
+          { title: 'Прямой ток в форму', desc: 'Отдавать свет в форму ради чистоты действия.' }
         ];
 
         breakerArm.setAttribute('x2', '75');
@@ -4070,7 +4148,7 @@
           w.className = 'flow-reverse';
           w.setAttribute('stroke', '#a855f7');
         });
-        document.getElementById('mc_vectorDirection').textContent = 'ОБРАТНЫЙ (I < 0)';
+        document.getElementById('mc_vectorDirection').textContent = 'ПЕТЛЯ ЭГО (I_load = 0, КЗ)';
         document.getElementById('mc_vectorDirection').className = 'text-purple-400 font-bold';
       } else if (effectiveR > 25) {
         status = 'OHMIC_OVERHEAT';
@@ -4156,7 +4234,7 @@
           flowWire.setAttribute('stroke', '#c084fc');
           flowWire.className = 'flow-reverse';
           badge.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/30';
-          badge.textContent = p + ' Вт (ОБРАТНЫЙ)';
+          badge.textContent = p + ' Вт (КЗ ЭГО)';
         } else if (isUndervoltage) {
           // Dim / Flicker under Undervoltage
           const opacity = Math.max(0.2, (p / 100) * 0.5);
@@ -4367,22 +4445,22 @@
       if (isReverse) {
         score = 18;
         statusEmoji = '🪤';
-        statusText = 'ОБРАТНЫЙ ТОК';
+        statusText = 'КЗ НА ЭГО';
         statusSub = 'Ловушка валидации';
-        pillText = 'I < 0 • Обратный ток';
+        pillText = 'I_load = 0 • КЗ на Эго';
         pillClass = 'bg-purple-500/20 text-purple-300 border-purple-500/40 animate-pulse';
         orbClass = 'bg-purple-500/30';
         progressGrad = 'from-purple-600 via-fuchsia-500 to-rose-500';
-        iBadgeText = 'I < 0 (ОБРАТНЫЙ)';
+        iBadgeText = 'I_load = 0 (КЗ ЭГО)';
         iBadgeColor = 'text-purple-400 font-bold';
         iSubText = 'Поиск похвалы (отток энергии)';
         qText = '1450 Дж';
         qBadgeColor = 'text-purple-400 font-bold';
         qSubText = 'Накал эго и тревоги';
-        stateDesc = 'Обнаружен паразитный обратный ток (I < 0): внимание направлено не на созидание, а на вымогание валидации и одобрения от внешнего мира. Эго накаляется докрасна, вызывая истощение.';
-        verdictCode = 'ERR_02_REVERSE_VALIDATION_TRAP';
-        verdictTitle = 'Обратный ток: ловушка валидации';
-        verdictPhysics = 'Попытка зарядить внутренний реактор от внешней нагрузки переворачивает полярность диода. Вектор тока отрицателен, что вызывает быстрое выгорание и синдром самозванца.';
+        stateDesc = 'Обнаружено короткое замыкание на Эго: внимание направлено не на полезную форму, а на ожидание признания. Ток внутреннего КЗ кипятит нервную систему, пока полезное действие заблокировано.';
+        verdictCode = 'ERR_02_EGO_SHORT_CIRCUIT';
+        verdictTitle = 'Короткое замыкание на Эго: ловушка валидации';
+        verdictPhysics = 'Лампа пуста (E=0). Ожидание подпитки или признания замкнуло внимание в петлю Эго (Дзига) до нагрузки. Полезный ток I_load = 0, а ток внутреннего КЗ кипятит нервную систему.';
       } else if (isFailed) {
         score = 65;
         statusEmoji = '🏺';
@@ -4520,10 +4598,10 @@
       if (dashRDesc) dashRDesc.textContent = rSubText;
 
       const dashIVal = document.getElementById('dash-i-value');
-      if (dashIVal) dashIVal.textContent = isReverse ? 'ОБРАТНЫЙ (I < 0)' : 'ПРЯМОЙ (I > 0)';
+      if (dashIVal) dashIVal.textContent = isReverse ? 'КЗ НА ЭГО (I_load = 0)' : 'ПРЯМОЙ (I > 0)';
       const dashIBadge = document.getElementById('dash-i-badge');
       if (dashIBadge) {
-        dashIBadge.textContent = isReverse ? 'I < 0' : 'I > 0';
+        dashIBadge.textContent = isReverse ? 'I_load = 0' : 'I > 0';
         dashIBadge.className = 'px-2 py-0.5 rounded text-[10px] font-mono font-bold border ' + (isReverse ? 'bg-purple-500/20 text-purple-300 border-purple-500/40 animate-pulse' : 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40');
       }
       const dashIDesc = document.getElementById('dash-i-desc');
@@ -4839,12 +4917,12 @@
     window.addEventListener('DOMContentLoaded', () => {
       let initialTab = 'pains';
       const hash = window.location.hash.replace('#', '');
-      if (hash === 'pains' || hash === 'dashboard' || hash === 'ideal' || hash === 'happiness' || hash === 'single' || hash === 'multi' || hash === 'errors') {
-        initialTab = (hash === 'errors') ? 'pains' : ((hash === 'happiness' || hash === 'dashboard') ? 'dashboard' : hash);
+      if (hash === 'pains' || hash === 'dashboard' || hash === 'ideal' || hash === 'happiness' || hash === 'single' || hash === 'multi' || hash === 'errors' || hash === 'book' || hash === 'reader') {
+        initialTab = (hash === 'errors') ? 'pains' : ((hash === 'happiness' || hash === 'dashboard') ? 'dashboard' : ((hash === 'reader') ? 'book' : hash));
       } else {
         const saved = localStorage.getItem('inner_current_active_tab');
-        if (saved === 'pains' || saved === 'dashboard' || saved === 'ideal' || saved === 'happiness' || saved === 'single' || saved === 'multi' || saved === 'errors') {
-          initialTab = (saved === 'errors') ? 'pains' : ((saved === 'happiness' || saved === 'dashboard') ? 'dashboard' : saved);
+        if (saved === 'pains' || saved === 'dashboard' || saved === 'ideal' || saved === 'happiness' || saved === 'single' || saved === 'multi' || saved === 'errors' || saved === 'book' || saved === 'reader') {
+          initialTab = (saved === 'errors') ? 'pains' : ((saved === 'happiness' || saved === 'dashboard') ? 'dashboard' : ((saved === 'reader') ? 'book' : saved));
         }
       }
       switchTab(initialTab);

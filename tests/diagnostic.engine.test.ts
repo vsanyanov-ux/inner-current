@@ -92,7 +92,7 @@ describe('Inner Current Diagnostic Engine Test Suite', () => {
     assert.equal(result.remediationProtocols[0].protocolName, 'MUSHIN_ZERO_RESISTANCE');
   });
 
-  it('3. Detects Reverse Polarity (Attempting to charge core from load)', () => {
+  it('3. Detects Ego Short Circuit (Attempting to draw validation from empty load)', () => {
     const telemetry: CircuitTelemetry = {
       timestamp: Date.now(),
       core: baseCore,
@@ -109,7 +109,7 @@ describe('Inner Current Diagnostic Engine Test Suite', () => {
         powerRequirement: 100,
         fragility: 0.8,
         isDamagedOrFailed: false,
-        expectationOfValidation: true // Reverse trap!
+        expectationOfValidation: true // Ego loop trap!
       },
       breaker: baseBreaker,
       durationMinutes: 30
@@ -117,11 +117,12 @@ describe('Inner Current Diagnostic Engine Test Suite', () => {
 
     const result = engine.diagnose(telemetry);
 
-    assert.equal(result.status, CircuitStatus.REVERSE_POLARITY);
+    assert.equal(result.status, CircuitStatus.EGO_SHORT_CIRCUIT);
     assert.equal(result.severity, 'CRITICAL');
-    assert.equal(result.code, 'ERR_02_REVERSE_POLARITY');
-    assert.ok(result.currentAmperes < 0, 'Current must flow backwards');
-    assert.equal(result.remediationProtocols[0].protocolName, 'NIJIRIGUCHI_SEVER_REVERSE');
+    assert.equal(result.code, 'ERR_02_EGO_SHORT_CIRCUIT');
+    assert.equal(result.currentAmperes, 0, 'Useful current to load must be 0 due to ego shunt');
+    assert.ok(result.thermalDissipationJoules > 1000, 'Internal ego loop must produce massive Joule heating');
+    assert.equal(result.remediationProtocols[0].protocolName, 'NIJIRIGUCHI_SEVER_EGO_LOOP');
   });
 
   it('4. Handles Load Crash with Zanshin Circuit Breaker (Graceful Degradation)', () => {
@@ -278,7 +279,7 @@ describe('Inner Current Diagnostic Engine Test Suite', () => {
         powerRequirement: 80,
         fragility: 0.95,
         isDamagedOrFailed: false,
-        expectationOfValidation: true // Reverse current trap!
+        expectationOfValidation: true // Ego loop trap!
       },
       breaker: { status: BreakerStatus.ARMED, zanshinAwareness: 0.15, tripThreshold: 0.5 },
       durationMinutes: 5
@@ -286,12 +287,12 @@ describe('Inner Current Diagnostic Engine Test Suite', () => {
 
     const result = engine.diagnose(approachLockTelemetry);
 
-    assert.equal(result.status, CircuitStatus.REVERSE_POLARITY);
+    assert.equal(result.status, CircuitStatus.EGO_SHORT_CIRCUIT);
     assert.equal(result.severity, 'CRITICAL');
-    assert.equal(result.code, 'ERR_02_REVERSE_POLARITY');
-    assert.ok(result.currentAmperes < 0, 'Must produce negative reverse current');
+    assert.equal(result.code, 'ERR_02_EGO_SHORT_CIRCUIT');
+    assert.equal(result.currentAmperes, 0, 'Must produce 0 useful load current due to internal ego short circuit');
     assert.ok(result.effectiveResistance > 150, 'Effective resistance must spike due to future simulations and critic noise');
-    assert.equal(result.remediationProtocols[0].protocolName, 'NIJIRIGUCHI_SEVER_REVERSE');
+    assert.equal(result.remediationProtocols[0].protocolName, 'NIJIRIGUCHI_SEVER_EGO_LOOP');
   });
 
   it('9. Validates Calibrated Approach: Zero Resistance Mushin and Zanshin Safety', () => {
@@ -386,7 +387,7 @@ describe('Inner Current Diagnostic Engine Test Suite', () => {
     assert.equal(analysis.activeBulbsCount, 3); // CAR (30), CAREER (55), ENTERTAINMENT (25)
     assert.ok(analysis.diagnostics.some(d => d.includes('Просадка напряжения')));
     assert.ok(analysis.diagnostics.some(d => d.includes('Здоровье')));
-    assert.ok(analysis.diagnostics.some(d => d.includes('Паразитная утечка')));
+    assert.ok(analysis.diagnostics.some(d => d.includes('Замыкание на Эго')));
   });
 
   it('11. Detects Monk Mode warning when all six bulbs are turned off (0 / 6 active)', () => {
@@ -424,8 +425,8 @@ describe('Inner Current Diagnostic Engine Test Suite', () => {
 
     // 2. Impostor & validation hunger (Nijiriguchi)
     const impostor = engine.diagnosePain(HumanPainArchetype.IMPOSTOR_VALIDATION);
-    assert.equal(impostor.electrodynamicCause.faultCode, 'ERR_02_REVERSE_POLARITY');
-    assert.ok(impostor.electrodynamicCause.physicsLaw.includes('полярности'));
+    assert.equal(impostor.electrodynamicCause.faultCode, 'ERR_02_EGO_SHORT_CIRCUIT');
+    assert.ok(impostor.electrodynamicCause.physicsLaw.includes('Шуньят'));
     assert.ok(impostor.remediationSolution.protocolName.includes('Нидзиригути'));
     assert.ok(impostor.remediationSolution.protocolName.includes('躙口'));
     assert.ok(impostor.humanSymptom.includes('самозванцем'));

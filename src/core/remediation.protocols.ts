@@ -29,21 +29,21 @@ export const MUSHIN_GROUNDING_PROTOCOL: RemediationStep[] = [
 export const NIJIRIGUCHI_POLARITY_PROTOCOL: RemediationStep[] = [
   {
     order: 1,
-    protocolName: 'NIJIRIGUCHI_SEVER_REVERSE',
-    title: 'Размыкание обратной линии питания',
-    description: 'Осознать физический закон: внешняя лампочка (деньги, похвала, метрики) является ПОТРЕБИТЕЛЕМ, в ней нет встроенного генератора.'
+    protocolName: 'NIJIRIGUCHI_SEVER_EGO_LOOP',
+    title: 'Размыкание паразитной петли Эго и осознание Шуньяты',
+    description: 'Осознать физический закон: внешняя лампочка (деньги, похвала, метрики) пуста (E_load = 0). В ней нет накопленного заряда. Ожидание валидации лишь закольцовывает ток внутрь на себя.'
   },
   {
     order: 2,
-    protocolName: 'NIJIRIGUCHI_SEVER_REVERSE',
+    protocolName: 'NIJIRIGUCHI_SEVER_EGO_LOOP',
     title: 'Проход через низкий портал Нидзиригути',
     description: 'Оставить за порогом комнаты мечи, социальный статус, регалии и страх оценки. Подойти к работе на коленях — как чистый ученик.'
   },
   {
     order: 3,
-    protocolName: 'NIJIRIGUCHI_SEVER_REVERSE',
-    title: 'Разворот вектора тока',
-    description: 'Переключить полярность: отдавать качество и свет в проект ради совершенства формы, а не ради подзарядки своего эго.'
+    protocolName: 'NIJIRIGUCHI_SEVER_EGO_LOOP',
+    title: 'Подача прямого тока в форму',
+    description: 'Направить ток от Тандэна напрямую в лампу ремесла ради чистоты действия, без петли эго-рефлексии.'
   }
 ];
 

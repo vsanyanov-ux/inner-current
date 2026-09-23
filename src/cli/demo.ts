@@ -57,7 +57,7 @@ const scenarios: { name: string; telemetry: CircuitTelemetry }[] = [
     }
   },
   {
-    name: '🪤 Сценарий 3: Ловушка признания (Обратный ток / Синдром самозванца)',
+    name: '🪤 Сценарий 3: Ловушка признания (Короткое замыкание на Эго / Синдром самозванца)',
     telemetry: {
       timestamp: Date.now(),
       core: { emf: 60, reserve: 50, grounding: 0.3 },
@@ -69,7 +69,7 @@ const scenarios: { name: string; telemetry: CircuitTelemetry }[] = [
         powerRequirement: 90,
         fragility: 0.8,
         isDamagedOrFailed: false,
-        expectationOfValidation: true // Опасное ожидание подпитки извне!
+        expectationOfValidation: true // Опасное ожидание подпитки извне: шунт на Эго!
       },
       breaker: { status: BreakerStatus.ARMED, zanshinAwareness: 0.4, tripThreshold: 0.5 },
       durationMinutes: 30
@@ -95,7 +95,7 @@ const scenarios: { name: string; telemetry: CircuitTelemetry }[] = [
     }
   },
   {
-    name: '💔 Сценарий 5: Ступор перед девушкой (Двойной разлад: Обратный ток + Омический взрыв симуляций)',
+    name: '💔 Сценарий 5: Ступор перед девушкой (Двойной разлад: КЗ на Эго + Омический взрыв симуляций)',
     telemetry: {
       timestamp: Date.now(),
       core: { emf: 75, reserve: 65, grounding: 0.15 }, // Потенциал есть, но оторван от тела, всё ушло в голову
@@ -112,7 +112,7 @@ const scenarios: { name: string; telemetry: CircuitTelemetry }[] = [
         powerRequirement: 80,
         fragility: 0.95,
         isDamagedOrFailed: false,
-        expectationOfValidation: true // ⚡ Попытка зарядиться от внешнего одобрения: обратный ток!
+        expectationOfValidation: true // ⚡ Попытка зарядиться от внешнего одобрения: петля Эго и КЗ!
       },
       breaker: { status: BreakerStatus.ARMED, zanshinAwareness: 0.15, tripThreshold: 0.5 },
       durationMinutes: 5

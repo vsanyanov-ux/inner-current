@@ -7,7 +7,8 @@ export const CircuitStatus = {
   SUPERCONDUCTING: 'SUPERCONDUCTING', // R -> 0, Mushin state (Flow, high efficiency)
   NOMINAL: 'NOMINAL',                 // Standard operation within acceptable parameters
   OHMIC_OVERHEAT: 'OHMIC_OVERHEAT',   // High R, Joule-Lenz thermal burn (Q = I^2 R t)
-  REVERSE_POLARITY: 'REVERSE_POLARITY', // Reverse current: attempting to charge core from load
+  EGO_SHORT_CIRCUIT: 'EGO_SHORT_CIRCUIT', // Ego loop short circuit: seeking validation from empty load
+  REVERSE_POLARITY: 'EGO_SHORT_CIRCUIT', // Backward-compatible alias for Ego Short Circuit
   SHORT_CIRCUIT: 'SHORT_CIRCUIT',     // Load failure without Circuit Breaker isolation
   OPEN_CIRCUIT: 'OPEN_CIRCUIT'        // Disconnected load, stagnant core energy (apathy)
 } as const;
@@ -104,7 +105,7 @@ export interface LoadNode {
   isDamagedOrFailed: boolean;
 
   /**
-   * Whether the user expects the load to feed energy BACK to them (dangerous reverse expectation)
+   * Whether the user expects the load to feed validation/energy back (Ego short circuit trap)
    */
   expectationOfValidation: boolean;
 }
@@ -146,7 +147,7 @@ export interface RemediationStep {
 export interface DiagnosticResult {
   status: CircuitStatus;
   severity: 'OPTIMAL' | 'WARNING' | 'CRITICAL';
-  currentAmperes: number;         // Signed current: positive = forward flow, negative = reverse
+  currentAmperes: number;         // Useful current to load (0 if disconnected or shorted onto ego loop)
   effectiveResistance: number;    // R_eff = base + past + future
   thermalDissipationJoules: number; // Q = I^2 * R * t
   superconductivityIndex: number; // 0 (frozen/burnt) to 1.0 (pure flow)
@@ -164,7 +165,7 @@ export interface BulbChannel {
   name: string;
   icon: string;
   allocatedPower: number; // Выделенная мощность (0 - 100 Вт / у.е.)
-  expectationOfValidation: boolean; // Паразитное ожидание обратной подпитки
+  expectationOfValidation: boolean; // Паразитная петля Эго (ожидание подтверждения ценности)
 }
 
 /**
@@ -236,7 +237,7 @@ export const ZenOntologyCanon = {
   JIKISHININSHIN: 'JIKISHININSHIN', // 直指人心: Прямое указание = Прямая магистральная шина (Direct Bus)
 
   // Уровень 3: Аварии и Деградация (Потери цепи)
-  JIGA: 'JIGA',                 // 自我: Эго = Паразитное сопротивление и обратный ток (R_ego, I < 0)
+  JIGA: 'JIGA',                 // 自我: Эго = Шунтирование на себя и ток внутреннего КЗ (R_ego, I_кз = E / r_int)
   MAKYO: 'MAKYO',               // 魔境: Иллюзии/галлюцинации = Реактивные помехи (L_past, C_future)
   DUKKHA: 'DUKKHA',             // 苦: Страдание = Джоулево тепловое рассеяние (Q = I^2 R t)
   BONNO: 'BONNO',               // 煩悩: Омрачения/страсти = Токи утечки диэлектрика (I_leakage)
