@@ -144,6 +144,33 @@ export interface RemediationStep {
   protocolName: string;
 }
 
+/**
+ * 10 стадий зрелости оператора цепи (Канон «Десяти быков» Дзен / Дзюгю, 十牛)
+ */
+export const TenBullsStage = {
+  SEEKING_THE_OX: 'SEEKING_THE_OX',                 // 1. 寻牛: В поисках быка (разрыв цепи, фиатная слепота)
+  DISCOVERING_FOOTPRINTS: 'DISCOVERING_FOOTPRINTS', // 2. 见迹: Обнаружение следов (осциллограф, чтение схемы)
+  PERCEIVING_THE_OX: 'PERCEIVING_THE_OX',           // 3. 见牛: Первый взгляд на быка (вспышка Сатори, открытие Тандэна)
+  CATCHING_THE_OX: 'CATCHING_THE_OX',               // 4. 得牛: Поимка быка (борьба с реостатом Эго и DMN)
+  TAMING_THE_OX: 'TAMING_THE_OX',                   // 5. 牧牛: Укрощение быка (калибровка Мусин: R -> 0)
+  RIDING_HOME: 'RIDING_HOME',                       // 6. 骑牛归家: Возвращение домой на быке (Поток, согласование импедансов)
+  OX_TRANSCENDED: 'OX_TRANSCENDED',                 // 7. 忘牛存人: Бык забыт, пастух один (снятие приборов, покой)
+  BOTH_TRANSCENDED: 'BOTH_TRANSCENDED',             // 8. 人牛俱忘: И бык, и пастух забыты (Энсо, Шуньята, R = 0)
+  RETURNING_TO_SOURCE: 'RETURNING_TO_SOURCE',       // 9. 返本还源: Возвращение к истоку (Таковость, законы природы)
+  ENTERING_MARKETPLACE: 'ENTERING_MARKETPLACE'      // 10. 入廛垂手: Вхождение на базар с открытыми руками (запитка 6 ламп, Внешний магнетизм)
+} as const;
+export type TenBullsStage = typeof TenBullsStage[keyof typeof TenBullsStage];
+
+export interface TenBullsStageInfo {
+  stage: number; // 1 to 10
+  id: TenBullsStage;
+  kanji: string;
+  romaji: string;
+  russianTitle: string;
+  circuitState: string;
+  operatorGuidance: string;
+}
+
 export interface DiagnosticResult {
   status: CircuitStatus;
   severity: 'OPTIMAL' | 'WARNING' | 'CRITICAL';
@@ -155,6 +182,7 @@ export interface DiagnosticResult {
   headline: string;
   physicsAnalysis: string;
   remediationProtocols: RemediationStep[];
+  operatorStage?: TenBullsStageInfo; // Ступень зрелости оператора по канону Десяти быков
 }
 
 /**

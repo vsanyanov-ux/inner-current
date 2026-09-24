@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { DiagnosticEngine } from '../src/core/diagnostic.engine.ts';
+import { DiagnosticEngine, TEN_BULLS_CATALOG } from '../src/core/diagnostic.engine.ts';
 import {
   BreakerStatus,
   CircuitStatus,
@@ -498,6 +498,61 @@ describe('Inner Current Diagnostic Engine Test Suite', () => {
     assert.ok(canons.includes('SHIBUMI'));
     assert.ok(canons.includes('YUGEN'));
     assert.ok(canons.includes('FUKINZOKU'));
+  });
+
+  it('15. Ten Bulls of Zen: Verifies all 10 stages and dynamic stage evaluation in DiagnosticResult', () => {
+    const stages = Object.values(TEN_BULLS_CATALOG);
+    assert.equal(stages.length, 10, 'Must contain exactly 10 Zen Ox-Herding stages');
+
+    for (let i = 1; i <= 10; i++) {
+      const stage = stages.find(s => s.stage === i);
+      assert.ok(stage, `Stage ${i} must exist in TEN_BULLS_CATALOG`);
+      assert.ok(stage.kanji.length > 0, `Stage ${i} must have kanji`);
+      assert.ok(stage.romaji.length > 0, `Stage ${i} must have romaji`);
+      assert.ok(stage.russianTitle.length > 0, `Stage ${i} must have russian title`);
+      assert.ok(stage.operatorGuidance.length > 15, `Stage ${i} must have operator guidance`);
+    }
+
+    // 1. Сверхпроводящий чай (Микро-нагрузка, R=1, тишина) -> Ступень 7 или 8
+    const teaRes = engine.diagnose({
+      timestamp: Date.now(),
+      core: { emf: 85, reserve: 95, grounding: 0.95 },
+      bus: { baseResistance: 1, parasiticPast: 0, parasiticFuture: 0, innerCriticNoise: 0 },
+      load: {
+        id: 'tea',
+        name: 'Матча',
+        scale: LoadScale.MICRO_TEA,
+        powerRequirement: 10,
+        fragility: 0.5,
+        isDamagedOrFailed: false,
+        expectationOfValidation: false
+      },
+      breaker: { status: BreakerStatus.ARMED, zanshinAwareness: 0.95, tripThreshold: 0.5 },
+      durationMinutes: 10
+    });
+    assert.ok(teaRes.operatorStage);
+    assert.ok(teaRes.operatorStage.stage === 7 || teaRes.operatorStage.stage === 8);
+
+    // 2. Вхождение на базар: макро-нагрузка, сверхпроводимость (R=2, Breaker=0.9, EMF=85) -> Ступень 10
+    const marketRes = engine.diagnose({
+      timestamp: Date.now(),
+      core: { emf: 85, reserve: 90, grounding: 0.9 },
+      bus: { baseResistance: 2, parasiticPast: 0, parasiticFuture: 0, innerCriticNoise: 0 },
+      load: {
+        id: 'market-corp',
+        name: 'Созидание для мира',
+        scale: LoadScale.MACRO_ENTERPRISE,
+        powerRequirement: 80,
+        fragility: 0.5,
+        isDamagedOrFailed: false,
+        expectationOfValidation: false
+      },
+      breaker: { status: BreakerStatus.ARMED, zanshinAwareness: 0.9, tripThreshold: 0.5 },
+      durationMinutes: 60
+    });
+    assert.ok(marketRes.operatorStage);
+    assert.equal(marketRes.operatorStage.stage, 10, 'Must evaluate to stage 10 (Entering the Marketplace)');
+    assert.equal(marketRes.operatorStage.kanji, '入廛垂手');
   });
 });
 

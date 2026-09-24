@@ -10,6 +10,7 @@ import {
   CanonicalLoadDomain
 } from '../types/circuit.types.ts';
 import type { CircuitTelemetry, SixBulbPanel } from '../types/circuit.types.ts';
+import { TEN_BULLS_CATALOG } from '../domain/ten.bulls.registry.ts';
 
 const engine = new DiagnosticEngine();
 
@@ -151,6 +152,11 @@ for (const sc of scenarios) {
   console.log(`  Сила тока (I): ${res.currentAmperes} A | R_eff: ${res.effectiveResistance} Ом | Q: ${res.thermalDissipationJoules} Дж | КПД: ${(res.superconductivityIndex * 100).toFixed(0)}%`);
   console.log(`  Вердикт: ${res.headline}`);
   console.log(`  Физика: ${res.physicsAnalysis}`);
+  if (res.operatorStage) {
+    console.log(`  🐂 Ступень оператора (10 быков): [${res.operatorStage.stage}/10] ${res.operatorStage.kanji} ${res.operatorStage.romaji} — «${res.operatorStage.russianTitle}»`);
+    console.log(`     Состояние контура: ${res.operatorStage.circuitState}`);
+    console.log(`     Ориентир оператора: ${res.operatorStage.operatorGuidance}`);
+  }
   if (res.remediationProtocols.length > 0) {
     console.log(`  Регламент починки:`);
     for (const step of res.remediationProtocols) {
@@ -263,5 +269,16 @@ allPains.forEach((p, idx) => {
 });
 
 console.log('\n' + '='.repeat(70));
+console.log('🐂 КАРТА ЭВОЛЮЦИИ ОПЕРАТОРА: 10 БЫКОВ ДЗЕН (ДЗЮГЮ, 十牛)');
+console.log('='.repeat(70));
+
+for (const stage of Object.values(TEN_BULLS_CATALOG)) {
+  console.log(`\n[${stage.stage}/10] ${stage.kanji} ${stage.romaji} — «${stage.russianTitle}»`);
+  console.log(`  ⚡ Состояние цепи: ${stage.circuitState}`);
+  console.log(`  🧭 Ориентир оператора: ${stage.operatorGuidance}`);
+}
+
+console.log('\n' + '='.repeat(70));
+
 
 

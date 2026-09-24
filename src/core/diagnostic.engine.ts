@@ -14,7 +14,8 @@ import type {
   HumanPainArchetype,
   SixBulbPanel,
   SixBulbAnalysis,
-  TandenCore
+  TandenCore,
+  TenBullsStageInfo
 } from '../types/circuit.types.ts';
 import {
   KINTSUGI_CIRCUIT_BREAKER_PROTOCOL,
@@ -33,9 +34,10 @@ import {
 import { validateAndNormalizeTelemetry } from './telemetry.validator.ts';
 import { analyzeSixBulbPanel } from './panel.analyzer.ts';
 import { PAIN_REGISTRY } from '../domain/pain.registry.ts';
+import { evaluateTenBullsStage, TEN_BULLS_CATALOG } from '../domain/ten.bulls.registry.ts';
 
 // Реэкспорт для обратной совместимости существующих модулей
-export { PAIN_REGISTRY };
+export { PAIN_REGISTRY, TEN_BULLS_CATALOG };
 
 export class DiagnosticEngine {
   /**
@@ -43,8 +45,16 @@ export class DiagnosticEngine {
    * по законам электродинамики и онтологии Дзен.
    */
   public diagnose(telemetry: CircuitTelemetry): DiagnosticResult {
-    // 1. Нормализация телеметрии (канон Мусин: защита от искажений и шума)
     const normalized = validateAndNormalizeTelemetry(telemetry);
+    const result = this.evaluateRaw(normalized);
+    result.operatorStage = evaluateTenBullsStage(normalized, result);
+    return result;
+  }
+
+  /**
+   * Внутренний расчет физики и статуса цепи
+   */
+  private evaluateRaw(normalized: CircuitTelemetry): DiagnosticResult {
     const { core, bus, load, breaker, durationMinutes } = normalized;
 
     // 2. Расчёт эффективного сопротивления проводки внимания (R_eff)
@@ -172,6 +182,17 @@ export class DiagnosticEngine {
    */
   public analyzeSixBulbs(core: TandenCore, panel: SixBulbPanel): SixBulbAnalysis {
     return analyzeSixBulbPanel(core, panel);
+  }
+
+  /**
+   * Оценивает текущую ступень зрелости оператора по канону Десяти быков Дзен
+   */
+  public evaluateOperatorStage(
+    telemetry: CircuitTelemetry,
+    diagnostic: DiagnosticResult,
+    panel?: SixBulbPanel
+  ): TenBullsStageInfo {
+    return evaluateTenBullsStage(telemetry, diagnostic, panel);
   }
 
   /**

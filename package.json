@@ -1,6 +1,6 @@
 {
   "name": "inner-current",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Electrodynamic human state ontology and diagnostic machine",
   "type": "module",
   "main": "dist/index.js",

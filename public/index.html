@@ -186,6 +186,24 @@
           </div>
         </div>
 
+        <!-- Operator Evolution Card (Ten Bulls of Zen) in Sidebar -->
+        <div class="p-3.5 rounded-xl bg-gradient-to-b from-amber-950/20 via-slate-950/80 to-slate-950/90 border border-amber-500/30 text-xs font-mono space-y-2">
+          <div class="text-amber-400 text-[10px] uppercase tracking-wider flex justify-between items-center font-bold">
+            <span class="flex items-center gap-1.5"><span>🐂</span> <span>Ступень оператора</span></span>
+            <span id="sidebar-bull-stage" class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[10px]">6 / 10</span>
+          </div>
+          <div class="text-slate-200 text-[11px] font-bold flex items-center justify-between">
+            <span id="sidebar-bull-title">Возвращение на быке</span>
+            <span id="sidebar-bull-kanji" class="text-amber-400 text-[10px] font-serif">骑牛归家</span>
+          </div>
+          <div class="w-full bg-slate-900 rounded-full h-1.5 overflow-hidden border border-slate-800 flex">
+            <div id="sidebar-bull-bar" class="h-full bg-gradient-to-r from-amber-500 via-yellow-400 to-cyan-400 rounded-full transition-all duration-500" style="width: 60%;"></div>
+          </div>
+          <p id="sidebar-bull-desc" class="text-[10px] text-slate-400 leading-tight">
+            Поток ремесла без омического сопротивления
+          </p>
+        </div>
+
       </div>
 
       <!-- Sidebar Footer -->
@@ -467,11 +485,18 @@
           </h2>
 
           <div class="mt-4 p-4 rounded-xl border" id="sc_verdictBox">
-            <div class="text-xs font-mono tracking-widest text-cyan-400 font-bold" id="sc_verdictCode">OK_00_SUPERCONDUCTING_MUSHIN</div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono tracking-widest text-cyan-400 font-bold" id="sc_verdictCode">OK_00_SUPERCONDUCTING_MUSHIN</span>
+              <span id="sc_bull_stage_badge" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">🐂 6/10 骑牛归家</span>
+            </div>
             <div class="text-base font-bold text-slate-100 mt-1" id="sc_verdictTitle">Сверхпроводимость контура: чистое состояние Мусин</div>
             <p class="text-xs text-slate-300 mt-2 leading-relaxed" id="sc_verdictPhysics">
               Сопротивление проводки упало до нуля (R ≈ 0). Ток реактора без задержек и омических потерь подается прямо в лампочку текущего действия.
             </p>
+            <div class="mt-2.5 pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono">
+              <span class="text-slate-400">Ступень оператора (Дзэн):</span>
+              <span id="sc_bull_stage_desc" class="text-amber-300 font-semibold">[6/10] Возвращение домой на быке</span>
+            </div>
           </div>
 
           <!-- Actionable Remediation Checklist -->
@@ -2018,6 +2043,74 @@
             </div>
           </div>
 
+        </div>
+
+        <!-- Ten Bulls of Zen Operator Evolution Card in Happiness Dashboard -->
+        <div class="bg-gradient-to-b from-slate-900/90 via-slate-900/80 to-slate-950/90 border border-amber-500/30 rounded-2xl p-6 backdrop-blur-md shadow-2xl space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">🐂</span>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-bold text-slate-100">Канон Десяти быков дзэн (十牛) • Ступень оператора цепи</h3>
+                  <span id="dash-bull-stage-badge" class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">
+                    Ступень 6 из 10 • 骑牛归家
+                  </span>
+                </div>
+                <p class="text-xs text-slate-400">Эволюционная зрелость оператора: от фиатной слепоты до абсолютной сверхпроводимости служения миру</p>
+              </div>
+            </div>
+            <a href="book/index.html" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-mono font-semibold transition flex items-center gap-1.5 self-start sm:self-auto cursor-pointer">
+              <span>📖</span> Глава 4.4 в книге ↗
+            </a>
+          </div>
+
+          <!-- Stepper: 10 Stages Visual Track -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-[10px] font-mono text-slate-400">
+              <span>1. В поисках быка (寻牛)</span>
+              <span>5. Укрощение (牧牛)</span>
+              <span>10. Базар с открытыми руками (入廛垂手)</span>
+            </div>
+            <!-- 10 beads / pill track -->
+            <div id="dash-bull-track" class="grid grid-cols-5 sm:grid-cols-10 gap-1.5">
+              <div id="dash-bull-step-1" class="py-1.5 px-1 rounded-lg text-center text-[11px] font-mono transition-all duration-300 bg-slate-950/70 border border-slate-800 text-slate-500">1</div>
+              <div id="dash-bull-step-2" class="py-1.5 px-1 rounded-lg text-center text-[11px] font-mono transition-all duration-300 bg-slate-950/70 border border-slate-800 text-slate-500">2</div>
+              <div id="dash-bull-step-3" class="py-1.5 px-1 rounded-lg text-center text-[11px] font-mono transition-all duration-300 bg-slate-950/70 border border-slate-800 text-slate-500">3</div>
+              <div id="dash-bull-step-4" class="py-1.5 px-1 rounded-lg text-center text-[11px] font-mono transition-all duration-300 bg-slate-950/70 border border-slate-800 text-slate-500">4</div>
+              <div id="dash-bull-step-5" class="py-1.5 px-1 rounded-lg text-center text-[11px] font-mono transition-all duration-300 bg-slate-950/70 border border-slate-800 text-slate-500">5</div>
+              <div id="dash-bull-step-6" class="py-1.5 px-1 rounded-lg text-center text-[11px] font-mono transition-all duration-300 bg-amber-500 text-slate-950 font-bold border-amber-400 shadow-lg shadow-amber-500/20">6</div>
+              <div id="dash-bull-step-7" class="py-1.5 px-1 rounded-lg text-center text-[11px] font-mono transition-all duration-300 bg-slate-950/70 border border-slate-800 text-slate-500">7</div>
+              <div id="dash-bull-step-8" class="py-1.5 px-1 rounded-lg text-center text-[11px] font-mono transition-all duration-300 bg-slate-950/70 border border-slate-800 text-slate-500">8</div>
+              <div id="dash-bull-step-9" class="py-1.5 px-1 rounded-lg text-center text-[11px] font-mono transition-all duration-300 bg-slate-950/70 border border-slate-800 text-slate-500">9</div>
+              <div id="dash-bull-step-10" class="py-1.5 px-1 rounded-lg text-center text-[11px] font-mono transition-all duration-300 bg-slate-950/70 border border-slate-800 text-slate-500">10</div>
+            </div>
+          </div>
+
+          <!-- Active Stage Details Box -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
+            <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+              <span class="text-[10px] font-mono uppercase tracking-wider text-slate-400 block">Каноническое имя</span>
+              <div class="flex items-baseline gap-2">
+                <span id="dash-bull-title" class="text-base font-bold text-amber-300">Возвращение домой на быке</span>
+                <span id="dash-bull-kanji" class="text-xs font-serif text-amber-400">骑牛归家</span>
+              </div>
+              <div id="dash-bull-romaji" class="text-[11px] text-slate-400 font-mono">Qi Niu Gui Jia (Riding the Ox Home)</div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+              <span class="text-[10px] font-mono uppercase tracking-wider text-slate-400 block">Физика контура</span>
+              <div id="dash-bull-circuit" class="text-xs font-mono font-semibold text-cyan-300">Согласование импедансов и Поток (Z_src = Z_load*, Flow)</div>
+              <div class="text-[10px] text-slate-400">Электродинамическое состояние цепи оператора</div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+              <span class="text-[10px] font-mono uppercase tracking-wider text-amber-400/80 block">Наставление мастера (Дзэн)</span>
+              <p id="dash-bull-guidance" class="text-xs text-slate-300 leading-relaxed italic">
+                «Борьба окончена. Исчезло усилие воли. Тандэн сам несет вас сквозь сложное ремесло. Играйте свою мелодию без сопротивления среды.»
+              </p>
+            </div>
+          </div>
         </div>
 
         <!-- 6-Bulb Load Distribution Spectrum (Chowa) -->
@@ -4394,6 +4487,140 @@
     }
 
     // =========================================================================
+    // 🐂 TEN BULLS OF ZEN (ДЕСЯТЬ БЫКОВ ДЗЭН) OPERATOR EVOLUTION CANON
+    // =========================================================================
+    const CLIENT_TEN_BULLS = [
+      {
+        stage: 1,
+        kanji: '寻牛',
+        romaji: 'Xun Niu (Seeking the Ox)',
+        title: 'В поисках быка',
+        circuit: 'Разрыв контура / Фиатная слепота (I = 0, R >> 0)',
+        guidance: 'Прекратите искать энергию во внешних аккумуляторах. Внешние формы пусты (Шуньята). Ваш генератор спит внутри — обратите внимание в тело.',
+        desc: 'Разрыв цепи: поиск внешней валидации вместо Тандэна'
+      },
+      {
+        stage: 2,
+        kanji: '见迹',
+        romaji: 'Jian Ji (Discovering the Footprints)',
+        title: 'Обнаружение следов',
+        circuit: 'Первичная телеметрия и чтение схемы (R распознано)',
+        guidance: 'Осциллограф включен. Вы видите, где именно греется проводка (прошлое/будущее). Замеряйте сопротивление без самоосуждения.',
+        desc: 'Осциллограф включен: осознание омических потерь'
+      },
+      {
+        stage: 3,
+        kanji: '见牛',
+        romaji: 'Jian Niu (Perceiving the Ox)',
+        title: 'Первый взгляд на быка',
+        circuit: 'Вспышка Сатори / Первый контакт с Тандэном (R → 0 кратко)',
+        guidance: 'Вы физически ощутили автономный реактор внизу живота. Источник найден. Закрепите соматический якорь в Тандэне.',
+        desc: 'Первый контакт с Тандэном: кратковременный вход в поток'
+      },
+      {
+        stage: 4,
+        kanji: '得牛',
+        romaji: 'De Niu (Catching the Ox)',
+        title: 'Поимка быка',
+        circuit: 'Борьба с реостатом Эго и привычками DMN (нестабильная точка)',
+        guidance: 'Держите поводок! Дефолт-система мозга сопротивляется и пытается закоротить цепь. Дышите диафрагмой, включайте TPN через физический контакт.',
+        desc: 'Борьба с петлей Эго: дефолт-система пытается закоротить цепь'
+      },
+      {
+        stage: 5,
+        kanji: '牧牛',
+        romaji: 'Mu Niu (Taming the Ox)',
+        title: 'Укрощение быка',
+        circuit: 'Калибровка проводки / Режим Мусин (R ≤ 5 Ом, ламинарный ток)',
+        guidance: 'Поводок провис. Ток течет ровно, клеммы не искрят. Мышление о себе затихает, энергия реактора чисто питает текущую задачу.',
+        desc: 'Калибровка Мусин: ламинарный ток, заземление стабильно'
+      },
+      {
+        stage: 6,
+        kanji: '骑牛归家',
+        romaji: 'Qi Niu Gui Jia (Riding the Ox Home)',
+        title: 'Возвращение домой на быке',
+        circuit: 'Согласование импедансов и Поток (Z_src = Z_load*, Flow)',
+        guidance: 'Борьба окончена. Исчезло усилие воли. Тандэн сам несет вас сквозь сложное ремесло. Играйте свою мелодию без сопротивления среды.',
+        desc: 'Согласование импедансов: чистое ремесло без трения'
+      },
+      {
+        stage: 7,
+        kanji: '忘牛存人',
+        romaji: 'Wang Niu Cun Ren (The Ox Transcended)',
+        title: 'Бык забыт, пастух один',
+        circuit: 'Ликвидация концептуальных костылей (автономный покой)',
+        guidance: 'Метод выполнил задачу. Вам больше не нужно непрерывно проверять приборы. Просто присутствуйте в ясном свете текущего момента.',
+        desc: 'Автономный покой: концептуальные костыли отброшены'
+      },
+      {
+        stage: 8,
+        kanji: '人牛俱忘',
+        romaji: 'Ren Niu Ju Wang (Both Transcended)',
+        title: 'И бык, и пастух забыты (Энсо)',
+        circuit: 'Квантовая Шуньята / Нуль-импеданс вакуума (R = 0, Z0 = 0)',
+        guidance: 'Круг Энсо. Исчез дуализм наблюдателя и наблюдаемого. Нет отдельно вас и отдельно счастья. Чистый квантовый штиль мироздания.',
+        desc: 'Круг Энсо: абсолютная Шуньята, квантовый покой'
+      },
+      {
+        stage: 9,
+        kanji: '返本还源',
+        romaji: 'Fan Ben Huan Yuan (Returning to the Source)',
+        title: 'Возвращение к истоку',
+        circuit: 'Инвариантная Таковость (Татхата) и законы природы',
+        guidance: 'Река течет, сосны зелены. Полное отсутствие претензий к миру. Сознание совершенно синхронизировано с термодинамикой космоса.',
+        desc: 'Татхата (Таковость): полная синхронизация с природой'
+      },
+      {
+        stage: 10,
+        kanji: '入廛垂手',
+        romaji: 'Ru Chan Chui Shou (Entering the Marketplace)',
+        title: 'Вхождение на базар с открытыми руками',
+        circuit: 'Запитка 6 ламп мира и Внешний магнетизм (Кульминация)',
+        guidance: 'Высшее мастерство. Вы в самом центре мирского хаоса, бизнеса и отношений. Ваш Тандэн светит столь мощно, что зажигает потухшие сердца вокруг.',
+        desc: 'Кульминация: служение миру на шумном базаре'
+      }
+    ];
+
+    function evaluateClientTenBulls(effR, isRev, isFail, hPower, totalP, scale, grounding, critic) {
+      if (isRev) {
+        if (effR > 25 || grounding < 0.3) {
+          return CLIENT_TEN_BULLS[0]; // Stage 1 (Seeking the Ox)
+        }
+        return CLIENT_TEN_BULLS[3]; // Stage 4 (Catching the Ox - борьба с эго)
+      }
+      if (isFail) {
+        return CLIENT_TEN_BULLS[4]; // Stage 5 (Taming the Ox - ядро защищено Ваби-саби)
+      }
+      if (hPower < 10) {
+        return CLIENT_TEN_BULLS[1]; // Stage 2 (Discovering footprints)
+      }
+      if (effR > 25) {
+        if (effR > 50) return CLIENT_TEN_BULLS[0]; // Stage 1
+        return CLIENT_TEN_BULLS[1]; // Stage 2 (Discovering footprints)
+      }
+      if (effR > 12) {
+        return CLIENT_TEN_BULLS[3]; // Stage 4 (Catching the ox)
+      }
+      if (effR > 5) {
+        return CLIENT_TEN_BULLS[4]; // Stage 5 (Taming the ox)
+      }
+      if (scale === 'MACRO_ENTERPRISE' || totalP >= 90) {
+        return CLIENT_TEN_BULLS[9]; // Stage 10 (Entering marketplace)
+      }
+      if (scale === 'MICRO_TEA') {
+        if (grounding >= 0.88 && critic === 0) {
+          return CLIENT_TEN_BULLS[7]; // Stage 8 (Both transcended - Enso)
+        }
+        return CLIENT_TEN_BULLS[6]; // Stage 7 (Ox transcended)
+      }
+      if (totalP >= 60 && hPower >= 20) {
+        return CLIENT_TEN_BULLS[8]; // Stage 9 (Returning to source)
+      }
+      return CLIENT_TEN_BULLS[5]; // Stage 6 (Riding home on the ox)
+    }
+
+    // =========================================================================
     // ⚡ ДАШБОРД СЧАСТЬЯ (HAPPINESS TELEMETRY HUD) LOGIC
     // =========================================================================
     function updateHappinessHUD() {
@@ -4707,6 +4934,59 @@
         legacyBar.style.width = score + '%';
         legacyBar.className = 'h-full rounded-full bg-gradient-to-r ' + progressGrad + ' transition-all duration-500';
       }
+
+      // 5. Update Ten Bulls of Zen Operator Evolution (Sidebar, View 2, View 1)
+      const scale = (sc && sc.loadScale) ? sc.loadScale : 'FLOW_CODE';
+      const grounding = (sc && typeof sc.grounding === 'number') ? sc.grounding : ((mc && typeof mc.grounding === 'number') ? mc.grounding : 0.9);
+      const critic = (sc && typeof sc.critic === 'number') ? sc.critic : ((mc && typeof mc.critic === 'number') ? mc.critic : 0);
+
+      const bullStage = evaluateClientTenBulls(effectiveR, isReverse, isFailed, healthPower, totalShieldPower, scale, grounding, critic);
+
+      // Sidebar
+      const sbStage = document.getElementById('sidebar-bull-stage');
+      if (sbStage) sbStage.textContent = bullStage.stage + ' / 10';
+      const sbTitle = document.getElementById('sidebar-bull-title');
+      if (sbTitle) sbTitle.textContent = bullStage.title;
+      const sbKanji = document.getElementById('sidebar-bull-kanji');
+      if (sbKanji) sbKanji.textContent = bullStage.kanji;
+      const sbBar = document.getElementById('sidebar-bull-bar');
+      if (sbBar) sbBar.style.width = (bullStage.stage * 10) + '%';
+      const sbDesc = document.getElementById('sidebar-bull-desc');
+      if (sbDesc) sbDesc.textContent = bullStage.desc;
+
+      // Happiness Dashboard (View 2)
+      const dashBadge = document.getElementById('dash-bull-stage-badge');
+      if (dashBadge) dashBadge.textContent = 'Ступень ' + bullStage.stage + ' из 10 • ' + bullStage.kanji;
+      const dashTitle = document.getElementById('dash-bull-title');
+      if (dashTitle) dashTitle.textContent = bullStage.title;
+      const dashKanji = document.getElementById('dash-bull-kanji');
+      if (dashKanji) dashKanji.textContent = bullStage.kanji;
+      const dashRomaji = document.getElementById('dash-bull-romaji');
+      if (dashRomaji) dashRomaji.textContent = bullStage.romaji;
+      const dashCircuit = document.getElementById('dash-bull-circuit');
+      if (dashCircuit) dashCircuit.textContent = bullStage.circuit;
+      const dashGuidance = document.getElementById('dash-bull-guidance');
+      if (dashGuidance) dashGuidance.textContent = '«' + bullStage.guidance + '»';
+
+      // 10 Stepper Track
+      for (let s = 1; s <= 10; s++) {
+        const stepEl = document.getElementById('dash-bull-step-' + s);
+        if (stepEl) {
+          if (s === bullStage.stage) {
+            stepEl.className = 'py-1.5 px-1 rounded-lg text-center text-[11px] font-mono transition-all duration-300 bg-amber-500 text-slate-950 font-bold border-amber-400 shadow-lg shadow-amber-500/30 scale-105';
+          } else if (s < bullStage.stage) {
+            stepEl.className = 'py-1.5 px-1 rounded-lg text-center text-[11px] font-mono transition-all duration-300 bg-amber-500/20 text-amber-300 border border-amber-500/40 font-semibold';
+          } else {
+            stepEl.className = 'py-1.5 px-1 rounded-lg text-center text-[11px] font-mono transition-all duration-300 bg-slate-950/70 border border-slate-800 text-slate-500';
+          }
+        }
+      }
+
+      // Single Circuit (View 1)
+      const scBadge = document.getElementById('sc_bull_stage_badge');
+      if (scBadge) scBadge.textContent = '🐂 ' + bullStage.stage + '/10 ' + bullStage.kanji;
+      const scDesc = document.getElementById('sc_bull_stage_desc');
+      if (scDesc) scDesc.textContent = '[' + bullStage.stage + '/10] ' + bullStage.title;
     }
 
     // =========================================================================

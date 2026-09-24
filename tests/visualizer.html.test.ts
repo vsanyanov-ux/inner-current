@@ -73,4 +73,28 @@ describe('Visualizer public/index.html Integrity & Script Syntax Test Suite', ()
       assert.ok(html.includes(`id="${id}"`), `Element with id "${id}" should exist in public/index.html`);
     }
   });
+
+  it('4. Ten Bulls of Zen Operator Evolution UI elements exist and are accessible', () => {
+    const bullIds = [
+      'sidebar-bull-stage',
+      'sidebar-bull-title',
+      'sidebar-bull-kanji',
+      'sidebar-bull-bar',
+      'sidebar-bull-desc',
+      'dash-bull-stage-badge',
+      'dash-bull-title',
+      'dash-bull-kanji',
+      'dash-bull-romaji',
+      'dash-bull-circuit',
+      'dash-bull-guidance',
+      'dash-bull-step-1',
+      'dash-bull-step-10',
+      'sc_bull_stage_badge',
+      'sc_bull_stage_desc'
+    ];
+
+    for (const id of bullIds) {
+      assert.ok(html.includes(`id="${id}"`), `Ten Bulls element with id "${id}" should exist in public/index.html`);
+    }
+  });
 });
