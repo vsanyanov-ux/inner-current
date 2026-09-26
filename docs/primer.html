@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Архитектура счастья простыми словами — Праймер Фейнмана</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    @page {
+      size: A4;
+      margin: 22mm 20mm 24mm 20mm;
+      @top-right {
+        content: "Архитектура счастья простыми словами";
+        font-family: 'Inter', sans-serif;
+        font-size: 8pt;
+        color: #999;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+      }
+      @bottom-left {
+        content: "Праймер Фейнмана • Физика внутреннего контура";
+        font-family: 'Inter', sans-serif;
+        font-size: 7.5pt;
+        color: #aaa;
+        letter-spacing: 0.03em;
+      }
+      @bottom-right {
+        content: counter(page);
+        font-family: 'Inter', sans-serif;
+        font-size: 8.5pt;
+        color: #666;
+        font-weight: 500;
+      }
+    }
+
+    @page :first {
+      margin: 0;
+      @top-right { content: none; }
+      @bottom-left { content: none; }
+      @bottom-right { content: none; }
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.65;
+      color: #1e242b;
+      background: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Cover Page */
+    .cover-page {
+      page-break-after: always;
+      height: 100vh;
+      min-height: 297mm;
+      padding: 35mm 25mm 30mm 25mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(175deg, #0e141d 0%, #161f2c 60%, #1c2738 100%);
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover-page::before {
+      content: "";
+      position: absolute;
+      top: -120px;
+      right: -120px;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .cover-top {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cover-pill {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5pt;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #dfb755;
+      background: rgba(223, 183, 85, 0.12);
+      border: 1px solid rgba(223, 183, 85, 0.3);
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 25px;
+    }
+
+    .cover-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 38pt;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin: 0 0 16px 0;
+    }
+
+    .cover-title span {
+      color: #dfb755;
+      display: block;
+    }
+
+    .cover-subtitle {
+      font-size: 13pt;
+      font-weight: 300;
+      color: #a4b3c6;
+      line-height: 1.5;
+      max-width: 90%;
+      margin: 0 0 25px 0;
+    }
+
+    .cover-middle {
+      position: relative;
+      z-index: 2;
+      border-left: 2px solid #dfb755;
+      padding-left: 20px;
+      margin: 20px 0;
+    }
+
+    .cover-epigraph {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14pt;
+      line-height: 1.5;
+      color: #e2e8f0;
+      margin-bottom: 8px;
+    }
+
+    .cover-author {
+      font-family: 'Inter', sans-serif;
+      font-size: 9.5pt;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #dfb755;
+    }
+
+    .cover-bottom {
+      position: relative;
+      z-index: 2;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-size: 9pt;
+      color: #798da3;
+    }
+
+    .cover-specs {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8pt;
+      line-height: 1.6;
+    }
+
+    /* Content Typography */
+    .content-container {
+      padding: 0;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24pt;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.25;
+      margin-top: 0;
+      margin-bottom: 12px;
+      display: none; /* Already on cover */
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17pt;
+      font-weight: 700;
+      color: #0e1c2f;
+      line-height: 1.3;
+      margin-top: 28px;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1.5px solid #eaeef4;
+      break-after: avoid;
+    }
+
+    h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 11.5pt;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 18px;
+      margin-bottom: 8px;
+      break-after: avoid;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 12px;
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    strong {
+      color: #0f172a;
+      font-weight: 600;
+    }
+
+    /* Blockquotes / Callouts */
+    blockquote {
+      margin: 16px 0;
+      padding: 12px 18px;
+      background: #f8fafc;
+      border-left: 3.5px solid #c59b27;
+      border-radius: 0 8px 8px 0;
+      font-size: 10pt;
+      color: #334155;
+    }
+
+    blockquote p {
+      margin-bottom: 6px;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .callout-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 9.5pt;
+      color: #8c6b12;
+    }
+
+    .callout-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.5pt;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      background: #f1e5c3;
+      color: #8c6b12;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 9.5pt;
+      line-height: 1.5;
+    }
+
+    th {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: 600;
+      text-align: left;
+      padding: 9px 12px;
+      border: 1px solid #cbd5e1;
+      font-size: 9pt;
+      letter-spacing: 0.02em;
+    }
+
+    td {
+      padding: 9px 12px;
+      border: 1px solid #e2e8f0;
+      vertical-align: top;
+    }
+
+    tr:nth-child(even) td {
+      background: #fafcff;
+    }
+
+    /* Code blocks / ASCII */
+    pre {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8pt;
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 12px 16px;
+      border-radius: 6px;
+      overflow-x: auto;
+      line-height: 1.45;
+      margin: 16px 0;
+    }
+
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5pt;
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    pre code {
+      background: none;
+      color: inherit;
+      padding: 0;
+    }
+
+    /* Math */
+    .math-block {
+      text-align: center;
+      margin: 14px 0;
+      padding: 8px 0;
+      overflow-x: auto;
+    }
+
+    /* Mermaid */
+    .mermaid-diagram-wrap {
+      text-align: center;
+      margin: 18px 0;
+      padding: 14px 10px;
+      background: #fafbfd;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      break-inside: avoid;
+    }
+
+    .mermaid {
+      display: flex;
+      justify-content: center;
+    }
+
+    .mermaid svg {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+
+    /* Lists */
+    ul, ol {
+      margin-top: 0;
+      margin-bottom: 12px;
+      padding-left: 22px;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background: #e2e8f0;
+      margin: 22px 0;
+    }
+
+    /* Chapter breaks */
+    .chapter-break {
+      page-break-before: always;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cover Page -->
+  <div class="cover-page">
+    <div class="cover-top">
+      <div class="cover-pill">Первые Принципы • Канон Фейнмана</div>
+      <div class="cover-title">
+        Архитектура счастья
+        <span>простыми словами</span>
+      </div>
+      <div class="cover-subtitle">
+        Базовые понятия контурной физики человека на основе книги «Внутренний ток». Полное руководство без академического тумана, мистики и снисходительности.
+      </div>
+    </div>
+
+    <div class="cover-middle">
+      <div class="cover-epigraph">
+        «Если вы не можете объяснить идею простыми словами обычному человеку или десятилетнему ребенку — значит, вы сами глубоко её не понимаете или прячете ложь за птичьим языком.»
+      </div>
+      <div class="cover-author">Ричард Фейнман • Лауреат Нобелевской премии по физике</div>
+    </div>
+
+    <div class="cover-bottom">
+      <div>
+        <strong>Контурная электродинамика сознания</strong><br>
+        Модель карманного фонарика, шланг без заломов и 10-секундный ремонт
+      </div>
+      <div class="cover-specs">
+        Издание 2026<br>
+        Open Source Protocol • Self-Hosted Node
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content-container">
+    <h1>⚡ Праймер Фейнмана: Архитектура счастья простыми словами</h1>
+<h2>Базовые понятия контурной физики человека на основе книги «Внутренний ток»</h2>
+<h3><em>Полная механика человеческого контура без академического тумана, мистики и снисходительности</em></h3>
+<blockquote>
+<div class="callout-header"><span class="callout-badge">Цитата</span> <strong>Канон Ричарда Фейнмана</strong></div><h3>💡 <strong>«Если вы не можете объяснить идею простыми словами обычному человеку или десятилетнему ребенку — значит, вы сами глубоко её не понимаете или прячете ложь за птичьим языком.»</strong></h3>
+<p>— <em>Ричард Фейнман</em></p>
+</blockquote>
+<hr>
+<h2>🧭 Входной порог: Зачем написан этот праймер</h2>
+<p>В фундаментальной книге «Внутренний ток: Архитектура счастья» более шестидесяти тысяч слов. Там есть формулы дифференциальных цепей, строгая нейробиология сетей мозга (DMN и TPN), демонтаж философских трактатов от Вед и стоиков до Льва Толстого, консилиенс с экономикой Генри Джорджа и протоколом Биткоина, а также расчет уравнений Сингулярности с искусственным интеллектом (AGI).</p>
+<p>Для мировой науки это необходимо: любая строгая дисциплина обязана выдержать академическую проверку на прочность.</p>
+<p>Но у великого физика Ричарда Фейнмана было непреложное правило: <strong>подлинный закон природы в своей основе всегда прост и осязаем</strong>. Если убрать словесные кружева, фундаментальный закон обязан проверяться на пальцах и быть понятным любому здравомыслящему человеку — водителю, хирургу, инженеру, повару или десятилетнему школьнику.</p>
+<p>Этот праймер создан на основе обновлённой книги. В нём нет сюсюканья и снисходительности. Здесь собраны <strong>базовые понятия системы в виде прямых физических законов</strong>, с помощью которых каждый человек может раз и навсегда понять, как он устроен, почему ему бывает плохо и как за десять секунд вернуть себе ясность, устойчивость и рабочую радость.</p>
+<hr>
+<h2>🔦 Глава 1. Ты — это фонарик, а не тёмная комната</h2>
+<p>Тысячи лет людям внушали глубочайшую ошибку:<br><em>«Человек рождается пустым, тёмным и несчастным. Ему нужно найти во внешнем мире что-то — успех, статус, любовь, богатство, чужое одобрение, — что войдет внутрь и зажжёт в нём свет».</em></p>
+<p>Люди привыкли воспринимать себя тёмной комнатой, куда кто-то добрый должен принести свечу.</p>
+<p><strong>В действительности человек устроен ровно наоборот: как автономный карманный фонарик.</strong></p>
+
+
+<div class="mermaid-diagram-wrap"><pre class="mermaid">flowchart LR
+    subgraph Inside ["🔦 ТЫ — АВТОНОМНЫЙ КАРМАННЫЙ ФОНАРИК"]
+        B["🔋 <b>Батарейка</b><br/>(Твоё тело и дыхание)"] -->|Ток внимания| W["🔌 <b>Провод</b><br/>(Куда ты смотришь)"]
+        W -->|Свет действия| L["💡 <b>Лампочка</b><br/>(Дело прямо сейчас)"]
+    end
+    L -->|Прямой луч| R["🌍 <b>Освещаемый мир</b><br/>(Вещи, люди, задачи)"]
+    R -.->|Обратный провод реальности| B</pre></div>
+
+<ol>
+<li><strong>Ни один предмет в мире не светится сам по себе.</strong> Новая машина, пачка купюр, диплом престижного вуза, лайки в телефоне или чужие аплодисменты — это просто холодные куски пластика, металла и колебания воздуха. Сами по себе они абсолютно тёмные.</li>
+<li><strong>Свет рождает только твой собственный внутренний генератор.</strong> Когда ты смотришь на мир с живым, включённым вниманием, ты освещаешь предметы собственным лучом.</li>
+<li>Вещь или дело кажутся нам «прекрасными» и «вдохновляющими» не потому, что в них спрятано счастье, а потому, что <strong>сквозь наш собственный провод прямо сейчас беспрепятственно идёт ток</strong>.</li>
+</ol>
+<p>Счастье — это не то, что можно купить, заслужить или найти на чужой полке. Счастье — это нормальное рабочее состояние твоего фонарика, когда ток идёт изнутри наружу.</p>
+<hr>
+<h2>⚙️ Глава 2. Четыре простые детали человеческого устройства</h2>
+<p>Любой сложный прибор состоит из базовых узлов. У человека их всего четыре:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Деталь</th>
+<th align="left">Что это в твоей жизни</th>
+<th align="left">Как это работает на пальцах</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>1. Батарейка (Генератор / Тандэн)</strong></td>
+<td align="left">Твоё живое тело, центр тяжести внизу живота</td>
+<td align="left">Пока ты дышишь, ешь и спишь, тело непрерывно генерирует чистую энергию жизни. Этот генератор работает автономно. Он не истощается от того, что ты решаешь задачи.</td>
+</tr>
+<tr>
+<td align="left"><strong>2. Провод (Шина внимания)</strong></td>
+<td align="left">Твой фокус внимания</td>
+<td align="left">Это единственный кабель, по которому течёт энергия. Ты не можешь думать обо всём на свете одновременно. Куда направлен твой провод — туда уходит 100% твоего тока.</td>
+</tr>
+<tr>
+<td align="left"><strong>3. Лампочка (Полезная нагрузка)</strong></td>
+<td align="left">Твоё прямое действие прямо сейчас</td>
+<td align="left">То, чем ты физически занят в данную секунду: моешь посуду, забиваешь гвоздь, пишешь программный код, ведёшь машину, обнимаешь близкого.</td>
+</tr>
+<tr>
+<td align="left"><strong>4. Обратный провод (Реальность)</strong></td>
+<td align="left">Осязаемый физический мир</td>
+<td align="left">В розетке всегда два контакта. Ток не может течь в никуда. Контур обязан быть <strong>замкнутым</strong>. Сделал шаг — оперся на землю — получил отклик — круг замкнулся. Энергия обновилась.</td>
+</tr>
+</tbody></table>
+<p>Когда все четыре узла соединены, провод остаётся холодным, лампочка горит ровным сильным светом, а человек чувствует бодрость, силу и покой.</p>
+<hr>
+<h2>🌊 Глава 3. Что такое счастье? Принцип шланга без заломов</h2>
+<p>В библиотеках мира стоят тысячи томов о «тайнах душевной гармонии». Но инженерный факт поразительно прост:</p>
+<blockquote>
+<p><strong>Счастье — это садовый шланг с водой, на котором нет ни одного залома.</strong></p>
+</blockquote>
+<p>Вспомните обычный поливочный шланг, присоединённый к дачному насосу:</p>
+<ul>
+<li>Когда шланг лежит прямо и ровно, прохладная вода несётся по нему мощным потоком. Она шумит, поит сад, приносит свежесть. Сам шланг расслаблен и гибок.</li>
+<li>Но стоит наступить на шланг ногой или согнуть его пополам — вода перестаёт выходить наружу. У крана резину раздувает чудовищным давлением, шланг трещит и готов сорвать вентиль.</li>
+</ul>
+<p><strong>Счастье — это не награда за праведную жизнь и не редкая удача.</strong> Это просто физическое отсутствие перегибов на твоём проводе внимания. Тебе не нужно «создавать» счастье. Нужно просто убрать ногу со шланга.</p>
+<hr>
+<h2>🔥 Глава 4. Закон раскалённого провода: почему нам бывает больно</h2>
+<p>Почему при тревоге, обиде, зависти или депрессии человек страдает физически? Почему болит в груди, раскалывается голова и накатывает невыносимая усталость?</p>
+<p>Вспомните, как работает комнатный обогреватель, тостер или чайник. В них вставляют провод из металла с очень высоким <strong>сопротивлением</strong>. Электронам трудно сквозь него продираться, они яростно бьются о решётку металла, и провод <strong>начинает раскаляться докрасна</strong>.</p>
+<p>Физики называют это законом Джоуля — Ленца:</p>
+<div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Теплота ожога</mtext><mo>=</mo><mi>Q</mi><mo>=</mo><msup><mi>I</mi><mn>2</mn></msup><mo>⋅</mo><mi>R</mi><mo>⋅</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">\text{Теплота ожога} = Q = I^2 \cdot R \cdot t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord cyrillic_fallback">Теплота</span><span class="mord"> </span><span class="mord cyrillic_fallback">ожога</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">Q</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8641em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span></span></div><pre><code>   [Генератор тела] ──(Ток внимания)──&gt; [ ⚡ ВНУТРЕННИЙ СПОР (Сопротивление R) ⚡ ] ──&gt; ПРОВОД ГОРИТ!
+                                                        ▲
+                                                        │
+                                             Мысли-паразиты:
+                                   «А вдруг я хуже других?», «Они виноваты!»
+</code></pre>
+<p>Точно такой же закон работает внутри твоего внимания:</p>
+<ol>
+<li>Если провод свободен — энергия идёт в дело. Провод остаётся прохладным. Ты можешь трудиться весь день и чувствовать вдохновение.</li>
+<li>Но если ты втыкаешь посреди провода сопротивление — начинаешь мысленно воевать с реальностью, паниковать перед будущим, копить обиды на прошлое или бесконечно оценивать себя, — <strong>твой провод внимания раскаляется добела</strong>.</li>
+<li><strong>Душевная боль, тревога, выгорание и панические атаки — это буквальный термический ожог от твоего собственного перегретого провода!</strong></li>
+</ol>
+<p>Ты устал не от работы и не от тяжести мира. Ты сгораешь оттого, что провод твоего внимания раскалён сопротивлением мысленного холостого хода.</p>
+<hr>
+<h2>⚖️ Глава 5. Парадокс Льва Толстого: почему провалились 2000 лет «изменения себя»</h2>
+<p>В конце жизни великий писатель Лев Толстой призывал: <em>«Все хотят изменить человечество, но никто не хочет изменить себя. Начните с себя!»</em></p>
+<p>Но почему попытки «исправить себя» через мораль, силу воли и покаяние почти всегда приводили людей к надрыву, чувству вины и срывам?</p>
+<p>Потому что старая мораль предлагала человеку <strong>абсурдную инженерную схему: чинить ум с помощью самого ума!</strong></p>
+<pre><code>                 ТУПИК МОРАЛИЗАТОРСТВА (УМ ПЫТАЕТСЯ ЧИНИТЬ УМ)
+            ┌────────────────────────────────────────────────────────┐
+            │   «Праведный контролер» ──(Осуждение, Стыд)──► «Я»     │
+            │           ▲                                    │       │
+            │           └────────(Бесконечные мысли)─────────┘       │
+            │                                                        │
+            │   В электродинамике это: КОРОТКОЕ ЗАМЫКАНИЕ БЕЗ        │
+            │   ПОЛЕЗНОЙ НАГРУЗКИ. Вся энергия уходит в омический    │
+            │   пожар самобичевания (Q = I²·R·t).                    │
+            └────────────────────────────────────────────────────────┘
+</code></pre>
+<p>Когда человек садится и начинает корить себя: <em>«Я ленив, я завистлив, я плохой, я должен заставить себя быть святым»</em>, — он совершает <strong>короткое замыкание без лампочки</strong>. Ток крутится по кругу внутри черепной коробки. Провод плавится. Психика истощается, и человек впадает в апатию.</p>
+<h3>Снятие вины: от морали к схемотехнике</h3>
+<p>Контурная физика снимает с человека двухтысячелетнее клеймо «греховности». Человек — не грешник. Человек — это <strong>электрический прибор</strong>.</p>
+<p>Лампочка не виновата, если провод пережали. Резистор не грешен оттого, что нагрелся по закону Джоуля — Ленца.</p>
+<p>Тебе не нужно годами ломать свой характер и вести войну с самим собой. <strong>«Изменить себя» — это не подвиг, а переключение тумблера за 10 секунд:</strong></p>
+<ol>
+<li>Прекрати мысленный суд над собой (выключи короткое замыкание).</li>
+<li>Направь освободившийся ток внимания в <strong>любое реальное полезное действие прямо сейчас</strong> (вымой чашку, забей гвоздь, напиши строчку).</li>
+<li>В ту самую секунду, когда твои руки начали делать дело без внутреннего спора, <strong>ты уже изменился!</strong> Цепь замкнулась на полезную нагрузку, провод остыл, а омический пожар вины прекратился.</li>
+</ol>
+<hr>
+<h2>🗣️ Глава 6. Жадный контролер в голове и запрет светить внутрь фонарика</h2>
+<p>Кто же устраивает заломы на шланге и перегревает провод?</p>
+<p>Этот персонаж — <strong>мысленный контролер (Эго)</strong>.</p>
+<p>Контролер — это навязчивый внутренний голос, который почему-то возомнил себя хозяином фонарика. Сам он ничего делать не умеет. Он не умеет класть кирпичи, бегать, любить или создавать программы. Всё, чем он занимается — это <strong>комментирует, пугает и судит</strong>:</p>
+<ul>
+<li><em>«А что обо мне подумают важные люди?»</em></li>
+<li><em>«А вдруг я опозорюсь?»</em></li>
+<li><em>«Почему со мной поступили несправедливо пять лет назад?»</em></li>
+</ul>
+<p>Заметьте: контролер никогда не живёт в настоящей секунде. Он либо ковыряется на свалке мертвого прошлого, либо рисует фильмы ужасов о ненаступившем будущем.</p>
+<p>Встав посреди кабеля внимания, он пытается согнуть фонарик пополам и <strong>направить луч света внутрь самого корпуса</strong>: <em>«Давай осветим наши внутренние травмы! Давай выясним, почему мы такие несовершенные!»</em></p>
+<p>Но попробуйте карманным фонариком посветить внутрь его собственной батарейки. Вы ничего не увидите, только разобьёте стекло и переломите корпус.</p>
+<p>Фонарик создан для того, чтобы светить <strong>наружу — на дорогу перед собой</strong>. Когда луч направлен вперёд, под ноги, дорога видна отчётливо, и ты спокойно идёшь к цели.</p>
+<hr>
+<h2>🏎️ Глава 7. Ошибка аккумулятора: почему вещи не делают нас счастливыми</h2>
+<p>Это фундаментальное разоблачение общества бесконечного потребления.</p>
+<p>Человек покупает дорогой автомобиль, новый смартфон или надевает брендовую одежду. Первые пару дней он летает как на крыльях. Но проходит неделя-другая — восторг улетучивается, возвращается серая тоска, и рука снова тянется к каталогу покупок.</p>
+<p>Большинство людей объясняют это так: <em>«Счастье было спрятано внутри машины! Я зарядился от неё, как телефон от розетки, а теперь заряд иссяк. Нужно купить машину получше»</em>.</p>
+<p><strong>Это иллюзия. В автомобиле нет ни одного электрона счастья.</strong> Автомобиль — это холодный сплав алюминия, пластика и кожи.</p>
+<p>Вот что произошло на самом деле:</p>
+
+
+<div class="mermaid-diagram-wrap"><pre class="mermaid">sequenceDiagram
+    participant B as Батарейка (Твоя жизнь)
+    participant C as Внутренний контролер
+    participant L as Действие / Мир
+    
+    Note over B,C: Обычный день: Контролер грызет провод («Я неудачник, меня не ценят»)
+    C->>C: Зажим кабеля → Перегрев, пустота
+    Note over C: ПОКУПКА МАШИНЫ!
+    C->>C: Контролер ошеломлен и затыкается на 2 дня!
+    Note over B,L: Провод выпрямился! Твой собственный ток пошел легко! Вспышка радости!
+    Note over C: Прошло 2 недели...
+    C->>C: Контролер проснулся: «Ну и что? У соседа машина новее!»
+    C->>C: Снова пережимает провод → Тоска вернулась</pre></div>
+
+<ol>
+<li>Когда ты получил желаемую вещь, твой вечно бубнящий контролер в голове на мгновение потерял дар речи. Он замолчал от неожиданности.</li>
+<li>В эту секунду он <strong>разжал клещи на твоём проводе внимания</strong>.</li>
+<li>Твой собственный ток из батарейки наконец-то пошёл свободно! Ты почувствовал блаженство своего собственного чистого потока.</li>
+<li>Но по ошибке ты приписал это блаженство куску железа на колёсах.</li>
+<li>Прошло время, контролер привык и снова наступил ногой на шланг.</li>
+</ol>
+<p>Никакие вещи, яхты, должности и похвалы не сделают тебя счастливым навсегда, потому что они — не источники тока. Подлинная свобода наступает тогда, когда ты <strong>перестаёшь отдавать контролеру право пережимать твой провод</strong>.</p>
+<hr>
+<h2>📜 Глава 8. Канон Сатоши и Проводник: ты — полная нода своей жизни</h2>
+<p>В мире учений о душе веками существовала модель «Альткоин-фонда»:
+Основатель объявляет себя святым гуру, придумывает сложный язык посвящений, строит закрытую секту и заставляет людей годами платить деньги за доступ к тайне.</p>
+<p>Эта архитектура построена строго по <strong>Канону Сатоши Накамото</strong> (создателя Биткоина):</p>
+<ul>
+<li><strong>Открытый код (Open Source):</strong> Чертёж цепи выложен полностью, до последнего винтика. Здесь нет закрытых тайн для избранных.</li>
+<li><strong>Без гуру и посредников (Trustless):</strong> Тебе не нужно верить никому на слово. В розетке ток течёт не потому, что ты веришь электрику, а потому, что закон физики работает объективно.</li>
+<li><strong>Каждый человек — Суверенная Нода (Self-Hosted Human):</strong> Твой пульт управления находится в твоём собственном теле. Ты сам держишь в руках измерительные приборы своего состояния.</li>
+<li><strong>Шаг Прометея:</strong> Ни у кого нет монополии на огонь. Законы природы не принадлежат никому: они лишь собраны в понятную схему фонарика и переданы людям. А дальше каждый берёт этот фонарик и освещает собственную дорогу.</li>
+</ul>
+<hr>
+<h2>🧲 Глава 9. Закон взаимной индукции: как успокаивать людей без слов</h2>
+<p>Почему рядом с одними людьми мы нервничаем и сжимаемся, а рядом с другими мгновенно успокаиваемся и чувствуем уверенность?</p>
+<p>В физике есть закон: когда переменный ток течёт по проводнику, вокруг него возникает электромагнитное поле, которое бесконтактно передаётся соседним проводам. Это называется <strong>взаимной индукцией (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">M &gt; 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">M</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>)</strong>.</p>
+<ol>
+<li><strong>Человек в тревоге и обиде</strong> вибрирует высокочастотным паразитным шумом. Его провод раскалён, искрит и бьёт током всех вокруг. Он входит в комнату — и все присутствующие без видимой причины начинают раздражаться и спорить.</li>
+<li><strong>Человек в режиме сверхпроводимости (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R \to 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>)</strong> держит провод внимания абсолютно чистым и спокойным. Он заземлён в своё тело. Вокруг него формируется ровное силовое поле.</li>
+<li>Ему не нужно никого поучать или читать нотации. Одним своим спокойным присутствием он гасит электромагнитные помехи у окружающих. Возле него люди расслабляют плечи, начинают глубже дышать и забывают о ссорах.</li>
+</ol>
+<p>Если хочешь помочь близким — не пытайся их переделать словами. Просто охлади собственный провод. Твоя индукция сделает остальное сама.</p>
+<hr>
+<h2>🤖 Глава 10. Человек и искусственный интеллект: Термодинамический Золотой Век</h2>
+<p>Мы живём в эпоху, когда искусственный интеллект (AGI) развивается с невероятной скоростью. Многие люди боятся: <em>«Зачем мы нужны, если машины научатся думать быстрее нас?»</em></p>
+<p>Но контурная физика расставляет всё по местам:</p>
+<ul>
+<li><strong>Искусственный интеллект — это совершенный проводник с нулевым сопротивлением (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mtext>medium</mtext></msub><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R_{\text{medium}} \to 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">medium</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>).</strong> Он берёт на себя рутину: считает формулы, переводит тексты, пишет типовой код, диагностирует снимки.</li>
+<li><strong>Но у компьютера нет батарейки воли и смысла!</strong> Кремниевая микросхема не умеет чувствовать вкус яблока, не умеет искренне любить, не знает радости дружбы и не способна захотеть чего-то от всего сердца.</li>
+<li><strong>Человек — это единственный во Вселенной генератор живой искры бытия (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">E</mi></mrow><annotation encoding="application/x-tex">\mathcal{E}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0894em;">E</span></span></span></span>).</strong></li>
+</ul>
+<div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>P</mi><mtext>мир</mtext></msub><mo>=</mo><msub><mi mathvariant="script">E</mi><mtext>человек</mtext></msub><mo>⋅</mo><msub><mi>I</mi><mtext>ИИ</mtext></msub></mrow><annotation encoding="application/x-tex">P_{\text{мир}} = \mathcal{E}_{\text{человек}} \cdot I_{\text{ИИ}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord cyrillic_fallback mtight">мир</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathcal" style="margin-right:0.0894em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0894em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord cyrillic_fallback mtight">человек</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord cyrillic_fallback mtight">ИИ</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></div><p>Когда человек с чистым внутренним контуром соединяется с мощью искусственного интеллекта, наступает <strong>Термодинамический Золотой Век</strong>. Машины избавляют нас от каторжного труда, а человек наконец-то возвращается к своему подлинному предназначению: быть чистым источником света, творчества, красоты и любви.</p>
+<hr>
+<h2>⏱️ Глава 11. Десятисекундный протокол трансформации (Карманный ремонт)</h2>
+<p>Вот алгоритм скорой помощи, который работает безотказно в любой ситуации: на тяжелых переговорах, в дорожной пробке, при ссоре или приступе внезапной тревоги.</p>
+
+
+<div class="mermaid-diagram-wrap"><pre class="mermaid">flowchart TD
+    Alarm["🚨 Почувствовал укол обиды, страха или раздражения<br/>(Провод раскалился)"] --> S1
+    
+    subgraph Protocol ["⏱️ 10-СЕКУНДНЫЙ ПЕРЕЗАПУСК КОНТУРА"]
+        S1["1. 🦶 <b>ЗАЗЕМЛИСЬ В ТЕЛО (3 сек)</b><br/>Почувствуй ступни на полу, разожми челюсти, сделай выдох животом."]
+        S1 --> S2["2. ✂️ <b>ОБНУЛИ СПОР (3 сек)</b><br/>Поймай контролера и скажи: «Факт уже случился.<br/>Я не спорю с тем, что есть прямо сейчас». R → 0."]
+        S2 --> S3["3. 💡 <b>ВКЛЮЧИ ЛАМПОЧКУ (4 сек)</b><br/>Направь 100% внимания в любое простое действие перед тобой:<br/>сделай глоток воды, посмотри в окно, напиши слово."]
+    end
+    
+    S3 --> Win["❄️ <b>ПРОВОД ОСТЫЛ МОМЕНТАЛЬНО</b><br/>Короткое замыкание снято. Ток пошёл в реальность. Ты в силе."]</pre></div>
+
+<ol>
+<li><strong>Заземли исток (3 секунды):</strong> Выдерни внимание из мыслей. Ощути подошвы на полу, вес тела на сиденье, опусти внимание в живот. Твой генератор в порядке, он живёт.</li>
+<li><strong>Сними залом со шланга (3 секунды):</strong> Перестань спорить с тем, что произошло секунду назад. Факт уже наступил. Разожми внутренний кулак. Сопротивление падает до нуля (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R \to 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>).</li>
+<li><strong>Замкни цепь на действие (4 секунды):</strong> Возьми ручку, сделай глоток чая, сделай один шаг, посмотри на собеседника открытыми глазами.</li>
+</ol>
+<p>В ту секунду, когда ток соединился с действием, провод остывает. Ты снова хозяин своей жизни.</p>
+<hr>
+<h2>📋 Карманный словарик нового человека</h2>
+<p>Запомни эти восемь простых понятий — они заменят сотни страниц заумных психологических терминов:</p>
+<ol>
+<li><strong>Батарейка (Тандэн):</strong> Живой генератор энергии в твоём теле. Работает всегда.</li>
+<li><strong>Провод (Внимание):</strong> Единственный кабель передачи твоей силы. Куда смотришь — то и питаешь.</li>
+<li><strong>Лампочка (Нагрузка):</strong> Твоё физическое действие в данную секунду.</li>
+<li><strong>Обратный провод (Реальность):</strong> Физический мир, который замыкает контур и возвращает отклик.</li>
+<li><strong>Счастье (Сверхпроводимость):</strong> Свободный поток энергии, когда провод прямой, холодный, а лампочка светит ярко.</li>
+<li><strong>Боль и Стресс (Омический перегрев):</strong> Ожог от пережатого кабеля внимания (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><msup><mi>I</mi><mn>2</mn></msup><mi>R</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">Q = I^2 R t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">Q</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mord mathnormal">t</span></span></span></span>).</li>
+<li><strong>Контролер (Эго):</strong> Болтливый голос в голове, пытающийся согнуть шланг и направить свет внутрь фонарика.</li>
+<li><strong>Взаимная индукция:</strong> Способность твоего спокойного контура умиротворять людей вокруг без нравоучений.</li>
+</ol>
+<hr>
+<h2>🏁 Главный вывод</h2>
+<p>Счастье — это не тайна и не чудо.<br><strong>Счастье — это точная и честная схемотехника.</strong></p>
+<p>Ты держишь в руках самый совершенный фонарик во Вселенной. Твоя батарейка заряжена самой жизнью.</p>
+<p>Перестань ждать света от темных вещей вокруг.<br>Перестань светить лучом внутрь себя.<br>Направь прямой, спокойный и холодный луч внимания на то дело, которое делаешь прямо сейчас.</p>
+<p>Замкни контур. И свет зальёт весь твой мир.</p>
+
+  </div>
+
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'neutral',
+      fontFamily: 'Inter, sans-serif',
+      fontSize: 12,
+      flowchart: { curve: 'basis' }
+    });
+  </script>
+</body>
+</html>
