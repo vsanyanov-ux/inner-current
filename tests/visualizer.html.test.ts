@@ -97,4 +97,32 @@ describe('Visualizer public/index.html Integrity & Script Syntax Test Suite', ()
       assert.ok(html.includes(`id="${id}"`), `Ten Bulls element with id "${id}" should exist in public/index.html`);
     }
   });
+
+  it('5. Anyanov Triad & Tetrad sidebar mini-HUD elements exist and are accessible', () => {
+    const triadIds = [
+      'side-triad-card',
+      'side-flow-indicator',
+      'side-flow-text',
+      'side-gauge-u',
+      'side-u-status',
+      'side-u-val',
+      'side-u-sub',
+      'side-gauge-r',
+      'side-r-status',
+      'side-r-val',
+      'side-r-sub',
+      'side-gauge-q',
+      'side-q-status',
+      'side-q-val',
+      'side-q-sub',
+      'side-gauge-p',
+      'side-p-status',
+      'side-p-val',
+      'side-p-sub'
+    ];
+
+    for (const id of triadIds) {
+      assert.ok(html.includes(`id="${id}"`), `Triad element with id "${id}" should exist in public/index.html`);
+    }
+  });
 });

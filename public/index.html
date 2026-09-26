@@ -171,6 +171,80 @@
           </button>
         </div>
 
+        <!-- ==================== ANYANOV TRIAD & TETRAD MINI-HUD ==================== -->
+        <div id="side-triad-card" class="p-3.5 rounded-xl bg-gradient-to-b from-slate-950/95 via-slate-950/85 to-slate-950/95 border border-cyan-500/30 text-xs font-mono space-y-2.5 shadow-xl relative overflow-hidden transition-all duration-300">
+          <div id="side-triad-glow" class="absolute -right-8 -top-8 w-24 h-24 bg-cyan-500/10 rounded-full blur-xl pointer-events-none transition-all duration-500"></div>
+          
+          <!-- Header with live switch and question -->
+          <div class="flex items-center justify-between relative z-10">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-cyan-300 flex items-center gap-1.5">
+              <span>🎛️</span> <span>Приборы оператора</span>
+            </span>
+            <button onclick="switchTab('dashboard')" title="Открыть полный Дашборд счастья" class="text-[9px] px-2 py-0.5 rounded-md bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition cursor-pointer flex items-center gap-1">
+              <span>Live HUD</span>
+              <span>↗</span>
+            </button>
+          </div>
+
+          <!-- Canonical core question -->
+          <div class="text-[10px] text-slate-300 leading-snug border-b border-slate-800/80 pb-2 relative z-10 flex items-start gap-1.5">
+            <span id="side-flow-indicator" class="text-emerald-400 shrink-0 mt-0.5 animate-pulse">⚡</span>
+            <span id="side-flow-text" class="text-[10px] text-slate-300">
+              «Ток течет свободно. Эго не греет проводку.»
+            </span>
+          </div>
+
+          <!-- Gauges Grid: 2x2 for Truth, Freedom, Happiness, Creation -->
+          <div class="grid grid-cols-2 gap-2 text-[10px] relative z-10">
+            
+            <!-- 1. Voltmeter of Truth (Истина) -->
+            <div id="side-gauge-u" class="p-2 rounded-lg bg-slate-900/90 border border-slate-800 flex flex-col justify-between transition-all duration-200">
+              <div class="text-slate-400 flex items-center justify-between text-[9px]">
+                <span class="font-bold text-slate-300">🧭 Истина</span>
+                <span id="side-u-status" class="text-emerald-400 font-bold">I &gt; 0</span>
+              </div>
+              <div id="side-u-val" class="font-bold text-slate-100 mt-1 truncate">80 В • Факты</div>
+              <div class="text-[8px] text-slate-400 truncate mt-0.5" id="side-u-sub">Без самообмана</div>
+            </div>
+
+            <!-- 2. Ohmmeter of Freedom (Свобода) -->
+            <div id="side-gauge-r" class="p-2 rounded-lg bg-slate-900/90 border border-slate-800 flex flex-col justify-between transition-all duration-200">
+              <div class="text-slate-400 flex items-center justify-between text-[9px]">
+                <span class="font-bold text-slate-300">🎚️ Свобода</span>
+                <span id="side-r-status" class="text-cyan-400 font-bold">R ≈ 0</span>
+              </div>
+              <div id="side-r-val" class="font-bold text-cyan-300 mt-1 truncate">0.2 Ω</div>
+              <div class="text-[8px] text-slate-400 truncate mt-0.5" id="side-r-sub">Мусин (чистый ум)</div>
+            </div>
+
+            <!-- 3. Calorimeter of Happiness (Счастье) -->
+            <div id="side-gauge-q" class="p-2 rounded-lg bg-slate-900/90 border border-slate-800 flex flex-col justify-between transition-all duration-200">
+              <div class="text-slate-400 flex items-center justify-between text-[9px]">
+                <span class="font-bold text-slate-300">🔥 Счастье</span>
+                <span id="side-q-status" class="text-slate-300 font-bold">❄️ 0 Дж</span>
+              </div>
+              <div id="side-q-val" class="font-bold text-slate-200 mt-1 truncate">Холодный контур</div>
+              <div class="text-[8px] text-slate-400 truncate mt-0.5" id="side-q-sub">Q = I²·R·t → 0</div>
+            </div>
+
+            <!-- 4. Wattmeter of Creation (Созидание) -->
+            <div id="side-gauge-p" class="p-2 rounded-lg bg-slate-900/90 border border-slate-800 flex flex-col justify-between transition-all duration-200">
+              <div class="text-slate-400 flex items-center justify-between text-[9px]">
+                <span class="font-bold text-slate-300">💡 Созидание</span>
+                <span id="side-p-status" class="text-amber-400 font-bold">115 Вт</span>
+              </div>
+              <div id="side-p-val" class="font-bold text-amber-300 mt-1 truncate">6 ламп горят</div>
+              <div class="text-[8px] text-slate-400 truncate mt-0.5" id="side-p-sub">Ток отдан в мир</div>
+            </div>
+
+          </div>
+
+          <!-- Quick calibrate button directly in sidebar -->
+          <button onclick="hud_calibrateMushin()" class="w-full py-2 px-2.5 rounded-lg bg-gradient-to-r from-amber-500/20 via-cyan-500/20 to-emerald-500/20 hover:from-amber-500/30 hover:to-cyan-500/30 border border-cyan-500/40 text-cyan-200 text-[10px] font-bold flex items-center justify-center gap-1.5 transition cursor-pointer active:scale-98 relative z-10 shadow-sm">
+            <span>⚡</span> <span>Калибровать Мусин (R → 0)</span>
+          </button>
+        </div>
+
         <!-- Active Mode Info Card in Sidebar -->
         <div class="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800/80 text-xs font-mono space-y-2">
           <div class="text-slate-400 text-[10px] uppercase tracking-wider flex justify-between items-center">
@@ -2866,7 +2940,7 @@
             </p>
           </div>
           <div class="flex flex-wrap items-center gap-2">
-            <a href="/book/" target="_blank" class="px-4 py-2 rounded-xl text-xs font-semibold bg-amber-500 hover:bg-amber-400 text-slate-950 transition flex items-center gap-1.5 shadow-lg shadow-amber-500/20">
+            <a href="book/index.html" target="_blank" class="px-4 py-2 rounded-xl text-xs font-semibold bg-amber-500 hover:bg-amber-400 text-slate-950 transition flex items-center gap-1.5 shadow-lg shadow-amber-500/20">
               <span>↗</span> Открыть в отдельной вкладке
             </a>
             <button onclick="book_printBook()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center gap-1.5 cursor-pointer">
@@ -2877,7 +2951,7 @@
 
         <!-- Book Reader Container Card with embedded Reader -->
         <div class="bg-slate-900/90 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl h-[calc(100vh-230px)] min-h-[600px] flex flex-col">
-          <iframe id="bookIframe" src="/book/" class="w-full flex-1 border-none bg-[#090d16]" title="Книга Внутренний ток: Архитектура счастья"></iframe>
+          <iframe id="bookIframe" src="book/index.html" class="w-full flex-1 border-none bg-[#090d16]" title="Книга Внутренний ток: Архитектура счастья"></iframe>
         </div>
       </div>
 
@@ -2890,7 +2964,7 @@
       if (iframe && iframe.contentWindow) {
         iframe.contentWindow.print();
       } else {
-        window.open('/book/', '_blank');
+        window.open('book/index.html', '_blank');
       }
     }
 
@@ -3009,7 +3083,7 @@
       if (iframe && iframe.contentWindow) {
         iframe.contentWindow.print();
       } else {
-        window.open('/book/', '_blank');
+        window.open('book/index.html', '_blank');
       }
     }
 
@@ -4777,6 +4851,161 @@
           sideScorePill.className = 'text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/30 animate-pulse';
         } else {
           sideScorePill.className = 'text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 animate-pulse';
+        }
+      }
+
+      // 1b. Update Sidebar Triad & Tetrad Mini-HUD (Вольтметр Истины, Омметр Свободы, Калориметр Счастья, Ваттметр Созидания)
+      const sideFlowInd = document.getElementById('side-flow-indicator');
+      const sideFlowText = document.getElementById('side-flow-text');
+      const sideTriadCard = document.getElementById('side-triad-card');
+      const sideTriadGlow = document.getElementById('side-triad-glow');
+
+      const sideGaugeU = document.getElementById('side-gauge-u');
+      const sideUStatus = document.getElementById('side-u-status');
+      const sideUVal = document.getElementById('side-u-val');
+      const sideUSub = document.getElementById('side-u-sub');
+
+      const sideGaugeR = document.getElementById('side-gauge-r');
+      const sideRStatus = document.getElementById('side-r-status');
+      const sideRVal = document.getElementById('side-r-val');
+      const sideRSub = document.getElementById('side-r-sub');
+
+      const sideGaugeQ = document.getElementById('side-gauge-q');
+      const sideQStatus = document.getElementById('side-q-status');
+      const sideQVal = document.getElementById('side-q-val');
+      const sideQSub = document.getElementById('side-q-sub');
+
+      const sideGaugeP = document.getElementById('side-gauge-p');
+      const sidePStatus = document.getElementById('side-p-status');
+      const sidePVal = document.getElementById('side-p-val');
+      const sidePSub = document.getElementById('side-p-sub');
+
+      // Canonical flow indicator text
+      if (sideFlowInd && sideFlowText) {
+        if (isReverse) {
+          sideFlowInd.textContent = '🪤';
+          sideFlowInd.className = 'text-purple-400 shrink-0 mt-0.5 animate-pulse';
+          sideFlowText.innerHTML = '<span class="text-purple-300 font-bold">Эго греет проводку!</span> Короткое замыкание на похвалу.';
+        } else if (effectiveR > 25) {
+          sideFlowInd.textContent = '🔥';
+          sideFlowInd.className = 'text-rose-400 shrink-0 mt-0.5 animate-pulse';
+          sideFlowText.innerHTML = '<span class="text-rose-300 font-bold">Проводка вскипает!</span> Омический перегрев мыслями.';
+        } else if (isFailed) {
+          sideFlowInd.textContent = '🏺';
+          sideFlowInd.className = 'text-amber-400 shrink-0 mt-0.5';
+          sideFlowText.innerHTML = '<span class="text-amber-300 font-bold">Дзансин активен:</span> сбой нагрузки изолирован.';
+        } else if (effectiveR <= 2) {
+          sideFlowInd.textContent = '⚡';
+          sideFlowInd.className = 'text-cyan-400 shrink-0 mt-0.5 animate-pulse';
+          sideFlowText.innerHTML = '<span class="text-cyan-300 font-bold">Ток течет свободно!</span> Сверхпроводимость Мусин.';
+        } else {
+          sideFlowInd.textContent = '⚡';
+          sideFlowInd.className = 'text-amber-400 shrink-0 mt-0.5';
+          sideFlowText.innerHTML = '<span class="text-slate-300">Легкое трение мыслей. Ток в нагрузке.</span>';
+        }
+      }
+
+      if (sideTriadCard && sideTriadGlow) {
+        if (isReverse) {
+          sideTriadCard.className = 'p-3.5 rounded-xl bg-gradient-to-b from-purple-950/40 via-slate-950/90 to-slate-950 border border-purple-500/40 text-xs font-mono space-y-2.5 shadow-xl relative overflow-hidden transition-all duration-300';
+          sideTriadGlow.className = 'absolute -right-8 -top-8 w-24 h-24 bg-purple-500/20 rounded-full blur-xl pointer-events-none transition-all duration-500';
+        } else if (effectiveR > 25) {
+          sideTriadCard.className = 'p-3.5 rounded-xl bg-gradient-to-b from-rose-950/40 via-slate-950/90 to-slate-950 border border-rose-500/40 text-xs font-mono space-y-2.5 shadow-xl relative overflow-hidden transition-all duration-300';
+          sideTriadGlow.className = 'absolute -right-8 -top-8 w-24 h-24 bg-rose-500/20 rounded-full blur-xl pointer-events-none transition-all duration-500';
+        } else {
+          sideTriadCard.className = 'p-3.5 rounded-xl bg-gradient-to-b from-slate-950/95 via-slate-950/85 to-slate-950/95 border border-cyan-500/30 text-xs font-mono space-y-2.5 shadow-xl relative overflow-hidden transition-all duration-300';
+          sideTriadGlow.className = 'absolute -right-8 -top-8 w-24 h-24 bg-cyan-500/10 rounded-full blur-xl pointer-events-none transition-all duration-500';
+        }
+      }
+
+      // 1. Voltmeter of Truth (Истина)
+      if (sideUVal && sideUStatus && sideUSub && sideGaugeU) {
+        if (isReverse) {
+          sideUStatus.textContent = 'КЗ ЭГО!';
+          sideUStatus.className = 'text-purple-400 font-bold';
+          sideUVal.textContent = '0 В • Фальшь';
+          sideUSub.textContent = 'Ожидание похвалы';
+          sideGaugeU.className = 'p-2 rounded-lg bg-purple-950/30 border border-purple-500/40 flex flex-col justify-between transition-all duration-200 animate-pulse';
+        } else if (isFailed) {
+          sideUStatus.textContent = 'СБОЙ';
+          sideUStatus.className = 'text-amber-400 font-bold';
+          sideUVal.textContent = 'Изоляция';
+          sideUSub.textContent = 'Дзансин активен';
+          sideGaugeU.className = 'p-2 rounded-lg bg-amber-950/30 border border-amber-500/30 flex flex-col justify-between transition-all duration-200';
+        } else {
+          sideUStatus.textContent = 'I > 0';
+          sideUStatus.className = 'text-emerald-400 font-bold';
+          sideUVal.textContent = (sc.emf || 80) + ' В • Факты';
+          sideUSub.textContent = 'Прямой ток в дело';
+          sideGaugeU.className = 'p-2 rounded-lg bg-slate-900/90 border border-slate-800 flex flex-col justify-between transition-all duration-200';
+        }
+      }
+
+      // 2. Ohmmeter of Freedom (Свобода)
+      if (sideRVal && sideRStatus && sideRSub && sideGaugeR) {
+        sideRVal.textContent = effectiveR.toFixed(1) + ' Ω';
+        if (effectiveR <= 2) {
+          sideRStatus.textContent = 'R ≈ 0';
+          sideRStatus.className = 'text-cyan-400 font-bold';
+          sideRSub.textContent = 'Мусин (свобода)';
+          sideGaugeR.className = 'p-2 rounded-lg bg-cyan-950/20 border border-cyan-500/30 flex flex-col justify-between transition-all duration-200';
+        } else if (effectiveR > 25) {
+          sideRStatus.textContent = 'R ≫ 0';
+          sideRStatus.className = 'text-rose-400 font-bold';
+          sideRSub.textContent = 'Шум мыслей!';
+          sideGaugeR.className = 'p-2 rounded-lg bg-rose-950/30 border border-rose-500/40 flex flex-col justify-between transition-all duration-200 animate-pulse';
+        } else {
+          sideRStatus.textContent = 'R = ' + effectiveR.toFixed(1);
+          sideRStatus.className = 'text-amber-400 font-bold';
+          sideRSub.textContent = 'Трение мыслей';
+          sideGaugeR.className = 'p-2 rounded-lg bg-slate-900/90 border border-slate-800 flex flex-col justify-between transition-all duration-200';
+        }
+      }
+
+      // 3. Calorimeter of Happiness (Счастье)
+      if (sideQVal && sideQStatus && sideQSub && sideGaugeQ) {
+        if (isReverse) {
+          sideQStatus.textContent = '🔥 ' + qText;
+          sideQStatus.className = 'text-purple-400 font-bold';
+          sideQVal.textContent = 'Эго кипит!';
+          sideQSub.textContent = 'Внутреннее КЗ';
+          sideGaugeQ.className = 'p-2 rounded-lg bg-purple-950/30 border border-purple-500/40 flex flex-col justify-between transition-all duration-200 animate-pulse';
+        } else if (effectiveR > 25) {
+          sideQStatus.textContent = '🔥 ' + qText;
+          sideQStatus.className = 'text-rose-400 font-bold';
+          sideQVal.textContent = 'Перегрев!';
+          sideQSub.textContent = 'Джоулево трение';
+          sideGaugeQ.className = 'p-2 rounded-lg bg-rose-950/30 border border-rose-500/40 flex flex-col justify-between transition-all duration-200 animate-pulse';
+        } else if (effectiveR <= 2) {
+          sideQStatus.textContent = '❄️ 0 Дж';
+          sideQStatus.className = 'text-cyan-300 font-bold';
+          sideQVal.textContent = 'Холодный ток';
+          sideQSub.textContent = 'Счастье (Q ≈ 0)';
+          sideGaugeQ.className = 'p-2 rounded-lg bg-cyan-950/20 border border-cyan-500/30 flex flex-col justify-between transition-all duration-200';
+        } else {
+          sideQStatus.textContent = qText;
+          sideQStatus.className = 'text-amber-300 font-bold';
+          sideQVal.textContent = 'Потери тепла';
+          sideQSub.textContent = 'Q = I²·R·t';
+          sideGaugeQ.className = 'p-2 rounded-lg bg-slate-900/90 border border-slate-800 flex flex-col justify-between transition-all duration-200';
+        }
+      }
+
+      // 4. Wattmeter of Creation (Созидание)
+      if (sidePVal && sidePStatus && sidePSub && sideGaugeP) {
+        if (isReverse) {
+          sidePStatus.textContent = '0 Вт';
+          sidePStatus.className = 'text-slate-500 font-bold';
+          sidePVal.textContent = 'Лампы темны';
+          sidePSub.textContent = 'Эго съело ток';
+          sideGaugeP.className = 'p-2 rounded-lg bg-slate-900/90 border border-slate-800 flex flex-col justify-between transition-all duration-200 opacity-60';
+        } else {
+          const actCount = mc && mc.bulbs ? Object.values(mc.bulbs).filter(b => (b.power || 0) > 10).length : 6;
+          sidePStatus.textContent = totalShieldPower + ' Вт';
+          sidePStatus.className = 'text-amber-300 font-bold';
+          sidePVal.textContent = actCount + ' ламп горят';
+          sidePSub.textContent = 'Ток отдан в мир';
+          sideGaugeP.className = 'p-2 rounded-lg bg-slate-900/90 border border-slate-800 flex flex-col justify-between transition-all duration-200';
         }
       }
 

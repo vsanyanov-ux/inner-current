@@ -3,60 +3,119 @@ import path from 'node:path';
 import { marked } from 'marked';
 import katex from 'katex';
 
-const BOOK_PATH = path.resolve('book_outline.md');
-const OUT_DIR = path.resolve('public/book');
-const OUT_HTML = path.join(OUT_DIR, 'index.html');
+const EDITIONS = [
+  {
+    lang: 'ru',
+    sourceFile: path.resolve('book_outline.md'),
+    outDir: path.resolve('public/book'),
+    htmlFile: path.resolve('public/book/index.html'),
+    title: 'Внутренний ток: Архитектура счастья — Владимир Аньянов',
+    brandTitle: '⚡ ВНУТРЕННИЙ ТОК',
+    brandPill: 'Книга (Полное издание)',
+    heroTitle: 'Внутренний ток',
+    heroSubtitle: 'Архитектура счастья: Инженерное руководство по электродинамике сознания',
+    heroAuthor: 'Владимир Аньянов',
+    fig1Caption: 'Рис. 1. Топология сверхпроводимости человека-оператора: ламинарный поток при R → 0',
+    fig2Caption: 'Рис. 2. Принципиальная схема паразитного шунта эго и тепловые потери Джоуля-Ленца (Q = I²·Re·t)',
+    tocTitle: 'Оглавление книги',
+    searchPlaceholder: 'Поиск по главам и понятиям...',
+    themeLabel: '🌓 Тема',
+    pdfLabel: '📄 Скачать PDF',
+    appLabel: '🚀 В тренажер',
+    appUrl: '../index.html'
+  },
+  {
+    lang: 'en',
+    sourceFile: path.resolve('book_outline_en.md'),
+    outDir: path.resolve('public/book/en'),
+    htmlFile: path.resolve('public/book/en/index.html'),
+    title: 'Inner Current: The Architecture of Happiness — Vladimir Anyanov',
+    brandTitle: '⚡ INNER CURRENT',
+    brandPill: 'Book (Complete Edition)',
+    heroTitle: 'Inner Current',
+    heroSubtitle: 'The Architecture of Happiness: An Engineering Guide to Consciousness Electrodynamics',
+    heroAuthor: 'Vladimir Anyanov',
+    fig1Caption: 'Fig. 1. Operator superconductivity topology: laminar flow at R → 0',
+    fig2Caption: 'Fig. 2. Schematic of parasitic ego shunt and Joule-Lenz thermal losses (Q = I²·Re·t)',
+    tocTitle: 'Table of Contents',
+    searchPlaceholder: 'Search chapters and concepts...',
+    themeLabel: '🌓 Theme',
+    pdfLabel: '📄 Download PDF',
+    appLabel: '🚀 Open App',
+    appUrl: '../../index.html'
+  },
+  {
+    lang: 'it',
+    sourceFile: path.resolve('book_outline_it.md'),
+    outDir: path.resolve('public/book/it'),
+    htmlFile: path.resolve('public/book/it/index.html'),
+    title: 'La Corrente Interiore: L\'Architettura della Felicità — Vladimir Anyanov',
+    brandTitle: '⚡ LA CORRENTE INTERIORE',
+    brandPill: 'Libro (Edizione Completa)',
+    heroTitle: 'La Corrente Interiore',
+    heroSubtitle: 'L\'Architettura della Felicità: Guida ingegneristica all\'elettrodinamica della coscienza',
+    heroAuthor: 'Vladimir Anyanov',
+    fig1Caption: 'Fig. 1. Topologia della superconduttività dell\'operatore: flusso laminare a R → 0',
+    fig2Caption: 'Fig. 2. Schema di principio dello shunt parassita dell\'ego e perdite termiche di Joule-Lenz (Q = I²·Re·t)',
+    tocTitle: 'Indice del Libro',
+    searchPlaceholder: 'Cerca tra capitoli e concetti...',
+    themeLabel: '🌓 Tema',
+    pdfLabel: '📄 Scarica PDF',
+    appLabel: '🚀 Apri App',
+    appUrl: '../../index.html'
+  }
+];
 
-if (!fs.existsSync(OUT_DIR)) {
-  fs.mkdirSync(OUT_DIR, { recursive: true });
+function processMarkdown(rawMd) {
+  let md = rawMd;
+
+  // 1. Process Obsidian Callouts:
+  // > [!quote] Title
+  // > Content
+  md = md.replace(/^>\s*\[!([a-zA-Z0-9_-]+)\][ \t]*(.*)$/gm, (match, type, title) => {
+    if (title && title.trim()) {
+      return `> **${title.trim()}**\n>`;
+    }
+    return '>';
+  });
+
+  // 2. Process Obsidian Wiki-links in tables or text:
+  // [[02_Wiki/Inner Current (Title)\|Alias]] -> Alias
+  // [[02_Wiki/Inner Current (Title)|Alias]] -> Alias
+  // [[Title]] -> Title
+  md = md.replace(/\[\[(?:[^|\]]*\|)?([^\]]+)\]\]/g, '$1');
+
+  // 3. Pre-process Math formulas via KaTeX before markdown parsing:
+  // Block math: $$ ... $$
+  md = md.replace(/\$\$([\s\S]+?)\$\$/g, (match, formula) => {
+    try {
+      const rendered = katex.renderToString(formula.trim(), {
+        displayMode: true,
+        throwOnError: false
+      });
+      return `\n\n<div class="math-block">${rendered}</div>\n\n`;
+    } catch (e) {
+      return match;
+    }
+  });
+
+  // Inline math: $ ... $
+  md = md.replace(/(?<!\\)\$([^\$\n]+?)(?<!\\)\$/g, (match, formula) => {
+    try {
+      const rendered = katex.renderToString(formula.trim(), {
+        displayMode: false,
+        throwOnError: false
+      });
+      return rendered;
+    } catch (e) {
+      return match;
+    }
+  });
+
+  return md;
 }
 
-let markdown = fs.readFileSync(BOOK_PATH, 'utf-8');
-
-// 1. Process Obsidian Callouts:
-// > [!quote] Title
-// > Content
-markdown = markdown.replace(/^>\s*\[!([a-zA-Z0-9_-]+)\][ \t]*(.*)$/gm, (match, type, title) => {
-  if (title && title.trim()) {
-    return `> **${title.trim()}**\n>`;
-  }
-  return '>';
-});
-
-// 2. Process Obsidian Wiki-links in tables or text:
-// [[02_Wiki/Inner Current (Title)\|Alias]] -> Alias
-// [[02_Wiki/Inner Current (Title)|Alias]] -> Alias
-// [[Title]] -> Title
-markdown = markdown.replace(/\[\[(?:[^|\]]*\|)?([^\]]+)\]\]/g, '$1');
-
-// 3. Pre-process Math formulas via KaTeX before markdown parsing:
-// Block math: $$ ... $$
-markdown = markdown.replace(/\$\$([\s\S]+?)\$\$/g, (match, formula) => {
-  try {
-    const rendered = katex.renderToString(formula.trim(), {
-      displayMode: true,
-      throwOnError: false
-    });
-    return `\n\n<div class="math-block">${rendered}</div>\n\n`;
-  } catch (e) {
-    return match;
-  }
-});
-
-// Inline math: $ ... $
-markdown = markdown.replace(/(?<!\\)\$([^\$\n]+?)(?<!\\)\$/g, (match, formula) => {
-  try {
-    const rendered = katex.renderToString(formula.trim(), {
-      displayMode: false,
-      throwOnError: false
-    });
-    return rendered;
-  } catch (e) {
-    return match;
-  }
-});
-
-// 4. Configure marked renderer for Mermaid diagrams
+// Configure marked renderer for Mermaid diagrams
 marked.use({
   renderer: {
     code(token) {
@@ -69,17 +128,31 @@ marked.use({
   }
 });
 
-// Render markdown to HTML
-const contentHtml = marked.parse(markdown);
+function buildEdition(edition) {
+  if (!fs.existsSync(edition.sourceFile)) {
+    console.log(`⚠️ Source file ${edition.sourceFile} does not exist yet. Skipping ${edition.lang}.`);
+    return;
+  }
 
+  if (!fs.existsSync(edition.outDir)) {
+    fs.mkdirSync(edition.outDir, { recursive: true });
+  }
 
-// Reader HTML template with Dark/Light theme, KaTeX CSS, and Clean Typography
-const readerTemplate = `<!DOCTYPE html>
-<html lang="ru" data-theme="dark">
+  const rawMarkdown = fs.readFileSync(edition.sourceFile, 'utf-8');
+  const processedMarkdown = processMarkdown(rawMarkdown);
+  const contentHtml = marked.parse(processedMarkdown);
+
+  const assetPrefix = edition.lang === 'ru' ? '..' : '../..';
+  const ruUrl = edition.lang === 'ru' ? 'index.html' : '../index.html';
+  const enUrl = edition.lang === 'ru' ? 'en/index.html' : (edition.lang === 'en' ? 'index.html' : '../en/index.html');
+  const itUrl = edition.lang === 'ru' ? 'it/index.html' : (edition.lang === 'it' ? 'index.html' : '../it/index.html');
+
+  const template = `<!DOCTYPE html>
+<html lang="${edition.lang}" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Внутренний ток: Архитектура счастья — Владимир Аньянов</title>
+  <title>${edition.title}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
@@ -184,6 +257,35 @@ const readerTemplate = `<!DOCTYPE html>
       display: flex;
       align-items: center;
       gap: 0.75rem;
+    }
+
+    /* Language Switcher */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2px;
+      gap: 2px;
+    }
+    .lang-btn {
+      padding: 0.35rem 0.55rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .lang-btn:hover {
+      color: var(--text-bright);
+      background: var(--bg-card-subtle);
+    }
+    .lang-btn.active {
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid var(--border-glow);
     }
 
     .btn {
@@ -517,10 +619,9 @@ const readerTemplate = `<!DOCTYPE html>
       font-size: 0.85rem;
     }
 
-
     /* Print styles */
     @media print {
-      .topbar, .sidebar, .font-controls { display: none !important; }
+      .topbar, .sidebar, .font-controls, .lang-switcher { display: none !important; }
       .reader-container { padding: 0 !important; width: 100% !important; }
       .reader-article { max-width: 100% !important; color: #111 !important; font-size: 11pt !important; }
       body { background: #fff !important; color: #111 !important; }
@@ -541,17 +642,24 @@ const readerTemplate = `<!DOCTYPE html>
   <!-- Top bar -->
   <header class="topbar">
     <div class="topbar-left">
-      <a href="/" class="brand-title">
-        <span>⚡ ВНУТРЕННИЙ ТОК</span>
+      <a href="${edition.appUrl}" class="brand-title">
+        <span>${edition.brandTitle}</span>
       </a>
-      <span class="brand-pill">Книга (Полное издание)</span>
+      <span class="brand-pill">${edition.brandPill}</span>
     </div>
     <div class="topbar-controls">
-      <button class="btn" id="themeToggle" title="Переключить тему">🌓 Тема</button>
-      <button class="btn" id="fontIncBtn" title="Увеличить шрифт">A+</button>
-      <button class="btn" id="fontDecBtn" title="Уменьшить шрифт">A-</button>
-      <button class="btn btn-primary" onclick="window.print()" title="Сохранить в PDF через печать">📄 Скачать PDF</button>
-      <a href="/" class="btn">🚀 В тренажер</a>
+      <!-- Language Switcher -->
+      <nav class="lang-switcher" aria-label="Language selection">
+        <a href="${ruUrl}" class="lang-btn ${edition.lang === 'ru' ? 'active' : ''}">🇷🇺 RU</a>
+        <a href="${enUrl}" class="lang-btn ${edition.lang === 'en' ? 'active' : ''}">🇬🇧 EN</a>
+        <a href="${itUrl}" class="lang-btn ${edition.lang === 'it' ? 'active' : ''}">🇮🇹 IT</a>
+      </nav>
+
+      <button class="btn" id="themeToggle" title="${edition.themeLabel}">${edition.themeLabel}</button>
+      <button class="btn" id="fontIncBtn" title="A+">A+</button>
+      <button class="btn" id="fontDecBtn" title="A-">A-</button>
+      <button class="btn btn-primary" onclick="window.print()" title="${edition.pdfLabel}">${edition.pdfLabel}</button>
+      <a href="${edition.appUrl}" class="btn">${edition.appLabel}</a>
     </div>
   </header>
 
@@ -559,9 +667,9 @@ const readerTemplate = `<!DOCTYPE html>
     <!-- Sidebar TOC -->
     <aside class="sidebar">
       <div class="sidebar-search">
-        <input type="text" id="searchInput" placeholder="Поиск по главам и понятиям...">
+        <input type="text" id="searchInput" placeholder="${edition.searchPlaceholder}">
       </div>
-      <div class="toc-title">Оглавление книги</div>
+      <div class="toc-title">${edition.tocTitle}</div>
       <nav>
         <ul class="toc-list" id="tocList">
           <!-- Dynamically populated links -->
@@ -573,15 +681,15 @@ const readerTemplate = `<!DOCTYPE html>
     <main class="reader-container">
       <article class="reader-article" id="articleBody">
         <header class="book-hero">
-          <img src="/assets/book_cover.jpg" alt="Обложка книги Внутренний ток" class="book-hero-cover">
-          <h1>Внутренний ток</h1>
-          <div class="book-hero-subtitle">Архитектура счастья: Инженерное руководство по электродинамике сознания</div>
-          <div class="book-hero-author">Владимир Аньянов</div>
+          <img src="${assetPrefix}/assets/book_cover.jpg" alt="${edition.heroTitle}" class="book-hero-cover">
+          <h1>${edition.heroTitle}</h1>
+          <div class="book-hero-subtitle">${edition.heroSubtitle}</div>
+          <div class="book-hero-author">${edition.heroAuthor}</div>
         </header>
 
         <div class="img-figure">
-          <img src="/assets/superconductivity_mushin.jpg" alt="Состояние Мусин и сверхпроводимость">
-          <figcaption>Рис. 1. Топология сверхпроводимости человека-оператора: ламинарный поток при R → 0</figcaption>
+          <img src="${assetPrefix}/assets/superconductivity_mushin.jpg" alt="Superconductivity Mushin">
+          <figcaption>${edition.fig1Caption}</figcaption>
         </div>
 
         <div id="manuscriptContent">
@@ -589,8 +697,8 @@ const readerTemplate = `<!DOCTYPE html>
         </div>
 
         <div class="img-figure">
-          <img src="/assets/ego_shunt_circuit.jpg" alt="Принципиальная схема шунта эго">
-          <figcaption>Рис. 2. Принципиальная схема паразитного шунта эго и тепловые потери Джоуля-Ленца (Q = I²·Re·t)</figcaption>
+          <img src="${assetPrefix}/assets/ego_shunt_circuit.jpg" alt="Ego Shunt Circuit">
+          <figcaption>${edition.fig2Caption}</figcaption>
         </div>
       </article>
     </main>
@@ -607,7 +715,6 @@ const readerTemplate = `<!DOCTYPE html>
       localStorage.setItem('inner-current-book-theme', next);
       renderMermaidDiagrams();
     });
-
 
     const savedTheme = localStorage.getItem('inner-current-book-theme');
     if (savedTheme) {
@@ -645,11 +752,11 @@ const readerTemplate = `<!DOCTYPE html>
       clone.querySelectorAll('.katex-mathml').forEach(el => el.remove());
       let text = clone.textContent || '';
       // Remove any emojis and pictographic special characters
-      text = text.replace(/[\p{Extended_Pictographic}\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '');
+      text = text.replace(/[\\p{Extended_Pictographic}\\u{1F300}-\\u{1FAFF}\\u{2600}-\\u{27BF}]/gu, '');
       // Remove invisible zero-width spaces generated by math formatters
-      text = text.replace(/[\u200B-\u200D\uFEFF]/g, '');
+      text = text.replace(/[\\u200B-\\u200D\\uFEFF]/g, '');
       // Normalize whitespace
-      text = text.replace(/\s+/g, ' ').trim();
+      text = text.replace(/\\s+/g, ' ').trim();
 
       if (!text) return;
 
@@ -711,8 +818,14 @@ const readerTemplate = `<!DOCTYPE html>
     }
   </script>
 </body>
-
 </html>`;
 
-fs.writeFileSync(OUT_HTML, readerTemplate, 'utf-8');
-console.log(`✅ Web Reader successfully generated with pure KaTeX typography at: ${OUT_HTML}`);
+  fs.writeFileSync(edition.htmlFile, template, 'utf-8');
+  console.log(`✅ [${edition.lang.toUpperCase()}] Web Reader generated successfully at: ${edition.htmlFile}`);
+}
+
+console.log('🚀 Building all book editions (RU, EN, IT)...');
+for (const ed of EDITIONS) {
+  buildEdition(ed);
+}
+console.log('✨ Build process finished.');

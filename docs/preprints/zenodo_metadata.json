@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "title": "The Four-Element Topology of Human Consciousness: An Electrodynamic Model of Generator, Fuse, Resistor, and Load in State Dynamics and Well-Being Architecture",
+    "upload_type": "publication",
+    "publication_type": "preprint",
+    "doi": "10.5281/zenodo.22958926",
+    "doi_url": "https://doi.org/10.5281/zenodo.22958926",
+    "publication_date": "2026-09-25",
+    "creators": [
+      {
+        "name": "Anyanov, Vladimir",
+        "affiliation": "Inner Current Systems Architecture Lab",
+        "orcid": ""
+      }
+    ],
+    "description": "<p><strong>The Four-Element Topology of Human Consciousness: An Electrodynamic Model of Generator, Fuse, Resistor, and Load in State Dynamics and Well-Being Architecture</strong></p><p><em>Author:</em> Vladimir Anyanov (Владимир Аньянов)<br><em>Affiliation:</em> Inner Current Systems Architecture Lab<br><em>Version:</em> 1.0 (September 2026)</p><hr><p><strong>English Abstract:</strong><br>For millennia, human psychology and phenomenology have relied on open-loop, descriptive models of subjective experience, suffering, and motivation, often lacking physical conservation laws. This paper introduces the <strong>Four-Element Topology of Consciousness</strong> (Anyanov System), reducing human state dynamics to a closed lumped-parameter electrical circuit comprising: (1) an autonomous somatic EMF Generator (&Epsilon;, Tanden/vagal core), (2) an adaptive Fuse/Circuit Breaker (Zanshin), (3) a variable parasitic Resistor (R_ego, Default Mode Network), and (4) a functional Load (R_load, Task-Positive Network engagement in t_now). Applying the Joule&ndash;Lenz law (Q = I&sup2; R t) demonstrates that mental suffering, anxiety, and burnout are direct consequences of parasitic ohmic heat dissipation. Peak performance and well-being represent electrical superconductivity (R_ego &rarr; 0, Mushin). We also formulate the Nature Invariance Principle (R_nature &equiv; 0) and provide an empirical 30-second somatic calibration protocol.</p><hr><p><strong>Русская аннотация:</strong><br>В настоящей работе представлена формальная физическая и термодинамическая модель &mdash; <strong>Топология четырёх элементов сознания</strong> (Система Аньянова), сводящая динамику состояний человека к принципиальной электрической схеме замкнутого контура из четырёх узлов: Генератора ЭДС (&Epsilon;, Тандэн), Предохранителя (Дзансин), переменного паразитного Резистора (R_ego, DMN) и полезной Нагрузки (R_load, TPN). Доказано, что выгорание представляет собой паразитный омический перегрев (Q = I&sup2; R t), а счастье &mdash; режим сверхпроводимости (R_ego &rarr; 0, Мусин). Сформулирован Принцип инвариантности Природы (R_nature &equiv; 0).</p>",
+    "access_right": "open",
+    "license": "CC-BY-4.0",
+    "keywords": [
+      "electrodynamics of consciousness",
+      "four-element topology",
+      "superconductivity",
+      "tanden",
+      "zanshin",
+      "mushin",
+      "default mode network",
+      "joule-lenz law",
+      "thermodynamics of happiness",
+      "inner current",
+      "anyanov system",
+      "embodied cognition"
+    ],
+    "notes": "Preprint v1.0. Bilingual Abstract and Formal System Equations included. Full Knowledge Base: Inner Current (Anyanov System)."
+  }
+}
