@@ -1,0 +1,238 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <!-- Background Grid -->
+    <pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#0e1a33" stroke-width="0.8"/>
+    </pattern>
+    <pattern id="majorGrid" width="100" height="100" patternUnits="userSpaceOnUse">
+      <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#16274a" stroke-width="1.2"/>
+    </pattern>
+
+    <!-- Markers -->
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#0284c7"/>
+    </marker>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="675" fill="#070c18"/>
+  <rect width="1200" height="675" fill="url(#grid)"/>
+  <rect width="1200" height="675" fill="url(#majorGrid)"/>
+
+  <!-- Technical Border & Frame -->
+  <rect x="25" y="25" width="1150" height="625" fill="none" stroke="#1e3a6a" stroke-width="2"/>
+  <rect x="30" y="30" width="1140" height="615" fill="none" stroke="#132444" stroke-width="1"/>
+
+  <!-- Corner Alignment Marks -->
+  <path d="M 20 25 L 35 25 M 25 20 L 25 35" stroke="#38bdf8" stroke-width="1.5"/>
+  <path d="M 1165 25 L 1180 25 M 1175 20 L 1175 35" stroke="#38bdf8" stroke-width="1.5"/>
+  <path d="M 20 650 L 35 650 M 25 640 L 25 655" stroke="#38bdf8" stroke-width="1.5"/>
+  <path d="M 1165 650 L 1180 650 M 1175 640 L 1175 655" stroke="#38bdf8" stroke-width="1.5"/>
+
+  <!-- Title Block (Engineering Blueprint Stamp) -->
+  <g transform="translate(860, 535)">
+    <rect width="310" height="110" fill="#091224" stroke="#1e3a6a" stroke-width="1.5"/>
+    <line x1="0" y1="28" x2="310" y2="28" stroke="#1e3a6a" stroke-width="1"/>
+    <line x1="0" y1="56" x2="310" y2="56" stroke="#1e3a6a" stroke-width="1"/>
+    <line x1="0" y1="84" x2="310" y2="84" stroke="#1e3a6a" stroke-width="1"/>
+    <line x1="155" y1="28" x2="155" y2="110" stroke="#1e3a6a" stroke-width="1"/>
+
+    <text x="10" y="19" fill="#38bdf8" font-family="'Fira Code', monospace" font-size="12" font-weight="700" letter-spacing="1">СИСТЕМА: «ВНУТРЕННИЙ ТОК»</text>
+    <text x="10" y="45" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="10">ЧЕРТЕЖ: Принципиальная схема</text>
+    <text x="165" y="45" fill="#10b981" font-family="'Inter', sans-serif" font-size="10" font-weight="700">КОНТУР: ЗАМКНУТ (∮E·dl=0)</text>
+    <text x="10" y="73" fill="#cbd5e1" font-family="'Inter', sans-serif" font-size="10">АВТОР: В. Аньянов</text>
+    <text x="165" y="73" fill="#cbd5e1" font-family="'Fira Code', monospace" font-size="10">R_ego → 0 | η = 100%</text>
+    <text x="10" y="100" fill="#64748b" font-family="'Fira Code', monospace" font-size="9">ГОСТ / IEEE 315-1975</text>
+    <text x="165" y="100" fill="#fbbf24" font-family="'Fira Code', monospace" font-size="10" font-weight="600">РЕЖИМ МУСИН</text>
+  </g>
+
+  <!-- Header Banner -->
+  <text x="50" y="65" fill="#f8fafc" font-family="'Cinzel', serif, Georgia" font-size="22" font-weight="700" letter-spacing="2">ПРИНЦИПИАЛЬНАЯ ЭЛЕКТРОСХЕМА ЧЕЛОВЕКА-ОПЕРАТОРА</text>
+  <text x="50" y="88" fill="#64748b" font-family="'Inter', sans-serif" font-size="12" letter-spacing="1">ЗАМКНУТЫЙ КОНТУР СВЕРХПРОВОДИМОСТИ • АВТОНОМНЫЙ РЕАКТОР И ЩИТ 6 ЛАМП</text>
+
+  <!-- ================= СХЕМА НЕПРЕРЫВНОЙ ЦЕПИ ================= -->
+
+  <!-- 1. ТАНДЭН-ГЕНЕРАТОР (ИСТОЧНИК ПОСТОЯННОГО ТОКА) -->
+  <g id="tanden-module">
+    <!-- Внешний корпус блока -->
+    <rect x="90" y="200" width="160" height="230" rx="8" fill="#091224" stroke="#0284c7" stroke-width="2"/>
+    <rect x="95" y="205" width="150" height="220" rx="5" fill="#060c18" stroke="#1e3a6a" stroke-width="1"/>
+
+    <!-- Символ ядра генератора -->
+    <circle cx="170" cy="305" r="45" fill="#0a1835" stroke="#38bdf8" stroke-width="2.5"/>
+    <circle cx="170" cy="305" r="38" fill="none" stroke="#fbbf24" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <text x="170" y="313" text-anchor="middle" fill="#fbbf24" font-family="'Cinzel', serif" font-size="24" font-weight="700">⨁</text>
+
+    <!-- Внутренняя проводка от ядра к клеммам -->
+    <line x1="170" y1="260" x2="170" y2="200" stroke="#38bdf8" stroke-width="3.5"/>
+    <line x1="170" y1="350" x2="170" y2="430" stroke="#0284c7" stroke-width="3.5"/>
+
+    <!-- Клеммы генератора -->
+    <circle cx="170" cy="200" r="5" fill="#38bdf8"/>
+    <circle cx="170" cy="430" r="5" fill="#0284c7"/>
+
+    <!-- Знаки полярности -->
+    <text x="195" y="222" fill="#38bdf8" font-family="'Fira Code', monospace" font-size="18" font-weight="700">+</text>
+    <text x="195" y="420" fill="#64748b" font-family="'Fira Code', monospace" font-size="18" font-weight="700">−</text>
+
+    <!-- Текстовые подписи блока -->
+    <text x="170" y="380" text-anchor="middle" fill="#f8fafc" font-family="'Inter', sans-serif" font-size="13" font-weight="700">ТАНДЭН (丹田)</text>
+    <text x="170" y="398" text-anchor="middle" fill="#38bdf8" font-family="'Fira Code', monospace" font-size="10">ЭДС: ℰ_tanden &gt; 0</text>
+  </g>
+
+  <!-- ВЕРХНЯЯ ШИНА ВНИМАНИЯ (МУСИН) ОТ ТАНДЭНА ДО РЕОСТАТА -->
+  <!-- Выходит из клеммы (170, 200) вверх до 145 и направо до блока шунта (380, 145) -->
+  <path d="M 170 200 L 170 145 L 380 145" fill="none" stroke="#38bdf8" stroke-width="3.5"/>
+  <circle cx="170" cy="145" r="4" fill="#38bdf8"/>
+  <path d="M 230 145 L 245 145" fill="none" stroke="#38bdf8" stroke-width="3.5" marker-end="url(#arrow-cyan)"/>
+  <text x="260" y="132" fill="#38bdf8" font-family="'Fira Code', monospace" font-size="11" font-weight="600">I_attention (ТОК ВНИМАНИЯ &gt; 0)</text>
+
+  <!-- 2. МОДУЛЬ РЕГУЛИРОВАНИЯ И ШУНТИРОВАНИЯ ЭГО (380 - 660, y=85..205) -->
+  <g id="shunt-module">
+    <rect x="380" y="85" width="280" height="120" rx="6" fill="#091224" stroke="#1e293b" stroke-width="1.5" stroke-dasharray="5,4"/>
+    <text x="520" y="105" text-anchor="middle" fill="#64748b" font-family="'Inter', sans-serif" font-size="10" font-weight="600" letter-spacing="1">МОДУЛЬ РЕГУЛИРОВАНИЯ ВНИМАНИЯ</text>
+
+    <!-- Входная и выходная клеммы модуля -->
+    <circle cx="380" cy="145" r="5" fill="#38bdf8"/>
+    <circle cx="660" cy="145" r="5" fill="#38bdf8"/>
+
+    <!-- Линия к реостату -->
+    <line x1="380" y1="145" x2="420" y2="145" stroke="#38bdf8" stroke-width="3.5"/>
+    <!-- Зигзаг сопротивления Эго R_ego -->
+    <path d="M 420 145 L 435 130 L 455 160 L 475 130 L 495 160 L 515 130 L 535 160 L 550 145" fill="none" stroke="#ef4444" stroke-width="2.5"/>
+    <line x1="550" y1="145" x2="660" y2="145" stroke="#38bdf8" stroke-width="3.5"/>
+
+    <text x="485" y="178" text-anchor="middle" fill="#ef4444" font-family="'Inter', sans-serif" font-size="11" font-weight="700">Реостат Эго (R_ego)</text>
+    <text x="485" y="193" text-anchor="middle" fill="#94a3b8" font-family="'Fira Code', monospace" font-size="9">Тепло: Q = I² · R_ego · t</text>
+
+    <!-- Параллельный медный шунт Кансо (замкнут) -->
+    <!-- Ответвления с узловыми точками спайки -->
+    <circle cx="400" cy="145" r="4" fill="#10b981"/>
+    <circle cx="640" cy="145" r="4" fill="#10b981"/>
+    <path d="M 400 145 L 400 115 L 640 115 L 640 145" fill="none" stroke="#10b981" stroke-width="3"/>
+    <text x="520" y="127" text-anchor="middle" fill="#10b981" font-family="'Fira Code', monospace" font-size="10" font-weight="700">МЕДНЫЙ ШУНТ КАНСО (R_shunt = 0)</text>
+  </g>
+
+  <!-- ПРОВОД МЕЖДУ ШУНТОМ И ДЗАНСИНОМ: непрерывно соединяет (660, 145) и (745, 145) -->
+  <line x1="660" y1="145" x2="745" y2="145" stroke="#38bdf8" stroke-width="3.5"/>
+
+  <!-- 3. БЛОК ЗАЩИТЫ ДЗАНСИН (720..850, y=105..185) -->
+  <g id="zanshin-module">
+    <!-- Корпус автомата -->
+    <rect x="720" y="105" width="130" height="80" rx="6" fill="#091224" stroke="#fbbf24" stroke-width="1.8"/>
+
+    <!-- Входной и выходной контакты выключателя -->
+    <circle cx="745" cy="145" r="5" fill="#fbbf24"/>
+    <circle cx="825" cy="145" r="5" fill="#fbbf24"/>
+
+    <!-- ЗАМКНУТЫЙ КОНТАКТ ВЫКЛЮЧАТЕЛЯ (Цепь полностью замкнута!) -->
+    <line x1="745" y1="145" x2="825" y2="145" stroke="#fbbf24" stroke-width="4"/>
+
+    <!-- Подписи -->
+    <text x="785" y="124" text-anchor="middle" fill="#fbbf24" font-family="'Inter', sans-serif" font-size="11" font-weight="700">ДЗАНСИН (残心)</text>
+    <text x="785" y="165" text-anchor="middle" fill="#94a3b8" font-family="'Fira Code', monospace" font-size="9">Автомат защиты (ВКЛ)</text>
+    <text x="785" y="177" text-anchor="middle" fill="#38bdf8" font-family="'Fira Code', monospace" font-size="9">τ_trip ≤ 50 ms</text>
+  </g>
+
+  <!-- ПРОВОД ОТ ДЗАНСИНА К ЩИТУ 6 ЛАМП: непрерывно соединяет (825, 145) и (940, 145) -->
+  <line x1="825" y1="145" x2="940" y2="145" stroke="#38bdf8" stroke-width="3.5"/>
+  <path d="M 870 145 L 885 145" fill="none" stroke="#38bdf8" stroke-width="3.5" marker-end="url(#arrow-cyan)"/>
+  <circle cx="940" cy="145" r="5" fill="#38bdf8"/>
+
+  <!-- 4. ЩИТ 6 ЛАМП НАГРУЗКИ (940..1110, y=145..465) -->
+  <g id="lamps-module">
+    <!-- Заголовок массива ламп -->
+    <text x="1025" y="103" text-anchor="middle" fill="#fbbf24" font-family="'Inter', sans-serif" font-size="12" font-weight="700">ЩИТ 6 ЛАМП НАГРУЗКИ</text>
+    <text x="1025" y="119" text-anchor="middle" fill="#94a3b8" font-family="'Fira Code', monospace" font-size="9.5">1/R_load = Σ (1/R_k)</text>
+
+    <!-- Левая шина распределения (фаза): от y=145 до y=465 -->
+    <line x1="940" y1="145" x2="940" y2="465" stroke="#38bdf8" stroke-width="3.5"/>
+    <!-- Правая шина сбора (нейтраль): от y=145 до y=465 -->
+    <line x1="1110" y1="145" x2="1110" y2="465" stroke="#0284c7" stroke-width="3.5"/>
+
+    <!-- 6 ПАРАЛЛЕЛЬНЫХ ВЕТВЕЙ С ЛАМПАМИ -->
+
+    <!-- Лампа 1: Тело (y=145) -->
+    <circle cx="940" cy="145" r="3.5" fill="#38bdf8"/>
+    <line x1="940" y1="145" x2="995" y2="145" stroke="#38bdf8" stroke-width="2"/>
+    <circle cx="1025" cy="145" r="16" fill="#091224" stroke="#fbbf24" stroke-width="2"/>
+    <path d="M 1015 135 L 1035 155 M 1015 155 L 1035 135" stroke="#fbbf24" stroke-width="1.8"/>
+    <line x1="1055" y1="145" x2="1110" y2="145" stroke="#0284c7" stroke-width="2"/>
+    <circle cx="1110" cy="145" r="3.5" fill="#0284c7"/>
+    <text x="1025" y="170" text-anchor="middle" fill="#cbd5e1" font-family="'Inter', sans-serif" font-size="9.5" font-weight="600">1. ТЕЛО (R1)</text>
+
+    <!-- Лампа 2: Мастерство (y=209) -->
+    <circle cx="940" cy="209" r="3.5" fill="#38bdf8"/>
+    <line x1="940" y1="209" x2="995" y2="209" stroke="#38bdf8" stroke-width="2"/>
+    <circle cx="1025" cy="209" r="16" fill="#091224" stroke="#fbbf24" stroke-width="2"/>
+    <path d="M 1015 199 L 1035 219 M 1015 219 L 1035 199" stroke="#fbbf24" stroke-width="1.8"/>
+    <line x1="1055" y1="209" x2="1110" y2="209" stroke="#0284c7" stroke-width="2"/>
+    <circle cx="1110" cy="209" r="3.5" fill="#0284c7"/>
+    <text x="1025" y="234" text-anchor="middle" fill="#cbd5e1" font-family="'Inter', sans-serif" font-size="9.5" font-weight="600">2. МАСТЕРСТВО (R2)</text>
+
+    <!-- Лампа 3: Близость (y=273) -->
+    <circle cx="940" cy="273" r="3.5" fill="#38bdf8"/>
+    <line x1="940" y1="273" x2="995" y2="273" stroke="#38bdf8" stroke-width="2"/>
+    <circle cx="1025" cy="273" r="16" fill="#091224" stroke="#fbbf24" stroke-width="2"/>
+    <path d="M 1015 263 L 1035 283 M 1015 283 L 1035 263" stroke="#fbbf24" stroke-width="1.8"/>
+    <line x1="1055" y1="273" x2="1110" y2="273" stroke="#0284c7" stroke-width="2"/>
+    <circle cx="1110" cy="273" r="3.5" fill="#0284c7"/>
+    <text x="1025" y="298" text-anchor="middle" fill="#cbd5e1" font-family="'Inter', sans-serif" font-size="9.5" font-weight="600">3. БЛИЗОСТЬ (R3)</text>
+
+    <!-- Лампа 4: Среда (y=337) -->
+    <circle cx="940" cy="337" r="3.5" fill="#38bdf8"/>
+    <line x1="940" y1="337" x2="995" y2="337" stroke="#38bdf8" stroke-width="2"/>
+    <circle cx="1025" cy="337" r="16" fill="#091224" stroke="#fbbf24" stroke-width="2"/>
+    <path d="M 1015 327 L 1035 347 M 1015 347 L 1035 327" stroke="#fbbf24" stroke-width="1.8"/>
+    <line x1="1055" y1="337" x2="1110" y2="337" stroke="#0284c7" stroke-width="2"/>
+    <circle cx="1110" cy="337" r="3.5" fill="#0284c7"/>
+    <text x="1025" y="362" text-anchor="middle" fill="#cbd5e1" font-family="'Inter', sans-serif" font-size="9.5" font-weight="600">4. СРЕДА (R4)</text>
+
+    <!-- Лампа 5: Познание (y=401) -->
+    <circle cx="940" cy="401" r="3.5" fill="#38bdf8"/>
+    <line x1="940" y1="401" x2="995" y2="401" stroke="#38bdf8" stroke-width="2"/>
+    <circle cx="1025" cy="401" r="16" fill="#091224" stroke="#fbbf24" stroke-width="2"/>
+    <path d="M 1015 391 L 1035 411 M 1015 411 L 1035 391" stroke="#fbbf24" stroke-width="1.8"/>
+    <line x1="1055" y1="401" x2="1110" y2="401" stroke="#0284c7" stroke-width="2"/>
+    <circle cx="1110" cy="401" r="3.5" fill="#0284c7"/>
+    <text x="1025" y="426" text-anchor="middle" fill="#cbd5e1" font-family="'Inter', sans-serif" font-size="9.5" font-weight="600">5. ПОЗНАНИЕ (R5)</text>
+
+    <!-- Лампа 6: Игра (y=465) -->
+    <circle cx="940" cy="465" r="3.5" fill="#38bdf8"/>
+    <line x1="940" y1="465" x2="995" y2="465" stroke="#38bdf8" stroke-width="2"/>
+    <circle cx="1025" cy="465" r="16" fill="#091224" stroke="#fbbf24" stroke-width="2"/>
+    <path d="M 1015 455 L 1035 475 M 1015 475 L 1035 455" stroke="#fbbf24" stroke-width="1.8"/>
+    <line x1="1055" y1="465" x2="1110" y2="465" stroke="#0284c7" stroke-width="2"/>
+    <circle cx="1110" cy="465" r="3.5" fill="#0284c7"/>
+    <text x="1025" y="490" text-anchor="middle" fill="#cbd5e1" font-family="'Inter', sans-serif" font-size="9.5" font-weight="600">6. ИГРА (R6)</text>
+  </g>
+
+  <!-- 5. ОБРАТНЫЙ ПРОВОД РЕАЛЬНОСТИ (ЗАМЫКАНИЕ КОНТУРА НА МИНУС ТАНДЭНА) -->
+  <!-- Выходит из нижней точки сбора нагрузки (1110, 465) вниз до 530, влево до 170 и вверх до минусовой клеммы (170, 430) -->
+  <path d="M 1110 465 L 1110 530 L 170 530 L 170 430" fill="none" stroke="#0284c7" stroke-width="3.5"/>
+  <circle cx="1110" cy="465" r="4" fill="#0284c7"/>
+  <circle cx="1110" cy="530" r="4" fill="#0284c7"/>
+  <circle cx="170" cy="530" r="4" fill="#0284c7"/>
+  <circle cx="170" cy="430" r="5" fill="#0284c7"/>
+
+  <!-- Стрелка направления обратного тока -->
+  <path d="M 660 530 L 635 530" fill="none" stroke="#0284c7" stroke-width="3.5" marker-end="url(#arrow-blue)"/>
+  <text x="645" y="555" text-anchor="middle" fill="#38bdf8" font-family="'Fira Code', monospace" font-size="11" font-weight="600">ОБРАТНЫЙ ПРОВОД РЕАЛЬНОСТИ • БАЛАНС КИРХГОФА (∮ E · dl = 0, Σ I = 0)</text>
+
+  <!-- Центральная информационная плашка с законами сохранения -->
+  <g transform="translate(360, 280)">
+    <rect width="320" height="150" rx="8" fill="#091224" stroke="#1e3a6a" stroke-width="1.2"/>
+    <text x="160" y="26" text-anchor="middle" fill="#f8fafc" font-family="'Inter', sans-serif" font-size="12" font-weight="700">ЗАКОНЫ СВЕРХПРОВОДИМОСТИ ДУХА</text>
+    
+    <line x1="20" y1="36" x2="300" y2="36" stroke="#1e293b" stroke-width="1"/>
+    
+    <text x="30" y="62" fill="#38bdf8" font-family="'Fira Code', monospace" font-size="13">I = ℰ_tanden / R_total</text>
+    <text x="30" y="86" fill="#10b981" font-family="'Fira Code', monospace" font-size="13">R_total = R_wire + R_load</text>
+    <text x="30" y="110" fill="#fbbf24" font-family="'Fira Code', monospace" font-size="13">R_ego → 0 ⟹ Q_loss → 0</text>
+    <text x="30" y="134" fill="#f8fafc" font-family="'Fira Code', monospace" font-size="11.5">КПД: η = P_useful / P_total = 100%</text>
+  </g>
+
+</svg>

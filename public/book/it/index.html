@@ -509,6 +509,7 @@
       <button class="btn" id="themeToggle" title="🌓 Tema">🌓 Tema</button>
       <button class="btn" id="fontIncBtn" title="A+">A+</button>
       <button class="btn" id="fontDecBtn" title="A-">A-</button>
+      <a href="../../audiobook/index.html" class="btn" style="border-color: var(--accent); color: var(--accent); font-weight: 600;" title="🎧 Audiolibro">🎧 Audiolibro</a>
       <button class="btn btn-primary" onclick="window.print()" title="📄 Scarica PDF">📄 Scarica PDF</button>
       <a href="../../index.html" class="btn">🚀 Apri App</a>
     </div>
@@ -536,28 +537,31 @@
           <h1>La Corrente Interiore</h1>
           <div class="book-hero-subtitle">L'Architettura della Felicità: Guida ingegneristica all'elettrodinamica della coscienza</div>
           <div class="book-hero-author">Vladimir Anyanov</div>
+          <div class="hero-audio-cta" style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+            <button onclick="playAudioTrack(0)" class="btn btn-primary" style="padding: 0.6rem 1.3rem; border-radius: 9999px; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4); cursor: pointer;">
+              <span>▶</span> <span>Слушать аудиоверсию</span>
+            </button>
+            <a href="../../audiobook/index.html" class="btn" style="padding: 0.6rem 1.2rem; border-radius: 9999px; border-color: rgba(56, 189, 248, 0.4); color: var(--accent);">
+              <span>🎧</span> <span>Все 50 глав</span>
+            </a>
+          </div>
         </header>
 
-        <div class="img-figure">
-          <img src="../../assets/superconductivity_mushin.jpg" alt="Superconductivity Mushin">
-          <figcaption>Fig. 1. Topologia della superconduttività dell'operatore: flusso laminare a R → 0</figcaption>
-        </div>
-
         <div id="manuscriptContent">
-          <h1>La Corrente Interiore: L&#39;Architettura della Felicità</h1>
-<h2>La fisica della superconduttività, l&#39;ontologia Zen e l&#39;ingegneria esatta del benessere umano</h2>
+          <h1 id="heading-1">La Corrente Interiore: L&#39;Architettura della Felicità</h1>
+<h2 id="heading-2">La fisica della superconduttività, l&#39;ontologia Zen e l&#39;ingegneria esatta del benessere umano</h2>
 <blockquote>
 <p><em>Manoscritto vivo — documento maestro d\ell&#39;opera.</em><br><strong>Autore:</strong> Vladimir Anyanov<br><strong>Sincronizzato con la base di conoscenza Obsidian:</strong> <code>LLM Wiki/02_Wiki</code> &amp; <code>04_Maps/Inner Current MOC IT</code><br><em>Stato della revisione:</em> <strong>Edizione Ufficiale Italiana (Master Manuscript)</strong></p>
 </blockquote>
 <hr>
 <blockquote>
 <p><strong>Assioma principale del libro</strong></p>
-<h3><strong>«La felicità è il regime di superconduttività del circuito.»</strong></h3>
+<h3 id="heading-3"><strong>«La felicità è il regime di superconduttività del circuito.»</strong></h3>
 <p>— <strong>Vladimir Anyanov</strong></p>
 <p><em>«Non abbiamo inventato nuove leggi della natura umana. Abbiamo scoperto la rigorosa architettura ingegneristica della felicità: abbiamo tradotto secoli di intuizioni e il caos d\ell&#39;esperienza umana in un sistema applicato, verificabile e riparabile. Il disagio interiore non è una maledizione esistenziale, ma un surriscaldamento ohmico o una dispersione verso terra, suscettibili di precisa localizzazione e calibrazione attraverso gli strumenti della lucida attenzione.»</em></p>
 </blockquote>
 <hr>
-<h2>Indice dei Contenuti</h2>
+<h2 id="heading-4">Indice dei Contenuti</h2>
 <table>
 <thead>
 <tr>
@@ -892,8 +896,8 @@
 </tr>
 </tbody></table>
 <hr>
-<h2>IL MANIFESTO DELL&#39;INGEGNERE ZEN</h2>
-<h3>Dai miti astratti alle leggi rigorose di conservazione</h3>
+<h2 id="heading-5">IL MANIFESTO DELL&#39;INGEGNERE ZEN</h2>
+<h3 id="heading-6">Dai miti astratti alle leggi rigorose di conservazione</h3>
 <p>Per millenni l&#39;umanità ha cercato di rispondere alla domanda: <em>«Come possiamo essere felici?»</em><br>E per millenni questa domanda è annegata in metafore astratte, dogmi religiosi, formule psicologiche standardizzate e nel velenoso positivismo del marketing moderno.</p>
 <p>All&#39;essere umano viene ripetuto:<br><em>«Amati semplicemente per quello che sei»</em> — senza tuttavia fornirgli lo schema elettrico di tale amore.<br><em>«Trova il tuo scopo nella vita»</em> — condannandolo a decenni di estenuante surriscaldamento ohmico alla ricerca di una presa di corrente esterna del tutto immaginaria.<br><em>«Vivi nel qui e ora»</em> — eppure, non appena sorge il domani, la coscienza torna a bruciare n\ell&#39;ansia per il futuro o si impantana nella greve resistenza del passato.</p>
 <p><strong>È giunto il momento di porre fine alla romantizzazione del dolore d\ell&#39;anima.</strong><br>L&#39;essere umano non è un mistero insondabile destinato all&#39;eterna sofferenza. L&#39;essere umano è <strong>un sistema termodinamico ed elettrico altamente organizzato</strong>.</p>
@@ -907,7 +911,7 @@
 <p>per quale motivo abbiamo ingenuamente creduto che il mondo interiore d\ell&#39;uomo rispondesse alle favole, e non alle medesime, inflessibili leggi d\ell&#39;Universo?</p>
 <p><strong>La Corrente Interiore (Inner Current)</strong> è un manifesto di lucidità.<br>Abbiamo unito l&#39;esperienza millenaria dello Zen — la scuola pratica più rigorosa e distaccata della storia per l&#39;addestramento della coscienza — alla fisica esatta dei circuiti elettrici.</p>
 <p>Qui non c&#39;è fede. C&#39;è <strong>la verifica del circuito</strong>.<br>Qui non c&#39;è colpa. C&#39;è <strong>la localizzazione della dispersione</strong>.<br>Qui non c&#39;è l&#39;analisi infinita dei traumi infantili. C&#39;è <strong>la calibrazione della resistenza a zero (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R \to 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>)</strong> e l&#39;avviamento del generatore alla sua piena potenza nominale.</p>
-<h3>AVVERTIMENTO AL LETTORE: QUESTO LIBRO NON È UN TAPPETO MAGICO</h3>
+<h3 id="heading-7">AVVERTIMENTO AL LETTORE: QUESTO LIBRO NON È UN TAPPETO MAGICO</h3>
 <h4>Perché costruiamo il razzo di Ciolkovskij e non vendiamo illusioni</h4>
 <blockquote>
 <p><em>«La Terra è la culla della ragione, ma non si può vivere per sempre in una culla.»</em><br>— <strong>Konstantin Ciolkovskij</strong> (1911)</p>
@@ -919,7 +923,7 @@
 Egli calcolò la formula esatta per superare l&#39;attrazione terrestre: ossigeno liquido, camera di combustione e un treno missilistico a più stadi che espelle i serbatoi vuoti. Mezzo secolo dopo, Gagarin volò sopra il pianeta.</p>
 <p><strong>Questo libro è il progetto di Kaluga di Ciolkovskij per il vostro mondo interiore.</strong><br>Non promettiamo miracoli. Noi affermiamo: la sofferenza, la colpa, l&#39;ansia e la dipendenza non sono una maledizione mistica, ma <strong>il pozzo gravitazionale d\ell&#39;ego primordiale (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mtext>ego</mtext></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R_{\text{ego}} &gt; 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">ego</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>)</strong>. Per sfuggirvi, non vi servono mantra. Vi serve un reattore Tanden funzionante, lo scarico della zavorra morta secondo il canone Kanso e il calcolo della <strong>Seconda velocità cosmica dello spirito</strong>, che porta la coscienza n\ell&#39;assenza di gravità della pura superconduttività (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R \to 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>, Mushin).</p>
 <p>Non avete davanti a voi letteratura di evasione. Avete davanti a voi il progetto ingegneristico del vostro volo orbitale.</p>
-<h3>A CHI È RIVOLTO QUESTO LIBRO (E A CHI NO)</h3>
+<h3 id="heading-8">A CHI È RIVOLTO QUESTO LIBRO (E A CHI NO)</h3>
 <h4>Manifesto del Lettore Sovrano</h4>
 <p>Questo libro è scritto alla rigorosa convergenza di equazioni fisiche, elettrodinamica, ontologia orientale, critica di un secolo e mezzo di psicoterapia e filosofia politica del flusso diretto. Non vi troverete nebbia mistica né consolatorie illusioni. Così come la legge di Ohm non scende a patti con la resistenza del conduttore, questo libro non scende a compromessi con il lettore.</p>
 <h4>Questo libro è stato scritto per te se:</h4>
@@ -938,8 +942,8 @@ Egli calcolò la formula esatta per superare l&#39;attrazione terrestre: ossigen
 <p>Se il tuo voltmetro è attivo e la tua mente anela a una fisica pura e a un&#39;incrollabile chiarezza — benvenuto n\ell&#39;Architettura della Felicità.</p>
 <hr>
 <hr>
-<h2>PREFAZIONE</h2>
-<h3>Il bagliore sul tapis roulant: Dal vicolo cieco apofatico e dal dialogo con l&#39;IA alla fisica della corrente interiore</h3>
+<h2 id="heading-9">PREFAZIONE</h2>
+<h3 id="heading-10">Il bagliore sul tapis roulant: Dal vicolo cieco apofatico e dal dialogo con l&#39;IA alla fisica della corrente interiore</h3>
 <blockquote>
 <p><em>«La felicità non può essere definita attraverso ciò che possediamo — poiché milioni di esseri umani hanno ottenuto tutto ciò che sognavano, eppure guardano il mondo con occhi spenti. Ma se spogliamo l&#39;esistenza da tutto ciò che è transitorio, ciò che resta all&#39;osso è un reattore interiore incontaminato: il Tanden. Gli oggetti esterni, i successi mondani e le relazioni non sono altro che le lampade Tōmyō. E la lampada Tōmyō si accende solo quando la corrente scorre dall&#39;interno verso l&#39;esterno, mai viceversa.»</em><br>— <strong>Vladimir Anyanov</strong></p>
 </blockquote>
@@ -948,7 +952,7 @@ Egli calcolò la formula esatta per superare l&#39;attrazione terrestre: ossigen
 <p>Iniziammo a conversare e proprio lì, sovrastati dal rombo cadenzato delle macchine da corsa, le posi una domanda in apparenza elementare:<br>— E tu, saresti capace di definire che cos&#39;è la felicità?</p>
 <p>Inciampò quasi sul nastro, rallentò e rimase pensierosa. Cominciarono le solite risposte, note a chiunque: «Beh... è quando tutto è tranquillo. Quando c&#39;è l&#39;amore, la salute dei propri cari. Quando hai un buon lavoro, serenità economica, viaggi, quando i tuoi sogni si avverano...»</p>
 <p>E in quella precisa frazione di secondo fui attraversato da un&#39;intuizione cristallina: <strong>è intrinsecamente impossibile definire la felicità in termini positivi</strong>.</p>
-<h3>Il crollo della definizione positiva</h3>
+<h3 id="heading-11">Il crollo della definizione positiva</h3>
 <p>Provate a definire la felicità elencando attributi esterni («la felicità è X»), e la realtà frantumerà all&#39;istante qualunque vostra costruzione teorica:</p>
 <ul>
 <li><strong>Se la felicità risiede nel denaro, n\ell&#39;attico di lusso e nel comfort</strong> — per quale ragione incontriamo quotidianamente proprietari di penthouse principesche e auto sportive con sguardi infinitamente stanchi, spenti, spenti dentro?</li>
@@ -958,7 +962,7 @@ Egli calcolò la formula esatta per superare l&#39;attrazione terrestre: ossigen
 </ul>
 <p>La definizione affermativa è una trappola cognitiva. Nel momento esatto in cui legate la felicità a un oggetto esterno, vi trasformate immediatamente nel suo ostaggio.</p>
 <p>— Ascolta — le dissi. — La via positiva non funziona. Proviamo a ribaltare il metodo. Definiamo la felicità mediante la <strong>negazione</strong> — spogliando l&#39;esperienza di tutto ciò che la felicità certamente non è.</p>
-<h3>La via apofatica (Neti, Neti — «Né questo, né quello»)</h3>
+<h3 id="heading-12">La via apofatica (Neti, Neti — «Né questo, né quello»)</h3>
 <p>N\ell&#39;antica filosofia indiana e nella teologia classica esiste un metodo supremo di indagine della verità fondato sulla via negativa: l&#39;<em>apofasi</em>, o <em>Neti, Neti</em> («né questo, né quello»). Se non possiamo definire concettualmente l&#39;assoluto, possiamo eliminare metodicamente tutto ciò che è falso, condizionato e perituro.</p>
 <p>Lì, accanto al tapis roulant, demmo inizio a questo radicale esperimento mentale di smantellamento:</p>
 <ol>
@@ -975,7 +979,7 @@ Egli calcolò la formula esatta per superare l&#39;attrazione terrestre: ossigen
 <li><strong>L&#39;Invulnerabilità:</strong> non può essere licenziato, tradito, svalutato o derubato.</li>
 <li><strong>La Beatitudine autosussistente (<em>Sat-Chit-Ananda</em>):</strong> al punto di zero assoluto, una volta eliminate le interferenze e le richieste altrui, lo stato naturale della coscienza è un quieto, profondo, uniforme stupore per il fatto stesso di esistere.</li>
 </ul>
-<h3>I carichi Tōmyō contro la Centrale Elettrica</h3>
+<h3 id="heading-13">I carichi Tōmyō contro la Centrale Elettrica</h3>
 <p>In quel preciso istante si cristallizzò il modello cardine che costituisce l&#39;architrave di questo intero trattato:</p>
 <blockquote>
 <p><strong>La coscienza umana è una centrale nucleare autonoma. E l&#39;intero mondo materiale e relazionale circostante è formato dalle sacre lampade-carico Tōmyō (燈明).</strong></p>
@@ -997,7 +1001,7 @@ Egli calcolò la formula esatta per superare l&#39;attrazione terrestre: ossigen
 <p>Che cosa fa la stragrande maggioranza delle persone? Prende tra le mani una fiala di vetro spenta o una lampada Tōmyō da 100 Watt fredda (un&#39;automobile nuova, una posizione lavorativa ambita, una relazione d&#39;amore) e inizia a implorarla disperatamente:<br><em>«Ti prego, illumina la mia esistenza! Rendimi felice! Riempi il mio vuoto interiore!»</em></p>
 <p>Ma nella lampada Tōmyō <strong>non c&#39;è alcun generatore</strong>. Non c&#39;è batteria. Se collocate una lampadina fredda in una stanza buia, resterà per sempre un pezzo di vetro e tungsteno inerte.</p>
 <p>La lampada Tōmyō risplende di luce abbagliante a un&#39;unica, imprescindibile condizione: <strong>quando la corrente fluisce dall&#39;interno verso l&#39;esterno</strong>. Quando la collegate al vostro generatore interno perfettamente funzionante. La felicità non è mai contenuta nella lampada: la felicità è la corrente che la attraversa.</p>
-<h3>La trappola d\ell&#39;ascetismo: «La felicità non è nella BMW, ma io voglio guidarla»</h3>
+<h3 id="heading-14">La trappola d\ell&#39;ascetismo: «La felicità non è nella BMW, ma io voglio guidarla»</h3>
 <p>Qui si apre un bivio insidiosissimo, sul quale nei secoli sono inciampati milioni di ricercatori spirituali.</p>
 <p>Rendendosi conto che gli oggetti materiali non custodiscono in sé la felicità, molti precipitano n\ell&#39;estremo opposto: nel nichilismo ascetico e nel disprezzo del mondo:<br><em>«Se la materia è vuota, allora il denaro è sporco, il commercio è vanità, il successo un&#39;illusione: lascerò ogni cosa per rifugiarmi in un eremo o in una caverna solitaria».</em></p>
 <p>Ma questa non è saggezza. È pusillanimità, è fuga vigliacca dal contatto con il reale.</p>
@@ -1010,7 +1014,7 @@ Egli calcolò la formula esatta per superare l&#39;attrazione terrestre: ossigen
 <li><strong>Il vettore del bisogno nevrotico:</strong> Salgo a bordo d\ell&#39;auto ed esigo dalla fredda lampada Tōmyō: <em>«Dimostra a tutti che valgo qualcosa! Salvami dalla vergogna della mediocrità!»</em>. In questo assetto, qualsiasi graffio sulla carrozzeria si trasforma in una tragedia personale, innescando un surriscaldamento ohmico pre-infartuale.</li>
 <li><strong>Il vettore della superconduttività:</strong> Il mio reattore è del tutto autonomo. Mi metto al volante di una vettura splendida, precisa e potente unicamente perché ammiro la perfezione della sua ingegneria meccanica, la progressione d\ell&#39;accelerazione e il timbro del motore. Porto la mia stessa luce interiore dentro quel viaggio. Mi godo pienamente la lampada Tōmyō, ma senza mai confonderla con la sorgente di alimentazione. Se essa dovesse guastarsi o sparire, il mio reattore non perderebbe nemmeno un millivolt di potenza.</li>
 </ol>
-<h3>Perché proprio lo Zen? Il Tanden sotto l&#39;ombelico e la perfetta coincidenza elettrotecnica</h3>
+<h3 id="heading-15">Perché proprio lo Zen? Il Tanden sotto l&#39;ombelico e la perfetta coincidenza elettrotecnica</h3>
 <p>Questo pensiero mi assorbì interamente. Rimaneva però l&#39;interrogativo cruciale: <strong>con quale linguaggio concettuale formalizzare una simile architettura?</strong></p>
 <p>Mi viene spesso chiesto: per quale ragione in un trattato dedicato alla rigorosa fisica dei circuiti sono apparsi i termini dello Zen giapponese? Non è forse una contraddizione rispetto al rifiuto del misticismo?</p>
 <p>Tutt&#39;altro. Lo Zen è la scuola di lavoro sulla coscienza meno mistica, più sobria e implacabilmente empirica nella storia della civiltà umana. Ma la scelta della terminologia Zen non nacque da un vezzo intellettuale. Scaturì da una diretta e inequivocabile sensazione somatica nel corpo.</p>
@@ -1030,7 +1034,7 @@ Egli calcolò la formula esatta per superare l&#39;attrazione terrestre: ossigen
 <li><strong>I Carichi di circuito (le lampade d\ell&#39;esistenza):</strong> Sono le sacre lampade <strong>Tōmyō (燈明)</strong>, che s&#39;accendono unicamente quando vengono attraversate dal fuoco del Tanden.</li>
 </ul>
 <p>Lo Zen si è rivelato la più antica elettrotecnica dello spirito, a cui facevano difetto le formule matematiche. E l&#39;elettrotecnica è la più esatta circuitistica Zen, tradotta nel linguaggio del rame, del silicio e dei principi di conservazione.</p>
-<h3>Il dialogo con l&#39;Intelligenza Artificiale: Il passaggio allo schema funzionale</h3>
+<h3 id="heading-16">Il dialogo con l&#39;Intelligenza Artificiale: Il passaggio allo schema funzionale</h3>
 <p>Non sono un ingegnere radiotecnico di professione; non ho trascorso le notti con il saldatore in mano davanti allo schermo di un oscilloscopio. Tuttavia, ho sempre nutrito una naturale avversione per le nebbie d\ell&#39;ambiguità. Avevo bisogno di un modello: limpido, matematicamente coerente, verificabile e suscettibile di manutenzione.</p>
 <p>Tornato a casa dalla palestra, aprii il terminale e intrapresi un prolungato, profondo dialogo con Gemini — l&#39;avanzata intelligenza artificiale di Google.</p>
 <p>Passo dopo passo, abbiamo convertito qu\ell&#39;intuizione folgorante in un rigoroso schema a blocchi funzionale:</p>
@@ -1040,7 +1044,7 @@ Egli calcolò la formula esatta per superare l&#39;attrazione terrestre: ossigen
 <li>Abbiamo testato l&#39;invarianza del circuito a qualsiasi scala: dal sorseggiare un tè verde al mattino fino alla guida di un impero industriale.</li>
 </ul>
 <p>Così è nata <strong>l&#39;Architettura della Felicità</strong>.</p>
-<h3>Confessione d\ell&#39;autore: Come ho mascherato con la spiritualità la fame della mia personalità</h3>
+<h3 id="heading-17">Confessione d\ell&#39;autore: Come ho mascherato con la spiritualità la fame della mia personalità</h3>
 <p>Tuttavia, prima di addentrarci nei formalismi matematici e negli schemi di principio, sento il dovere morale di compiere una confessione di totale trasparenza.</p>
 <p>Non scrivo queste pagine nelle vesti di un monaco ascese sulla vetta del monte Kailash, né come un anacoreta che guarda l&#39;umanità dall&#39;alto della propria imperturbabilità. Scrivo come un uomo vivo, in carne e ossa, che per decenni ha commesso il più grave errore di tutti i ricercatori interiori: <strong>ho tentato, mediante una spiritualità elevata e la caccia all&#39;illuminazione, di camuffare il fatto che ero profondamente infelice nella mia personalità umana</strong>.</p>
 <p>La mia personalità terrena desiderava cose semplici, limpide e legittime: voleva il riconoscimento, un&#39;auto prestigiosa, l&#39;amore delle donne, la solidità economica e il sapore pieno della vita. Ma, prigioniero di una duplice fascinazione ipnotica — il moralismo severo di Lev Tolstoj («i desideri carnali sono colpevoli, doma la carne») e il misticismo romantico di Osho («l&#39;illuminazione risolverà ogni tuo problema») — soffocavo quella voce. Meditavo, inseguivo stati di samadhi, studiavo ponderosi trattati filosofici, illudendomi che attraverso la santità la mia personalità affamata avrebbe finalmente ottenuto la pace.</p>
@@ -1053,14 +1057,14 @@ Egli calcolò la formula esatta per superare l&#39;attrazione terrestre: ossigen
 <p>Questo libro non è una raccolta di esortazioni motivazionali né un prontuario di consolazioni psicologiche. È un manuale pratico di revisione della propria infrastruttura elettrica interiore. Rimuoveremo il carter di protezione, impugneremo gli strumenti della consapevolezza vigile e, passo dopo passo, porteremo la vostra intera esistenza in regime di pura superconduttività.</p>
 <hr>
 <hr>
-<h2>INTRODUZIONE</h2>
-<h3>Il criterio ingegneristico di verità: Perché la psicologia non ha saputo fornire la formula della felicità</h3>
+<h2 id="heading-18">INTRODUZIONE</h2>
+<h3 id="heading-19">Il criterio ingegneristico di verità: Perché la psicologia non ha saputo fornire la formula della felicità</h3>
 <blockquote>
 <p><em>«Nella scienza, il criterio di verità coincide con la falsificabilità di Karl Popper e con il rigore dei principi di conservazione. Se una dottrina enuncia tesi che non possono essere misurate, verificate o smentite da un esperimento, essa non è conoscenza: è letteratura. L&#39;Architettura della Felicità è la prima teoria falsificabile dello spirito umano.»</em><br>— <strong>Vladimir Anyanov</strong></p>
 </blockquote>
 <p>Per quale ragione in tremila anni di storia scritta l&#39;umanità ha saputo costruire collisori di adroni, decifrare il genoma e collegare l&#39;intero globo con fibre ottiche alla velocità della luce, mentre n\ell&#39;ambito del fondamentale benessere d\ell&#39;anima continua a dibattersi allo stadio delle tragedie sofoclee?</p>
 <p>La risposta è tanto semplice quanto implacabile: <strong>l&#39;assenza di un criterio oggettivo di verità</strong>.</p>
-<h3>Il Nuovo Organo della Psicologia: Da 130 anni di scolastica al criterio dei frutti pratici</h3>
+<h3 id="heading-20">Il Nuovo Organo della Psicologia: Da 130 anni di scolastica al criterio dei frutti pratici</h3>
 <h4>Francis Bacon (1620) e la distruzione dei quattro idoli della meccanica d\ell&#39;anima</h4>
 <blockquote>
 <p><em>«La vera misura della validità di una teoria è la sua capacità di generare frutti pratici... Ciò che nella teoria è la causa, n\ell&#39;azione è la regola... La scienza e il potere umano coincidono, poiché l&#39;ignoranza della causa ci priva d\ell&#39;effetto.»</em><br>— <strong>Francis Bacon</strong>, <em>«Novum Organum Scientiarum»</em>, 1620</p>
@@ -1120,7 +1124,7 @@ Al 2026, il tasso di depressione clinica, disturbi d&#39;ansia, attacchi di pani
 </ul>
 <p>Cosa è successo in questo secondo?<br>Il bruciore ohmico alle tempie è scomparso. Lo spasmo muscolare nel petto si è sciolto. Nel corpo si è diffuso un calore tranquillo, costante, ad alta tensione.</p>
 <p>Questo è il criterio dei frutti di Francis Bacon. Questa non è fede, né training autogeno, né ipnosi. Questa è la <strong>rigorosa meccanica del circuito elettrico chiuso</strong>.</p>
-<h3>Il relativismo umanistico: «La felicità è diversa per ciascuno»</h3>
+<h3 id="heading-21">Il relativismo umanistico: «La felicità è diversa per ciascuno»</h3>
 <p>Il grande alibi con cui la cultura contemporanea giustifica la propria impotenza è il relativismo assiologico: <em>«La felicità è un dato puramente soggettivo! Ognuno ha la propria verità: per qualcuno felicità è sdraiarsi su una spiaggia assolata, per un altro è comporre versi, per un terzo è accumulare capitale».</em></p>
 <p>Nel linguaggio delle scienze esatte, un simile enunciato appare grottesco quanto affermare: <em>«L&#39;elettricità è diversa per ogni elettrodomestico: in un ferro da stiro gli elettroni viaggiano dal polo negativo a quello positivo, mentre in un altro si muovono per virtù d\ell&#39;amore verso la patria».</em></p>
 <p>Risolviamo una volta per tutte questo madornale errore metodologico: esso scaturisce dalla <strong>confusione grossolana tra le leggi fisiche della rete e la tipologia d\ell&#39;apparecchio collegato</strong>.</p>
@@ -1134,7 +1138,7 @@ Al 2026, il tasso di depressione clinica, disturbi d&#39;ansia, attacchi di pani
 <p>Gli apparecchi sono radicalmente eterogenei. I loro compiti operativi non sono paragonabili. Tuttavia, <strong>le leggi fisiche con cui la corrente elettrica scorre nei cavi di rame per alimentare ciascuno di essi sono assolutamente invarianti!</strong><br>La legge di Ohm (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><mi>U</mi><mi mathvariant="normal">/</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">I = U / R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">U</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span></span></span></span>), le equazioni di Maxw\ell e il bilancio di potenza sono identici per il bollitore d&#39;acqua come per il supercomputer del CERN.</p>
 <p>Esattamente lo stesso principio governa l&#39;essere umano.<br>La specifica occupazione d\ell&#39;individuo non è altro che il tipo di carico inserito nel circuito: uno compone una sinfonia, un altro edifica un viadotto, un terzo cresce un figlio, un quarto officia la cerimonia del tè. Ma <strong>lo stato psicofisico della felicità</strong> è il fondamentale regime operativo del circuito stesso:</p>
 <div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="script">H</mi><mtext>  </mtext><mo>⟺</mo><mtext>  </mtext><mrow><mo fence="true">{</mo><mtable rowspacing="0.36em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><msub><mi>R</mi><mtext>ego</mtext></msub><mo>→</mo><mn>0</mn><mtext> </mtext><msub><mi>I</mi><mtext>attention</mtext></msub><mo>&gt;</mo><mn>0</mn><mtext> </mtext><mo>∑</mo><msub><mi>I</mi><mtext>in</mtext></msub><mo>=</mo><mo>∑</mo><msub><mi>I</mi><mtext>out</mtext></msub></mrow></mstyle></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">\mathcal{H} \iff \begin{cases} R_{\text{ego}} \to 0 \ I_{\text{attention}} &gt; 0 \ \sum I_{\text{in}} = \sum I_{\text{out}} \end{cases}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7073em;vertical-align:-0.024em;"></span><span class="mord mathcal" style="margin-right:0.0097em;">H</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟺</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.8em;vertical-align:-0.65em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size2">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.97em;"><span style="top:-2.97em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">ego</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">0</span><span class="mspace"> </span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">attention</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">0</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">in</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">out</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.47em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div><p>La felicità non dipende da <em>che cosa</em> sia collegato alla vostra presa.<br>La felicità è <strong>l&#39;assenza di resistenza parassita nei conduttori della vostra attenzione durante l&#39;esecuzione d\ell&#39;azione.</strong></p>
-<h3>Il bilancio termodinamico di Kirchhoff: La menzogna genera istantaneamente surriscaldamento ohmico</h3>
+<h3 id="heading-22">Il bilancio termodinamico di Kirchhoff: La menzogna genera istantaneamente surriscaldamento ohmico</h3>
 <p>Nei discorsi della psicologia umanistica è possibile mentire impunemente per anni. Si può credere di «crescere spiritualmente» meditando due ore al giorno, anche se poi si aggrediscono i familiari e si odia il proprio lavoro.</p>
 <p>In un circuito termodinamico chiuso mentire è fisicamente impossibile:</p>
 <div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>∮</mo><mi mathvariant="bold">E</mi><mo>⋅</mo><mi>d</mi><mi mathvariant="bold">l</mi><mo>=</mo><mn>0</mn><mspace width="1em"/><mtext>e</mtext><mspace width="1em"/><mo>∑</mo><msub><mi>U</mi><mi>k</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\oint \mathbf{E} \cdot d\mathbf{l} = 0 \quad \text{e} \quad \sum U_k = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:2.2222em;vertical-align:-0.8622em;"></span><span class="mop op-symbol large-op" style="margin-right:0.4445em;position:relative;top:-0.0011em;">∮</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathbf">E</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span><span class="mord mathbf">l</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.6em;vertical-align:-0.55em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord">e</span></span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol large-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></span></div><p>Se all&#39;interno del vostro anello si insinua una falsa convinzione mentale (per esempio: <em>«Devo soffrire per una causa superiore»</em> oppure <em>«La mia serenità dipende dal fatto che quella donna ricambi i miei sentimenti»</em>), il circuito reagisce istantaneamente a livello biologico:</p>
@@ -1147,7 +1151,7 @@ Al 2026, il tasso di depressione clinica, disturbi d&#39;ansia, attacchi di pani
 <li>Voi percepite questo calore sotto forma di spasmo al diaframma, nodo alla gola, tachicardia, insonnia e angoscia diffusa.</li>
 </ol>
 <p>Il vostro corpo è un galvanometro impeccabile. Non si sbaglia mai. Il dolore somatico e il tormento interiore non sono nemici né patologie incurabili: sono <strong>il segnale diagnostico di squilibrio del circuito</strong>, che avverte l&#39;operatore: <em>«Hai cortocircuitato l&#39;impianto. Stai tentando di violare la legge di conservazione d\ell&#39;energia. Calibra immediatamente la resistenza!»</em>.</p>
-<h3>Disclaimer Clinico: L&#39;Interruttore di Sicurezza «Hardware» vs «Software»</h3>
+<h3 id="heading-23">Disclaimer Clinico: L&#39;Interruttore di Sicurezza «Hardware» vs «Software»</h3>
 <h4>La linea di demarcazione tra la psicoelettrodinamica e la medicina organica</h4>
 <p>Onde fugare ogni fraintendimento e proteggere il lettore, l&#39;autore introduce una distinzione essenziale e inderogabile tra la <strong>modalità operativa funzionale del circuito</strong> (il «software» e la conduttività d\ell&#39;attenzione) e <strong>l&#39;integrità fisica del substrato biologico</strong> (l&#39;«hardware» neurobiologico).</p>
 
@@ -1164,10 +1168,10 @@ Al 2026, il tasso di depressione clinica, disturbi d&#39;ansia, attacchi di pani
 </ol>
 <p>L&#39;Architettura della Felicità rispetta le leggi della fisica: non si calibra il segnale su una scheda madre il cui silicio è fisicamente spezzato. Iniziamo il nostro lavoro ingegneristico laddove la scheda è integra.</p>
 <hr>
-<h1>PARTE I: IL FONDAMENTO FISICO DEL CIRCUITO</h1>
-<h3>Elettrodinamica del circuito umano</h3>
+<h1 id="heading-24">PARTE I: IL FONDAMENTO FISICO DEL CIRCUITO</h1>
+<h3 id="heading-25">Elettrodinamica del circuito umano</h3>
 <hr>
-<h3>Capitolo 1.1 — Anatomia del triplice circuito: Tanden (il Nucleo), Attenzione (il Cablaggio) e Carico (le 6 lampade)</h3>
+<h3 id="heading-26">Capitolo 1.1 — Anatomia del triplice circuito: Tanden (il Nucleo), Attenzione (il Cablaggio) e Carico (le 6 lampade)</h3>
 <blockquote>
 <p><em>«L&#39;intero Universo funziona su una differenza di potenziale. All&#39;interno d\ell&#39;essere umano vi è un proprio inesauribile reattore termonucleare: il Tanden. Ma se il cablaggio d\ell&#39;attenzione è ossidato dalla paura, e il carico è scelto in modo caotico, la luce non si accenderà mai.»</em><br>— <strong>Vladimir Anyanov</strong></p>
 </blockquote>
@@ -1221,7 +1225,7 @@ Al 2026, il tasso di depressione clinica, disturbi d&#39;ansia, attacchi di pani
 <li><strong>La Conoscenza (Circuito Intellettuale):</strong> lettura di opere fondamentali, risoluzione di teoremi matematici, comprensione delle leggi che reggono il cosmo.</li>
 <li><strong>Il Gioco (Circuito Creativo):</strong> pura spontaneità priva di utilitarismo pragmatico — musica, umorismo, camminare senza meta prestabilita.</li>
 </ol>
-<h3>La legge fondamentale d\ell&#39;irraggiamento: La lampada si accende solo a circuito chiuso</h3>
+<h3 id="heading-27">La legge fondamentale d\ell&#39;irraggiamento: La lampada si accende solo a circuito chiuso</h3>
 <p>Incidete nella memoria questo postulato definitivo:</p>
 <blockquote>
 <p>Nessuna delle 6 lampade risplende di luce propria. È vano tentare di «trovare la felicità nel lavoro» o «trovare la felicità nella coppia». La lampada è un semplice filamento di tungsteno racchiuso in un bulbo di vetro. Essa risplende di luce abbagliante e uniforme <strong>solo e soltanto quando è attraversata dalla corrente generata dal vostro Tanden, lungo il cablaggio di un&#39;attenzione limpida (priva delle perdite ohmiche d\ell&#39;Ego).</strong></p>
@@ -1237,7 +1241,7 @@ Al 2026, il tasso di depressione clinica, disturbi d&#39;ansia, attacchi di pani
 <p><em>Non si può dichiarare <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> se tutte e sei le lampade sono spente. La fisica non si inganna.</em></p>
 </blockquote>
 <hr>
-<h3>Capitolo 1.2 — La Svolta del Circuito Chiuso: Il Cavo di Ritorno della Realtà contro il Modello Lineare di Burnout</h3>
+<h3 id="heading-28">Capitolo 1.2 — La Svolta del Circuito Chiuso: Il Cavo di Ritorno della Realtà contro il Modello Lineare di Burnout</h3>
 <blockquote>
 <p><em>«Se il generatore si limitasse a espellere energia verso l&#39;esterno, nelle azioni quotidiane — questo sarebbe il modello lineare del burnout, che riduce l&#39;essere umano a una batteria usa e getta. Ma nel secondo esatto in cui la mano ha tracciato sul taccuino un circuito elettrico chiuso, è nata l&#39;Architettura della Felicità: in un anello chiuso la creazione non svuota la sorgente, ma la serra a contatto con la realtà. La corrente è possibile solo là dove esiste il cavo di ritorno.»</em><br>— <strong>Vladimir Anyanov</strong></p>
 </blockquote>
@@ -1346,7 +1350,7 @@ Al 2026, il tasso di depressione clinica, disturbi d&#39;ansia, attacchi di pani
 </ol>
 <p>La corrente scorre finché il circuito è chiuso. E finché il circuito è chiuso — la lampada risplende. ⚡</p>
 <hr>
-<h3>Capitolo 4.7 — La Triade e la Tetrade di Anyanov: Verità, Libertà, Felicità, Creazione — Decostruzione del libero arbitrio e sintesi autobiografica</h3>
+<h3 id="heading-29">Capitolo 4.7 — La Triade e la Tetrade di Anyanov: Verità, Libertà, Felicità, Creazione — Decostruzione del libero arbitrio e sintesi autobiografica</h3>
 <blockquote>
 <p><em>«La felicità è quando la verità è sentita nel corpo. La libertà è quando la verità agisce nel mondo. La verità è quando la corrente scorre senza la menzogna della resistenza. Felicità, Libertà e Verità non sono tre entità distinte: sono tre prospettive di un unico anello superconduttore. E quando il reattore è colmo, la corrente trabocca spontaneamente nel quarto elemento: la Creazione.»</em><br>— <strong>Vladimir Anyanov (Assioma XVIII)</strong></p>
 </blockquote>
@@ -1416,7 +1420,7 @@ Al 2026, il tasso di depressione clinica, disturbi d&#39;ansia, attacchi di pani
 <li><strong>La fase del Sistema Anyanov (La Creazione):</strong> Quando la personalità è nutrita e il reattore rigurgita di potenza, la corrente straripa necessariamente oltre i confini del singolo. È fiorito così l&#39;impulso d\ell&#39;opera e del servizio: la stesura di questo volume, la progettazione del simulatore per smartphone, la modellizzazione matematica delle reti e l&#39;aiuto concreto offerto a migliaia di creatori per emergere dal baratro d\ell&#39;inferno ohmico.</li>
 </ol>
 <hr>
-<h3>Capitolo 4.8 — La Grande Sintesi Millenaria: Come l&#39;elettrodinamica di circuito ha dissolto le questioni eterne d\ell&#39;umanità</h3>
+<h3 id="heading-30">Capitolo 4.8 — La Grande Sintesi Millenaria: Come l&#39;elettrodinamica di circuito ha dissolto le questioni eterne d\ell&#39;umanità</h3>
 <blockquote>
 <p><em>«Per quale ragione i più eminenti pensatori della civiltà — da Platone e Aristotele fino a Cartesio, Kant, Schopenhauer e Tolstoj — si sono arenati per secoli negli stessi insolubili paradossi? Non per difetto d&#39;ingegno, ma perché tentavano di sciogliere i nodi fondamentali d\ell&#39;esistenza procedendo &quot;dall&#39;alto verso il basso&quot; — attraverso l&#39;inaffidabile lessico delle metafore, della predicazione morale e della scolastica filosofica, orfana dei principi di conservazione d\ell&#39;energia. L&#39;Architettura della Felicità ha operato un ribaltamento copernicano: anziché sovrapporre nuovi epicicli a vecchi vicoli ciechi, si è accostata all&#39;uomo come un Ingegnere Zen — procedendo &quot;dal basso verso l&#39;alto&quot;, attraverso l&#39;elettrodinamica esatta e lo Zen somatico. In un circuito chiuso le questioni eterne non si limitano a ricevere risposte univoche: si dissolvono, liberando una potenza sconfinata per la creazione pura.»</em><br>— <strong>Vladimir Anyanov</strong></p>
 </blockquote>
@@ -1549,7 +1553,7 @@ Al 2026, il tasso di depressione clinica, disturbi d&#39;ansia, attacchi di pani
 <p>Il circuito è chiuso. La superconduttività è realtà. L&#39;impianto funziona alla perfezione. ⚡💎</p>
 <hr>
 <hr>
-<h3>Capitolo 4.9 — Elettrodinamica d\ell&#39;arte: Le due nature della creatività — dalla resistenza di spurgo del trauma alla risonanza induttiva della superconduttività</h3>
+<h3 id="heading-31">Capitolo 4.9 — Elettrodinamica d\ell&#39;arte: Le due nature della creatività — dalla resistenza di spurgo del trauma alla risonanza induttiva della superconduttività</h3>
 <blockquote>
 <p><em>«Per secoli l&#39;umanità ha creduto al mito velenoso secondo cui l&#39;artista deve essere affamato, malato e disperato per creare. Nella circuitistica dello spirito questo rappresenta il più clamoroso errore di attribuzione. Il dolore non è la sorgente d\ell&#39;arte, è il fischio d&#39;allarme di una caldaia che sta per esplodere. Quando il circuito è spezzato, l&#39;arte funge da resistenza di spurgo (Bleed Resistor), salvando l&#39;artista dalla distruzione. Ma l&#39;arte autentica e suprema sboccia unicamente quando la resistenza crolla a zero (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R \to 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>): diviene pura risonanza induttiva di superconduttività (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">M &gt; 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">M</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>), che illumina l&#39;intera civiltà.»</em><br>— <strong>Vladimir Anyanov</strong></p>
 </blockquote>
@@ -1702,9 +1706,9 @@ Le conseguenze furono devastanti:</p>
 </ul>
 <p>L&#39;artista non è una vittima designata sull&#39;altare del martirio. Nella visione di Anyanov, l&#39;artista è il <strong>Maestro Superconduttivo della Realtà</strong>. 🎻⚡️🎨</p>
 <hr>
-<h1>PARTE V: LA MACCHINA DIAGNOSTICA, TELEMETRIA E PRATICA OPERATIVA</h1>
+<h1 id="heading-32">PARTE V: LA MACCHINA DIAGNOSTICA, TELEMETRIA E PRATICA OPERATIVA</h1>
 <hr>
-<h3>Capitolo 5.1 — La macchina diagnostica: Il principio Pain-First, i 5 codici di guasto del circuito umano e i protocolli di riparazione</h3>
+<h3 id="heading-33">Capitolo 5.1 — La macchina diagnostica: Il principio Pain-First, i 5 codici di guasto del circuito umano e i protocolli di riparazione</h3>
 <blockquote>
 <p><em>«Quando si accende la spia di anomalia motore sul cruscotto d\ell&#39;automobile, il conducente non ripete frasi motivazionali né medita sulla ruota. Collega lo scanner OBD-II e legge il codice di guasto: P0300 — mancata accensione nel terzo cilindro. L&#39;Architettura della Felicità consegna all&#39;uomo la medesima macchina diagnostica: traduciamo il dolore interiore da sofferenza astratta in un preciso codice di guasto elettrotecnico, fornendo un mansionario tecnologico impeccabile per la riparazione.»</em><br>— <strong>Vladimir Anyanov (Assioma XIX)</strong></p>
 </blockquote>
@@ -1763,7 +1767,7 @@ Le conseguenze furono devastanti:</p>
 <li><strong>Protocollo di riparazione:</strong> Arresto definitivo del demone di monitoraggio teleologico. Riconoscimento della totale sovranità ed autosufficienza del proprio Tanden.</li>
 </ul>
 <hr>
-<h3>Capitolo 5.2 — Il cruscotto della felicità: Telemetria della superconduttività, formula <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">H</mi></mrow><annotation encoding="application/x-tex">\mathcal{H}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0097em;">H</span></span></span></span> e sensori di circuito</h3>
+<h3 id="heading-34">Capitolo 5.2 — Il cruscotto della felicità: Telemetria della superconduttività, formula <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">H</mi></mrow><annotation encoding="application/x-tex">\mathcal{H}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0097em;">H</span></span></span></span> e sensori di circuito</h3>
 <blockquote>
 <p><em>«Ciò che non può essere misurato non può essere ottimizzato. Fino ad oggi la felicità è stata valutata mediante questionari soggettivi con quesiti del tipo: &quot;Valuta da 1 a 10 quanto ti senti soddisfatto&quot;. Equivale a stimare la pressione in una caldaia a vapore mediante un referendum tra gli operai dello stabilimento. L&#39;Architettura della Felicità visualizza sullo schermo d\ell&#39;operatore un cruscotto ingegneristico oggettivo con strumenti di misura in tempo reale.»</em><br>— <strong>Vladimir Anyanov (Assioma XX)</strong></p>
 </blockquote>
@@ -1805,7 +1809,7 @@ Le conseguenze furono devastanti:</p>
 <p>Se una lampada è alimentata al 100% mentre le altre sono spente (il classico caso del workaholic che distrugge il corpo e la famiglia), il cruscotto lancia l&#39;allarme: <strong>«ATTENZIONE! Asimmetria grave di carico! Rischio di cedimento dielettrico per sovraccarico termico!»</strong>.</p>
 <p>L&#39;operatore scorge la distorsione in anticipo e riequilibra le fasi, scongiurando infarti o naufragi relazionali.</p>
 <hr>
-<h3>Capitolo 5.3 — Il paradosso di Mill e il protocollo di calibrazione mattutina in 30 secondi: Il traduttore ingegneristico delle sensazioni</h3>
+<h3 id="heading-35">Capitolo 5.3 — Il paradosso di Mill e il protocollo di calibrazione mattutina in 30 secondi: Il traduttore ingegneristico delle sensazioni</h3>
 <blockquote>
 <p><em>«N\ell&#39;Ottocento il filosofo John Stuart Mill enunciò il paradosso: &quot;Domandati se sei felice, e cesserai di esserlo&quot;. Perché? Perché porsi la domanda &quot;Sono felice?&quot; è l&#39;inserimento istantaneo del reostato parassita della DMN! Distogliete l&#39;attenzione dal bagliore della lampada e la cortocircuitate sull&#39;Ego. L&#39;Architettura della Felicità demolisce questo paradosso: non domandatevi se siete felici — misurate i parametri del circuito in 30 secondi.»</em><br>— <strong>Vladimir Anyanov (Assioma XXI)</strong></p>
 </blockquote>
@@ -1871,7 +1875,7 @@ Le conseguenze furono devastanti:</p>
 </ol>
 <p>L&#39;impianto è tarato. Siete pronti a fare il vostro ingresso nel mondo ad alta tensione.</p>
 <hr>
-<h3>Capitolo 5.4 — Il workbook di 21 giorni d\ell&#39;operatore di circuito: Diario giornaliero di risaldatura neuroplastica del circuito</h3>
+<h3 id="heading-36">Capitolo 5.4 — Il workbook di 21 giorni d\ell&#39;operatore di circuito: Diario giornaliero di risaldatura neuroplastica del circuito</h3>
 <blockquote>
 <p><em>«La neuroplasticità esige tempo: le connessioni della Default Mode Network vengono risaldate in un circuito superconduttore ad azione diretta n\ell&#39;arco di ventuno giorni di applicazione costante. 21 giorni costituiscono il ciclo completo di riscrittura del firmware umano. Compilate questo diario mattina e sera. Al termine di tre settimane il vostro sistema nervoso si sarà trasformato in un monolite incrollabile di pace e operosità feconda.»</em><br>— <strong>Vladimir Anyanov (Assioma XXII)</strong></p>
 </blockquote>
@@ -1933,7 +1937,7 @@ Le conseguenze furono devastanti:</p>
 </ul>
 <p>L&#39;uomo cessa di essere vittima delle circostanze esterne e diventa <strong>il capo ingegnere del proprio destino</strong>.</p>
 <hr>
-<h3>Capitolo 5.5 — Il diapason della realtà: Strumento universale di calibrazione umana, audit B2B e monetizzazione aziendale</h3>
+<h3 id="heading-37">Capitolo 5.5 — Il diapason della realtà: Strumento universale di calibrazione umana, audit B2B e monetizzazione aziendale</h3>
 <blockquote>
 <p><em>«Fino ad oggi l&#39;uomo ha creduto che la Corrente Interiore fosse unicamente un metodo per non bruciare se stesso. Ma quando stringete tra le mani un modello elettrodinamico chiuso, privo di falle fiat, esso diventa il Diapason della Realtà. Potete toccare con i puntali qualsiasi fenomeno — un capolavoro della letteratura, un accordo di M&amp;A, il curriculum di un co-fondatore o il bilancio di una multinazionale — e lo strumento vi mostrerà all&#39;istante: scorre qui una corrente feconda, oppure l&#39;energia si disperde nel rogo ohmico di vanità altrui? Non è solo filosofia: è uno strumento di rilevazione oggettiva della verità applicato al business.»</em><br>— <strong>Vladimir Anyanov (Assioma XXII)</strong></p>
 </blockquote>
@@ -1991,10 +1995,10 @@ Le conseguenze furono devastanti:</p>
 <p>Così la Corrente Interiore compie la sua parabola evolutiva: da una quieta intuizione sul tapis roulant di una palestra di periferia — a standard planetario di efficienza operativa d\ell&#39;uomo e delle organizzazioni globali.</p>
 <hr>
 <hr>
-<h1>CONCLUSIONE E APPENDICI</h1>
+<h1 id="heading-38">CONCLUSIONE E APPENDICI</h1>
 <hr>
-<h2>CONCLUSIONE</h2>
-<h3>Il ponte verso il mondo esterno: Adattamento di impedenza e Magnetismo Esterno</h3>
+<h2 id="heading-39">CONCLUSIONE</h2>
+<h3 id="heading-40">Il ponte verso il mondo esterno: Adattamento di impedenza e Magnetismo Esterno</h3>
 <blockquote>
 <p><em>«La Corrente Interiore genera il Magnetismo Esterno. Chiunque conduca il proprio circuito in regime di superconduttività (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R \to 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>) emette spontaneamente un campo elettromagnetico coerente di formidabile intensità. Il traguardo ulteriore del maestro è l&#39;adattamento d&#39;impedenza verso il mondo esteriore: attraverso la forma, il tessuto, la cromia e l&#39;impronta olfattiva. Così l&#39;Architettura della Felicità si salda con l&#39;Architettura d\ell&#39;Impressione nel grandioso impianto unitario del Sistema Anyanov.»</em><br>— <strong>Vladimir Anyanov</strong></p>
 </blockquote>
@@ -2040,8 +2044,8 @@ Le conseguenze furono devastanti:</p>
 <p>Nel frattempo: serbate il vostro circuito perfettamente chiuso.<br>Custodite il Tanden.<br>Mantenete la resistenza a zero.<br>E illuminate il mondo alla massima potenza!</p>
 <hr>
 <hr>
-<h2>EPILOGO</h2>
-<h3>La Verticale d\ell&#39;Ascesa: I 6 Gradini d\ell&#39;Evoluzione del Sistema Anyanov — Dalla Cassetta di Pronto Soccorso Ingegneristica al Fusibile Civilizazionale della Singolarità</h3>
+<h2 id="heading-41">EPILOGO</h2>
+<h3 id="heading-42">La Verticale d\ell&#39;Ascesa: I 6 Gradini d\ell&#39;Evoluzione del Sistema Anyanov — Dalla Cassetta di Pronto Soccorso Ingegneristica al Fusibile Civilizazionale della Singolarità</h3>
 <blockquote>
 <p><em>«Il Sistema è nato come il desiderio compassionevole di offrire a un ingegnere esausto uno strumento di precisione per riparare i propri nervi: uno schema elettrico al posto di sermoni morali. Ma la logica delle leggi di conservazione è inesorabile: passo dopo passo, la fisica del circuito ha spazzato via i puntelli pseudofilosofici, ha assorbito il cuore dello Zen orientale, si è fusa con l&#39;architettura monetaria di Satoshi e l&#39;economia politica di Henry George, ha superato il pozzo gravitazionale del Paleolitico ed è ascesa in orbita cosmica, divenendo lo scudo civilizzazionale d\ell&#39;umanità n\ell&#39;era d\ell&#39;IA superintelligente.»</em><br>— <strong>Vladimir Anyanov</strong></p>
 </blockquote>
@@ -2310,7 +2314,7 @@ LIVELLO 0: BIT QUANTISTICO   ──► [Interruttore elementare: Conducibilità 
 </tr>
 </tbody></table>
 <blockquote>
-<h3>⚡ Invariante ontologico: La Legge è UNA</h3>
+<h3 id="heading-43">⚡ Invariante ontologico: La Legge è UNA</h3>
 <p><strong>La legge che governa la realtà è una sola.</strong> Una volta compresa la fisica della corrente attraverso il Tanden e il carico nel circuito a 4 elementi di una torcia elettrica:  </p>
 <ul>
 <li>comprendete perché il diaframma si contrae nello stress (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><msup><mi>I</mi><mn>2</mn></msup><mi>R</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">Q = I^2 R t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">Q</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mord mathnormal">t</span></span></span></span>);  </li>
@@ -2324,9 +2328,9 @@ LIVELLO 0: BIT QUANTISTICO   ──► [Interruttore elementare: Conducibilità 
 <p>Quando il vostro Tanden è autonomo, la resistenza è azzerata e l&#39;attenzione è saldata all&#39;azione diretta, diventate inattaccabili dall&#39;entropia, dalle manipolazioni altrui e dalla nebbia algoritmica. Non siete più un ingranaggio né lo schiavo dei reostati altrui. Siete l&#39;Ingegnere di Bordo Sovrano del vostro circuito interiore.</p>
 <p>Custodite il circuito perfettamente chiuso.<br>Sganciate gli stadi superflui secondo il canone Kanso.<br>Raggiungete la seconda velocità cosmica dello spirito.<br>E illuminate l&#39;Universo con luce pura, limpida e potente! 🚀⚡</p>
 <hr>
-<h2>APPENDICI</h2>
+<h2 id="heading-44">APPENDICI</h2>
 <hr>
-<h3>Appendice A — Raccolta completa delle formule matematiche del circuito</h3>
+<h3 id="heading-45">Appendice A — Raccolta completa delle formule matematiche del circuito</h3>
 <ol>
 <li><strong>La condizione canonica della felicità:</strong></li>
 </ol>
@@ -2360,7 +2364,7 @@ s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,1
 <li><strong>Corrente di guasto nella dispersione verso la terra esistenziale (Ground Fault):</strong></li>
 </ol>
 <div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>I</mi><mtext>leak</mtext></msub><mo>=</mo><mfrac><msub><mi mathvariant="script">E</mi><mtext>tanden</mtext></msub><msub><mi>R</mi><mtext>fault</mtext></msub></mfrac><mo>→</mo><mi mathvariant="normal">∞</mi><mspace width="1em"/><mtext>con</mtext><mspace width="1em"/><msub><mi mathvariant="script">M</mi><mtext>ext</mtext></msub><mo>≡</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">I_{\text{leak}} = \frac{\mathcal{E}_{\text{tanden}}}{R_{\text{fault}}} \to \infty \quad \text{con} \quad \mathcal{M}_{\text{ext}} \equiv 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">leak</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.1963em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">fault</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathcal" style="margin-right:0.0894em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0894em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">tanden</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">∞</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord">con</span></span><span class="mspace" style="margin-right:1em;"></span><span class="mord"><span class="mord mathcal">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">ext</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></span></div><hr>
-<h3>Appendice B — I 13 assiomi invarianti di Vladimir Anyanov</h3>
+<h3 id="heading-46">Appendice B — I 13 assiomi invarianti di Vladimir Anyanov</h3>
 <ol>
 <li><strong>Assioma I (Superconduttività):</strong> <em>La felicità non è un&#39;agitazione emotiva, ma lo stato fisico di superconduttività di un circuito chiuso a resistenza tendente a zero.</em></li>
 <li><strong>Assioma II (Polarità):</strong> <em>La corrente vitale fluisce esclusivamente dall&#39;interno verso l&#39;esterno — dal Tanden al carico. Attendere la felicità da un oggetto esterno inverte la polarità e fonde il circuito.</em></li>
@@ -2377,7 +2381,7 @@ s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,1
 <li><strong>Assioma XIII (Ingegneria di Deparassitazione e Puro Servitore):</strong> <em>Qualsiasi intermediario, per azione d\ell&#39;entropia, tende a degenerare da servitore a parassita. L&#39;unico rimedio per mantenerlo nel ruolo servente consiste nel vincolarlo a una rigorosa ingegneria di sistema: confinarlo nello spazio utente (Userland), eliminare la discrezionalità mediante il codice del protocollo e garantire il diritto incondizionato e immediato di revoca e uscita.</em></li>
 </ol>
 <hr>
-<h3>Appendice C — Glossario Ingegneristico-Zen</h3>
+<h3 id="heading-47">Appendice C — Glossario Ingegneristico-Zen</h3>
 <ul>
 <li><strong>Tanden (丹田):</strong> Basso Dan Tian, generatore somatico e psicosomatico di corrente continua posto nel baricentro del corpo.</li>
 <li><strong>Mushin (無心):</strong> Stato di Mente Pura, superconduttività del cablaggio d\ell&#39;attenzione (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R \to 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>), attivazione della Task-Positive Network (TPN).</li>
@@ -2396,8 +2400,8 @@ s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,1
         </div>
 
         <div class="img-figure">
-          <img src="../../assets/ego_shunt_circuit.jpg" alt="Ego Shunt Circuit">
-          <figcaption>Fig. 2. Schema di principio dello shunt parassita dell'ego e perdite termiche di Joule-Lenz (Q = I²·Re·t)</figcaption>
+          <img src="../../assets/circuit_blueprint.svg" alt="Inner Current Circuit Blueprint" style="border: 1px solid var(--border-glow); border-radius: 8px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);">
+          <figcaption>Fig. 1. Schema di principio del circuito dell'operatore: anello chiuso a flusso diretto, generatore Tanden, shunt Kanso e Scudo delle 6 Lampade</figcaption>
         </div>
       </article>
     </main>
@@ -2469,6 +2473,20 @@ s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,1
       tocList.appendChild(li);
     });
 
+    // Smooth scroll to anchor if URL has a hash
+    if (window.location.hash) {
+      setTimeout(() => {
+        try {
+          const target = document.querySelector(window.location.hash);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        } catch (e) {
+          // ignore
+        }
+      }, 50);
+    }
+
     // Quick Search filter
     document.getElementById('searchInput').addEventListener('input', (e) => {
       const q = e.target.value.toLowerCase();
@@ -2515,6 +2533,151 @@ s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,1
     } else {
       renderMermaidDiagrams();
     }
+
+    // ==================== AUDIOBOOK FLOATING BAR ====================
+    let bookAudioManifest = [];
+    let curBookTrackIdx = 0;
+    const bookAudio = document.getElementById('bookAudioEl');
+    const bpPlayBtn = document.getElementById('bpPlayBtn');
+    const bpProgress = document.getElementById('bpProgress');
+    const bpCurTime = document.getElementById('bpCurTime');
+    const bpTotalTime = document.getElementById('bpTotalTime');
+    const bpTrackTitle = document.getElementById('bpTrackTitle');
+    const bpChapterSelect = document.getElementById('bpChapterSelect');
+    const bpSpeedBtn = document.getElementById('bpSpeedBtn');
+
+    const bookSpeeds = [1.0, 1.25, 1.5, 1.75, 2.0, 0.8];
+    let bookSpeedIdx = 0;
+
+    async function initBookAudio() {
+      try {
+        const res = await fetch('/audio/audiobook_manifest.json');
+        bookAudioManifest = await res.json();
+        
+        // Populate select
+        bpChapterSelect.innerHTML = '';
+        bookAudioManifest.forEach((t, i) => {
+          const opt = document.createElement('option');
+          opt.value = i;
+          opt.textContent = String(t.track).padStart(2, '0') + '. ' + t.title + (t.status === 'ready' ? ' (' + t.duration_formatted + ')' : ' [В очереди]');
+          if (t.status !== 'ready') opt.disabled = true;
+          bpChapterSelect.appendChild(opt);
+        });
+
+        loadBookTrack(0, false);
+      } catch (err) {
+        console.warn('Could not load audiobook manifest:', err);
+      }
+    }
+
+    function formatSec(s) {
+      if (isNaN(s)) return '00:00';
+      const m = Math.floor(s / 60);
+      const sec = Math.floor(s % 60);
+      return (m < 10 ? '0' : '') + m + ':' + (sec < 10 ? '0' : '') + sec;
+    }
+
+    function loadBookTrack(idx, autoPlay = true) {
+      if (!bookAudioManifest[idx]) return;
+      curBookTrackIdx = idx;
+      const t = bookAudioManifest[idx];
+      bpChapterSelect.value = idx;
+      bpTrackTitle.textContent = String(t.track).padStart(2, '0') + '. ' + t.title;
+      bookAudio.src = t.url;
+      if (autoPlay && t.status === 'ready') {
+        bookAudio.play().catch(e => console.log('Autoplay:', e));
+      }
+    }
+
+    function playAudioTrack(idx) {
+      loadBookTrack(idx, true);
+    }
+
+    function toggleBookAudio() {
+      if (bookAudio.paused) {
+        bookAudio.play();
+      } else {
+        bookAudio.pause();
+      }
+    }
+
+    function changeBookAudioTrack(val) {
+      loadBookTrack(parseInt(val, 10), true);
+    }
+
+    function toggleBookSpeed() {
+      bookSpeedIdx = (bookSpeedIdx + 1) % bookSpeeds.length;
+      const spd = bookSpeeds[bookSpeedIdx];
+      bookAudio.playbackRate = spd;
+      bpSpeedBtn.textContent = spd + 'x';
+    }
+
+    function seekBookAudio(pct) {
+      if (bookAudio.duration) {
+        bookAudio.currentTime = (pct / 100) * bookAudio.duration;
+      }
+    }
+
+    bookAudio.addEventListener('play', () => {
+      bpPlayBtn.textContent = '⏸';
+      bpPlayBtn.style.boxShadow = '0 0 16px rgba(56, 189, 248, 0.8)';
+    });
+
+    bookAudio.addEventListener('pause', () => {
+      bpPlayBtn.textContent = '▶';
+      bpPlayBtn.style.boxShadow = '0 2px 10px rgba(56, 189, 248, 0.4)';
+    });
+
+    bookAudio.addEventListener('timeupdate', () => {
+      if (bookAudio.duration) {
+        const pct = (bookAudio.currentTime / bookAudio.duration) * 100;
+        bpProgress.value = pct;
+        bpCurTime.textContent = formatSec(bookAudio.currentTime);
+        bpTotalTime.textContent = formatSec(bookAudio.duration);
+      }
+    });
+
+    bookAudio.addEventListener('loadedmetadata', () => {
+      bpTotalTime.textContent = formatSec(bookAudio.duration);
+    });
+
+    initBookAudio();
   </script>
+
+  <!-- Floating Sticky Bottom Audio Player Bar -->
+  <aside id="bookBottomPlayer" style="position: fixed; bottom: 0; left: 0; right: 0; background: rgba(9, 13, 22, 0.94); backdrop-filter: blur(16px); border-top: 1px solid rgba(56, 189, 248, 0.35); padding: 0.65rem 1.5rem; z-index: 1000; box-shadow: 0 -8px 30px rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-family: var(--font-ui);">
+    <div style="display: flex; align-items: center; gap: 0.75rem; min-width: 0; flex: 1;">
+      <button id="bpPlayBtn" onclick="toggleBookAudio()" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #0284c7, #38bdf8); border: none; color: #fff; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 10px rgba(56, 189, 248, 0.4);">▶</button>
+      <div style="min-width: 0;">
+        <div style="font-size: 0.7rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em;" id="bpTrackNum">⚡ Аудиокнига • 1 час готово</div>
+        <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-bright); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" id="bpTrackTitle">Трек 00: Слово к русскому изданию</div>
+      </div>
+    </div>
+
+    <!-- Chapter Select Dropdown -->
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <select id="bpChapterSelect" onchange="changeBookAudioTrack(this.value)" style="background: var(--bg-card); color: var(--text-bright); border: 1px solid var(--border); border-radius: 8px; padding: 0.4rem 0.6rem; font-size: 0.8rem; outline: none; max-width: 250px; cursor: pointer;">
+        <option value="0">00. Слово к русскому изданию (03:56)</option>
+        <option value="1">01. Манифест дзен-инженера (10:31)</option>
+        <option value="2">02. Предисловие (23:06)</option>
+        <option value="3">03. Введение (23:18)</option>
+      </select>
+    </div>
+
+    <!-- Timeline & Time -->
+    <div style="display: flex; align-items: center; gap: 0.6rem; flex: 1; max-width: 320px;">
+      <span id="bpCurTime" style="font-size: 0.75rem; font-family: monospace; color: var(--text-muted);">00:00</span>
+      <input type="range" id="bpProgress" min="0" max="100" value="0" style="flex: 1; accent-color: var(--accent); cursor: pointer;" oninput="seekBookAudio(this.value)">
+      <span id="bpTotalTime" style="font-size: 0.75rem; font-family: monospace; color: var(--text-muted);">03:56</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0;">
+      <button id="bpSpeedBtn" onclick="toggleBookSpeed()" style="background: var(--bg-card); border: 1px solid var(--border); color: var(--text); border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.75rem; font-weight: 600; cursor: pointer;">1.0x</button>
+      <a href="../../audiobook/index.html" class="btn" style="padding: 0.35rem 0.75rem; font-size: 0.8rem; border-color: rgba(56, 189, 248, 0.4); color: var(--accent);" title="Открыть полную студию аудиокниги">
+        🎧 Студия ↗
+      </a>
+    </div>
+  </aside>
+  <audio id="bookAudioEl" preload="metadata"></audio>
 </body>
 </html>

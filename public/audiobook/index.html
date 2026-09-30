@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Внутренний ток: Архитектура счастья — Официальная аудиокнига</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --bg-card: #0f172a;
+      --bg-card-subtle: #131c31;
+      --border: #1e293b;
+      --border-glow: rgba(56, 189, 248, 0.35);
+      --text: #cbd5e1;
+      --text-bright: #f8fafc;
+      --text-muted: #64748b;
+      --accent: #38bdf8;
+      --accent-gold: #fbbf24;
+      --accent-glow: rgba(56, 189, 248, 0.2);
+      --font-body: 'Lora', Georgia, serif;
+      --font-ui: 'Inter', system-ui, sans-serif;
+      --font-display: 'Cinzel', serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-ui);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Topbar */
+    .topbar {
+      height: 60px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+    .brand-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.05em;
+    }
+    .brand-badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      border: 1px solid var(--border-glow);
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.45rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s;
+    }
+    .btn:hover {
+      background: var(--bg-card-subtle);
+      border-color: var(--accent);
+      color: var(--text-bright);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      color: #fff;
+      border: none;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.4);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 6rem;
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 3rem;
+      flex: 1;
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    /* Left Player Column */
+    .player-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: sticky;
+      top: 85px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .cover-wrapper {
+      position: relative;
+      width: 260px;
+      height: 360px;
+      margin-bottom: 1.75rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 0 30px rgba(56, 189, 248, 0.25);
+      border: 1px solid var(--border-glow);
+    }
+    .cover-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .playing .cover-img {
+      transform: scale(1.03);
+    }
+
+    .track-meta {
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+    .track-num {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+      font-weight: 600;
+    }
+    .track-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-bright);
+      line-height: 1.4;
+      margin-bottom: 0.4rem;
+    }
+    .track-author {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Progress & Scrubber */
+    .progress-section {
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      cursor: pointer;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #0284c7, #38bdf8);
+      border-radius: 3px;
+      position: relative;
+    }
+    .progress-fill::after {
+      content: '';
+      position: absolute;
+      right: -5px;
+      top: -3px;
+      width: 12px;
+      height: 12px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+    .progress-bar:hover .progress-fill::after {
+      opacity: 1;
+    }
+    .time-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: monospace;
+    }
+
+    /* Controls */
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .ctrl-btn {
+      background: none;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1.25rem;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    .ctrl-btn:hover {
+      color: var(--accent);
+      background: var(--bg-card-subtle);
+    }
+    .play-btn {
+      width: 58px;
+      height: 58px;
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      color: #fff;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.35);
+    }
+    .play-btn:hover {
+      box-shadow: 0 6px 25px rgba(56, 189, 248, 0.5);
+      transform: scale(1.05);
+      color: #fff;
+    }
+
+    .extra-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+    .speed-btn {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .speed-btn:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .download-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .download-link:hover {
+      color: var(--accent);
+    }
+
+    /* Right Playlist Column */
+    .playlist-section {
+      display: flex;
+      flex-direction: column;
+    }
+    .playlist-header {
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .playlist-title {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      color: var(--text-bright);
+    }
+    .playlist-stats {
+      font-size: 0.85rem;
+      color: var(--accent-gold);
+    }
+
+    .track-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .track-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .track-item:hover {
+      background: var(--bg-card-subtle);
+      border-color: var(--accent);
+      transform: translateX(4px);
+    }
+    .track-item.active {
+      background: var(--bg-card-subtle);
+      border-color: var(--accent);
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+    }
+    .track-item.pending {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+    .track-item.pending:hover {
+      transform: none;
+      border-color: var(--border);
+    }
+
+    .track-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .track-index {
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: var(--accent);
+      width: 24px;
+    }
+    .track-name {
+      font-size: 0.95rem;
+      color: var(--text-bright);
+      font-weight: 500;
+    }
+    .track-words {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .track-duration-pill {
+      font-size: 0.8rem;
+      font-family: monospace;
+      color: var(--text-muted);
+      background: var(--bg);
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .track-item.active .track-duration-pill {
+      color: var(--accent);
+      border-color: var(--accent-glow);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="../book/index.html" class="brand">
+      <span class="brand-title">⚡ ВНУТРЕННИЙ ТОК</span>
+      <span class="brand-badge">Аудиокнига</span>
+    </a>
+    <div class="nav-links">
+      <a href="../book/index.html" class="btn">📖 Читать книгу</a>
+      <a href="../index.html" class="btn btn-primary">🚀 В тренажер</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Player Card -->
+    <div class="player-card" id="playerCard">
+      <div class="cover-wrapper">
+        <img src="../assets/book_cover.jpg" alt="Обложка книги" class="cover-img" id="coverImg">
+      </div>
+
+      <div class="track-meta">
+        <div class="track-num" id="currentTrackNum">ТРЕК 00</div>
+        <div class="track-title" id="currentTrackTitle">Слово к русскому изданию: Русский синтез</div>
+        <div class="track-author">Владимир Аньянов • Голос: Дмитрий (Neural)</div>
+      </div>
+
+      <div class="progress-section">
+        <div class="progress-bar" id="progressBar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="time-info">
+          <span id="currentTime">00:00</span>
+          <span id="totalDuration">03:56</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="ctrl-btn" id="prevBtn" title="Предыдущая глава">⏮</button>
+        <button class="ctrl-btn" id="rewindBtn" title="Назад на 15 секунд">↺ 15</button>
+        <button class="ctrl-btn play-btn" id="playBtn" title="Воспроизведение">▶</button>
+        <button class="ctrl-btn" id="forwardBtn" title="Вперед на 15 секунд">15 ↻</button>
+        <button class="ctrl-btn" id="nextBtn" title="Следующая глава">⏭</button>
+      </div>
+
+      <div class="extra-controls">
+        <button class="speed-btn" id="speedBtn" title="Скорость воспроизведения">1.0x</button>
+        <a href="/audio/00_Слово_к_русскому_изданию__Русс.mp3" download class="download-link" id="downloadBtn" title="Скачать MP3 трека">
+          ⬇ Скачать главу
+        </a>
+      </div>
+    </div>
+
+    <!-- Chapter Playlist -->
+    <section class="playlist-section">
+      <div class="playlist-header">
+        <div>
+          <h1 class="playlist-title">Оглавление аудиокниги</h1>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem;">Полная авторская версия • Студийный мастеринг EBU R128 (-16 LUFS)</p>
+        </div>
+        <div class="playlist-stats" id="playlistStats">
+          50 глав
+        </div>
+      </div>
+
+      <div class="track-list" id="trackList">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+  </main>
+
+  <audio id="audioElement" preload="metadata"></audio>
+
+  <script>
+    let tracks = [];
+    let currentIndex = 0;
+    const audio = document.getElementById('audioElement');
+    const playBtn = document.getElementById('playBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const rewindBtn = document.getElementById('rewindBtn');
+    const forwardBtn = document.getElementById('forwardBtn');
+    const speedBtn = document.getElementById('speedBtn');
+    const progressBar = document.getElementById('progressBar');
+    const progressFill = document.getElementById('progressFill');
+    const currentTimeEl = document.getElementById('currentTime');
+    const totalDurationEl = document.getElementById('totalDuration');
+    const trackNumEl = document.getElementById('currentTrackNum');
+    const trackTitleEl = document.getElementById('currentTrackTitle');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const playerCard = document.getElementById('playerCard');
+    const trackListEl = document.getElementById('trackList');
+    const playlistStatsEl = document.getElementById('playlistStats');
+
+    const speeds = [1.0, 1.25, 1.5, 1.75, 2.0, 0.8];
+    let speedIdx = 0;
+
+    async function init() {
+      try {
+        const res = await fetch('/audio/audiobook_manifest.json');
+        tracks = await res.json();
+      } catch (err) {
+        console.error('Failed to load manifest:', err);
+      }
+
+      renderPlaylist();
+      
+      const savedTrack = localStorage.getItem('inner_current_audio_track');
+      if (savedTrack !== null && tracks[savedTrack]) {
+        currentIndex = parseInt(savedTrack, 10);
+      }
+      loadTrack(currentIndex, false);
+
+      const savedTime = localStorage.getItem('inner_current_audio_time');
+      if (savedTime) {
+        audio.currentTime = parseFloat(savedTime);
+      }
+    }
+
+    function formatTime(seconds) {
+      if (isNaN(seconds)) return '00:00';
+      const m = Math.floor(seconds / 60);
+      const s = Math.floor(seconds % 60);
+      return `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+    }
+
+    function renderPlaylist() {
+      trackListEl.innerHTML = '';
+      let readyCount = 0;
+
+      tracks.forEach((t, i) => {
+        if (t.status === 'ready') readyCount++;
+        const item = document.createElement('div');
+        item.className = `track-item ${i === currentIndex ? 'active' : ''} ${t.status !== 'ready' ? 'pending' : ''}`;
+        
+        item.innerHTML = `
+          <div class="track-info">
+            <span class="track-index">${String(t.track).padStart(2, '0')}</span>
+            <div>
+              <div class="track-name">${t.title}</div>
+              <div class="track-words">${t.words.toLocaleString()} слов ${t.status !== 'ready' ? '• ⏳ Генерация' : ''}</div>
+            </div>
+          </div>
+          <div class="track-duration-pill">${t.status === 'ready' ? t.duration_formatted : 'В очереди'}</div>
+        `;
+
+        if (t.status === 'ready') {
+          item.addEventListener('click', () => {
+            loadTrack(i, true);
+          });
+        }
+        trackListEl.appendChild(item);
+      });
+
+      playlistStatsEl.textContent = `Готово: ${readyCount} из ${tracks.length} глав`;
+    }
+
+    function loadTrack(index, autoPlay = true) {
+      if (!tracks[index]) return;
+      currentIndex = index;
+      const t = tracks[index];
+
+      trackNumEl.textContent = `ТРЕК ${String(t.track).padStart(2, '0')}`;
+      trackTitleEl.textContent = t.title;
+      downloadBtn.href = t.url;
+      audio.src = t.url;
+
+      localStorage.setItem('inner_current_audio_track', index);
+
+      // Highlight in list
+      document.querySelectorAll('.track-item').forEach((el, i) => {
+        el.classList.toggle('active', i === index);
+      });
+
+      if (autoPlay && t.status === 'ready') {
+        audio.play().catch(e => console.log('Autoplay blocked:', e));
+      }
+    }
+
+    // Play/Pause
+    playBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    });
+
+    audio.addEventListener('play', () => {
+      playBtn.textContent = '⏸';
+      playerCard.classList.add('playing');
+    });
+
+    audio.addEventListener('pause', () => {
+      playBtn.textContent = '▶';
+      playerCard.classList.remove('playing');
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      if (audio.duration) {
+        const percent = (audio.currentTime / audio.duration) * 100;
+        progressFill.style.width = `${percent}%`;
+        currentTimeEl.textContent = formatTime(audio.currentTime);
+        totalDurationEl.textContent = formatTime(audio.duration);
+        localStorage.setItem('inner_current_audio_time', audio.currentTime);
+      }
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+      totalDurationEl.textContent = formatTime(audio.duration);
+    });
+
+    audio.addEventListener('ended', () => {
+      if (currentIndex + 1 < tracks.length && tracks[currentIndex + 1].status === 'ready') {
+        loadTrack(currentIndex + 1, true);
+      } else {
+        playBtn.textContent = '▶';
+        playerCard.classList.remove('playing');
+      }
+    });
+
+    // Scrubber click
+    progressBar.addEventListener('click', (e) => {
+      const rect = progressBar.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const pct = clickX / rect.width;
+      audio.currentTime = pct * audio.duration;
+    });
+
+    // Skip controls
+    rewindBtn.addEventListener('click', () => {
+      audio.currentTime = Math.max(0, audio.currentTime - 15);
+    });
+    forwardBtn.addEventListener('click', () => {
+      audio.currentTime = Math.min(audio.duration, audio.currentTime + 15);
+    });
+
+    // Prev / Next
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        loadTrack(currentIndex - 1, true);
+      }
+    });
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex + 1 < tracks.length && tracks[currentIndex + 1].status === 'ready') {
+        loadTrack(currentIndex + 1, true);
+      }
+    });
+
+    // Speed toggle
+    speedBtn.addEventListener('click', () => {
+      speedIdx = (speedIdx + 1) % speeds.length;
+      const spd = speeds[speedIdx];
+      audio.playbackRate = spd;
+      speedBtn.textContent = `${spd}x`;
+    });
+
+    init();
+  </script>
+</body>
+</html>

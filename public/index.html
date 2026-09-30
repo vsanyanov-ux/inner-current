@@ -156,17 +156,31 @@
             </div>
           </button>
 
-          <!-- Tab 6: The Book / Reader -->
+          <!-- Tab 6: The Quintet Library -->
           <button id="nav-tab-book" onclick="switchTab('book')" class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden bg-slate-950/40 border-slate-800 hover:border-slate-700 cursor-pointer">
-            <span class="text-xl shrink-0" id="nav-icon-book">📖</span>
+            <span class="text-xl shrink-0" id="nav-icon-book">📚</span>
             <div class="flex-1 min-w-0">
               <div class="flex items-center justify-between gap-1">
                 <span class="text-xs font-bold text-slate-200 group-hover:text-amber-300 transition truncate" id="nav-title-book">
-                  6. Книга: Архитектура счастья
+                  6. Золотой квинтет
                 </span>
-                <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">100%</span>
+                <span class="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">5 книг</span>
               </div>
-              <p class="text-[10px] text-slate-400 truncate mt-0.5">Все 22 главы • Веб-ридер • PDF</p>
+              <p class="text-[10px] text-slate-400 truncate mt-0.5">Вся библиотека • Веб-ридеры • PDF</p>
+            </div>
+          </button>
+
+          <!-- Tab 7: The Audiobook / Player -->
+          <button id="nav-tab-audiobook" onclick="switchTab('audiobook')" class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden bg-slate-950/40 border-slate-800 hover:border-slate-700 cursor-pointer">
+            <span class="text-xl shrink-0" id="nav-icon-audiobook">🎧</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between gap-1">
+                <span class="text-xs font-bold text-slate-200 group-hover:text-cyan-300 transition truncate" id="nav-title-audiobook">
+                  7. Аудиокнига
+                </span>
+                <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">1 час</span>
+              </div>
+              <p class="text-[10px] text-slate-400 truncate mt-0.5">Слушать онлайн • Студия</p>
             </div>
           </button>
         </div>
@@ -2922,36 +2936,312 @@
 
       </div>
 
-      <!-- VIEW 6: THE BOOK (FULL READER) -->
+      <!-- VIEW 6: THE GOLDEN QUINTET (LIBRARY OF 5 BOOKS) -->
       <div id="view-book" class="space-y-6 hidden">
-        <header class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 backdrop-blur-md shadow-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <!-- Main Quintet Header -->
+        <header class="bg-gradient-to-r from-slate-900 via-slate-900/95 to-amber-950/30 border border-slate-800 rounded-2xl p-6 backdrop-blur-md shadow-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
             <div class="flex items-center gap-3">
-              <span class="text-3xl">📖</span>
+              <span class="text-3xl">📚</span>
               <h1 class="text-2xl md:text-3xl font-bold tracking-tight bg-gradient-to-r from-amber-400 via-amber-300 to-sky-300 bg-clip-text text-transparent">
-                Внутренний ток: Архитектура счастья
+                Золотой Квинтет Владимира Аньянова
               </h1>
               <span class="text-xs uppercase tracking-widest px-2.5 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-full font-mono">
-                Полная книга (100%)
+                5 канонических книг
               </span>
             </div>
             <p class="text-slate-400 text-sm mt-1">
-              Автор: Владимир Аньянов • 22 главы, манифест, практикум-воркбук и канонические приложения
+              Полная замкнутая экосистема: от экспресс-отладки острой боли до высшей онтологии, музыки и устройства общества
             </p>
           </div>
           <div class="flex flex-wrap items-center gap-2">
-            <a href="book/index.html" target="_blank" class="px-4 py-2 rounded-xl text-xs font-semibold bg-amber-500 hover:bg-amber-400 text-slate-950 transition flex items-center gap-1.5 shadow-lg shadow-amber-500/20">
-              <span>↗</span> Открыть в отдельной вкладке
-            </a>
+            <button onclick="switchTab('audiobook')" class="px-4 py-2 rounded-xl text-xs font-semibold bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 transition flex items-center gap-1.5 cursor-pointer shadow-lg shadow-cyan-500/10">
+              <span>🎧</span> Слушать аудиокнигу
+            </button>
             <button onclick="book_printBook()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center gap-1.5 cursor-pointer">
-              <span>📄</span> Печать в PDF
+              <span>🖨️</span> Печать книги
             </button>
           </div>
         </header>
 
-        <!-- Book Reader Container Card with embedded Reader -->
-        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl h-[calc(100vh-230px)] min-h-[600px] flex flex-col">
-          <iframe id="bookIframe" src="book/index.html" class="w-full flex-1 border-none bg-[#090d16]" title="Книга Внутренний ток: Архитектура счастья"></iframe>
+        <!-- 5 Books Interactive Showcase Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          
+          <!-- Book 1: Field Manual (NEW) -->
+          <div class="bg-gradient-to-b from-amber-950/30 to-slate-900 border border-amber-500/40 rounded-2xl p-5 shadow-xl flex flex-col justify-between relative group hover:border-amber-400 transition-all duration-300">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl">🧰</span>
+                <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold">
+                  Аптечка боли • NEW
+                </span>
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-slate-100 group-hover:text-amber-300 transition">
+                  Внутренний ток: Полевой мануал отладки
+                </h3>
+                <p class="text-xs text-amber-400/90 font-medium mt-0.5">
+                  Практическая инженерия человека: когда горит проводка
+                </p>
+              </div>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Для тех, у кого прямо сейчас болит. Экспресс-диагностика 4 аварий, 5 протоколов скорой помощи (соматический сброс, Black Start, микронагрузка, Мусин), ежедневное ТО. Без трактатов и морализаторства.
+              </p>
+            </div>
+            <div class="pt-4 mt-2 border-t border-slate-800/80 flex items-center gap-2">
+              <button onclick="selectBookToRead('field_manual')" class="flex-1 py-2 px-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition text-center cursor-pointer shadow-md shadow-amber-500/20">
+                📖 Читать в ридере
+              </button>
+              <a href="books/field_manual.html" target="_blank" title="Открыть в отдельной вкладке" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
+                ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- Book 2: Magnum Opus (Canonical) -->
+          <div class="bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-5 shadow-xl flex flex-col justify-between relative group hover:border-slate-700 transition-all duration-300">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl">🏛</span>
+                <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 font-bold">
+                  Magnum Opus • Канон
+                </span>
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-slate-100 group-hover:text-cyan-300 transition">
+                  Внутренний ток: Архитектура счастья
+                </h3>
+                <p class="text-xs text-cyan-400/90 font-medium mt-0.5">
+                  Физика сверхпроводимости, дзен-онтология и точная инженерия духа
+                </p>
+              </div>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Полный фундаментальный труд. 22 главы, 850 страниц. Схождение законов Ленца, Дзена, Биткоина и русского космизма. Разрешение 7 вечных парадоксов бытия и снятие вины.
+              </p>
+            </div>
+            <div class="pt-4 mt-2 border-t border-slate-800/80 flex items-center gap-2">
+              <button onclick="selectBookToRead('canonical')" class="flex-1 py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition text-center cursor-pointer border border-slate-700">
+                📖 Читать в ридере
+              </button>
+              <button onclick="switchTab('audiobook')" title="Слушать аудиокнигу" class="p-2 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 text-xs transition cursor-pointer">
+                🎧
+              </button>
+              <a href="book/index.html" target="_blank" title="Открыть в отдельной вкладке" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
+                ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- Book 3: Ukulele (Acoustics) -->
+          <div class="bg-gradient-to-b from-sky-950/20 to-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl flex flex-col justify-between relative group hover:border-sky-500/40 transition-all duration-300">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl">🎸</span>
+                <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-sky-500/10 text-sky-300 border border-sky-500/30 font-bold">
+                  Акустика • Соматика
+                </span>
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-slate-100 group-hover:text-sky-300 transition">
+                  Укулеле Бытия
+                </h3>
+                <p class="text-xs text-sky-400/90 font-medium mt-0.5">
+                  Простая акустика счастливой жизни и искусство жить без фальши
+                </p>
+              </div>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                400 граммов дерева, 4 струны и Шуньята. Снятие 2500-летнего дуализма Платона. Самый быстрый карманный соматический тренажёр сброса сопротивления в ноль ($R \to 0$) без академизма.
+              </p>
+            </div>
+            <div class="pt-4 mt-2 border-t border-slate-800/80 flex items-center gap-2">
+              <button onclick="selectBookToRead('ukulele')" class="flex-1 py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition text-center cursor-pointer border border-slate-700">
+                📖 Читать в ридере
+              </button>
+              <a href="books/ukulele.pdf" download title="Скачать PDF (1.1 МБ)" class="px-3 py-2 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 border border-sky-500/40 text-xs font-semibold transition flex items-center gap-1">
+                <span>📥</span> PDF
+              </a>
+              <a href="books/ukulele.html" target="_blank" title="Открыть в отдельной вкладке" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
+                ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- Book 4: Kids Primer (Happiness Architecture) -->
+          <div class="bg-gradient-to-b from-indigo-950/20 to-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl flex flex-col justify-between relative group hover:border-indigo-500/40 transition-all duration-300">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl">🧒</span>
+                <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/30 font-bold">
+                  Праймер счастья • 10+
+                </span>
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-slate-100 group-hover:text-indigo-300 transition">
+                  Инструкция к твоему суперкостюму
+                </h3>
+                <p class="text-xs text-indigo-400/90 font-medium mt-0.5">
+                  Праймер по физике счастья и невидимой суперсиле для умных подростков
+                </p>
+              </div>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Как устроен твой ядерный реактор Тандэн, проводка внимания Мусин, 6 лампочек жизни и как обезвредить Гремлина-Эго при коротком замыкании. Чистая схемотехника счастья без занудства.
+              </p>
+            </div>
+            <div class="pt-4 mt-2 border-t border-slate-800/80 flex items-center gap-2">
+              <button onclick="selectBookToRead('primer')" class="flex-1 py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition text-center cursor-pointer border border-slate-700">
+                📖 Читать в ридере
+              </button>
+              <a href="books/primer.html" target="_blank" title="Открыть в отдельной вкладке" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
+                ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- Book 5: White Paper (Macro) -->
+          <div class="bg-gradient-to-b from-emerald-950/20 to-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl flex flex-col justify-between relative group hover:border-emerald-500/40 transition-all duration-300 md:col-span-2 lg:col-span-2">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl">📜</span>
+                <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 font-bold">
+                  Макро-Контур • Протокол
+                </span>
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-slate-100 group-hover:text-emerald-300 transition">
+                  Inner Current: White Paper (Engineering Architecture)
+                </h3>
+                <p class="text-xs text-emerald-400/90 font-medium mt-0.5">
+                  Суверенный термодинамический контур духа, денег и общества
+                </p>
+              </div>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Цивилизационный манифест свободного прямого потока (Zero Parasitic Rent). Структурный изоморфизм Протокола Сатоши Накамото (Биткоин), Единого налога Генри Джорджа и Архитектуры счастья Аньянова. Ликвидация паразитных посредников во всех средах.
+              </p>
+            </div>
+            <div class="pt-4 mt-2 border-t border-slate-800/80 flex items-center gap-3">
+              <a href="books/whitepaper.pdf" download class="py-2.5 px-5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition flex items-center gap-2 shadow-lg shadow-emerald-500/20">
+                <span>📥</span> Скачать White Paper PDF (167 КБ)
+              </a>
+              <a href="books/whitepaper.pdf" target="_blank" class="py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold transition">
+                Открыть в браузере ↗
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Embedded Audiobook Quick Player Banner in Book View -->
+        <div class="bg-gradient-to-r from-slate-900 via-slate-900/95 to-cyan-950/40 border border-cyan-500/40 rounded-2xl p-4 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3.5 min-w-0 w-full lg:w-auto">
+            <button id="mainDashAudioPlayBtn" onclick="mainDash_toggleAudio()" class="w-11 h-11 rounded-full bg-gradient-to-tr from-cyan-500 to-sky-400 text-slate-950 font-bold text-lg flex items-center justify-center shadow-lg shadow-cyan-500/30 hover:scale-105 transition shrink-0 cursor-pointer">
+              ▶
+            </button>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center gap-2">
+                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-cyan-300 px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/30">
+                  🎧 Аудиокнига онлайн
+                </span>
+                <span class="text-[10px] font-mono text-emerald-400 font-semibold" id="mainDashAudioStatus">
+                  1 ч 00 мин готово
+                </span>
+              </div>
+              <div class="text-xs md:text-sm font-bold text-slate-100 truncate mt-1" id="mainDashAudioTitle">
+                00. Слово к русскому изданию: Русский синтез
+              </div>
+              <div class="text-[10px] text-slate-400">
+                Владимир Аньянов • Голос: Дмитрий Neural • EBU R128 (-16 LUFS)
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls & Chapter Selector -->
+          <div class="flex flex-wrap items-center gap-2.5 w-full lg:w-auto justify-end">
+            <select id="mainDashChapterSelect" onchange="mainDash_changeTrack(this.value)" class="bg-slate-950 border border-slate-700 text-slate-200 text-xs rounded-xl px-3 py-2 outline-none cursor-pointer max-w-[240px]">
+              <option value="0">00. Слово к русскому изданию (03:56)</option>
+              <option value="1">01. Манифест дзен-инженера (10:31)</option>
+              <option value="2">02. Предисловие (23:06)</option>
+              <option value="3">03. Введение (23:18)</option>
+            </select>
+
+            <div class="flex items-center gap-1.5 bg-slate-950/80 border border-slate-800 rounded-xl px-3 py-1.5 font-mono text-xs text-slate-400">
+              <span id="mainDashCurTime">00:00</span>
+              <span>/</span>
+              <span id="mainDashTotalTime">03:56</span>
+            </div>
+
+            <button onclick="mainDash_toggleSpeed()" id="mainDashSpeedBtn" class="px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-950 border border-slate-800 text-slate-400 hover:text-slate-200 cursor-pointer">
+              1.0x
+            </button>
+
+            <button onclick="switchTab('audiobook')" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 transition flex items-center gap-1.5 cursor-pointer">
+              <span>🎧</span> <span>Студия ↗</span>
+            </button>
+          </div>
+          <audio id="mainDashAudioEl" preload="metadata"></audio>
+        </div>
+
+        <!-- Book Reader Container Card with embedded Reader & Quick Switcher -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col">
+          <!-- Reader Top Controls -->
+          <div class="bg-slate-950/90 border-b border-slate-800 p-3.5 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0">
+              <span class="text-xs text-slate-400 font-mono uppercase tracking-wider mr-1 hidden sm:inline">Ридер:</span>
+              <button id="reader-btn-field_manual" onclick="selectBookToRead('field_manual')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer bg-amber-500 text-slate-950 font-bold">
+                🧰 Полевой мануал
+              </button>
+              <button id="reader-btn-canonical" onclick="selectBookToRead('canonical')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white">
+                🏛 Архитектура счастья
+              </button>
+              <button id="reader-btn-ukulele" onclick="selectBookToRead('ukulele')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white">
+                🎸 Укулеле Бытия
+              </button>
+              <button id="reader-btn-primer" onclick="selectBookToRead('primer')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white">
+                🧒 Праймер счастья (Суперкостюм)
+              </button>
+            </div>
+            <div class="flex items-center gap-2">
+              <a id="readerOpenExternalBtn" href="books/field_manual.html" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-slate-700 transition flex items-center gap-1">
+                <span>↗</span> На весь экран
+              </a>
+            </div>
+          </div>
+          <!-- Iframe -->
+          <div class="h-[calc(100vh-320px)] min-h-[580px] flex flex-col">
+            <iframe id="bookIframe" src="books/field_manual.html" class="w-full flex-1 border-none bg-[#090d16]" title="Книга: Библиотека Системы"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW 7: THE AUDIOBOOK (FULL STUDIO) -->
+      <div id="view-audiobook" class="space-y-6 hidden">
+        <header class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 backdrop-blur-md shadow-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">🎧</span>
+              <h1 class="text-2xl md:text-3xl font-bold tracking-tight bg-gradient-to-r from-cyan-400 via-sky-300 to-amber-300 bg-clip-text text-transparent">
+                Внутренний ток: Аудиокнига
+              </h1>
+              <span class="text-xs uppercase tracking-widest px-2.5 py-1 bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded-full font-mono">
+                Нейросетевая студия
+              </span>
+            </div>
+            <p class="text-slate-400 text-sm mt-1">
+              Автор: Владимир Аньянов • Голос: Дмитрий Neural • Студийный мастеринг EBU R128 (-16 LUFS)
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <a href="audiobook/index.html" target="_blank" class="px-4 py-2 rounded-xl text-xs font-semibold bg-cyan-500 hover:bg-cyan-400 text-slate-950 transition flex items-center gap-1.5 shadow-lg shadow-cyan-500/20">
+              <span>↗</span> Открыть в отдельной вкладке
+            </a>
+            <button onclick="switchTab('book')" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center gap-1.5 cursor-pointer">
+              <span>📖</span> Вернуться к чтению
+            </button>
+          </div>
+        </header>
+
+        <!-- Audiobook Player Container Frame -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl h-[calc(100vh-230px)] min-h-[650px] flex flex-col">
+          <iframe id="audiobookIframe" src="audiobook/index.html" class="w-full flex-1 border-none bg-[#090d16]" title="Аудиокнига Внутренний ток: Архитектура счастья"></iframe>
         </div>
       </div>
 
@@ -2968,6 +3258,54 @@
       }
     }
 
+    function selectBookToRead(bookKey) {
+      const iframe = document.getElementById('bookIframe');
+      const extBtn = document.getElementById('readerOpenExternalBtn');
+      const btnManual = document.getElementById('reader-btn-field_manual');
+      const btnCanonical = document.getElementById('reader-btn-canonical');
+      const btnUkulele = document.getElementById('reader-btn-ukulele');
+      const btnPrimer = document.getElementById('reader-btn-primer');
+
+      const allBtns = [btnManual, btnCanonical, btnUkulele, btnPrimer];
+      allBtns.forEach(b => {
+        if (b) b.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white';
+      });
+
+      let src = 'books/field_manual.html';
+      let targetBtn = btnManual;
+
+      if (bookKey === 'canonical') {
+        src = 'book/index.html';
+        targetBtn = btnCanonical;
+      } else if (bookKey === 'ukulele') {
+        src = 'books/ukulele.html';
+        targetBtn = btnUkulele;
+      } else if (bookKey === 'primer') {
+        src = 'books/primer.html';
+        targetBtn = btnPrimer;
+      } else {
+        src = 'books/field_manual.html';
+        targetBtn = btnManual;
+      }
+
+      if (iframe) iframe.src = src;
+      if (extBtn) extBtn.href = src;
+      if (targetBtn) targetBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer bg-amber-500 text-slate-950 font-bold';
+
+      // Switch to book tab if in another view
+      if (typeof switchTab === 'function') {
+        switchTab('book');
+      }
+
+      // Scroll smoothly down to the reader if requested
+      setTimeout(() => {
+        const readerElem = document.getElementById('bookIframe');
+        if (readerElem) {
+          readerElem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 100);
+    }
+
     function switchTab(tabId) {
       const viewPains = document.getElementById('view-pains');
       const viewDash = document.getElementById('view-happiness-dashboard');
@@ -2975,6 +3313,7 @@
       const viewSingle = document.getElementById('view-single-circuit');
       const viewMulti = document.getElementById('view-multi-circuit');
       const viewBook = document.getElementById('view-book');
+      const viewAudiobook = document.getElementById('view-audiobook');
 
       const navPains = document.getElementById('nav-tab-pains');
       const navDash = document.getElementById('nav-tab-dashboard');
@@ -2982,6 +3321,7 @@
       const navSingle = document.getElementById('nav-tab-single');
       const navMulti = document.getElementById('nav-tab-multi');
       const navBook = document.getElementById('nav-tab-book');
+      const navAudiobook = document.getElementById('nav-tab-audiobook');
 
       const activeBadge = document.getElementById('sidebarActiveBadge');
       const modeDesc = document.getElementById('sidebarModeDesc');
@@ -2999,6 +3339,7 @@
       if (viewSingle) viewSingle.classList.add('hidden');
       if (viewMulti) viewMulti.classList.add('hidden');
       if (viewBook) viewBook.classList.add('hidden');
+      if (viewAudiobook) viewAudiobook.classList.add('hidden');
 
       // Reset all nav buttons
       if (navPains) navPains.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
@@ -3007,6 +3348,7 @@
       if (navSingle) navSingle.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
       if (navMulti) navMulti.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
       if (navBook) navBook.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
+      if (navAudiobook) navAudiobook.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
 
       if (tabId === 'pains' || tabId === 'errors') {
         if (viewPains) viewPains.classList.remove('hidden');
@@ -3059,13 +3401,20 @@
         if (typeof mc_updateCircuit === 'function') {
           mc_updateCircuit();
         }
-      } else if (tabId === 'book' || tabId === 'reader') {
+      } else if (tabId === 'book' || tabId === 'reader' || tabId === 'quintet' || tabId === 'library') {
         if (viewBook) viewBook.classList.remove('hidden');
         if (navBook) navBook.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + activeClassGold;
 
-        activeBadge.textContent = 'КНИГА: АРХИТЕКТУРА СЧАСТЬЯ';
+        activeBadge.textContent = 'ЗОЛОТОЙ КВИНТЕТ (5 КНИГ)';
         activeBadge.className = 'text-amber-400 font-bold';
-        modeDesc.textContent = 'Полное издание книги Владимира Аньянова: 22 главы, манифест, 21-дневный воркбук-практикум и канонические приложения.';
+        modeDesc.textContent = 'Библиотека Системы Аньянова: 5 канонических книг (Практический мануал, Архитектура счастья, Укулеле Бытия, Детский праймер, White Paper).';
+      } else if (tabId === 'audiobook' || tabId === 'audio' || tabId === 'listen') {
+        if (viewAudiobook) viewAudiobook.classList.remove('hidden');
+        if (navAudiobook) navAudiobook.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + activeClassCyan;
+
+        activeBadge.textContent = 'АУДИОКНИГА: СТУДИЯ';
+        activeBadge.className = 'text-cyan-400 font-bold';
+        modeDesc.textContent = 'Официальная аудиокнига «Внутренний ток»: 50 глав, нейросетевая озвучка Dmitry Neural, мастеринг EBU R128 (-16 LUFS) и скачивание треков.';
       }
 
       if (typeof updateHappinessHUD === 'function') {
@@ -3077,6 +3426,109 @@
         window.location.hash = tabId;
       } catch (e) {}
     }
+
+    // =========================================================================
+    // 🎧 MAIN DASHBOARD AUDIOBOOK QUICK PLAYER
+    // =========================================================================
+    let mainDashManifest = [];
+    let mainDashCurTrack = 0;
+    const mainDashAudio = document.getElementById('mainDashAudioEl');
+    const mainDashPlayBtn = document.getElementById('mainDashAudioPlayBtn');
+    const mainDashSelect = document.getElementById('mainDashChapterSelect');
+    const mainDashCurTime = document.getElementById('mainDashCurTime');
+    const mainDashTotalTime = document.getElementById('mainDashTotalTime');
+    const mainDashTitle = document.getElementById('mainDashAudioTitle');
+    const mainDashSpeedBtn = document.getElementById('mainDashSpeedBtn');
+    const mainDashSpeeds = [1.0, 1.25, 1.5, 1.75, 2.0, 0.8];
+    let mainDashSpeedIdx = 0;
+
+    async function initMainDashAudio() {
+      try {
+        const res = await fetch('/audio/audiobook_manifest.json');
+        mainDashManifest = await res.json();
+        if (mainDashSelect) {
+          mainDashSelect.innerHTML = '';
+          mainDashManifest.forEach((t, i) => {
+            const opt = document.createElement('option');
+            opt.value = i;
+            opt.textContent = String(t.track).padStart(2, '0') + '. ' + t.title + (t.status === 'ready' ? ' (' + t.duration_formatted + ')' : ' [В очереди]');
+            if (t.status !== 'ready') opt.disabled = true;
+            mainDashSelect.appendChild(opt);
+          });
+        }
+        mainDash_loadTrack(0, false);
+      } catch (e) {
+        console.warn('Could not load manifest on main dash:', e);
+      }
+    }
+
+    function mainDash_formatSec(s) {
+      if (isNaN(s)) return '00:00';
+      const m = Math.floor(s / 60);
+      const sec = Math.floor(s % 60);
+      return (m < 10 ? '0' : '') + m + ':' + (sec < 10 ? '0' : '') + sec;
+    }
+
+    function mainDash_loadTrack(idx, autoPlay = true) {
+      if (!mainDashManifest[idx] || !mainDashAudio) return;
+      mainDashCurTrack = idx;
+      const t = mainDashManifest[idx];
+      if (mainDashSelect) mainDashSelect.value = idx;
+      if (mainDashTitle) mainDashTitle.textContent = String(t.track).padStart(2, '0') + '. ' + t.title;
+      mainDashAudio.src = t.url;
+      if (autoPlay && t.status === 'ready') {
+        mainDashAudio.play().catch(e => console.log('Autoplay:', e));
+      }
+    }
+
+    function mainDash_toggleAudio() {
+      if (!mainDashAudio) return;
+      if (mainDashAudio.paused) {
+        mainDashAudio.play();
+      } else {
+        mainDashAudio.pause();
+      }
+    }
+
+    function mainDash_changeTrack(val) {
+      mainDash_loadTrack(parseInt(val, 10), true);
+    }
+
+    function mainDash_toggleSpeed() {
+      if (!mainDashAudio || !mainDashSpeedBtn) return;
+      mainDashSpeedIdx = (mainDashSpeedIdx + 1) % mainDashSpeeds.length;
+      const spd = mainDashSpeeds[mainDashSpeedIdx];
+      mainDashAudio.playbackRate = spd;
+      mainDashSpeedBtn.textContent = spd + 'x';
+    }
+
+    if (mainDashAudio) {
+      mainDashAudio.addEventListener('play', () => {
+        if (mainDashPlayBtn) {
+          mainDashPlayBtn.textContent = '⏸';
+          mainDashPlayBtn.classList.add('ring-2', 'ring-cyan-400');
+        }
+      });
+      mainDashAudio.addEventListener('pause', () => {
+        if (mainDashPlayBtn) {
+          mainDashPlayBtn.textContent = '▶';
+          mainDashPlayBtn.classList.remove('ring-2', 'ring-cyan-400');
+        }
+      });
+      mainDashAudio.addEventListener('timeupdate', () => {
+        if (mainDashAudio.duration && mainDashCurTime && mainDashTotalTime) {
+          mainDashCurTime.textContent = mainDash_formatSec(mainDashAudio.currentTime);
+          mainDashTotalTime.textContent = mainDash_formatSec(mainDashAudio.duration);
+        }
+      });
+      mainDashAudio.addEventListener('loadedmetadata', () => {
+        if (mainDashAudio.duration && mainDashTotalTime) {
+          mainDashTotalTime.textContent = mainDash_formatSec(mainDashAudio.duration);
+        }
+      });
+    }
+
+    initMainDashAudio();
 
     function book_printBook() {
       const iframe = document.getElementById('bookIframe');
@@ -5426,12 +5878,13 @@
     window.addEventListener('DOMContentLoaded', () => {
       let initialTab = 'pains';
       const hash = window.location.hash.replace('#', '');
-      if (hash === 'pains' || hash === 'dashboard' || hash === 'ideal' || hash === 'happiness' || hash === 'single' || hash === 'multi' || hash === 'errors' || hash === 'book' || hash === 'reader') {
-        initialTab = (hash === 'errors') ? 'pains' : ((hash === 'happiness' || hash === 'dashboard') ? 'dashboard' : ((hash === 'reader') ? 'book' : hash));
+      const validTabs = ['pains', 'dashboard', 'ideal', 'happiness', 'single', 'multi', 'errors', 'book', 'reader', 'audiobook', 'audio'];
+      if (validTabs.includes(hash)) {
+        initialTab = (hash === 'errors') ? 'pains' : ((hash === 'happiness' || hash === 'dashboard') ? 'dashboard' : ((hash === 'reader') ? 'book' : ((hash === 'audio') ? 'audiobook' : hash)));
       } else {
         const saved = localStorage.getItem('inner_current_active_tab');
-        if (saved === 'pains' || saved === 'dashboard' || saved === 'ideal' || saved === 'happiness' || saved === 'single' || saved === 'multi' || saved === 'errors' || saved === 'book' || saved === 'reader') {
-          initialTab = (saved === 'errors') ? 'pains' : ((saved === 'happiness' || saved === 'dashboard') ? 'dashboard' : ((saved === 'reader') ? 'book' : saved));
+        if (saved && validTabs.includes(saved)) {
+          initialTab = (saved === 'errors') ? 'pains' : ((saved === 'happiness' || saved === 'dashboard') ? 'dashboard' : ((saved === 'reader') ? 'book' : ((saved === 'audio') ? 'audiobook' : saved)));
         }
       }
       switchTab(initialTab);

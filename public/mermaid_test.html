@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+</head>
+<body>
+<div id="output"></div>
+<pre id="err" style="color:red"></pre>
+<script>
+mermaid.initialize({ startOnLoad: false, theme: 'dark', securityLevel: 'loose' });
+
+const diagram = `flowchart TD
+    subgraph ToxicLove["1. Токсичное замыкание (Созависимость Эпохи Лошади)"]
+        direction LR
+        PersonA["Контур А (Ищет признания)"] <==>|Короткое замыкание на Эго| PersonB["Контур Б (Ищет валидации)"]
+        PersonA & PersonB ==> BurnLove["Искры · Ревность · Взрыв проводки · Разрыв"]
+    end
+
+    subgraph ZenLove["2. Индуктивный резонанс двух генераторов (M > 0)"]
+        direction TB
+        subgraph TwoGens["Два суверенных источника"]
+            GenA["Тандэн А (Автономен: E1 > 0, R1 -> 0)"]
+            GenB["Тандэн Б (Автономен: E2 > 0, R2 -> 0)"]
+        end
+        GenA <-->|Взаимная индукция Фарадея-Максвелла (M > 0)| GenB
+        GenA & GenB ==>|Когерентный свет| SharedLoad["Общая нагрузка: Творчество - Дом - Дети - Беседа"]
+        SharedLoad --> SuperLight["Сверхпроводимость пары (Синергия 1 + 1 = 3)"]
+    end`;
+
+(async () => {
+  try {
+    const { svg } = await mermaid.render('test1', diagram);
+    document.getElementById('output').innerHTML = svg;
+    document.getElementById('err').textContent = 'SUCCESS';
+  } catch(e) {
+    document.getElementById('err').textContent = 'ERROR: ' + e.message;
+    console.error(e);
+  }
+})();
+</script>
+</body>
+</html>

@@ -509,6 +509,7 @@
       <button class="btn" id="themeToggle" title="🌓 Theme">🌓 Theme</button>
       <button class="btn" id="fontIncBtn" title="A+">A+</button>
       <button class="btn" id="fontDecBtn" title="A-">A-</button>
+      <a href="../../audiobook/index.html" class="btn" style="border-color: var(--accent); color: var(--accent); font-weight: 600;" title="🎧 Audiobook">🎧 Audiobook</a>
       <button class="btn btn-primary" onclick="window.print()" title="📄 Download PDF">📄 Download PDF</button>
       <a href="../../index.html" class="btn">🚀 Open App</a>
     </div>
@@ -536,26 +537,29 @@
           <h1>Inner Current</h1>
           <div class="book-hero-subtitle">The Architecture of Happiness: An Engineering Guide to Consciousness Electrodynamics</div>
           <div class="book-hero-author">Vladimir Anyanov</div>
+          <div class="hero-audio-cta" style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+            <button onclick="playAudioTrack(0)" class="btn btn-primary" style="padding: 0.6rem 1.3rem; border-radius: 9999px; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4); cursor: pointer;">
+              <span>▶</span> <span>Слушать аудиоверсию</span>
+            </button>
+            <a href="../../audiobook/index.html" class="btn" style="padding: 0.6rem 1.2rem; border-radius: 9999px; border-color: rgba(56, 189, 248, 0.4); color: var(--accent);">
+              <span>🎧</span> <span>Все 50 глав</span>
+            </a>
+          </div>
         </header>
 
-        <div class="img-figure">
-          <img src="../../assets/superconductivity_mushin.jpg" alt="Superconductivity Mushin">
-          <figcaption>Fig. 1. Operator superconductivity topology: laminar flow at R → 0</figcaption>
-        </div>
-
         <div id="manuscriptContent">
-          <h1>Inner Current: The Architecture of Happiness</h1>
-<h2>The Physics of Superconductivity, Zen Ontology, and the Exact Engineering of Human W\ell-Being</h2>
+          <h1 id="heading-1">Inner Current: The Architecture of Happiness</h1>
+<h2 id="heading-2">The Physics of Superconductivity, Zen Ontology, and the Exact Engineering of Human W\ell-Being</h2>
 <p><strong>Author:</strong> Vladimir Anyanov<br><strong>Meta-system:</strong> Anyanov System | Inner Current<br><strong>Edition:</strong> 1st English Master Edition (Complete &amp; Unabridged)<br><strong>Verification:</strong> Strict Consilience (Zen ↔ Electrodynamics ↔ Thermodynamics ↔ Neurobiology)</p>
 <hr>
 <blockquote>
 <p><strong>The Supreme Axiom of the Anyanov System</strong></p>
-<h3>⚡ <strong>&quot;Happiness is the superconducting state of the circuit (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>→</mo><mn>0</mn><mo separator="true">,</mo><mi>I</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R \to 0, I &gt; 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>).&quot;</strong></h3>
+<h3 id="heading-3">⚡ <strong>&quot;Happiness is the superconducting state of the circuit (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>→</mo><mn>0</mn><mo separator="true">,</mo><mi>I</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R \to 0, I &gt; 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>).&quot;</strong></h3>
 <p>— <strong>Vladimir Anyanov</strong></p>
 <p><em>&quot;We did not invent the laws of human nature anew. We discovered the exact engineering architecture of happiness — translating centuries of human intuition and chaos into an applied, testable, and repairable system. Soulful discord is not an existential curse, but ohmic overheat or a ground fault, subject to precise localization and debugging through the instruments of lucid attention.&quot;</em></p>
 </blockquote>
 <hr>
-<h2>Table of Contents</h2>
+<h2 id="heading-4">Table of Contents</h2>
 <table>
 <thead>
 <tr>
@@ -890,8 +894,8 @@
 </tr>
 </tbody></table>
 <hr>
-<h2>THE ZEN ENGINEER&#39;S MANIFESTO</h2>
-<h3>From Abstract Fairy Tales to Strict Conservation Laws</h3>
+<h2 id="heading-5">THE ZEN ENGINEER&#39;S MANIFESTO</h2>
+<h3 id="heading-6">From Abstract Fairy Tales to Strict Conservation Laws</h3>
 <p>For thousands of years, humanity has attempted to answer the single question: <em>&quot;How do we become happy?&quot;</em><br>And for thousands of years, this inquiry has drowned in abstract metaphors, religious dogmas, psychological templates, and the toxic positivity of consumer marketing.</p>
 <p>Humanity is told:<br><em>&quot;Just love yourself&quot;</em> — yet no one provides the electrical schematic for this love.<br><em>&quot;Find your higher purpose&quot;</em> — thereby condemning the seeker to decades of agonizing ohmic overheat in pursuit of an imaginary external wall socket.<br><em>&quot;Live in the here and now&quot;</em> — but as soon as tomorrow arrives, consciousness burns once more in future anxiety or gets bogged down in the heavy inductive resistance of the past.</p>
 <p><strong>The time has come to end the romanticization of psychic pain.</strong><br>A human being is not an unfathomable mystical enigma doomed to perpetual torment. A human being is a <strong>highly organized thermodynamic and electrical system</strong>.</p>
@@ -905,7 +909,7 @@
 <p>then why have we naively assumed that the inner world of man obeys fairy tales rather than the very same fundamental laws of the Universe?</p>
 <p><strong>Inner Current</strong> is a manifesto of radical sobriety.<br>We have unified the millennium-old empirical discipline of Zen — the most rigorous, dispassionate, practical school of consciousness in history — with the exact physics of electrical networks.</p>
 <p>Here, there is no blind belief. Here, there is <strong>circuit verification</strong>.<br>Here, there is no guilt. Here, there is <strong>leak localization</strong>.<br>Here, there is no endless psychoanalytic rumination on childhood trauma. Here, there is <strong>calibration of resistance to absolute zero (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R \to 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>)</strong> and driving the sovereign reactor to its nominal power.</p>
-<h3>WHO THIS BOOK IS FOR (AND WHO IT IS NOT)</h3>
+<h3 id="heading-7">WHO THIS BOOK IS FOR (AND WHO IT IS NOT)</h3>
 <h4>Manifesto of the Sovereign Reader</h4>
 <p>This book is written at the strict convergence of physical equations, electrodynamics, Eastern ontology, a critique of a century and a half of psychotherapy, and the political philosophy of direct flow. It contains no mystical fog and no soothing illusions. Just as Ohm&#39;s law does not negotiate with the resistance of a conductor, this book does not negotiate with the reader.</p>
 <h4>This book was written for you if:</h4>
@@ -923,7 +927,7 @@
 </ul>
 <p>If your voltmeter is active and your mind thirsts for pure physics and uncompromising clarity — welcome to the Architecture of Happiness.</p>
 <hr>
-<h3>READER WARNING: THIS BOOK IS NOT A MAGIC CARPET</h3>
+<h3 id="heading-8">READER WARNING: THIS BOOK IS NOT A MAGIC CARPET</h3>
 <h4>Why We Are Building Tsiolkovsky&#39;s Rocket, Not Trading in Illusions</h4>
 <blockquote>
 <p><em>&quot;Earth is the cradle of reason, but one cannot live in the cradle forever.&quot;</em><br>— <strong>Konstantin Tsiolkovsky</strong> (1911)</p>
@@ -935,7 +939,7 @@
 <p><strong>This book is Tsiolkovsky&#39;s Kaluga blueprint for your inner world.</strong><br>We do not promise miracles. We assert: suffering, guilt, anxiety, and addiction are not a mystical curse, but the <strong>gravity w\ell of the primal ego (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mtext>ego</mtext></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R_{\text{ego}} &gt; 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">ego</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>)</strong>. To break free from it, you do not need mantras. You need a functioning Tanden reactor, the shedding of dead ballast according to the Kanso canon, and the calculation of the <strong>Escape Velocity of the Spirit</strong>, which launches consciousness into the weightlessness of pure superconductivity (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R \to 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>, Mushin).</p>
 <p>Before you is not fiction. Before you is the engineering project of your orbital flight.</p>
 <hr>
-<h3>THOUGHT ROADMAP: 6 STEPS OF ASCENT</h3>
+<h3 id="heading-9">THOUGHT ROADMAP: 6 STEPS OF ASCENT</h3>
 <h4>From the Engineer&#39;s First Aid Kit to the Civilizational Singularity Fuse</h4>
 <p>This book is structured not as a collection of linear advice, but as a <strong>multi-stage cognitive launch vehicle</strong>. As you read, you will ascend through levels of abstraction higher and higher:</p>
 <ol>
@@ -948,8 +952,8 @@
 </ol>
 <hr>
 <hr>
-<h2>PREFACE</h2>
-<h3>The Flash on the Treadmill: From Apophatic Deadlock and AI Dialogue to the Physics of the Inner Current</h3>
+<h2 id="heading-10">PREFACE</h2>
+<h3 id="heading-11">The Flash on the Treadmill: From Apophatic Deadlock and AI Dialogue to the Physics of the Inner Current</h3>
 <blockquote>
 <p><em>&quot;Happiness cannot be defined through what we possess — for millions of people possess everything they ever dreamed of, yet look upon the world with extinguished eyes. But if one strips away all that is transient, what remains in dry residue is the pure internal reactor: the Tanden. External objects, successes, and relationships are merely Tōmyō lamps. And a Tōmyō lamp illuminates only when current flows from the inside out, never in reverse.&quot;</em><br>— <strong>Vladimir Anyanov</strong></p>
 </blockquote>
@@ -958,7 +962,7 @@
 <p>We struck up a conversation, and right there, amidst the rhythmic mechanical drone of the exercise machines, I posed a seemingly simple question:<br>&quot;Can you define what happiness actually is for you?&quot;</p>
 <p>She broke her stride, hesitated, and thought for a moment. Then came the familiar answers known to everyone: &quot;W\ell… it&#39;s when everything is peaceful. When there is love, when loved ones are healthy. When you have a good job, financial security, travel, when your dreams come true…&quot;</p>
 <p>And in that exact split second, a crystal-clear realization struck me like lightning: <strong>it is fundamentally impossible to define happiness positively</strong>.</p>
-<h3>The Collapse of Positive Definitions</h3>
+<h3 id="heading-12">The Collapse of Positive Definitions</h3>
 <p>Attempt to define happiness through an inventory of external attributes (&quot;happiness is X&quot;), and physical reality will shatter your construct to pieces:</p>
 <ul>
 <li><strong>If happiness is in money, real estate, and luxury</strong> — why do we daily see owners of lavish penthouses and supercars with infinitely exhausted, dead, hollow eyes?</li>
@@ -968,7 +972,7 @@
 </ul>
 <p>Positive definition is a cognitive trap. The instant you tether happiness to an external object, you instantly transform yourself into its hostage.</p>
 <p>&quot;Listen,&quot; I told her. &quot;Positive definitions do not work. Let us invert the problem. Let us define happiness through <strong>negation</strong> — by systematically discarding everything that happiness is provably not.&quot;</p>
-<h3>The Apophatic Path (Neti, Neti — &quot;Not This, Not That&quot;)</h3>
+<h3 id="heading-13">The Apophatic Path (Neti, Neti — &quot;Not This, Not That&quot;)</h3>
 <p>In ancient Indian philosophy and classical theology, there exists a method of knowing truth via negation: <em>apophasis</em>, or <em>Neti, Neti</em> (&quot;not this, not that&quot;). When we cannot grasp the absolute directly, we can methodically strip away everything false and transient.</p>
 <p>Right beside that treadmill, we initiated this thought experiment of radical disassembly:</p>
 <ol>
@@ -985,7 +989,7 @@
 <li><strong>Invulnerability:</strong> It cannot be fired, betrayed, robbed, or devalued.</li>
 <li><strong>Self-Existing Bliss (<em>Sat-Chit-Ananda</em>):</strong> At absolute zero, when all external static and alien demands have been unplugged, the baseline ground state of consciousness is a quiet, profound, unbroken ecstasy of existence itself.</li>
 </ul>
-<h3>Tōmyō Loads vs. The Power Plant</h3>
+<h3 id="heading-14">Tōmyō Loads vs. The Power Plant</h3>
 <p>Right there in the gym, the first mechanical metaphor materialized:</p>
 <blockquote>
 <p><strong>You are not a light bulb seeking an electrical outlet in the world.</strong><br><strong>You are the Power Plant.</strong></p>
@@ -999,7 +1003,7 @@
 <p>This is an inversion of polarity. It is physically impossible.<br>An external object is not a generator; it is merely an electrical load!</p>
 <p>In Japanese Zen temples, there are ceremonial stone lanterns called <strong>Tōmyō (燈明 — sacred lamps)</strong>. A stone lamp contains no light of its own. It is cold granite. It illuminates only when an acolyte places a flame within its chamber.</p>
 <p>Your career, your car, your house, your family, your creative work — these are all <strong>Tōmyō lamps</strong>. They possess no electricity of their own. They light up and radiate warm beauty only when <strong>you direct your own internal current through them from the inside out</strong>.</p>
-<h3>The Trap of Asceticism: &quot;Happiness Isn&#39;t in a BMW, But I Still Want to Drive One&quot;</h3>
+<h3 id="heading-15">The Trap of Asceticism: &quot;Happiness Isn&#39;t in a BMW, But I Still Want to Drive One&quot;</h3>
 <p>At this stage of the conversation, an intelligent interlocutor inevitably hits the wall of classical asceticism:<br><em>&quot;Alright, Vladimir. If happiness is not in a BMW, if things are empty, does that mean we must shave our heads, put on orange robes, abandon civilization, and sit in a cave staring at a wall?&quot;</em></p>
 <p>No! That is the ancient trap that rendered Eastern philosophy toothless for the Western mind.</p>
 <p>The classical ascetic renounces the world because he fears it: <em>&quot;Things tempt me, so I will destroy things.&quot;</em> That is merely the inverted greed of the ego.</p>
@@ -1011,7 +1015,7 @@
 <li>We no longer demand that a bank account cure our fear of death.</li>
 </ul>
 <p>We supply our own current! We step into the car already complete, already superconducting. And then the car lights up like a sacred Tōmyō lantern, serving as a magnificent instrument of our creative will.</p>
-<h3>Why Zen? Tanden Below the Navel and the Coincidence with Electrical Engineering</h3>
+<h3 id="heading-16">Why Zen? Tanden Below the Navel and the Coincidence with Electrical Engineering</h3>
 <p>Why did this synthesis require Zen, rather than Western psychology or classical European philosophy?</p>
 <p>Because European philosophy remained trapped in the brain. It turned into scholastic wordplay, endlessly debating epistemology while the philosopher&#39;s stomach was tied in knots of anxiety.</p>
 <p>Zen, conversely, was never a philosophy; it was an uncompromising somatic technology of presence.<br>Centuries ago, the Zen masters discovered: the center of conscious gravity does not reside in the head. It resides in the <strong>Tanden (丹田, lower Dan Tien)</strong> — a somatic epicenter three finger-widths below the navel, at the physical center of mass of the human body.</p>
@@ -1031,7 +1035,7 @@
 <li><strong>The External Loads (Lamps of Life):</strong> These are the sacred <strong>Tōmyō (燈明)</strong> lamps, which ignite only when energized by the fire of the Tanden.</li>
 </ul>
 <p>Zen turned out to be humanity&#39;s oldest electrical engineering of the spirit, awaiting its formal mathematics. And electrical engineering revealed itself as the precise circuitry of Zen, rendered in copper, silicon, and the laws of conservation.</p>
-<h3>Dialogue with Artificial Intelligence: Transition to the Functional Circuit</h3>
+<h3 id="heading-17">Dialogue with Artificial Intelligence: Transition to the Functional Circuit</h3>
 <p>I am not a professional electrical engineer who spent decades hunched over oscilloscopes in a defense lab. But I have always despised intellectual fog. I needed a model — clear, mathematically rigorous, falsifiable, and repairable.</p>
 <p>Returning from the gym, I sat at my workstation and initiated an exhaustive dialogue with Gemini — Google&#39;s advanced artificial intelligence.</p>
 <p>Step by step, prompt by prompt, we converted that initial intuitive flash into an uncompromising functional blueprint:</p>
@@ -1041,7 +1045,7 @@
 <li>We tested the circuit for scale invariance: from taking a sip of morning green tea to directing a multi-billion-dollar corporate empire.</li>
 </ul>
 <p>Thus was born the <strong>Architecture of Happiness</strong>.</p>
-<h3>The Author&#39;s Confession: How I Masked the Hunger of Personality with Spirituality</h3>
+<h3 id="heading-18">The Author&#39;s Confession: How I Masked the Hunger of Personality with Spirituality</h3>
 <p>Before we proceed to the formal equations and schematics, I must make a confession of absolute candor.</p>
 <p>I do not write this book as an immaculate monk gazing down from the heights of Mount Kailash, nor as an ascetic scorning mundane humanity. I write it as a living human being who spent decades committing the cardinal error of modern seekers: <strong>I attempted to use high spirituality and the pursuit of enlightenment to disguise the fact that I was profoundly unhappy in my human personality</strong>.</p>
 <p>My human personality wanted ordinary, healthy, earthly things: recognition, driving an exquisite car, loving beautiful women, building wealth, and relishing the sensory richness of life. But trapped under a dual hypnosis — the moral asceticism of Leo Tolstoy (<em>&quot;desires are sinful, mortify the flesh&quot;</em>) and the romanticized mysticism of Osho (<em>&quot;enlightenment will automatically dissolve all your problems&quot;</em>) — I choked that voice. I meditated, chased samadhi, and devoured ancient sutras, secretly praying that spiritual awakening would finally grant my starving ego the happiness it lacked.</p>
@@ -1052,7 +1056,7 @@
 <p>That sobering realization became the cornerstone of the Architecture of Happiness. I understood: <strong>you cannot bypass the stage of personality!</strong> You cannot unplug the lamps of money, sexuality, physical health, and social craft while draping yourself in the mantle of holiness.</p>
 <p><strong>Inner Current is the complete rehabilitation of the earthly personality.</strong> We strip away artificial guilt, discard hypocrisy, and channel the inexhaustible current of the Tanden to illuminate all six lamps of real-world existence.</p>
 <p>This book is neither a collection of motivational toasts nor a cushion of psychological therapy. It is an operator&#39;s technical manual for auditing your own internal grid. We will unscrew the chassis, pick up the test probes of lucid attention, and systematically bring your life into the state of pure superconductivity.</p>
-<h3>The Prometheus Step: The Fire of the Inner Current — From the Monastic Olympus to the Pocket Flashlight of Humanity</h3>
+<h3 id="heading-19">The Prometheus Step: The Fire of the Inner Current — From the Monastic Olympus to the Pocket Flashlight of Humanity</h3>
 <blockquote>
 <p><em>&quot;The comparison with Prometheus came to my mind: I took the fire and brought it to humanity. Because Zen is accessible to me, engineering is accessible to me, and the exact understanding of happiness is accessible to me — whereas to millions of people it remains out of reach. And because it was accessible to me, I took it, dismantled its complexity, packaged it into an infallible circuit, and brought it down to earth.&quot;</em><br>— <strong>Vladimir Anyanov</strong></p>
 </blockquote>
@@ -1072,14 +1076,14 @@
 </ol>
 <hr>
 <hr>
-<h2>INTRODUCTION</h2>
-<h3>The Engineering Criterion of Truth: Why Abstract Fairy Tales About Happiness Broke Down</h3>
+<h2 id="heading-20">INTRODUCTION</h2>
+<h3 id="heading-21">The Engineering Criterion of Truth: Why Abstract Fairy Tales About Happiness Broke Down</h3>
 <blockquote>
 <p><em>&quot;In empirical science, the criterion of truth is Karl Popper&#39;s falsifiability and the balance sheet of conservation laws. If a theory asserts something that cannot be measured, verified, or refuted by experiment — it is not knowledge; it is literature. The Architecture of Happiness is the first falsifiable engineering theory of the human spirit.&quot;</em><br>— <strong>Vladimir Anyanov</strong></p>
 </blockquote>
 <p>Why is it that across three millennia of recorded history, humanity has constructed Large Hadron Colliders, deciphered the human genome, and knit the globe with fiber optics operating at the speed of light, yet in the foundational question of psychological w\ell-being remains stranded at the level of ancient Greek tragedies?</p>
 <p>The answer is simple and devastating: <strong>the complete absence of an engineering criterion of truth</strong>.</p>
-<h3>The New Organon of Psychology: From 130 Years of Scholasticism to the Criterion of Practical Fruits</h3>
+<h3 id="heading-22">The New Organon of Psychology: From 130 Years of Scholasticism to the Criterion of Practical Fruits</h3>
 <h4>Francis Bacon (1620) and the Destruction of the Four Idols of Psychic Mechanics</h4>
 <blockquote>
 <p><em>&quot;The true and lawful goal of the sciences is none other than this: that human life be endowed with new discoveries and powers... What in theory is the cause, in practice is the rule... Science and human power converge into one, for ignorance of the cause deprives us of the effect.&quot;</em><br>— <strong>Francis Bacon</strong>, <em>Novum Organum</em>, 1620</p>
@@ -1139,7 +1143,7 @@ By 2026, the global rates of clinical depression, anxiety disorders, panic attac
 </ul>
 <p>What happened in this second?<br>The ohmic burning in your temples vanished. The muscle spasm in your chest relaxed. A calm, steady, high-voltage warmth spread through your body.</p>
 <p>This is exactly Francis Bacon&#39;s criterion of fruits. It is not belief, autogenic training, or hypnosis. It is the <strong>strict mechanics of a closed electrical circuit</strong>.</p>
-<h3>Humanitarian Relativism: &quot;Everyone Has Their Own Happiness&quot;</h3>
+<h3 id="heading-23">Humanitarian Relativism: &quot;Everyone Has Their Own Happiness&quot;</h3>
 <p>The primary slogan by which modern culture rationalizes its impotence is relativism: <em>&quot;W\ell, happiness is completely subjective! Everyone has their own truth, everyone has their own happiness: for one it is lying on a beach, for another writing poetry, for another making money.&quot;</em></p>
 <p>In the exact sciences, this claim sounds as absurd as stating: <em>&quot;Electricity is subjective: in one iron electrons flow from negative to positive, while in another they move by virtue of love for the fatherland.&quot;</em></p>
 <p>Let us once and for all eliminate this gross methodological error. It arises from <strong>confusing the physical laws of the electrical grid with the type of appliance plugged into the socket</strong>.</p>
@@ -1153,7 +1157,7 @@ By 2026, the global rates of clinical depression, anxiety disorders, panic attac
 <p>The appliances are radically different. The output of their labor is incomparable. But <strong>the physical laws by which electrical current travels through copper conductors to power these appliances are invariant!</strong><br>Ohm&#39;s Law (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><mi>U</mi><mi mathvariant="normal">/</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">I = U / R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">U</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span></span></span></span>), Maxw\ell&#39;s equations, and the conservation of power apply identically to a $10 electric kettle and to a multi-billion-dollar supercomputer at CERN.</p>
 <p>The exact same principle governs the human being.<br>A person&#39;s specific activity is merely the load plugged into their circuit. One writes a symphony, another builds a suspension bridge, another raises a child, another prepares ceremonial matcha. But <strong>the psychophysiological state of happiness</strong> is the fundamental operating regime of the circuit itself:</p>
 <div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="script">H</mi><mtext>  </mtext><mo>⟺</mo><mtext>  </mtext><mrow><mo fence="true">{</mo><mtable rowspacing="0.36em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><msub><mi>R</mi><mtext>ego</mtext></msub><mo>→</mo><mn>0</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><msub><mi>I</mi><mtext>attention</mtext></msub><mo>&gt;</mo><mn>0</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo>∑</mo><msub><mi>I</mi><mtext>in</mtext></msub><mo>=</mo><mo>∑</mo><msub><mi>I</mi><mtext>out</mtext></msub></mrow></mstyle></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">\mathcal{H} \iff \begin{cases} R_{\text{ego}} \to 0 \\ I_{\text{attention}} &gt; 0 \\ \sum I_{\text{in}} = \sum I_{\text{out}} \end{cases}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7073em;vertical-align:-0.024em;"></span><span class="mord mathcal" style="margin-right:0.0097em;">H</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟺</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:4.32em;vertical-align:-1.91em;"></span><span class="minner"><span class="mopen"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.35em;"><span style="top:-2.2em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎩</span></span></span><span style="top:-2.192em;"><span class="pstrut" style="height:3.15em;"></span><span style="height:0.316em;width:0.8889em;"><svg xmlns="http://www.w3.org/2000/svg" width="0.8889em" height="0.316em" style="width:0.8889em" viewBox="0 0 888.89 316" preserveAspectRatio="xMinYMin"><path d="M384 0 H504 V316 H384z M384 0 H504 V316 H384z"/></svg></span></span><span style="top:-3.15em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎨</span></span></span><span style="top:-4.292em;"><span class="pstrut" style="height:3.15em;"></span><span style="height:0.316em;width:0.8889em;"><svg xmlns="http://www.w3.org/2000/svg" width="0.8889em" height="0.316em" style="width:0.8889em" viewBox="0 0 888.89 316" preserveAspectRatio="xMinYMin"><path d="M384 0 H504 V316 H384z M384 0 H504 V316 H384z"/></svg></span></span><span style="top:-4.6em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎧</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.85em;"><span></span></span></span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.41em;"><span style="top:-4.41em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">ego</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">0</span></span></span><span style="top:-2.97em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">attention</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">0</span></span></span><span style="top:-1.53em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">in</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">out</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.91em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div><p>Happiness is not <em>what</em> is plugged into you.<br>Happiness is <strong>the complete absence of parasitic resistance in the conductors of your attention while performing the action.</strong></p>
-<h3>Kirchhoff&#39;s Thermodynamic Balance: Falsehood Immediately Yields Ohmic Overheat</h3>
+<h3 id="heading-24">Kirchhoff&#39;s Thermodynamic Balance: Falsehood Immediately Yields Ohmic Overheat</h3>
 <p>In humanitarian discourse, one can lie for decades. You can convince yourself that you are &quot;growing spiritually&quot; by meditating two hours a day, even while snapping at your family and despising your vocation.</p>
 <p>In a closed thermodynamic circuit, deception is physically impossible:</p>
 <div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>∮</mo><mi mathvariant="bold">E</mi><mo>⋅</mo><mi>d</mi><mi mathvariant="bold">l</mi><mo>=</mo><mn>0</mn><mspace width="1em"/><mtext>and</mtext><mspace width="1em"/><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>U</mi><mi>k</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\oint \mathbf{E} \cdot d\mathbf{l} = 0 \quad \text{and} \quad \sum_{k=1}^n U_k = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:2.2222em;vertical-align:-0.8622em;"></span><span class="mop op-symbol large-op" style="margin-right:0.4445em;position:relative;top:-0.0011em;">∮</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathbf">E</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span><span class="mord mathbf">l</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.9535em;vertical-align:-1.3021em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord">and</span></span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6514em;"><span style="top:-1.8479em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em;">k</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.3021em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></span></div><p>If a false mental premise is introduced into your circuit (for example: <em>&quot;I must suffer for a higher purpose&quot;</em> or <em>&quot;My happiness depends on whether this person validates me&quot;</em>), the network responds instantaneously at the physical level:</p>
@@ -1166,7 +1170,7 @@ By 2026, the global rates of clinical depression, anxiety disorders, panic attac
 <li>You experience this thermal dissipation as a diaphragmatic spasm, a tight throat, racing tachycardia, insomnia, and pervasive dread.</li>
 </ol>
 <p>Your biological body is an immaculate galvanometer. It never lies. Physical tension and psychological anguish are neither enemies nor mental disorders. They are <strong>the diagnostic mismatch signals of your circuit</strong>, reporting to the operator: <em>&quot;You have short-circuited the loop. You are attempting to violate energy conservation. Check your resistance immediately!&quot;</em></p>
-<h3>Clinical Disclaimer: The Hardware vs. Software Circuit Breaker</h3>
+<h3 id="heading-25">Clinical Disclaimer: The Hardware vs. Software Circuit Breaker</h3>
 <h4>The Demarcation Line Between Psychoelectrodynamics and Organic Medicine</h4>
 <p>To eliminate misinterpretation and safeguard the reader, the author establishes a fundamental distinction between the <strong>functional operating mode of the circuit</strong> (the &quot;software&quot; and attention conductivity) and the <strong>physical integrity of the biological substrate</strong> (the &quot;hardware&quot; of neurobiology).</p>
 
@@ -1182,7 +1186,7 @@ By 2026, the global rates of clinical depression, anxiety disorders, panic attac
 <li><strong>Where the Absolute Boundary Lies:</strong><br>If an individual suffers from structural or neurochemical damage to the physical substrate itself — endogenous bipolar disorder, schizophrenia, acute psychosis, severe endocrine failure, CNS tumors, or hereditary neurotransmitter transporter defects — <strong>this is not a software misconfiguration; it is a physical rupture of the cable</strong>. In such conditions, attempting to &quot;simply drop resistance through the Tanden&quot; is strictly prohibited. It demands immediate evidence-based medical intervention, clinical psychiatry, and pharmacotherapy.</li>
 </ol>
 <p>Happiness Architecture respects physical reality: one cannot tune electrical signals across a motherboard whose silicon is physically fractured. We begin our engineering work where the board is intact.</p>
-<h3>ANATOMY OF SIMPLICITY: WHY DID NO ONE THINK OF THIS BEFORE?</h3>
+<h3 id="heading-26">ANATOMY OF SIMPLICITY: WHY DID NO ONE THINK OF THIS BEFORE?</h3>
 <h4>The Pocket Flashlight Model, the Wheeled Suitcase Law, and 4 Reasons for Humanity&#39;s Millennial Blindness</h4>
 <blockquote>
 <p><em>&quot;How extremely stupid not to have thought of that!&quot;</em><br>— <strong>Thomas Huxley</strong>, upon reading Charles Darwin&#39;s <em>On the Origin of Species</em> (1859)</p>
@@ -1218,9 +1222,9 @@ By 2026, the global rates of clinical depression, anxiety disorders, panic attac
 <li><strong>The law of the &quot;wheeled suitcase&quot; (Kanso Canon):</strong> The wheel is 5,000 years old, suitcases are hundreds of years old, but no one thought to attach wheels to a suitcase until 1970. Steve Jobs removed 50 buttons and a stylus, leaving one button on the iPhone. The Architecture of Happiness removed 10,000 years of priestly rites and moralizing, exposing one simple 4-element circuit of direct flow.</li>
 </ol>
 <hr>
-<h1>PART I: THE PHYSICAL BASIS OF THE CIRCUIT</h1>
+<h1 id="heading-27">PART I: THE PHYSICAL BASIS OF THE CIRCUIT</h1>
 <hr>
-<h3>Chapter 1.1 — Anatomy of the Tripartite Circuit: Tanden (Core), Attention (Wiring), and Load (6 Lamps)</h3>
+<h3 id="heading-28">Chapter 1.1 — Anatomy of the Tripartite Circuit: Tanden (Core), Attention (Wiring), and Load (6 Lamps)</h3>
 <blockquote>
 <p><em>&quot;Man is an open electrical loop searching for a connection. Most die from short circuits, never having illuminated a single lamp. The tripartite circuit — Generator, Conductor, and Load — is the minimal invariant architecture of human existence. If even one element is misconfigured, the entire system degrades into smoke.&quot;</em><br>— <strong>Vladimir Anyanov (Axiom I)</strong></p>
 </blockquote>
@@ -1284,7 +1288,7 @@ By 2026, the global rates of clinical depression, anxiety disorders, panic attac
 <p><em>You cannot declare <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> if all six lamps are extinguished. Physics cannot be gaslit.</em></p>
 </blockquote>
 <hr>
-<h3>Chapter 1.2 — The Closed Circuit Breakthrough: The Return Wire of Reality vs. The Linear Burnout Model</h3>
+<h3 id="heading-29">Chapter 1.2 — The Closed Circuit Breakthrough: The Return Wire of Reality vs. The Linear Burnout Model</h3>
 <blockquote>
 <p><em>&quot;If the generator simply ejected energy outward into endeavors, that would be the linear burnout model, reducing man to an expendable single-use battery. But the moment the hand sketched a closed electrical circuit, the Architecture of Happiness was born: in a closed loop, creation does not deplete the source; it closes it upon reality. Current is possible only where there is a return wire.&quot;</em><br>— <strong>Vladimir Anyanov</strong></p>
 </blockquote>
@@ -1393,7 +1397,7 @@ By 2026, the global rates of clinical depression, anxiety disorders, panic attac
 </ol>
 <p>Current flows so long as the circuit remains closed. And so long as the circuit is closed — the lamp shines. ⚡</p>
 <hr>
-<h3>Chapter 4.7 — The Anyanov Triad and Tetrad: Truth, Freedom, Happiness, Creation — Deconstruction of Free Will and Autobiographical Synthesis</h3>
+<h3 id="heading-30">Chapter 4.7 — The Anyanov Triad and Tetrad: Truth, Freedom, Happiness, Creation — Deconstruction of Free Will and Autobiographical Synthesis</h3>
 <blockquote>
 <p><em>&quot;Happiness is when Truth is felt. Freedom is when Truth acts. Truth is when there is zero resistance to what is. Creation is the total power of the sovereign reactor unleashed into the universe.&quot;</em><br>— <strong>Vladimir Anyanov (Axiom XVIII)</strong></p>
 </blockquote>
@@ -1448,7 +1452,7 @@ By 2026, the global rates of clinical depression, anxiety disorders, panic attac
 <li><strong>Phase 5: The Anyanov System:</strong> Unifying personal superconductivity, monetary sovereignty (Bitcoin), and economic freedom (Henry George) into a complete civilizational paradigm.</li>
 </ul>
 <hr>
-<h3>Chapter 4.8 — The Millennial Synthesis: How Circuit Electrodynamics Dissolved the Seven Eternal Questions of Humanity</h3>
+<h3 id="heading-31">Chapter 4.8 — The Millennial Synthesis: How Circuit Electrodynamics Dissolved the Seven Eternal Questions of Humanity</h3>
 <blockquote>
 <p><em>&quot;Why did the greatest minds in history — from Plato and Aristotle to Descartes, Kant, Schopenhauer, and Sartre — fail to definitively solve the foundational questions of life? Because they were searching for the mass of phlogiston. They operated within humanitarian linguistic frameworks that lacked the physics of conservation laws. Inner Current is the Millennial Synthesis: we did not provide clever answers; we dissolved the false questions in the crucible of electrodynamics.&quot;</em><br>— <strong>Vladimir Anyanov</strong></p>
 </blockquote>
@@ -1563,7 +1567,7 @@ By 2026, the global rates of clinical depression, anxiety disorders, panic attac
 <p>The circuit is closed. Superconductivity is realized. The network functions flawlessly. ⚡💎</p>
 <hr>
 <hr>
-<h3>Chapter 4.9 — Electrodynamics of Art: The Two Natures of Creativity — From Bleed Resistor of Trauma to Inductive Resonance of Superconductivity</h3>
+<h3 id="heading-32">Chapter 4.9 — Electrodynamics of Art: The Two Natures of Creativity — From Bleed Resistor of Trauma to Inductive Resonance of Superconductivity</h3>
 <blockquote>
 <p><em>“For centuries humanity believed in the poisonous myth that an artist must be hungry, sick, and miserable to create. In the circuitry of the spirit, this is the greatest attribution error. Pain is not the source of art; it is the alarm whistle of an exploding boiler. When the circuit is broken, art serves as a bleed resistor, saving the artist from destruction. But authentic, supreme art begins only when resistance falls to zero (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R \to 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>): it becomes pure inductive resonance of superconductivity (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">M &gt; 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">M</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>), illuminating entire civilization.”</em><br>— <strong>Vladimir Anyanov</strong></p>
 </blockquote>
@@ -1716,9 +1720,9 @@ The results were devastating:</p>
 </ul>
 <p>The artist is no longer a doomed martyr. In the Anyanov System, the artist is the <strong>Superconductive Master of Reality</strong>. 🎻⚡️🎨</p>
 <hr>
-<h1>PART V: THE DIAGNOSTIC MACHINE, TELEMETRY, AND PRACTICAL WORKBOOK</h1>
+<h1 id="heading-33">PART V: THE DIAGNOSTIC MACHINE, TELEMETRY, AND PRACTICAL WORKBOOK</h1>
 <hr>
-<h3>Chapter 5.1 — The Diagnostic Machine: Pain-First Principle, 5 Human Circuit Failure Codes, and Repair Protocols</h3>
+<h3 id="heading-34">Chapter 5.1 — The Diagnostic Machine: Pain-First Principle, 5 Human Circuit Failure Codes, and Repair Protocols</h3>
 <blockquote>
 <p><em>&quot;When the Check Engine light flashes on an automobile dashboard, the driver does not chant affirmations or visualize warm light. They plug an OBD-II diagnostic scanner into the port, read the exact fault code, and replace the failing sensor. The human circuit operates under identical logic: psychic pain is an electrical diagnostic trouble code (DTC). Read the code, locate the fault, and resolder the connection.&quot;</em><br>— <strong>Vladimir Anyanov (Axiom XIX)</strong></p>
 </blockquote>
@@ -1779,7 +1783,7 @@ The results were devastating:</p>
 <li><strong>Repair Protocol:</strong> The <strong>Lamp Reconnection Protocol</strong>. Ground the system into living service. Find another living being (a colleague, a child, an animal) and channel pure, unselfish attention into their w\ell-being. External impedance matches; the leak closes.</li>
 </ul>
 <hr>
-<h3>Chapter 5.2 — The Happiness Dashboard: Superconductivity Telemetry, Formula <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">H</mi></mrow><annotation encoding="application/x-tex">\mathcal{H}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0097em;">H</span></span></span></span>, and Circuit Sensors</h3>
+<h3 id="heading-35">Chapter 5.2 — The Happiness Dashboard: Superconductivity Telemetry, Formula <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">H</mi></mrow><annotation encoding="application/x-tex">\mathcal{H}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0097em;">H</span></span></span></span>, and Circuit Sensors</h3>
 <blockquote>
 <p><em>&quot;That which cannot be measured cannot be managed. Until now, happiness was gauged by subjective, arbitrary questionnaires (&#39;Rate your life from 1 to 10&#39;). In the Anyanov System, happiness is read from an engineering Heads-Up Display (HUD) measuring the thermodynamic efficiency of the circuit in real time.&quot;</em><br>— <strong>Vladimir Anyanov (Axiom XX)</strong></p>
 </blockquote>
@@ -1812,7 +1816,7 @@ The results were devastating:</p>
 <li><strong>The Safety Annunciator (Zanshin Breaker):</strong> Monitors readiness to trip upon unexpected crisis. Target: Green (Armed).</li>
 </ol>
 <hr>
-<h3>Chapter 5.3 — Mill&#39;s Paradox and the 30-Second Morning Calibration Protocol: The Engineering Translator of Bodily Sensations</h3>
+<h3 id="heading-36">Chapter 5.3 — Mill&#39;s Paradox and the 30-Second Morning Calibration Protocol: The Engineering Translator of Bodily Sensations</h3>
 <blockquote>
 <p><em>&quot;In the 19th century, philosopher John Stuart Mill articulated a famous paradox: &#39;Ask yourself whether you are happy, and you cease to be so.&#39; Mill was right: posing the question activates the Default Mode Network, introducing massive parasitic resistance into the loop. In the Anyanov System, you never ask &#39;Am I happy?&#39; You check your circuit meters.&quot;</em><br>— <strong>Vladimir Anyanov (Axiom XXI)</strong></p>
 </blockquote>
@@ -1873,7 +1877,7 @@ The results were devastating:</p>
 <li><strong>20–30 sec (Wiring the Day&#39;s Loads):</strong> Identify the primary creative craft of the day. Connect the virtual leads from your Tanden to this task. Step onto the floor. You are online.</li>
 </ol>
 <hr>
-<h3>Chapter 5.4 — The 21-Day Circuit Operator Workbook: Daily Journal of Neuroplastic Circuit Resoldering</h3>
+<h3 id="heading-37">Chapter 5.4 — The 21-Day Circuit Operator Workbook: Daily Journal of Neuroplastic Circuit Resoldering</h3>
 <blockquote>
 <p><em>&quot;Neuroplasticity requires physical time: synapses of the default mode network resolder into a superconductive architecture over approximately three weeks of daily calibrated load. This workbook is your daily flight log.&quot;</em><br>— <strong>Vladimir Anyanov (Axiom XXII)</strong></p>
 </blockquote>
@@ -1923,7 +1927,7 @@ ________________________________________________________________________________
 ================================================================================
 </code></pre>
 <hr>
-<h3>Chapter 5.5 — The Tuning Fork of Reality: Universal Calibration Tool for People, B2B Auditing, and Corporate Monetization</h3>
+<h3 id="heading-38">Chapter 5.5 — The Tuning Fork of Reality: Universal Calibration Tool for People, B2B Auditing, and Corporate Monetization</h3>
 <blockquote>
 <p><em>&quot;Until now, man believed Inner Current was merely a method to avoid personal burnout. But when you hold an ultra-precise frequency standard in your hands, it becomes a universal multimeter for auditing reality. You instantly perceive the resistance, leaks, and lies of any person, team, or corporate empire. This is the foundation of high-ticket B2B consulting.&quot;</em><br>— <strong>Vladimir Anyanov (Axiom XXII)</strong></p>
 </blockquote>
@@ -1971,10 +1975,10 @@ ________________________________________________________________________________
 <li><strong>The Sovereign Enterprise Retainer:</strong> Ongoing strategic stewardship of an enterprise&#39;s human and operational grid, guaranteeing maximum negentropy and creative dominance.</li>
 </ol>
 <hr>
-<h1>CONCLUSION AND APPENDICES</h1>
+<h1 id="heading-39">CONCLUSION AND APPENDICES</h1>
 <hr>
-<h2>CONCLUSION</h2>
-<h3>Bridge to the Outer World: Impedance Matching and External Magnetism</h3>
+<h2 id="heading-40">CONCLUSION</h2>
+<h3 id="heading-41">Bridge to the Outer World: Impedance Matching and External Magnetism</h3>
 <blockquote>
 <p><em>&quot;Inner Current generates External Magnetism. One whose internal circuit operates in superconductivity does not need to beg for respect, charm the crowd, or deploy psychological tricks. Their field coherence effortlessly aligns the surrounding environment. This is the ultimate physics of presence: Maximum Power Transfer via Impedance Matching (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Z</mi><mtext>src</mtext></msub><mo>=</mo><msubsup><mi>Z</mi><mtext>load</mtext><mo>∗</mo></msubsup></mrow><annotation encoding="application/x-tex">Z_{\text{src}} = Z_{\text{load}}^</em></annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">src</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.9718em;vertical-align:-0.2831em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6887em;"><span style="top:-2.4169em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">load</span></span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2831em;"><span></span></span></span></span></span></span></span></span></span>).&quot;*<br>— <strong>Vladimir Anyanov</strong></p>
 </blockquote>
@@ -2037,8 +2041,8 @@ ________________________________________________________________________________
 <p>We do not reject physical matter. We consecrate matter as the outermost perimeter of our circuit. The internal current clothes itself in external beauty, radiating coherent mastery to the world.</p>
 <p>Guard the Tanden.<br>Keep resistance at absolute zero.<br>And illuminate the world at full nominal power!</p>
 <hr>
-<h2>EPILOGUE</h2>
-<h3>The Vertical of Ascension: 6 Stages of Evolution of the Anyanov System — From an Engineer&#39;s First-Aid Kit to the Civilizational Fuse of Singularity</h3>
+<h2 id="heading-42">EPILOGUE</h2>
+<h3 id="heading-43">The Vertical of Ascension: 6 Stages of Evolution of the Anyanov System — From an Engineer&#39;s First-Aid Kit to the Civilizational Fuse of Singularity</h3>
 <blockquote>
 <p><em>“The System began as a compassionate wish to give a burned-out engineer a precision instrument for repairing nerves — an electrical circuit diagram instead of moral sermons. But the logic of conservation laws is relentless: step by step, the physics of the circuit swept away pseudo-philosophical crutches, absorbed the core of Eastern Zen, merged with Satoshi’s monetary architecture and Henry George’s political economy, overcame the gravitational w\ell of the Paleolithic, and ascended into cosmic orbit, becoming humanity&#39;s civilizational shield in the age of superhuman AI.”</em><br>— <strong>Vladimir Anyanov</strong></p>
 </blockquote>
@@ -2307,7 +2311,7 @@ LEVEL 0: QUANTUM BIT         ──► [Elementary Switch: Conductivity (0) or R
 </tr>
 </tbody></table>
 <blockquote>
-<h3>⚡ Ontological Invariant: The Law is ONE</h3>
+<h3 id="heading-44">⚡ Ontological Invariant: The Law is ONE</h3>
 <p><strong>The law governing reality is singular.</strong> Once you understand the physics of current through Tanden and load in a 4-element flashlight circuit:  </p>
 <ul>
 <li>you understand why your diaphragm cramps under stress (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><msup><mi>I</mi><mn>2</mn></msup><mi>R</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">Q = I^2 R t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">Q</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mord mathnormal">t</span></span></span></span>);  </li>
@@ -2321,9 +2325,9 @@ LEVEL 0: QUANTUM BIT         ──► [Elementary Switch: Conductivity (0) or R
 <p>When your Tanden is autonomous, resistance is zeroed, and attention is linked with direct action, you become impervious to entropy, manipulation, and algorithmic fog. You are no longer a cog or a slave to external rheostats. You are the Sovereign Flight Engineer of your own circuit.</p>
 <p>Keep the circuit closed.<br>Cast off spent booster stages via Kanso.<br>Achieve the second cosmic velocity of the spirit.<br>And illuminate the Universe with pure, unclouded light! 🚀⚡</p>
 <hr>
-<h2>APPENDICES</h2>
+<h2 id="heading-45">APPENDICES</h2>
 <hr>
-<h3>Appendix A — Complete Compendium of Circuit Mathematical Formulas</h3>
+<h3 id="heading-46">Appendix A — Complete Compendium of Circuit Mathematical Formulas</h3>
 <ol>
 <li><strong>The Canonical Happiness Condition:</strong></li>
 </ol>
@@ -2360,7 +2364,7 @@ s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,1
 <li><strong>Maximum Power Transfer (Impedance Matching):</strong></li>
 </ol>
 <div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>P</mi><mtext>max</mtext></msub><mo>=</mo><mfrac><mrow><mi mathvariant="normal">∣</mi><mi mathvariant="script">E</mi><msup><mi mathvariant="normal">∣</mi><mn>2</mn></msup></mrow><mrow><mn>4</mn><msub><mi>R</mi><mtext>load</mtext></msub></mrow></mfrac><mspace width="1em"/><mtext>  </mtext><mo>⟺</mo><mtext>  </mtext><mspace width="1em"/><msub><mi>Z</mi><mtext>src</mtext></msub><mo>=</mo><msubsup><mi>Z</mi><mtext>load</mtext><mo>∗</mo></msubsup></mrow><annotation encoding="application/x-tex">P_{\text{max}} = \frac{|\mathcal{E}|^2}{4 R_{\text{load}}} \quad \iff \quad Z_{\text{src}} = Z_{\text{load}}^*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">max</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.3271em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4911em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">4</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">load</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">∣</span><span class="mord mathcal" style="margin-right:0.0894em;">E</span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟺</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">src</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.9857em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7387em;"><span style="top:-2.453em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">load</span></span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span></span></span></span></span></div><hr>
-<h3>Appendix B — The 13 Invariant Axioms of Vladimir Anyanov</h3>
+<h3 id="heading-47">Appendix B — The 13 Invariant Axioms of Vladimir Anyanov</h3>
 <ol>
 <li><strong>Axiom I (Superconductivity):</strong> <em>Happiness is not emotional excitation, but the physical state of superconductivity within a closed circuit whose resistance approaches absolute zero (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>→</mo><mn>0</mn><mo separator="true">,</mo><mi>I</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R \to 0, I &gt; 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>).</em></li>
 <li><strong>Axiom II (Polarity):</strong> <em>The current of life flows strictly from the inside out — from the Tanden into the load. Demanding that external objects supply charge inverts polarity and incinerates the circuit (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mtext>rev</mtext></msub></mrow><annotation encoding="application/x-tex">I_{\text{rev}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">rev</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>).</em></li>
@@ -2377,7 +2381,7 @@ s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,1
 <li><strong>Axiom XIII (Systemic De-Intermediation &amp; The Pure Servant):</strong> <em>Every intermediary, under the Second Law of Thermodynamics, tends to degenerate from a helpful servant into a parasitic rentier. The only method to permanently maintain an intermediary as a servant is through rigorous Systemic Engineering: sandboxing it in Userland, eliminating arbitrary human discretion via protocol code, and enforcing instantaneous, zero-cost rights of exit.</em></li>
 </ol>
 <hr>
-<h3>Appendix C — Zen-Engineering Glossary</h3>
+<h3 id="heading-48">Appendix C — Zen-Engineering Glossary</h3>
 <ul>
 <li><strong>Tanden (丹田):</strong> The lower Dan Tien; the biological and psychosomatic direct-current generator situated at the body&#39;s physical center of gravity below the navel.</li>
 <li><strong>Mushin (無心):</strong> The state of pure mind; room-temperature superconductivity of the attention wiring (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R \to 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>); neurobiological engagement of the Task-Positive Network (TPN).</li>
@@ -2398,8 +2402,8 @@ s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,1
         </div>
 
         <div class="img-figure">
-          <img src="../../assets/ego_shunt_circuit.jpg" alt="Ego Shunt Circuit">
-          <figcaption>Fig. 2. Schematic of parasitic ego shunt and Joule-Lenz thermal losses (Q = I²·Re·t)</figcaption>
+          <img src="../../assets/circuit_blueprint.svg" alt="Inner Current Circuit Blueprint" style="border: 1px solid var(--border-glow); border-radius: 8px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);">
+          <figcaption>Fig. 1. Human Operator Circuit Schematic: Closed-loop direct flow, Tanden generator, Kanso copper shunt, and 6 Lamps Array</figcaption>
         </div>
       </article>
     </main>
@@ -2471,6 +2475,20 @@ s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,1
       tocList.appendChild(li);
     });
 
+    // Smooth scroll to anchor if URL has a hash
+    if (window.location.hash) {
+      setTimeout(() => {
+        try {
+          const target = document.querySelector(window.location.hash);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        } catch (e) {
+          // ignore
+        }
+      }, 50);
+    }
+
     // Quick Search filter
     document.getElementById('searchInput').addEventListener('input', (e) => {
       const q = e.target.value.toLowerCase();
@@ -2517,6 +2535,151 @@ s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,1
     } else {
       renderMermaidDiagrams();
     }
+
+    // ==================== AUDIOBOOK FLOATING BAR ====================
+    let bookAudioManifest = [];
+    let curBookTrackIdx = 0;
+    const bookAudio = document.getElementById('bookAudioEl');
+    const bpPlayBtn = document.getElementById('bpPlayBtn');
+    const bpProgress = document.getElementById('bpProgress');
+    const bpCurTime = document.getElementById('bpCurTime');
+    const bpTotalTime = document.getElementById('bpTotalTime');
+    const bpTrackTitle = document.getElementById('bpTrackTitle');
+    const bpChapterSelect = document.getElementById('bpChapterSelect');
+    const bpSpeedBtn = document.getElementById('bpSpeedBtn');
+
+    const bookSpeeds = [1.0, 1.25, 1.5, 1.75, 2.0, 0.8];
+    let bookSpeedIdx = 0;
+
+    async function initBookAudio() {
+      try {
+        const res = await fetch('/audio/audiobook_manifest.json');
+        bookAudioManifest = await res.json();
+        
+        // Populate select
+        bpChapterSelect.innerHTML = '';
+        bookAudioManifest.forEach((t, i) => {
+          const opt = document.createElement('option');
+          opt.value = i;
+          opt.textContent = String(t.track).padStart(2, '0') + '. ' + t.title + (t.status === 'ready' ? ' (' + t.duration_formatted + ')' : ' [В очереди]');
+          if (t.status !== 'ready') opt.disabled = true;
+          bpChapterSelect.appendChild(opt);
+        });
+
+        loadBookTrack(0, false);
+      } catch (err) {
+        console.warn('Could not load audiobook manifest:', err);
+      }
+    }
+
+    function formatSec(s) {
+      if (isNaN(s)) return '00:00';
+      const m = Math.floor(s / 60);
+      const sec = Math.floor(s % 60);
+      return (m < 10 ? '0' : '') + m + ':' + (sec < 10 ? '0' : '') + sec;
+    }
+
+    function loadBookTrack(idx, autoPlay = true) {
+      if (!bookAudioManifest[idx]) return;
+      curBookTrackIdx = idx;
+      const t = bookAudioManifest[idx];
+      bpChapterSelect.value = idx;
+      bpTrackTitle.textContent = String(t.track).padStart(2, '0') + '. ' + t.title;
+      bookAudio.src = t.url;
+      if (autoPlay && t.status === 'ready') {
+        bookAudio.play().catch(e => console.log('Autoplay:', e));
+      }
+    }
+
+    function playAudioTrack(idx) {
+      loadBookTrack(idx, true);
+    }
+
+    function toggleBookAudio() {
+      if (bookAudio.paused) {
+        bookAudio.play();
+      } else {
+        bookAudio.pause();
+      }
+    }
+
+    function changeBookAudioTrack(val) {
+      loadBookTrack(parseInt(val, 10), true);
+    }
+
+    function toggleBookSpeed() {
+      bookSpeedIdx = (bookSpeedIdx + 1) % bookSpeeds.length;
+      const spd = bookSpeeds[bookSpeedIdx];
+      bookAudio.playbackRate = spd;
+      bpSpeedBtn.textContent = spd + 'x';
+    }
+
+    function seekBookAudio(pct) {
+      if (bookAudio.duration) {
+        bookAudio.currentTime = (pct / 100) * bookAudio.duration;
+      }
+    }
+
+    bookAudio.addEventListener('play', () => {
+      bpPlayBtn.textContent = '⏸';
+      bpPlayBtn.style.boxShadow = '0 0 16px rgba(56, 189, 248, 0.8)';
+    });
+
+    bookAudio.addEventListener('pause', () => {
+      bpPlayBtn.textContent = '▶';
+      bpPlayBtn.style.boxShadow = '0 2px 10px rgba(56, 189, 248, 0.4)';
+    });
+
+    bookAudio.addEventListener('timeupdate', () => {
+      if (bookAudio.duration) {
+        const pct = (bookAudio.currentTime / bookAudio.duration) * 100;
+        bpProgress.value = pct;
+        bpCurTime.textContent = formatSec(bookAudio.currentTime);
+        bpTotalTime.textContent = formatSec(bookAudio.duration);
+      }
+    });
+
+    bookAudio.addEventListener('loadedmetadata', () => {
+      bpTotalTime.textContent = formatSec(bookAudio.duration);
+    });
+
+    initBookAudio();
   </script>
+
+  <!-- Floating Sticky Bottom Audio Player Bar -->
+  <aside id="bookBottomPlayer" style="position: fixed; bottom: 0; left: 0; right: 0; background: rgba(9, 13, 22, 0.94); backdrop-filter: blur(16px); border-top: 1px solid rgba(56, 189, 248, 0.35); padding: 0.65rem 1.5rem; z-index: 1000; box-shadow: 0 -8px 30px rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-family: var(--font-ui);">
+    <div style="display: flex; align-items: center; gap: 0.75rem; min-width: 0; flex: 1;">
+      <button id="bpPlayBtn" onclick="toggleBookAudio()" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #0284c7, #38bdf8); border: none; color: #fff; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 10px rgba(56, 189, 248, 0.4);">▶</button>
+      <div style="min-width: 0;">
+        <div style="font-size: 0.7rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em;" id="bpTrackNum">⚡ Аудиокнига • 1 час готово</div>
+        <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-bright); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" id="bpTrackTitle">Трек 00: Слово к русскому изданию</div>
+      </div>
+    </div>
+
+    <!-- Chapter Select Dropdown -->
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <select id="bpChapterSelect" onchange="changeBookAudioTrack(this.value)" style="background: var(--bg-card); color: var(--text-bright); border: 1px solid var(--border); border-radius: 8px; padding: 0.4rem 0.6rem; font-size: 0.8rem; outline: none; max-width: 250px; cursor: pointer;">
+        <option value="0">00. Слово к русскому изданию (03:56)</option>
+        <option value="1">01. Манифест дзен-инженера (10:31)</option>
+        <option value="2">02. Предисловие (23:06)</option>
+        <option value="3">03. Введение (23:18)</option>
+      </select>
+    </div>
+
+    <!-- Timeline & Time -->
+    <div style="display: flex; align-items: center; gap: 0.6rem; flex: 1; max-width: 320px;">
+      <span id="bpCurTime" style="font-size: 0.75rem; font-family: monospace; color: var(--text-muted);">00:00</span>
+      <input type="range" id="bpProgress" min="0" max="100" value="0" style="flex: 1; accent-color: var(--accent); cursor: pointer;" oninput="seekBookAudio(this.value)">
+      <span id="bpTotalTime" style="font-size: 0.75rem; font-family: monospace; color: var(--text-muted);">03:56</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0;">
+      <button id="bpSpeedBtn" onclick="toggleBookSpeed()" style="background: var(--bg-card); border: 1px solid var(--border); color: var(--text); border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.75rem; font-weight: 600; cursor: pointer;">1.0x</button>
+      <a href="../../audiobook/index.html" class="btn" style="padding: 0.35rem 0.75rem; font-size: 0.8rem; border-color: rgba(56, 189, 248, 0.4); color: var(--accent);" title="Открыть полную студию аудиокниги">
+        🎧 Студия ↗
+      </a>
+    </div>
+  </aside>
+  <audio id="bookAudioEl" preload="metadata"></audio>
 </body>
 </html>

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Инструкция к твоему суперкостюму: Праймер по физике счастья — Владимир Аньянов</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+  :root {
+    --bg-page: #020617;
+    --bg-card: #0f172a;
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --accent: #38bdf8;
+    --accent-light: #7dd3fc;
+    --border: #1e293b;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg-page);
+    color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.8;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .top-brand {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .top-actions { display: flex; gap: 12px; }
+
+  .btn-action {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #1e293b;
+    color: #e2e8f0;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn-action:hover {
+    background: #334155;
+    border-color: var(--accent);
+  }
+
+  .btn-accent {
+    background: var(--accent);
+    color: #020617;
+    border: none;
+  }
+
+  .btn-accent:hover { background: var(--accent-light); }
+
+  .container {
+    max-width: 820px;
+    margin: 40px auto 80px auto;
+    padding: 0 24px;
+  }
+
+  .book-cover {
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+    border: 1px solid #334155;
+    border-radius: 24px;
+    padding: 60px 40px;
+    text-align: center;
+    margin-bottom: 60px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    padding: 6px 14px;
+    border-radius: 9999px;
+    margin-bottom: 24px;
+  }
+
+  .cover-title {
+    font-family: 'Cinzel', serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0 0 16px 0;
+    background: linear-gradient(135deg, #e0f2fe 0%, #38bdf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .cover-sub {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    color: #cbd5e1;
+    max-width: 600px;
+    margin: 0 auto 24px auto;
+    line-height: 1.5;
+  }
+
+  .cover-meta {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #f8fafc;
+    line-height: 1.3;
+  }
+
+  h1 {
+    font-size: 28px;
+    margin-top: 48px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-top: 44px;
+    color: var(--accent-light);
+  }
+
+  h3 {
+    font-size: 20px;
+    margin-top: 36px;
+    color: #e2e8f0;
+  }
+
+  p { margin: 1.4em 0; }
+  strong { color: #fff; font-weight: 700; }
+  em { color: #cbd5e1; }
+  ul, ol { padding-left: 28px; margin: 1.4em 0; }
+  li { margin-bottom: 0.6em; }
+
+  /* Callouts */
+  .callout {
+    margin: 28px 0;
+    padding: 20px 24px;
+    border-radius: 16px;
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-left: 5px solid var(--accent);
+  }
+
+  .callout-quote {
+    border-left-color: #38bdf8;
+    background: rgba(56, 189, 248, 0.05);
+    font-style: italic;
+  }
+
+  /* Mermaid Diagrams */
+  .mermaid-wrap {
+    background: #090d16;
+    border: 1px solid #1e293b;
+    border-radius: 16px;
+    padding: 20px;
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+  }
+
+  /* Math */
+  .math-display {
+    background: #090d16;
+    border: 1px solid #1e293b;
+    padding: 16px;
+    border-radius: 12px;
+    margin: 20px 0;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    color: #38bdf8;
+    overflow-x: auto;
+  }
+
+  .math-inline {
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-size: 0.9em;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    margin: 24px 0;
+  }
+
+  th, td {
+    padding: 12px 16px;
+    border: 1px solid #1e293b;
+    text-align: left;
+  }
+
+  th {
+    background: #1e293b;
+    color: #f1f5f9;
+    font-weight: 600;
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background: #1e293b;
+    margin: 48px 0;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a href="../index.html" class="top-brand">
+    <span>⚡</span>
+    <span>Inner Current • Библиотека</span>
+  </a>
+  <div class="top-actions">
+    <button onclick="window.print()" class="btn-action">🖨️ Печать</button>
+    <a href="../index.html" class="btn-action btn-accent">Вернуться на сайт ➔</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="book-cover">
+    <div class="cover-badge">Праймер для детей и подростков • Возраст 10+</div>
+    <h1 class="cover-title">Инструкция к твоему<br>суперкостюму</h1>
+    <div class="cover-sub">Праймер по физике счастья и невидимой суперсиле для умных подростков, будущих изобретателей и капитанов своей жизни</div>
+    <div class="cover-meta">Автор: Владимир Аньянов • Серия «Внутренний ток» • 2026</div>
+  </div>
+
+  <div class="book-content">
+    <h1>⚡ Инструкция к твоему суперкостюму: Как устроена Система Аньянова</h1>
+<h2>Праймер по физике счастья и невидимой суперсиле</h2>
+<h3><em>Для умных подростков, будущих изобретателей, стратегов и капитанов своей жизни</em></h3>
+<blockquote>
+<p><strong>Автор системы:</strong> Владимир Аньянов<br />
+<strong>Возраст читателя:</strong> 10+ лет (а также для любого взрослого, который устал от скучных поучений и хочет понять, как работает человек)<br />
+<strong>Главное правило книги:</strong> Ноль занудства. Только физика, логика, схемотехника и реальные чит-коды.</p>
+</blockquote>
+<hr />
+<div class="callout callout-quote"><div class="callout-title" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 8.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #38bdf8; margin-bottom: 3mm;">Главный закон системы</div><div class="callout-body"><h3>💡 <strong>«Счастье — это не приз за хорошее поведение. Счастье — это режим сверхпроводимости твоей внутренней цепи.»</strong></h3>
+<p>— <em>Владимир Аньянов</em></p></div></div>
+
+<hr />
+<h2>🚀 Введение: Загадка сломанного пульта</h2>
+<p>Представь, что на день рождения тебе подарили самый совершенный в известной Вселенной биокомпьютер и квантовый экзоскелет — <strong>твое собственное тело, внимание и мозг</strong>. </p>
+<p>Этот костюм умеет бегать со скоростью ветра, придумывать компьютерные игры, чувствовать красоту музыки, запускать ракеты, дружить и менять мир.</p>
+<p>Но есть одна странная штука. <strong>К нему забыли приложить инструкцию!</strong></p>
+<p>Из-за этого большинство людей на планете пользуются своим суперкостюмом наобум:<br />
+* Когда им грустно или страшно, взрослые часто говорят странные фразы: <em>«Просто соберись!», «Возьми себя в руки!», «Не переживай!», «Будь позитивным!»</em><br />
+* Но представь, если бы у тебя зависла игра на компьютере, а тебе сказали: <em>«Просто будь веселым монитором!»</em> Это же глупость! Компьютер нужно перезагрузить, почистить кэш или найти ошибку в коде.</p>
+<p>Инженер и исследователь <strong>Владимир Аньянов</strong> заметил эту проблему и сделал то, чего никто не делал раньше: он перестал объяснять человека туманными сказками и нарисовал <strong>точную инженерную схему</strong>.</p>
+<p>Оказалось, что каждый человек устроен как потрясающая <strong>электродинамическая станция</strong>. И если ты знаешь её схему, ты можешь в любой момент починить любое плохое настроение, перестать бояться выходов к доске и стать настоящим магнитом для друзей и побед.</p>
+<p>Система состоит из двух частей, как две стороны одной медали:<br />
+1. ⚡ <strong>Внутренний ток (Inner Current)</strong> — как устроена твоя внутренняя электростанция и почему ты счастлив или несчастлив.<br />
+2. 🧲 <strong>Внешний магнетизм (External Magnetism)</strong> — как твой внутренний ток создает вокруг тебя невидимое силовое поле притяжения и уважения.</p>
+<p>Давай разберем эту схему по винтикам!</p>
+<hr />
+<div class="mermaid-wrap"><pre class="mermaid">
+flowchart LR
+    subgraph Inside ["⚡ ЧАСТЬ 1. ВНУТРЕННИЙ ТОК (Твой генератор)"]
+        T["🌀 <b>Тандэн</b><br/>(Ядерный реактор энергии)"] -->|Ток I| W["🔌 <b>Проводка внимания</b><br/>(Режим Мусин: R → 0)"]
+        W -->|Питание| L["💡 <b>6 Лампочек Жизни</b><br/>(Игры, учеба, спорт, друзья)"]
+    end
+
+    subgraph Outside ["🧲 ЧАСТЬ 2. ВНЕШНИЙ МАГНЕТИЗМ (Твое поле)"]
+        Inside ==>|По закону Максвелла ток рождает поле| Field["🌟 <b>Силовое поле притяжения</b><br/>(Уверенность, форма, стиль, аромат)"]
+    end
+
+    style Inside fill:#1e1e2e,stroke:#a6e3a1,stroke-width:2px,color:#cdd6f4
+    style Outside fill:#181825,stroke:#89b4fa,stroke-width:2px,color:#cdd6f4
+    style T fill:#313244,stroke:#f9e2af,stroke-width:2px,color:#f9e2af
+    style L fill:#313244,stroke:#fab387,stroke-width:2px,color:#fab387
+    style Field fill:#11111b,stroke:#cba6f7,stroke-width:3px,color:#cba6f7
+</pre></div>
+
+<hr />
+<h2>⚡ ЧАСТЬ 1. Внутренний ток: Как зажечь свои лампочки</h2>
+<p>Внутри тебя прямо сейчас работает электрическая цепь. В ней всего три главных узла:</p>
+<h3>1. Ядерный реактор — Тандэн (丹田)</h3>
+<p>Где находится твоя батарейка? В голове? Нет, в голове находится процессор для вычислений.<br />
+Твоя главная энергетическая батарея находится в теле — <strong>в животе, на два пальца ниже пупка</strong>. В древней японской традиции это место называли <strong>Тандэн</strong>.</p>
+<p>Когда ты бегаешь, смеешься или прыгаешь на батуте, ты чувствуешь тепло и силу именно в животе и ногах.<br />
+* <strong>Главный секрет реактора:</strong> он производит чистую энергию <span class="math-inline">E</span> просто так, потому что ты жив!<br />
+* Твой реактор не зависит от оценок в школе, мнения соседа по парте или погоды за окном. Это автономная станция.</p>
+<h3>2. Провод — Твое Внимание</h3>
+<p>Энергию из живота нужно доставить в мир. Для этого у тебя есть провод — <strong>твое внимание</strong>.<br />
+Куда направлено твое внимание — туда со свистом и летит твой внутренний ток.</p>
+<p>У любого провода в физике есть сопротивление, которое обозначается буквой <span class="math-inline">R</span> (Омы).<br />
+* Если провод чистый и прямой — сопротивление равно нулю (<span class="math-inline">R \to 0</span>). Физики называют это <strong>сверхпроводимостью</strong>. В этот момент вся энергия без потерь долетает до дела. Ты погружен в процесс с головой, время летит незаметно, тебе невероятно кайфово! В дзен это называют состоянием <strong>Мусин (чистый ум)</strong>.<br />
+* Но если провод забит сомнениями, страхами и вопросами: <em>«А вдруг не получится? А я точно молодец?»</em>, сопротивление подскакивает до небес (<span class="math-inline">R \gg 0</span>).</p>
+<h3>3. Лампочки — Твои дела и жизнь</h3>
+<p>Ток бежит по проводу, чтобы зажечь <strong>Лампочки Нагрузки</strong>. Их шесть:<br />
+1. 🧠 <strong>Творчество и Разум:</strong> сборка роботов, программирование, рисование, чтение, победы в играх.<br />
+2. 🏃 <strong>Тело и Движение:</strong> скейт, футбол, плавание, паркур, ощущение силы в мышцах.<br />
+3. 🤝 <strong>Дружба и Команда:</strong> надежные друзья, совместные приключения, взаимная выручка.<br />
+4. 🏡 <strong>Семья и Близкие:</strong> тепло дома, забота о родителях и собаке, уют.<br />
+5. 🌍 <strong>Исследование Мира:</strong> путешествия, природа, новые города, любопытство к законам Вселенной.<br />
+6. 🛡️ <strong>Твое Достоинство:</strong> умение сказать «нет» глупостям, верность своему слову.</p>
+<p>Когда ток доходит до лампочек, они <strong>светятся ровным ярким светом</strong>. Ты чувствуешь радость, драйв и силу.</p>
+<hr />
+<h2>💥 Авария века: Гремлин-Эго и Короткое Замыкание</h2>
+<p>А теперь главная тайна: <strong>почему люди чувствуют себя несчастными, злыми или выгоревшими?</strong></p>
+<p>Потому что в цепи случается авария, которую инженеры называют <strong>Коротким Замыканием (КЗ)</strong>!</p>
+<p>Представь: ты сидишь на уроке или вышел к доске. Ток твоего реактора должен идти в лампочку «Решить интересную задачу».<br />
+И вдруг в твоей голове просыпается маленький суетливый Гремлин — <strong>Эго (по-японски «Дзига»)</strong>.</p>
+<p>Гремлин начинает истошно вопить:  </p>
+<blockquote>
+<p><em>«Ой! А как я сейчас выгляжу со стороны?! А если Маша подумает, что я дурак?! А если надо мной посмеются в чате?! А я достаточно крутой?!»</em></p>
+</blockquote>
+<div class="mermaid-wrap"><pre class="mermaid">
+flowchart TD
+    subgraph Normal ["✅ ШТАТНЫЙ РЕЖИМ (Счастье)"]
+        T1["Реактор Тандэн"] -->|Ток I| L1["💡 Лампочка:<br/><b>Задача / Игра / Друг</b>"]
+        L1 -.->|Свет и радость| Ok["🌟 Лампочка ярко горит!"]
+    end
+
+    subgraph Fault ["❌ КОРОТКОЕ ЗАМЫКАНИЕ (Эго-авария)"]
+        T2["Реактор Тандэн"] --> W2["Провод замкнут сам на себя!"]
+        W2 -->|Ток крутится на месте| Ego["🧌 <b>ГРЕМЛИН ЭГО</b><br/>'А что обо мне подумают?'"]
+        Ego -->|R → ∞ Омический перегрев| Heat["🔥 <b>Дым, паника, усталость</b><br/>(Закон Джоуля-Ленца)"]
+        LampOff["💡 Лампочка погасла..."]
+    end
+
+    style Normal fill:#1e1e2e,stroke:#a6e3a1,stroke-width:2px,color:#cdd6f4
+    style Fault fill:#311b1b,stroke:#f38ba8,stroke-width:2px,color:#cdd6f4
+    style Heat fill:#451b1b,stroke:#fab387,stroke-width:2px,color:#fab387
+</pre></div>
+
+<p>Что произошло с физической точки зрения?<br />
+Ты взял провод своего внимания, <strong>оторвал его от задачи и замкнул на самого себя</strong>!</p>
+<p>По закону физики (закон Джоуля — Ленца: <span class="math-inline">Q = I^2 R t</span>):<br />
+1. Если замкнуть сильный ток на высокое сопротивление гремлина, провод <strong>мгновенно раскаляется докрасна</strong>.<br />
+2. В теле это чувствуется физически: сердце колотится, в горле ком, ладони потеют, в голове каша, хочется провалиться сквозь землю.<br />
+3. А настоящая лампочка (задача, игра или разговор) в этот момент <strong>гаснет</strong>, потому что до нее ток просто не доходит!</p>
+<div class="callout callout-important"><div class="callout-title" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 8.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #38bdf8; margin-bottom: 3mm;">Запомни это навсегда:</div><div class="callout-body"><p>Когда тебе плохо, стыдно или страшно — <strong>это не ты плохой или слабый</strong>. Это просто провод твоего внимания замкнуло на гремлина эго! Произошло короткое замыкание.</p></div></div>
+
+<h3>Как починить аварию за 10 секунд? (Клинок Кансо)</h3>
+<p>Тебе не нужно спорить с гремлином. Нужно сделать простое механическое переключение:<br />
+1. <strong>Почувствуй стопы и живот:</strong> опусти внимание из крутящихся мыслей вниз, в тело. Сделай медленный выдох в живот. (Запуск реактора).<br />
+2. <strong>Включи Клинок Кансо:</strong> мысленно скажи: <em>«Так, гремлин, стоп. Какая сейчас лампочка передо мной?»</em><br />
+3. <strong>Верни провод в нагрузку:</strong> посмотри на мел в руке, на строчку в тетради, на лицо друга. Начни делать <strong>следующее простое физическое действие</strong>.<br />
+4. Бах! Цепь замкнулась правильно. Гремлин исчез, провод остыл, лампочка снова горит!</p>
+<hr />
+<h2>🧲 ЧАСТЬ 2. Внешний магнетизм: Твое силовое поле</h2>
+<p>Теперь переходим ко второй половине суперкостюма.</p>
+<p>В 8 классе на физике тебе расскажут великий закон электромагнетизма (закон Эрстеда и Максвелла): <strong>любой электрический проводник с током неизбежно создает вокруг себя магнитное поле</strong>.</p>
+<p>Если внутри тебя течет мощный ток, ты не можешь остаться незамеченным. Вокруг тебя возникает <strong>Внешний магнетизм</strong>.<br />
+Это то самое чувство, когда в комнату заходит человек, и все сразу понимают: <em>«О, вот это Лидер. Он спокоен, уверен и знает, что делает»</em>.</p>
+<p>Но здесь есть важная инженерная ловушка: <strong>Согласование антенны (Импеданс)</strong>.</p>
+<h3>Ловушка «Гения в драном худи»</h3>
+<p>Представь потрясающего парня, который написал гениальную игру или решил задачу века. Внутри него бушует ток сверхпроводимости!<br />
+Но он неделю не мыл голову, надел мятое, дурно пахнущее худи с пятнами от пиццы и волочит ноги по полу.</p>
+<p>Что произойдет?<br />
+Его внутренняя энергия столкнется с неряшливой внешней оболочкой, как радиоволна о стену. Произойдет <strong>отражение сигнала</strong>. Люди вокруг даже не захотят узнать, какой он умный внутри, потому что их нос и глаза получат сигнал опасности: <em>«Этот парень не контролирует даже свои шнурки, ему нельзя доверять»</em>.</p>
+<p>И обратная ловушка: <strong>«Пустышка в костюме»</strong>. Когда человек надел дорогие вещи, но внутри у него пустой реактор и дикий страх, он выглядит как картонный манекен.</p>
+<div class="mermaid-wrap"><pre class="mermaid">
+flowchart LR
+    A["Внутренний ток<br/>(Огонь в Тандэне)"] <--> |"Полное согласование<br/>(Гармония 100%)"| B["Внешний магнетизм<br/>(Собранность и стиль)"]
+    A & B ==> Result["👑 <b>НЕПОБЕДИМЫЙ СОЗИДАТЕЛЬ</b><br/>(Уважение, притяжение, сверхрезультат)"]
+
+    style A fill:#1e1e2e,stroke:#a6e3a1,stroke-width:2px,color:#cdd6f4
+    style B fill:#181825,stroke:#89b4fa,stroke-width:2px,color:#cdd6f4
+    style Result fill:#313244,stroke:#f9e2af,stroke-width:3px,color:#f9e2af
+</pre></div>
+
+<h3>4 датчика твоей внешней антенны</h3>
+<p>Чтобы твоя антенна работала на полную мощность, настрой четыре параметра:</p>
+<ol>
+<li>🥋 <strong>Форма (Силуэт и Осанка):</strong> плечи расправлены, подбородок параллельно полу, одежда сидит по размеру (а не висит как парашют). Ты выглядишь как собранный пилот истребителя.</li>
+<li>🧶 <strong>Фактура (Материалы):</strong> приятные, честные ткани — плотный хлопок, деним, шерсть. К ним приятно прикасаться, они держат форму.</li>
+<li>🎨 <strong>Цвет (Палитра):</strong> не нужно быть попугаем. Два-три чистых цвета (например, глубокий синий, белый и графитовый) создают ощущение силы и спокойствия.</li>
+<li>🍊 <strong>Запах (Тайный лазер):</strong> самое мощное оружие на планете! Запах идет в древнейшие отделы мозга человека в обход логики за 0.1 секунды. Чистота, свежесть, капля хорошего цитрусового или древесного аромата — и люди подсознательно чувствуют рядом с тобой безопасность и комфорт.</li>
+</ol>
+<hr />
+<h2>🕹️ Чит-коды оператора: 4 правила мастера цепи</h2>
+<p>Чтобы твоя система никогда не сбоила, запомни четыре правила, которым следовали лучшие самураи и инженеры в истории:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Японское слово</th>
+<th style="text-align: left;">Что это значит по-человечески</th>
+<th style="text-align: left;">Как применять в жизни каждый день</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>1. Тандэн</strong> <em>(丹田)</em></td>
+<td style="text-align: left;"><strong>Твой внутренний реактор</strong></td>
+<td style="text-align: left;">Никогда не ищи уверенность в чужих лайках или похвале. Твоя батарейка — внутри твоего живота. Дыши животом, чувствуй пол под ногами.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2. Мусин</strong> <em>(無心)</em></td>
+<td style="text-align: left;"><strong>Чистый провод (<span class="math-inline">R \to 0</span>)</strong></td>
+<td style="text-align: left;">Делаешь дело — будь в нем целиком. Играешь в футбол — беги и пасуй, не думай о двойке по биологии. Решаешь математику — решай, а не проверяй телефон.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>3. Кансо</strong> <em>(簡素)</em></td>
+<td style="text-align: left;"><strong>Клинок простоты</strong></td>
+<td style="text-align: left;">Выбрасывай лишний хлам! Хлам из рюкзака, ненужные вкладки в браузере и мысли о том, кто что криво сказал. Простота дает скорость.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>4. Дзансин</strong> <em>(残心)</em></td>
+<td style="text-align: left;"><strong>Внимание после победы</strong></td>
+<td style="text-align: left;">Забил гол? Сдал сложный проект? Выиграл раунд? Не прыгай дураком и не расслабляйся до соплей. Сохраняй спокойную готовность к следующему шагу.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>🏆 Главный вывод: В чем секрет счастья?</h2>
+<p>Обычные люди думают, что счастье — это когда у тебя есть 100 новых айфонов, гора шоколадок и никто не задает домашку.</p>
+<p>Но ты теперь инженер и знаешь правду:<br />
+* Вещи вокруг нас — это просто пассивные железки. У них нет своей батарейки. Ни один кроссовок и ни один телефон не может закачать в тебя радость.<br />
+* <strong>Истинное Счастье — это когда твой внутренний ток течет свободно, проводка не искрит от дурацких сомнений, а твои лампочки зажигают реальный мир вокруг тебя ярким, теплым светом!</strong></p>
+<p>Ты — капитан этой станции. Пульт управления теперь у тебя в руках.<br />
+Держи провод чистым, реактор заряженным, а антенну настроенной — и мир вокруг тебя будет светиться! ⚡🚀</p>
+<hr />
+<h2>🔗 Связи в Базе Знаний</h2>
+<ul>
+<li>[[04_Maps/Inner Current MOC|Inner Current MOC — Главная карта цепи]]</li>
+<li>[[02_Wiki/Inner Current (Core Topology and Polarity Law)|01. Базовая топология цепи и закон полярности]]</li>
+<li>[[02_Wiki/Inner Current (Physics of Presence and Superconductivity)|02. Физика присутствия: Состояние сверхпроводимости]]</li>
+<li>[[02_Wiki/Inner Current (Impression Architecture and Impedance Matching)|08. Система Аньянова: Внутренний ток и Внешний магнетизм]]</li>
+<li>[[02_Wiki/Inner Current (The Pantheon of Guardians — Somatic Totems and Cinematic IP of Pure Consciousness)|50. Пантеон Стражей Контура (Тандэн, Мусин, Кансо, Дзансин)]]</li>
+<li>[[02_Wiki/Книга-праймер — Импрессионика для детей (Система Аньянова)|📘 Праймер по Импрессионике для детей: Суперсила Невидимого Языка]]</li>
+</ul>
+  </div>
+
+  <footer>
+    © 2026 Владимир Аньянов. Все права защищены. Библиотека «Внутренний ток».
+  </footer>
+</div>
+
+</body>
+</html>
