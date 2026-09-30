@@ -15,14 +15,15 @@ const EDITIONS = [
     heroTitle: 'Внутренний ток',
     heroSubtitle: 'Архитектура счастья: Инженерное руководство по электродинамике сознания',
     heroAuthor: 'Владимир Аньянов',
-    fig1Caption: 'Рис. 1. Топология сверхпроводимости человека-оператора: ламинарный поток при R → 0',
-    fig2Caption: 'Рис. 2. Принципиальная схема паразитного шунта эго и тепловые потери Джоуля-Ленца (Q = I²·Re·t)',
+    figCaption: 'Рис. 1. Принципиальная электросхема человека-оператора: замкнутый контур прямого потока, Тандэн-генератор, медный шунт Кансо и Щит 6 ламп',
     tocTitle: 'Оглавление книги',
     searchPlaceholder: 'Поиск по главам и понятиям...',
     themeLabel: '🌓 Тема',
     pdfLabel: '📄 Скачать PDF',
     appLabel: '🚀 В тренажер',
-    appUrl: '../index.html'
+    appUrl: '../index.html',
+    audiobookLabel: '🎧 Аудиокнига',
+    audiobookUrl: '../audiobook/index.html'
   },
   {
     lang: 'en',
@@ -35,14 +36,15 @@ const EDITIONS = [
     heroTitle: 'Inner Current',
     heroSubtitle: 'The Architecture of Happiness: An Engineering Guide to Consciousness Electrodynamics',
     heroAuthor: 'Vladimir Anyanov',
-    fig1Caption: 'Fig. 1. Operator superconductivity topology: laminar flow at R → 0',
-    fig2Caption: 'Fig. 2. Schematic of parasitic ego shunt and Joule-Lenz thermal losses (Q = I²·Re·t)',
+    figCaption: 'Fig. 1. Human Operator Circuit Schematic: Closed-loop direct flow, Tanden generator, Kanso copper shunt, and 6 Lamps Array',
     tocTitle: 'Table of Contents',
     searchPlaceholder: 'Search chapters and concepts...',
     themeLabel: '🌓 Theme',
     pdfLabel: '📄 Download PDF',
     appLabel: '🚀 Open App',
-    appUrl: '../../index.html'
+    appUrl: '../../index.html',
+    audiobookLabel: '🎧 Audiobook',
+    audiobookUrl: '../../audiobook/index.html'
   },
   {
     lang: 'it',
@@ -55,14 +57,15 @@ const EDITIONS = [
     heroTitle: 'La Corrente Interiore',
     heroSubtitle: 'L\'Architettura della Felicità: Guida ingegneristica all\'elettrodinamica della coscienza',
     heroAuthor: 'Vladimir Anyanov',
-    fig1Caption: 'Fig. 1. Topologia della superconduttività dell\'operatore: flusso laminare a R → 0',
-    fig2Caption: 'Fig. 2. Schema di principio dello shunt parassita dell\'ego e perdite termiche di Joule-Lenz (Q = I²·Re·t)',
+    figCaption: 'Fig. 1. Schema di principio del circuito dell\'operatore: anello chiuso a flusso diretto, generatore Tanden, shunt Kanso e Scudo delle 6 Lampade',
     tocTitle: 'Indice del Libro',
     searchPlaceholder: 'Cerca tra capitoli e concetti...',
     themeLabel: '🌓 Tema',
     pdfLabel: '📄 Scarica PDF',
     appLabel: '🚀 Apri App',
-    appUrl: '../../index.html'
+    appUrl: '../../index.html',
+    audiobookLabel: '🎧 Audiolibro',
+    audiobookUrl: '../../audiobook/index.html'
   }
 ];
 
@@ -140,7 +143,17 @@ function buildEdition(edition) {
 
   const rawMarkdown = fs.readFileSync(edition.sourceFile, 'utf-8');
   const processedMarkdown = processMarkdown(rawMarkdown);
-  const contentHtml = marked.parse(processedMarkdown);
+  let contentHtml = marked.parse(processedMarkdown);
+
+  // Statically assign heading IDs (heading-1, heading-2, ...) so direct anchor links work immediately in HTML
+  let headingIndex = 0;
+  contentHtml = contentHtml.replace(/<h([1-3])(\s*[^>]*)>([\s\S]*?)<\/h\1>/gi, (match, level, attrs, inner) => {
+    headingIndex++;
+    if (!attrs.includes('id=')) {
+      return `<h${level} id="heading-${headingIndex}"${attrs}>${inner}</h${level}>`;
+    }
+    return match;
+  });
 
   const assetPrefix = edition.lang === 'ru' ? '..' : '../..';
   const ruUrl = edition.lang === 'ru' ? 'index.html' : '../index.html';
@@ -223,6 +236,17 @@ function buildEdition(edition) {
     }
     [data-theme="light"] .topbar {
       background: rgba(248, 250, 252, 0.88);
+    }
+
+    /* Embedded Mode inside App Iframe */
+    body.is-embedded .topbar {
+      display: none !important;
+    }
+    body.is-embedded #bookBottomPlayer {
+      display: none !important;
+    }
+    body.is-embedded {
+      padding-bottom: 2rem !important;
     }
 
     .topbar-left {
@@ -658,6 +682,7 @@ function buildEdition(edition) {
       <button class="btn" id="themeToggle" title="${edition.themeLabel}">${edition.themeLabel}</button>
       <button class="btn" id="fontIncBtn" title="A+">A+</button>
       <button class="btn" id="fontDecBtn" title="A-">A-</button>
+      <a href="${edition.audiobookUrl}" class="btn" style="border-color: var(--accent); color: var(--accent); font-weight: 600;" title="${edition.audiobookLabel}">${edition.audiobookLabel}</a>
       <button class="btn btn-primary" onclick="window.print()" title="${edition.pdfLabel}">${edition.pdfLabel}</button>
       <a href="${edition.appUrl}" class="btn">${edition.appLabel}</a>
     </div>
@@ -685,24 +710,63 @@ function buildEdition(edition) {
           <h1>${edition.heroTitle}</h1>
           <div class="book-hero-subtitle">${edition.heroSubtitle}</div>
           <div class="book-hero-author">${edition.heroAuthor}</div>
+          <div class="hero-audio-cta" style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+            <button onclick="playAudioTrack(0)" class="btn btn-primary" style="padding: 0.6rem 1.3rem; border-radius: 9999px; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4); cursor: pointer;">
+              <span>▶</span> <span>Слушать аудиоверсию</span>
+            </button>
+            <a href="${edition.audiobookUrl}" class="btn" style="padding: 0.6rem 1.2rem; border-radius: 9999px; border-color: rgba(56, 189, 248, 0.4); color: var(--accent);">
+              <span>🎧</span> <span>Все 50 глав</span>
+            </a>
+          </div>
         </header>
-
-        <div class="img-figure">
-          <img src="${assetPrefix}/assets/superconductivity_mushin.jpg" alt="Superconductivity Mushin">
-          <figcaption>${edition.fig1Caption}</figcaption>
-        </div>
 
         <div id="manuscriptContent">
           ${contentHtml}
         </div>
 
         <div class="img-figure">
-          <img src="${assetPrefix}/assets/ego_shunt_circuit.jpg" alt="Ego Shunt Circuit">
-          <figcaption>${edition.fig2Caption}</figcaption>
+          <img src="${assetPrefix}/assets/circuit_blueprint.svg" alt="Inner Current Circuit Blueprint" style="border: 1px solid var(--border-glow); border-radius: 8px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);">
+          <figcaption>${edition.figCaption}</figcaption>
         </div>
       </article>
     </main>
   </div>
+
+  <!-- Floating Sticky Bottom Audio Player Bar -->
+  <aside id="bookBottomPlayer" style="position: fixed; bottom: 0; left: 0; right: 0; background: rgba(9, 13, 22, 0.94); backdrop-filter: blur(16px); border-top: 1px solid rgba(56, 189, 248, 0.35); padding: 0.65rem 1.5rem; z-index: 1000; box-shadow: 0 -8px 30px rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-family: var(--font-ui);">
+    <div style="display: flex; align-items: center; gap: 0.75rem; min-width: 0; flex: 1;">
+      <button id="bpPlayBtn" onclick="toggleBookAudio()" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #0284c7, #38bdf8); border: none; color: #fff; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 10px rgba(56, 189, 248, 0.4);">▶</button>
+      <div style="min-width: 0;">
+        <div style="font-size: 0.7rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em;" id="bpTrackNum">⚡ Аудиокнига • 1 час готово</div>
+        <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-bright); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" id="bpTrackTitle">Трек 00: Слово к русскому изданию</div>
+      </div>
+    </div>
+
+    <!-- Chapter Select Dropdown -->
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <select id="bpChapterSelect" onchange="changeBookAudioTrack(this.value)" style="background: var(--bg-card); color: var(--text-bright); border: 1px solid var(--border); border-radius: 8px; padding: 0.4rem 0.6rem; font-size: 0.8rem; outline: none; max-width: 250px; cursor: pointer;">
+        <option value="0">00. Слово к русскому изданию (03:56)</option>
+        <option value="1">01. Манифест дзен-инженера (10:31)</option>
+        <option value="2">02. Предисловие (23:06)</option>
+        <option value="3">03. Введение (23:18)</option>
+      </select>
+    </div>
+
+    <!-- Timeline & Time -->
+    <div style="display: flex; align-items: center; gap: 0.6rem; flex: 1; max-width: 320px;">
+      <span id="bpCurTime" style="font-size: 0.75rem; font-family: monospace; color: var(--text-muted);">00:00</span>
+      <input type="range" id="bpProgress" min="0" max="100" value="0" style="flex: 1; accent-color: var(--accent); cursor: pointer;" oninput="seekBookAudio(this.value)">
+      <span id="bpTotalTime" style="font-size: 0.75rem; font-family: monospace; color: var(--text-muted);">03:56</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0;">
+      <button id="bpSpeedBtn" onclick="toggleBookSpeed()" style="background: var(--bg-card); border: 1px solid var(--border); color: var(--text); border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.75rem; font-weight: 600; cursor: pointer;">1.0x</button>
+      <a href="${edition.audiobookUrl}" class="btn" style="padding: 0.35rem 0.75rem; font-size: 0.8rem; border-color: rgba(56, 189, 248, 0.4); color: var(--accent);" title="Открыть полную студию аудиокниги">
+        🎧 Студия ↗
+      </a>
+    </div>
+  </aside>
+  <audio id="bookAudioEl" preload="metadata"></audio>
 
   <script>
     // Theme toggle
@@ -770,6 +834,20 @@ function buildEdition(edition) {
       tocList.appendChild(li);
     });
 
+    // Smooth scroll to anchor if URL has a hash
+    if (window.location.hash) {
+      setTimeout(() => {
+        try {
+          const target = document.querySelector(window.location.hash);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        } catch (e) {
+          // ignore
+        }
+      }, 50);
+    }
+
     // Quick Search filter
     document.getElementById('searchInput').addEventListener('input', (e) => {
       const q = e.target.value.toLowerCase();
@@ -780,9 +858,16 @@ function buildEdition(edition) {
       });
     });
 
-    // Mermaid dynamic renderer
-    async function renderMermaidDiagrams() {
-      if (typeof mermaid === 'undefined') return;
+    // Check if running inside iframe (e.g., embedded in Inner Current dashboard)
+    if (window.self !== window.top) {
+      document.body.classList.add('is-embedded');
+    }
+
+    // Mermaid dynamic renderer with lazy loading via IntersectionObserver
+    let mermaidInitialized = false;
+
+    function initMermaidIfNeeded() {
+      if (mermaidInitialized || typeof mermaid === 'undefined') return;
       const isLight = document.documentElement.getAttribute('data-theme') === 'light';
       try {
         mermaid.initialize({
@@ -791,30 +876,175 @@ function buildEdition(edition) {
           securityLevel: 'loose',
           fontFamily: 'Inter, system-ui, sans-serif'
         });
-
-        const containers = document.querySelectorAll('.mermaid-diagram');
-        for (let i = 0; i < containers.length; i++) {
-          const c = containers[i];
-          const raw = decodeURIComponent(c.getAttribute('data-diagram') || '');
-          if (!raw) continue;
-          try {
-            const id = 'mermaid-render-' + i + '-' + Date.now();
-            const { svg } = await mermaid.render(id, raw);
-            c.innerHTML = svg;
-          } catch (err) {
-            console.warn('Mermaid render error for diagram #' + i, err);
-          }
-        }
+        mermaidInitialized = true;
       } catch (e) {
         console.error('Mermaid initialization error:', e);
       }
     }
 
+    async function renderOneDiagram(container, idx) {
+      if (!container || container.dataset.rendered === 'true') return;
+      container.dataset.rendered = 'true';
+      const raw = decodeURIComponent(container.getAttribute('data-diagram') || '');
+      if (!raw) return;
+      try {
+        initMermaidIfNeeded();
+        const id = 'mermaid-render-' + idx + '-' + Math.random().toString(36).substring(2, 9);
+        const { svg } = await mermaid.render(id, raw);
+        container.innerHTML = svg;
+      } catch (err) {
+        console.warn('Mermaid render error for diagram #' + idx, err);
+      }
+    }
+
+    function setupMermaidLazy() {
+      const containers = document.querySelectorAll('.mermaid-diagram');
+      if (!containers.length) return;
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const target = entry.target;
+              observer.unobserve(target);
+              const idx = target.dataset.diagramIdx || '0';
+              renderOneDiagram(target, idx);
+            }
+          });
+        }, { rootMargin: '300px 0px' });
+
+        containers.forEach((c, i) => {
+          c.dataset.diagramIdx = i;
+          observer.observe(c);
+        });
+      } else {
+        containers.forEach((c, i) => renderOneDiagram(c, i));
+      }
+    }
+
     // Initialize Mermaid on page load
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', renderMermaidDiagrams);
+      document.addEventListener('DOMContentLoaded', setupMermaidLazy);
     } else {
-      renderMermaidDiagrams();
+      setupMermaidLazy();
+    }
+
+    // ==================== AUDIOBOOK FLOATING BAR ====================
+    let bookAudioManifest = [];
+    let curBookTrackIdx = 0;
+    const bookAudio = document.getElementById('bookAudioEl');
+    const bpPlayBtn = document.getElementById('bpPlayBtn');
+    const bpProgress = document.getElementById('bpProgress');
+    const bpCurTime = document.getElementById('bpCurTime');
+    const bpTotalTime = document.getElementById('bpTotalTime');
+    const bpTrackTitle = document.getElementById('bpTrackTitle');
+    const bpChapterSelect = document.getElementById('bpChapterSelect');
+    const bpSpeedBtn = document.getElementById('bpSpeedBtn');
+
+    const bookSpeeds = [1.0, 1.25, 1.5, 1.75, 2.0, 0.8];
+    let bookSpeedIdx = 0;
+
+    async function initBookAudio() {
+      if (!bpChapterSelect) return;
+      try {
+        const res = await fetch('/audio/audiobook_manifest.json');
+        bookAudioManifest = await res.json();
+        
+        // Populate select
+        bpChapterSelect.innerHTML = '';
+        bookAudioManifest.forEach((t, i) => {
+          const opt = document.createElement('option');
+          opt.value = i;
+          opt.textContent = String(t.track).padStart(2, '0') + '. ' + t.title + (t.status === 'ready' ? ' (' + t.duration_formatted + ')' : ' [В очереди]');
+          if (t.status !== 'ready') opt.disabled = true;
+          bpChapterSelect.appendChild(opt);
+        });
+
+        loadBookTrack(0, false);
+      } catch (err) {
+        console.warn('Could not load audiobook manifest:', err);
+      }
+    }
+
+    function formatSec(s) {
+      if (isNaN(s)) return '00:00';
+      const m = Math.floor(s / 60);
+      const sec = Math.floor(s % 60);
+      return (m < 10 ? '0' : '') + m + ':' + (sec < 10 ? '0' : '') + sec;
+    }
+
+    function loadBookTrack(idx, autoPlay = true) {
+      if (!bookAudio || !bookAudioManifest[idx]) return;
+      curBookTrackIdx = idx;
+      const t = bookAudioManifest[idx];
+      if (bpChapterSelect) bpChapterSelect.value = idx;
+      if (bpTrackTitle) bpTrackTitle.textContent = String(t.track).padStart(2, '0') + '. ' + t.title;
+      bookAudio.src = t.url;
+      if (autoPlay && t.status === 'ready') {
+        bookAudio.play().catch(e => console.log('Autoplay:', e));
+      }
+    }
+
+    function playAudioTrack(idx) {
+      loadBookTrack(idx, true);
+    }
+
+    function toggleBookAudio() {
+      if (!bookAudio) return;
+      if (bookAudio.paused) {
+        bookAudio.play();
+      } else {
+        bookAudio.pause();
+      }
+    }
+
+    function changeBookAudioTrack(val) {
+      loadBookTrack(parseInt(val, 10), true);
+    }
+
+    function toggleBookSpeed() {
+      if (!bookAudio || !bpSpeedBtn) return;
+      bookSpeedIdx = (bookSpeedIdx + 1) % bookSpeeds.length;
+      const spd = bookSpeeds[bookSpeedIdx];
+      bookAudio.playbackRate = spd;
+      bpSpeedBtn.textContent = spd + 'x';
+    }
+
+    function seekBookAudio(pct) {
+      if (bookAudio && bookAudio.duration) {
+        bookAudio.currentTime = (pct / 100) * bookAudio.duration;
+      }
+    }
+
+    if (bookAudio) {
+      bookAudio.addEventListener('play', () => {
+        if (bpPlayBtn) {
+          bpPlayBtn.textContent = '⏸';
+          bpPlayBtn.style.boxShadow = '0 0 16px rgba(56, 189, 248, 0.8)';
+        }
+      });
+
+      bookAudio.addEventListener('pause', () => {
+        if (bpPlayBtn) {
+          bpPlayBtn.textContent = '▶';
+          bpPlayBtn.style.boxShadow = '0 2px 10px rgba(56, 189, 248, 0.4)';
+        }
+      });
+
+      bookAudio.addEventListener('timeupdate', () => {
+        if (bookAudio.duration) {
+          const pct = (bookAudio.currentTime / bookAudio.duration) * 100;
+          if (bpProgress) bpProgress.value = pct;
+          if (bpCurTime) bpCurTime.textContent = formatSec(bookAudio.currentTime);
+          if (bpTotalTime) bpTotalTime.textContent = formatSec(bookAudio.duration);
+        }
+      });
+
+      bookAudio.addEventListener('loadedmetadata', () => {
+        if (bpTotalTime) bpTotalTime.textContent = formatSec(bookAudio.duration);
+      });
+
+      initBookAudio();
     }
   </script>
 </body>

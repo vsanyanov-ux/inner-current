@@ -76,6 +76,17 @@
       background: rgba(248, 250, 252, 0.88);
     }
 
+    /* Embedded Mode inside App Iframe */
+    body.is-embedded .topbar {
+      display: none !important;
+    }
+    body.is-embedded #bookBottomPlayer {
+      display: none !important;
+    }
+    body.is-embedded {
+      padding-bottom: 2rem !important;
+    }
+
     .topbar-left {
       display: flex;
       align-items: center;
@@ -2407,6 +2418,42 @@ s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,1
     </main>
   </div>
 
+  <!-- Floating Sticky Bottom Audio Player Bar -->
+  <aside id="bookBottomPlayer" style="position: fixed; bottom: 0; left: 0; right: 0; background: rgba(9, 13, 22, 0.94); backdrop-filter: blur(16px); border-top: 1px solid rgba(56, 189, 248, 0.35); padding: 0.65rem 1.5rem; z-index: 1000; box-shadow: 0 -8px 30px rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-family: var(--font-ui);">
+    <div style="display: flex; align-items: center; gap: 0.75rem; min-width: 0; flex: 1;">
+      <button id="bpPlayBtn" onclick="toggleBookAudio()" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #0284c7, #38bdf8); border: none; color: #fff; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 10px rgba(56, 189, 248, 0.4);">▶</button>
+      <div style="min-width: 0;">
+        <div style="font-size: 0.7rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em;" id="bpTrackNum">⚡ Аудиокнига • 1 час готово</div>
+        <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-bright); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" id="bpTrackTitle">Трек 00: Слово к русскому изданию</div>
+      </div>
+    </div>
+
+    <!-- Chapter Select Dropdown -->
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <select id="bpChapterSelect" onchange="changeBookAudioTrack(this.value)" style="background: var(--bg-card); color: var(--text-bright); border: 1px solid var(--border); border-radius: 8px; padding: 0.4rem 0.6rem; font-size: 0.8rem; outline: none; max-width: 250px; cursor: pointer;">
+        <option value="0">00. Слово к русскому изданию (03:56)</option>
+        <option value="1">01. Манифест дзен-инженера (10:31)</option>
+        <option value="2">02. Предисловие (23:06)</option>
+        <option value="3">03. Введение (23:18)</option>
+      </select>
+    </div>
+
+    <!-- Timeline & Time -->
+    <div style="display: flex; align-items: center; gap: 0.6rem; flex: 1; max-width: 320px;">
+      <span id="bpCurTime" style="font-size: 0.75rem; font-family: monospace; color: var(--text-muted);">00:00</span>
+      <input type="range" id="bpProgress" min="0" max="100" value="0" style="flex: 1; accent-color: var(--accent); cursor: pointer;" oninput="seekBookAudio(this.value)">
+      <span id="bpTotalTime" style="font-size: 0.75rem; font-family: monospace; color: var(--text-muted);">03:56</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0;">
+      <button id="bpSpeedBtn" onclick="toggleBookSpeed()" style="background: var(--bg-card); border: 1px solid var(--border); color: var(--text); border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.75rem; font-weight: 600; cursor: pointer;">1.0x</button>
+      <a href="../../audiobook/index.html" class="btn" style="padding: 0.35rem 0.75rem; font-size: 0.8rem; border-color: rgba(56, 189, 248, 0.4); color: var(--accent);" title="Открыть полную студию аудиокниги">
+        🎧 Студия ↗
+      </a>
+    </div>
+  </aside>
+  <audio id="bookAudioEl" preload="metadata"></audio>
+
   <script>
     // Theme toggle
     const themeBtn = document.getElementById('themeToggle');
@@ -2497,9 +2544,16 @@ s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,1
       });
     });
 
-    // Mermaid dynamic renderer
-    async function renderMermaidDiagrams() {
-      if (typeof mermaid === 'undefined') return;
+    // Check if running inside iframe (e.g., embedded in Inner Current dashboard)
+    if (window.self !== window.top) {
+      document.body.classList.add('is-embedded');
+    }
+
+    // Mermaid dynamic renderer with lazy loading via IntersectionObserver
+    let mermaidInitialized = false;
+
+    function initMermaidIfNeeded() {
+      if (mermaidInitialized || typeof mermaid === 'undefined') return;
       const isLight = document.documentElement.getAttribute('data-theme') === 'light';
       try {
         mermaid.initialize({
@@ -2508,30 +2562,57 @@ s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,1
           securityLevel: 'loose',
           fontFamily: 'Inter, system-ui, sans-serif'
         });
-
-        const containers = document.querySelectorAll('.mermaid-diagram');
-        for (let i = 0; i < containers.length; i++) {
-          const c = containers[i];
-          const raw = decodeURIComponent(c.getAttribute('data-diagram') || '');
-          if (!raw) continue;
-          try {
-            const id = 'mermaid-render-' + i + '-' + Date.now();
-            const { svg } = await mermaid.render(id, raw);
-            c.innerHTML = svg;
-          } catch (err) {
-            console.warn('Mermaid render error for diagram #' + i, err);
-          }
-        }
+        mermaidInitialized = true;
       } catch (e) {
         console.error('Mermaid initialization error:', e);
       }
     }
 
+    async function renderOneDiagram(container, idx) {
+      if (!container || container.dataset.rendered === 'true') return;
+      container.dataset.rendered = 'true';
+      const raw = decodeURIComponent(container.getAttribute('data-diagram') || '');
+      if (!raw) return;
+      try {
+        initMermaidIfNeeded();
+        const id = 'mermaid-render-' + idx + '-' + Math.random().toString(36).substring(2, 9);
+        const { svg } = await mermaid.render(id, raw);
+        container.innerHTML = svg;
+      } catch (err) {
+        console.warn('Mermaid render error for diagram #' + idx, err);
+      }
+    }
+
+    function setupMermaidLazy() {
+      const containers = document.querySelectorAll('.mermaid-diagram');
+      if (!containers.length) return;
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const target = entry.target;
+              observer.unobserve(target);
+              const idx = target.dataset.diagramIdx || '0';
+              renderOneDiagram(target, idx);
+            }
+          });
+        }, { rootMargin: '300px 0px' });
+
+        containers.forEach((c, i) => {
+          c.dataset.diagramIdx = i;
+          observer.observe(c);
+        });
+      } else {
+        containers.forEach((c, i) => renderOneDiagram(c, i));
+      }
+    }
+
     // Initialize Mermaid on page load
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', renderMermaidDiagrams);
+      document.addEventListener('DOMContentLoaded', setupMermaidLazy);
     } else {
-      renderMermaidDiagrams();
+      setupMermaidLazy();
     }
 
     // ==================== AUDIOBOOK FLOATING BAR ====================
@@ -2550,6 +2631,7 @@ s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,1
     let bookSpeedIdx = 0;
 
     async function initBookAudio() {
+      if (!bpChapterSelect) return;
       try {
         const res = await fetch('/audio/audiobook_manifest.json');
         bookAudioManifest = await res.json();
@@ -2578,11 +2660,11 @@ s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,1
     }
 
     function loadBookTrack(idx, autoPlay = true) {
-      if (!bookAudioManifest[idx]) return;
+      if (!bookAudio || !bookAudioManifest[idx]) return;
       curBookTrackIdx = idx;
       const t = bookAudioManifest[idx];
-      bpChapterSelect.value = idx;
-      bpTrackTitle.textContent = String(t.track).padStart(2, '0') + '. ' + t.title;
+      if (bpChapterSelect) bpChapterSelect.value = idx;
+      if (bpTrackTitle) bpTrackTitle.textContent = String(t.track).padStart(2, '0') + '. ' + t.title;
       bookAudio.src = t.url;
       if (autoPlay && t.status === 'ready') {
         bookAudio.play().catch(e => console.log('Autoplay:', e));
@@ -2594,6 +2676,7 @@ s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,1
     }
 
     function toggleBookAudio() {
+      if (!bookAudio) return;
       if (bookAudio.paused) {
         bookAudio.play();
       } else {
@@ -2606,6 +2689,7 @@ s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,1
     }
 
     function toggleBookSpeed() {
+      if (!bookAudio || !bpSpeedBtn) return;
       bookSpeedIdx = (bookSpeedIdx + 1) % bookSpeeds.length;
       const spd = bookSpeeds[bookSpeedIdx];
       bookAudio.playbackRate = spd;
@@ -2613,71 +2697,41 @@ s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,1
     }
 
     function seekBookAudio(pct) {
-      if (bookAudio.duration) {
+      if (bookAudio && bookAudio.duration) {
         bookAudio.currentTime = (pct / 100) * bookAudio.duration;
       }
     }
 
-    bookAudio.addEventListener('play', () => {
-      bpPlayBtn.textContent = '⏸';
-      bpPlayBtn.style.boxShadow = '0 0 16px rgba(56, 189, 248, 0.8)';
-    });
+    if (bookAudio) {
+      bookAudio.addEventListener('play', () => {
+        if (bpPlayBtn) {
+          bpPlayBtn.textContent = '⏸';
+          bpPlayBtn.style.boxShadow = '0 0 16px rgba(56, 189, 248, 0.8)';
+        }
+      });
 
-    bookAudio.addEventListener('pause', () => {
-      bpPlayBtn.textContent = '▶';
-      bpPlayBtn.style.boxShadow = '0 2px 10px rgba(56, 189, 248, 0.4)';
-    });
+      bookAudio.addEventListener('pause', () => {
+        if (bpPlayBtn) {
+          bpPlayBtn.textContent = '▶';
+          bpPlayBtn.style.boxShadow = '0 2px 10px rgba(56, 189, 248, 0.4)';
+        }
+      });
 
-    bookAudio.addEventListener('timeupdate', () => {
-      if (bookAudio.duration) {
-        const pct = (bookAudio.currentTime / bookAudio.duration) * 100;
-        bpProgress.value = pct;
-        bpCurTime.textContent = formatSec(bookAudio.currentTime);
-        bpTotalTime.textContent = formatSec(bookAudio.duration);
-      }
-    });
+      bookAudio.addEventListener('timeupdate', () => {
+        if (bookAudio.duration) {
+          const pct = (bookAudio.currentTime / bookAudio.duration) * 100;
+          if (bpProgress) bpProgress.value = pct;
+          if (bpCurTime) bpCurTime.textContent = formatSec(bookAudio.currentTime);
+          if (bpTotalTime) bpTotalTime.textContent = formatSec(bookAudio.duration);
+        }
+      });
 
-    bookAudio.addEventListener('loadedmetadata', () => {
-      bpTotalTime.textContent = formatSec(bookAudio.duration);
-    });
+      bookAudio.addEventListener('loadedmetadata', () => {
+        if (bpTotalTime) bpTotalTime.textContent = formatSec(bookAudio.duration);
+      });
 
-    initBookAudio();
+      initBookAudio();
+    }
   </script>
-
-  <!-- Floating Sticky Bottom Audio Player Bar -->
-  <aside id="bookBottomPlayer" style="position: fixed; bottom: 0; left: 0; right: 0; background: rgba(9, 13, 22, 0.94); backdrop-filter: blur(16px); border-top: 1px solid rgba(56, 189, 248, 0.35); padding: 0.65rem 1.5rem; z-index: 1000; box-shadow: 0 -8px 30px rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-family: var(--font-ui);">
-    <div style="display: flex; align-items: center; gap: 0.75rem; min-width: 0; flex: 1;">
-      <button id="bpPlayBtn" onclick="toggleBookAudio()" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #0284c7, #38bdf8); border: none; color: #fff; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 10px rgba(56, 189, 248, 0.4);">▶</button>
-      <div style="min-width: 0;">
-        <div style="font-size: 0.7rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em;" id="bpTrackNum">⚡ Аудиокнига • 1 час готово</div>
-        <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-bright); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" id="bpTrackTitle">Трек 00: Слово к русскому изданию</div>
-      </div>
-    </div>
-
-    <!-- Chapter Select Dropdown -->
-    <div style="display: flex; align-items: center; gap: 0.5rem;">
-      <select id="bpChapterSelect" onchange="changeBookAudioTrack(this.value)" style="background: var(--bg-card); color: var(--text-bright); border: 1px solid var(--border); border-radius: 8px; padding: 0.4rem 0.6rem; font-size: 0.8rem; outline: none; max-width: 250px; cursor: pointer;">
-        <option value="0">00. Слово к русскому изданию (03:56)</option>
-        <option value="1">01. Манифест дзен-инженера (10:31)</option>
-        <option value="2">02. Предисловие (23:06)</option>
-        <option value="3">03. Введение (23:18)</option>
-      </select>
-    </div>
-
-    <!-- Timeline & Time -->
-    <div style="display: flex; align-items: center; gap: 0.6rem; flex: 1; max-width: 320px;">
-      <span id="bpCurTime" style="font-size: 0.75rem; font-family: monospace; color: var(--text-muted);">00:00</span>
-      <input type="range" id="bpProgress" min="0" max="100" value="0" style="flex: 1; accent-color: var(--accent); cursor: pointer;" oninput="seekBookAudio(this.value)">
-      <span id="bpTotalTime" style="font-size: 0.75rem; font-family: monospace; color: var(--text-muted);">03:56</span>
-    </div>
-
-    <div style="display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0;">
-      <button id="bpSpeedBtn" onclick="toggleBookSpeed()" style="background: var(--bg-card); border: 1px solid var(--border); color: var(--text); border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.75rem; font-weight: 600; cursor: pointer;">1.0x</button>
-      <a href="../../audiobook/index.html" class="btn" style="padding: 0.35rem 0.75rem; font-size: 0.8rem; border-color: rgba(56, 189, 248, 0.4); color: var(--accent);" title="Открыть полную студию аудиокниги">
-        🎧 Студия ↗
-      </a>
-    </div>
-  </aside>
-  <audio id="bookAudioEl" preload="metadata"></audio>
 </body>
 </html>
