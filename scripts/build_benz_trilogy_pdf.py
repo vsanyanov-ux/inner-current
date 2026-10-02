@@ -1,0 +1,740 @@
+import os
+import sys
+import re
+from playwright.sync_api import sync_playwright
+
+if sys.stdout:
+    sys.stdout.reconfigure(encoding='utf-8')
+if sys.stderr:
+    sys.stderr.reconfigure(encoding='utf-8')
+
+OUTPUT_HTML = r"c:\Users\vanya\Antigravity Projects\Apps\Inner Current\benz_trilogy_memo.html"
+OUTPUT_PDF = r"c:\Users\vanya\Antigravity Projects\Apps\Inner Current\IC Library\Памятка — Переход в эпоху Автомобиля (Трилогия Карла Бенца 1886–2026).pdf"
+ROOT_PDF = r"c:\Users\vanya\Antigravity Projects\Apps\Inner Current\Памятка — Переход в эпоху Автомобиля (Трилогия Карла Бенца 1886–2026).pdf"
+PUBLIC_PDF = r"c:\Users\vanya\Antigravity Projects\Apps\Inner Current\public\books\Памятка — Переход в эпоху Автомобиля.pdf"
+
+HTML_CONTENT = """<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Памятка: Переход в эпоху Автомобиля — Трилогия Карла Бенца (1886–2026)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  @page {
+    size: A4;
+    margin: 16mm 16mm 16mm 16mm;
+    @top-left {
+      content: "Внутренний ток • Операционная памятка";
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 7.2pt;
+      color: #94a3b8;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    @top-right {
+      content: "Трилогия Карла Бенца (1886–2026)";
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 7.2pt;
+      color: #94a3b8;
+      letter-spacing: 1px;
+    }
+    @bottom-center {
+      content: counter(page);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 7.5pt;
+      color: #94a3b8;
+    }
+  }
+
+  @page:first {
+    margin: 0;
+    @top-left { content: none; }
+    @top-right { content: none; }
+    @bottom-center { content: none; }
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 9pt;
+    line-height: 1.5;
+    color: #1e293b;
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* COVER PAGE */
+  .cover-page {
+    page-break-after: always;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: radial-gradient(circle at 50% 22%, #0f172a 0%, #030712 100%);
+    color: #ffffff;
+    padding: 26mm 22mm 20mm 22mm;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-page::before {
+    content: "";
+    position: absolute;
+    top: -140px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 620px;
+    height: 620px;
+    background: radial-gradient(circle, rgba(0, 180, 216, 0.25) 0%, rgba(3, 7, 18, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .cover-series {
+    font-family: 'Cinzel', serif;
+    font-size: 9.5pt;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #00b4d8;
+    font-weight: 700;
+  }
+
+  .cover-hero {
+    margin: auto 0;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    padding: 5px 16px;
+    background: rgba(0, 180, 216, 0.12);
+    border: 1px solid rgba(0, 180, 216, 0.4);
+    border-radius: 20px;
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #38bdf8;
+    margin-bottom: 6mm;
+  }
+
+  .cover-title {
+    font-family: 'Cinzel', serif;
+    font-size: 23pt;
+    font-weight: 900;
+    line-height: 1.22;
+    letter-spacing: 2px;
+    color: #f8fafc;
+    margin-bottom: 5mm;
+    text-shadow: 0 4px 24px rgba(0, 180, 216, 0.35);
+  }
+
+  .cover-divider {
+    width: 90px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00b4d8, transparent);
+    margin: 5mm auto;
+  }
+
+  .cover-subtitle {
+    font-family: 'Lora', serif;
+    font-size: 11.5pt;
+    font-style: italic;
+    color: #94a3b8;
+    max-width: 540px;
+    margin: 0 auto 6mm auto;
+    line-height: 1.5;
+  }
+
+  .cover-triad-pills {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 5mm;
+  }
+
+  .cover-pill {
+    padding: 8px 12px;
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    font-size: 7.8pt;
+    color: #cbd5e1;
+    text-align: left;
+    line-height: 1.35;
+    flex: 1;
+    max-width: 175px;
+  }
+
+  .cover-pill strong {
+    display: block;
+    color: #38bdf8;
+    font-size: 8.2pt;
+    margin-bottom: 2px;
+  }
+
+  .cover-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 5mm;
+    display: flex;
+    justify-content: space-between;
+    font-size: 8pt;
+    color: #64748b;
+  }
+
+  .cover-footer-author {
+    color: #94a3b8;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  /* HEADINGS */
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 15.5pt;
+    font-weight: 800;
+    color: #0f172a;
+    border-bottom: 2px solid #00b4d8;
+    padding-bottom: 2mm;
+    margin-top: 0;
+    margin-bottom: 3.5mm;
+    letter-spacing: 0.8px;
+  }
+
+  h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 11.5pt;
+    font-weight: 700;
+    color: #0f172a;
+    border-left: 3px solid #00b4d8;
+    padding-left: 7px;
+    margin-top: 4.5mm;
+    margin-bottom: 2.5mm;
+    letter-spacing: 0.4px;
+  }
+
+  h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 9.3pt;
+    font-weight: 700;
+    color: #0284c7;
+    margin-top: 3.5mm;
+    margin-bottom: 1.5mm;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 2mm;
+    text-align: justify;
+  }
+
+  /* CALLOUTS */
+  .callout {
+    border-left: 3.5px solid #0284c7;
+    background: #f8fafc;
+    padding: 7px 11px;
+    margin: 3mm 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 8.7pt;
+  }
+
+  .callout-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #0369a1;
+    margin-bottom: 2px;
+  }
+
+  .callout-quote {
+    border-left-color: #00b4d8;
+    background: #f0f9ff;
+    font-family: 'Lora', serif;
+    font-style: italic;
+  }
+
+  .callout-warning {
+    border-left-color: #f59e0b;
+    background: #fffbeb;
+  }
+  .callout-warning .callout-title {
+    color: #b45309;
+  }
+
+  .callout-success {
+    border-left-color: #10b981;
+    background: #ecfdf5;
+  }
+  .callout-success .callout-title {
+    color: #047857;
+  }
+
+  /* TABLES */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 3.5mm 0;
+    font-size: 8.2pt;
+    page-break-inside: avoid;
+  }
+
+  th {
+    background: #0f172a;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: left;
+    padding: 5px 8px;
+    border: 1px solid #1e293b;
+    font-size: 7.7pt;
+    letter-spacing: 0.4px;
+  }
+
+  td {
+    padding: 5px 8px;
+    border: 1px solid #cbd5e1;
+    vertical-align: top;
+    line-height: 1.35;
+  }
+
+  tr:nth-child(even) {
+    background: #f8fafc;
+  }
+
+  /* LISTS & HIGHLIGHTS */
+  ul, ol {
+    margin-top: 0;
+    margin-bottom: 2mm;
+    padding-left: 17px;
+  }
+
+  li {
+    margin-bottom: 1.2mm;
+  }
+
+  .math-inline {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    color: #0f172a;
+    font-weight: 600;
+  }
+
+  .math-display {
+    text-align: center;
+    font-family: 'Lora', serif;
+    font-size: 10pt;
+    padding: 2.5mm;
+    margin: 2.5mm 0;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+
+  /* PROTOCOL BOXES */
+  .protocol-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    margin: 3mm 0;
+    page-break-inside: avoid;
+  }
+
+  .protocol-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-top: 3px solid #00b4d8;
+    border-radius: 6px;
+    padding: 6px 9px;
+    font-size: 8.1pt;
+  }
+
+  .protocol-card strong {
+    color: #0f172a;
+    display: block;
+    font-size: 8.5pt;
+    margin-bottom: 2px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 1.5px 6px;
+    border-radius: 4px;
+    font-size: 7pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: #e0f2fe;
+    color: #0369a1;
+    margin-right: 3px;
+  }
+
+  .tag-danger {
+    background: #fee2e2;
+    color: #b91c1c;
+  }
+
+  .tag-success {
+    background: #dcfce7;
+    color: #15803d;
+  }
+
+  .page-divider {
+    page-break-before: always;
+  }
+
+  .footer-note {
+    font-size: 7.6pt;
+    color: #64748b;
+    border-top: 1px dashed #cbd5e1;
+    padding-top: 2mm;
+    margin-top: 3mm;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== СТРАНИЦА 1: ОБЛОЖКА ==================== -->
+<div class="cover-page">
+  <div class="cover-series">Inner Current • Операционная Памятка • Синтез 1886–2026</div>
+
+  <div class="cover-hero">
+    <div class="cover-badge">Методологический манифест и полевое руководство</div>
+    <div class="cover-title">ПЕРЕХОД В ЭПОХУ<br>АВТОМОБИЛЯ</div>
+    <div class="cover-divider"></div>
+    <div class="cover-subtitle">
+      Трилогия Карла Бенца: Калибровка Закона Счастья, Приборная Панель Сознания и Педагогика Пересадки
+    </div>
+
+    <div class="cover-triad-pills">
+      <div class="cover-pill">
+        <strong>Статья 190</strong>
+        Парадокс Бенца, сырые прототипы и иммунитет Автора
+      </div>
+      <div class="cover-pill">
+        <strong>Статья 191</strong>
+        Автомобиль как физический якорь и панель телеметрии
+      </div>
+      <div class="cover-pill">
+        <strong>Статья 192</strong>
+        Трёхфазный онбординг и соматический тест-драйв
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    <div class="cover-footer-author">Владимир Аньянов</div>
+    <div>Санкт-Петербург — Мангейм, 2026 • Любительская редакция</div>
+  </div>
+</div>
+
+<!-- ==================== СТРАНИЦА 2: БЛОК I ==================== -->
+<div>
+  <h1>Блок I. Манифест Смены Эпох: Лошадь vs Автомобиль</h1>
+  
+  <p>
+    На протяжении пяти тысячелетий цивилизация развивалась в парадигме <strong>биологического привода</strong>. 
+    Когда требовалось преодолеть кризис, справиться с тревогой или добиться амбициозной цели, человек применял одно 
+    и то же орудие: <em>волевой кнут</em>. В культуре укоренилась моральная связка: если ты не счастлив, истощён 
+    или топчешься на месте — значит, ты «ленив», «грешен», «недостаточно стараешься». Лошадь падает от усталости, 
+    но возница лишь сильнее натягивает поводья и хлещет её по крупу.
+  </p>
+
+  <p>
+    <strong>Появление бензинового автомобиля в 1886 году знаменует конец эпохи волевого мазохизма.</strong> 
+    Это фазовый переход от биологической борьбы к <em>законам термодинамики, проводимости и замкнутого контура</em>. 
+    Автомобиль бессмысленно хлестать кнутом при пустом баке или окислившихся клеммах. Машина требует не раскаяния, а <strong>калибровки</strong>.
+  </p>
+
+  <div class="callout callout-quote">
+    <div class="callout-title">Фундаментальный аксиоматический сдвиг</div>
+    «Счастье перестало быть случайным капризом небес или наградой за насилие над собой. 
+    Оно стало инженерным режимом работы замкнутого контура при электрическом сопротивлении R → 0».
+  </div>
+
+  <h2>Анатомия смены парадигмы</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 22%;">Измерение</th>
+        <th style="width: 39%;">Эпоха Лошади (До 1886)</th>
+        <th style="width: 39%;">Эпоха Автомобиля (1886–2026)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Привод и двигатель</strong></td>
+        <td>Внешний биологический ресурс (воля, терпение, мышечное напряжение).</td>
+        <td>Автономный внутренний реактор (<span class="math-inline">Тандэн</span>, сверхпроводимость контура).</td>
+      </tr>
+      <tr>
+        <td><strong>Реакция на сбой</strong></td>
+        <td>Морализация: «Я плохой», «Нужно терпеть», самоедство и чувство вины.</td>
+        <td>Инженерный аудит: «В каком узле утечка? Где паразитный нагрев <span class="math-inline">Q = I^2Rt</span>?».</td>
+      </tr>
+      <tr>
+        <td><strong>Управление тягой</strong></td>
+        <td>Кнут, шпоры, адреналин, кортизоловый кредит будущего здоровья.</td>
+        <td>Акселератор, выверенная топливная смесь, заземление в нижний центр.</td>
+      </tr>
+      <tr>
+        <td><strong>Предел системы</strong></td>
+        <td>Биологический потолок истощения: инфаркты, апатия, выгорание.</td>
+        <td>Масштабируемость тяги, переход на высшие передачи без износа шасси.</td>
+      </tr>
+      <tr>
+        <td><strong>Отношение к силе</strong></td>
+        <td>«Дави сильнее, стисни зубы».</td>
+        <td>«Сбрось сопротивление, выровняй проводимость цепи».</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-success">
+    <div class="callout-title">Инженерный вывод Блока I</div>
+    Пока человек считает своё истощение «грехом», он заперт в карете. Как только он признаёт себя замкнутой 
+    термодинамической машиной, рождается водитель, способный управлять энергией без саморазрушения.
+  </div>
+</div>
+
+<!-- ==================== СТРАНИЦА 3: БЛОК II ==================== -->
+<div class="page-divider">
+  <h1>Блок II. Иммунитет Создателя: Парадокс Бенца (Статья 190)</h1>
+
+  <p>
+    Летом 1886 года первый Patent-Motorwagen Карла Бенца выкатился на мостовую Мангейма. 
+    Машина развивала всего 16 км/ч, чихала, испускала сизый дым, глохла на булыжниках, а бензин Ligroin 
+    приходилось покупать аптечными пузырьками. Кучера на холёных лошадях покатывались со смеху: 
+    <em>«Посмотрите на это убожество! Наша повозка тише, надёжнее и не воняет керосином!»</em>. 
+    Толпа попала в классическую <strong>ловушку «быстрой лошади»</strong>: судила о революционном принципе 
+    по младенческим несовершенствам его первого физического воплощения.
+  </p>
+
+  <div class="callout callout-warning">
+    <div class="callout-title">Парадокс Первого Прототипа</div>
+    <strong>Открытие фундаментального принципа всегда опережает метрологию и культуру.</strong> 
+    Когда открыт Закон Счастья, формулы грубы, единицы измерения непривычны, а окружающие требуют мгновенных чудес. 
+    Ожидать от прототипа 1886 года комфорта современного представительского седана — значит совершать эпистемологическую ошибку.
+  </div>
+
+  <h2>Четыре правила защиты авторского открытия:</h2>
+
+  <div class="protocol-grid">
+    <div class="protocol-card">
+      <span class="tag">Правило 1</span><strong>Не путать дефект с тупиком принципа</strong>
+      Перетёртый провод или засор карбюратора у Бенца не отменяли термодинамику цикла Отто. Несовершенство ранних техник калибровки счастья — это техническое задание на доработку, а не повод возвращаться к лошадиному кнуту.
+    </div>
+
+    <div class="protocol-card">
+      <span class="tag">Правило 2</span><strong>Онтологический фильтр критики</strong>
+      Бенц игнорировал советы кучеров смазать ремни дегтем или кормить мотор овсом. Советы адептов «железной воли» неприменимы к сверхпроводящему контуру. Слушать только тех, кто понимает логику замкнутой цепи.
+    </div>
+
+    <div class="protocol-card">
+      <span class="tag">Правило 3</span><strong>Преодоление метрологического разрыва</strong>
+      Если академическая наука ещё не выпустила внешний «прибор счастья», единственным эталоном истины остаётся ваша личная телеметрия: заземлённость Тандэна, нулевой нагрев головы и лёгкость протекания тока.
+    </div>
+
+    <div class="protocol-card">
+      <span class="tag">Правило 4</span><strong>Ставка на масштабируемость</strong>
+      Лошадь биологически невозможно разогнать до 150 км/ч — разорвётся сердце. Автомобиль уже через 30 лет штурмовал 200 км/ч. Закон Счастья масштабируется на любые нагрузки, в отличие от хрупкой силы воли.
+    </div>
+  </div>
+
+  <div class="callout callout-quote">
+    <div class="callout-title">Формула стойкости Автора</div>
+    «Пусть толпа требует готовых чудес прямо сейчас. Проницательный ум видит в несовершенном прототипе разгадку кода вселенной. Мы не спорим с насмешками — мы просто продолжаем растачивать цилиндры».
+  </div>
+</div>
+
+<!-- ==================== СТРАНИЦА 4: БЛОК III ==================== -->
+<div class="page-divider">
+  <h1>Блок III. Автомобиль как Физический Якорь (Статья 191)</h1>
+
+  <p>
+    Главная слабость духовных и психологических учений — <strong>ловушка «монастырского гаража»</strong>. 
+    Пока практик изолирован в келье или ретрите, он спокоен и просветлён. Но в плотном городском потоке 
+    абстрактные наставления («будь в моменте», «отпусти эго») мгновенно испаряются. 
+    Человеческому неокортексу жизненно необходим <strong>вещный, осязаемый изоморфизм</strong>.
+  </p>
+
+  <div class="callout callout-quote">
+    <div class="callout-title">Материализация невидимого</div>
+    «Автомобиль — это экстернализованная нервная система человека. Когда физика ДВС накладывается 
+    на соматику тела, Закон Счастья превращается из туманной философии в строгую приборную панель».
+  </div>
+
+  <h2>Приборная панель сознания: 4 базовых датчика</h2>
+
+  <div class="protocol-grid">
+    <div class="protocol-card">
+      <span class="tag">Прибор 1</span><strong>Термометр сопротивления</strong>
+      <div style="font-size: 7.5pt; color: #475569; margin: 2px 0;">Закон Джоуля-Ленца: <span class="math-inline">Q = I^2 R t</span></div>
+      Стрелка ползёт в красную зону при росте обиды, спора или сжатия челюсти. Не нагревайте двигатель волевым нажимом — обнулите <span class="math-inline">R</span> через расслабление диафрагмы.
+    </div>
+
+    <div class="protocol-card">
+      <span class="tag">Прибор 2</span><strong>Тахометр Тандэна</strong>
+      <div style="font-size: 7.5pt; color: #475569; margin: 2px 0;">Обороты ядра и центр тяжести</div>
+      Контролирует баланс массы. Всплытие внимания в голову разгоняет тахометр до панических оборотов. Сброс внимания на 3 см ниже пупка переводит мотор в ровный бас холостого хода.
+    </div>
+
+    <div class="protocol-card">
+      <span class="tag">Прибор 3</span><strong>Лампа Check Engine</strong>
+      <div style="font-size: 7.5pt; color: #475569; margin: 2px 0;">Диагностика паразитных утечек</div>
+      Внезапный упадок сил — не приговор, а индикатор пробитой прокладки: ток уходит на чужие ожидания. Немедленная остановка в боксах и устранение утечки внимания.
+    </div>
+
+    <div class="protocol-card">
+      <span class="tag">Прибор 4</span><strong>Ступени 6-ступенчатой КПП</strong>
+      <div style="font-size: 7.5pt; color: #475569; margin: 2px 0;">Сцепление и крутящий момент</div>
+      Грубая ошибка — трогаться в гору на 5-й передаче (пытаться решить сложнейшую задачу с наскока). Первая передача — сверхмалый микрошаг. Мощность растёт по мере разгона.
+    </div>
+  </div>
+
+  <h2>Пять физических изоморфизмов контура</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 24%;">Узел машины</th>
+        <th style="width: 38%;">Физический процесс</th>
+        <th style="width: 38%;">Соматический аналог в теле</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Свеча зажигания</strong></td>
+        <td>Высоковольтная искра воспламеняет горючую смесь.</td>
+        <td>Ольфакторно-акустический триггер (Versace Triad, «Leggera», щелчок пальцев).</td>
+      </tr>
+      <tr>
+        <td><strong>Радиатор охлаждения</strong></td>
+        <td>Циркуляция антифриза и отвод избыточного тепла.</td>
+        <td>Длинный выдох через рот, опускание плеч, сброс избыточной важности исхода.</td>
+      </tr>
+      <tr>
+        <td><strong>Бензобак</strong></td>
+        <td>Герметичный резервуар высокооктанового топлива.</td>
+        <td>Глубокий сон, защита сенсорных фильтров, гигиена информационного поля.</td>
+      </tr>
+      <tr>
+        <td><strong>Коробка передач</strong></td>
+        <td>Трансформация момента вращения под рельеф дороги.</td>
+        <td>Шкала состояний: от нейтрали чистого покоя до форсажа масштабного творчества.</td>
+      </tr>
+      <tr>
+        <td><strong>Рулевое управление</strong></td>
+        <td>Прямой механический контроль вектора колёс.</td>
+        <td>Фокус взгляда: куда направлен луч присутствия, туда неумолимо движется вся жизнь.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ==================== СТРАНИЦА 5: БЛОК IV & V ==================== -->
+<div class="page-divider">
+  <h1>Блок IV & V. Педагогика Пересадки и Экспресс-ТО Контура</h1>
+
+  <p>
+    Кучер отказывается садиться в автомобиль не из упрямства, а из страха потерять идентичность. 
+    Пять тысяч лет страдание служило оправданием его достоинства. Педагогика пересадки строится 
+    в три последовательных психологических шага:
+  </p>
+
+  <div class="callout callout-success">
+    <div class="callout-title">Шаг 1. Снятие вины (Пост-моральное облегчение)</div>
+    Перевести человека с языка морали на язык физики: <em>«Ты истощался не потому, что ты ленив или слаб. 
+    Ты истощался потому, что использовал биологический кнут вместо законов проводимости. Твой стресс — это перегрев обмотки, а не дефект души»</em>. Это снимает первичное сопротивление <span class="math-inline">R</span>.
+  </div>
+
+  <div class="callout callout-quote">
+    <div class="callout-title">Шаг 2. 30-секундный соматический тест-драйв</div>
+    Никаких долгих лекций. Посадите человека в кресло, зафиксируйте спину, опустите внимание в Тандэн, 
+    расслабьте нижнюю челюсть и подайте чистый сенсорный якорь. Дайте телу пережить: <strong>«Машина везёт сама. Напрягаться не требуется»</strong>.
+  </div>
+
+  <div class="callout callout-warning">
+    <div class="callout-title">Шаг 3. Присвоение статуса Водителя-Соинженера</div>
+    Мы не обещаем потребительский комфорт «на блюдечке». Мы говорим: <em>«Ты не пассажир такси, ты испытатель. Если двигатель заглох — мы не плачем, а открываем капот и настраиваем подачу смеси»</em>.
+  </div>
+
+  <h2>Блок V. Ежедневный 5-минутный регламент утреннего ТО</h2>
+
+  <ol>
+    <li>
+      <span class="tag tag-success">00:00–01:00</span> <strong>Проверка опорного давления и массы:</strong>
+      Сядьте ровно, стопы всей плоскостью на полу. Уроните центр тяжести на 3 см ниже пупка. Уберите паразитное напряжение с плеч, шеи и надбровных дуг.
+    </li>
+    <li>
+      <span class="tag tag-success">01:00–02:00</span> <strong>Продувка магистрали (Обнуление R):</strong>
+      Один глубокий вдох животом и протяжный выдох с беззвучным звуком облегчения. Сбросьте внутреннее сопротивление: «Я никому ничего не доказываю, я настраиваю проводимость».
+    </li>
+    <li>
+      <span class="tag tag-success">02:00–03:00</span> <strong>Подача искры (Зажигание):</strong>
+      Акустический щелчок пальцами или вдох знакомого аромата. Включение внутреннего ровного гула. Контур замкнут, паразитные мысли отключены.
+    </li>
+    <li>
+      <span class="tag tag-success">03:00–04:30</span> <strong>Калибровка ступеней КПП на день:</strong>
+      Оцените задачи дня. Назначьте сложным узлам первую передачу (микродействие). Не включайте высшие передачи на холодном моторе.
+    </li>
+    <li>
+      <span class="tag tag-danger">04:30–05:00</span> <strong>Аварийный протокол закипания:</strong>
+      Если днем в суете стрелка температуры поползет вверх — <strong>немедленно заглушите мотор</strong>. 
+      Полная тишина на 180 секунд охлаждает радиатор и спасает двигатель от капительного ремонта.
+    </li>
+  </ol>
+
+  <div class="footer-note">
+    <strong>Манифест Владимира Аньянова:</strong> Мы навсегда распрягаем уставших лошадей воли. 
+    Впереди — бескрайнее шоссе сверхпроводимости, где каждый километр пути подтверждает триумф открытого Закона Счастья.
+  </div>
+</div>
+
+</body>
+</html>
+"""
+
+# Write HTML file
+with open(OUTPUT_HTML, "w", encoding="utf-8") as f:
+    f.write(HTML_CONTENT)
+print(f"Saved HTML to: {OUTPUT_HTML}")
+
+# Render to PDF using Playwright
+print("Launching Playwright to render PDF...")
+with sync_playwright() as p:
+    browser = p.chromium.launch(headless=True)
+    page = browser.new_page()
+    page.goto(f"file:///{OUTPUT_HTML.replace(os.sep, '/')}", wait_until="networkidle")
+    
+    # Generate PDF
+    os.makedirs(os.path.dirname(OUTPUT_PDF), exist_ok=True)
+    page.pdf(
+        path=OUTPUT_PDF,
+        format="A4",
+        print_background=True,
+        margin={"top": "0mm", "bottom": "0mm", "left": "0mm", "right": "0mm"}
+    )
+    browser.close()
+
+# Also copy to root and public/books
+import shutil
+shutil.copy2(OUTPUT_PDF, ROOT_PDF)
+os.makedirs(os.path.dirname(PUBLIC_PDF), exist_ok=True)
+shutil.copy2(OUTPUT_PDF, PUBLIC_PDF)
+
+size_kb = os.path.getsize(OUTPUT_PDF) / 1024
+print(f"SUCCESS! Rendered PDF at: {OUTPUT_PDF}")
+print(f"PDF Size: {size_kb:.1f} KB")
+print(f"Copied to: {ROOT_PDF}")
+print(f"Copied to: {PUBLIC_PDF}")

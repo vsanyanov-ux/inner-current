@@ -15,6 +15,7 @@ const MIME_TYPES = {
   '.png': 'image/png',
   '.svg': 'image/svg+xml',
   '.ico': 'image/x-icon',
+  '.pdf': 'application/pdf',
   '.mp3': 'audio/mpeg',
   '.m4a': 'audio/mp4',
   '.m4b': 'audio/mp4',

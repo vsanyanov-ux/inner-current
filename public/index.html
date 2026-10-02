@@ -156,15 +156,15 @@
             </div>
           </button>
 
-          <!-- Tab 6: The Quintet Library -->
+          <!-- Tab 6: The Septet Library -->
           <button id="nav-tab-book" onclick="switchTab('book')" class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden bg-slate-950/40 border-slate-800 hover:border-slate-700 cursor-pointer">
             <span class="text-xl shrink-0" id="nav-icon-book">📚</span>
             <div class="flex-1 min-w-0">
               <div class="flex items-center justify-between gap-1">
                 <span class="text-xs font-bold text-slate-200 group-hover:text-amber-300 transition truncate" id="nav-title-book">
-                  6. Золотой квинтет
+                  6. Золотая семёрка
                 </span>
-                <span class="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">5 книг</span>
+                <span class="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">7 книг</span>
               </div>
               <p class="text-[10px] text-slate-400 truncate mt-0.5">Вся библиотека • Веб-ридеры • PDF</p>
             </div>
@@ -2938,20 +2938,20 @@
 
       <!-- VIEW 6: THE GOLDEN QUINTET (LIBRARY OF 5 BOOKS) -->
       <div id="view-book" class="space-y-6 hidden">
-        <!-- Main Quintet Header -->
+        <!-- Main Septet Header -->
         <header class="bg-gradient-to-r from-slate-900 via-slate-900/95 to-amber-950/30 border border-slate-800 rounded-2xl p-6 backdrop-blur-md shadow-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
             <div class="flex items-center gap-3">
               <span class="text-3xl">📚</span>
               <h1 class="text-2xl md:text-3xl font-bold tracking-tight bg-gradient-to-r from-amber-400 via-amber-300 to-sky-300 bg-clip-text text-transparent">
-                Золотой Квинтет Владимира Аньянова
+                Золотая Семёрка Владимира Аньянова
               </h1>
               <span class="text-xs uppercase tracking-widest px-2.5 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-full font-mono">
-                5 канонических книг
+                7 канонических книг
               </span>
             </div>
             <p class="text-slate-400 text-sm mt-1">
-              Полная замкнутая экосистема: от экспресс-отладки острой боли до высшей онтологии, музыки и устройства общества
+              Полная замкнутая экосистема: от экспресс-отладки острой боли и детского праймера до высшей онтологии, музыки, академического препринта и Великого Синтеза цивилизаций
             </p>
           </div>
           <div class="flex flex-wrap items-center gap-2">
@@ -2964,16 +2964,16 @@
           </div>
         </header>
 
-        <!-- 5 Books Interactive Showcase Grid -->
+        <!-- 6 Books Interactive Showcase Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           
-          <!-- Book 1: Field Manual (NEW) -->
+          <!-- Book 1: Field Manual -->
           <div class="bg-gradient-to-b from-amber-950/30 to-slate-900 border border-amber-500/40 rounded-2xl p-5 shadow-xl flex flex-col justify-between relative group hover:border-amber-400 transition-all duration-300">
             <div class="space-y-3">
               <div class="flex items-center justify-between">
                 <span class="text-2xl">🧰</span>
                 <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold">
-                  Аптечка боли • NEW
+                  Аптечка боли
                 </span>
               </div>
               <div>
@@ -3032,7 +3032,41 @@
             </div>
           </div>
 
-          <!-- Book 3: Ukulele (Acoustics) -->
+          <!-- Book 3: Copernicus (Ego Anatomy & Freedom) -->
+          <div class="bg-gradient-to-b from-amber-950/25 via-slate-900 to-slate-950 border border-amber-500/50 rounded-2xl p-5 shadow-xl flex flex-col justify-between relative group hover:border-amber-400 transition-all duration-300">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl">🪞</span>
+                <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold">
+                  Коперниканский переворот • NEW
+                </span>
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-slate-100 group-hover:text-amber-300 transition">
+                  Коперник Сознания
+                </h3>
+                <p class="text-xs text-amber-400/90 font-medium mt-0.5">
+                  Анатомия эго и физика внутренней свободы
+                </p>
+              </div>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Почему сопротивление не может быть проводником ($I_{\text{life}} \neq R_{\text{ego}}$). Эффект Земмельвейса (эго как немытые руки), акустика дребезжащего колка укулеле и метафора раскалённого угля без 20 лет сидения в пещерах.
+              </p>
+            </div>
+            <div class="pt-4 mt-2 border-t border-slate-800/80 flex items-center gap-2">
+              <button onclick="selectBookToRead('copernicus')" class="flex-1 py-2 px-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition text-center cursor-pointer shadow-md shadow-amber-500/20">
+                📖 Читать в ридере
+              </button>
+              <a href="books/copernicus.pdf" download title="Скачать PDF (1.5 МБ)" class="px-3 py-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-semibold transition flex items-center gap-1">
+                <span>📥</span> PDF
+              </a>
+              <a href="books/copernicus.html" target="_blank" title="Открыть в отдельной вкладке" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
+                ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- Book 4: Ukulele (Acoustics) -->
           <div class="bg-gradient-to-b from-sky-950/20 to-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl flex flex-col justify-between relative group hover:border-sky-500/40 transition-all duration-300">
             <div class="space-y-3">
               <div class="flex items-center justify-between">
@@ -3066,7 +3100,7 @@
             </div>
           </div>
 
-          <!-- Book 4: Kids Primer (Happiness Architecture) -->
+          <!-- Book 5: Kids Primer (Happiness Architecture) -->
           <div class="bg-gradient-to-b from-indigo-950/20 to-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl flex flex-col justify-between relative group hover:border-indigo-500/40 transition-all duration-300">
             <div class="space-y-3">
               <div class="flex items-center justify-between">
@@ -3097,8 +3131,8 @@
             </div>
           </div>
 
-          <!-- Book 5: White Paper (Macro) -->
-          <div class="bg-gradient-to-b from-emerald-950/20 to-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl flex flex-col justify-between relative group hover:border-emerald-500/40 transition-all duration-300 md:col-span-2 lg:col-span-2">
+          <!-- Book 6: White Paper (Macro) -->
+          <div class="bg-gradient-to-b from-emerald-950/20 to-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl flex flex-col justify-between relative group hover:border-emerald-500/40 transition-all duration-300">
             <div class="space-y-3">
               <div class="flex items-center justify-between">
                 <span class="text-2xl">📜</span>
@@ -3108,22 +3142,56 @@
               </div>
               <div>
                 <h3 class="text-base font-bold text-slate-100 group-hover:text-emerald-300 transition">
-                  Inner Current: White Paper (Engineering Architecture)
+                  Inner Current: White Paper
                 </h3>
                 <p class="text-xs text-emerald-400/90 font-medium mt-0.5">
                   Суверенный термодинамический контур духа, денег и общества
                 </p>
               </div>
               <p class="text-xs text-slate-400 leading-relaxed">
-                Цивилизационный манифест свободного прямого потока (Zero Parasitic Rent). Структурный изоморфизм Протокола Сатоши Накамото (Биткоин), Единого налога Генри Джорджа и Архитектуры счастья Аньянова. Ликвидация паразитных посредников во всех средах.
+                Цивилизационный манифест свободного прямого потока (Zero Parasitic Rent). Структурный изоморфизм Протокола Сатоши Накамото (Биткоин), Единого налога Генри Джорджа и Архитектуры счастья Аньянова.
               </p>
             </div>
-            <div class="pt-4 mt-2 border-t border-slate-800/80 flex items-center gap-3">
-              <a href="books/whitepaper.pdf" download class="py-2.5 px-5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition flex items-center gap-2 shadow-lg shadow-emerald-500/20">
-                <span>📥</span> Скачать White Paper PDF (167 КБ)
+            <div class="pt-4 mt-2 border-t border-slate-800/80 flex items-center gap-2">
+              <a href="books/whitepaper.pdf" download class="flex-1 py-2 px-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition text-center shadow-lg shadow-emerald-500/20">
+                📥 Скачать PDF
               </a>
-              <a href="books/whitepaper.pdf" target="_blank" class="py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold transition">
-                Открыть в браузере ↗
+              <a href="books/whitepaper.pdf" target="_blank" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
+                ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- Book 7: The Great Synthesis (Civilizational Keystone) -->
+          <div class="bg-gradient-to-b from-amber-950/40 via-slate-900 to-slate-950 border border-amber-500/60 rounded-2xl p-6 shadow-2xl flex flex-col justify-between relative group hover:border-amber-400 transition-all duration-300 md:col-span-2 lg:col-span-3">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-3xl">👑</span>
+                <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold">
+                  Замковая плита • Книга VII • NEW
+                </span>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-slate-100 group-hover:text-amber-300 transition">
+                  Великий Синтез: Революции Материи, Трагедия Духа и Электродинамика Человека
+                </h3>
+                <p class="text-xs md:text-sm text-amber-400/90 font-medium mt-0.5">
+                  Историко-цивилизационная кульминация Системы Аньянова: схождение физики, техники, религии и эпохи ИИ
+                </p>
+              </div>
+              <p class="text-xs md:text-sm text-slate-300 leading-relaxed">
+                Как Коперник, Ньютон, Ватт, Фарадей, Максвелл, Бенц, Циолковский и Сатоши преобразили вещество через замкнутые контуры, почему 10 000 лет исканий духа (Будда, Христос, Кант, Толстой, психоанализ) потерпели крах из-за морального кнута ($Q = I^2 R t$), и как Внутренний ток соединил две половины бытия в формуле сверхпроводимости ($R_{\text{ego}} \to 0$).
+              </p>
+            </div>
+            <div class="pt-5 mt-3 border-t border-slate-800/80 flex flex-wrap items-center gap-3">
+              <button onclick="selectBookToRead('great_synthesis')" class="flex-1 min-w-[200px] py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-bold text-xs md:text-sm transition text-center cursor-pointer shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2">
+                <span>📖</span> Читать в ридере
+              </button>
+              <a href="books/great_synthesis.pdf" download title="Скачать PDF (белый титул, 30 стр.)" class="py-2.5 px-4 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs md:text-sm font-semibold transition flex items-center gap-1.5">
+                <span>📥</span> PDF книги (30 стр.)
+              </a>
+              <a href="books/great_synthesis.html" target="_blank" title="Открыть в отдельной вкладке" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs md:text-sm transition">
+                ↗ На весь экран
               </a>
             </div>
           </div>
@@ -3192,11 +3260,17 @@
               <button id="reader-btn-canonical" onclick="selectBookToRead('canonical')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white">
                 🏛 Архитектура счастья
               </button>
+              <button id="reader-btn-copernicus" onclick="selectBookToRead('copernicus')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white">
+                🪞 Коперник Сознания
+              </button>
               <button id="reader-btn-ukulele" onclick="selectBookToRead('ukulele')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white">
                 🎸 Укулеле Бытия
               </button>
               <button id="reader-btn-primer" onclick="selectBookToRead('primer')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white">
-                🧒 Праймер счастья (Суперкостюм)
+                🧒 Праймер счастья
+              </button>
+              <button id="reader-btn-great_synthesis" onclick="selectBookToRead('great_synthesis')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white">
+                👑 Великий Синтез
               </button>
             </div>
             <div class="flex items-center gap-2">
@@ -3263,10 +3337,12 @@
       const extBtn = document.getElementById('readerOpenExternalBtn');
       const btnManual = document.getElementById('reader-btn-field_manual');
       const btnCanonical = document.getElementById('reader-btn-canonical');
+      const btnCopernicus = document.getElementById('reader-btn-copernicus');
       const btnUkulele = document.getElementById('reader-btn-ukulele');
       const btnPrimer = document.getElementById('reader-btn-primer');
+      const btnGreatSynthesis = document.getElementById('reader-btn-great_synthesis');
 
-      const allBtns = [btnManual, btnCanonical, btnUkulele, btnPrimer];
+      const allBtns = [btnManual, btnCanonical, btnCopernicus, btnUkulele, btnPrimer, btnGreatSynthesis];
       allBtns.forEach(b => {
         if (b) b.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white';
       });
@@ -3277,12 +3353,18 @@
       if (bookKey === 'canonical') {
         src = 'book/index.html';
         targetBtn = btnCanonical;
+      } else if (bookKey === 'copernicus') {
+        src = 'books/copernicus.html';
+        targetBtn = btnCopernicus;
       } else if (bookKey === 'ukulele') {
         src = 'books/ukulele.html';
         targetBtn = btnUkulele;
       } else if (bookKey === 'primer') {
         src = 'books/primer.html';
         targetBtn = btnPrimer;
+      } else if (bookKey === 'great_synthesis' || bookKey === 'synthesis') {
+        src = 'books/great_synthesis.html';
+        targetBtn = btnGreatSynthesis;
       } else {
         src = 'books/field_manual.html';
         targetBtn = btnManual;
@@ -3401,13 +3483,13 @@
         if (typeof mc_updateCircuit === 'function') {
           mc_updateCircuit();
         }
-      } else if (tabId === 'book' || tabId === 'reader' || tabId === 'quintet' || tabId === 'library') {
+      } else if (tabId === 'book' || tabId === 'reader' || tabId === 'quintet' || tabId === 'sextet' || tabId === 'septet' || tabId === 'library') {
         if (viewBook) viewBook.classList.remove('hidden');
         if (navBook) navBook.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + activeClassGold;
 
-        activeBadge.textContent = 'ЗОЛОТОЙ КВИНТЕТ (5 КНИГ)';
+        activeBadge.textContent = 'ЗОЛОТАЯ СЕМЁРКА (7 КНИГ)';
         activeBadge.className = 'text-amber-400 font-bold';
-        modeDesc.textContent = 'Библиотека Системы Аньянова: 5 канонических книг (Практический мануал, Архитектура счастья, Укулеле Бытия, Детский праймер, White Paper).';
+        modeDesc.textContent = 'Библиотека Системы Аньянова: 7 канонических книг (Полевой мануал, Архитектура счастья, Коперник Сознания, Укулеле Бытия, Праймер счастья, White Paper, Великий Синтез).';
       } else if (tabId === 'audiobook' || tabId === 'audio' || tabId === 'listen') {
         if (viewAudiobook) viewAudiobook.classList.remove('hidden');
         if (navAudiobook) navAudiobook.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + activeClassCyan;

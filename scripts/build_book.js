@@ -645,8 +645,8 @@ function buildEdition(edition) {
 
     /* Print styles */
     @media print {
-      .topbar, .sidebar, .font-controls, .lang-switcher { display: none !important; }
-      .reader-container { padding: 0 !important; width: 100% !important; }
+      .topbar, .sidebar, .font-controls, .lang-switcher, #bookBottomPlayer, .hero-audio-cta { display: none !important; }
+      .reader-container { padding: 0 !important; width: 100% !important; margin: 0 !important; }
       .reader-article { max-width: 100% !important; color: #111 !important; font-size: 11pt !important; }
       body { background: #fff !important; color: #111 !important; }
       h1, h2, h3 { color: #000 !important; page-break-after: avoid; }

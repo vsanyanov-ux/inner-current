@@ -1,0 +1,42 @@
+[Script Info]
+Title: Ukulele of Consciousness
+ScriptType: v4.00+
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+YCbCr Matrix: TV.601
+PlayResX: 1080
+PlayResY: 1920
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Header,Arial,58,&H00FFFFFF,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,6,2,8,40,40,140,1
+Style: Subtitle,Arial,64,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,7,3,2,60,60,420,1
+Style: SubtitleGold,Arial,66,&H0000D7FF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,8,4,2,60,60,420,1
+Style: SubtitleGreen,Arial,66,&H0099D334,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,8,4,2,60,60,420,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:12.01,Header,,0,0,0,,{\an8\bord6\shad3\c&H00D7FF&}СКОЛЬКО ВЕСИТ ДУША?{\c&HFFFFFF&}
+Dialogue: 0,0:00:12.01,0:00:21.72,Header,,0,0,0,,{\an8\bord6\shad3\c&H34D399&}ОШИБКА 2500 ЛЕТ{\c&HFFFFFF&}
+Dialogue: 0,0:00:21.72,0:00:36.46,Header,,0,0,0,,{\an8\bord6\shad3\c&H00D7FF&}СМОТРИ НА ПАЛЬЦАХ{\c&HFFFFFF&}
+Dialogue: 0,0:00:36.46,0:00:48.81,Header,,0,0,0,,{\an8\bord6\shad3\c&H4141FF&}МЁРТВАЯ ХВАТКА ЭГО{\c&HFFFFFF&}
+Dialogue: 0,0:00:48.81,0:00:58.59,Header,,0,0,0,,{\an8\bord6\shad3\c&H34D399&}ТОК = РЕЗОНАНС{\c&HFFFFFF&}
+Dialogue: 0,0:00:58.59,0:01:09.60,Header,,0,0,0,,{\an8\bord6\shad3\c&H00D7FF&}НАСТРОЙ СВОЙ ТОК{\c&HFFFFFF&}
+
+Dialogue: 0,0:00:00.10,0:00:05.50,Subtitle,,0,0,0,,Ученые веками спорят,\N{\c&H00D7FF&}СКОЛЬКО ВЕСИТ ДУША?{\c&HFFFFFF&}
+Dialogue: 0,0:00:05.50,0:00:11.91,SubtitleGold,,0,0,0,,Укулеле — 400 граммов.\NА музыка — {\c&H34D399&}НОЛЬ ГРАММОВ!{\c&HFFFFFF&}
+
+Dialogue: 0,0:00:12.11,0:00:17.01,Subtitle,,0,0,0,,Две с половиной тысячи лет споров:\Nчто первично — {\c&H00D7FF&}МАТЕРИЯ ИЛИ ДУХ?{\c&HFFFFFF&}
+Dialogue: 0,0:00:17.01,0:00:21.62,SubtitleGreen,,0,0,0,,Но на самом деле\Nникакой {\c&H34D399&}ЗАГАДКИ НЕТ!{\c&HFFFFFF&}
+
+Dialogue: 0,0:00:21.82,0:00:27.72,Subtitle,,0,0,0,,Смотри на пальцах: материя — это {\c&H00D7FF&}КОРПУС,{\c&HFFFFFF&}\Nа дух — его {\c&H34D399&}ЗВУЧАНИЕ!{\c&HFFFFFF&}
+Dialogue: 0,0:00:27.72,0:00:36.36,SubtitleGold,,0,0,0,,Музыка не «вселяется» в дерево.\NДух — это {\c&H00D7FF&}ЧИСТЫЙ ЗВУК МАТЕРИИ!{\c&HFFFFFF&}
+
+Dialogue: 0,0:00:36.56,0:00:42.46,Subtitle,,0,0,0,,Почему люди выгорают?\NВцепляются в контроль {\c&H4141FF&}МЁРТВОЙ ХВАТКОЙ!{\c&HFFFFFF&}
+Dialogue: 0,0:00:42.46,0:00:48.71,SubtitleGold,,0,0,0,,Пережал гриф — и вместо радости\N{\c&H4141FF&}ПОЛУЧАЕТСЯ СКРИП И БОЛЬ!{\c&HFFFFFF&}
+
+Dialogue: 0,0:00:48.91,0:00:53.31,SubtitleGreen,,0,0,0,,Всё, что нужно —\N{\c&H34D399&}ОТПУСТИТЬ ЗАЖИМ!{\c&HFFFFFF&}
+Dialogue: 0,0:00:53.31,0:00:58.49,Subtitle,,0,0,0,,Живот расслаблен, руки свободны —\Nток радости от {\c&H00D7FF&}ЛЁГКОГО КАСАНИЯ!{\c&HFFFFFF&}
+
+Dialogue: 0,0:00:58.69,0:01:03.09,Subtitle,,0,0,0,,Твоё тело — это инструмент.\N{\c&H34D399&}НАУЧИСЬ ЗВУЧАТЬ!{\c&HFFFFFF&}
+Dialogue: 0,0:01:03.09,0:01:09.50,SubtitleGold,,0,0,0,,Подпишись на канал, чтобы\N{\c&H00D7FF&}НАСТРОИТЬ ВНУТРЕННИЙ ТОК!{\c&HFFFFFF&}
