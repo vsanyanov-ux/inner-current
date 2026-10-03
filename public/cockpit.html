@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inner Current Cockpit — Пульт Сверхпроводимости</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #060911;
+      color: #e2e8f0;
+    }
+    
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Glows and animations */
+    .glow-cyan {
+      box-shadow: 0 0 25px -5px rgba(56, 189, 248, 0.25);
+    }
+    .glow-amber {
+      box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.25);
+    }
+    .glow-emerald {
+      box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.25);
+    }
+    .glow-purple {
+      box-shadow: 0 0 25px -5px rgba(168, 85, 247, 0.25);
+    }
+    .glow-red {
+      box-shadow: 0 0 25px -5px rgba(239, 68, 68, 0.35);
+    }
+
+    @keyframes pulse-wire {
+      0%, 100% { stroke-opacity: 0.4; }
+      50% { stroke-opacity: 1; }
+    }
+    .circuit-pulse {
+      animation: pulse-wire 2s ease-in-out infinite;
+    }
+
+    @keyframes dash {
+      to { stroke-dashoffset: -32; }
+    }
+    .wire-flow {
+      stroke-dasharray: 6 6;
+      animation: dash 1.2s linear infinite;
+    }
+
+    @keyframes overheat-pulse {
+      0%, 100% { border-color: rgba(239, 68, 68, 0.4); background-color: rgba(239, 68, 68, 0.03); }
+      50% { border-color: rgba(239, 68, 68, 0.9); background-color: rgba(239, 68, 68, 0.08); }
+    }
+    .card-overheat {
+      animation: overheat-pulse 2s infinite ease-in-out;
+    }
+
+    /* Custom scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090e1a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 3px;
+    }
+    /* Automotive cluster styling */
+    .car-cluster-bg {
+      background: radial-gradient(circle at 50% 0%, rgba(30, 41, 59, 0.4) 0%, rgba(6, 9, 17, 0.95) 75%), #060911;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+    .auto-lamp {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .lamp-bezel {
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.9), 0 1px 2px rgba(255, 255, 255, 0.05);
+    }
+    .lamp-idle {
+      opacity: 0.35;
+      filter: grayscale(80%);
+      border-color: #1e293b;
+      background: rgba(15, 23, 42, 0.6);
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.8);
+    }
+    .lamp-idle:hover {
+      opacity: 0.65;
+      filter: grayscale(30%);
+      border-color: #334155;
+    }
+    .lamp-red-active {
+      opacity: 1 !important;
+      filter: none !important;
+      color: #fee2e2 !important;
+      border-color: #ef4444 !important;
+      background: radial-gradient(circle, rgba(239, 68, 68, 0.35) 0%, rgba(153, 27, 27, 0.6) 100%) !important;
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.8), inset 0 0 12px rgba(254, 202, 202, 0.5) !important;
+      animation: pulse-lamp-red 1.2s infinite ease-in-out;
+    }
+    .lamp-amber-active {
+      opacity: 1 !important;
+      filter: none !important;
+      color: #fef3c7 !important;
+      border-color: #f59e0b !important;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.35) 0%, rgba(180, 83, 9, 0.6) 100%) !important;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.8), inset 0 0 12px rgba(254, 240, 138, 0.5) !important;
+      animation: pulse-lamp-amber 1.2s infinite ease-in-out;
+    }
+    @keyframes pulse-lamp-red {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.8)); }
+      50% { transform: scale(1.03); filter: drop-shadow(0 0 22px rgba(239, 68, 68, 1)); }
+    }
+    @keyframes pulse-lamp-amber {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.8)); }
+      50% { transform: scale(1.03); filter: drop-shadow(0 0 22px rgba(245, 158, 11, 1)); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
+
+  <!-- ============================================================== -->
+  <!-- HEADER & TELEMETRY BAR                                         -->
+  <!-- ============================================================== -->
+  <header class="border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-md sticky top-0 z-40">
+    <div class="max-w-[1700px] mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-4">
+      
+      <!-- Logo and Subtitle -->
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20 text-white font-bold text-xl">
+          ⚡
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <h1 class="text-lg font-bold tracking-tight text-white flex items-center gap-2">
+              INNER CURRENT COCKPIT
+              <span class="text-xs px-2 py-0.5 rounded-full bg-cyan-950/80 text-cyan-400 border border-cyan-800/60 font-mono">v1.0 • Сверхпроводимость</span>
+            </h1>
+          </div>
+          <p class="text-xs text-slate-400">Пульт управления замкнутым контуром познания: Тандэн → R&D → Дэай → YouTube → Возврат</p>
+        </div>
+      </div>
+
+      <!-- Live Telemetry Sensors -->
+      <div class="flex items-center gap-3 sm:gap-6 text-xs font-mono">
+        <!-- КПД Сверхпроводимости -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-lg px-3 py-2 flex items-center gap-2.5">
+          <div class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></div>
+          <div>
+            <div class="text-[10px] text-slate-400 uppercase tracking-wider">КПД Потока ($\eta$)</div>
+            <div class="text-sm font-bold text-cyan-300" id="stat-efficiency">0%</div>
+          </div>
+        </div>
+
+        <!-- Активных квантов -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-lg px-3 py-2 flex items-center gap-2.5">
+          <div class="w-2.5 h-2.5 rounded-full bg-blue-400"></div>
+          <div>
+            <div class="text-[10px] text-slate-400 uppercase tracking-wider">Ток в цепи</div>
+            <div class="text-sm font-bold text-slate-200" id="stat-active">0</div>
+          </div>
+        </div>
+
+        <!-- Омический перегрев (> 3 дней) -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-lg px-3 py-2 flex items-center gap-2.5">
+          <div class="w-2.5 h-2.5 rounded-full bg-amber-500" id="dot-overheat"></div>
+          <div>
+            <div class="text-[10px] text-slate-400 uppercase tracking-wider">Перегрев (&gt;3д)</div>
+            <div class="text-sm font-bold text-amber-400" id="stat-overheat">0</div>
+          </div>
+        </div>
+
+        <!-- Замкнуто в Тандэн -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-lg px-3 py-2 flex items-center gap-2.5">
+          <div class="w-2.5 h-2.5 rounded-full bg-emerald-400"></div>
+          <div>
+            <div class="text-[10px] text-slate-400 uppercase tracking-wider">Замкнуто (↺)</div>
+            <div class="text-sm font-bold text-emerald-400" id="stat-completed">0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center space-x-2">
+        <a href="/wiki" target="_blank" class="px-3 py-1.5 rounded-lg border border-sky-500/40 bg-sky-950/40 text-sky-300 hover:text-white hover:bg-sky-900/60 text-xs font-medium transition flex items-center gap-1.5" title="Открыть Онлайн-Базу Знаний (230+ статей)">
+          <span>📚 База Знаний (Вики)</span>
+        </a>
+        <a href="/" target="_blank" class="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:text-white hover:bg-slate-800 text-xs font-medium transition flex items-center gap-1.5" title="Открыть симулятор цепи">
+          <span>🎛️ Тренажер</span>
+        </a>
+        <button onclick="openCreateModal()" class="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-medium text-xs shadow-md shadow-cyan-500/20 transition flex items-center gap-1.5">
+          <span class="text-base leading-none">+</span> Зафиксировать сбой / квант
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ============================================================== -->
+  <!-- INTERACTIVE CIRCUIT VISUALIZER (TOP)                           -->
+  <!-- ============================================================== -->
+  <section class="border-b border-slate-800/60 bg-gradient-to-b from-slate-950/60 to-slate-900/40 px-4 py-4">
+    <div class="max-w-[1700px] mx-auto">
+      <div class="flex items-center justify-between mb-2">
+        <div class="text-[11px] font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+          <span class="inline-block w-2 h-2 rounded-full bg-cyan-500"></span>
+          Схемотехнический монитор движения кванта по 4 тактам
+        </div>
+        <div class="text-[11px] font-mono text-slate-500">
+          Клик по узлу — быстрая подсветка этапа
+        </div>
+      </div>
+
+      <div class="relative bg-slate-950/80 border border-slate-800/80 rounded-xl p-4 overflow-x-auto">
+        <div class="min-w-[850px] flex items-center justify-between relative px-6 py-2">
+          
+          <!-- Loop Line connecting everything -->
+          <svg class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 0;">
+            <line x1="10%" y1="50%" x2="90%" y2="50%" stroke="#1e293b" stroke-width="3" />
+            <line x1="10%" y1="50%" x2="90%" y2="50%" stroke="#0ea5e9" stroke-width="2" class="wire-flow opacity-60" />
+            <!-- Return wire bottom arc -->
+            <path d="M 85% 65% C 85% 100%, 15% 100%, 15% 65%" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" class="opacity-70" />
+          </svg>
+
+          <!-- Node 0 -->
+          <div onclick="filterByStage(0)" class="relative z-10 flex flex-col items-center cursor-pointer group">
+            <div class="w-12 h-12 rounded-xl bg-slate-900 border-2 border-cyan-500/80 group-hover:border-cyan-400 flex items-center justify-center text-xl shadow-lg shadow-cyan-500/20 transition group-hover:scale-105">
+              🔋
+            </div>
+            <span class="text-xs font-bold text-cyan-300 mt-2">0. ТАНДЭН</span>
+            <span class="text-[10px] text-slate-400">Личный затык</span>
+          </div>
+
+          <div class="relative z-10 text-cyan-500/50 font-mono text-xs">──(R→0)──▶</div>
+
+          <!-- Node 1 -->
+          <div onclick="filterByStage(1)" class="relative z-10 flex flex-col items-center cursor-pointer group">
+            <div class="w-12 h-12 rounded-xl bg-slate-900 border-2 border-amber-500/80 group-hover:border-amber-400 flex items-center justify-center text-xl shadow-lg shadow-amber-500/20 transition group-hover:scale-105">
+              🔬
+            </div>
+            <span class="text-xs font-bold text-amber-300 mt-2">1. R&D-СИНТЕЗ</span>
+            <span class="text-[10px] text-slate-400">Мануал в Wiki</span>
+          </div>
+
+          <div class="relative z-10 text-amber-500/50 font-mono text-xs">──(Стенд)──▶</div>
+
+          <!-- Node 2 -->
+          <div onclick="filterByStage(2)" class="relative z-10 flex flex-col items-center cursor-pointer group">
+            <div class="w-12 h-12 rounded-xl bg-slate-900 border-2 border-emerald-500/80 group-hover:border-emerald-400 flex items-center justify-center text-xl shadow-lg shadow-emerald-500/20 transition group-hover:scale-105">
+              🧪
+            </div>
+            <span class="text-xs font-bold text-emerald-300 mt-2">2. ДЭАЙ (ТЕСТ)</span>
+            <span class="text-[10px] text-slate-400">Полевой стенд</span>
+          </div>
+
+          <div class="relative z-10 text-emerald-500/50 font-mono text-xs">──(Индукция)──▶</div>
+
+          <!-- Node 3 -->
+          <div onclick="filterByStage(3)" class="relative z-10 flex flex-col items-center cursor-pointer group">
+            <div class="w-12 h-12 rounded-xl bg-slate-900 border-2 border-purple-500/80 group-hover:border-purple-400 flex items-center justify-center text-xl shadow-lg shadow-purple-500/20 transition group-hover:scale-105">
+              📡
+            </div>
+            <span class="text-xs font-bold text-purple-300 mt-2">3. YOUTUBE</span>
+            <span class="text-[10px] text-slate-400">Внешняя сеть</span>
+          </div>
+
+          <div class="relative z-10 text-purple-500/50 font-mono text-xs">──(Резонанс)──▶</div>
+
+          <!-- Node 4 (Loop) -->
+          <div onclick="filterByStage(4)" class="relative z-10 flex flex-col items-center cursor-pointer group">
+            <div class="w-12 h-12 rounded-xl bg-slate-900 border-2 border-teal-400 group-hover:border-teal-300 flex items-center justify-center text-xl shadow-lg shadow-teal-500/30 transition group-hover:scale-105">
+              ↺
+            </div>
+            <span class="text-xs font-bold text-teal-300 mt-2">ЗАМКНУТО</span>
+            <span class="text-[10px] text-teal-400 font-medium">Ток вернулся!</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- AUTOMOTIVE DASHBOARD: 7 EMERGENCY WARNING LAMPS OF CONSCIOUSNESS -->
+  <!-- ============================================================== -->
+  <section class="border-b border-slate-800/80 car-cluster-bg px-4 py-4 relative select-none">
+    <div class="max-w-[1700px] mx-auto">
+      
+      <!-- Cluster Header with Ignition and Status -->
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-3.5 pb-2.5 border-b border-slate-800/80">
+        <div class="flex items-center space-x-3">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500/30 to-rose-600/30 border border-amber-500/50 flex items-center justify-center text-amber-300 font-bold text-base shadow-md shadow-amber-500/20">
+            🚗
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h2 class="text-xs sm:text-sm font-bold tracking-wider text-slate-100 uppercase font-mono flex items-center gap-2">
+                ПРИБОРНАЯ ПАНЕЛЬ СОЗНАНИЯ: 7 АВАРИЙНЫХ ЛАМП
+              </h2>
+              <span id="cluster-faults-badge" class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-950/80 text-emerald-400 border border-emerald-800/60 shadow-sm">
+                СИСТЕМА НОРМА: 0 СБОЕВ
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-400">Бортовая диагностика 7 фатальных ловушек оператора • Клик по лампе открывает протокол сброса</p>
+          </div>
+        </div>
+
+        <!-- OBD-II Digital LCD Screen & Cluster Buttons -->
+        <div class="flex flex-wrap items-center gap-2.5">
+          <!-- Digital Gauge LCD -->
+          <div class="bg-black/90 border border-slate-700/80 rounded-lg px-3.5 py-1.5 font-mono shadow-inner flex items-center gap-3">
+            <div>
+              <div class="text-[8px] text-slate-500 tracking-widest uppercase">БОРТОВОЙ КОМПЬЮТЕР (OBD-II)</div>
+              <div id="cluster-lcd-status" class="text-xs font-bold text-emerald-400 tracking-wider">
+                ● NOMINAL: ВСЕ 7 СИСТЕМ В СВЕРХПРОВОДИМОСТИ
+              </div>
+            </div>
+            <div id="cluster-lcd-dtc" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 text-slate-400 border border-slate-800">
+              DTC: 0
+            </div>
+          </div>
+
+          <!-- Ignition Test Button -->
+          <button onclick="testIgnitionSequence()" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-amber-500/60 hover:bg-amber-950/40 text-amber-300 font-mono text-xs flex items-center gap-1.5 shadow-sm transition active:scale-95 cursor-pointer" title="Поворот ключа зажигания: тест всех 7 ламп со звуковым сигналом">
+            <span>🔑</span> <span>Зажигание (Тест ламп)</span>
+          </button>
+
+          <!-- Clear All Faults -->
+          <button onclick="clearAllFaults()" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 hover:bg-slate-800 text-slate-300 font-mono text-xs flex items-center gap-1.5 transition active:scale-95 cursor-pointer" title="Сбросить все активные коды ошибок">
+            <span>🔄</span> <span>Сброс DTC</span>
+          </button>
+
+          <!-- Toggle Sound -->
+          <button id="btn-cluster-sound" onclick="toggleClusterAudio()" class="px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-400 text-xs font-mono transition" title="Звуковые сигналы бортового компьютера">
+            <span id="icon-cluster-sound">🔊</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 7 Automotive Warning Lamps Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 pt-1" id="automotive-lamps-container">
+        <!-- Generated via renderAutomotiveCluster() in JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- CONTROLS & FILTER BAR                                          -->
+  <!-- ============================================================== -->
+  <section class="max-w-[1700px] w-full mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 text-xs">
+    
+    <!-- Search Input -->
+    <div class="relative flex-1 min-w-[240px] max-w-md">
+      <input type="text" id="search-input" oninput="renderBoard()" placeholder="Поиск по затыкам, мануалам, законам цепи..." class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-1.5 pl-8 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 text-xs">
+      <span class="absolute left-2.5 top-2 text-slate-500">🔍</span>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="flex flex-wrap items-center gap-1.5" id="category-filters">
+      <button onclick="setCategoryFilter('all')" class="category-btn active px-2.5 py-1 rounded-md bg-cyan-600/30 text-cyan-300 border border-cyan-500/40">Все категории</button>
+      <button onclick="setCategoryFilter('Отношения / Дэай')" class="category-btn px-2.5 py-1 rounded-md bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700">Отношения</button>
+      <button onclick="setCategoryFilter('Коммуникация / Дзансин')" class="category-btn px-2.5 py-1 rounded-md bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700">Споры / Дзансин</button>
+      <button onclick="setCategoryFilter('Продуктивность / Тандэн')" class="category-btn px-2.5 py-1 rounded-md bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700">Продуктивность</button>
+      <button onclick="setCategoryFilter('Здоровье / Биофизика')" class="category-btn px-2.5 py-1 rounded-md bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700">Здоровье / Тело</button>
+      <button onclick="toggleOverheatOnly()" id="btn-overheat-filter" class="px-2.5 py-1 rounded-md bg-slate-900 text-amber-400 border border-amber-500/40 hover:bg-amber-950/30 flex items-center gap-1">
+        🔥 Только перегретые
+      </button>
+    </div>
+
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- 5-STAGE KANBAN & CIRCUIT TRACK                                 -->
+  <!-- ============================================================== -->
+  <main class="flex-1 max-w-[1700px] w-full mx-auto px-4 sm:px-6 py-4 overflow-x-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 min-w-[1250px] items-start pb-12">
+      
+      <!-- STAGE 0: ТАНДЭН -->
+      <div class="stage-column flex flex-col bg-slate-950/60 border border-slate-800/80 rounded-xl p-3" data-stage="0">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-800/80 mb-3">
+          <div class="flex items-center space-x-2">
+            <span class="text-cyan-400 text-sm">🔋</span>
+            <h2 class="text-xs font-bold tracking-wide text-cyan-300 uppercase font-mono">0. Тандэн</h2>
+          </div>
+          <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-cyan-950/80 text-cyan-400 border border-cyan-800/50" id="badge-count-0">0</span>
+        </div>
+        <p class="text-[11px] text-slate-400 mb-3">Сырой соматический затык, страх или сбой цепи в быту.</p>
+        <div class="space-y-3 min-h-[300px]" id="column-cards-0"></div>
+      </div>
+
+      <!-- STAGE 1: R&D-СИНТЕЗ (МАНУАЛ) -->
+      <div class="stage-column flex flex-col bg-slate-950/60 border border-slate-800/80 rounded-xl p-3" data-stage="1">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-800/80 mb-3">
+          <div class="flex items-center space-x-2">
+            <span class="text-amber-400 text-sm">🔬</span>
+            <h2 class="text-xs font-bold tracking-wide text-amber-300 uppercase font-mono">1. R&D-Мануал</h2>
+          </div>
+          <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-amber-950/80 text-amber-400 border border-amber-800/50" id="badge-count-1">0</span>
+        </div>
+        <p class="text-[11px] text-slate-400 mb-3">Схемотехника сбоя, формула рубильника, статья в Obsidian Wiki.</p>
+        <div class="space-y-3 min-h-[300px]" id="column-cards-1"></div>
+      </div>
+
+      <!-- STAGE 2: ДЭАЙ (ТЕСТ) -->
+      <div class="stage-column flex flex-col bg-slate-950/60 border border-slate-800/80 rounded-xl p-3" data-stage="2">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-800/80 mb-3">
+          <div class="flex items-center space-x-2">
+            <span class="text-emerald-400 text-sm">🧪</span>
+            <h2 class="text-xs font-bold tracking-wide text-emerald-300 uppercase font-mono">2. Дэай / Стенд</h2>
+          </div>
+          <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-emerald-950/80 text-emerald-400 border border-emerald-800/50" id="badge-count-2">0</span>
+        </div>
+        <p class="text-[11px] text-slate-400 mb-3">Полевая обкатка на людях / ситуации. Замер омического трения.</p>
+        <div class="space-y-3 min-h-[300px]" id="column-cards-2"></div>
+      </div>
+
+      <!-- STAGE 3: YOUTUBE / САЙТ -->
+      <div class="stage-column flex flex-col bg-slate-950/60 border border-slate-800/80 rounded-xl p-3" data-stage="3">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-800/80 mb-3">
+          <div class="flex items-center space-x-2">
+            <span class="text-purple-400 text-sm">📡</span>
+            <h2 class="text-xs font-bold tracking-wide text-purple-300 uppercase font-mono">3. Индукция</h2>
+          </div>
+          <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-purple-950/80 text-purple-400 border border-purple-800/50" id="badge-count-3">0</span>
+        </div>
+        <p class="text-[11px] text-slate-400 mb-3">YouTube Shorts, видео, статья. Трансляция проверенного кейса.</p>
+        <div class="space-y-3 min-h-[300px]" id="column-cards-3"></div>
+      </div>
+
+      <!-- STAGE 4: ЗАМКНУТО (ОБРАТНЫЙ ПРОВОД) -->
+      <div class="stage-column flex flex-col bg-slate-950/60 border border-teal-800/50 rounded-xl p-3" data-stage="4">
+        <div class="flex items-center justify-between pb-2 border-b border-teal-800/80 mb-3">
+          <div class="flex items-center space-x-2">
+            <span class="text-teal-400 text-sm">↺</span>
+            <h2 class="text-xs font-bold tracking-wide text-teal-300 uppercase font-mono">Замкнуто</h2>
+          </div>
+          <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-teal-950/80 text-teal-400 border border-teal-800/50" id="badge-count-4">0</span>
+        </div>
+        <p class="text-[11px] text-teal-400/80 mb-3">Ток вернулся в Тандэн! Резонанс мира, новые кванты, сверхпроводимость.</p>
+        <div class="space-y-3 min-h-[300px]" id="column-cards-4"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ============================================================== -->
+  <!-- MODAL: CREATE / EDIT QUANTUM                                   -->
+  <!-- ============================================================== -->
+  <div id="quantum-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-6 relative">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+        <h3 class="text-base font-bold text-white flex items-center gap-2" id="modal-title">
+          <span>⚡</span> Зафиксировать квант тока
+        </h3>
+        <button onclick="closeModal()" class="text-slate-400 hover:text-white text-lg">✕</button>
+      </div>
+
+      <form id="quantum-form" onsubmit="saveQuantum(event)" class="mt-4 space-y-4 text-xs">
+        <input type="hidden" id="form-id">
+
+        <!-- Название -->
+        <div>
+          <label class="block font-medium text-slate-300 mb-1">Название затыка / темы кванта *</label>
+          <input type="text" id="form-title" required class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-slate-100 focus:border-cyan-500 focus:outline-none" placeholder="Например: Знакомство с девушками: страх подойти и ошибка фонарика">
+        </div>
+
+        <!-- Категория и Этап -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-medium text-slate-300 mb-1">Категория</label>
+            <select id="form-category" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-slate-100 focus:border-cyan-500 focus:outline-none">
+              <option value="Отношения / Дэай">Отношения / Дэай</option>
+              <option value="Коммуникация / Дзансин">Коммуникация / Дзансин</option>
+              <option value="Продуктивность / Тандэн">Продуктивность / Тандэн</option>
+              <option value="Здоровье / Биофизика">Здоровье / Биофизика</option>
+              <option value="Теория / Физика цепи">Теория / Физика цепи</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-medium text-slate-300 mb-1">Текущий такт цепи</label>
+            <select id="form-stage" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-slate-100 focus:border-cyan-500 focus:outline-none font-mono">
+              <option value="0">0. Тандэн (Личный затык)</option>
+              <option value="1">1. R&D-Мануал (Синтез)</option>
+              <option value="2">2. Дэай / Стенд (Полевой тест)</option>
+              <option value="3">3. YouTube / Сайт (Индукция)</option>
+              <option value="4">4. Замкнуто (Обратный провод)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Сопротивление R_ego -->
+        <div>
+          <div class="flex justify-between items-center mb-1">
+            <label class="font-medium text-slate-300">Начальное паразитное сопротивление $R_{\text{ego}}$: <span id="r-ego-val" class="font-bold text-amber-400 font-mono">7 Ω</span></label>
+            <span class="text-[10px] text-slate-500">1 = легкое волнение, 10 = глухой омический паралич</span>
+          </div>
+          <input type="range" id="form-r-ego" min="1" max="10" value="7" oninput="document.getElementById('r-ego-val').innerText = this.value + ' Ω'" class="w-full accent-cyan-400">
+        </div>
+
+        <!-- Соматика и Закон цепи -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-medium text-slate-300 mb-1">0. Соматический симптом (тело)</label>
+            <textarea id="form-somatic" rows="2" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-slate-100 focus:border-cyan-500 focus:outline-none" placeholder="Зажим в горле, учащенный пульс, тяжесть в плечах..."></textarea>
+          </div>
+          <div>
+            <label class="block font-medium text-slate-300 mb-1">0. Нарушенный закон цепи</label>
+            <textarea id="form-circuit-law" rows="2" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-slate-100 focus:border-cyan-500 focus:outline-none" placeholder="Ошибка фонарика, КЗ на эго, емкость будущего C_future..."></textarea>
+          </div>
+        </div>
+
+        <!-- 1. R&D Мануал -->
+        <div class="border-t border-slate-800 pt-3">
+          <label class="block font-medium text-amber-400 mb-1">1. R&D: Название мануала и формула рубильника</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <input type="text" id="form-manual-title" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-slate-100 focus:border-amber-500 focus:outline-none" placeholder="Название мануала (например: Протокол Дэай)">
+            <input type="text" id="form-switch-formula" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-slate-100 focus:border-amber-500 focus:outline-none" placeholder="Формула рубильника за 30 сек">
+          </div>
+        </div>
+
+        <!-- 2. Дэай Тест -->
+        <div class="border-t border-slate-800 pt-3">
+          <label class="block font-medium text-emerald-400 mb-1">2. Дэай: Результаты полевого стенда</label>
+          <textarea id="form-field-notes" rows="2" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-slate-100 focus:border-emerald-500 focus:outline-none" placeholder="Как повели себя люди? Упало ли напряжение? Что откорректировать в формулировках?"></textarea>
+        </div>
+
+        <!-- 3. YouTube & Возврат -->
+        <div class="border-t border-slate-800 pt-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-medium text-purple-400 mb-1">3. YouTube Хук / Формат</label>
+            <input type="text" id="form-media-hook" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-slate-100 focus:border-purple-500 focus:outline-none" placeholder="Заголовок для Shorts / видео">
+          </div>
+          <div>
+            <label class="block font-medium text-teal-400 mb-1">↺ Возврат чистой энергии (Тандэн)</label>
+            <input type="text" id="form-energy-return" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-slate-100 focus:border-teal-500 focus:outline-none" placeholder="Просмотры, комментарии, ощущение в теле">
+          </div>
+        </div>
+
+        <div class="flex justify-end gap-3 pt-4 border-t border-slate-800">
+          <button type="button" onclick="closeModal()" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300">Отмена</button>
+          <button type="submit" class="px-5 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-medium shadow-md shadow-cyan-600/30">Сохранить квант</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- MODAL: AUTOMOTIVE DIAGNOSTIC & SERVICE PROTOCOL                -->
+  <!-- ============================================================== -->
+  <div id="diagnostic-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700/80 rounded-2xl max-w-2xl w-full max-h-[92vh] overflow-y-auto shadow-2xl p-6 relative">
+      
+      <!-- Modal Header -->
+      <div class="flex items-start justify-between pb-4 border-b border-slate-800">
+        <div class="flex items-center space-x-3.5">
+          <div id="diag-modal-icon-container" class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl font-bold shadow-lg border">
+            <span id="diag-modal-symbol">🛑</span>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span id="diag-modal-code" class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 font-bold">
+                ERR-P0101
+              </span>
+              <span id="diag-modal-status-pill" class="text-[10px] font-mono px-2 py-0.5 rounded-full font-bold">
+                ТРЕВОГА АКТИВНА
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-1" id="diag-modal-title">
+              Затянутый Ручник
+            </h3>
+            <p class="text-xs text-slate-400" id="diag-modal-subtitle">
+              Синдром Данко • Квадратичная воля
+            </p>
+          </div>
+        </div>
+        <button onclick="closeDiagnosticModal()" class="text-slate-400 hover:text-white text-xl p-1 rounded-lg hover:bg-slate-800 transition">✕</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="mt-4 space-y-4 text-xs">
+        
+        <!-- Formula & Physical Law Banner -->
+        <div class="p-3 rounded-xl bg-slate-950/90 border border-slate-800 flex items-center justify-between font-mono">
+          <div class="flex items-center gap-2">
+            <span class="text-cyan-400">⚡ Физика цепи:</span>
+            <span class="text-slate-200 font-bold" id="diag-modal-formula">Q = I² · R · t</span>
+          </div>
+          <span class="text-[10px] text-slate-500" id="diag-modal-formula-desc">Закон Джоуля-Ленца</span>
+        </div>
+
+        <!-- Somatics / Body Symptoms -->
+        <div class="p-3.5 rounded-xl bg-rose-950/20 border border-rose-900/40">
+          <div class="text-rose-400 font-bold flex items-center gap-1.5 mb-1 text-[11px] uppercase tracking-wider">
+            <span>🫀</span> <span>Соматика в теле (Датчик оператора)</span>
+          </div>
+          <p class="text-slate-300 leading-relaxed text-xs" id="diag-modal-somatic"></p>
+        </div>
+
+        <!-- The Fatal Trap -->
+        <div class="p-3.5 rounded-xl bg-amber-950/20 border border-amber-900/40">
+          <div class="text-amber-400 font-bold flex items-center gap-1.5 mb-1 text-[11px] uppercase tracking-wider">
+            <span>⚠️</span> <span>Суть ловушки & Причина поломки</span>
+          </div>
+          <p class="text-slate-300 leading-relaxed text-xs" id="diag-modal-trap"></p>
+        </div>
+
+        <!-- Service Protocol Steps (Remedy) -->
+        <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-emerald-400 font-bold flex items-center gap-1.5 text-[11px] uppercase tracking-wider">
+              <span>🔧</span> <span>Протокол устранения сбоя (Сервисный регламент за 60 сек)</span>
+            </span>
+            <span class="text-[10px] text-slate-500">Чек-лист</span>
+          </div>
+          <div class="space-y-2" id="diag-modal-steps"></div>
+        </div>
+
+        <!-- Wiki Link -->
+        <div class="flex items-center justify-between text-[11px] pt-1 text-slate-400 border-t border-slate-800/80">
+          <span>Статья #226 в Базе Знаний (LLM Wiki):</span>
+          <span class="text-cyan-400 font-mono text-[10px]">Inner Current (Life Operating System)</span>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer Actions -->
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-4 mt-4 border-t border-slate-800">
+        
+        <!-- Toggle Test Alarm -->
+        <button type="button" id="diag-btn-toggle-test" onclick="toggleCurrentLampAlarm()" class="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-mono transition flex items-center gap-1.5 cursor-pointer">
+          <span>🧪</span> <span id="diag-btn-toggle-text">Включить тревогу</span>
+        </button>
+
+        <div class="flex items-center gap-2">
+          <!-- Convert to Cockpit Quantum -->
+          <button type="button" onclick="convertCurrentLampToQuantum()" class="px-3.5 py-1.5 rounded-lg border border-cyan-500/50 bg-cyan-950/40 hover:bg-cyan-900/50 text-cyan-300 text-xs font-medium transition flex items-center gap-1.5 shadow-sm cursor-pointer" title="Создать карточку затыка в такт 0 (Тандэн)">
+            <span>⚡</span> <span>В квант Cockpit (Такт 0)</span>
+          </button>
+
+          <!-- Complete Protocol & Clear DTC -->
+          <button type="button" onclick="executeCurrentLampRemedy()" class="px-4 py-1.5 rounded-lg bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-medium text-xs shadow-md shadow-emerald-600/30 transition flex items-center gap-1.5 cursor-pointer">
+            <span>✅</span> <span>Выполнить протокол & Сбросить DTC</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 border border-cyan-500/50 text-slate-100 px-4 py-3 rounded-xl shadow-2xl transition transform translate-y-20 opacity-0 flex items-center gap-3 text-xs">
+    <span id="toast-icon" class="text-cyan-400 text-base">⚡</span>
+    <span id="toast-msg">Уведомление</span>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- JAVASCRIPT LOGIC                                               -->
+  <!-- ============================================================== -->
+  <script>
+    let allIdeas = [];
+    let currentFilterCategory = 'all';
+    let filterOverheatOnly = false;
+    let selectedStageFilter = null;
+
+    // Load ideas from Server API
+    async function fetchIdeas() {
+      try {
+        const res = await fetch('/api/cockpit/ideas');
+        if (!res.ok) throw new Error('Ошибка связи с сервером');
+        allIdeas = await res.json();
+        renderBoard();
+        updateTelemetry();
+      } catch (err) {
+        showToast('⚠️ Ошибка загрузки идей: ' + err.message, '⚠️');
+      }
+    }
+
+    // Render cards across all columns
+    function renderBoard() {
+      const searchVal = document.getElementById('search-input').value.toLowerCase();
+
+      // Clear columns
+      for (let s = 0; s <= 4; s++) {
+        document.getElementById(`column-cards-${s}`).innerHTML = '';
+      }
+
+      const stageCounts = [0, 0, 0, 0, 0];
+
+      allIdeas.forEach(idea => {
+        // Filters
+        const matchesCategory = currentFilterCategory === 'all' || idea.category === currentFilterCategory;
+        const matchesStage = selectedStageFilter === null || idea.stage === selectedStageFilter;
+        const isOverheated = (idea.days_in_stage >= 3) && (idea.stage < 4);
+        const matchesOverheat = !filterOverheatOnly || isOverheated;
+        const matchesSearch = !searchVal || 
+          idea.title.toLowerCase().includes(searchVal) ||
+          (idea.circuit_law && idea.circuit_law.toLowerCase().includes(searchVal)) ||
+          (idea.manual_title && idea.manual_title.toLowerCase().includes(searchVal)) ||
+          (idea.media_hook && idea.media_hook.toLowerCase().includes(searchVal));
+
+        if (matchesCategory && matchesStage && matchesOverheat && matchesSearch) {
+          const cardHtml = createCardElement(idea);
+          const colEl = document.getElementById(`column-cards-${idea.stage}`);
+          if (colEl) colEl.insertAdjacentHTML('beforeend', cardHtml);
+        }
+
+        stageCounts[idea.stage]++;
+      });
+
+      // Update column badges
+      for (let s = 0; s <= 4; s++) {
+        const badge = document.getElementById(`badge-count-${s}`);
+        if (badge) badge.innerText = stageCounts[s];
+      }
+    }
+
+    // Create HTML for a single Quantum Card
+    function createCardElement(idea) {
+      const isOverheated = (idea.days_in_stage >= 3) && (idea.stage < 4);
+      const stage = Number(idea.stage);
+
+      return `
+        <div class="bg-slate-900/90 border ${isOverheated ? 'border-amber-500/80 card-overheat' : 'border-slate-800'} hover:border-slate-700 rounded-xl p-3.5 transition group relative flex flex-col justify-between text-xs shadow-md">
+          
+          <!-- Top Tag & Resistance -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                ${idea.category}
+              </span>
+              <div class="flex items-center space-x-1.5">
+                ${isOverheated ? `<span class="text-[10px] font-bold text-amber-400 bg-amber-950/80 px-1.5 py-0.5 rounded border border-amber-500/50" title="На этапе более ${idea.days_in_stage} дней">🔥 ${idea.days_in_stage}д перегрев</span>` : `<span class="text-[10px] text-slate-400">${idea.days_in_stage || 0}д</span>`}
+                <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-rose-950/70 text-rose-300 border border-rose-800/40" title="Паразитное сопротивление R_ego">
+                  ${idea.r_ego || 5} Ω
+                </span>
+              </div>
+            </div>
+
+            <!-- Title -->
+            <h4 class="font-semibold text-slate-100 text-xs leading-snug mb-2 group-hover:text-cyan-300 transition">
+              ${idea.title}
+            </h4>
+
+            <!-- Core Details -->
+            <div class="space-y-1.5 text-[11px] text-slate-400 mb-3 bg-slate-950/60 p-2 rounded-lg border border-slate-800/50">
+              ${idea.somatic_symptom ? `<div><span class="text-cyan-400 font-mono">Тело:</span> ${idea.somatic_symptom}</div>` : ''}
+              ${idea.circuit_law ? `<div><span class="text-amber-400 font-mono">Сбой:</span> ${idea.circuit_law}</div>` : ''}
+              ${idea.manual_title ? `<div><span class="text-emerald-400 font-mono">Мануал:</span> ${idea.manual_title}</div>` : ''}
+              ${idea.media_hook ? `<div><span class="text-purple-400 font-mono">YouTube:</span> ${idea.media_hook}</div>` : ''}
+              ${idea.energy_return ? `<div><span class="text-teal-400 font-mono">Возврат:</span> ${idea.energy_return}</div>` : ''}
+            </div>
+          </div>
+
+          <!-- Bottom Actions -->
+          <div class="pt-2 border-t border-slate-800/70 flex items-center justify-between gap-1 text-[11px]">
+            <!-- Prev Stage -->
+            <button onclick="moveStage('${idea.id}', -1)" ${stage === 0 ? 'disabled class="opacity-20 cursor-not-allowed"' : 'class="p-1 rounded hover:bg-slate-800 text-slate-400 hover:text-slate-200"'} title="Сдвинуть назад">
+              ◀
+            </button>
+
+            <!-- Actions Center -->
+            <div class="flex items-center space-x-1">
+              <button onclick="editQuantum('${idea.id}')" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition">
+                ✏️
+              </button>
+              ${stage >= 1 ? `
+                <button onclick="generateWikiManual('${idea.id}')" class="px-2 py-0.5 rounded bg-amber-950/60 hover:bg-amber-900/80 text-amber-300 border border-amber-800/40 transition" title="Создать Markdown-файл в Obsidian Wiki">
+                  📄 Wiki
+                </button>
+              ` : ''}
+              <button onclick="deleteQuantum('${idea.id}')" class="px-1.5 py-0.5 rounded hover:bg-red-950/60 text-slate-500 hover:text-red-400 transition" title="Удалить / сбросить">
+                🗑️
+              </button>
+            </div>
+
+            <!-- Next Stage -->
+            <button onclick="moveStage('${idea.id}', 1)" ${stage === 4 ? 'disabled class="opacity-20 cursor-not-allowed"' : 'class="p-1 rounded hover:bg-slate-800 text-slate-400 hover:text-slate-200"'} title="Продвинуть по контуру">
+              ▶
+            </button>
+          </div>
+
+        </div>
+      `;
+    }
+
+    // Telemetry updates
+    function updateTelemetry() {
+      const total = allIdeas.length;
+      const completed = allIdeas.filter(i => Number(i.stage) === 4).length;
+      const active = total - completed;
+      const overheated = allIdeas.filter(i => i.days_in_stage >= 3 && Number(i.stage) < 4).length;
+      const efficiency = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+      document.getElementById('stat-efficiency').innerText = `${efficiency}%`;
+      document.getElementById('stat-active').innerText = active;
+      document.getElementById('stat-overheat').innerText = overheated;
+      document.getElementById('stat-completed').innerText = completed;
+
+      const dot = document.getElementById('dot-overheat');
+      if (overheated > 0) {
+        dot.classList.add('animate-ping');
+      } else {
+        dot.classList.remove('animate-ping');
+      }
+    }
+
+    // Move quantum along the circuit
+    async function moveStage(id, delta) {
+      const idea = allIdeas.find(i => i.id === id);
+      if (!idea) return;
+      const newStage = Math.max(0, Math.min(4, Number(idea.stage) + delta));
+      if (newStage === idea.stage) return;
+
+      try {
+        const res = await fetch(`/api/cockpit/ideas/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ stage: newStage })
+        });
+        if (!res.ok) throw new Error('Ошибка обновления');
+        const updated = await res.json();
+        const idx = allIdeas.findIndex(i => i.id === id);
+        allIdeas[idx] = updated;
+        renderBoard();
+        updateTelemetry();
+        showToast(`⚡ Квант сдвинут на такт ${newStage}!`);
+      } catch (err) {
+        showToast('⚠️ Сбой: ' + err.message, '⚠️');
+      }
+    }
+
+    // Generate Markdown manual in Obsidian Wiki
+    async function generateWikiManual(id) {
+      const idea = allIdeas.find(i => i.id === id);
+      if (!idea) return;
+
+      try {
+        showToast('⏳ Пайка мануала в Obsidian Wiki...', '⚙️');
+        const res = await fetch('/api/cockpit/generate-wiki', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: idea.manual_title || idea.title,
+            r_ego: idea.r_ego,
+            somatic_symptom: idea.somatic_symptom,
+            circuit_law: idea.circuit_law,
+            switch_formula: idea.switch_formula,
+            field_test_notes: idea.field_test_notes,
+            media_format: idea.media_format,
+            media_hook: idea.media_hook,
+            energy_return: idea.energy_return
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(`✅ Мануал создан: ${data.fileName}! Синхронизирован в Obsidian Vault.`, '📄');
+        } else {
+          throw new Error(data.error);
+        }
+      } catch (err) {
+        showToast('⚠️ Ошибка генерации: ' + err.message, '⚠️');
+      }
+    }
+
+    // Modal logic
+    function openCreateModal() {
+      document.getElementById('modal-title').innerHTML = '<span>⚡</span> Зафиксировать новый квант тока';
+      document.getElementById('quantum-form').reset();
+      document.getElementById('form-id').value = '';
+      document.getElementById('form-stage').value = '0';
+      document.getElementById('form-r-ego').value = '7';
+      document.getElementById('r-ego-val').innerText = '7 Ω';
+      document.getElementById('quantum-modal').classList.remove('hidden');
+    }
+
+    function editQuantum(id) {
+      const idea = allIdeas.find(i => i.id === id);
+      if (!idea) return;
+
+      document.getElementById('modal-title').innerHTML = '<span>✏️</span> Редактировать квант тока';
+      document.getElementById('form-id').value = idea.id;
+      document.getElementById('form-title').value = idea.title || '';
+      document.getElementById('form-category').value = idea.category || 'Отношения / Дэай';
+      document.getElementById('form-stage').value = idea.stage;
+      document.getElementById('form-r-ego').value = idea.r_ego || 5;
+      document.getElementById('r-ego-val').innerText = (idea.r_ego || 5) + ' Ω';
+      document.getElementById('form-somatic').value = idea.somatic_symptom || '';
+      document.getElementById('form-circuit-law').value = idea.circuit_law || '';
+      document.getElementById('form-manual-title').value = idea.manual_title || '';
+      document.getElementById('form-switch-formula').value = idea.switch_formula || '';
+      document.getElementById('form-field-notes').value = idea.field_test_notes || '';
+      document.getElementById('form-media-hook').value = idea.media_hook || '';
+      document.getElementById('form-energy-return').value = idea.energy_return || '';
+
+      document.getElementById('quantum-modal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('quantum-modal').classList.add('hidden');
+    }
+
+    async function saveQuantum(e) {
+      e.preventDefault();
+      const id = document.getElementById('form-id').value;
+      const payload = {
+        title: document.getElementById('form-title').value,
+        category: document.getElementById('form-category').value,
+        stage: Number(document.getElementById('form-stage').value),
+        r_ego: Number(document.getElementById('form-r-ego').value),
+        somatic_symptom: document.getElementById('form-somatic').value,
+        circuit_law: document.getElementById('form-circuit-law').value,
+        manual_title: document.getElementById('form-manual-title').value,
+        switch_formula: document.getElementById('form-switch-formula').value,
+        field_test_notes: document.getElementById('form-field-notes').value,
+        media_hook: document.getElementById('form-media-hook').value,
+        energy_return: document.getElementById('form-energy-return').value,
+      };
+
+      try {
+        if (id) {
+          // Update
+          const res = await fetch(`/api/cockpit/ideas/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          const updated = await res.json();
+          const idx = allIdeas.findIndex(i => i.id === id);
+          allIdeas[idx] = updated;
+          showToast('⚡ Квант успешно обновлен!');
+        } else {
+          // Create
+          const res = await fetch('/api/cockpit/ideas', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          const created = await res.json();
+          allIdeas.unshift(created);
+          showToast('⚡ Новый квант запущен в цепь!');
+        }
+        closeModal();
+        renderBoard();
+        updateTelemetry();
+      } catch (err) {
+        showToast('⚠️ Ошибка сохранения: ' + err.message, '⚠️');
+      }
+    }
+
+    async function deleteQuantum(id) {
+      if (!confirm('Удалить этот квант из цепи?')) return;
+      try {
+        const res = await fetch(`/api/cockpit/ideas/${id}`, { method: 'DELETE' });
+        if (!res.ok) throw new Error('Ошибка удаления');
+        allIdeas = allIdeas.filter(i => i.id !== id);
+        renderBoard();
+        updateTelemetry();
+        showToast('🗑️ Квант удален из цепи.');
+      } catch (err) {
+        showToast('⚠️ Сбой: ' + err.message, '⚠️');
+      }
+    }
+
+    // Filtering controls
+    function setCategoryFilter(cat) {
+      currentFilterCategory = cat;
+      document.querySelectorAll('.category-btn').forEach(b => {
+        b.classList.remove('bg-cyan-600/30', 'text-cyan-300', 'border-cyan-500/40');
+        b.classList.add('bg-slate-900', 'text-slate-400', 'border-slate-800');
+      });
+      event.target.classList.remove('bg-slate-900', 'text-slate-400', 'border-slate-800');
+      event.target.classList.add('bg-cyan-600/30', 'text-cyan-300', 'border-cyan-500/40');
+      renderBoard();
+    }
+
+    function toggleOverheatOnly() {
+      filterOverheatOnly = !filterOverheatOnly;
+      const btn = document.getElementById('btn-overheat-filter');
+      if (filterOverheatOnly) {
+        btn.classList.add('bg-amber-950', 'text-amber-300', 'border-amber-500');
+      } else {
+        btn.classList.remove('bg-amber-950', 'text-amber-300', 'border-amber-500');
+      }
+      renderBoard();
+    }
+
+    function filterByStage(stage) {
+      if (selectedStageFilter === stage) {
+        selectedStageFilter = null;
+        showToast('Показаны все такты цепи');
+      } else {
+        selectedStageFilter = stage;
+        showToast(`Фокус на такте ${stage}`);
+      }
+      renderBoard();
+    }
+
+    function showToast(msg, icon = '⚡') {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').innerText = msg;
+      document.getElementById('toast-icon').innerText = icon;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3500);
+    }
+
+    // ==============================================================
+    // AUTOMOTIVE DASHBOARD: 7 WARNING LAMPS OF CONSCIOUSNESS ENGINE
+    // ==============================================================
+    const WARNING_LAMPS = [
+      {
+        id: "handbrake",
+        code: "ERR-P0101",
+        symbol: "(P)",
+        color: "red",
+        title: "Затянутый Ручник",
+        subtitle: "Синдром Данко • Квадратичная воля",
+        formula: "Q = I² · R · t",
+        formulaDesc: "Закон Джоуля-Ленца: квадратичный перегрев проводки",
+        somatic: "Сжатые челюсти, каменные трапеции, поверхностное дыхание верхушками легких, ощущение «я тащу этот мир на себе и вот-вот взорвусь от истощения».",
+        trap: "Попытка пробить стену волевым давлением при высоком сопротивлении эго (R). Вся энергия уходит в омическое трение. Проводка плавится, наступает тотальное выгорание и ненависть к делу.",
+        remedySteps: [
+          "1. Полностью сбросить волевое давление: разомкнуть челюсти, бросить плечи вниз, глубокий выдох.",
+          "2. Медленный выдох через рот прямо в Тандэн (низ живота) на 6 счетов.",
+          "3. Формула рубильника: «Я не продавливаю реальность. Ток течет сам через сверхпроводник (R_ego → 0)».",
+          "4. Снять нимб мученика и подвиг Данко — перейти в тихое чистое действие без пафоса."
+        ],
+        cockpitCategory: "Продуктивность / Тандэн",
+        defaultIdeaTitle: "Сброс квадратичной воли: Переход от подвига Данко к сверхпроводимости Тандэна",
+        switchFormula: "R_ego → 0 (выдох в Тандэн) + снятие статуса жертвы: «Ток течет сам через сверхпроводник»."
+      },
+      {
+        id: "coolant",
+        code: "ERR-T0202",
+        symbol: "🌡️",
+        color: "red",
+        title: "Перегрев Антифриза",
+        subtitle: "Экзистенциальный тупик Толстого • M_ext ≡ 0",
+        formula: "M_ext ≡ 0",
+        formulaDesc: "Аксиома разомкнутого контура: внешнего смысла нет",
+        somatic: "Ментальная «жвачка», тяжесть в затылке, апатия, ощущение тщетности любых усилий («зачем всё это делать, если мы всё равно умрем?»).",
+        trap: "Двигатель ревет на отсечке вхолостую (на нейтрали N). Попытка найти смысл жизни как неподвижный предмет на полке будущего вместо того, чтобы быть источником тока прямо сейчас.",
+        remedySteps: [
+          "1. Заглушить двигатель абстрактных мысленных симуляций.",
+          "2. Закон карманного фонарика: смысл — это не пункт назначения, смысл — это свет луча прямо сейчас.",
+          "3. 3 тактильных контакта с миром: почувствовать стопы на полу, выпить глоток воды, ощутить воздух кожей.",
+          "4. Включить фары: сделать одно крошечное физическое действие в моменте t = now (вымыть кружку, написать 1 строчку)."
+        ],
+        cockpitCategory: "Продуктивность / Тандэн",
+        defaultIdeaTitle: "Разморозка кризиса Толстого: Переход от поиска смысла к излучению света",
+        switchFormula: "Заглушить симуляции + «Смысл — это не конечная точка, а свет нити прямо сейчас в t = now»."
+      },
+      {
+        id: "clutch",
+        code: "ERR-C0303",
+        symbol: "⚙️",
+        color: "amber",
+        title: "Пробуксовка Сцепления",
+        subtitle: "Интеллектуальное ожирение • C_future ≫ 0",
+        formula: "C_future ≫ 0, t_idle > 72h",
+        formulaDesc: "Емкостная блокировка: холостой ход теории без заземления",
+        somatic: "Ватность в ногах, ощущение переполненности головы («знаю слишком много»), тревожное желание прочитать еще одну книгу перед стартом.",
+        trap: "Диски сцепления разомкнуты: мотор ревет на 6000 об/мин, прочитаны тонны статей, исписаны тетради, но колеса стоят на месте. Простой идеи > 3 дней превращает ее в омический шлак.",
+        remedySteps: [
+          "1. Включить передачу Drive (D): объявить жесткий мораторий на чтение новой теории на 48 часов.",
+          "2. Закон 72 часов: любой квант знания обязан встретиться с физической реальностью за 3 дня.",
+          "3. Назначить 1 полевой тест Дэай на сегодня: подойти, позвонить, протестировать на живом человеке.",
+          "4. Ощутить сопротивление асфальта под колесами вместо фантазий о будущей победе."
+        ],
+        cockpitCategory: "Продуктивность / Тандэн",
+        defaultIdeaTitle: "Включение передачи Drive: Полевой тест накопившейся теории за 24 часа",
+        switchFormula: "Мораторий на теорию 48ч + правило 72 часов: «Не читать, а включить передачу Drive в поле»."
+      },
+      {
+        id: "esp",
+        code: "ERR-S0404",
+        symbol: "⚡💥",
+        color: "red",
+        title: "Срабатывание ESP / КЗ",
+        subtitle: "Токсичные споры • Битва концепций",
+        formula: "R_load = 0 (Короткое замыкание)",
+        formulaDesc: "Короткое замыкание на чужой резистор с выжиганием клемм",
+        somatic: "Прилив жара к груди и лицу, сжатые кулаки, внутренний монолог с воображаемым оппонентом, зуд доказать свою правоту.",
+        trap: "Попытка силой подать 220 Вольт в закрытый диэлектрик чужого эго. Дуга короткого замыкания выжигает вашу собственную батарею Тандэна.",
+        remedySteps: [
+          "1. Закон Вольтметра: измерительный прибор никогда не спорит с розеткой и не обижается на 110 Вольт.",
+          "2. Мгновенно разомкнуть клеммы: выдержать паузу 10 секунд и занять позицию нейтрального измерителя (Дзансин).",
+          "3. Снять встречное напряжение: «Я не доказываю истину, я лишь замеряю проводимость контакта».",
+          "4. Если проводимости нет — мягко убрать щупы мультиметра без агрессии и споров."
+        ],
+        cockpitCategory: "Коммуникация / Дзансин",
+        defaultIdeaTitle: "Протокол Вольтметра: Замер проводимости оппонента без короткого замыкания",
+        switchFormula: "«Вольтметр не спорит с розеткой» + пауза 10 сек + размыкание клемм (Дзансин)."
+      },
+      {
+        id: "tow",
+        code: "ERR-T0505",
+        symbol: "🔗",
+        color: "amber",
+        title: "Аварийный Буксир",
+        subtitle: "Любовная созависимость • Страх женщин",
+        formula: "Z_in ≠ Z_out",
+        formulaDesc: "Импедансное рассогласование: липкая зависимость от контакта",
+        somatic: "Холодок в животе, заискивающий тон, сутулая пресмыкающаяся осанка, страх отказа («а вдруг я ей не понравлюсь?»).",
+        trap: "Попытка ехать на тросе чужой батареи. Подход к девушке или человеку как нищий с протянутой рукой, умоляющий о подзарядке своей самооценки.",
+        remedySteps: [
+          "1. Отцепить буксировочный трос: ни один человек в мире не обязан быть аккумулятором для вашей самооценки.",
+          "2. Запустить собственный генератор Тандэна: вдох животом, возвращение центра тяжести на 2 пальца ниже пупка.",
+          "3. Протокол Дэай: знакомство — это не прошение милостыни, а проверка импеданса двух свободных генераторов.",
+          "4. Шаг навстречу в Мусин: подойти со спокойными глазами, ровным голосом и нулевым ожиданием результата."
+        ],
+        cockpitCategory: "Отношения / Дэай",
+        defaultIdeaTitle: "Отцепка буксира: Протокол Дэай при знакомстве и автономный Тандэн",
+        switchFormula: "«Я не прошу зарядки, я проверяю проводимость контакта» + R_ego → 0 + Тандэн."
+      },
+      {
+        id: "fuel",
+        code: "ERR-F0606",
+        symbol: "⛽",
+        color: "amber",
+        title: "Не то топливо в баке",
+        subtitle: "Иллюзия аккумулятора вещей • Парадокс BMW",
+        formula: "E_load ≡ 0",
+        formulaDesc: "Внешние объекты — это резисторы нагрузки, а не генераторы ЭДС",
+        somatic: "Зуд обладания, лихорадочный скроллинг витрин и маркетплейсов, эйфория от покупки на пару часов со сменяющей её пустотой.",
+        trap: "Заливка солярки в бензиновый двигатель: слепая вера в то, что внешняя покупка (машина, одежда, гаджет) станет вечным генератором счастья.",
+        remedySteps: [
+          "1. Слить суррогатное топливо: твердо вспомнить аксиому — ни одна вещь в мире не имеет собственной ЭДС (E_load ≡ 0).",
+          "2. Перестать молиться на резисторы нагрузки — они лишь потребляют ток.",
+          "3. Вернуть генератор внутрь: единственное настоящее счастье — это свободный ток через чистый контур сознания.",
+          "4. Взглянуть на вещи трезво: это просто функциональные проводники, а не источники радости."
+        ],
+        cockpitCategory: "Продуктивность / Тандэн",
+        defaultIdeaTitle: "Детокс от суррогатного топлива: Снятие проекции счастья с материальных вещей",
+        switchFormula: "E_load ≡ 0: «Вещи — это резисторы нагрузки. Единственный генератор тока — внутри Тандэна»."
+      },
+      {
+        id: "service",
+        code: "ERR-M0707",
+        symbol: "⏱️",
+        color: "red",
+        title: "Чек Сервис Жизни",
+        subtitle: "Шок «Я и не жил ещё» • Отложенная жизнь",
+        formula: "L_past + C_future → ∞, t_now → 0",
+        formulaDesc: "Потери на индуктивность прошлого и емкость иллюзорного будущего",
+        somatic: "Внезапный приступ щемящего ужаса в груди: «Мне уже столько лет, а настоящая жизнь так и не началась, я всё время готовился жить!».",
+        trap: "Вся энергия жизни рассеивается в конденсатор «завтра, когда доделаю проект» и индуктивность самобичевания за «вчера». Настоящий момент обесточен.",
+        remedySteps: [
+          "1. Полный сброс сервисного интервала прямо сейчас: всё прошлое стёрто, его физически не существует.",
+          "2. Ключ в зажигание в точке t = now: включить стопроцентное присутствие во всех 5 органах чувств.",
+          "3. 3 глубоких заземляющих вдоха в Тандэн: «Я здесь. Цепь замкнута прямо сейчас».",
+          "4. Сверхпроводимость включается мгновенно — не ждите идеальных условий, жизнь уже идет."
+        ],
+        cockpitCategory: "Продуктивность / Тандэн",
+        defaultIdeaTitle: "Сброс сервисного таймера: Мгновенное включение жизни в точке t = now",
+        switchFormula: "«Жизнь происходит только в t = now» + 3 вдоха в Тандэн + мгновенный сброс конденсатора будущего."
+      }
+    ];
+
+    // Automotive Cluster State
+    let activeFaults = new Set();
+    let currentModalLampId = null;
+    let audioContext = null;
+    let isClusterAudioEnabled = localStorage.getItem('ic_cluster_audio') !== 'false';
+
+    // Load active faults from localStorage
+    function loadClusterState() {
+      try {
+        const saved = localStorage.getItem('ic_active_faults');
+        if (saved) {
+          activeFaults = new Set(JSON.parse(saved));
+        }
+      } catch (e) {
+        activeFaults = new Set();
+      }
+      updateAudioButtonUI();
+      renderAutomotiveCluster();
+    }
+
+    function saveClusterState() {
+      localStorage.setItem('ic_active_faults', JSON.stringify(Array.from(activeFaults)));
+    }
+
+    // Audio Synthesizer via Web Audio API
+    function getAudioCtx() {
+      if (!audioContext) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (AudioCtx) audioContext = new AudioCtx();
+      }
+      if (audioContext && audioContext.state === 'suspended') {
+        audioContext.resume();
+      }
+      return audioContext;
+    }
+
+    function playTone(freq, duration = 0.15, type = 'sine', startTime = 0) {
+      if (!isClusterAudioEnabled) return;
+      try {
+        const ctx = getAudioCtx();
+        if (!ctx) return;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, ctx.currentTime + startTime);
+        gain.gain.setValueAtTime(0.08, ctx.currentTime + startTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + startTime + duration);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(ctx.currentTime + startTime);
+        osc.stop(ctx.currentTime + startTime + duration);
+      } catch (e) {}
+    }
+
+    function playAlarmTone() {
+      playTone(750, 0.12, 'sawtooth', 0);
+      playTone(550, 0.18, 'sawtooth', 0.14);
+    }
+
+    function playClearTone() {
+      playTone(523.25, 0.1, 'sine', 0);     // C5
+      playTone(659.25, 0.1, 'sine', 0.1);   // E5
+      playTone(783.99, 0.2, 'sine', 0.2);   // G5
+    }
+
+    function playIgnitionChime() {
+      playTone(440, 0.08, 'sine', 0);
+      playTone(554.37, 0.08, 'sine', 0.1);
+      playTone(659.25, 0.15, 'sine', 0.2);
+    }
+
+    function toggleClusterAudio() {
+      isClusterAudioEnabled = !isClusterAudioEnabled;
+      localStorage.setItem('ic_cluster_audio', isClusterAudioEnabled ? 'true' : 'false');
+      updateAudioButtonUI();
+      if (isClusterAudioEnabled) playClearTone();
+      showToast(isClusterAudioEnabled ? 'Звук приборов включен' : 'Звук приборов выключен');
+    }
+
+    function updateAudioButtonUI() {
+      const btn = document.getElementById('icon-cluster-sound');
+      if (btn) btn.innerText = isClusterAudioEnabled ? '🔊' : '🔇';
+    }
+
+    // Render 7 Lamps on the Cluster
+    function renderAutomotiveCluster() {
+      const container = document.getElementById('automotive-lamps-container');
+      if (!container) return;
+
+      const faultsCount = activeFaults.size;
+      const badge = document.getElementById('cluster-faults-badge');
+      const lcdStatus = document.getElementById('cluster-lcd-status');
+      const lcdDtc = document.getElementById('cluster-lcd-dtc');
+
+      // Update Header Badges & LCD
+      if (faultsCount === 0) {
+        if (badge) {
+          badge.className = 'px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-950/80 text-emerald-400 border border-emerald-800/60 shadow-sm';
+          badge.innerText = 'СИСТЕМА НОРМА: 0 СБОЕВ';
+        }
+        if (lcdStatus) {
+          lcdStatus.className = 'text-xs font-bold text-emerald-400 tracking-wider';
+          lcdStatus.innerText = '● NOMINAL: ВСЕ 7 СИСТЕМ В СВЕРХПРОВОДИМОСТИ';
+        }
+        if (lcdDtc) {
+          lcdDtc.className = 'text-[10px] px-1.5 py-0.5 rounded bg-emerald-950/60 text-emerald-400 border border-emerald-800/50';
+          lcdDtc.innerText = 'DTC: 0';
+        }
+      } else {
+        const faultCodes = Array.from(activeFaults).map(id => {
+          const l = WARNING_LAMPS.find(item => item.id === id);
+          return l ? l.code : id;
+        }).join(', ');
+
+        if (badge) {
+          badge.className = 'px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-rose-950/90 text-rose-300 border border-rose-700 animate-pulse';
+          badge.innerText = `⚠️ СБОЕВ В ЦЕПИ: ${faultsCount}`;
+        }
+        if (lcdStatus) {
+          lcdStatus.className = 'text-xs font-bold text-rose-400 tracking-wider animate-pulse';
+          lcdStatus.innerText = `⚠ FAULT DETECTED: [${faultCodes}]`;
+        }
+        if (lcdDtc) {
+          lcdDtc.className = 'text-[10px] px-1.5 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-800 font-bold';
+          lcdDtc.innerText = `DTC: ${faultsCount}`;
+        }
+      }
+
+      // Generate the 7 Lamp dials
+      container.innerHTML = WARNING_LAMPS.map(lamp => {
+        const isActive = activeFaults.has(lamp.id);
+        const activeClass = lamp.color === 'red' ? 'lamp-red-active' : 'lamp-amber-active';
+        const ringClass = isActive ? activeClass : 'lamp-idle';
+        const statusText = isActive ? 'АВАРИЯ' : 'НОРМА';
+        const statusColor = isActive ? (lamp.color === 'red' ? 'text-rose-400 font-bold' : 'text-amber-400 font-bold') : 'text-slate-500';
+
+        return `
+          <div onclick="openDiagnosticModal('${lamp.id}')" class="auto-lamp group cursor-pointer bg-slate-900/90 border border-slate-800/90 rounded-xl p-3 flex flex-col items-center justify-between transition-all duration-300 hover:border-slate-700 hover:scale-[1.02] shadow-md relative overflow-hidden">
+            
+            <!-- Top Code & Color Dot -->
+            <div class="w-full flex items-center justify-between text-[9px] font-mono text-slate-500 mb-1.5">
+              <span>${lamp.code}</span>
+              <span class="w-1.5 h-1.5 rounded-full ${isActive ? (lamp.color === 'red' ? 'bg-rose-500 animate-ping' : 'bg-amber-500 animate-ping') : 'bg-slate-700'}"></span>
+            </div>
+
+            <!-- Warning Lamp Dial (Icon Bezel) -->
+            <div class="w-12 h-12 rounded-full border-2 flex items-center justify-center text-xl transition-all duration-300 lamp-bezel ${ringClass}">
+              <span class="${isActive ? 'scale-110 drop-shadow-md' : 'opacity-70'}">${lamp.symbol}</span>
+            </div>
+
+            <!-- Title & Status -->
+            <div class="text-center mt-2.5 w-full">
+              <div class="text-[11px] font-bold text-slate-200 group-hover:text-white truncate" title="${lamp.title}">
+                ${lamp.title}
+              </div>
+              <div class="text-[9px] font-mono mt-0.5 ${statusColor} tracking-wider">
+                ${statusText}
+              </div>
+            </div>
+
+            <!-- Subtle hover hint -->
+            <div class="text-[8px] text-slate-500 opacity-0 group-hover:opacity-100 transition mt-1 font-mono">
+              Диагностика ↗
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Diagnostic Modal Logic
+    function openDiagnosticModal(lampId) {
+      currentModalLampId = lampId;
+      const lamp = WARNING_LAMPS.find(l => l.id === lampId);
+      if (!lamp) return;
+
+      const isActive = activeFaults.has(lampId);
+
+      // Icon & Color
+      const iconContainer = document.getElementById('diag-modal-icon-container');
+      const symbolSpan = document.getElementById('diag-modal-symbol');
+      symbolSpan.innerText = lamp.symbol;
+
+      if (isActive) {
+        if (lamp.color === 'red') {
+          iconContainer.className = 'w-12 h-12 rounded-xl flex items-center justify-center text-2xl font-bold shadow-lg border lamp-red-active';
+        } else {
+          iconContainer.className = 'w-12 h-12 rounded-xl flex items-center justify-center text-2xl font-bold shadow-lg border lamp-amber-active';
+        }
+      } else {
+        iconContainer.className = 'w-12 h-12 rounded-xl flex items-center justify-center text-2xl font-bold shadow-lg border lamp-idle text-slate-400';
+      }
+
+      // Texts
+      document.getElementById('diag-modal-code').innerText = lamp.code;
+      document.getElementById('diag-modal-title').innerText = lamp.title;
+      document.getElementById('diag-modal-subtitle').innerText = lamp.subtitle;
+      document.getElementById('diag-modal-formula').innerText = lamp.formula;
+      document.getElementById('diag-modal-formula-desc').innerText = lamp.formulaDesc;
+      document.getElementById('diag-modal-somatic').innerText = lamp.somatic;
+      document.getElementById('diag-modal-trap').innerText = lamp.trap;
+
+      // Status Pill
+      const statusPill = document.getElementById('diag-modal-status-pill');
+      if (isActive) {
+        statusPill.className = 'text-[10px] font-mono px-2 py-0.5 rounded-full font-bold bg-rose-950 text-rose-300 border border-rose-700 animate-pulse';
+        statusPill.innerText = '⚠️ АВАРИЯ АКТИВНА';
+      } else {
+        statusPill.className = 'text-[10px] font-mono px-2 py-0.5 rounded-full font-bold bg-emerald-950 text-emerald-400 border border-emerald-800/60';
+        statusPill.innerText = '● СИСТЕМА В НОРМЕ';
+      }
+
+      // Checklist Steps
+      const stepsContainer = document.getElementById('diag-modal-steps');
+      stepsContainer.innerHTML = lamp.remedySteps.map((step, idx) => `
+        <label class="flex items-start gap-2.5 p-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 cursor-pointer text-slate-200 transition">
+          <input type="checkbox" id="remedy-step-${idx}" class="mt-0.5 accent-emerald-500 w-3.5 h-3.5 rounded">
+          <span class="text-xs leading-relaxed">${step}</span>
+        </label>
+      `).join('');
+
+      // Toggle Button text
+      const toggleBtn = document.getElementById('diag-btn-toggle-text');
+      if (toggleBtn) {
+        toggleBtn.innerText = isActive ? 'Отключить тревогу (Тест)' : 'Включить тревогу (Тест)';
+      }
+
+      document.getElementById('diagnostic-modal').classList.remove('hidden');
+    }
+
+    function closeDiagnosticModal() {
+      document.getElementById('diagnostic-modal').classList.add('hidden');
+      currentModalLampId = null;
+    }
+
+    function toggleCurrentLampAlarm() {
+      if (!currentModalLampId) return;
+      if (activeFaults.has(currentModalLampId)) {
+        activeFaults.delete(currentModalLampId);
+        playClearTone();
+        showToast('Лампа переведена в режим НОРМА');
+      } else {
+        activeFaults.add(currentModalLampId);
+        playAlarmTone();
+        showToast('⚠️ Аварийная тревога включена на приборной панели!');
+      }
+      saveClusterState();
+      renderAutomotiveCluster();
+      openDiagnosticModal(currentModalLampId); // Refresh modal view
+    }
+
+    function executeCurrentLampRemedy() {
+      if (!currentModalLampId) return;
+      
+      // Check all step checkboxes
+      const checkboxes = document.querySelectorAll('#diag-modal-steps input[type="checkbox"]');
+      checkboxes.forEach(cb => cb.checked = true);
+
+      // Clear the fault
+      activeFaults.delete(currentModalLampId);
+      saveClusterState();
+      renderAutomotiveCluster();
+      playClearTone();
+
+      showToast('✅ Протокол выполнен! Код ошибки успешно сброшен (DTC Cleared)', '🛠️');
+      
+      setTimeout(() => {
+        closeDiagnosticModal();
+      }, 700);
+    }
+
+    function clearAllFaults() {
+      activeFaults.clear();
+      saveClusterState();
+      renderAutomotiveCluster();
+      playClearTone();
+      showToast('✅ Все коды неисправностей (DTC) сброшены. Контур чист!', '🚗');
+    }
+
+    // Ignition Test: simulates turning car key, all lamps light up for 2.2 seconds!
+    function testIgnitionSequence() {
+      playIgnitionChime();
+      showToast('🔑 Зажигание: Проверка всех 7 ламп бортового компьютера...', '🚗');
+
+      const originalFaults = new Set(activeFaults);
+      
+      // Temporarily light up all 7 lamps
+      WARNING_LAMPS.forEach(l => activeFaults.add(l.id));
+      renderAutomotiveCluster();
+
+      const lcd = document.getElementById('cluster-lcd-status');
+      if (lcd) {
+        lcd.className = 'text-xs font-bold text-amber-300 tracking-wider animate-pulse';
+        lcd.innerText = '⚡ SYSTEM CHECK IN PROGRESS... ALL LAMPS TESTED';
+      }
+
+      setTimeout(() => {
+        activeFaults = originalFaults;
+        saveClusterState();
+        renderAutomotiveCluster();
+        playClearTone();
+        showToast('✅ Проверка систем завершена. Бортовой компьютер в строю!', '✨');
+      }, 2200);
+    }
+
+    // Convert lamp fault into a real Idea Card in Stage 0 (Тандэн)
+    function convertCurrentLampToQuantum() {
+      if (!currentModalLampId) return;
+      const lamp = WARNING_LAMPS.find(l => l.id === currentModalLampId);
+      if (!lamp) return;
+
+      closeDiagnosticModal();
+      openCreateModal();
+
+      document.getElementById('form-title').value = lamp.defaultIdeaTitle;
+      document.getElementById('form-category').value = lamp.cockpitCategory;
+      document.getElementById('form-stage').value = '0';
+      document.getElementById('form-r-ego').value = '8';
+      document.getElementById('r-ego-val').innerText = '8 Ω';
+      document.getElementById('form-somatic').value = lamp.somatic;
+      document.getElementById('form-circuit-law').value = lamp.trap + ' [' + lamp.formula + ']';
+      document.getElementById('form-manual-title').value = lamp.title + ': Протокол устранения сбоя';
+      document.getElementById('form-switch-formula').value = lamp.switchFormula;
+
+      showToast(`⚡ Сбой [${lamp.code}] перенесен в квант! Заполните детали и сохраните.`, '📝');
+    }
+
+    // Startup
+    fetchIdeas();
+    loadClusterState();
+  </script>
+</body>
+</html>

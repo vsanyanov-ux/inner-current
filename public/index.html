@@ -53,6 +53,21 @@
     ::-webkit-scrollbar-thumb:hover {
       background: #334155;
     }
+    /* Car warning lamps */
+    .lamp-red-active {
+      opacity: 1 !important;
+      color: #fee2e2 !important;
+      border-color: #ef4444 !important;
+      background: radial-gradient(circle, rgba(239, 68, 68, 0.35) 0%, rgba(153, 27, 27, 0.6) 100%) !important;
+      box-shadow: 0 0 15px rgba(239, 68, 68, 0.7) !important;
+    }
+    .lamp-amber-active {
+      opacity: 1 !important;
+      color: #fef3c7 !important;
+      border-color: #f59e0b !important;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.35) 0%, rgba(180, 83, 9, 0.6) 100%) !important;
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.7) !important;
+    }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-amber-500 selection:text-black">
@@ -81,7 +96,62 @@
 
         <!-- Bookmarks Navigation Section -->
         <div class="space-y-2">
-          <div class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-semibold px-2 flex justify-between items-center mb-1.5">
+          <!-- Cockpit Master Link -->
+          <a href="/cockpit" class="w-full text-left p-3 rounded-xl border border-cyan-500/50 bg-gradient-to-r from-cyan-950/60 to-blue-950/40 hover:border-cyan-400 flex items-center gap-3 group relative overflow-hidden transition shadow-lg shadow-cyan-500/10">
+            <span class="text-xl shrink-0">🎛️</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between gap-1">
+                <span class="text-xs font-bold text-cyan-200 group-hover:text-white transition truncate">
+                  Пульт Сверхпроводимости
+                </span>
+                <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-cyan-400/20 text-cyan-300 border border-cyan-400/30">Cockpit</span>
+              </div>
+              <p class="text-[10px] text-slate-300 truncate mt-0.5">Контур познания: Тандэн → YouTube</p>
+            </div>
+          </a>
+
+          <!-- Wiki Master Link -->
+          <a href="/wiki" class="w-full text-left p-3 rounded-xl border border-sky-500/40 bg-gradient-to-r from-sky-950/60 to-indigo-950/40 hover:border-sky-400 flex items-center gap-3 group relative overflow-hidden transition shadow-lg shadow-sky-500/10">
+            <span class="text-xl shrink-0">📚</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between gap-1">
+                <span class="text-xs font-bold text-sky-200 group-hover:text-white transition truncate">
+                  База Знаний (Вики)
+                </span>
+                <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-sky-400/20 text-sky-300 border border-sky-400/30">230+ статей</span>
+              </div>
+              <p class="text-[10px] text-slate-300 truncate mt-0.5">Онлайн-ридер всех слоёв цепи</p>
+            </div>
+          </a>
+
+          <!-- Automotive Dashboard 7 Warning Lamps Card -->
+          <div class="p-3 rounded-xl border border-amber-500/30 bg-gradient-to-b from-slate-900/90 to-slate-950/90 shadow-md">
+            <div class="flex items-center justify-between pb-1.5 mb-2 border-b border-slate-800">
+              <div class="flex items-center gap-1.5">
+                <span class="text-sm">🚗</span>
+                <span class="text-[10px] font-bold uppercase font-mono tracking-wider text-slate-200">Приборная панель</span>
+              </div>
+              <a href="/cockpit" class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 border border-amber-500/30 transition flex items-center gap-0.5">
+                <span>7 ламп</span> <span>↗</span>
+              </a>
+            </div>
+            <!-- 7 Mini Lamps Row -->
+            <div class="grid grid-cols-7 gap-1 text-center" id="side-mini-lamps">
+              <div onclick="openCarModal('handbrake')" title="Ручник: Синдром Данко (Q = I² R t)" class="cursor-pointer p-1 rounded bg-slate-950 border border-slate-800 hover:border-rose-500/60 transition text-xs flex items-center justify-center">🛑</div>
+              <div onclick="openCarModal('coolant')" title="Антифриз: кризис Толстого (M_ext ≡ 0)" class="cursor-pointer p-1 rounded bg-slate-950 border border-slate-800 hover:border-rose-500/60 transition text-xs flex items-center justify-center">🌡️</div>
+              <div onclick="openCarModal('clutch')" title="Сцепление: пробуксовка 72ч (C_future)" class="cursor-pointer p-1 rounded bg-slate-950 border border-slate-800 hover:border-amber-500/60 transition text-xs flex items-center justify-center">⚙️</div>
+              <div onclick="openCarModal('esp')" title="КЗ / ESP: токсичные споры" class="cursor-pointer p-1 rounded bg-slate-950 border border-slate-800 hover:border-rose-500/60 transition text-xs flex items-center justify-center">⚡</div>
+              <div onclick="openCarModal('tow')" title="Буксир: созависимость и страх женщин" class="cursor-pointer p-1 rounded bg-slate-950 border border-slate-800 hover:border-amber-500/60 transition text-xs flex items-center justify-center">🔗</div>
+              <div onclick="openCarModal('fuel')" title="Топливо: парадокс BMW (вещизм)" class="cursor-pointer p-1 rounded bg-slate-950 border border-slate-800 hover:border-amber-500/60 transition text-xs flex items-center justify-center">⛽</div>
+              <div onclick="openCarModal('service')" title="Чек Сервис: шок отложенной жизни" class="cursor-pointer p-1 rounded bg-slate-950 border border-slate-800 hover:border-rose-500/60 transition text-xs flex items-center justify-center">⏱️</div>
+            </div>
+            <div class="mt-2 text-[9px] text-slate-400 text-center font-mono flex items-center justify-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>7 аварийных ламп сознания</span>
+            </div>
+          </div>
+
+          <div class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-semibold px-2 flex justify-between items-center mb-1.5 pt-2">
             <span>Закладки контуров</span>
             <span class="text-slate-500 text-[9px]">Онтология</span>
           </div>
@@ -5976,5 +6046,173 @@
     });
   </script>
 
+  <!-- ============================================================== -->
+  <!-- MODAL: AUTOMOTIVE WARNING LAMPS DIAGNOSTIC MODAL               -->
+  <!-- ============================================================== -->
+  <div id="car-diagnostic-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700/80 rounded-2xl max-w-2xl w-full max-h-[92vh] overflow-y-auto shadow-2xl p-6 relative">
+      
+      <!-- Modal Header -->
+      <div class="flex items-start justify-between pb-4 border-b border-slate-800">
+        <div class="flex items-center space-x-3.5">
+          <div id="sim-diag-icon" class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl font-bold shadow-lg border border-slate-700 bg-slate-950">
+            🛑
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span id="sim-diag-code" class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 font-bold">
+                ERR-P0101
+              </span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                БОРТОВОЙ ДАТЧИК
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-1" id="sim-diag-title">
+              Затянутый Ручник
+            </h3>
+            <p class="text-xs text-slate-400" id="sim-diag-subtitle">
+              Синдром Данко • Квадратичная воля
+            </p>
+          </div>
+        </div>
+        <button onclick="closeCarModal()" class="text-slate-400 hover:text-white text-xl p-1 rounded-lg hover:bg-slate-800 transition">✕</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="mt-4 space-y-4 text-xs">
+        
+        <!-- Formula & Physical Law Banner -->
+        <div class="p-3 rounded-xl bg-slate-950/90 border border-slate-800 flex items-center justify-between font-mono">
+          <div class="flex items-center gap-2">
+            <span class="text-cyan-400">⚡ Физика цепи:</span>
+            <span class="text-slate-200 font-bold" id="sim-diag-formula">Q = I² · R · t</span>
+          </div>
+          <span class="text-[10px] text-slate-500" id="sim-diag-formula-desc">Закон Джоуля-Ленца</span>
+        </div>
+
+        <!-- Somatics / Body Symptoms -->
+        <div class="p-3.5 rounded-xl bg-rose-950/20 border border-rose-900/40">
+          <div class="text-rose-400 font-bold flex items-center gap-1.5 mb-1 text-[11px] uppercase tracking-wider">
+            <span>🫀</span> <span>Соматика в теле (Датчик оператора)</span>
+          </div>
+          <p class="text-slate-300 leading-relaxed text-xs" id="sim-diag-somatic"></p>
+        </div>
+
+        <!-- The Fatal Trap -->
+        <div class="p-3.5 rounded-xl bg-amber-950/20 border border-amber-900/40">
+          <div class="text-amber-400 font-bold flex items-center gap-1.5 mb-1 text-[11px] uppercase tracking-wider">
+            <span>⚠️</span> <span>Суть ловушки & Причина поломки</span>
+          </div>
+          <p class="text-slate-300 leading-relaxed text-xs" id="sim-diag-trap"></p>
+        </div>
+
+        <!-- Service Protocol Steps (Remedy) -->
+        <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-emerald-400 font-bold flex items-center gap-1.5 text-[11px] uppercase tracking-wider">
+              <span>🔧</span> <span>Протокол устранения сбоя (60 секунд)</span>
+            </span>
+          </div>
+          <div class="space-y-2" id="sim-diag-steps"></div>
+        </div>
+
+        <!-- Wiki Link -->
+        <div class="flex items-center justify-between text-[11px] pt-1 text-slate-400 border-t border-slate-800/80">
+          <span>Статья #226 в Базе Знаний (LLM Wiki):</span>
+          <span class="text-cyan-400 font-mono text-[10px]">Inner Current (Life Operating System)</span>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer Actions -->
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-4 mt-4 border-t border-slate-800">
+        <a href="/cockpit" class="px-3.5 py-1.5 rounded-lg border border-cyan-500/50 bg-cyan-950/40 hover:bg-cyan-900/50 text-cyan-300 text-xs font-medium transition flex items-center gap-1.5 shadow-sm">
+          <span>🎛️</span> <span>Открыть в Cockpit</span>
+        </a>
+        <button type="button" onclick="closeCarModal()" class="px-4 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs shadow-md shadow-emerald-600/30 transition flex items-center gap-1.5 cursor-pointer">
+          <span>✅</span> <span>Понятно, протокол принят</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const SIM_CAR_LAMPS = {
+      handbrake: {
+        symbol: "🛑", code: "ERR-P0101", title: "Затянутый Ручник", subtitle: "Синдром Данко • Квадратичная воля",
+        formula: "Q = I² · R · t", desc: "Закон Джоуля-Ленца: квадратичный перегрев проводки",
+        somatic: "Сжатые челюсти, каменные трапеции, поверхностное дыхание, ощущение «я тащу этот мир на себе».",
+        trap: "Попытка пробить стену волевым давлением при высоком сопротивлении эго (R). Вся энергия уходит в омическое трение. Проводка плавится, наступает тотальное выгорание.",
+        steps: ["Разомкнуть челюсти и опустить плечи.", "Медленный выдох через рот в Тандэн на 6 счетов.", "Формула: «Я не продавливаю реальность. Ток течет сам через сверхпроводник (R_ego → 0)».", "Снять статус мученика и подвига."]
+      },
+      coolant: {
+        symbol: "🌡️", code: "ERR-T0202", title: "Перегрев Антифриза", subtitle: "Экзистенциальный тупик Толстого • M_ext ≡ 0",
+        formula: "M_ext ≡ 0", desc: "Аксиома разомкнутого контура: внешнего смысла нет",
+        somatic: "Ментальная «жвачка», тяжесть в затылке, апатия («зачем всё это делать, если мы умрем?»).",
+        trap: "Двигатель ревет на отсечке вхолостую (нейтраль). Попытка найти смысл жизни как предмет на полке вместо того, чтобы быть источником света прямо сейчас.",
+        steps: ["Заглушить двигатель абстрактных симуляций.", "Закон фонарика: смысл — это не пункт назначения, а свет луча прямо сейчас.", "3 тактильных контакта с миром: стопы, вода, воздух.", "Сделать 1 крошечное действие в t = now."]
+      },
+      clutch: {
+        symbol: "⚙️", code: "ERR-C0303", title: "Пробуксовка Сцепления", subtitle: "Интеллектуальное ожирение • C_future ≫ 0",
+        formula: "C_future ≫ 0, t_idle > 72h", desc: "Емкостная блокировка: холостой ход теории без заземления",
+        somatic: "Ватность в ногах, голова переполнена («знаю слишком много»), тревожное желание прочитать еще одну книгу перед стартом.",
+        trap: "Диски сцепления разомкнуты: мотор ревет на 6000 об/мин, прочитаны тонны статей, но колеса стоят на месте. Простой идеи > 3 дней превращает ее в омический шлак.",
+        steps: ["Включить передачу Drive (D): мораторий на теорию на 48 часов.", "Закон 72 часов: любой квант знания обязан встретиться с физической реальностью за 3 дня.", "Назначить 1 полевой тест Дэай на сегодня.", "Ощутить сопротивление асфальта под колесами."]
+      },
+      esp: {
+        symbol: "⚡", code: "ERR-S0404", title: "Срабатывание ESP / КЗ", subtitle: "Токсичные споры • Битва концепций",
+        formula: "R_load = 0 (Короткое замыкание)", desc: "Короткое замыкание на чужой резистор с выжиганием клемм",
+        somatic: "Жар в груди и лице, сжатые кулаки, внутренний спор с воображаемым оппонентом, пульсирующий гнев.",
+        trap: "Попытка силой подать 220 Вольт в закрытый диэлектрик чужого эго. Дуга короткого замыкания выжигает вашу собственную батарею Тандэна.",
+        steps: ["Закон Вольтметра: прибор никогда не спорит с розеткой и не обижается на 110 Вольт.", "Мгновенно разомкнуть клеммы: пауза 10 секунд (Дзансин).", "Снять встречное напряжение: «Я не доказываю, я замеряю проводимость контакта».", "Если проводимости нет — убрать щупы без обид."]
+      },
+      tow: {
+        symbol: "🔗", code: "ERR-T0505", title: "Аварийный Буксир", subtitle: "Любовная созависимость • Страх женщин",
+        formula: "Z_in ≠ Z_out", desc: "Импедансное рассогласование: липкая зависимость от контакта",
+        somatic: "Холодок в животе, заискивающий тон, сутулая осанка, страх отказа («а вдруг я ей не понравлюсь?»).",
+        trap: "Попытка ехать на тросе чужой батареи. Подход к девушке или аудитории как нищий с протянутой рукой, умоляющий о подзарядке своей самооценки.",
+        steps: ["Отцепить буксировочный трос: никто не обязан заряжать вашу самооценку.", "Запустить собственный генератор Тандэна: вдох животом, центр тяжести в низ живота.", "Протокол Дэай: проверка импеданса двух свободных генераторов, а не милостыня.", "Шаг навстречу в Мусин: спокойные глаза, ровный голос, 0 ожиданий."]
+      },
+      fuel: {
+        symbol: "⛽", code: "ERR-F0606", title: "Не то топливо в баке", subtitle: "Иллюзия аккумулятора вещей • Парадокс BMW",
+        formula: "E_load ≡ 0", desc: "Внешние объекты — это резисторы нагрузки, а не генераторы ЭДС",
+        somatic: "Зуд обладания, лихорадочный скроллинг витрин, эйфория от покупки на пару часов с последующей пустотой.",
+        trap: "Заливка солярки в бензиновый бак: вера в то, что внешняя покупка (машина, iPhone, одежда) станет вечным генератором счастья.",
+        steps: ["Слить суррогатное топливо: вспомнить аксиому — вещи не имеют собственной ЭДС (E_load ≡ 0).", "Перестать молиться на резисторы нагрузки — они лишь потребляют ток.", "Вернуть генератор внутрь: счастье — это сам свободный ток через чистый контур.", "Вещи — просто удобные инструменты проводки."]
+      },
+      service: {
+        symbol: "⏱️", code: "ERR-M0707", title: "Чек Сервис Жизни", subtitle: "Шок «Я и не жил ещё» • Отложенная жизнь",
+        formula: "L_past + C_future → ∞, t_now → 0", desc: "Потери на индуктивность прошлого и емкость иллюзорного будущего",
+        somatic: "Внезапный приступ ужаса: «Мне уже столько лет, а настоящая жизнь так и не началась, я всё откладывал!».",
+        trap: "Вся энергия рассеивается в конденсатор «завтра» и индуктивность самобичевания за «вчера». Настоящий момент обесточен.",
+        steps: ["Полный сброс сервисного интервала: прошлое стёрто прямо сейчас.", "Ключ в зажигание в точке t = now: полное присутствие во всех 5 органах чувств.", "3 глубоких вдоха в Тандэн: «Я здесь. Цепь замкнута прямо сейчас».", "Сверхпроводимость включается мгновенно — жизнь уже идет."]
+      }
+    };
+
+    function openCarModal(lampId) {
+      const data = SIM_CAR_LAMPS[lampId];
+      if (!data) return;
+      document.getElementById('sim-diag-icon').innerText = data.symbol;
+      document.getElementById('sim-diag-code').innerText = data.code;
+      document.getElementById('sim-diag-title').innerText = data.title;
+      document.getElementById('sim-diag-subtitle').innerText = data.subtitle;
+      document.getElementById('sim-diag-formula').innerText = data.formula;
+      document.getElementById('sim-diag-formula-desc').innerText = data.desc;
+      document.getElementById('sim-diag-somatic').innerText = data.somatic;
+      document.getElementById('sim-diag-trap').innerText = data.trap;
+      document.getElementById('sim-diag-steps').innerHTML = data.steps.map((s, idx) => `
+        <div class="flex items-start gap-2 p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-200">
+          <span class="text-emerald-400 font-bold font-mono">0${idx+1}.</span>
+          <span class="text-xs leading-relaxed">${s}</span>
+        </div>
+      `).join('');
+      document.getElementById('car-diagnostic-modal').classList.remove('hidden');
+    }
+
+    function closeCarModal() {
+      document.getElementById('car-diagnostic-modal').classList.add('hidden');
+    }
+  </script>
 </body>
 </html>

@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>База Знаний «Внутренний ток» — Онлайн-Ридер (230+ статей)</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              950: '#040711',
+              900: '#090d1a',
+              850: '#0e1628',
+              800: '#142038',
+              700: '#1e3054',
+              accent: '#38bdf8',
+              gold: '#fbbf24',
+              emerald: '#10b981',
+              rose: '#f43f5e'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['Lora', 'Georgia', 'serif'],
+            mono: ['Fira Code', 'monospace'],
+            display: ['Cinzel', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- KaTeX CSS & JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+
+  <!-- Marked.js for Markdown parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Custom scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.6);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #38bdf8;
+    }
+
+    /* Markdown Reader Typography */
+    .prose-zen {
+      color: #cbd5e1;
+      font-family: 'Lora', Georgia, serif;
+      font-size: 1.125rem;
+      line-height: 1.85;
+    }
+    .prose-zen h1 {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 700;
+      color: #f8fafc;
+      font-size: 2.1rem;
+      line-height: 1.25;
+      margin-top: 1.5rem;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .prose-zen h2 {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 600;
+      color: #e2e8f0;
+      font-size: 1.5rem;
+      line-height: 1.35;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(51, 65, 85, 0.4);
+    }
+    .prose-zen h3 {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 600;
+      color: #38bdf8;
+      font-size: 1.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .prose-zen p {
+      margin-bottom: 1.25rem;
+    }
+    .prose-zen ul, .prose-zen ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .prose-zen li {
+      margin-bottom: 0.5rem;
+    }
+    .prose-zen strong {
+      color: #f1f5f9;
+      font-weight: 600;
+    }
+    .prose-zen hr {
+      border: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.3), transparent);
+      margin: 2rem 0;
+    }
+    .prose-zen code:not(pre code) {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9em;
+      background: rgba(30, 41, 59, 0.7);
+      color: #38bdf8;
+      padding: 0.15rem 0.4rem;
+      border-radius: 0.25rem;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+    .prose-zen pre {
+      background: #090e1a !important;
+      border: 1px solid #1e293b;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    .prose-zen pre code {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      color: #e2e8f0;
+    }
+    .prose-zen table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+    .prose-zen th {
+      background: rgba(30, 41, 59, 0.6);
+      color: #38bdf8;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      border-bottom: 2px solid #334155;
+    }
+    .prose-zen td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #1e293b;
+    }
+    .prose-zen tr:hover td {
+      background: rgba(15, 23, 42, 0.4);
+    }
+
+    /* Obsidian Callout Cards */
+    .callout {
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      background: rgba(15, 23, 42, 0.6);
+      border-left: 4px solid;
+      font-size: 1rem;
+      backdrop-filter: blur(8px);
+    }
+    .callout-quote {
+      border-left-color: #fbbf24;
+      background: rgba(251, 191, 36, 0.05);
+      border: 1px solid rgba(251, 191, 36, 0.2);
+      border-left-width: 4px;
+    }
+    .callout-tip, .callout-note {
+      border-left-color: #38bdf8;
+      background: rgba(56, 189, 248, 0.05);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-left-width: 4px;
+    }
+    .callout-warning {
+      border-left-color: #f59e0b;
+      background: rgba(245, 158, 11, 0.06);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-left-width: 4px;
+    }
+    .callout-danger, .callout-caution {
+      border-left-color: #f43f5e;
+      background: rgba(244, 63, 94, 0.06);
+      border: 1px solid rgba(244, 63, 94, 0.25);
+      border-left-width: 4px;
+    }
+    .callout-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      color: #f8fafc;
+    }
+
+    /* Wikilinks */
+    .wiki-link {
+      color: #38bdf8;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(56, 189, 248, 0.5);
+      padding-bottom: 1px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .wiki-link:hover {
+      color: #7dd3fc;
+      border-bottom-style: solid;
+      background: rgba(56, 189, 248, 0.1);
+      border-radius: 2px;
+    }
+
+    /* Progress bar */
+    #reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #38bdf8, #10b981, #fbbf24);
+      z-index: 100;
+      transition: width 0.1s ease-out;
+    }
+  </style>
+</head>
+<body class="bg-brand-950 text-slate-200 min-h-screen flex flex-col font-sans selection:bg-sky-500/30 selection:text-sky-200">
+  
+  <div id="reading-progress" style="width: 0%"></div>
+
+  <!-- Верхняя панель (Header) -->
+  <header class="sticky top-0 z-40 bg-brand-900/90 backdrop-blur-md border-b border-slate-800/80 px-4 lg:px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <button id="toggle-sidebar-btn" class="lg:hidden p-2 rounded-lg bg-slate-800/60 hover:bg-slate-700 text-slate-300">
+        <i data-lucide="menu" class="w-5 h-5"></i>
+      </button>
+
+      <a href="/" class="flex items-center gap-2 group">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-sky-400 to-blue-600 flex items-center justify-center text-brand-950 font-black shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform">
+          ⚡
+        </div>
+        <div>
+          <div class="text-sm font-bold tracking-tight text-white flex items-center gap-2">
+            INNER CURRENT
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/30 uppercase tracking-widest font-mono">WIKI READER</span>
+          </div>
+          <div class="text-[11px] text-slate-400 font-serif italic">Онлайн-база знаний &bull; Сверхпроводимость контура</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Навигационные ссылки системы -->
+    <nav class="hidden md:flex items-center gap-1 text-xs font-medium">
+      <a href="/cockpit" class="px-3 py-1.5 rounded-md hover:bg-slate-800 text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors">
+        <i data-lucide="layout-dashboard" class="w-3.5 h-3.5 text-sky-400"></i>
+        Пульт Сверхпроводимости
+      </a>
+      <a href="/" class="px-3 py-1.5 rounded-md hover:bg-slate-800 text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors">
+        <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-400"></i>
+        Тренажер цепи
+      </a>
+      <a href="/book/" class="px-3 py-1.5 rounded-md hover:bg-slate-800 text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors">
+        <i data-lucide="book-open" class="w-3.5 h-3.5 text-emerald-400"></i>
+        Книга
+      </a>
+      <a href="/audiobook/" class="px-3 py-1.5 rounded-md hover:bg-slate-800 text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors">
+        <i data-lucide="headphones" class="w-3.5 h-3.5 text-purple-400"></i>
+        Аудио
+      </a>
+    </nav>
+
+    <!-- Телеметрия и инструменты читалки -->
+    <div class="flex items-center gap-3">
+      <!-- Индикатор синхронизации с Obsidian Vault -->
+      <div id="sync-status" class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-800/80 border border-slate-700/80 text-[11px] text-slate-300">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span id="articles-count-badge">Загрузка статей...</span>
+      </div>
+
+      <!-- Кнопка обновления каталога -->
+      <button id="refresh-btn" title="Пересканировать Obsidian Vault и диск на новые статьи" class="p-2 rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white transition-all">
+        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Настройки шрифта -->
+      <div class="hidden lg:flex items-center bg-slate-800/80 rounded-lg p-0.5 border border-slate-700 text-xs">
+        <button id="font-dec" class="px-2 py-1 text-slate-400 hover:text-white font-mono">A-</button>
+        <button id="font-reset" class="px-2 py-1 text-slate-400 hover:text-white font-mono">18px</button>
+        <button id="font-inc" class="px-2 py-1 text-slate-400 hover:text-white font-mono">A+</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Главный контейнер ридера: Боковая панель + Читалка + Оглавление -->
+  <div class="flex-1 flex overflow-hidden">
+    
+    <!-- Сайдбар каталога (слева) -->
+    <aside id="sidebar" class="w-80 md:w-96 flex-shrink-0 bg-brand-900/95 border-r border-slate-800 flex flex-col transition-all duration-300 z-30 fixed lg:relative inset-y-0 left-0 top-[57px] lg:top-0 -translate-x-full lg:translate-x-0">
+      
+      <!-- Поиск по каталогу -->
+      <div class="p-3 border-b border-slate-800/80 space-y-2">
+        <div class="relative">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input 
+            type="text" 
+            id="search-input" 
+            placeholder="Поиск по 230+ статьям (Ctrl+K)..." 
+            class="w-full bg-slate-950/80 border border-slate-800 focus:border-sky-500 rounded-lg pl-9 pr-8 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+          >
+          <button id="clear-search-btn" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white">
+            <i data-lucide="x" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- Фильтры по слоям (Pills) -->
+        <div class="flex flex-wrap gap-1 text-[11px]" id="layer-filter-pills">
+          <button data-filter="all" class="layer-pill active px-2 py-1 rounded bg-sky-500/20 text-sky-300 border border-sky-500/40 font-medium">Все</button>
+          <button data-filter="layer-1" class="layer-pill px-2 py-1 rounded bg-slate-800/80 text-slate-400 hover:text-slate-200 border border-slate-700/60">I. Базис</button>
+          <button data-filter="layer-2" class="layer-pill px-2 py-1 rounded bg-slate-800/80 text-slate-400 hover:text-slate-200 border border-slate-700/60">II. Практика</button>
+          <button data-filter="layer-3" class="layer-pill px-2 py-1 rounded bg-slate-800/80 text-slate-400 hover:text-slate-200 border border-slate-700/60">III. Дзен</button>
+          <button data-filter="layer-4" class="layer-pill px-2 py-1 rounded bg-slate-800/80 text-slate-400 hover:text-slate-200 border border-slate-700/60">IV. Продукт</button>
+          <button data-filter="layer-new" class="layer-pill px-2 py-1 rounded bg-slate-800/80 text-slate-400 hover:text-slate-200 border border-slate-700/60">Новые</button>
+        </div>
+      </div>
+
+      <!-- Список статей (Скроллируемый) -->
+      <div id="articles-list" class="flex-1 overflow-y-auto p-2 space-y-4">
+        <div class="p-8 text-center text-slate-500 text-xs">
+          <i data-lucide="loader-2" class="w-6 h-6 animate-spin mx-auto mb-2 text-sky-400"></i>
+          Индексация базы знаний...
+        </div>
+      </div>
+
+      <!-- Футер сайдбара -->
+      <div class="p-2.5 border-t border-slate-800/80 bg-brand-950/60 text-[11px] text-slate-400 flex items-center justify-between">
+        <div class="flex items-center gap-1.5">
+          <i data-lucide="database" class="w-3.5 h-3.5 text-sky-400"></i>
+          <span>Obsidian Vault 02_Wiki</span>
+        </div>
+        <span id="catalog-count-footer" class="font-mono text-slate-300">234 статьи</span>
+      </div>
+    </aside>
+
+    <!-- Оверлей для мобильного сайдбара -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-20 hidden lg:hidden"></div>
+
+    <!-- Центральная область чтения -->
+    <main class="flex-1 overflow-y-auto flex flex-col items-center bg-brand-950 relative" id="article-scroll-container">
+      
+      <div class="w-full max-w-4xl px-4 sm:px-8 py-8 lg:py-12">
+        
+        <!-- Загрузка / Ошибка / Пустой экран -->
+        <div id="reader-loading" class="hidden text-center py-24 space-y-4">
+          <i data-lucide="loader-2" class="w-10 h-10 animate-spin mx-auto text-sky-400"></i>
+          <p class="text-slate-400 text-sm">Считывание кванта из базы знаний...</p>
+        </div>
+
+        <article id="article-view" class="space-y-6">
+          
+          <!-- Хлебные крошки и бейджи -->
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/80 pb-4">
+            <div class="flex items-center gap-2 text-xs text-slate-400">
+              <span id="art-layer-badge" class="px-2.5 py-1 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/30 font-medium">
+                Слой IV: Мета-система и продукт
+              </span>
+              <span class="text-slate-600">&bull;</span>
+              <span id="art-date-badge" class="font-mono text-slate-400">2026-10-03</span>
+            </div>
+
+            <!-- Экшены со статьей -->
+            <div class="flex items-center gap-2">
+              <button id="copy-link-btn" title="Копировать прямую ссылку" class="p-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white text-xs flex items-center gap-1.5 transition-colors">
+                <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
+                <span class="hidden sm:inline">Ссылка</span>
+              </button>
+              <button id="open-cockpit-btn" title="Открыть в Пульте Сверхпроводимости" class="p-1.5 rounded-lg bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 text-sky-300 text-xs flex items-center gap-1.5 transition-colors">
+                <i data-lucide="gauge" class="w-3.5 h-3.5"></i>
+                <span class="hidden sm:inline">Cockpit</span>
+              </button>
+              <button id="print-art-btn" title="Печать / Сохранить в PDF" class="p-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white text-xs transition-colors">
+                <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Метаданные статьи: Теги и размер -->
+          <div id="art-tags-container" class="flex flex-wrap gap-1.5">
+            <!-- tags dynamically inserted -->
+          </div>
+
+          <!-- Контент статьи (Markdown + KaTeX) -->
+          <div id="art-content" class="prose-zen mt-6 text-slate-300">
+            <!-- Rendered content goes here -->
+          </div>
+
+          <!-- Навигатор Предыдущая / Следующая статья -->
+          <div class="border-t border-slate-800/80 pt-6 mt-12 flex items-center justify-between gap-4">
+            <button id="prev-art-btn" class="flex-1 p-3 rounded-xl bg-slate-900/60 hover:bg-slate-800/60 border border-slate-800 hover:border-slate-700 text-left transition-all group">
+              <div class="text-[11px] text-slate-500 flex items-center gap-1 group-hover:text-sky-400">
+                <i data-lucide="arrow-left" class="w-3 h-3"></i> Предыдущая статья
+              </div>
+              <div id="prev-art-title" class="text-xs font-semibold text-slate-300 truncate mt-1">...</div>
+            </button>
+            <button id="next-art-btn" class="flex-1 p-3 rounded-xl bg-slate-900/60 hover:bg-slate-800/60 border border-slate-800 hover:border-slate-700 text-right transition-all group">
+              <div class="text-[11px] text-slate-500 flex items-center justify-end gap-1 group-hover:text-sky-400">
+                Следующая статья <i data-lucide="arrow-right" class="w-3 h-3"></i>
+              </div>
+              <div id="next-art-title" class="text-xs font-semibold text-slate-300 truncate mt-1">...</div>
+            </button>
+          </div>
+
+        </article>
+
+      </div>
+    </main>
+
+    <!-- Правая панель: Оглавление статьи (Outline) -->
+    <aside id="outline-pane" class="w-72 hidden xl:flex flex-col bg-brand-900/50 border-l border-slate-800 p-4 overflow-y-auto">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800 text-xs font-bold uppercase tracking-wider text-slate-400">
+        <span class="flex items-center gap-1.5">
+          <i data-lucide="list-tree" class="w-4 h-4 text-sky-400"></i>
+          Оглавление
+        </span>
+        <span id="read-time-badge" class="font-normal font-mono text-[10px] text-slate-500">~5 мин</span>
+      </div>
+
+      <nav id="outline-nav" class="mt-4 space-y-1 text-xs text-slate-400">
+        <p class="text-slate-600 italic text-[11px]">Загрузка структуры...</p>
+      </nav>
+
+      <div class="mt-auto pt-6 border-t border-slate-800/80 text-[11px] text-slate-500 space-y-2">
+        <div class="font-semibold text-slate-400">Горячие клавиши:</div>
+        <div class="flex justify-between"><span>Поиск:</span> <kbd class="px-1 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[10px]">Ctrl+K</kbd></div>
+        <div class="flex justify-between"><span>След. статья:</span> <kbd class="px-1 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[10px]">]</kbd></div>
+        <div class="flex justify-between"><span>Пред. статья:</span> <kbd class="px-1 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[10px]">[</kbd></div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Модальное уведомление о копировании -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-12 opacity-0 transition-all duration-200 pointer-events-none px-4 py-2.5 rounded-xl bg-slate-800 border border-sky-500/40 text-white text-xs flex items-center gap-2 shadow-2xl">
+    <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+    <span id="toast-msg">Ссылка скопирована в буфер</span>
+  </div>
+
+  <script>
+    // -----------------------------------------------------------------
+    // Состояние ридера
+    // -----------------------------------------------------------------
+    let catalog = null;
+    let allArticles = [];
+    let currentArticleSlug = null;
+    let currentArticleIndex = 0;
+    let currentFilter = 'all';
+    let searchQuery = '';
+    let currentFontSize = 18;
+
+    // -----------------------------------------------------------------
+    // Инициализация
+    // -----------------------------------------------------------------
+    document.addEventListener('DOMContentLoaded', async () => {
+      lucide.createIcons();
+      setupEventListeners();
+      await loadCatalog();
+
+      // Deep linking via hash or default to article #227 or first article
+      const hash = window.location.hash.slice(1);
+      if (hash) {
+        openArticleBySlug(decodeURIComponent(hash));
+      } else {
+        // Найдем статью 227 по умолчанию или первую
+        const target = allArticles.find(a => a.filename.includes('Dashboard of Consciousness') || a.mocIndex === 227) || allArticles[0];
+        if (target) {
+          openArticleBySlug(target.slug);
+        }
+      }
+    });
+
+    // -----------------------------------------------------------------
+    // Загрузка каталога с бэкенда
+    // -----------------------------------------------------------------
+    async function loadCatalog() {
+      try {
+        const resp = await fetch('/api/wiki/articles');
+        if (!resp.ok) throw new Error('Ошибка связи с сервером');
+        catalog = await resp.json();
+
+        // Схлопываем все статьи в плоский массив для удобной навигации
+        allArticles = [];
+        catalog.layers.forEach(layer => {
+          layer.articles.forEach(art => {
+            allArticles.push({
+              ...art,
+              layerName: layer.title,
+              layerFilterId: layer.id
+            });
+          });
+        });
+
+        // Обновляем бейджи
+        document.getElementById('articles-count-badge').textContent = `${catalog.total} статей в базе`;
+        document.getElementById('catalog-count-footer').textContent = `${catalog.total} статей`;
+
+        renderArticlesList();
+      } catch (err) {
+        console.error('Ошибка загрузки каталога:', err);
+        document.getElementById('articles-list').innerHTML = `
+          <div class="p-6 text-center text-rose-400 text-xs">
+            <i data-lucide="alert-triangle" class="w-6 h-6 mx-auto mb-2"></i>
+            Не удалось загрузить каталог базы знаний.<br>${err.message}
+          </div>
+        `;
+        lucide.createIcons();
+      }
+    }
+
+    // -----------------------------------------------------------------
+    // Отрисовка списка статей в сайдбаре
+    // -----------------------------------------------------------------
+    function renderArticlesList() {
+      if (!catalog) return;
+
+      const container = document.getElementById('articles-list');
+      container.innerHTML = '';
+
+      const query = searchQuery.trim().toLowerCase();
+
+      catalog.layers.forEach(layer => {
+        // Фильтр по выбранному слою
+        if (currentFilter !== 'all' && layer.id !== currentFilter) {
+          return;
+        }
+
+        // Фильтр по поисковому запросу
+        const filteredArticles = layer.articles.filter(art => {
+          if (!query) return true;
+          return (
+            art.title.toLowerCase().includes(query) ||
+            art.summary.toLowerCase().includes(query) ||
+            art.slug.toLowerCase().includes(query) ||
+            String(art.mocIndex).includes(query)
+          );
+        });
+
+        if (filteredArticles.length === 0) return;
+
+        // Блок слоя (Accordion Header)
+        const layerBlock = document.createElement('div');
+        layerBlock.className = 'space-y-1';
+
+        const layerHeader = document.createElement('div');
+        layerHeader.className = 'px-2 py-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between border-b border-slate-800/60 mb-1';
+        layerHeader.innerHTML = `
+          <span class="truncate">${layer.title}</span>
+          <span class="font-mono text-[10px] text-sky-400/80 bg-sky-500/10 px-1.5 py-0.5 rounded">${filteredArticles.length}</span>
+        `;
+        layerBlock.appendChild(layerHeader);
+
+        // Список статей в слое
+        filteredArticles.forEach(art => {
+          const item = document.createElement('div');
+          const isActive = art.slug === currentArticleSlug;
+          
+          item.className = `p-2.5 rounded-lg cursor-pointer transition-all border text-left ${
+            isActive 
+              ? 'bg-sky-500/15 border-sky-500/50 text-white shadow-sm shadow-sky-500/10' 
+              : 'bg-slate-900/40 hover:bg-slate-800/60 border-slate-800/60 hover:border-slate-700 text-slate-300'
+          }`;
+
+          const cleanIndex = art.mocIndex ? `#${art.mocIndex}` : '★';
+          
+          item.innerHTML = `
+            <div class="flex items-start gap-2">
+              <span class="font-mono text-[10px] px-1.5 py-0.5 rounded ${
+                isActive ? 'bg-sky-400 text-brand-950 font-bold' : 'bg-slate-800 text-slate-400'
+              } flex-shrink-0 mt-0.5">
+                ${cleanIndex}
+              </span>
+              <div class="flex-1 min-w-0">
+                <div class="text-xs font-semibold leading-snug line-clamp-2 ${isActive ? 'text-sky-200' : 'text-slate-200'}">
+                  ${escapeHtml(art.title)}
+                </div>
+                ${art.summary ? `<div class="text-[11px] text-slate-400 line-clamp-1 mt-1 font-serif">${escapeHtml(art.summary)}</div>` : ''}
+              </div>
+            </div>
+          `;
+
+          item.addEventListener('click', () => {
+            openArticleBySlug(art.slug);
+            // Закрываем мобильный сайдбар при клике
+            if (window.innerWidth < 1024) {
+              closeSidebar();
+            }
+          });
+
+          layerBlock.appendChild(item);
+        });
+
+        container.appendChild(layerBlock);
+      });
+
+      if (container.children.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 text-center text-slate-500 text-xs">
+            <i data-lucide="search-x" class="w-6 h-6 mx-auto mb-2 text-slate-600"></i>
+            По запросу «${escapeHtml(query)}» ничего не найдено.
+          </div>
+        `;
+      }
+
+      lucide.createIcons();
+    }
+
+    // -----------------------------------------------------------------
+    // Открытие статьи по slug
+    // -----------------------------------------------------------------
+    async function openArticleBySlug(slug) {
+      if (!slug) return;
+      currentArticleSlug = slug;
+      window.location.hash = encodeURIComponent(slug);
+
+      // Обновляем активный элемент в сайдбаре
+      renderArticlesList();
+
+      const loading = document.getElementById('reader-loading');
+      const view = document.getElementById('article-view');
+      const contentEl = document.getElementById('art-content');
+
+      loading.classList.remove('hidden');
+      view.classList.add('opacity-40');
+
+      try {
+        const resp = await fetch(`/api/wiki/article?file=${encodeURIComponent(slug)}`);
+        if (!resp.ok) throw new Error('Статья не найдена на диске');
+        const art = await resp.json();
+
+        // Обновляем метаданные
+        document.title = `${art.title} — Inner Current Wiki`;
+        
+        // Найдем инфо из каталога
+        const catInfo = allArticles.find(a => a.slug.toLowerCase() === slug.toLowerCase()) || {};
+        currentArticleIndex = allArticles.findIndex(a => a.slug.toLowerCase() === slug.toLowerCase());
+
+        document.getElementById('art-layer-badge').textContent = catInfo.layerName || art.layer || 'Статья базы знаний';
+        document.getElementById('art-date-badge').textContent = art.frontmatter.created || art.mtime.slice(0, 10);
+
+        // Теги
+        const tagsContainer = document.getElementById('art-tags-container');
+        tagsContainer.innerHTML = '';
+        const tags = Array.isArray(art.frontmatter.tags) ? art.frontmatter.tags : [];
+        tags.forEach(t => {
+          const span = document.createElement('span');
+          span.className = 'text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-800/80 border border-slate-700/80 text-sky-400';
+          span.textContent = `#${t}`;
+          tagsContainer.appendChild(span);
+        });
+
+        // Рендерим Markdown с поддержкой Obsidian Callouts и Wikilinks
+        contentEl.innerHTML = renderMarkdown(art.content);
+
+        // KaTeX авто-рендеринг формул $...$ и $$...$$
+        if (window.renderMathInElement) {
+          renderMathInElement(contentEl, {
+            delimiters: [
+              { left: '$$', right: '$$', display: true },
+              { left: '$', right: '$', display: false }
+            ],
+            throwOnError: false
+          });
+        }
+
+        // Обновляем интерактивное оглавление
+        generateOutline(contentEl);
+
+        // Обновляем кнопки След/Пред
+        updatePrevNextButtons();
+
+        // Скроллим наверх
+        document.getElementById('article-scroll-container').scrollTop = 0;
+
+      } catch (err) {
+        console.error('Ошибка рендера статьи:', err);
+        contentEl.innerHTML = `
+          <div class="p-8 text-center bg-rose-500/10 border border-rose-500/30 rounded-2xl text-rose-300">
+            <h2 class="text-lg font-bold mb-2">Не удалось загрузить статью</h2>
+            <p class="text-sm font-sans">${err.message}</p>
+          </div>
+        `;
+      } finally {
+        loading.classList.add('hidden');
+        view.classList.remove('opacity-40');
+        lucide.createIcons();
+      }
+    }
+
+    // -----------------------------------------------------------------
+    // Парсер Markdown с Obsidian расширениями
+    // -----------------------------------------------------------------
+    function renderMarkdown(md) {
+      if (!md) return '';
+
+      // 1. Преобразуем Obsidian Callouts: > [!quote] ... в HTML карточки
+      let processed = md.replace(/^>\s*\[!(\w+)\](?:[ \t]*(.*?))?\r?\n((?:>.*(?:\r?\n|$))*)/gm, (match, type, title, body) => {
+        const cleanType = type.toLowerCase();
+        const calloutTitle = title || cleanType.toUpperCase();
+        const cleanBody = body.replace(/^>\s?/gm, '').trim();
+
+        let icon = 'info';
+        let cardClass = 'callout-note';
+
+        if (cleanType === 'quote') {
+          icon = 'quote';
+          cardClass = 'callout-quote';
+        } else if (cleanType === 'warning') {
+          icon = 'alert-triangle';
+          cardClass = 'callout-warning';
+        } else if (cleanType === 'danger' || cleanType === 'caution') {
+          icon = 'alert-octagon';
+          cardClass = 'callout-danger';
+        } else if (cleanType === 'tip') {
+          icon = 'lightbulb';
+          cardClass = 'callout-tip';
+        }
+
+        return `
+<div class="callout ${cardClass}">
+  <div class="callout-title">
+    <i data-lucide="${icon}" class="w-4 h-4"></i>
+    <span>${calloutTitle}</span>
+  </div>
+  <div class="callout-body font-serif">
+    ${marked.parse(cleanBody)}
+  </div>
+</div>
+        `;
+      });
+
+      // 2. Преобразуем Obsidian Wikilinks: [[02_Wiki/Inner Current (Name)|Title]] -> ссылки
+      processed = processed.replace(/\[\[(?:02_Wiki\/)?([^\]|]+)(?:\|([^\]]+))?\]\]/g, (match, target, alias) => {
+        const cleanTarget = target.trim();
+        const label = alias ? alias.trim() : cleanTarget;
+        return `<a href="#${encodeURIComponent(cleanTarget)}" class="wiki-link" onclick="openArticleBySlug('${escapeJsString(cleanTarget)}'); return false;">${escapeHtml(label)}</a>`;
+      });
+
+      // 3. Marked standard parse
+      return marked.parse(processed);
+    }
+
+    // -----------------------------------------------------------------
+    // Интерактивное оглавление (Outline)
+    // -----------------------------------------------------------------
+    function generateOutline(contentEl) {
+      const nav = document.getElementById('outline-nav');
+      nav.innerHTML = '';
+
+      const headings = contentEl.querySelectorAll('h1, h2, h3');
+      if (headings.length === 0) {
+        nav.innerHTML = '<p class="text-slate-600 italic text-[11px]">Оглавление пусто</p>';
+        return;
+      }
+
+      headings.forEach((h, idx) => {
+        const id = 'heading-' + idx;
+        h.id = id;
+
+        const link = document.createElement('a');
+        link.href = '#' + id;
+        
+        const isH1 = h.tagName === 'H1';
+        const isH2 = h.tagName === 'H2';
+        const isH3 = h.tagName === 'H3';
+
+        link.className = `block py-1 px-2 rounded hover:bg-slate-800/80 transition-colors truncate ${
+          isH1 ? 'font-bold text-slate-200 text-xs' : 
+          isH2 ? 'text-slate-300 text-[11px] pl-3' : 
+          'text-slate-400 text-[10px] pl-6'
+        }`;
+        link.textContent = h.textContent;
+
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          h.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        nav.appendChild(link);
+      });
+
+      // Расчет времени чтения
+      const wordCount = contentEl.textContent.trim().split(/\s+/).length;
+      const readMinutes = Math.max(1, Math.ceil(wordCount / 180));
+      document.getElementById('read-time-badge').textContent = `~${readMinutes} мин чтения`;
+    }
+
+    // -----------------------------------------------------------------
+    // Обновление кнопок «Предыдущая / Следующая»
+    // -----------------------------------------------------------------
+    function updatePrevNextButtons() {
+      const prevBtn = document.getElementById('prev-art-btn');
+      const nextBtn = document.getElementById('next-art-btn');
+      const prevTitle = document.getElementById('prev-art-title');
+      const nextTitle = document.getElementById('next-art-title');
+
+      if (currentArticleIndex > 0) {
+        const prev = allArticles[currentArticleIndex - 1];
+        prevTitle.textContent = prev.title;
+        prevBtn.style.opacity = '1';
+        prevBtn.onclick = () => openArticleBySlug(prev.slug);
+      } else {
+        prevTitle.textContent = 'Начало каталога';
+        prevBtn.style.opacity = '0.4';
+        prevBtn.onclick = null;
+      }
+
+      if (currentArticleIndex >= 0 && currentArticleIndex < allArticles.length - 1) {
+        const next = allArticles[currentArticleIndex + 1];
+        nextTitle.textContent = next.title;
+        nextBtn.style.opacity = '1';
+        nextBtn.onclick = () => openArticleBySlug(next.slug);
+      } else {
+        nextTitle.textContent = 'Конец каталога';
+        nextBtn.style.opacity = '0.4';
+        nextBtn.onclick = null;
+      }
+    }
+
+    // -----------------------------------------------------------------
+    // Управление событиями и горячими клавишами
+    // -----------------------------------------------------------------
+    function setupEventListeners() {
+      // Поиск
+      const searchInput = document.getElementById('search-input');
+      const clearBtn = document.getElementById('clear-search-btn');
+
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
+        clearBtn.classList.toggle('hidden', !searchQuery);
+        renderArticlesList();
+      });
+
+      clearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        searchQuery = '';
+        clearBtn.classList.add('hidden');
+        renderArticlesList();
+        searchInput.focus();
+      });
+
+      // Фильтры слоев
+      document.querySelectorAll('.layer-pill').forEach(pill => {
+        pill.addEventListener('click', () => {
+          document.querySelectorAll('.layer-pill').forEach(p => {
+            p.classList.remove('active', 'bg-sky-500/20', 'text-sky-300', 'border-sky-500/40');
+            p.classList.add('bg-slate-800/80', 'text-slate-400', 'border-slate-700/60');
+          });
+          pill.classList.remove('bg-slate-800/80', 'text-slate-400', 'border-slate-700/60');
+          pill.classList.add('active', 'bg-sky-500/20', 'text-sky-300', 'border-sky-500/40');
+
+          currentFilter = pill.getAttribute('data-filter');
+          renderArticlesList();
+        });
+      });
+
+      // Пересканирование
+      document.getElementById('refresh-btn').addEventListener('click', async () => {
+        const icon = document.querySelector('#refresh-btn i');
+        icon.classList.add('animate-spin');
+        await loadCatalog();
+        setTimeout(() => icon.classList.remove('animate-spin'), 600);
+        showToast('Каталог синхронизирован с Obsidian Vault');
+      });
+
+      // Копирование ссылки
+      document.getElementById('copy-link-btn').addEventListener('click', () => {
+        navigator.clipboard.writeText(window.location.href);
+        showToast('Ссылка на статью скопирована');
+      });
+
+      // Открытие в Cockpit
+      document.getElementById('open-cockpit-btn').addEventListener('click', () => {
+        window.open('/cockpit', '_blank');
+      });
+
+      // Печать
+      document.getElementById('print-art-btn').addEventListener('click', () => {
+        window.print();
+      });
+
+      // Размеры шрифта
+      document.getElementById('font-inc').addEventListener('click', () => {
+        if (currentFontSize < 24) {
+          currentFontSize += 2;
+          applyFontSize();
+        }
+      });
+      document.getElementById('font-dec').addEventListener('click', () => {
+        if (currentFontSize > 14) {
+          currentFontSize -= 2;
+          applyFontSize();
+        }
+      });
+      document.getElementById('font-reset').addEventListener('click', () => {
+        currentFontSize = 18;
+        applyFontSize();
+      });
+
+      // Прогресс бар скролла
+      const scrollContainer = document.getElementById('article-scroll-container');
+      const progressBar = document.getElementById('reading-progress');
+      scrollContainer.addEventListener('scroll', () => {
+        const scrollTop = scrollContainer.scrollTop;
+        const scrollHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+        const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+        progressBar.style.width = `${progress}%`;
+      });
+
+      // Сайдбар на мобильных
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebar-overlay');
+      const toggleBtn = document.getElementById('toggle-sidebar-btn');
+
+      toggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('-translate-x-full');
+        overlay.classList.toggle('hidden');
+      });
+      overlay.addEventListener('click', closeSidebar);
+
+      function closeSidebar() {
+        sidebar.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+      }
+
+      // Горячие клавиши
+      window.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+          e.preventDefault();
+          searchInput.focus();
+        } else if (e.key === ']' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+          document.getElementById('next-art-btn').click();
+        } else if (e.key === '[' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+          document.getElementById('prev-art-btn').click();
+        }
+      });
+    }
+
+    function applyFontSize() {
+      document.getElementById('art-content').style.fontSize = `${currentFontSize}px`;
+      document.getElementById('font-reset').textContent = `${currentFontSize}px`;
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').textContent = msg;
+      toast.classList.remove('translate-y-12', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-12', 'opacity-0');
+      }, 2500);
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function escapeJsString(str) {
+      if (!str) return '';
+      return str.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    }
+  </script>
+</body>
+</html>

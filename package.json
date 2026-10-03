@@ -1,7 +1,7 @@
 {
   "name": "inner-current",
-  "version": "2.0.0",
-  "description": "Electrodynamic human state ontology and diagnostic machine",
+  "version": "2.1.0",
+  "description": "Electrodynamic human state ontology, diagnostic machine and consciousness cockpit",
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
@@ -9,6 +9,9 @@
     "lint": "tsc --noEmit",
     "demo": "node --experimental-strip-types src/cli/demo.ts",
     "start": "node scripts/server.js",
+    "cockpit": "node scripts/server.js",
+    "dashboard": "node scripts/server.js",
+    "wiki": "node scripts/server.js",
     "build": "tsc",
     "build:book": "node scripts/build_book.js"
   },
