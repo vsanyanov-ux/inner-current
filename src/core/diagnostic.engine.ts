@@ -21,10 +21,12 @@ import {
   KINTSUGI_CIRCUIT_BREAKER_PROTOCOL,
   MICRO_LOAD_TEA_PROTOCOL,
   MUSHIN_GROUNDING_PROTOCOL,
-  NIJIRIGUCHI_POLARITY_PROTOCOL
+  NIJIRIGUCHI_POLARITY_PROTOCOL,
+  TRIAD_EGO_RESET_PROTOCOL
 } from './remediation.protocols.ts';
 import {
   calculateEffectiveResistance,
+  analyzeEgoResistanceTriad,
   calculateLoadResistance,
   calculateCurrent,
   calculateJouleLenzHeat,
@@ -57,8 +59,9 @@ export class DiagnosticEngine {
   private evaluateRaw(normalized: CircuitTelemetry): DiagnosticResult {
     const { core, bus, load, breaker, durationMinutes } = normalized;
 
-    // 2. Расчёт эффективного сопротивления проводки внимания (R_eff)
+    // 2. Расчёт эффективного сопротивления проводки внимания (R_eff) и Триады эго (Глава 246)
     const finalResistance = calculateEffectiveResistance(bus, core.grounding);
+    const resistanceTriad = analyzeEgoResistanceTriad(bus);
 
     // 3. Проверка на обрыв цепи (OPEN_CIRCUIT: нет нагрузки, застой энергии)
     if (!load) {
@@ -73,7 +76,8 @@ export class DiagnosticEngine {
         headline: 'Обрыв цепи: холостой ход генератора',
         physicsAnalysis:
           'Энергия Тандэна застаивается в ядре без полезной нагрузки. Контур разомкнут, ток не течёт (I = 0). Субъективно переживается как апатия, лень и отсутствие вектора жизни.',
-        remediationProtocols: MICRO_LOAD_TEA_PROTOCOL
+        remediationProtocols: MICRO_LOAD_TEA_PROTOCOL,
+        resistanceTriad
       };
     }
 
@@ -97,7 +101,8 @@ export class DiagnosticEngine {
         headline: 'Короткое замыкание на Эго: иллюзия внешнего источника',
         physicsAnalysis:
           'Внешняя нагрузка пуста (Шуньята, E_load = 0) и не содержит заряда. Ожидание подпитки замыкает внимание во внутренний паразитный контур Эго (Дзига) до нагрузки. Полезный ток в ремесло блокирован (I_load = 0), а сверхток внутреннего КЗ раскаляет проводку внимания до кипения по закону Джоуля — Ленца.',
-        remediationProtocols: NIJIRIGUCHI_POLARITY_PROTOCOL
+        remediationProtocols: NIJIRIGUCHI_POLARITY_PROTOCOL,
+        resistanceTriad
       };
     }
 
@@ -119,7 +124,8 @@ export class DiagnosticEngine {
         physicsAnalysis: zanshinProtected
           ? 'Внешняя нагрузка вышла из строя, но автоматический размыкатель Дзансин вовремя изолировал ядро. Тандэн сохранил целостность, требуется регламент Ваби-саби и восстановительный шов Кинцуги.'
           : 'Катастрофический удар: внешняя нагрузка разрушилась, вызвав короткое замыкание прямо в реакторе из-за отсутствия ментального предохранителя Дзансин.',
-        remediationProtocols: KINTSUGI_CIRCUIT_BREAKER_PROTOCOL
+        remediationProtocols: KINTSUGI_CIRCUIT_BREAKER_PROTOCOL,
+        resistanceTriad
       };
     }
 
@@ -142,12 +148,22 @@ export class DiagnosticEngine {
         code: 'OK_00_SUPERCONDUCTING_MUSHIN',
         headline: 'Сверхпроводимость контура: чистое состояние Мусин',
         physicsAnalysis: `Сопротивление проводки упало до нуля (R = ${finalResistance} ≈ 0). Ток реактора без задержек и омических потерь подается прямо в лампочку текущего действия. Субъективно ощущается как глубокий покой, поток и подлинное счастье.`,
-        remediationProtocols: []
+        remediationProtocols: [],
+        resistanceTriad
       };
     }
 
-    // 8. Омический перегрев (выгорание от мыслей о прошлом и будущем)
+    // 8. Омический перегрев (выгорание от мыслей о прошлом, будущем или мнении людей)
     if (finalResistance > 25 || thermalDissipationJoules > 1500) {
+      let triadDetail = 'трении о мысли о прошлом и будущем';
+      if (resistanceTriad.dominantVector === 'GUILT_PAST') {
+        triadDetail = 'индуктивной петле вины и сожалений о прошлом (R_past)';
+      } else if (resistanceTriad.dominantVector === 'CONTROL_FUTURE') {
+        triadDetail = 'емкостной симуляции тревоги и гиперконтроля будущего (R_future)';
+      } else if (resistanceTriad.dominantVector === 'APPROVAL_PEOPLE') {
+        triadDetail = 'заземлении на чужие оценки и поиск одобрения людей (R_opinion)';
+      }
+
       return {
         status: CircuitStatus.OHMIC_OVERHEAT,
         severity: finalResistance > 60 ? 'CRITICAL' : 'WARNING',
@@ -157,8 +173,9 @@ export class DiagnosticEngine {
         superconductivityIndex,
         code: 'ERR_01_OHMIC_OVERHEAT',
         headline: 'Омический перегрев проводки: ментальное выгорание',
-        physicsAnalysis: `Высокое паразитное сопротивление ума (R = ${finalResistance}) вызвало массивное тепловое рассеивание по закону Джоуля — Ленца (Q = ${thermalDissipationJoules} Дж). Энергия намерения сгорает в трении о мысли о прошлом и будущем, не доходя до полезного действия.`,
-        remediationProtocols: MUSHIN_GROUNDING_PROTOCOL
+        physicsAnalysis: `Высокое паразитное сопротивление ума (R = ${finalResistance}) вызвало массивное тепловое рассеивание по закону Джоуля — Ленца (Q = ${thermalDissipationJoules} Дж). Энергия намерения сгорает в ${triadDetail}, не доходя до полезного действия.`,
+        remediationProtocols: [...MUSHIN_GROUNDING_PROTOCOL, ...TRIAD_EGO_RESET_PROTOCOL],
+        resistanceTriad
       };
     }
 
@@ -173,7 +190,8 @@ export class DiagnosticEngine {
       code: 'OK_01_NOMINAL',
       headline: 'Номинальный рабочий режим цепи',
       physicsAnalysis: `Контур функционирует в пределах допустимых допусков (R = ${finalResistance}). Нагрузка запитана, перегрева проводки не наблюдается.`,
-      remediationProtocols: []
+      remediationProtocols: [],
+      resistanceTriad
     };
   }
 

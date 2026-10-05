@@ -48,6 +48,7 @@ export function normalizeConductanceBus(bus: Partial<ConductanceBus> | null | un
     baseResistance: sanitizeNumber(bus?.baseResistance, 10, 0),
     parasiticPast: sanitizeNumber(bus?.parasiticPast, 0, 0),
     parasiticFuture: sanitizeNumber(bus?.parasiticFuture, 0, 0),
+    parasiticApproval: sanitizeNumber(bus?.parasiticApproval, 0, 0),
     innerCriticNoise: sanitizeNumber(bus?.innerCriticNoise, 0, 0, 1)
   };
 }

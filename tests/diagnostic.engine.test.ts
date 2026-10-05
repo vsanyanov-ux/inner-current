@@ -7,7 +7,8 @@ import {
   LoadScale,
   CanonicalLoadDomain,
   HumanPainArchetype,
-  ZenOntologyCanon
+  ZenOntologyCanon,
+  ResistanceVector
 } from '../src/types/circuit.types.ts';
 import type { CircuitTelemetry, SixBulbPanel } from '../src/types/circuit.types.ts';
 
@@ -553,6 +554,75 @@ describe('Inner Current Diagnostic Engine Test Suite', () => {
     assert.ok(marketRes.operatorStage);
     assert.equal(marketRes.operatorStage.stage, 10, 'Must evaluate to stage 10 (Entering the Marketplace)');
     assert.equal(marketRes.operatorStage.kanji, '入廛垂手');
+  });
+
+  it('16. Triad of Ego Resistance: Correctly classifies Guilt (Past), Control (Future), and Approval (Opinion) and provides 3-second somatic reset protocol (Chapter 246)', () => {
+    // 1. Dominant Guilt (Past): R_past = 40, R_future = 5, R_opinion = 10
+    const guiltTelemetry: CircuitTelemetry = {
+      timestamp: Date.now(),
+      core: baseCore,
+      bus: {
+        baseResistance: 10,
+        parasiticPast: 40,
+        parasiticFuture: 5,
+        parasiticApproval: 10,
+        innerCriticNoise: 0.2
+      },
+      load: {
+        id: 'review-01',
+        name: 'Анализ старых ошибок',
+        scale: LoadScale.FLOW_CODE,
+        powerRequirement: 25,
+        fragility: 0.5,
+        isDamagedOrFailed: false,
+        expectationOfValidation: false
+      },
+      breaker: baseBreaker,
+      durationMinutes: 30
+    };
+
+    const guiltResult = engine.diagnose(guiltTelemetry);
+    assert.equal(guiltResult.status, CircuitStatus.OHMIC_OVERHEAT);
+    assert.ok(guiltResult.resistanceTriad);
+    assert.equal(guiltResult.resistanceTriad.dominantVector, ResistanceVector.GUILT_PAST);
+    assert.equal(guiltResult.resistanceTriad.guiltPast, 40);
+    assert.equal(guiltResult.resistanceTriad.totalEgoResistance, 55);
+    assert.ok(guiltResult.physicsAnalysis.includes('индуктивной петле вины'));
+    // Check that TRIAD_EGO_RESET protocol is included in remediation
+    const triadProtocol = guiltResult.remediationProtocols.find(p => p.protocolName === 'TRIAD_EGO_RESET');
+    assert.ok(triadProtocol, 'Must provide TRIAD_EGO_RESET protocol');
+
+    // 2. Dominant Control (Future): R_past = 5, R_future = 50, R_opinion = 10
+    const controlTelemetry: CircuitTelemetry = {
+      ...guiltTelemetry,
+      bus: {
+        baseResistance: 10,
+        parasiticPast: 5,
+        parasiticFuture: 50,
+        parasiticApproval: 10,
+        innerCriticNoise: 0.2
+      }
+    };
+    const controlResult = engine.diagnose(controlTelemetry);
+    assert.ok(controlResult.resistanceTriad);
+    assert.equal(controlResult.resistanceTriad.dominantVector, ResistanceVector.CONTROL_FUTURE);
+    assert.ok(controlResult.physicsAnalysis.includes('емкостной симуляции тревоги'));
+
+    // 3. Dominant Approval (Opinion): R_past = 5, R_future = 10, R_opinion = 45
+    const approvalTelemetry: CircuitTelemetry = {
+      ...guiltTelemetry,
+      bus: {
+        baseResistance: 10,
+        parasiticPast: 5,
+        parasiticFuture: 10,
+        parasiticApproval: 45,
+        innerCriticNoise: 0.2
+      }
+    };
+    const approvalResult = engine.diagnose(approvalTelemetry);
+    assert.ok(approvalResult.resistanceTriad);
+    assert.equal(approvalResult.resistanceTriad.dominantVector, ResistanceVector.APPROVAL_PEOPLE);
+    assert.ok(approvalResult.physicsAnalysis.includes('заземлении на чужие оценки'));
   });
 });
 

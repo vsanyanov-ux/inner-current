@@ -38,6 +38,7 @@ export function createConductanceBus(partial: Partial<ConductanceBus> = {}): Con
     baseResistance: 5,
     parasiticPast: 0,
     parasiticFuture: 0,
+    parasiticApproval: 0,
     innerCriticNoise: 0,
     ...partial
   };

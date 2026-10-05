@@ -78,9 +78,34 @@ export interface ConductanceBus {
   parasiticFuture: number;
 
   /**
+   * Parasitic resistance of approval / opinions of other people (0 - 100)
+   * Ложный делитель напряжения и заземление на чужие проекции (Глава 246)
+   */
+  parasiticApproval?: number;
+
+  /**
    * Noise level / inner critic chatter (0 - 1)
    */
   innerCriticNoise: number;
+}
+
+/**
+ * Триада омического сопротивления Эго (Глава 246)
+ * Предельная редукция Кансо: Вина (прошлое), Контроль (будущее), Одобрение (люди)
+ */
+export const ResistanceVector = {
+  GUILT_PAST: 'GUILT_PAST',         // R_past: Вина / Обида / Прошлое (индуктивная петля)
+  CONTROL_FUTURE: 'CONTROL_FUTURE', // R_future: Контроль / Тревога / Будущее (емкостная утечка)
+  APPROVAL_PEOPLE: 'APPROVAL_PEOPLE'// R_opinion: Одобрение / Чужое мнение (делитель напряжения)
+} as const;
+export type ResistanceVector = typeof ResistanceVector[keyof typeof ResistanceVector];
+
+export interface EgoResistanceTriad {
+  guiltPast: number;          // R_past: Вина / прошлое (Ом)
+  controlFuture: number;      // R_future: Контроль / будущее (Ом)
+  approvalPeople: number;     // R_opinion: Одобрение / мнение людей (Ом)
+  totalEgoResistance: number; // R_ego = R_past + R_future + R_opinion
+  dominantVector: ResistanceVector | null;
 }
 
 export interface LoadNode {
@@ -183,6 +208,7 @@ export interface DiagnosticResult {
   physicsAnalysis: string;
   remediationProtocols: RemediationStep[];
   operatorStage?: TenBullsStageInfo; // Ступень зрелости оператора по канону Десяти быков
+  resistanceTriad?: EgoResistanceTriad; // Триада сопротивления эго: Вина, Контроль, Одобрение (Глава 246)
 }
 
 /**

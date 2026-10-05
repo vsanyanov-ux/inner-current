@@ -1,6 +1,6 @@
 {
   "name": "inner-current",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Electrodynamic human state ontology, diagnostic machine and consciousness cockpit",
   "type": "module",
   "main": "dist/index.js",

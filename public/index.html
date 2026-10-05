@@ -603,6 +603,44 @@
             </div>
             <input type="range" min="0" max="1" step="0.05" value="0" id="sc_sliderCritic" class="w-full accent-amber-400 cursor-pointer" oninput="sc_updateCircuit()">
           </div>
+
+          <!-- Approval Resistor (Chapter 246) -->
+          <div>
+            <div class="flex justify-between text-xs font-mono text-slate-300 mb-1">
+              <span>Делитель Одобрения (Забота о мнении людей, статус):</span>
+              <span id="sc_labelApproval" class="text-amber-300 font-bold">0 Ω</span>
+            </div>
+            <input type="range" min="0" max="50" value="0" id="sc_sliderApproval" class="w-full accent-amber-300 cursor-pointer" oninput="sc_updateCircuit()">
+          </div>
+        </div>
+
+        <!-- Триада Сопротивления Эго (Глава 246): Экспресс-селектор залома цепи и 3-секундный сброс -->
+        <div class="p-3.5 bg-slate-950/80 border border-slate-800 rounded-xl space-y-2.5">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono font-bold text-slate-200 flex items-center gap-1.5">
+              <span>⚡</span> <span>ТРИАДА R_ego: ЭКСПРЕСС-СЕЛЕКТОР ЗАЛОМА (КАНСО)</span>
+            </span>
+            <span id="triad_status_badge" class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800/60">
+              R_ego = 0 Ω (Мусин)
+            </span>
+          </div>
+          <div class="grid grid-cols-3 gap-2">
+            <button type="button" onclick="sc_triggerTriadVector('GUILT')" id="btn_triad_guilt" class="p-2 rounded-lg bg-slate-900 border border-rose-900/40 hover:border-rose-500 text-rose-300 text-xs font-mono transition text-left cursor-pointer active:scale-95">
+              <div class="font-bold flex items-center gap-1"><span>⏪</span> Вина</div>
+              <div class="text-[10px] text-slate-400">Прошлое (Архив)</div>
+            </button>
+            <button type="button" onclick="sc_triggerTriadVector('CONTROL')" id="btn_triad_control" class="p-2 rounded-lg bg-slate-900 border border-purple-900/40 hover:border-purple-500 text-purple-300 text-xs font-mono transition text-left cursor-pointer active:scale-95">
+              <div class="font-bold flex items-center gap-1"><span>⏩</span> Контроль</div>
+              <div class="text-[10px] text-slate-400">Будущее (Тревога)</div>
+            </button>
+            <button type="button" onclick="sc_triggerTriadVector('APPROVAL')" id="btn_triad_approval" class="p-2 rounded-lg bg-slate-900 border border-amber-900/40 hover:border-amber-500 text-amber-300 text-xs font-mono transition text-left cursor-pointer active:scale-95">
+              <div class="font-bold flex items-center gap-1"><span>👥</span> Одобрение</div>
+              <div class="text-[10px] text-slate-400">Люди (Мнение)</div>
+            </button>
+          </div>
+          <button type="button" onclick="sc_resetTriadSomatic()" id="btn_triad_reset" class="w-full py-2 px-3 rounded-lg bg-gradient-to-r from-emerald-950 via-cyan-950 to-slate-900 border border-emerald-500/40 hover:border-emerald-400 text-emerald-300 hover:text-emerald-200 text-xs font-mono font-bold transition flex items-center justify-center gap-2 shadow-sm cursor-pointer active:scale-95">
+            <span>🫁</span> <span>3-СЕКУНДНЫЙ СОМАТИЧЕСКИЙ СБРОС В ТАНДЭН (R → 0 Ω)</span>
+          </button>
         </div>
 
         <!-- Toggles & Switches -->
@@ -4295,6 +4333,7 @@
       baseR: 1,
       pastL: 0,
       futureC: 0,
+      approvalR: 0,
       critic: 0,
       validationTrap: false,
       loadFailed: false,
@@ -4326,23 +4365,23 @@
     function sc_applyPreset(type) {
       if (type === 'mushin') {
         sc_state.emf = 85; sc_state.grounding = 0.95; sc_state.baseR = 1; sc_state.pastL = 0;
-        sc_state.futureC = 0; sc_state.critic = 0; sc_state.validationTrap = false; sc_state.loadFailed = false;
+        sc_state.futureC = 0; sc_state.approvalR = 0; sc_state.critic = 0; sc_state.validationTrap = false; sc_state.loadFailed = false;
         sc_setLoadScale('MICRO_TEA', 10, 'Чаша чая Матча');
       } else if (type === 'flow_code') {
         sc_state.emf = 80; sc_state.grounding = 0.85; sc_state.baseR = 2; sc_state.pastL = 0;
-        sc_state.futureC = 0; sc_state.critic = 0; sc_state.validationTrap = false; sc_state.loadFailed = false;
+        sc_state.futureC = 0; sc_state.approvalR = 0; sc_state.critic = 0; sc_state.validationTrap = false; sc_state.loadFailed = false;
         sc_setLoadScale('FLOW_CODE', 40, 'Чистая функция кода');
       } else if (type === 'overheat') {
         sc_state.emf = 75; sc_state.grounding = 0.2; sc_state.baseR = 15; sc_state.pastL = 30;
-        sc_state.futureC = 45; sc_state.critic = 0.8; sc_state.validationTrap = false; sc_state.loadFailed = false;
+        sc_state.futureC = 45; sc_state.approvalR = 20; sc_state.critic = 0.8; sc_state.validationTrap = false; sc_state.loadFailed = false;
         sc_setLoadScale('FLOW_CODE', 40, 'Дедлайн микросервиса');
       } else if (type === 'reverse') {
         sc_state.emf = 60; sc_state.grounding = 0.3; sc_state.baseR = 10; sc_state.pastL = 10;
-        sc_state.futureC = 20; sc_state.critic = 0.5; sc_state.validationTrap = true; sc_state.loadFailed = false;
+        sc_state.futureC = 20; sc_state.approvalR = 40; sc_state.critic = 0.5; sc_state.validationTrap = true; sc_state.loadFailed = false;
         sc_setLoadScale('MACRO_ENTERPRISE', 100, 'Презентация инвесторам');
       } else if (type === 'kintsugi') {
         sc_state.emf = 80; sc_state.grounding = 0.9; sc_state.baseR = 3; sc_state.pastL = 0;
-        sc_state.futureC = 0; sc_state.critic = 0; sc_state.validationTrap = false; sc_state.loadFailed = true;
+        sc_state.futureC = 0; sc_state.approvalR = 0; sc_state.critic = 0; sc_state.validationTrap = false; sc_state.loadFailed = true;
         sc_setLoadScale('MICRO_TEA', 10, 'Раритетная пиала');
       }
       sc_syncInputs();
@@ -4354,6 +4393,8 @@
       document.getElementById('sc_sliderGrounding').value = sc_state.grounding;
       document.getElementById('sc_sliderPast').value = sc_state.pastL;
       document.getElementById('sc_sliderFuture').value = sc_state.futureC;
+      const approvalInput = document.getElementById('sc_sliderApproval');
+      if (approvalInput) approvalInput.value = sc_state.approvalR;
       document.getElementById('sc_sliderCritic').value = sc_state.critic;
       document.getElementById('sc_checkValidation').checked = sc_state.validationTrap;
       document.getElementById('sc_checkFailed').checked = sc_state.loadFailed;
@@ -4365,6 +4406,8 @@
       sc_state.grounding = parseFloat(document.getElementById('sc_sliderGrounding').value);
       sc_state.pastL = parseFloat(document.getElementById('sc_sliderPast').value);
       sc_state.futureC = parseFloat(document.getElementById('sc_sliderFuture').value);
+      const approvalEl = document.getElementById('sc_sliderApproval');
+      if (approvalEl) sc_state.approvalR = parseFloat(approvalEl.value);
       sc_state.critic = parseFloat(document.getElementById('sc_sliderCritic').value);
       sc_state.validationTrap = document.getElementById('sc_checkValidation').checked;
       sc_state.loadFailed = document.getElementById('sc_checkFailed').checked;
@@ -4374,13 +4417,32 @@
       document.getElementById('sc_labelGrounding').textContent = sc_state.grounding.toFixed(2);
       document.getElementById('sc_labelPast').textContent = sc_state.pastL + ' Ω';
       document.getElementById('sc_labelFuture').textContent = sc_state.futureC + ' Ω';
+      const labelApproval = document.getElementById('sc_labelApproval');
+      if (labelApproval) labelApproval.textContent = sc_state.approvalR + ' Ω';
       document.getElementById('sc_labelCritic').textContent = sc_state.critic.toFixed(2);
       document.getElementById('sc_emfText').textContent = 'E = ' + sc_state.emf + 'V';
 
-      // Physics Calculation
-      const rawR = sc_state.baseR + sc_state.pastL + sc_state.futureC;
+      // Physics Calculation (Chapter 246: R_ego = R_past + R_future + R_approval)
+      const rawR = sc_state.baseR + sc_state.pastL + sc_state.futureC + sc_state.approvalR;
       const effectiveR = Math.max(0.2, (rawR * (1 + sc_state.critic) * (1 - 0.2 * sc_state.grounding)));
       const loadR = Math.max(1, sc_state.loadPower / 10);
+
+      // Triad Status Badge
+      const rEgo = sc_state.pastL + sc_state.futureC + sc_state.approvalR;
+      const triadBadge = document.getElementById('triad_status_badge');
+      if (triadBadge) {
+        if (rEgo === 0) {
+          triadBadge.textContent = 'R_ego = 0 Ω (Мусин)';
+          triadBadge.className = 'text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800/60';
+        } else {
+          let dominant = 'Смешанное';
+          if (sc_state.pastL >= sc_state.futureC && sc_state.pastL >= sc_state.approvalR) dominant = 'Вина (Прошлое)';
+          else if (sc_state.futureC >= sc_state.pastL && sc_state.futureC >= sc_state.approvalR) dominant = 'Контроль (Будущее)';
+          else if (sc_state.approvalR >= sc_state.pastL && sc_state.approvalR >= sc_state.futureC) dominant = 'Одобрение (Люди)';
+          triadBadge.textContent = `R_ego = ${rEgo} Ω (${dominant})`;
+          triadBadge.className = 'text-[10px] font-mono px-2 py-0.5 rounded-full bg-rose-950 text-rose-300 border border-rose-800/60';
+        }
+      }
       
       let current = 0;
       let heat = 0;
@@ -4553,7 +4615,7 @@
 
     function sc_autoRemediate() {
       const btn = document.getElementById('sc_btnRemediate');
-      const isAlreadyMushin = (sc_state.pastL === 0 && sc_state.futureC === 0 && sc_state.critic === 0 && sc_state.grounding >= 0.95 && !sc_state.validationTrap && !sc_state.loadFailed);
+      const isAlreadyMushin = (sc_state.pastL === 0 && sc_state.futureC === 0 && sc_state.approvalR === 0 && sc_state.critic === 0 && sc_state.grounding >= 0.95 && !sc_state.validationTrap && !sc_state.loadFailed);
 
       if (isAlreadyMushin) {
         if (btn) {
@@ -4578,6 +4640,7 @@
         let changed = false;
         if (sc_state.pastL > 0) { sc_state.pastL = Math.max(0, sc_state.pastL - 5); changed = true; }
         if (sc_state.futureC > 0) { sc_state.futureC = Math.max(0, sc_state.futureC - 5); changed = true; }
+        if (sc_state.approvalR > 0) { sc_state.approvalR = Math.max(0, sc_state.approvalR - 5); changed = true; }
         if (sc_state.critic > 0) { sc_state.critic = Math.max(0, sc_state.critic - 0.1); changed = true; }
         if (sc_state.grounding < 0.95) { sc_state.grounding = Math.min(0.95, sc_state.grounding + 0.1); changed = true; }
         sc_state.validationTrap = false;
@@ -4599,6 +4662,53 @@
           }
         }
       }, 50);
+    }
+
+    // Триада Сопротивления Эго (Глава 246): Экспресс-селектор залома контура
+    function sc_triggerTriadVector(vector) {
+      if (vector === 'GUILT') {
+        sc_state.pastL = 35;
+        sc_state.futureC = 5;
+        sc_state.approvalR = 5;
+        sc_state.critic = 0.6;
+      } else if (vector === 'CONTROL') {
+        sc_state.pastL = 5;
+        sc_state.futureC = 40;
+        sc_state.approvalR = 5;
+        sc_state.critic = 0.5;
+      } else if (vector === 'APPROVAL') {
+        sc_state.pastL = 5;
+        sc_state.futureC = 5;
+        sc_state.approvalR = 40;
+        sc_state.critic = 0.4;
+      }
+      sc_syncInputs();
+      sc_updateCircuit();
+      if (typeof playZenChime === 'function') playZenChime(320);
+    }
+
+    // Триада Сопротивления Эго (Глава 246): 3-Секундный соматический сброс в Тандэн (R -> 0 Ом)
+    function sc_resetTriadSomatic() {
+      sc_state.pastL = 0;
+      sc_state.futureC = 0;
+      sc_state.approvalR = 0;
+      sc_state.critic = 0;
+      sc_state.grounding = 0.95;
+      sc_state.validationTrap = false;
+      sc_syncInputs();
+      sc_updateCircuit();
+
+      const btnReset = document.getElementById('btn_triad_reset');
+      if (btnReset) {
+        const origHTML = btnReset.innerHTML;
+        btnReset.innerHTML = '<span>✨</span> <span>ВНИМАНИЕ В ТАНДЭН: R_ego = 0 Ω (СВЕРХПРОВОДИМОСТЬ)</span>';
+        btnReset.classList.add('ring-2', 'ring-emerald-400', 'from-emerald-700', 'to-teal-800');
+        if (typeof playZenChime === 'function') playZenChime(528);
+        setTimeout(() => {
+          btnReset.innerHTML = origHTML;
+          btnReset.classList.remove('ring-2', 'ring-emerald-400', 'from-emerald-700', 'to-teal-800');
+        }, 2200);
+      }
     }
 
     // Initial load

@@ -5,24 +5,56 @@
  * Данный модуль содержит чистые функции расчёта без состояния (принцип Тандэн).
  */
 
-import type { ConductanceBus } from '../types/circuit.types.ts';
+import { ResistanceVector, type ConductanceBus, type EgoResistanceTriad } from '../types/circuit.types.ts';
 
 /**
  * Расчёт эффективного сопротивления проводки внимания (R_eff).
- * Паразитные индуктивности (прошлое) и емкости (будущее) суммируются с базовым сопротивлением,
+ * Паразитные индуктивности (прошлое / вина), емкости (будущее / контроль)
+ * и делители напряжения (люди / одобрение) суммируются с базовым сопротивлением,
  * масштабируются шумом внутреннего критика и снижаются за счёт физического заземления (до 20%).
  */
 export function calculateEffectiveResistance(bus: ConductanceBus, grounding: number): number {
   const base = Math.max(0, bus.baseResistance);
   const past = Math.max(0, bus.parasiticPast);
   const future = Math.max(0, bus.parasiticFuture);
-  const rawResistance = base + past + future;
+  const approval = Math.max(0, bus.parasiticApproval ?? 0);
+  const rawResistance = base + past + future + approval;
 
   const noiseMultiplier = 1 + Math.max(0, bus.innerCriticNoise);
   const effectiveResistance = Math.round(rawResistance * noiseMultiplier * 100) / 100;
 
   const groundingFactor = Math.max(0, Math.min(1, grounding));
   return Math.max(0, Math.round(effectiveResistance * (1 - 0.2 * groundingFactor) * 100) / 100);
+}
+
+/**
+ * Анализирует триаду омического сопротивления эго (Глава 246):
+ * Вина (прошлое), Контроль (будущее), Одобрение (мнение людей).
+ */
+export function analyzeEgoResistanceTriad(bus: ConductanceBus): EgoResistanceTriad {
+  const guiltPast = Math.max(0, bus.parasiticPast);
+  const controlFuture = Math.max(0, bus.parasiticFuture);
+  const approvalPeople = Math.max(0, bus.parasiticApproval ?? 0);
+  const totalEgoResistance = guiltPast + controlFuture + approvalPeople;
+
+  let dominantVector: ResistanceVector | null = null;
+  if (totalEgoResistance > 0) {
+    if (guiltPast >= controlFuture && guiltPast >= approvalPeople) {
+      dominantVector = ResistanceVector.GUILT_PAST;
+    } else if (controlFuture >= guiltPast && controlFuture >= approvalPeople) {
+      dominantVector = ResistanceVector.CONTROL_FUTURE;
+    } else {
+      dominantVector = ResistanceVector.APPROVAL_PEOPLE;
+    }
+  }
+
+  return {
+    guiltPast,
+    controlFuture,
+    approvalPeople,
+    totalEgoResistance,
+    dominantVector
+  };
 }
 
 /**

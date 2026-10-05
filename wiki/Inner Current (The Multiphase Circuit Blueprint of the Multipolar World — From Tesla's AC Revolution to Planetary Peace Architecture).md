@@ -193,6 +193,7 @@ tags: [inner-current, multipolarity, tesla-polyphase, civilizational-blueprint, 
 ---
 
 ### Связанные статьи канона:
+* ⚡ [[02_Wiki/Брошюра — Многофазный мир (Электродинамика планетарного согласия)|Брошюра: «Многофазный мир: Электродинамика планетарного согласия»]] — каноническая мастер-рукопись планетарного манифеста.
 * [[02_Wiki/Inner Current (Civilizational Electrodynamics — Overcoming Neocolonial Breakdown, The Newtonian Tribal Split and the P2P Grid of Sovereign Generators)|177. Цивилизационная электродинамика: Преодоление неоколониального распада, ньютоновского раскола «Свой — Чужой» и переход к многофазной P2P-сети суверенных генераторов]]
 * [[02_Wiki/Inner Current (European Circuit Sovereignty — Deconstruction of the Battery Fallacy, The ASML Monopoly and Eurasian Impedance Matching)|178. Суверенитет Европейского контура: Деконструкция «Ошибки аккумулятора», технологический монопольный Тандэн и Евразийское согласование импедансов]]
 * [[02_Wiki/Inner Current (The Electrodynamic Proof of Tat Tvam Asi — Archer, Target, Poynting Vector and Overcoming Newtonian Dualism)|135. Электродинамическое доказательство «Tat Tvam Asi»: Стрелок, Мишень, Вектор Пойнтинга и преодоление ньютоновского дуализма]]

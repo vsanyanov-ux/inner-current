@@ -7,7 +7,8 @@ import {
   calculateJouleLenzHeat,
   calculateSuperconductivityIndex,
   calculateEgoShortCircuit,
-  calculateAvailablePower
+  calculateAvailablePower,
+  analyzeEgoResistanceTriad
 } from '../src/core/physics.calculator.ts';
 import {
   sanitizeNumber,
@@ -34,7 +35,8 @@ import {
 import {
   BreakerStatus,
   CanonicalLoadDomain,
-  ZenOntologyCanon
+  ZenOntologyCanon,
+  ResistanceVector
 } from '../src/types/circuit.types.ts';
 
 describe('Inner Current Core Physics & Domain Test Suite', () => {
@@ -90,6 +92,39 @@ describe('Inner Current Core Physics & Domain Test Suite', () => {
       assert.equal(calculateAvailablePower(100, 100), 100);
       assert.equal(calculateAvailablePower(100, 0), 0);
       assert.equal(calculateAvailablePower(100, 150), 100); // clamped to 100%
+    });
+
+    it('calculates effective resistance including parasiticApproval', () => {
+      const bus = { baseResistance: 10, parasiticPast: 5, parasiticFuture: 5, parasiticApproval: 10, innerCriticNoise: 0 };
+      // raw = 10 + 5 + 5 + 10 = 30. Grounding = 1.0 => 30 * (1 - 0.2) = 24.
+      assert.equal(calculateEffectiveResistance(bus, 1.0), 24);
+    });
+
+    it('analyzes ego resistance triad and determines dominant vector (Chapter 246)', () => {
+      // 1. Dominant Past
+      const pastBus = { baseResistance: 5, parasiticPast: 30, parasiticFuture: 10, parasiticApproval: 5, innerCriticNoise: 0 };
+      const pastTriad = analyzeEgoResistanceTriad(pastBus);
+      assert.equal(pastTriad.guiltPast, 30);
+      assert.equal(pastTriad.controlFuture, 10);
+      assert.equal(pastTriad.approvalPeople, 5);
+      assert.equal(pastTriad.totalEgoResistance, 45);
+      assert.equal(pastTriad.dominantVector, ResistanceVector.GUILT_PAST);
+
+      // 2. Dominant Future
+      const futureBus = { baseResistance: 5, parasiticPast: 10, parasiticFuture: 40, parasiticApproval: 15, innerCriticNoise: 0 };
+      const futureTriad = analyzeEgoResistanceTriad(futureBus);
+      assert.equal(futureTriad.dominantVector, ResistanceVector.CONTROL_FUTURE);
+
+      // 3. Dominant Approval
+      const approvalBus = { baseResistance: 5, parasiticPast: 5, parasiticFuture: 10, parasiticApproval: 35, innerCriticNoise: 0 };
+      const approvalTriad = analyzeEgoResistanceTriad(approvalBus);
+      assert.equal(approvalTriad.dominantVector, ResistanceVector.APPROVAL_PEOPLE);
+
+      // 4. Zero resistance (Mushin)
+      const zeroBus = { baseResistance: 0, parasiticPast: 0, parasiticFuture: 0, parasiticApproval: 0, innerCriticNoise: 0 };
+      const zeroTriad = analyzeEgoResistanceTriad(zeroBus);
+      assert.equal(zeroTriad.totalEgoResistance, 0);
+      assert.equal(zeroTriad.dominantVector, null);
     });
   });
 

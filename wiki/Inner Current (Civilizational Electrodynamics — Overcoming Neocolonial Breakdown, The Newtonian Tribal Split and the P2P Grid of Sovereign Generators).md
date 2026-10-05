@@ -191,6 +191,7 @@ $$\vec{S} = \vec{E} \times \vec{H}$$
 ---
 
 ### Связанные статьи канона:
+* ⚡ [[02_Wiki/Брошюра — Многофазный мир (Электродинамика планетарного согласия)|Брошюра: «Многофазный мир: Электродинамика планетарного согласия»]] — каноническая мастер-рукопись планетарного манифеста.
 * [[02_Wiki/Inner Current (The Electrodynamic Proof of Tat Tvam Asi — Archer, Target, Poynting Vector and Overcoming Newtonian Dualism)|135. Электродинамическое доказательство «Tat Tvam Asi»: Стрелок, Мишень, Вектор Пойнтинга и преодоление ньютоновского дуализма]]
 * [[02_Wiki/Inner Current (The Halves Paradox Resolution — Two Sovereign Generators, Galvanic Isolation and Mutual Induction vs Codependency Breakdown)|150. Разрешение парадокса «половинок»: Модель двух автономных генераторов, гальваническая развязка и взаимная индукция Фарадея — Максвелла]]
 * [[02_Wiki/Inner Current (The Henry George Principle — Single Tax, Bitcoin and Circuit Superconductivity — Law of Direct Flow and Elimination of Parasitic Rent)|48. Единый налог Генри Джорджа, Биткоин и Архитектура счастья: Триумф прямого потока и ликвидация паразитной ренты]]

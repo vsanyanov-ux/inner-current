@@ -125,4 +125,79 @@ describe('Visualizer public/index.html Integrity & Script Syntax Test Suite', ()
       assert.ok(html.includes(`id="${id}"`), `Triad element with id "${id}" should exist in public/index.html`);
     }
   });
+
+  it('6. Triad of Ego Resistance (Chapter 246) UI elements exist in index.html', () => {
+    const triad246Ids = [
+      'sc_sliderApproval',
+      'sc_labelApproval',
+      'triad_status_badge',
+      'btn_triad_guilt',
+      'btn_triad_control',
+      'btn_triad_approval',
+      'btn_triad_reset'
+    ];
+
+    for (const id of triad246Ids) {
+      assert.ok(html.includes(`id="${id}"`), `Chapter 246 element with id "${id}" should exist in public/index.html`);
+    }
+  });
+
+  it('7. Cockpit public/cockpit.html Integrity: scripts parse cleanly and Triad HUD exists', () => {
+    const cockpitPath = path.resolve('public/cockpit.html');
+    const cockpitHtml = fs.readFileSync(cockpitPath, 'utf8');
+
+    // Embedded scripts parse check
+    const scriptMatches = [...cockpitHtml.matchAll(/<script[\s\S]*?>([\s\S]*?)<\/script>/gi)];
+    assert.ok(scriptMatches.length > 0, 'Should find at least one <script> tag in cockpit.html');
+
+    scriptMatches.forEach((m, idx) => {
+      const code = m[1].trim();
+      if (!code) return;
+      try {
+        new Function(code);
+      } catch (err: any) {
+        assert.fail(`Cockpit script #${idx} failed to parse: ${err.message}`);
+      }
+    });
+
+    // Check Triad of Ego Resistance UI elements
+    const cockpitTriadIds = [
+      'cockpit-triad-badge',
+      'cockpit-btn-guilt',
+      'cockpit-btn-control',
+      'cockpit-btn-approval',
+      'cockpit-btn-triad-reset'
+    ];
+
+    for (const id of cockpitTriadIds) {
+      assert.ok(cockpitHtml.includes(`id="${id}"`), `Cockpit Triad element with id "${id}" should exist`);
+    }
+
+    // Verify all onclick handlers in cockpit.html are defined
+    const onclickMatches = [...cockpitHtml.matchAll(/onclick="([^"]+)"/g)];
+    const fnCalls = new Set<string>();
+    const ignored = new Set(['typeof', 'if', 'setTimeout']);
+
+    onclickMatches.forEach(m => {
+      const code = m[1];
+      const matches = [...code.matchAll(/([a-zA-Z0-9_$]+)\s*\(/g)];
+      matches.forEach(call => {
+        const fn = call[1];
+        if (!ignored.has(fn)) {
+          fnCalls.add(fn);
+        }
+      });
+    });
+
+    const fullJs = scriptMatches.map(m => m[1]).join('\n');
+    const missingFns: string[] = [];
+    for (const fn of fnCalls) {
+      const regex = new RegExp(`(?:function\\s+${fn}\\b|${fn}\\s*=|window\\.${fn}\\b)`);
+      if (!regex.test(fullJs)) {
+        missingFns.push(fn);
+      }
+    }
+
+    assert.deepEqual(missingFns, [], `Found missing onclick functions in cockpit.html: ${missingFns.join(', ')}`);
+  });
 });
