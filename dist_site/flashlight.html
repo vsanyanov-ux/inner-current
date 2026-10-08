@@ -270,34 +270,22 @@
               <!-- Размыкающийся контактный лепесток: лежит на верхнем проводе (y=150), при размыкании поднимается к y=132 -->
               <path id="hotsuContactBlade" d="M 465,150 L 405,150" fill="none" stroke="#f59e0b" stroke-width="7" stroke-linecap="round" class="transition-all duration-200" />
 
-              <!-- Провод от контакта 2 влево к предохранителю Дзансин -->
-              <path d="M 405,150 L 365,150" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+              <!-- Провод от контакта 2 напрямую к цоколю лампочки Гё -->
+              <path d="M 405,150 L 225,150 L 225,195" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
             </g>
 
-            <!-- 4. ДЗАНСИН (ПРЕДОХРАНИТЕЛЬ) — строго на самом верхнем проводе (y=150), плашка опущена к y=44 -->
-            <g class="zen-pointer" onclick="showElement('zanshin')" id="elem-zanshin">
-              <rect x="353" y="139" width="12" height="22" rx="3" fill="#94a3b8" stroke="#cbd5e1" stroke-width="1.5" />
-              <rect x="292" y="136" width="61" height="28" rx="6" fill="url(#fuseGlassGrad)" stroke="#38bdf8" stroke-width="2" />
-              <rect x="280" y="139" width="12" height="22" rx="3" fill="#94a3b8" stroke="#cbd5e1" stroke-width="1.5" />
-              
-              <path id="fuseFilament" d="M 292,150 Q 312,143 322,150 Q 332,157 353,150" 
-                fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" />
-
-              <!-- Провод от левого колпачка предохранителя к цоколю лампочки -->
-              <path d="M 280,150 L 225,150 L 225,195" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
-
-              <g>
-                <line x1="322" y1="136" x2="255" y2="84" stroke="#38bdf8" stroke-width="2" stroke-dasharray="3 3" />
-                <circle cx="322" cy="136" r="3.5" fill="#38bdf8" />
-                <rect x="160" y="44" width="190" height="40" rx="12" fill="#082f49" fill-opacity="0.95" stroke="#38bdf8" stroke-width="2.5" />
-                <circle cx="180" cy="64" r="11" fill="#38bdf8" />
-                <text x="180" y="68" fill="#082f49" font-size="12" font-weight="900" text-anchor="middle">4</text>
-                <text x="198" y="59" fill="#7dd3fc" font-size="11" font-weight="900">ДЗАНСИН (残心)</text>
-                <text x="198" y="74" fill="#ffffff" font-size="9" font-weight="bold">Предохранитель (Защита)</text>
-              </g>
+            <!-- 3. МУСИН (ТОК) — мчится по верхнему проводу при замыкании цепи -->
+            <g class="zen-pointer" onclick="showElement('mushin')" id="elem-mushin">
+              <line x1="280" y1="84" x2="280" y2="150" stroke="#f97316" stroke-width="2" stroke-dasharray="3 3" />
+              <circle cx="280" cy="150" r="4" fill="#f97316" />
+              <rect id="mushinBadgeBg" x="160" y="44" width="200" height="40" rx="12" fill="#431407" fill-opacity="0.95" stroke="#f97316" stroke-width="2.5" />
+              <circle cx="180" cy="64" r="11" fill="#f97316" />
+              <text x="180" y="68" fill="#ffffff" font-size="12" font-weight="900" text-anchor="middle">3</text>
+              <text x="198" y="59" fill="#fdba74" font-size="11" font-weight="900">МУСИН (無心) — Ток</text>
+              <text x="198" y="74" fill="#ffffff" font-size="9" font-weight="bold">Чистый поток внимания</text>
             </g>
 
-            <!-- 3. ГЁ (ЛАМПОЧКА) -->
+            <!-- 4. ГЁ (ЛАМПОЧКА) — рождает свет от протекания тока -->
             <g class="zen-pointer" onclick="showElement('gyo')" id="elem-gyo">
               <rect x="215" y="195" width="20" height="30" rx="4" fill="#64748b" stroke="#334155" stroke-width="2" />
               <circle id="gyoBulbGlass" cx="200" cy="210" r="22" fill="#fef08a" stroke="#fde047" stroke-width="4" filter="url(#bulbGlowFilter)" class="gyo-bulb-active" />
@@ -306,32 +294,46 @@
               <g>
                 <line x1="200" y1="232" x2="200" y2="345" stroke="#facc15" stroke-width="2" stroke-dasharray="3 3" />
                 <circle cx="200" cy="232" r="4" fill="#facc15" />
-                <rect x="120" y="345" width="180" height="44" rx="12" fill="#422006" fill-opacity="0.95" stroke="#facc15" stroke-width="2.5" />
+                <rect x="120" y="345" width="190" height="44" rx="12" fill="#422006" fill-opacity="0.95" stroke="#facc15" stroke-width="2.5" />
                 <circle cx="140" cy="367" r="11" fill="#facc15" />
-                <text x="140" y="371" fill="#713f12" font-size="12" font-weight="900" text-anchor="middle">3</text>
+                <text x="140" y="371" fill="#713f12" font-size="12" font-weight="900" text-anchor="middle">4</text>
                 <text x="158" y="362" fill="#fef08a" font-size="12" font-weight="900">ГЁ (行) — Лампочка</text>
                 <text x="158" y="377" fill="#ffffff" font-size="9" font-weight="bold">Действие & Плод света</text>
               </g>
             </g>
 
-            <!-- ОБРАТНЫЙ ПРОВОД (СТРОГО ВНУТРИ КОРПУСА ФОНАРИКА: y=270, нижняя граница корпуса y=300) -->
-            <path id="circuitReturnRail" d="M 225,225 L 225,270 L 750,270 L 750,210 L 710,210" 
-              fill="none" stroke="#f97316" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+            <!-- ОБРАТНЫЙ ПРОВОД И 5. ДЗАНСИН (ПРЕДОХРАНИТЕЛЬ) — бережёт ядро от аварий на обратном пути -->
+            <!-- Провод от лампочки к предохранителю -->
+            <path d="M 225,225 L 225,270 L 380,270" fill="none" stroke="#f97316" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
 
-            <!-- 5. МУСИН (ТОК) -->
-            <g id="mushinCurrentLoop" class="current-mushin-flowing" onclick="showElement('mushin')">
-              <path d="M 490,210 L 465,210 L 465,150 L 405,150 L 280,150 L 225,150 L 225,195 M 225,225 L 225,270 L 750,270 L 750,210 L 710,210" 
-                fill="none" stroke="#ffffff" stroke-width="4" opacity="0.95" />
+            <!-- 5. ДЗАНСИН (ПРЕДОХРАНИТЕЛЬ) — на обратном проводе перед входом в батарейку -->
+            <g class="zen-pointer" onclick="showElement('zanshin')" id="elem-zanshin">
+              <rect x="380" y="259" width="12" height="22" rx="3" fill="#94a3b8" stroke="#cbd5e1" stroke-width="1.5" />
+              <rect x="392" y="256" width="61" height="28" rx="6" fill="url(#fuseGlassGrad)" stroke="#38bdf8" stroke-width="2" />
+              <rect x="453" y="259" width="12" height="22" rx="3" fill="#94a3b8" stroke="#cbd5e1" stroke-width="1.5" />
+              
+              <path id="fuseFilament" d="M 392,270 Q 412,263 422,270 Q 432,277 453,270" 
+                fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" />
+
+              <g>
+                <line x1="422" y1="284" x2="422" y2="345" stroke="#38bdf8" stroke-width="2" stroke-dasharray="3 3" />
+                <circle cx="422" cy="284" r="3.5" fill="#38bdf8" />
+                <rect x="340" y="345" width="210" height="44" rx="12" fill="#082f49" fill-opacity="0.95" stroke="#38bdf8" stroke-width="2.5" />
+                <circle cx="360" cy="367" r="11" fill="#38bdf8" />
+                <text x="360" y="371" fill="#082f49" font-size="12" font-weight="900" text-anchor="middle">5</text>
+                <text x="378" y="362" fill="#7dd3fc" font-size="11" font-weight="900">ДЗАНСИН (残心)</text>
+                <text x="378" y="377" fill="#ffffff" font-size="9" font-weight="bold">Предохранитель (Защита)</text>
+              </g>
             </g>
 
-            <g class="zen-pointer" onclick="showElement('mushin')" id="elem-mushin">
-              <line x1="480" y1="270" x2="480" y2="345" stroke="#f97316" stroke-width="2" stroke-dasharray="3 3" />
-              <circle cx="480" cy="270" r="4" fill="#f97316" />
-              <rect x="380" y="345" width="220" height="44" rx="12" fill="#431407" fill-opacity="0.95" stroke="#f97316" stroke-width="2.5" />
-              <circle cx="400" cy="367" r="11" fill="#f97316" />
-              <text x="400" y="371" fill="#ffffff" font-size="12" font-weight="900" text-anchor="middle">5</text>
-              <text x="418" y="362" fill="#fdba74" font-size="12" font-weight="900">МУСИН (無心) — Ток</text>
-              <text x="418" y="377" fill="#ffffff" font-size="9" font-weight="bold">Чистый поток энергии (бежит)</text>
+            <!-- Провод от предохранителя обратно в минус батарейки -->
+            <path id="circuitReturnRail" d="M 465,270 L 750,270 L 750,210 L 710,210" 
+              fill="none" stroke="#f97316" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+
+            <!-- АКТИВНЫЙ БЕГУЩИЙ ТОК МУСИН (белая неоновая волна) -->
+            <g id="mushinCurrentLoop" class="current-mushin-flowing" onclick="showElement('mushin')">
+              <path d="M 490,210 L 465,210 L 465,150 L 405,150 L 225,150 L 225,195 M 225,225 L 225,270 L 380,270 M 465,270 L 750,270 L 750,210 L 710,210" 
+                fill="none" stroke="#ffffff" stroke-width="4" opacity="0.95" />
             </g>
           </svg>
         </div>
@@ -345,57 +347,57 @@
       <div id="elementCard" class="mt-5 p-4 sm:p-5 rounded-2xl bg-slate-950 border border-amber-500/30 transition-all">
         <div class="flex items-start gap-3 sm:gap-4">
           <div id="elemBadgeEmoji" class="text-3xl sm:text-4xl p-3 rounded-2xl bg-amber-500/15 flex items-center justify-center shrink-0 border border-amber-500/20">
-            ⚡
+            🔋
           </div>
           <div class="flex-1">
             <div class="flex items-center gap-2 mb-1 flex-wrap">
-              <span id="elemRankTag" class="text-xs font-black px-2.5 py-0.5 rounded-full bg-orange-500 text-white uppercase tracking-wide">
-                Элемент №5
+              <span id="elemRankTag" class="text-xs font-black px-2.5 py-0.5 rounded-full bg-amber-500 text-slate-950 uppercase tracking-wide">
+                Элемент №1
               </span>
               <h3 id="elemHeaderTitle" class="text-base sm:text-lg font-black text-slate-100">
-                Мусин (無心) — Электрический ток
+                1. Тандэн (丹田) — Батарейка (Ядро энергии)
               </h3>
             </div>
             <p id="elemMeaningText" class="text-sm text-slate-300 leading-relaxed">
-              Мусин — это чистый непрерывный ток! В нём нет эго и сопротивления: он бежит без сомнений и остановок. Ток Мусин включается ТОЛЬКО когда нажата кнопка «Хоцу». Мгновенно пробегая через предохранитель Дзансин прямо в лампочку Гё, он зажигает её ярким светом!
+              Тандэн — источник всей жизненной силы цепи. В фонарике это батарейка: автономное ядро энергии. В покое хранит 100% заряда в чистой тишине, не растрачивая ни микроватта вхолостую.
             </p>
-            <div id="elemAnalogyBox" class="mt-2.5 inline-flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-lg bg-orange-500/10 text-orange-400 border border-orange-500/20">
-              <span>✨ Детское объяснение: Быстрая река электричества, которая бежит по проводам, как только открыли плотину!</span>
+            <div id="elemAnalogyBox" class="mt-2.5 inline-flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
+              <span>✨ Детское объяснение: Волшебная кладовая силы, где спокойно отдыхает вся энергия фонарика!</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Кнопки выбора 5 первоэлементов -->
+      <!-- Кнопки выбора 5 первоэлементов в каноническом порядке 1-2-3-4-5 -->
       <div class="mt-5 grid grid-cols-2 sm:grid-cols-5 gap-2.5">
-        <button id="btn-tanden" onclick="showElement('tanden')" class="flex flex-col items-center p-3 rounded-xl border border-slate-800 bg-slate-950 hover:border-amber-400 transition-all text-center">
+        <button id="btn-tanden" onclick="showElement('tanden')" class="element-card-active flex flex-col items-center p-3 rounded-xl border border-slate-800 bg-slate-950 hover:border-amber-400 transition-all text-center">
           <span class="text-2xl mb-1">🔋</span>
           <span class="text-xs font-black text-slate-100">1. Тандэн (丹田)</span>
           <span class="text-[11px] text-slate-400 font-medium">Батарейка</span>
         </button>
 
-        <button id="btn-hotsu" onclick="showElement('hotsu')" class="flex flex-col items-center p-3 rounded-xl border border-slate-800 bg-slate-950 hover:border-red-400 transition-all text-center">
+        <button id="btn-hotsu" onclick="showElement('hotsu')" class="flex flex-col items-center p-3 rounded-xl border border-slate-800 bg-slate-950 hover:border-emerald-400 transition-all text-center">
           <span class="text-2xl mb-1">🔘</span>
           <span class="text-xs font-black text-slate-100">2. Хоцу (発)</span>
-          <span class="text-[11px] text-slate-400 font-medium">Кнопка</span>
+          <span class="text-[11px] text-slate-400 font-medium">Кнопка «Хочу»</span>
+        </button>
+
+        <button id="btn-mushin" onclick="showElement('mushin')" class="flex flex-col items-center p-3 rounded-xl border border-slate-800 bg-slate-950 hover:border-orange-400 transition-all text-center">
+          <span class="text-2xl mb-1">⚡</span>
+          <span class="text-xs font-black text-slate-100">3. Мусин (無心)</span>
+          <span class="text-[11px] text-slate-400 font-medium">Чистый ток</span>
         </button>
 
         <button id="btn-gyo" onclick="showElement('gyo')" class="flex flex-col items-center p-3 rounded-xl border border-slate-800 bg-slate-950 hover:border-yellow-400 transition-all text-center">
           <span class="text-2xl mb-1">💡</span>
-          <span class="text-xs font-black text-slate-100">3. Гё (行)</span>
-          <span class="text-[11px] text-slate-400 font-medium">Лампочка</span>
+          <span class="text-xs font-black text-slate-100">4. Гё (行)</span>
+          <span class="text-[11px] text-slate-400 font-medium">Лампочка (Свет)</span>
         </button>
 
         <button id="btn-zanshin" onclick="showElement('zanshin')" class="flex flex-col items-center p-3 rounded-xl border border-slate-800 bg-slate-950 hover:border-sky-400 transition-all text-center">
           <span class="text-2xl mb-1">🛡️</span>
-          <span class="text-xs font-black text-slate-100">4. Дзансин (残心)</span>
+          <span class="text-xs font-black text-slate-100">5. Дзансин (残心)</span>
           <span class="text-[11px] text-slate-400 font-medium">Предохранитель</span>
-        </button>
-
-        <button id="btn-mushin" onclick="showElement('mushin')" class="element-card-active flex flex-col items-center p-3 rounded-xl border border-slate-800 bg-slate-950 hover:border-orange-400 transition-all text-center">
-          <span class="text-2xl mb-1">⚡</span>
-          <span class="text-xs font-black text-slate-100">5. Мусин (無心)</span>
-          <span class="text-[11px] text-slate-400 font-medium">Ток (Поток)</span>
         </button>
       </div>
 
@@ -441,48 +443,48 @@
 
   <script>
     let isHotsuActive = true;
-    let currentSelectedKey = 'mushin';
+    let currentSelectedKey = 'tanden';
 
     const zenElements = {
       tanden: {
         rank: "Элемент №1",
         emoji: "🔋",
-        title: "Тандэн (丹田) — Центр силы",
-        desc: "Тандэн — источник всей жизненной силы цепи. В фонарике это батарейка: ядро энергии. Внутри неё заложена вся мощь, готовая питать замкнутый контур.",
+        title: "1. Тандэн (丹田) — Батарейка (Ядро энергии)",
+        desc: "Тандэн — источник всей жизненной силы цепи. В фонарике это батарейка: автономное ядро энергии. В покое хранит 100% заряда в чистой тишине, не растрачивая ни микроватта вхолостую.",
         analogy: "✨ Детское объяснение: Волшебная кладовая силы, где спокойно отдыхает вся энергия фонарика!",
         badgeClass: "bg-amber-500 text-slate-950"
       },
       hotsu: {
         rank: "Элемент №2",
         emoji: "🔘",
-        title: "Хоцу (発) — Пробуждение воли",
-        desc: "«Хоцу» — это намерение, первый решительный шаг. Пока кнопка отжата, ток Мусин спит. Нажатие кнопки опускает мостик и выпускает поток тока на свободу!",
-        analogy: "✨ Детское объяснение: Рубильник-шлагбаум: нажал пальчиком — открыл ворота для тока!",
-        badgeClass: "bg-red-500 text-white"
+        title: "2. Хоцу (発 / Хочу) — Кнопка воли и желания",
+        desc: "Хоцу — это священное «Хочу»! По умолчанию выключатель разомкнут (Normally Open), чтобы беречь силы. Как только рождается искреннее живое желание действовать (а не рабское «надо») — кнопка замыкает цепь!",
+        analogy: "✨ Детское объяснение: Кнопка-рубильник: искренне захотел — нажал пальчиком и открыл ворота для тока!",
+        badgeClass: "bg-emerald-500 text-slate-950"
+      },
+      mushin: {
+        rank: "Элемент №3",
+        emoji: "⚡",
+        title: "3. Мусин (無心) — Чистый ток (Поток внимания)",
+        desc: "Мусин — это чистый электрический ток со скоростью света! Он пробуждается ТОЛЬКО когда нажата кнопка «Хоцу». В нём нет трения эго, сомнений, страха оценки и самоедства: он свободен, быстр и прямодушен.",
+        analogy: "✨ Детское объяснение: Быстрая река электричества, которая мчится по проводам, как только нажали кнопку!",
+        badgeClass: "bg-orange-500 text-white"
       },
       gyo: {
-        rank: "Элемент №3",
+        rank: "Элемент №4",
         emoji: "💡",
-        title: "Гё (行) — Действие и практика",
-        desc: "«Гё» — это действие, труд и овеществление силы. В фонарике это лампочка! Когда сквозь неё протекает ток Мусин, она преображает скрытую энергию Тандэн в зримый, тёплый и ослепительный свет, разгоняющий тьму.",
-        analogy: "✨ Детское объяснение: Сердце света! Маленькая звёздочка, которая светит только тогда, когда сквозь неё бежит ток!",
+        title: "4. Гё (行) — Лампочка (Полезное действие)",
+        desc: "Гё — это конкретное созидательное действие в реальном физическом мире (труд, творчество, код, спорт, помощь). Ток Мусин входит в лампочку Гё и рождает яркий видимый свет, разгоняющий тьму!",
+        analogy: "✨ Детское объяснение: Сердце света! Маленькая звёздочка, которая сияет, когда через неё бежит ток!",
         badgeClass: "bg-yellow-400 text-slate-950"
       },
       zanshin: {
-        rank: "Элемент №4",
-        emoji: "🛡️",
-        title: "Дзансин (残心) — Бдительность и защита",
-        desc: "«Дзансин» — это бдительность мастера, которая никогда не засыпает. В цепи это предохранитель: тонкая стеклянная колбочка с калиброванной нитью. Он защищает контур от перегрузок, коротких замыканий и сгорания цепи.",
-        analogy: "✨ Детское объяснение: Верный страж-телохранитель, который бережёт фонарик от поломки и замыкания!",
-        badgeClass: "bg-sky-500 text-slate-950"
-      },
-      mushin: {
         rank: "Элемент №5",
-        emoji: "⚡",
-        title: "Мусин (無心) — Чистый ток (Поток)",
-        desc: "«Мусин» — состояние чистого потока без эго, сомнений и задержек. В фонарике это сам электрический ток! Он не течёт сам по себе вслепую — он пробуждается ТОЛЬКО когда нажата кнопка «Хоцу». Мчась сквозь предохранитель Дзансин, он заставляет сиять лампочку Гё!",
-        analogy: "✨ Детское объяснение: Невидимый быстрый ручеёк из миллионов весёлых искорок-электронов!",
-        badgeClass: "bg-orange-500 text-white"
+        emoji: "🛡️",
+        title: "5. Дзансин (残心) — Предохранитель (Защита духа)",
+        desc: "Дзансин — это бдительность мастера и защита контура (Circuit Breaker). Стоит на страже на обратном проводе. Если лампа в мире перегорит или задача сорвётся — Дзансин отсекает аварию и спасает батарейку Тандэна от выгорания.",
+        analogy: "✨ Детское объяснение: Верный страж-телохранитель, который бережёт батарейку от замыкания и поломки!",
+        badgeClass: "bg-sky-500 text-slate-950"
       }
     };
 
