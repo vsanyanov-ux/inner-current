@@ -782,38 +782,58 @@
 
             <rect x="750" y="192" width="26" height="36" rx="4" fill="#f59e0b" stroke="#d97706" stroke-width="2" />
 
-            <!-- 2. ХОЦУ (КНОПКА) -->
+            <!-- 2. ХОЦУ (ВНЕШНЯЯ КНОПКА-ТОЛКАТЕЛЬ) -->
             <g class="zen-pointer" onclick="toggleHotsu()" id="elem-hotsu">
-              <path d="M 415,210 L 370,210 L 370,105 L 450,105" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
-              <path id="hotsuContactBridge" d="M 450,105 L 510,105" fill="none" stroke="#f59e0b" stroke-width="8" stroke-linecap="round" class="transition-all duration-200" />
-              <path d="M 510,105 L 560,105" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+              <!-- Механический шток-толкатель, идущий вниз через корпус к контакту -->
+              <line id="hotsuMechanicalPusher" x1="495" y1="85" x2="495" y2="155" stroke="#cbd5e1" stroke-width="5" stroke-dasharray="3 2" stroke-linecap="round" />
+              <!-- Изолированная головка толкателя -->
+              <circle id="hotsuPusherTip" cx="495" cy="155" r="5" fill="#f8fafc" stroke="#64748b" stroke-width="1.5" />
 
-              <rect x="440" y="65" width="80" height="30" rx="10" fill="#dc2626" stroke="#fecaca" stroke-width="3" />
-              <circle id="hotsuKnobCircle" cx="495" cy="80" r="12" fill="#ffffff" class="transition-all duration-200 shadow-lg cursor-pointer" />
+              <!-- Сама внешняя кнопка снаружи корпуса: ЗЕЛЕНАЯ при вкл, КРАСНАЯ при выкл -->
+              <rect id="hotsuSwitchBody" x="430" y="60" width="90" height="34" rx="12" fill="#16a34a" stroke="#86efac" stroke-width="3" />
+              <circle id="hotsuKnobCircle" cx="495" cy="77" r="13" fill="#ffffff" class="transition-all duration-200 shadow-xl cursor-pointer" />
 
+              <!-- Плашка 2. ХОЦУ над кнопкой -->
               <g>
-                <rect x="395" y="12" width="170" height="46" rx="12" fill="#450a0a" fill-opacity="0.95" stroke="#ef4444" stroke-width="2.5" />
-                <circle cx="417" cy="35" r="13" fill="#ef4444" />
-                <text x="417" y="40" fill="#ffffff" font-size="13" font-weight="900" text-anchor="middle">2</text>
-                <text x="437" y="30" fill="#fca5a5" font-size="13" font-weight="900">ХОЦУ (発)</text>
-                <text x="437" y="47" fill="#ffffff" font-size="10" font-weight="bold">Кнопка включения (Воля)</text>
+                <rect id="hotsuBadgeBg" x="385" y="10" width="180" height="42" rx="12" fill="#052e16" fill-opacity="0.95" stroke="#22c55e" stroke-width="2.5" />
+                <circle id="hotsuBadgeCircle" cx="407" cy="31" r="12" fill="#22c55e" />
+                <text x="407" y="36" fill="#ffffff" font-size="13" font-weight="900" text-anchor="middle">2</text>
+                <text id="hotsuBadgeTitle" x="427" y="27" fill="#86efac" font-size="12" font-weight="900">ХОЦУ (発) — ЗАМКНУТО</text>
+                <text id="hotsuBadgeDesc" x="427" y="43" fill="#ffffff" font-size="10" font-weight="bold">Кнопка толкает контакт (ВКЛ)</text>
               </g>
+            </g>
+
+            <!-- ЭЛЕКТРИЧЕСКИЕ КОНТАКТЫ ВНУТРИ КОРПУСА (кнопка толкает их, провод через кнопку НЕ идет!) -->
+            <g>
+              <!-- Провод от батарейки к контакту 1 -->
+              <path d="M 415,210 L 350,210 L 350,155 L 435,155" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+              
+              <!-- Золотые контактные площадки -->
+              <circle cx="435" cy="155" r="4.5" fill="#fef08a" stroke="#d97706" stroke-width="1.5" />
+              <circle cx="505" cy="155" r="4.5" fill="#fef08a" stroke="#d97706" stroke-width="1.5" />
+
+              <!-- Гибкий контактный лепесток, который ТОЛКАЕТ кнопка -->
+              <path id="hotsuContactBlade" d="M 435,155 L 505,155" fill="none" stroke="#f59e0b" stroke-width="7" stroke-linecap="round" class="transition-all duration-200" />
+
+              <!-- Провод от контакта 2 в предохранитель Дзансин -->
+              <path d="M 505,155 L 560,155" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
             </g>
 
             <!-- 4. ДЗАНСИН (ПРЕДОХРАНИТЕЛЬ) -->
             <g class="zen-pointer" onclick="showElement('zanshin')" id="elem-zanshin">
-              <rect x="560" y="93" width="14" height="24" rx="3" fill="#94a3b8" stroke="#cbd5e1" stroke-width="1.5" />
-              <rect x="574" y="90" width="85" height="30" rx="6" fill="url(#fuseGlassGrad)" stroke="#38bdf8" stroke-width="2" />
-              <rect x="659" y="93" width="14" height="24" rx="3" fill="#94a3b8" stroke="#cbd5e1" stroke-width="1.5" />
+              <rect x="560" y="143" width="14" height="24" rx="3" fill="#94a3b8" stroke="#cbd5e1" stroke-width="1.5" />
+              <rect x="574" y="140" width="85" height="30" rx="6" fill="url(#fuseGlassGrad)" stroke="#38bdf8" stroke-width="2" />
+              <rect x="659" y="143" width="14" height="24" rx="3" fill="#94a3b8" stroke="#cbd5e1" stroke-width="1.5" />
               
-              <path id="fuseFilament" d="M 574,105 Q 600,97 616,105 Q 632,113 659,105" 
+              <path id="fuseFilament" d="M 574,155 Q 600,147 616,155 Q 632,163 659,155" 
                 fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" />
 
-              <path d="M 673,105 L 720,105 L 720,70 L 255,70 L 255,190" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+              <!-- Провод от предохранителя к лампочке: идет ВНУТРИ корпуса (y=138), НЕ пересекая кнопку! -->
+              <path d="M 673,155 L 720,155 L 720,138 L 255,138 L 255,195" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
 
               <g>
-                <line x1="616" y1="90" x2="616" y2="45" stroke="#38bdf8" stroke-width="2" stroke-dasharray="3 3" />
-                <circle cx="616" cy="90" r="3.5" fill="#38bdf8" />
+                <line x1="616" y1="140" x2="616" y2="45" stroke="#38bdf8" stroke-width="2" stroke-dasharray="3 3" />
+                <circle cx="616" cy="140" r="3.5" fill="#38bdf8" />
                 <rect x="580" y="12" width="200" height="46" rx="12" fill="#082f49" fill-opacity="0.95" stroke="#38bdf8" stroke-width="2.5" />
                 <circle cx="602" cy="35" r="13" fill="#38bdf8" />
                 <text x="602" y="40" fill="#082f49" font-size="13" font-weight="900" text-anchor="middle">4</text>
@@ -845,7 +865,7 @@
 
             <!-- 5. МУСИН (ТОК) -->
             <g id="mushinCurrentLoop" class="current-mushin-flowing" onclick="showElement('mushin')">
-              <path d="M 415,210 L 370,210 L 370,105 L 510,105 L 560,105 L 673,105 L 720,105 L 720,70 L 255,70 L 255,195 M 255,210 L 255,310 L 795,310 L 795,210 L 750,210" 
+              <path d="M 415,210 L 350,210 L 350,155 L 505,155 L 560,155 L 673,155 L 720,155 L 720,138 L 255,138 L 255,195 M 255,210 L 255,310 L 795,310 L 795,210 L 750,210" 
                 fill="none" stroke="#ffffff" stroke-width="4" opacity="0.95" />
             </g>
 
@@ -1258,8 +1278,15 @@
 
       const beam = document.getElementById('lightBeamGroup');
       const bulb = document.getElementById('gyoBulbGlass');
-      const bridge = document.getElementById('hotsuContactBridge');
+      const switchBody = document.getElementById('hotsuSwitchBody');
       const knob = document.getElementById('hotsuKnobCircle');
+      const pusher = document.getElementById('hotsuMechanicalPusher');
+      const pusherTip = document.getElementById('hotsuPusherTip');
+      const blade = document.getElementById('hotsuContactBlade');
+      const badgeBg = document.getElementById('hotsuBadgeBg');
+      const badgeCircle = document.getElementById('hotsuBadgeCircle');
+      const badgeTitle = document.getElementById('hotsuBadgeTitle');
+      const badgeDesc = document.getElementById('hotsuBadgeDesc');
       const currentLoop = document.getElementById('mushinCurrentLoop');
       const badge = document.getElementById('flowStatusBadge');
       const pingDot = document.getElementById('flowPingDot');
@@ -1271,48 +1298,100 @@
       const btnSub = document.getElementById('hotsuBtnSub');
 
       if (isHotsuActive) {
+        // КНОПКА ЗАМКНУТА -> ЗЕЛЕНАЯ!
+        if (switchBody) {
+          switchBody.setAttribute('fill', '#16a34a');
+          switchBody.setAttribute('stroke', '#86efac');
+        }
+        if (knob) knob.setAttribute('cx', '495');
+        if (pusher) {
+          pusher.setAttribute('x1', '495');
+          pusher.setAttribute('x2', '495');
+          pusher.setAttribute('y2', '155');
+        }
+        if (pusherTip) {
+          pusherTip.setAttribute('cx', '495');
+          pusherTip.setAttribute('cy', '155');
+        }
+        if (blade) blade.setAttribute('d', 'M 435,155 L 505,155'); // замкнут контакт
+
+        if (badgeBg) {
+          badgeBg.setAttribute('fill', '#052e16');
+          badgeBg.setAttribute('stroke', '#22c55e');
+        }
+        if (badgeCircle) badgeCircle.setAttribute('fill', '#22c55e');
+        if (badgeTitle) {
+          badgeTitle.textContent = 'ХОЦУ (発) — ЗАМКНУТО';
+          badgeTitle.setAttribute('fill', '#86efac');
+        }
+        if (badgeDesc) badgeDesc.textContent = 'Кнопка толкает контакт (ВКЛ)';
+
         if (beam) beam.style.opacity = '1';
         if (bulb) {
           bulb.setAttribute('fill', '#fef08a');
           bulb.setAttribute('filter', 'url(#bulbGlowFilter)');
           bulb.classList.add('gyo-bulb-active');
         }
-        if (bridge) bridge.setAttribute('d', 'M 450,105 L 510,105');
-        if (knob) knob.setAttribute('cx', '495');
         if (currentLoop) currentLoop.style.display = 'block';
 
-        if (badge) badge.className = 'absolute top-3 left-3 sm:left-4 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-black transition-all';
-        if (pingDot) pingDot.className = 'w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping';
-        if (statusLabel) statusLabel.textContent = '⚡ «Хоцу» замкнута: Ток Мусин (無心) течёт, лампочка Гё (行) сияет!';
+        if (badge) badge.className = 'absolute top-3 left-3 sm:left-4 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-black transition-all';
+        if (pingDot) pingDot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping';
+        if (statusLabel) statusLabel.textContent = '⚡ Кнопка «Хоцу» ЗЕЛЁНАЯ (замкнута): Ток Мусин бежит, лампочка Гё сияет!';
 
-        if (actionBtn) actionBtn.className = 'group relative flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-400 active:scale-95 transition-all shadow-xl shadow-amber-500/30 text-slate-950 font-black text-sm sm:text-base cursor-pointer';
+        if (actionBtn) actionBtn.className = 'group relative flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 active:scale-95 transition-all shadow-xl shadow-emerald-500/30 text-slate-950 font-black text-sm sm:text-base cursor-pointer';
         if (btnIcon) {
           btnIcon.textContent = '⚡';
           btnIcon.className = 'text-2xl animate-bounce';
         }
-        if (stateBadge) stateBadge.textContent = 'Кнопка «Хоцу» нажата';
+        if (stateBadge) stateBadge.textContent = 'Кнопка «Хоцу» замкнута (ВКЛ)';
         if (btnSub) btnSub.textContent = 'Ток «Мусин» зажигает «Гё»!';
       } else {
+        // КНОПКА РАЗОМКНУТА -> КРАСНАЯ!
+        if (switchBody) {
+          switchBody.setAttribute('fill', '#dc2626');
+          switchBody.setAttribute('stroke', '#fca5a5');
+        }
+        if (knob) knob.setAttribute('cx', '455');
+        if (pusher) {
+          pusher.setAttribute('x1', '455');
+          pusher.setAttribute('x2', '455');
+          pusher.setAttribute('y2', '130');
+        }
+        if (pusherTip) {
+          pusherTip.setAttribute('cx', '455');
+          pusherTip.setAttribute('cy', '130');
+        }
+        if (blade) blade.setAttribute('d', 'M 435,155 L 490,128'); // контакт поднят, виден зазор!
+
+        if (badgeBg) {
+          badgeBg.setAttribute('fill', '#450a0a');
+          badgeBg.setAttribute('stroke', '#ef4444');
+        }
+        if (badgeCircle) badgeCircle.setAttribute('fill', '#ef4444');
+        if (badgeTitle) {
+          badgeTitle.textContent = 'ХОЦУ (発) — РАЗОМКНУТО';
+          badgeTitle.setAttribute('fill', '#fca5a5');
+        }
+        if (badgeDesc) badgeDesc.textContent = 'Контакт отжат (ВЫКЛ)';
+
         if (beam) beam.style.opacity = '0';
         if (bulb) {
           bulb.setAttribute('fill', '#334155');
           bulb.removeAttribute('filter');
           bulb.classList.remove('gyo-bulb-active');
         }
-        if (bridge) bridge.setAttribute('d', 'M 450,105 L 495,135');
-        if (knob) knob.setAttribute('cx', '460');
         if (currentLoop) currentLoop.style.display = 'none';
 
-        if (badge) badge.className = 'absolute top-3 left-3 sm:left-4 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-slate-400 text-xs font-bold transition-all';
-        if (pingDot) pingDot.className = 'w-2.5 h-2.5 rounded-full bg-slate-500';
-        if (statusLabel) statusLabel.textContent = '💤 «Хоцу» разомкнута: Ток Мусин спит, лампочка Гё отдыхает';
+        if (badge) badge.className = 'absolute top-3 left-3 sm:left-4 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-500/20 border border-rose-500/40 text-rose-300 text-xs font-bold transition-all';
+        if (pingDot) pingDot.className = 'w-2.5 h-2.5 rounded-full bg-rose-500';
+        if (statusLabel) statusLabel.textContent = '💤 Кнопка «Хоцу» КРАСНАЯ (разомкнута): Контакт отжат, ток Мусин спит';
 
         if (actionBtn) actionBtn.className = 'group relative flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 active:scale-95 transition-all shadow-md text-white font-black text-sm sm:text-base cursor-pointer';
         if (btnIcon) {
-          btnIcon.textContent = '🌑';
+          btnIcon.textContent = '🔴';
           btnIcon.className = 'text-2xl';
         }
-        if (stateBadge) stateBadge.textContent = 'Кнопка «Хоцу» отжата';
+        if (stateBadge) stateBadge.textContent = 'Кнопка «Хоцу» разомкнута (ВЫКЛ)';
         if (btnSub) btnSub.textContent = 'Нажмите «Хоцу», чтобы пустить ток!';
       }
     }
