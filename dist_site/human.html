@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Человек-контур: Канон 5 первоэлементов — Inner Current</title>
+  <meta name="description" content="Интерактивная схемотехника тела человека: Тандэн (батарейка в животе), Хоцу (импульс воли), Мусин (ток внимания), Гё (лампочка в руках на уровне груди) и Дзансин (предохранитель).">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧘</text></svg>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Cinzel', 'serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            slate: {
+              850: '#111827',
+              900: '#090d16',
+              950: '#030712',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #030712;
+      color: #f1f5f9;
+      -webkit-font-smoothing: antialiased;
+    }
+    @keyframes electron-rush {
+      from { stroke-dashoffset: 60; }
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes glow-pulse {
+      0%, 100% { 
+        filter: drop-shadow(0 0 25px rgba(250, 204, 21, 0.85)) drop-shadow(0 0 60px rgba(245, 158, 11, 0.5)); 
+      }
+      50% { 
+        filter: drop-shadow(0 0 45px rgba(254, 240, 138, 0.98)) drop-shadow(0 0 95px rgba(250, 204, 21, 0.75)); 
+      }
+    }
+    @keyframes tanden-pulse {
+      0%, 100% { opacity: 0.85; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.03); }
+    }
+    .current-mushin-flowing {
+      stroke-dasharray: 8 8;
+      animation: electron-rush 0.7s linear infinite;
+    }
+    .gyo-bulb-active {
+      animation: glow-pulse 2s infinite ease-in-out;
+    }
+    .tanden-glow-active {
+      animation: tanden-pulse 3s infinite ease-in-out;
+      transform-origin: 310px 640px;
+    }
+    .element-card-active {
+      border-color: #f59e0b !important;
+      background: rgba(245, 158, 11, 0.14) !important;
+      transform: translateY(-2px);
+    }
+    .zen-pointer {
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .zen-pointer:hover {
+      filter: brightness(1.25) drop-shadow(0 0 8px currentColor);
+      transform: scale(1.02);
+      transform-origin: center;
+    }
+  </style>
+</head>
+<body class="selection:bg-amber-500 selection:text-slate-950 min-h-screen flex flex-col">
+
+  <!-- NAVBAR -->
+  <nav class="sticky top-0 z-50 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80 transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 text-slate-950 font-black text-xl flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:scale-105 transition">
+          ⚡
+        </div>
+        <div>
+          <div class="font-display font-bold text-base tracking-wide text-slate-100 group-hover:text-amber-300 transition">
+            INNER CURRENT
+          </div>
+          <div class="text-[10px] uppercase font-mono tracking-widest text-slate-400 font-semibold">
+            Канон &bull; Человек-контур
+          </div>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-3">
+        <a href="/flashlight/" class="px-3.5 py-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-xs font-semibold text-slate-300 hover:text-white transition flex items-center gap-1.5 border border-slate-700/60">
+          <span>🔦</span>
+          <span class="hidden sm:inline">Схема фонарика</span>
+        </a>
+        <a href="/" class="px-4 py-1.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-xs font-bold text-amber-300 hover:text-amber-200 transition border border-amber-500/30">
+          На главную
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <main class="flex-grow max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 w-full">
+
+    <!-- Заголовок страницы и концептуальное введение -->
+    <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono font-bold uppercase tracking-wider mb-4">
+        <span>🧘</span> Великий Изоморфизм &bull; Анатомия чистого тока
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight">
+        Человек как замкнутый контур
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base mt-3 leading-relaxed">
+        Схемотехника жизни в теле человека: <strong class="text-amber-400">Тандэн</strong> в животе питает энергией, <strong class="text-emerald-400">Хоцу</strong> запускает волю, чистый ток <strong class="text-orange-400">Мусин</strong> течёт по рукам к груди, рождая свет действия <strong class="text-yellow-300">Гё</strong>, а чуткий предохранитель <strong class="text-sky-400">Дзансин</strong> бережёт контур от выгорания.
+      </p>
+
+      <!-- Переключатель схем: Фонарик / Человек -->
+      <div class="mt-6 inline-flex p-1 rounded-2xl bg-slate-900 border border-slate-800">
+        <a href="/flashlight/" class="px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-400 hover:text-white transition flex items-center gap-2">
+          <span>🔦</span> Горизонтальная схема фонарика
+        </a>
+        <div class="px-5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20 flex items-center gap-2">
+          <span>🧘</span> Вертикальная схема человека
+        </div>
+      </div>
+    </div>
+
+    <!-- Интерактивный виджет Человека-контура -->
+    <div class="bg-slate-900/90 border border-slate-800 rounded-3xl p-4 sm:p-6 shadow-2xl overflow-hidden mb-10">
+      
+      <!-- Контрольная панель виджета -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-5 pb-4 border-b border-slate-800">
+        <div>
+          <div class="text-xs uppercase font-mono tracking-widest text-amber-400 font-bold mb-1">
+            Схемотехника тела &bull; Вертикальный контур
+          </div>
+          <div class="text-lg font-bold text-slate-100 flex items-center gap-2">
+            <span>⚡</span> Живот &rarr; Воля &rarr; Руки &rarr; Грудь &rarr; Защита
+          </div>
+        </div>
+
+        <!-- Кнопка рубильника воли (Хоцу) -->
+        <button id="humanHotsuBtn" onclick="toggleHumanCircuit()" 
+          class="group relative flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-400 active:scale-95 transition-all shadow-xl shadow-amber-500/30 text-slate-950 font-black text-sm sm:text-base cursor-pointer">
+          <span id="humanHotsuBtnIcon" class="text-2xl animate-bounce">⚡</span>
+          <div class="text-left leading-tight">
+            <div id="humanHotsuBadge" class="text-[11px] uppercase tracking-wider font-extrabold opacity-85">Импульс «Хоцу» включен</div>
+            <div id="humanHotsuSub" class="text-sm font-black">Ток «Мусин» зажигает лампочку в руках!</div>
+          </div>
+        </button>
+      </div>
+
+      <!-- Экран схемы: Тело человека + Контур (SVG) -->
+      <div class="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 rounded-2xl p-3 sm:p-6 border border-slate-800/80 shadow-inner flex flex-col items-center justify-center min-h-[500px] overflow-hidden">
+        
+        <!-- Индикатор статуса цепи -->
+        <div id="humanStatusBadge" class="absolute top-3 left-3 sm:left-4 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-black transition-all">
+          <span id="humanPingDot" class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
+          <span id="humanStatusLabel">⚡ Цепь замкнута: Тандэн питает лампочку в руках через чистый ток Мусин!</span>
+        </div>
+
+        <!-- SVG Схема Человека-контура -->
+        <div class="w-full max-w-xl flex justify-center items-center py-2">
+          <svg viewBox="0 0 620 920" class="w-full h-auto max-h-[820px]" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <!-- Градиент мягкого сияния лампочки на грудь и ладони -->
+              <radialGradient id="chestGlowGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+                <stop offset="20%" stop-color="#fef08a" stop-opacity="0.8" />
+                <stop offset="55%" stop-color="#f59e0b" stop-opacity="0.35" />
+                <stop offset="100%" stop-color="#d97706" stop-opacity="0" />
+              </radialGradient>
+
+              <!-- Градиент ауры тела -->
+              <radialGradient id="bodyAuraGrad" cx="50%" cy="40%" r="60%">
+                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.08" />
+                <stop offset="60%" stop-color="#6366f1" stop-opacity="0.04" />
+                <stop offset="100%" stop-color="#0284c7" stop-opacity="0" />
+              </radialGradient>
+
+              <!-- Градиент силуэта тела человека -->
+              <linearGradient id="bodySkinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#1e293b" stop-opacity="0.85" />
+                <stop offset="35%" stop-color="#0f172a" stop-opacity="0.9" />
+                <stop offset="70%" stop-color="#090d16" stop-opacity="0.95" />
+                <stop offset="100%" stop-color="#020617" stop-opacity="0.98" />
+              </linearGradient>
+
+              <!-- Градиент Тандэна (ядра в животе) -->
+              <radialGradient id="tandenCoreGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#fef08a" />
+                <stop offset="30%" stop-color="#f59e0b" />
+                <stop offset="70%" stop-color="#d97706" />
+                <stop offset="100%" stop-color="#78350f" />
+              </radialGradient>
+
+              <linearGradient id="tandenBatteryGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#b45309" />
+                <stop offset="50%" stop-color="#f59e0b" />
+                <stop offset="100%" stop-color="#d97706" />
+              </linearGradient>
+
+              <!-- Градиент стеклянного предохранителя -->
+              <linearGradient id="humanFuseGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.4" />
+                <stop offset="50%" stop-color="#bae6fd" stop-opacity="0.15" />
+                <stop offset="100%" stop-color="#0284c7" stop-opacity="0.4" />
+              </linearGradient>
+
+              <!-- Фильтр свечения ламп -->
+              <filter id="humanBulbGlow" x="-60%" y="-60%" width="220%" height="220%">
+                <feGaussianBlur stdDeviation="15" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+
+            <!-- ФОНОВАЯ АУРА ТЕЛА -->
+            <ellipse cx="310" cy="460" rx="270" ry="420" fill="url(#bodyAuraGrad)" />
+
+            <!-- ========================================== -->
+            <!-- 1. ЗАДНИЙ ФОН: КРАСИВОЕ ТЕЛО ЧЕЛОВЕКА       -->
+            <!-- ========================================== -->
+            <g id="humanBodyArtwork" opacity="0.92">
+              
+              <!-- Основной анатомический силуэт (голова, шея, торс, руки, кисти, бедра) -->
+              <!-- Плавные контуры: без схематизма, благородная осанка, руки у груди -->
+              <path d="
+                M 310,65
+                C 335,65 352,80 355,108
+                C 358,135 348,162 334,175
+                C 336,188 340,205 352,216
+                C 375,224 415,232 445,255
+                C 462,270 472,305 470,345
+                C 468,380 445,415 420,410
+                C 400,405 380,385 365,375
+                C 362,390 355,410 338,412
+                C 330,413 325,405 320,395
+                C 315,395 305,405 298,412
+                C 280,410 274,390 270,375
+                C 255,385 235,405 215,410
+                C 190,415 168,380 166,345
+                C 164,305 174,270 190,255
+                C 220,232 260,224 284,216
+                C 295,205 299,188 301,175
+                C 287,162 278,135 281,108
+                C 284,80 300,65 310,65 Z
+              " fill="url(#bodySkinGrad)" stroke="#334155" stroke-width="2.5" />
+
+              <!-- Нижняя часть торса, живот (хара), талия и бедра -->
+              <path d="
+                M 265,415
+                C 255,460 250,510 248,560
+                C 245,615 240,670 230,730
+                C 222,780 215,830 210,880
+                L 410,880
+                C 405,830 398,780 390,730
+                C 380,670 375,615 372,560
+                C 370,510 365,460 355,415
+                C 340,430 280,430 265,415 Z
+              " fill="url(#bodySkinGrad)" stroke="#334155" stroke-width="2.5" />
+
+              <!-- Тонкие анатомические линии и рельеф мышц (не схематично, художественно) -->
+              <!-- Ключицы -->
+              <path d="M 285,225 Q 310,232 335,225" fill="none" stroke="#64748b" stroke-width="1.8" opacity="0.6" stroke-linecap="round" />
+              <path d="M 280,226 Q 245,230 215,248" fill="none" stroke="#475569" stroke-width="1.5" opacity="0.5" stroke-linecap="round" />
+              <path d="M 340,226 Q 375,230 405,248" fill="none" stroke="#475569" stroke-width="1.5" opacity="0.5" stroke-linecap="round" />
+
+              <!-- Грудные мышцы (пекторальные линии под лампочкой) -->
+              <path d="M 270,275 Q 295,285 305,275" fill="none" stroke="#475569" stroke-width="1.5" opacity="0.45" />
+              <path d="M 350,275 Q 325,285 315,275" fill="none" stroke="#475569" stroke-width="1.5" opacity="0.45" />
+
+              <!-- Линия грудины и реберный контур -->
+              <line x1="310" y1="235" x2="310" y2="295" stroke="#475569" stroke-width="1.2" opacity="0.35" />
+              <path d="M 280,335 Q 260,370 258,415" fill="none" stroke="#334155" stroke-width="1.2" opacity="0.4" />
+              <path d="M 340,335 Q 360,370 362,415" fill="none" stroke="#334155" stroke-width="1.2" opacity="0.4" />
+
+              <!-- Линия талии и белая линия живота -->
+              <line x1="310" y1="420" x2="310" y2="585" stroke="#475569" stroke-width="1.5" opacity="0.3" stroke-dasharray="3 4" />
+              
+              <!-- Пупок (чуть выше Тандэна) -->
+              <ellipse cx="310" cy="580" rx="3.5" ry="5" fill="#1e293b" stroke="#475569" stroke-width="1.2" opacity="0.7" />
+
+              <!-- Изящно нарисованные руки и кисти, бережно держащие цоколь лампы у груди -->
+              <!-- Левая кисть (держит снизу-слева) -->
+              <path d="
+                M 270,375
+                C 275,360 282,355 292,362
+                C 300,367 305,378 305,390
+                C 295,395 285,395 275,388 Z
+              " fill="#1e293b" stroke="#64748b" stroke-width="1.8" />
+              <!-- Пальцы левой руки -->
+              <path d="M 288,362 Q 298,358 306,366" fill="none" stroke="#94a3b8" stroke-width="1.5" opacity="0.8" stroke-linecap="round" />
+              <path d="M 282,370 Q 295,367 304,375" fill="none" stroke="#94a3b8" stroke-width="1.5" opacity="0.8" stroke-linecap="round" />
+
+              <!-- Правая кисть (держит снизу-справа) -->
+              <path d="
+                M 350,375
+                C 345,360 338,355 328,362
+                C 320,367 315,378 315,390
+                C 325,395 335,395 345,388 Z
+              " fill="#1e293b" stroke="#64748b" stroke-width="1.8" />
+              <!-- Пальцы правой руки -->
+              <path d="M 332,362 Q 322,358 314,366" fill="none" stroke="#94a3b8" stroke-width="1.5" opacity="0.8" stroke-linecap="round" />
+              <path d="M 338,370 Q 325,367 316,375" fill="none" stroke="#94a3b8" stroke-width="1.5" opacity="0.8" stroke-linecap="round" />
+
+              <!-- Медитативное, спокойное лицо (тонкий силуэт в три четверти) -->
+              <path d="M 300,120 Q 310,122 314,120" fill="none" stroke="#64748b" stroke-width="1.4" opacity="0.6" />
+              <path d="M 302,132 Q 309,136 312,133" fill="none" stroke="#64748b" stroke-width="1.2" opacity="0.5" />
+              <path d="M 304,146 Q 310,149 316,146" fill="none" stroke="#64748b" stroke-width="1.4" opacity="0.6" stroke-linecap="round" />
+            </g>
+
+            <!-- СВЕТОВОЙ ШАР ОТ ЛАМПОЧКИ ГЁ (озаряет грудь, лицо и руки) -->
+            <g id="humanLightGlowGroup" class="transition-opacity duration-300">
+              <!-- Мягкий свет на груди -->
+              <circle cx="310" cy="330" r="160" fill="url(#chestGlowGrad)" opacity="0.85" />
+              <!-- Лучи света вокруг лампочки в руках -->
+              <line x1="310" y1="260" x2="310" y2="230" stroke="#fef08a" stroke-width="2.5" stroke-linecap="round" opacity="0.8" />
+              <line x1="365" y1="285" x2="390" y2="265" stroke="#fef08a" stroke-width="2.5" stroke-linecap="round" opacity="0.8" />
+              <line x1="255" y1="285" x2="230" y2="265" stroke="#fef08a" stroke-width="2.5" stroke-linecap="round" opacity="0.8" />
+              <line x1="380" y1="330" x2="415" y2="330" stroke="#fef08a" stroke-width="2.5" stroke-linecap="round" opacity="0.7" />
+              <line x1="240" y1="330" x2="205" y2="330" stroke="#fef08a" stroke-width="2.5" stroke-linecap="round" opacity="0.7" />
+              <text x="365" y="260" font-size="16" fill="#fef08a">✨</text>
+              <text x="235" y="260" font-size="16" fill="#fef08a">✨</text>
+              <text x="302" y="215" font-size="18" fill="#ffffff">✨</text>
+            </g>
+
+            <!-- ========================================== -->
+            <!-- 2. ПЕРЕДНИЙ ПЛАН: ЗАМКНУТЫЙ КОНТУР ТОКА     -->
+            <!-- ========================================== -->
+
+            <!-- ОСНОВНАЯ ПРОВОДКА ЦЕПИ В ТЕЛЕ -->
+            <!-- Цвет: янтарно-золотой #f59e0b -->
+            <g>
+              <!-- 1. Провод от батарейки Тандэн (+) вверх по правой стороне тела -->
+              <path d="M 370,640 L 460,640 L 460,515" 
+                fill="none" stroke="#f59e0b" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+
+              <!-- Контактные площадки Хоцу (на высоте x=460, y=515 и y=455) -->
+              <circle cx="460" cy="515" r="4.5" fill="#fef08a" stroke="#d97706" stroke-width="1.5" />
+              <circle cx="460" cy="455" r="4.5" fill="#fef08a" stroke="#d97706" stroke-width="1.5" />
+
+              <!-- 2. Размыкающийся контактный лепесток Хоцу -->
+              <path id="humanContactBlade" d="M 460,515 L 460,455" 
+                fill="none" stroke="#f59e0b" stroke-width="6.5" stroke-linecap="round" class="transition-all duration-200" />
+
+              <!-- 3. Провод от контакта Хоцу вверх по правой руке в ладонь к лампочке Гё -->
+              <path d="M 460,455 L 460,340 L 415,350 L 335,365" 
+                fill="none" stroke="#f59e0b" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+
+              <!-- 4. Обратный провод от лампочки Гё через левую руку к предохранителю Дзансин -->
+              <path d="M 285,365 L 205,350 L 160,340 L 160,480" 
+                fill="none" stroke="#f97316" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+
+              <!-- 5. Обратный провод от предохранителя Дзансин вниз к отрицательной клемме Тандэна (-) -->
+              <path d="M 160,545 L 160,640 L 250,640" 
+                fill="none" stroke="#f97316" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+            </g>
+
+            <!-- 1. ТАНДЭН (丹田) — БАТАРЕЙКА В ЖИВОТЕ (Нижний даньтянь / хара) -->
+            <g class="zen-pointer" onclick="showElement('tanden')" id="human-elem-tanden">
+              <!-- Фоновое теплое свечение реактора в харе -->
+              <circle id="tandenAuraGlow" cx="310" cy="640" r="50" fill="url(#tandenCoreGrad)" opacity="0.35" class="tanden-glow-active" />
+
+              <!-- Корпус батарейки в животе (y=615..665, x=255..365) -->
+              <rect x="255" y="618" width="110" height="44" rx="12" fill="url(#tandenBatteryGrad)" stroke="#f59e0b" stroke-width="3" />
+              
+              <!-- Плюсовой контакт справа (+) -->
+              <rect x="365" y="630" width="10" height="20" rx="3" fill="#fef08a" stroke="#d97706" stroke-width="1.5" />
+              <text x="350" y="645" fill="#451a03" font-size="14" font-weight="900">+</text>
+              
+              <!-- Минусовой контакт слева (-) -->
+              <rect x="245" y="630" width="10" height="20" rx="3" fill="#94a3b8" stroke="#475569" stroke-width="1.5" />
+              <text x="264" y="644" fill="#ffffff" font-size="16" font-weight="900">−</text>
+
+              <g>
+                <circle cx="310" cy="640" r="14" fill="#451a03" stroke="#fef08a" stroke-width="1.5" />
+                <text x="310" y="644" fill="#fef08a" font-size="11" font-weight="900" text-anchor="middle">1</text>
+              </g>
+
+              <!-- Выносная плашка 1. ТАНДЭН -->
+              <g>
+                <line x1="310" y1="662" x2="310" y2="705" stroke="#f59e0b" stroke-width="2" stroke-dasharray="3 3" />
+                <rect x="200" y="705" width="220" height="42" rx="12" fill="#451a03" fill-opacity="0.96" stroke="#f59e0b" stroke-width="2.5" />
+                <circle cx="222" cy="726" r="11" fill="#f59e0b" />
+                <text x="222" y="730" fill="#451a03" font-size="12" font-weight="900" text-anchor="middle">1</text>
+                <text x="240" y="721" fill="#ffffff" font-size="11" font-weight="900">ТАНДЭН (丹田) — Живот</text>
+                <text x="240" y="737" fill="#fef3c7" font-size="9" font-weight="bold">Батарейка • Нижний реактор</text>
+              </g>
+            </g>
+
+            <!-- 2. ХОЦУ (発) — ИМПУЛЬС ВОЛИ И ТОЛКАТЕЛЬ КОНТАКТА -->
+            <g class="zen-pointer" onclick="toggleHumanCircuit()" id="human-elem-hotsu">
+              <!-- Механический толкатель от кнопки к контакту цепи -->
+              <line id="humanMechanicalPusher" x1="530" y1="485" x2="460" y2="485" stroke="#cbd5e1" stroke-width="4.5" stroke-dasharray="3 2" stroke-linecap="round" />
+              <circle cx="460" cy="485" r="4.5" fill="#f8fafc" stroke="#64748b" stroke-width="1.5" />
+
+              <!-- Сама кнопка воли (Хоцу): интерактивная, меняет цвет -->
+              <rect id="humanSwitchBody" x="525" y="468" width="65" height="34" rx="10" fill="#16a34a" stroke="#86efac" stroke-width="2.5" />
+              <circle id="humanKnobCircle" cx="545" cy="485" r="10" fill="#ffffff" class="transition-all duration-200 shadow-xl" />
+
+              <!-- Выносная плашка 2. ХОЦУ -->
+              <g>
+                <line x1="525" y1="485" x2="475" y2="430" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="2 2" />
+                <rect id="humanHotsuBadgeBg" x="395" y="390" width="210" height="40" rx="12" fill="#052e16" fill-opacity="0.95" stroke="#22c55e" stroke-width="2.5" />
+                <circle id="humanHotsuBadgeCircle" cx="415" cy="410" r="11" fill="#22c55e" />
+                <text x="415" y="414" fill="#ffffff" font-size="12" font-weight="900" text-anchor="middle">2</text>
+                <text id="humanHotsuBadgeTitle" x="435" y="405" fill="#86efac" font-size="11" font-weight="900">ХОЦУ (発) — ВОЛЯ ВКЛ</text>
+                <text id="humanHotsuBadgeDesc" x="435" y="420" fill="#ffffff" font-size="9" font-weight="bold">Контакт замкнут: импульс пошёл</text>
+              </g>
+            </g>
+
+            <!-- 3. МУСИН (無心) — ТОК ВНИМАНИЯ (Течёт по правой руке в ладони) -->
+            <g class="zen-pointer" onclick="showElement('mushin')" id="human-elem-mushin">
+              <line x1="435" y1="345" x2="480" y2="305" stroke="#f97316" stroke-width="2" stroke-dasharray="2 2" />
+              <rect id="humanMushinBadgeBg" x="410" y="265" width="195" height="40" rx="12" fill="#431407" fill-opacity="0.95" stroke="#f97316" stroke-width="2.5" />
+              <circle cx="430" cy="285" r="11" fill="#f97316" />
+              <text x="430" y="289" fill="#ffffff" font-size="12" font-weight="900" text-anchor="middle">3</text>
+              <text x="448" y="280" fill="#fdba74" font-size="11" font-weight="900">МУСИН (無心) — Ток</text>
+              <text x="448" y="295" fill="#ffffff" font-size="9" font-weight="bold">Поток по руке без эго</text>
+            </g>
+
+            <!-- 4. ГЁ (行) — ЛАМПОЧКА В РУКАХ НА УРОВНЕ ГРУДИ -->
+            <g class="zen-pointer" onclick="showElement('gyo')" id="human-elem-gyo">
+              <!-- Цоколь лампочки (удерживается пальцами) -->
+              <rect x="300" y="358" width="20" height="18" rx="3" fill="#64748b" stroke="#334155" stroke-width="2" />
+              
+              <!-- Колба лампочки -->
+              <circle id="humanBulbGlass" cx="310" cy="335" r="26" fill="#fef08a" stroke="#fde047" stroke-width="4" filter="url(#humanBulbGlow)" class="gyo-bulb-active" />
+              
+              <!-- Вольфрамовая нить накала -->
+              <path id="humanBulbFilament" d="M 304,342 L 308,326 L 312,326 L 316,342" fill="none" stroke="#d97706" stroke-width="2.5" stroke-linecap="round" />
+
+              <!-- Выносная плашка 4. ГЁ -->
+              <g>
+                <line x1="310" y1="309" x2="310" y2="185" stroke="#facc15" stroke-width="2" stroke-dasharray="3 3" />
+                <rect x="200" y="145" width="220" height="42" rx="12" fill="#422006" fill-opacity="0.96" stroke="#facc15" stroke-width="2.5" />
+                <circle cx="222" cy="166" r="11" fill="#facc15" />
+                <text x="222" y="170" fill="#713f12" font-size="12" font-weight="900" text-anchor="middle">4</text>
+                <text x="240" y="161" fill="#fef08a" font-size="12" font-weight="900">ГЁ (行) — Лампочка в руках</text>
+                <text x="240" y="176" fill="#ffffff" font-size="9" font-weight="bold">Действие на уровне груди & Свет</text>
+              </g>
+            </g>
+
+            <!-- 5. ДЗАНСИН (残心) — ПРЕДОХРАНИТЕЛЬ НА ОБРАТНОМ ПУТИ (Вдоль левой стороны/позвоночника) -->
+            <g class="zen-pointer" onclick="showElement('zanshin')" id="human-elem-zanshin">
+              <!-- Стеклянный корпус предохранителя на проводе x=160, y=485..545 -->
+              <rect x="149" y="480" width="22" height="10" rx="2" fill="#94a3b8" stroke="#cbd5e1" stroke-width="1.5" />
+              <rect x="146" y="490" width="28" height="45" rx="6" fill="url(#humanFuseGrad)" stroke="#38bdf8" stroke-width="2" />
+              <rect x="149" y="535" width="22" height="10" rx="2" fill="#94a3b8" stroke="#cbd5e1" stroke-width="1.5" />
+              
+              <!-- Тонкая защитная нить предохранителя -->
+              <path id="humanFuseFilament" d="M 160,490 Q 154,512 160,535" 
+                fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" />
+
+              <!-- Выносная плашка 5. ДЗАНСИН -->
+              <g>
+                <line x1="146" y1="512" x2="70" y2="512" stroke="#38bdf8" stroke-width="2" stroke-dasharray="3 3" />
+                <rect x="15" y="492" width="140" height="42" rx="12" fill="#082f49" fill-opacity="0.96" stroke="#38bdf8" stroke-width="2.5" />
+                <circle cx="34" cy="513" r="10" fill="#38bdf8" />
+                <text x="34" y="517" fill="#082f49" font-size="11" font-weight="900" text-anchor="middle">5</text>
+                <text x="50" y="508" fill="#7dd3fc" font-size="10" font-weight="900">ДЗАНСИН (残心)</text>
+                <text x="50" y="523" fill="#ffffff" font-size="8.5" font-weight="bold">Предохранитель</text>
+              </g>
+            </g>
+
+            <!-- БЕГУЩИЙ ТОК МУСИН ПО ТЕЛУ (Неоновая импульсная волна) -->
+            <g id="humanCurrentLoop" class="current-mushin-flowing" onclick="showElement('mushin')">
+              <path d="
+                M 370,640 L 460,640 L 460,515 L 460,455 L 460,340 L 415,350 L 335,365 
+                M 285,365 L 205,350 L 160,340 L 160,480 
+                M 160,545 L 160,640 L 250,640
+              " fill="none" stroke="#ffffff" stroke-width="3.5" opacity="0.95" />
+            </g>
+
+          </svg>
+        </div>
+
+        <!-- Подсказка оператору -->
+        <div class="mt-4 text-center">
+          <p class="text-xs text-slate-400">
+            💡 Нажимайте на кнопку <strong class="text-emerald-400">«Хоцу»</strong> или кликайте на любой элемент <strong class="text-amber-400">(1–5)</strong>, чтобы исследовать его работу в теле.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- КНОПКИ БЫСТРОГО ПЕРЕКЛЮЧЕНИЯ ЭЛЕМЕНТОВ (1 - 5) -->
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5 mt-5">
+        <button onclick="showElement('tanden')" id="btn-tab-tanden" 
+          class="p-3 rounded-2xl bg-slate-950/60 border border-slate-800 hover:border-amber-500/50 transition text-left flex flex-col gap-1 cursor-pointer element-card-active">
+          <span class="text-[10px] font-mono text-amber-400 uppercase tracking-wider font-bold">1. Живот</span>
+          <span class="text-xs font-black text-slate-100">Тандэн (丹田)</span>
+          <span class="text-[10px] text-slate-400 truncate">Батарейка • Реактор</span>
+        </button>
+
+        <button onclick="showElement('hotsu')" id="btn-tab-hotsu" 
+          class="p-3 rounded-2xl bg-slate-950/60 border border-slate-800 hover:border-emerald-500/50 transition text-left flex flex-col gap-1 cursor-pointer">
+          <span class="text-[10px] font-mono text-emerald-400 uppercase tracking-wider font-bold">2. Воля</span>
+          <span class="text-xs font-black text-slate-100">Хоцу (発)</span>
+          <span class="text-[10px] text-slate-400 truncate">Кнопка намерения</span>
+        </button>
+
+        <button onclick="showElement('mushin')" id="btn-tab-mushin" 
+          class="p-3 rounded-2xl bg-slate-950/60 border border-slate-800 hover:border-orange-500/50 transition text-left flex flex-col gap-1 cursor-pointer">
+          <span class="text-[10px] font-mono text-orange-400 uppercase tracking-wider font-bold">3. Рука</span>
+          <span class="text-xs font-black text-slate-100">Мусин (無心)</span>
+          <span class="text-[10px] text-slate-400 truncate">Чистый ток внимания</span>
+        </button>
+
+        <button onclick="showElement('gyo')" id="btn-tab-gyo" 
+          class="p-3 rounded-2xl bg-slate-950/60 border border-slate-800 hover:border-yellow-500/50 transition text-left flex flex-col gap-1 cursor-pointer">
+          <span class="text-[10px] font-mono text-yellow-400 uppercase tracking-wider font-bold">4. Грудь</span>
+          <span class="text-xs font-black text-slate-100">Гё (行)</span>
+          <span class="text-[10px] text-slate-400 truncate">Лампочка в руках</span>
+        </button>
+
+        <button onclick="showElement('zanshin')" id="btn-tab-zanshin" 
+          class="p-3 rounded-2xl bg-slate-950/60 border border-slate-800 hover:border-sky-500/50 transition text-left flex flex-col gap-1 cursor-pointer col-span-2 sm:col-span-1">
+          <span class="text-[10px] font-mono text-sky-400 uppercase tracking-wider font-bold">5. Спина</span>
+          <span class="text-xs font-black text-slate-100">Дзансин (残心)</span>
+          <span class="text-[10px] text-slate-400 truncate">Предохранитель духа</span>
+        </button>
+      </div>
+
+      <!-- ИНФОРМАЦИОННАЯ КАРТОЧКА ВЫБРАННОГО ЭЛЕМЕНТА -->
+      <div id="elementDetailCard" class="mt-5 p-5 sm:p-6 rounded-2xl bg-slate-950 border border-amber-500/30 transition-all">
+        <div class="flex items-start gap-4">
+          <div id="elemDetailIcon" class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center text-2xl flex-shrink-0">
+            🔋
+          </div>
+          <div class="flex-grow">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+              <h3 id="elemDetailTitle" class="text-lg font-bold text-white flex items-center gap-2">
+                1. Тандэн (丹田) — Батарейка в животе (Энергетическое ядро)
+              </h3>
+              <span id="elemDetailRole" class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30">
+                ИСТОЧНИК ПОТЕНЦИАЛА
+              </span>
+            </div>
+            <p id="elemDetailText" class="text-slate-300 text-sm leading-relaxed mt-2">
+              Расположен на 3 пальца ниже пупка (нижний даньтянь / хара). Это биологический аккумулятор человека: клеточный метаболизм, дыхание диафрагмой и запас витальной силы. Если батарейка разряжена или не заземлена, ни одно волевое усилие не сможет зажечь свет в руках.
+            </p>
+            <div id="elemDetailQuote" class="mt-3 p-3 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-amber-200/90 italic">
+              «Собери внимание в Тандэне, отпусти лишние мысли, и цепь наполнится плотным потенциалом без малейшего напряжения».
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ТАБЛИЦА ВЕЛИКОГО ИЗОМОРФИЗМА: ФОНАРИК vs ЧЕЛОВЕК -->
+    <div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 sm:p-8 mb-12">
+      <h2 class="text-xl sm:text-2xl font-display font-bold text-white mb-4 flex items-center gap-2">
+        <span>⚡</span> Таблица соответствий: Фонарик и Человек
+      </h2>
+      <p class="text-slate-400 text-sm leading-relaxed mb-6">
+        Физика едина на всех масштабах. Один и тот же закон Ома и принцип замкнутой цепи действует как в копеечном карманном фонарике, так и в теле мастера дзен или созидателя.
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm border-collapse">
+          <thead>
+            <tr class="border-b border-slate-800 text-xs font-mono uppercase text-slate-400 tracking-wider">
+              <th class="py-3 px-4">№</th>
+              <th class="py-3 px-4">Первоэлемент</th>
+              <th class="py-3 px-4">В фонарике</th>
+              <th class="py-3 px-4">В теле человека</th>
+              <th class="py-3 px-4">Смысл в контуре</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/60">
+            <tr class="hover:bg-slate-800/30 transition">
+              <td class="py-3.5 px-4 font-mono font-bold text-amber-400">1</td>
+              <td class="py-3.5 px-4 font-bold text-white">Тандэн (丹田)</td>
+              <td class="py-3.5 px-4 text-slate-300">Батарейка (ядро питания)</td>
+              <td class="py-3.5 px-4 text-amber-300 font-semibold">Живот (хара / нижний даньтянь)</td>
+              <td class="py-3.5 px-4 text-slate-400">Источник электродвижущей силы (ЭДС)</td>
+            </tr>
+            <tr class="hover:bg-slate-800/30 transition">
+              <td class="py-3.5 px-4 font-mono font-bold text-emerald-400">2</td>
+              <td class="py-3.5 px-4 font-bold text-white">Хоцу (発 / Хочу)</td>
+              <td class="py-3.5 px-4 text-slate-300">Кнопка-толкатель & контакт</td>
+              <td class="py-3.5 px-4 text-emerald-300 font-semibold">Импульс намерения и воли</td>
+              <td class="py-3.5 px-4 text-slate-400">Физическое замыкание цепи</td>
+            </tr>
+            <tr class="hover:bg-slate-800/30 transition">
+              <td class="py-3.5 px-4 font-mono font-bold text-orange-400">3</td>
+              <td class="py-3.5 px-4 font-bold text-white">Мусин (無心)</td>
+              <td class="py-3.5 px-4 text-slate-300">Электрический ток в проводе</td>
+              <td class="py-3.5 px-4 text-orange-300 font-semibold">Поток внимания по нервам и рукам</td>
+              <td class="py-3.5 px-4 text-slate-400">Чистая проводимость без сопротивления эго</td>
+            </tr>
+            <tr class="hover:bg-slate-800/30 transition">
+              <td class="py-3.5 px-4 font-mono font-bold text-yellow-400">4</td>
+              <td class="py-3.5 px-4 font-bold text-white">Гё (行)</td>
+              <td class="py-3.5 px-4 text-slate-300">Лампочка (вольфрамовая нить)</td>
+              <td class="py-3.5 px-4 text-yellow-300 font-semibold">Лампочка в руках у груди (Действие)</td>
+              <td class="py-3.5 px-4 text-slate-400">Полезная нагрузка и рождение света</td>
+            </tr>
+            <tr class="hover:bg-slate-800/30 transition">
+              <td class="py-3.5 px-4 font-mono font-bold text-sky-400">5</td>
+              <td class="py-3.5 px-4 font-bold text-white">Дзансин (残心)</td>
+              <td class="py-3.5 px-4 text-slate-300">Предохранитель на возврате</td>
+              <td class="py-3.5 px-4 text-sky-300 font-semibold">Бдительность вдоль спины/позвоночника</td>
+              <td class="py-3.5 px-4 text-slate-400">Защита от выгорания и возврат в Тандэн</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800 bg-slate-950/80 py-8 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="text-amber-500 font-bold">Inner Current</span> &bull; Дзен-схемотехника и физика духа
+      </div>
+      <div class="flex items-center gap-4 text-slate-400">
+        <a href="/" class="hover:text-amber-400 transition">Главная</a>
+        <a href="/flashlight/" class="hover:text-amber-400 transition">Схема фонарика</a>
+        <a href="/human/" class="hover:text-amber-400 transition text-amber-400 font-bold">Человек-контур</a>
+      </div>
+      <div>&copy; 2026 Владимир Аньянов &bull; Все права защищены</div>
+    </div>
+  </footer>
+
+  <!-- СКРИПТ УПРАВЛЕНИЯ ИНТЕРАКТИВНОЙ ЦЕПЬЮ ЧЕЛОВЕКА -->
+  <script>
+    let isHumanCircuitClosed = true;
+
+    const humanElements = {
+      tanden: {
+        num: 1,
+        name: "Тандэн (丹田)",
+        location: "Живот (нижний даньтянь / хара)",
+        role: "ИСТОЧНИК ПОТЕНЦИАЛА",
+        icon: "🔋",
+        title: "1. Тандэн (丹田) — Батарейка в животе (Энергетическое ядро)",
+        text: "Расположен на 3 пальца ниже пупка (нижний даньтянь / хара). Это биологический аккумулятор человека: клеточный метаболизм, глубокое диафрагмальное дыхание и запас витальной силы. Если батарейка разряжена или не заземлена, ни одно волевое усилие не сможет зажечь свет в руках.",
+        quote: "«Собери внимание в Тандэне, отпусти лишние мысли, и цепь наполнится плотным потенциалом без малейшего напряжения».",
+        color: "amber"
+      },
+      hotsu: {
+        num: 2,
+        name: "Хоцу (発 / Хочу)",
+        location: "Импульс намерения и воли",
+        role: "РУБИЛЬНИК КОНТУРА",
+        icon: "🔘",
+        title: "2. Хоцу (発 / Хочу) — Кнопка воли и намерения",
+        text: "Это импульс желания и решение действовать. Кнопка «Хоцу» физически толкает контакт, замыкая цепь от живота к рукам. Без нажатия кнопки потенциал Тандэна остаётся спящим. Когда Хоцу чистое и прямое, ток течёт без внутренней борьбы.",
+        quote: "«Истинное желание — это не насилие над собой, а простое замыкание контакта: решение дать энергии течь в мир».",
+        color: "emerald"
+      },
+      mushin: {
+        num: 3,
+        name: "Мусин (無心)",
+        location: "Правая рука (проводящий тракт)",
+        role: "ПОТОК ВНИМАНИЯ",
+        icon: "🌊",
+        title: "3. Мусин (無心) — Ток внимания (Состояние потока)",
+        text: "Беспрепятственное протекание энергии по телу. Мусин — это 'не-ум', отсутствие паразитного сопротивления эго, сомнений и зажимов. Ток мчится по чистым рукам прямо к ладоням с максимальным КПД, подчиняясь закону Ома.",
+        quote: "«Ток не думает, куда ему течь. Он просто следует замкнутому контуру с наименьшим сопротивлением».",
+        color: "orange"
+      },
+      gyo: {
+        num: 4,
+        name: "Гё (行)",
+        location: "Ладони на уровне груди (Сердечный центр)",
+        role: "ПОЛЕЗНОЕ ДЕЙСТВИЕ & СВЕТ",
+        icon: "💡",
+        title: "4. Гё (行) — Лампочка в руках (Плод созидания)",
+        text: "Лампочка, которую человек бережно держит в руках на уровне груди. Это реальное действие: написанная строка, завершённый код, сказанное доброе слово, озаряющее темноту. Лампочка горит только тогда, когда сквозь неё проходит ток Мусин.",
+        quote: "«Свет в руках — это не чудо, а неизбежное следствие замкнутой цепи. Делай дело, и свет родится сам».",
+        color: "yellow"
+      },
+      zanshin: {
+        num: 5,
+        name: "Дзансин (残心)",
+        location: "Спина и позвоночник (обратный возврат)",
+        role: "ЗАЩИТА & ОСТАТОК ДУХА",
+        icon: "🛡️",
+        title: "5. Дзансин (残心) — Предохранитель контура (Осознанность)",
+        text: "Бережный предохранитель на обратном пути вдоль спины в Тандэн. Дзансин — это 'остаток духа', бдительное внимание после совершённого действия. Он не даёт случиться короткому замыканию и защищает сердце от перегорания.",
+        quote: "«Выстрелив из лука, не опускай взгляд. Сохрани контур замкнутым, и энергия вернётся в Тандэн обновлённой».",
+        color: "sky"
+      }
+    };
+
+    function toggleHumanCircuit() {
+      isHumanCircuitClosed = !isHumanCircuitClosed;
+      updateHumanUI();
+    }
+
+    function updateHumanUI() {
+      const btn = document.getElementById('humanHotsuBtn');
+      const badge = document.getElementById('humanHotsuBadge');
+      const sub = document.getElementById('humanHotsuSub');
+      const icon = document.getElementById('humanHotsuBtnIcon');
+      const statusBadge = document.getElementById('humanStatusBadge');
+      const pingDot = document.getElementById('humanPingDot');
+      const statusLabel = document.getElementById('humanStatusLabel');
+
+      // SVG элементы
+      const blade = document.getElementById('humanContactBlade');
+      const switchBody = document.getElementById('humanSwitchBody');
+      const knob = document.getElementById('humanKnobCircle');
+      const currentLoop = document.getElementById('humanCurrentLoop');
+      const lightGlow = document.getElementById('humanLightGlowGroup');
+      const bulbGlass = document.getElementById('humanBulbGlass');
+      const bulbFilament = document.getElementById('humanBulbFilament');
+      const hotsuBadgeBg = document.getElementById('humanHotsuBadgeBg');
+      const hotsuBadgeTitle = document.getElementById('humanHotsuBadgeTitle');
+      const hotsuBadgeDesc = document.getElementById('humanHotsuBadgeDesc');
+
+      if (isHumanCircuitClosed) {
+        // ВКЛ (Замкнуто)
+        btn.className = "group relative flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-400 active:scale-95 transition-all shadow-xl shadow-amber-500/30 text-slate-950 font-black text-sm sm:text-base cursor-pointer";
+        badge.innerText = "Импульс «Хоцу» включен";
+        sub.innerText = "Ток «Мусин» зажигает лампочку в руках!";
+        icon.innerText = "⚡";
+        icon.className = "text-2xl animate-bounce";
+
+        statusBadge.className = "absolute top-3 left-3 sm:left-4 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-black transition-all";
+        pingDot.className = "w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping";
+        statusLabel.innerText = "⚡ Цепь замкнута: Тандэн питает лампочку в руках через чистый ток Мусин!";
+
+        // Контакт замкнут
+        blade.setAttribute('d', 'M 460,515 L 460,455');
+        blade.setAttribute('stroke', '#f59e0b');
+        switchBody.setAttribute('fill', '#16a34a');
+        switchBody.setAttribute('stroke', '#86efac');
+        knob.setAttribute('cx', '545');
+
+        hotsuBadgeBg.setAttribute('fill', '#052e16');
+        hotsuBadgeBg.setAttribute('stroke', '#22c55e');
+        hotsuBadgeTitle.innerText = "ХОЦУ (発) — ВОЛЯ ВКЛ";
+        hotsuBadgeTitle.setAttribute('fill', '#86efac');
+        hotsuBadgeDesc.innerText = "Контакт замкнут: импульс пошёл";
+
+        // Ток течёт
+        currentLoop.style.display = 'block';
+        lightGlow.style.opacity = '1';
+
+        // Лампочка сияет
+        bulbGlass.setAttribute('fill', '#fef08a');
+        bulbGlass.setAttribute('stroke', '#fde047');
+        bulbGlass.classList.add('gyo-bulb-active');
+        bulbFilament.setAttribute('stroke', '#d97706');
+
+      } else {
+        // ВЫКЛ (Разомкнуто)
+        btn.className = "group relative flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-red-600 hover:bg-red-500 active:scale-95 transition-all shadow-xl shadow-red-600/30 text-white font-black text-sm sm:text-base cursor-pointer";
+        badge.innerText = "Цепь разомкнута (ВЫКЛ)";
+        sub.innerText = "Нажмите, чтобы включить волю Хоцу!";
+        icon.innerText = "⭕";
+        icon.className = "text-2xl";
+
+        statusBadge.className = "absolute top-3 left-3 sm:left-4 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/20 border border-red-500/40 text-red-300 text-xs font-black transition-all";
+        pingDot.className = "w-2.5 h-2.5 rounded-full bg-red-400";
+        statusLabel.innerText = "⭕ Цепь разомкнута: контакт Хоцу отведен, ток Мусин остановлен";
+
+        // Контакт разомкнут (отведен в сторону)
+        blade.setAttribute('d', 'M 460,515 L 485,465');
+        blade.setAttribute('stroke', '#ef4444');
+        switchBody.setAttribute('fill', '#dc2626');
+        switchBody.setAttribute('stroke', '#fca5a5');
+        knob.setAttribute('cx', '570');
+
+        hotsuBadgeBg.setAttribute('fill', '#450a0a');
+        hotsuBadgeBg.setAttribute('stroke', '#ef4444');
+        hotsuBadgeTitle.innerText = "ХОЦУ (発) — РАЗОМКНУТО";
+        hotsuBadgeTitle.setAttribute('fill', '#fca5a5');
+        hotsuBadgeDesc.innerText = "Контакт отведен (НЕТ ТОКА)";
+
+        // Ток остановлен
+        currentLoop.style.display = 'none';
+        lightGlow.style.opacity = '0';
+
+        // Лампочка выключена
+        bulbGlass.setAttribute('fill', '#334155');
+        bulbGlass.setAttribute('stroke', '#475569');
+        bulbGlass.classList.remove('gyo-bulb-active');
+        bulbFilament.setAttribute('stroke', '#64748b');
+      }
+    }
+
+    function showElement(key) {
+      const data = humanElements[key];
+      if (!data) return;
+
+      // Обновляем карточку
+      document.getElementById('elemDetailIcon').innerText = data.icon;
+      document.getElementById('elemDetailTitle').innerText = data.title;
+      document.getElementById('elemDetailRole').innerText = data.role;
+      document.getElementById('elemDetailText').innerText = data.text;
+      document.getElementById('elemDetailQuote').innerText = data.quote;
+
+      // Активная вкладка
+      const keys = ['tanden', 'hotsu', 'mushin', 'gyo', 'zanshin'];
+      keys.forEach(k => {
+        const btn = document.getElementById(`btn-tab-${k}`);
+        if (btn) {
+          if (k === key) {
+            btn.classList.add('element-card-active');
+          } else {
+            btn.classList.remove('element-card-active');
+          }
+        }
+      });
+    }
+
+    // Инициализация при загрузке
+    document.addEventListener('DOMContentLoaded', () => {
+      updateHumanUI();
+      showElement('tanden');
+    });
+  </script>
+</body>
+</html>
