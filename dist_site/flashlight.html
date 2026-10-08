@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дзен-фонарик: Канон 5 первоэлементов — Inner Current</title>
+  <meta name="description" content="Интерактивная схемотехника фонарика: Тандэн (батарейка), Хоцу (кнопка воли), Мусин (электрический ток), Дзансин (предохранитель) и Гё (лампочка).">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔦</text></svg>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Cinzel', 'serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            slate: {
+              850: '#111827',
+              900: '#090d16',
+              950: '#030712',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #030712;
+      color: #f1f5f9;
+      -webkit-font-smoothing: antialiased;
+    }
+    @keyframes electron-rush {
+      from { stroke-dashoffset: 60; }
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes glow-pulse {
+      0%, 100% { 
+        filter: drop-shadow(0 0 20px rgba(250, 204, 21, 0.8)) drop-shadow(0 0 50px rgba(245, 158, 11, 0.5)); 
+      }
+      50% { 
+        filter: drop-shadow(0 0 40px rgba(254, 240, 138, 0.98)) drop-shadow(0 0 80px rgba(250, 204, 21, 0.7)); 
+      }
+    }
+    .current-mushin-flowing {
+      stroke-dasharray: 8 8;
+      animation: electron-rush 0.7s linear infinite;
+    }
+    .gyo-bulb-active {
+      animation: glow-pulse 2s infinite ease-in-out;
+    }
+    .element-card-active {
+      border-color: #f59e0b !important;
+      background: rgba(245, 158, 11, 0.14) !important;
+      transform: translateY(-2px);
+    }
+    .zen-pointer {
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .zen-pointer:hover {
+      filter: brightness(1.25) drop-shadow(0 0 8px currentColor);
+      transform: scale(1.02);
+      transform-origin: center;
+    }
+  </style>
+</head>
+<body class="selection:bg-amber-500 selection:text-slate-950 min-h-screen flex flex-col">
+
+  <!-- NAVBAR -->
+  <nav class="sticky top-0 z-50 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80 transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 text-slate-950 font-black text-xl flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:scale-105 transition">
+          ⚡
+        </div>
+        <div>
+          <div class="font-display font-bold text-base tracking-wide text-slate-100 group-hover:text-amber-300 transition">
+            INNER CURRENT
+          </div>
+          <div class="text-[10px] uppercase font-mono tracking-widest text-slate-400 font-semibold">
+            Библиотека книг &bull; Канон
+          </div>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-4">
+        <a href="/" class="text-xs sm:text-sm font-medium text-slate-300 hover:text-amber-300 transition flex items-center gap-1.5">
+          <span>←</span> На главную
+        </a>
+        <a href="/#principles" class="hidden sm:flex text-xs sm:text-sm font-medium text-slate-300 hover:text-amber-300 transition">
+          Принципы контура
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1 w-full">
+    
+    <!-- Шапка -->
+    <div class="text-center max-w-3xl mx-auto mb-8">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-mono font-bold tracking-wider mb-3">
+        <span>⚡</span> КАНОН КАНСО: 5 ЭЛЕМЕНТОВ ЦЕПИ
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-100 font-display">
+        Дзен-фонарик и физика сознания
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base mt-3 leading-relaxed">
+        Наглядная детская и инженерная схемотехника: как устроен фонарик и почему счастье и поток подчиняются законам замкнутой электрической цепи.
+      </p>
+    </div>
+
+    <!-- Интерактивный виджет фонарика -->
+    <div class="bg-slate-900/90 border border-slate-800 rounded-3xl p-4 sm:p-6 shadow-2xl overflow-hidden mb-10">
+      
+      <!-- Контрольная панель -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-5 pb-4 border-b border-slate-800">
+        <div>
+          <div class="text-xs uppercase font-mono tracking-widest text-amber-400 font-bold mb-1">
+            Схемотехнический макет
+          </div>
+          <div class="text-lg font-bold text-slate-100 flex items-center gap-2">
+            <span>🔦</span> 5 первоэлементов цепи
+          </div>
+        </div>
+
+        <!-- Кнопка рубильника -->
+        <button id="hotsuActionBtn" onclick="toggleHotsu()" 
+          class="group relative flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-400 active:scale-95 transition-all shadow-xl shadow-amber-500/30 text-slate-950 font-black text-sm sm:text-base cursor-pointer">
+          <span id="hotsuBtnIcon" class="text-2xl animate-bounce">⚡</span>
+          <div class="text-left leading-tight">
+            <div id="hotsuStateBadge" class="text-[11px] uppercase tracking-wider font-extrabold opacity-85">Кнопка «Хоцу» нажата</div>
+            <div id="hotsuBtnSub" class="text-sm font-black">Ток «Мусин» зажигает «Гё»!</div>
+          </div>
+        </button>
+      </div>
+
+      <!-- Экран схемы (SVG) -->
+      <div class="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 rounded-2xl p-3 sm:p-6 border border-slate-800/80 shadow-inner flex flex-col items-center justify-center min-h-[400px] overflow-hidden">
+        
+        <!-- Индикатор статуса -->
+        <div id="flowStatusBadge" class="absolute top-3 left-3 sm:left-4 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-black transition-all">
+          <span id="flowPingDot" class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
+          <span id="flowStatusLabel">⚡ «Хоцу» замкнута: Ток Мусин (無心) течёт, лампочка Гё (行) сияет!</span>
+        </div>
+
+        <div class="w-full max-w-3xl flex justify-center items-center py-2">
+          <svg viewBox="0 0 980 430" class="w-full h-auto max-h-[410px]" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="gyoLightBeamGrad" cx="0%" cy="50%" r="100%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+                <stop offset="25%" stop-color="#fef08a" stop-opacity="0.8" />
+                <stop offset="60%" stop-color="#f59e0b" stop-opacity="0.3" />
+                <stop offset="100%" stop-color="#d97706" stop-opacity="0" />
+              </radialGradient>
+
+              <linearGradient id="tandenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#f59e0b" />
+                <stop offset="35%" stop-color="#d97706" />
+                <stop offset="75%" stop-color="#b45309" />
+                <stop offset="100%" stop-color="#78350f" />
+              </linearGradient>
+
+              <linearGradient id="fuseGlassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.4" />
+                <stop offset="50%" stop-color="#bae6fd" stop-opacity="0.15" />
+                <stop offset="100%" stop-color="#0284c7" stop-opacity="0.4" />
+              </linearGradient>
+
+              <filter id="bulbGlowFilter" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="14" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+
+            <!-- ЛУЧ СВЕТА ОТ ЛАМПОЧКИ ГЁ -->
+            <g id="lightBeamGroup" class="transition-opacity duration-300">
+              <polygon points="205,210 20,50 20,370" fill="url(#gyoLightBeamGrad)" opacity="0.9" />
+              <circle cx="100" cy="130" r="4" fill="#ffffff" opacity="0.9" />
+              <circle cx="60" cy="210" r="5" fill="#fef08a" opacity="0.95" />
+              <circle cx="120" cy="290" r="4" fill="#ffffff" opacity="0.8" />
+              <text x="45" y="110" font-size="16" fill="#fef08a" opacity="0.85">✨</text>
+              <text x="130" y="180" font-size="20" fill="#ffffff" opacity="0.9">✨</text>
+              <text x="50" y="310" font-size="16" fill="#fef08a" opacity="0.85">✨</text>
+            </g>
+
+            <!-- КОРПУС ФОНАРИКА (КАНСО) -->
+            <g>
+              <rect x="250" y="130" width="530" height="160" rx="24" fill="#1e1b4b" fill-opacity="0.3" stroke="#6366f1" stroke-width="3" stroke-dasharray="6 4" opacity="0.75" />
+              <path d="M 205,95 L 255,130 L 255,290 L 205,325 Z" fill="#1e1b4b" fill-opacity="0.35" stroke="#6366f1" stroke-width="3" />
+              <rect x="775" y="140" width="20" height="140" rx="6" fill="#334155" stroke="#64748b" stroke-width="3" />
+              <text x="515" y="150" fill="#818cf8" font-size="11" font-weight="bold" letter-spacing="3" opacity="0.5">КАНСО: ЧИСТАЯ АРХИТЕКТУРА</text>
+            </g>
+
+            <!-- Рефлектор вокруг лампочки -->
+            <path d="M 210,110 Q 260,155 260,210 Q 260,265 210,310 L 210,295 Q 248,255 248,210 Q 248,165 210,125 Z" 
+              fill="#94a3b8" stroke="#cbd5e1" stroke-width="2" opacity="0.8" />
+
+            <!-- 1. ТАНДЭН (БАТАРЕЙКА) -->
+            <g class="zen-pointer" onclick="showElement('tanden')" id="elem-tanden">
+              <rect x="440" y="155" width="310" height="110" rx="16" fill="url(#tandenGrad)" stroke="#f59e0b" stroke-width="4" />
+              <rect x="415" y="190" width="25" height="40" rx="5" fill="#fef08a" stroke="#eab308" stroke-width="2" />
+              
+              <circle cx="460" cy="210" r="16" fill="#ffffff" opacity="0.25" />
+              <text x="452" y="218" fill="#ffffff" font-size="24" font-weight="900">+</text>
+              <circle cx="720" cy="210" r="16" fill="#000000" opacity="0.3" />
+              <text x="714" y="217" fill="#ffffff" font-size="26" font-weight="900">−</text>
+              
+              <g>
+                <rect x="495" y="175" width="200" height="46" rx="12" fill="#451a03" fill-opacity="0.85" stroke="#f59e0b" stroke-width="2.5" />
+                <circle cx="520" cy="198" r="14" fill="#f59e0b" />
+                <text x="520" y="203" fill="#451a03" font-size="14" font-weight="900" text-anchor="middle">1</text>
+                <text x="542" y="193" fill="#ffffff" font-size="14" font-weight="900">ТАНДЭН (丹田)</text>
+                <text x="542" y="210" fill="#fef3c7" font-size="10" font-weight="bold">Батарейка • Ядро энергии</text>
+              </g>
+            </g>
+
+            <rect x="750" y="192" width="26" height="36" rx="4" fill="#f59e0b" stroke="#d97706" stroke-width="2" />
+
+            <!-- 2. ХОЦУ (КНОПКА) -->
+            <g class="zen-pointer" onclick="toggleHotsu()" id="elem-hotsu">
+              <path d="M 415,210 L 370,210 L 370,105 L 450,105" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+              <path id="hotsuContactBridge" d="M 450,105 L 510,105" fill="none" stroke="#f59e0b" stroke-width="8" stroke-linecap="round" class="transition-all duration-200" />
+              <path d="M 510,105 L 560,105" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+
+              <rect x="440" y="65" width="80" height="30" rx="10" fill="#dc2626" stroke="#fecaca" stroke-width="3" />
+              <circle id="hotsuKnobCircle" cx="495" cy="80" r="12" fill="#ffffff" class="transition-all duration-200 shadow-lg cursor-pointer" />
+
+              <g>
+                <rect x="395" y="12" width="170" height="46" rx="12" fill="#450a0a" fill-opacity="0.95" stroke="#ef4444" stroke-width="2.5" />
+                <circle cx="417" cy="35" r="13" fill="#ef4444" />
+                <text x="417" y="40" fill="#ffffff" font-size="13" font-weight="900" text-anchor="middle">2</text>
+                <text x="437" y="30" fill="#fca5a5" font-size="13" font-weight="900">ХОЦУ (発)</text>
+                <text x="437" y="47" fill="#ffffff" font-size="10" font-weight="bold">Кнопка включения (Воля)</text>
+              </g>
+            </g>
+
+            <!-- 4. ДЗАНСИН (ПРЕДОХРАНИТЕЛЬ) -->
+            <g class="zen-pointer" onclick="showElement('zanshin')" id="elem-zanshin">
+              <rect x="560" y="93" width="14" height="24" rx="3" fill="#94a3b8" stroke="#cbd5e1" stroke-width="1.5" />
+              <rect x="574" y="90" width="85" height="30" rx="6" fill="url(#fuseGlassGrad)" stroke="#38bdf8" stroke-width="2" />
+              <rect x="659" y="93" width="14" height="24" rx="3" fill="#94a3b8" stroke="#cbd5e1" stroke-width="1.5" />
+              
+              <path id="fuseFilament" d="M 574,105 Q 600,97 616,105 Q 632,113 659,105" 
+                fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" />
+
+              <path d="M 673,105 L 720,105 L 720,70 L 255,70 L 255,190" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+
+              <g>
+                <line x1="616" y1="90" x2="616" y2="45" stroke="#38bdf8" stroke-width="2" stroke-dasharray="3 3" />
+                <circle cx="616" cy="90" r="3.5" fill="#38bdf8" />
+                <rect x="580" y="12" width="200" height="46" rx="12" fill="#082f49" fill-opacity="0.95" stroke="#38bdf8" stroke-width="2.5" />
+                <circle cx="602" cy="35" r="13" fill="#38bdf8" />
+                <text x="602" y="40" fill="#082f49" font-size="13" font-weight="900" text-anchor="middle">4</text>
+                <text x="622" y="30" fill="#7dd3fc" font-size="12" font-weight="900">ДЗАНСИН (残心)</text>
+                <text x="622" y="47" fill="#ffffff" font-size="10" font-weight="bold">Предохранитель (Защита)</text>
+              </g>
+            </g>
+
+            <!-- 3. ГЁ (ЛАМПОЧКА) -->
+            <g class="zen-pointer" onclick="showElement('gyo')" id="elem-gyo">
+              <rect x="245" y="195" width="20" height="30" rx="4" fill="#64748b" stroke="#334155" stroke-width="2" />
+              <circle id="gyoBulbGlass" cx="230" cy="210" r="22" fill="#fef08a" stroke="#fde047" stroke-width="4" filter="url(#bulbGlowFilter)" class="gyo-bulb-active" />
+              <polygon points="227,204 233,204 230,218" fill="#eab308" />
+
+              <g>
+                <line x1="230" y1="232" x2="230" y2="340" stroke="#facc15" stroke-width="2" stroke-dasharray="3 3" />
+                <circle cx="230" cy="232" r="4" fill="#facc15" />
+                <rect x="150" y="340" width="180" height="46" rx="12" fill="#422006" fill-opacity="0.95" stroke="#facc15" stroke-width="2.5" />
+                <circle cx="172" cy="363" r="13" fill="#facc15" />
+                <text x="172" y="368" fill="#713f12" font-size="13" font-weight="900" text-anchor="middle">3</text>
+                <text x="192" y="358" fill="#fef08a" font-size="13" font-weight="900">ГЁ (行) — Лампочка</text>
+                <text x="192" y="374" fill="#ffffff" font-size="10" font-weight="bold">Действие & Плод света</text>
+              </g>
+            </g>
+
+            <!-- Нижняя шина цепи -->
+            <path id="circuitReturnRail" d="M 775,210 L 795,210 L 795,310 L 255,310 L 255,225" 
+              fill="none" stroke="#f97316" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+
+            <!-- 5. МУСИН (ТОК) -->
+            <g id="mushinCurrentLoop" class="current-mushin-flowing" onclick="showElement('mushin')">
+              <path d="M 415,210 L 370,210 L 370,105 L 510,105 L 560,105 L 673,105 L 720,105 L 720,70 L 255,70 L 255,195 M 255,210 L 255,310 L 795,310 L 795,210 L 750,210" 
+                fill="none" stroke="#ffffff" stroke-width="4" opacity="0.95" />
+            </g>
+
+            <g class="zen-pointer" onclick="showElement('mushin')" id="elem-mushin">
+              <line x1="530" y1="310" x2="530" y2="340" stroke="#f97316" stroke-width="2" stroke-dasharray="3 3" />
+              <circle cx="530" cy="310" r="4" fill="#f97316" />
+              <rect x="425" y="340" width="220" height="46" rx="12" fill="#431407" fill-opacity="0.95" stroke="#f97316" stroke-width="2.5" />
+              <circle cx="447" cy="363" r="13" fill="#f97316" />
+              <text x="447" y="368" fill="#ffffff" font-size="13" font-weight="900" text-anchor="middle">5</text>
+              <text x="467" y="358" fill="#fdba74" font-size="13" font-weight="900">МУСИН (無心) — Ток</text>
+              <text x="467" y="374" fill="#ffffff" font-size="10" font-weight="bold">Чистый поток энергии (бежит)</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="mt-2 text-xs text-slate-400 text-center">
+          <span>👆 Нажимайте кнопку «Хоцу», чтобы пустить ток, или выбирайте карточки элементов ниже!</span>
+        </div>
+      </div>
+
+      <!-- Карточка выбранного элемента -->
+      <div id="elementCard" class="mt-5 p-4 sm:p-5 rounded-2xl bg-slate-950 border border-amber-500/30 transition-all">
+        <div class="flex items-start gap-3 sm:gap-4">
+          <div id="elemBadgeEmoji" class="text-3xl sm:text-4xl p-3 rounded-2xl bg-amber-500/15 flex items-center justify-center shrink-0 border border-amber-500/20">
+            ⚡
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-1 flex-wrap">
+              <span id="elemRankTag" class="text-xs font-black px-2.5 py-0.5 rounded-full bg-orange-500 text-white uppercase tracking-wide">
+                Элемент №5
+              </span>
+              <h3 id="elemHeaderTitle" class="text-base sm:text-lg font-black text-slate-100">
+                Мусин (無心) — Электрический ток
+              </h3>
+            </div>
+            <p id="elemMeaningText" class="text-sm text-slate-300 leading-relaxed">
+              Мусин — это чистый непрерывный ток! В нём нет эго и сопротивления: он бежит без сомнений и остановок. Ток Мусин включается ТОЛЬКО когда нажата кнопка «Хоцу». Мгновенно пробегая через предохранитель Дзансин прямо в лампочку Гё, он зажигает её ярким светом!
+            </p>
+            <div id="elemAnalogyBox" class="mt-2.5 inline-flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-lg bg-orange-500/10 text-orange-400 border border-orange-500/20">
+              <span>✨ Детское объяснение: Быстрая река электричества, которая бежит по проводам, как только открыли плотину!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Кнопки выбора 5 первоэлементов -->
+      <div class="mt-5 grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+        <button id="btn-tanden" onclick="showElement('tanden')" class="flex flex-col items-center p-3 rounded-xl border border-slate-800 bg-slate-950 hover:border-amber-400 transition-all text-center">
+          <span class="text-2xl mb-1">🔋</span>
+          <span class="text-xs font-black text-slate-100">1. Тандэн (丹田)</span>
+          <span class="text-[11px] text-slate-400 font-medium">Батарейка</span>
+        </button>
+
+        <button id="btn-hotsu" onclick="showElement('hotsu')" class="flex flex-col items-center p-3 rounded-xl border border-slate-800 bg-slate-950 hover:border-red-400 transition-all text-center">
+          <span class="text-2xl mb-1">🔘</span>
+          <span class="text-xs font-black text-slate-100">2. Хоцу (発)</span>
+          <span class="text-[11px] text-slate-400 font-medium">Кнопка</span>
+        </button>
+
+        <button id="btn-gyo" onclick="showElement('gyo')" class="flex flex-col items-center p-3 rounded-xl border border-slate-800 bg-slate-950 hover:border-yellow-400 transition-all text-center">
+          <span class="text-2xl mb-1">💡</span>
+          <span class="text-xs font-black text-slate-100">3. Гё (行)</span>
+          <span class="text-[11px] text-slate-400 font-medium">Лампочка</span>
+        </button>
+
+        <button id="btn-zanshin" onclick="showElement('zanshin')" class="flex flex-col items-center p-3 rounded-xl border border-slate-800 bg-slate-950 hover:border-sky-400 transition-all text-center">
+          <span class="text-2xl mb-1">🛡️</span>
+          <span class="text-xs font-black text-slate-100">4. Дзансин (残心)</span>
+          <span class="text-[11px] text-slate-400 font-medium">Предохранитель</span>
+        </button>
+
+        <button id="btn-mushin" onclick="showElement('mushin')" class="element-card-active flex flex-col items-center p-3 rounded-xl border border-slate-800 bg-slate-950 hover:border-orange-400 transition-all text-center">
+          <span class="text-2xl mb-1">⚡</span>
+          <span class="text-xs font-black text-slate-100">5. Мусин (無心)</span>
+          <span class="text-[11px] text-slate-400 font-medium">Ток (Поток)</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Теоретический блок связи с книгами и архитектурой сознания -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6">
+        <h3 class="text-base font-bold text-amber-300 flex items-center gap-2 mb-3">
+          <span>🧠</span> Почему фонарик объясняет счастье?
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          Большинство людей живут с разомкнутой цепью: они требуют от лампочки (Гё) света, не включая кнопку собственного намерения (Хоцу), либо выжигают контур без предохранителя (Дзансин), забывая подпитывать автономный Тандэн. Фонарик напоминает: счастье — это не статичная вещь, а <strong>динамический ток в замкнутом контуре</strong>.
+        </p>
+      </div>
+
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6">
+        <h3 class="text-base font-bold text-cyan-300 flex items-center gap-2 mb-3">
+          <span>📖</span> Где читать подробнее?
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          Этот изоморфизм подробно раскрыт в книге <a href="/#books" class="text-amber-400 underline font-semibold hover:text-amber-300">«Коперник Сознания»</a> и полевом руководстве <a href="/books/field_manual.html" class="text-cyan-400 underline font-semibold hover:text-cyan-300">«Внутренний ток: Полевой мануал отладки»</a>, доступных в открытой библиотеке проекта.
+        </p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800/80 bg-slate-950 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+      <div class="flex items-center gap-2">
+        <span class="text-amber-400 text-base">⚡</span>
+        <span>Inner Current &bull; Архитектура внутреннего состояния</span>
+      </div>
+      <div>
+        <a href="/" class="hover:text-amber-300 transition mr-4">Главная</a>
+        <a href="/#books" class="hover:text-amber-300 transition mr-4">Книги</a>
+        <a href="/#reader" class="hover:text-amber-300 transition">Ридер</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    let isHotsuActive = true;
+    let currentSelectedKey = 'mushin';
+
+    const zenElements = {
+      tanden: {
+        rank: "Элемент №1",
+        emoji: "🔋",
+        title: "Тандэн (丹田) — Центр силы",
+        desc: "Тандэн — источник всей жизненной силы цепи. В фонарике это одна монолитная батарейка. Она самодостаточна: внутри неё уже заложена вся энергия, готовая служить делу.",
+        analogy: "✨ Детское объяснение: Волшебная кладовая силы, где спокойно отдыхает вся энергия фонарика!",
+        badgeClass: "bg-amber-500 text-slate-950"
+      },
+      hotsu: {
+        rank: "Элемент №2",
+        emoji: "🔘",
+        title: "Хоцу (発) — Пробуждение воли",
+        desc: "«Хоцу» — это намерение, первый решительный шаг. Пока кнопка отжата, ток Мусин спит. Нажатие кнопки опускает мостик и выпускает поток тока на свободу!",
+        analogy: "✨ Детское объяснение: Рубильник-шлагбаум: нажал пальчиком — открыл ворота для тока!",
+        badgeClass: "bg-red-500 text-white"
+      },
+      gyo: {
+        rank: "Элемент №3",
+        emoji: "💡",
+        title: "Гё (行) — Действие и практика",
+        desc: "«Гё» — это действие, труд и овеществление силы. В фонарике это лампочка! Когда сквозь неё протекает ток Мусин, она преображает скрытую энергию Тандэн в зримый, тёплый и ослепительный свет, разгоняющий тьму.",
+        analogy: "✨ Детское объяснение: Сердце света! Маленькая звёздочка, которая светит только тогда, когда сквозь неё бежит ток!",
+        badgeClass: "bg-yellow-400 text-slate-950"
+      },
+      zanshin: {
+        rank: "Элемент №4",
+        emoji: "🛡️",
+        title: "Дзансин (残心) — Бдительность и защита",
+        desc: "«Дзансин» — это бдительность мастера, которая никогда не засыпает. В цепи это предохранитель: тонкая стеклянная колбочка с калиброванной нитью. Он защищает контур от перегрузок, коротких замыканий и сгорания цепи.",
+        analogy: "✨ Детское объяснение: Верный страж-телохранитель, который бережёт фонарик от поломки и замыкания!",
+        badgeClass: "bg-sky-500 text-slate-950"
+      },
+      mushin: {
+        rank: "Элемент №5",
+        emoji: "⚡",
+        title: "Мусин (無心) — Чистый ток (Поток)",
+        desc: "«Мусин» — состояние чистого потока без эго, сомнений и задержек. В фонарике это сам электрический ток! Он не течёт сам по себе вслепую — он пробуждается ТОЛЬКО когда нажата кнопка «Хоцу». Мчась сквозь предохранитель Дзансин, он заставляет сиять лампочку Гё!",
+        analogy: "✨ Детское объяснение: Невидимый быстрый ручеёк из миллионов весёлых искорок-электронов!",
+        badgeClass: "bg-orange-500 text-white"
+      }
+    };
+
+    function showElement(key) {
+      currentSelectedKey = key;
+      const elem = zenElements[key];
+      if (!elem) return;
+
+      document.getElementById('elemBadgeEmoji').textContent = elem.emoji;
+      document.getElementById('elemRankTag').textContent = elem.rank;
+      document.getElementById('elemRankTag').className = `text-xs font-black px-2.5 py-0.5 rounded-full uppercase tracking-wide ${elem.badgeClass}`;
+      document.getElementById('elemHeaderTitle').textContent = elem.title;
+      document.getElementById('elemMeaningText').textContent = elem.desc;
+      document.getElementById('elemAnalogyBox').innerHTML = `<span>${elem.analogy}</span>`;
+
+      document.querySelectorAll('[id^="btn-"]').forEach(btn => btn.classList.remove('element-card-active'));
+      const activeBtn = document.getElementById(`btn-${key}`);
+      if (activeBtn) activeBtn.classList.add('element-card-active');
+
+      const card = document.getElementById('elementCard');
+      card.classList.add('ring-2', 'ring-amber-400/60');
+      setTimeout(() => card.classList.remove('ring-2', 'ring-amber-400/60'), 350);
+    }
+
+    function toggleHotsu() {
+      isHotsuActive = !isHotsuActive;
+
+      const beam = document.getElementById('lightBeamGroup');
+      const bulb = document.getElementById('gyoBulbGlass');
+      const bridge = document.getElementById('hotsuContactBridge');
+      const knob = document.getElementById('hotsuKnobCircle');
+      const currentLoop = document.getElementById('mushinCurrentLoop');
+      const badge = document.getElementById('flowStatusBadge');
+      const pingDot = document.getElementById('flowPingDot');
+      const statusLabel = document.getElementById('flowStatusLabel');
+      
+      const actionBtn = document.getElementById('hotsuActionBtn');
+      const btnIcon = document.getElementById('hotsuBtnIcon');
+      const stateBadge = document.getElementById('hotsuStateBadge');
+      const btnSub = document.getElementById('hotsuBtnSub');
+
+      if (isHotsuActive) {
+        beam.style.opacity = '1';
+        bulb.setAttribute('fill', '#fef08a');
+        bulb.setAttribute('filter', 'url(#bulbGlowFilter)');
+        bulb.classList.add('gyo-bulb-active');
+        bridge.setAttribute('d', 'M 450,105 L 510,105');
+        knob.setAttribute('cx', '495');
+        currentLoop.style.display = 'block';
+
+        badge.className = 'absolute top-3 left-3 sm:left-4 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-black transition-all';
+        pingDot.className = 'w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping';
+        statusLabel.textContent = '⚡ «Хоцу» замкнута: Ток Мусин (無心) течёт, лампочка Гё (行) сияет!';
+
+        actionBtn.className = 'group relative flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-400 active:scale-95 transition-all shadow-xl shadow-amber-500/30 text-slate-950 font-black text-sm sm:text-base cursor-pointer';
+        btnIcon.textContent = '⚡';
+        btnIcon.className = 'text-2xl animate-bounce';
+        stateBadge.textContent = 'Кнопка «Хоцу» нажата';
+        btnSub.textContent = 'Ток «Мусин» зажигает «Гё»!';
+      } else {
+        beam.style.opacity = '0';
+        bulb.setAttribute('fill', '#334155');
+        bulb.removeAttribute('filter');
+        bulb.classList.remove('gyo-bulb-active');
+        bridge.setAttribute('d', 'M 450,105 L 495,135');
+        knob.setAttribute('cx', '460');
+        currentLoop.style.display = 'none';
+
+        badge.className = 'absolute top-3 left-3 sm:left-4 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-slate-400 text-xs font-bold transition-all';
+        pingDot.className = 'w-2.5 h-2.5 rounded-full bg-slate-500';
+        statusLabel.textContent = '💤 «Хоцу» разомкнута: Ток Мусин спит, лампочка Гё отдыхает';
+
+        actionBtn.className = 'group relative flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 active:scale-95 transition-all shadow-md text-white font-black text-sm sm:text-base cursor-pointer';
+        btnIcon.textContent = '🌑';
+        btnIcon.className = 'text-2xl';
+        stateBadge.textContent = 'Кнопка «Хоцу» отжата';
+        btnSub.textContent = 'Нажмите «Хоцу», чтобы пустить ток!';
+      }
+    }
+  </script>
+</body>
+</html>
