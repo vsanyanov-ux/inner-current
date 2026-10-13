@@ -2,7 +2,7 @@ import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const PORT = Number(process.env.PORT) || 3333;
+const PORT = Number(process.env.PORT) || 5173;
 const PUBLIC_DIR = path.resolve('public');
 const DATA_FILE = path.resolve('data', 'cockpit_ideas.json');
 const LOCAL_WIKI_DIR = path.resolve('wiki');
@@ -270,7 +270,7 @@ function readWikiArticle(requestedFile) {
 // =============================================================
 // HTTP СЕРВЕР И РОУТЕР
 // =============================================================
-const server = http.createServer(async (req, res) => {
+const requestHandler = async (req, res) => {
   // CORS заголовки
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
@@ -574,20 +574,39 @@ ${payload.field_test_notes || '- Проведено полевое тестир�
       res.end('500 Internal Server Error');
     }
   }
-});
+};
+
+const server = http.createServer(requestHandler);
+let secondaryServer = null;
 
 server.listen(PORT, () => {
   console.log(`⚡ Inner Current server running:`);
+  console.log(`   - ⚡ Интерактивный тренажер:  http://localhost:${PORT}/`);
   console.log(`   - 🎛️  Пульт Сверхпроводимости: http://localhost:${PORT}/cockpit`);
   console.log(`   - 📚 Онлайн-Ридер Вики:       http://localhost:${PORT}/wiki`);
-  console.log(`   - ⚡ Интерактивный тренажер:  http://localhost:${PORT}`);
   console.log(`   - 📖 Веб-ридер книги:         http://localhost:${PORT}/book/`);
   console.log(`   - 🎧 Веб-аудиоплеер книги:     http://localhost:${PORT}/audiobook/`);
 });
 
+if (PORT !== 3333) {
+  try {
+    secondaryServer = http.createServer(requestHandler);
+    secondaryServer.listen(3333, () => {
+      console.log(`   (Также доступен резервный порт: http://localhost:3333/)`);
+    });
+    secondaryServer.on('error', () => {});
+  } catch (_) {}
+}
+
 process.on('SIGINT', () => {
-  server.close(() => process.exit(0));
+  server.close(() => {
+    if (secondaryServer) secondaryServer.close();
+    process.exit(0);
+  });
 });
 process.on('SIGTERM', () => {
-  server.close(() => process.exit(0));
+  server.close(() => {
+    if (secondaryServer) secondaryServer.close();
+    process.exit(0);
+  });
 });

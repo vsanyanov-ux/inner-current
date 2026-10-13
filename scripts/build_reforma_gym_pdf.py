@@ -1,0 +1,573 @@
+import os
+import shutil
+from playwright.sync_api import sync_playwright
+import pypdf
+
+OUTPUT_HTML = r"c:\Users\vanya\Antigravity Projects\Apps\Inner Current\reforma_business_brief.html"
+OUTPUT_PDF = r"c:\Users\vanya\Antigravity Projects\Apps\Inner Current\IC Library\Бизнес-записка — Биодинамика ресурса и рост LTV (Для фитнес-клуба Реформа).pdf"
+
+HTML_CONTENT = """<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Биодинамика высокого ресурса — Стратегия роста LTV для фитнес-клуба «Реформа»</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  @page {
+    size: A4;
+    margin: 15mm 16mm 15mm 16mm;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 9.3pt;
+    line-height: 1.48;
+    color: #1e293b;
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  .page-container {
+    page-break-after: always;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .page-container:last-child {
+    page-break-after: avoid;
+  }
+
+  .cover-card {
+    background: linear-gradient(135deg, #090d16 0%, #111827 55%, #1e293b 100%);
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 14px;
+    border: 1px solid #334155;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+
+  .badge-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 5px;
+    background: rgba(56, 189, 248, 0.16);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+  }
+
+  .confidential {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    color: #94a3b8;
+  }
+
+  h1 {
+    font-size: 16.5pt;
+    line-height: 1.25;
+    font-weight: 800;
+    margin: 0 0 6px 0;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    font-size: 10pt;
+    color: #cbd5e1;
+    font-weight: 400;
+    margin: 0 0 10px 0;
+    line-height: 1.35;
+  }
+
+  .meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 8.2pt;
+    color: #94a3b8;
+  }
+
+  .meta-grid strong {
+    color: #f1f5f9;
+  }
+
+  h2 {
+    font-size: 11.8pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 12px 0 8px 0;
+    padding-bottom: 4px;
+    border-bottom: 1.5px solid #e2e8f0;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  h2 span.num {
+    background: #0f172a;
+    color: #ffffff;
+    font-size: 8.5pt;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0 0 6px 0;
+    color: #334155;
+  }
+
+  .highlight-box {
+    background: #f8fafc;
+    border-left: 3.5px solid #2563eb;
+    padding: 10px 12px;
+    border-radius: 0 6px 6px 0;
+    margin: 8px 0;
+    font-size: 8.8pt;
+  }
+
+  .highlight-box strong {
+    color: #0f172a;
+  }
+
+  .alert-box {
+    background: #fffbeb;
+    border-left: 3.5px solid #d97706;
+    padding: 8px 12px;
+    border-radius: 0 6px 6px 0;
+    margin: 8px 0;
+    font-size: 8.8pt;
+    color: #92400e;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 8px 0;
+  }
+
+  .card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 7px;
+    padding: 10px 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+  }
+
+  .card-title {
+    font-weight: 700;
+    font-size: 9.3pt;
+    color: #0f172a;
+  }
+
+  .card-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.2pt;
+    font-weight: 600;
+    padding: 1px 5px;
+    border-radius: 3px;
+    background: #f1f5f9;
+    color: #475569;
+  }
+
+  .card-desc {
+    font-size: 8.4pt;
+    color: #475569;
+    line-height: 1.4;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 8.5pt;
+  }
+
+  th, td {
+    padding: 7px 9px;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    background: #0f172a;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 8.5pt;
+  }
+
+  tr:nth-child(even) td {
+    background: #f8fafc;
+  }
+
+  .step-list {
+    margin: 8px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .step-item {
+    display: flex;
+    gap: 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 10px 12px;
+    border-radius: 7px;
+  }
+
+  .step-num {
+    background: #0f172a;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 9pt;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .step-content {
+    font-size: 8.8pt;
+  }
+
+  .step-title {
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 2px;
+  }
+
+  .callout-quote {
+    background: #f0fdf4;
+    border-left: 3.5px solid #16a34a;
+    padding: 10px 12px;
+    border-radius: 0 6px 6px 0;
+    margin: 8px 0;
+    font-size: 8.8pt;
+    color: #166534;
+    font-style: italic;
+  }
+
+  .footer-cta {
+    background: linear-gradient(135deg, #090d16 0%, #111827 100%);
+    color: #ffffff;
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #334155;
+  }
+
+  .footer-cta-text {
+    font-size: 9pt;
+    line-height: 1.4;
+  }
+
+  .footer-cta-text strong {
+    color: #38bdf8;
+  }
+
+  .footer-cta-btn {
+    background: #2563eb;
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 8.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .pill {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 7.8pt;
+  }
+  .pill-green { background: #dcfce7; color: #15803d; }
+  .pill-blue { background: #dbeafe; color: #1d4ed8; }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1 ================= -->
+<div class="page-container">
+  <div class="cover-card">
+    <div class="badge-row">
+      <span class="tag">Бизнес-аналитика & Биометрия</span>
+      <span class="confidential">Для руководства фитнес-клуба «Реформа»</span>
+    </div>
+    <h1>Биодинамика высокого ресурса</h1>
+    <div class="subtitle">Как объективные соматические показатели тела увеличивают LTV, снижают отток клиентов и масштабируют продажи персонального тренинга</div>
+    <div class="meta-grid">
+      <div>
+        <strong>Адресат:</strong> Директору фитнес-клуба «Реформа»<br>
+        <strong>Фокус:</strong> Удержание клиентской базы (Retention & LTV)
+      </div>
+      <div>
+        <strong>Экспертиза:</strong> Владимир Аньянов<br>
+        <strong>Формат:</strong> Прикладной меморандум и пилотный сценарий
+      </div>
+    </div>
+  </div>
+
+  <h2><span class="num">1</span> Системная проблема рынка: Почему 80% клиентов не продлевают абонемент</h2>
+  <p>Традиционный фитнес-маркетинг уже много лет опирается на две парадигмы, которые на дистанции разрушают экономику клуба:</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">1. Эстетика чужих глаз</span>
+        <span class="card-badge">Внешний мотив</span>
+      </div>
+      <div class="card-desc">
+        Обещание «кубиков пресса» и «идеального тела к лету». Но видимая физическая трансформация требует 3–6 месяцев. Не замечая быстрого чуда в зеркале за первые 3–4 недели, клиент разочаровывается и бросает занятия.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">2. Мотивация через вину</span>
+        <span class="card-badge">Отрицательный стимул</span>
+      </div>
+      <div class="card-desc">
+        Посыл «отработай съеденное на дорожке». Тренировка воспринимается психикой как штрафной изолятор. Организм защищается от насилия кортизоловым спазмом — абонемент ложится на полку уже к февралю.
+      </div>
+    </div>
+  </div>
+
+  <div class="alert-box">
+    <strong>Экономический результат для Вашего клуба:</strong> Неоправданно высокая стоимость привлечения нового лида (CAC) и критический провал в LTV. Клуб вынужден постоянно жечь рекламные бюджеты на холодный трафик вместо того, чтобы монетизировать стабильное лояльное ядро.
+  </div>
+
+  <h2><span class="num">2</span> Физиологический парадокс: Почему «счастье как удовольствие» убивает зал</h2>
+  <p>В фитнесе распространено заблуждение, что клиенты приходят за удовольствием (дофаминовым кайфом). Однако если продавать тренировку как «источник удовольствия», фитнес гарантированно проигрывает дивану.</p>
+
+  <div class="highlight-box">
+    <strong>В чем ловушка для продаж:</strong> Ради быстрого удовольствия современному человеку гораздо проще заказать пиццу или полистать соцсети. Тренировка сопряжена с мышечным усилием и преодолением. Если клиент ждёт от зала «лёгкого кайфа», он неизбежно разочаровывается.
+  </div>
+
+  <p><strong>Подлинная физиология благополучия и лидерского драйва:</strong></p>
+  <p>Ощущение энергии, победы и ясности ума обеспечивается не кратковременным дофаминовым всплеском, а <strong>высокой пропускной способностью вегетативной нервной системы</strong>:</p>
+  <ul>
+    <li><strong>Тонус блуждающего нерва (вагуса):</strong> аппаратное купирование суеты, тревожности и синдрома рассеянного внимания;</li>
+    <li><strong>Митохондриальная плотность:</strong> рост выработки АТФ в клетках без закисления и одышки;</li>
+    <li><strong>Секреция миокинов (иризин, BDNF):</strong> сокращение мышц под нагрузкой буквально «промывает» мозг от гормонов стресса и восстанавливает чувствительность рецепторов к повседневной радости.</li>
+  </ul>
+
+  <div class="callout-quote">
+    «Когда Вы помогаете клиенту осознать, что тренировка — это не каторга искупления вины, а технологичная расточка соматической батарейки для успехов в бизнесе и жизни, спортзал перестаёт быть насилием. Он становится базовой гигиеной сильного человека».
+  </div>
+</div>
+
+<!-- ================= PAGE 2 ================= -->
+<div class="page-container">
+  <h2><span class="num">3</span> Биодинамический контур: 4 метрики, видимые на смарт-часах уже через 7 дней</h2>
+  <p>Предприниматели и топ-менеджеры верят цифрам и контролю. Вместо абстрактных обещаний клуб может опереться на <strong>объективную наручную телеметрию (Apple Watch, Garmin, Xiaomi, Huawei)</strong>:</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">1. Пульс покоя (Resting HR)</span>
+        <span class="card-badge">уд / мин</span>
+      </div>
+      <div class="card-desc">
+        Снижение ЧСС в покое на 5–8 уд/мин экономит до 10 000 ударов сердца в сутки. Клиент физически ощущает уход фонового сердечного напряжения и тахикардии во время работы.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">2. Вариабельность пульса (HRV)</span>
+        <span class="card-badge">мс (RMSSD)</span>
+      </div>
+      <div class="card-desc">
+        Ключевой маркер парасимпатического резерва. Высокий HRV напрямую коррелирует с выносливостью в стрессовых переговорах, хладнокровием и когнитивной гибкостью.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">3. Индекс дневного стресса</span>
+        <span class="card-badge">0–100 баллов</span>
+      </div>
+      <div class="card-desc">
+        График на экране смартфона наглядно демонстрирует переход из «красной зоны перегрева» в зелёный рабочий коридор (20–35 баллов). Это наглядное свидетельство снятия спазма.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">4. Фаза глубокого сна (Deep Sleep)</span>
+        <span class="card-badge">часы / %</span>
+      </div>
+      <div class="card-desc">
+        Увеличение дельта-сна на 25–40% за счет миокинового ответа мышц. Клиент начинает просыпаться со стопроцентной ясностью ума и полным зарядом батарейки.
+      </div>
+    </div>
+  </div>
+
+  <h2><span class="num">4</span> Экономический эффект: Влияние биодинамики на финансовые показатели клуба</h2>
+  <p>Смещение позиционирования с «эстетики» на «управление биодинамическим капиталом» трансформирует ключевые метрики воронки:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 24%;">Точка контакта</th>
+        <th style="width: 38%;">Традиционный подход (эстетика / вина)</th>
+        <th style="width: 38%;">Биодинамический подход (ресурс / цифры)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Первая победа (Time-to-Value)</strong></td>
+        <td>2–4 месяца (весы, зеркало). Долго, тяжело, высокий риск отсева в первый месяц.</td>
+        <td><strong>5–7 дней</strong> <span class="pill pill-green">Быстрый эффект</span><br>Падение стресса и рост сна на экране часов клиента.</td>
+      </tr>
+      <tr>
+        <td><strong>Продление абонементов (Retention)</strong></td>
+        <td>«Я похудел — можно бросить» либо «Я устал страдать — бросаю». Потеря базы.</td>
+        <td><strong>Стабильное продление:</strong><br>Высокий уровень энергии для бизнеса и ясность головы бросить невозможно.</td>
+      </tr>
+      <tr>
+        <td><strong>Персональный тренинг</strong></td>
+        <td>Тренер воспринимается как инструктор-надзиратель, считающий подходы.</td>
+        <td>Тренер позиционируется как <strong>соматический наставник</strong>, калибрующий физиологический ресурс.</td>
+      </tr>
+      <tr>
+        <td><strong>Позиционирование «Реформы»</strong></td>
+        <td>Конкуренция скидками и ценами на квадратные метры тренажёрного зала.</td>
+        <td><strong>Премиальный статус:</strong><br>Флагман биохакинга энергии, выносливости и лидерской продуктивности.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box">
+    <strong>Главный вывод для руководства:</strong> Человек может решить, что его фигура «уже достаточно хороша», и уйти. Но человек никогда не откажется от инструмента, который ежедневно удваивает его личную эффективность, драйв и стрессоустойчивость.
+  </div>
+</div>
+
+<!-- ================= PAGE 3 ================= -->
+<div class="page-container">
+  <h2><span class="num">5</span> Практический MVP для «Реформы»: 3 шага внедрения без бюджета</h2>
+  <p>Для запуска тестирования не требуется закупка специализированного оборудования или изменение расписания залов. Достаточно скорректировать коммуникационную канву:</p>
+
+  <div class="step-list">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">Биодинамический экспресс-чекап на входе (отдел продаж / ресепшн)</div>
+        Вместо стандартного опроса «сколько килограммов хотите сбросить?» администратор или менеджер фиксирует 3 ресурсных параметра: качество сна, уровень рабочего стресса и наличие смарт-часов/браслета. Это сразу выделяет «Реформу» на фоне конкурентов как технологичный клуб.
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">Калибровка вводной тренировки персонального тренера</div>
+        Тренер начинает знакомство с клиентом с акцента на ресурс: <em>«Наша задача сегодня — не загнать Вас до боли, а разгрузить вегетативную систему и запустить выработку миокинов, чтобы завтра на работе Вы были максимально собраны и продуктивны»</em>. Фиксируются зоны пульса и скорость восстановления.
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-title">Контрольный срез телеметрии на 14-й день (мост к продлению)</div>
+        Клиент вместе с тренером открывает приложение своего трекера и сравнивает показатели до начала тренировок и сейчас. Наглядное снижение графика стресса и прирост глубокого сна создают непреодолимый аргумент для покупки долгосрочного блока персональных тренировок.
+      </div>
+    </div>
+  </div>
+
+  <h2><span class="num">6</span> Резюме: Почему это сработает именно в Вашем клубе</h2>
+  <ul>
+    <li><strong>Совпадение с ценностями аудитории:</strong> Платежеспособные клиенты «Реформы» — предприниматели, руководители, специалисты. Для них концепция «увеличения личной батарейки» в 10 раз понятнее и привлекательнее, чем абстрактный фитнес-глянец.</li>
+    <li><strong>Оцифрованный результат:</strong> Вы даёте клиенту объективные данные, которые он контролирует сам на своем запястье каждое утро.</li>
+    <li><strong>Защита от сезонного оттока:</strong> Клуб перестаёт зависеть от сезонных всплесков «похудеть к лету», формируя круг постоянных резидентов с годовым LTV.</li>
+  </ul>
+
+  <!-- FOOTER CTA -->
+  <div class="footer-cta">
+    <div class="footer-cta-text">
+      <strong>Предлагаю обсудить пилотный сценарий для Вашего клуба.</strong><br>
+      Готов встретиться с Вами на 15–20 минут за кофе и разобрать детали внедрения на практике.
+    </div>
+    <div class="footer-cta-btn">Обсудить пилот</div>
+  </div>
+</div>
+
+</body>
+</html>
+"""
+
+with open(OUTPUT_HTML, "w", encoding="utf-8") as f:
+    f.write(HTML_CONTENT)
+
+print("Saved updated HTML. Rendering PDF via Playwright...")
+
+with sync_playwright() as p:
+    browser = p.chromium.launch()
+    page = browser.new_page()
+    page.goto(f"file:///{OUTPUT_HTML.replace(os.sep, '/')}", wait_until="networkidle")
+
+    header_template = """
+    <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 7.2pt; color: #94a3b8; width: 100%; display: flex; justify-content: space-between; padding: 0 16mm;">
+      <span>Фитнес-клуб «Реформа» • Стратегия биодинамики и роста LTV</span>
+      <span>Владимир Аньянов</span>
+    </div>
+    """
+
+    footer_template = """
+    <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 7.2pt; color: #64748b; width: 100%; display: flex; justify-content: space-between; padding: 0 16mm;">
+      <span>Конфиденциально • Для руководства</span>
+      <span>Стр. <span class="pageNumber"></span> из <span class="totalPages"></span></span>
+    </div>
+    """
+
+    page.pdf(
+        path=OUTPUT_PDF,
+        format="A4",
+        print_background=True,
+        display_header_footer=True,
+        header_template=header_template,
+        footer_template=footer_template,
+        margin={"top": "14mm", "bottom": "14mm", "left": "16mm", "right": "16mm"}
+    )
+    browser.close()
+
+reader = pypdf.PdfReader(OUTPUT_PDF)
+print(f"Total Pages: {len(reader.pages)}, Size: {os.path.getsize(OUTPUT_PDF)} bytes")

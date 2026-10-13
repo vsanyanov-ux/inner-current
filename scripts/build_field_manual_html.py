@@ -4,6 +4,7 @@ import markdown
 
 SOURCE_MD = r"C:\Users\vanya\Antigravity Projects\Misc\LLM Wiki\02_Wiki\Книга — Внутренний ток (Полевой мануал отладки).md"
 OUTPUT_HTML = r"c:\Users\vanya\Antigravity Projects\Apps\Inner Current\public\books\field_manual.html"
+DIST_HTML = r"c:\Users\vanya\Antigravity Projects\Apps\Inner Current\dist_site\books\field_manual.html"
 
 with open(SOURCE_MD, "r", encoding="utf-8") as f:
     raw_md = f.read()
@@ -378,4 +379,9 @@ FULL_HTML = f"""<!DOCTYPE html>
 with open(OUTPUT_HTML, "w", encoding="utf-8") as f:
     f.write(FULL_HTML)
 
+os.makedirs(os.path.dirname(DIST_HTML), exist_ok=True)
+with open(DIST_HTML, "w", encoding="utf-8") as f:
+    f.write(FULL_HTML)
+
 print("Generated:", OUTPUT_HTML)
+print("Generated:", DIST_HTML)

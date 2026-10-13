@@ -3233,7 +3233,7 @@
               <button onclick="selectBookToRead('primer')" class="flex-1 py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition text-center cursor-pointer border border-slate-700">
                 📖 Читать в ридере
               </button>
-              <a href="books/primer.html" target="_blank" title="Открыть в отдельной вкладке" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
+              <a href="books/primer_flashlight.html" target="_blank" title="Открыть в отдельной вкладке" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
                 ↗
               </a>
             </div>
@@ -3284,19 +3284,19 @@
                   Великий Синтез: Революции Материи, Трагедия Духа и Электродинамика Человека
                 </h3>
                 <p class="text-xs md:text-sm text-amber-400/90 font-medium mt-0.5">
-                  Историко-цивилизационная кульминация Системы Аньянова: схождение физики, техники, религии и эпохи ИИ
+                  Master Edition 2.0: Универсальный закон потоковых систем, Онтологическая триада и схождение физики, техники, религии и эпохи ИИ
                 </p>
               </div>
               <p class="text-xs md:text-sm text-slate-300 leading-relaxed">
-                Как Коперник, Ньютон, Ватт, Фарадей, Максвелл, Бенц, Циолковский и Сатоши преобразили вещество через замкнутые контуры, почему 10 000 лет исканий духа (Будда, Христос, Кант, Толстой, психоанализ) потерпели крах из-за морального кнута ($Q = I^2 R t$), и как Внутренний ток соединил две половины бытия в формуле сверхпроводимости ($R_{\text{ego}} \to 0$).
+                Универсальный закон потоковых систем ($\mathcal{H} = P_{\text{load}} / P_{\text{total}}$), Онтологическая триада, родословная законов сохранения (Карно, Ом, Больцман, Шрёдингер, Пригожин, Бежан), почему 10 000 лет исканий духа (Будда, Христос, Толстой, Ницше, психоанализ) потерпели крах из-за морального кнута ($Q = I^2 R t$), Четверичный фрактал цепи ($10^{-15} \dots 10^9$ м) и соматическая сверхпроводимость ($R_{\text{ego}} \to 0$).
               </p>
             </div>
             <div class="pt-5 mt-3 border-t border-slate-800/80 flex flex-wrap items-center gap-3">
               <button onclick="selectBookToRead('great_synthesis')" class="flex-1 min-w-[200px] py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-bold text-xs md:text-sm transition text-center cursor-pointer shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2">
                 <span>📖</span> Читать в ридере
               </button>
-              <a href="books/great_synthesis.pdf" download title="Скачать PDF (белый титул, 30 стр.)" class="py-2.5 px-4 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs md:text-sm font-semibold transition flex items-center gap-1.5">
-                <span>📥</span> PDF книги (30 стр.)
+              <a href="books/great_synthesis.pdf" download title="Скачать PDF книги (Master Edition 2.0, 49 стр.)" class="py-2.5 px-4 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs md:text-sm font-semibold transition flex items-center gap-1.5">
+                <span>📥</span> PDF книги (49 стр., Master Edition 2.0)
               </a>
               <a href="books/great_synthesis.html" target="_blank" title="Открыть в отдельной вкладке" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs md:text-sm transition">
                 ↗ На весь экран
@@ -3468,7 +3468,7 @@
         src = 'books/ukulele.html';
         targetBtn = btnUkulele;
       } else if (bookKey === 'primer') {
-        src = 'books/primer.html';
+        src = 'books/primer_flashlight.html?v=' + Date.now();
         targetBtn = btnPrimer;
       } else if (bookKey === 'great_synthesis' || bookKey === 'synthesis') {
         src = 'books/great_synthesis.html';

@@ -9,11 +9,11 @@ const EDITIONS = [
     sourceFile: path.resolve('book_outline.md'),
     outDir: path.resolve('public/book'),
     htmlFile: path.resolve('public/book/index.html'),
-    title: 'Внутренний ток: Архитектура счастья — Владимир Аньянов',
+    title: 'Внутренний ток: Архитектура прямого потока (Master Edition 2.0) — Владимир Аньянов',
     brandTitle: '⚡ ВНУТРЕННИЙ ТОК',
-    brandPill: 'Книга (Полное издание)',
+    brandPill: 'Master Edition 2.0',
     heroTitle: 'Внутренний ток',
-    heroSubtitle: 'Архитектура счастья: Инженерное руководство по электродинамике сознания',
+    heroSubtitle: 'Архитектура прямого потока: Инженерное руководство по электродинамике сознания и универсальному закону потоковых систем',
     heroAuthor: 'Владимир Аньянов',
     figCaption: 'Рис. 1. Принципиальная электросхема человека-оператора: замкнутый контур прямого потока, Тандэн-генератор, медный шунт Кансо и Щит 6 ламп',
     tocTitle: 'Оглавление книги',
@@ -1052,6 +1052,17 @@ function buildEdition(edition) {
 
   fs.writeFileSync(edition.htmlFile, template, 'utf-8');
   console.log(`✅ [${edition.lang.toUpperCase()}] Web Reader generated successfully at: ${edition.htmlFile}`);
+
+  const distBase = path.resolve('dist_site');
+  if (fs.existsSync(distBase)) {
+    const distFile = path.resolve(distBase, path.relative(path.resolve('public'), edition.htmlFile));
+    const distDir = path.dirname(distFile);
+    if (!fs.existsSync(distDir)) {
+      fs.mkdirSync(distDir, { recursive: true });
+    }
+    fs.writeFileSync(distFile, template, 'utf-8');
+    console.log(`✅ [${edition.lang.toUpperCase()}] Synced to dist_site at: ${distFile}`);
+  }
 }
 
 console.log('🚀 Building all book editions (RU, EN, IT)...');

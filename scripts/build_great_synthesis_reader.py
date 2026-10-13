@@ -438,11 +438,11 @@ FULL_HTML = f"""<!DOCTYPE html>
 <main class="container">
 
   <div class="book-cover">
-    <div class="cover-badge">Библиотека «Внутренний ток» • Золотая Семёрка • Книга VII</div>
+    <div class="cover-badge">Библиотека «Внутренний ток» • Золотая Семёрка • Master Edition 2.0</div>
     <h1 class="cover-title">Великий Синтез</h1>
-    <div class="cover-sub">Революции Материи, Трагедия Духа и Электродинамика Человека: как инженеры замкнули внешний мир, почему мыслители не смогли изменить душу и как замкнутый контур объединил всё</div>
+    <div class="cover-sub">Революции Материи, Трагедия Духа и Электродинамика Человека: как наука покорила вещество, почему десять тысяч лет поисков не спасли душу и как Универсальный закон потоковых систем соединил две половины бытия</div>
     <div class="cover-meta">
-      <strong>Владимир Аньянов</strong> • Каноническая мастер-рукопись • 2026
+      <strong>Владимир Аньянов</strong> • Каноническая мастер-рукопись (Master Edition 2.0) • 2026
     </div>
   </div>
 
@@ -466,7 +466,24 @@ FULL_HTML = f"""<!DOCTYPE html>
 </html>
 """
 
+import shutil
+
 with open(OUTPUT_HTML, "w", encoding="utf-8") as f:
     f.write(FULL_HTML)
-
 print(f"Successfully generated HTML reader: {OUTPUT_HTML}")
+
+DIST_HTML = r"c:\Users\vanya\Antigravity Projects\Apps\Inner Current\dist_site\books\great_synthesis.html"
+with open(DIST_HTML, "w", encoding="utf-8") as f:
+    f.write(FULL_HTML)
+print(f"Successfully synced to dist_site: {DIST_HTML}")
+
+PDF_SRC = r"c:\Users\vanya\Antigravity Projects\Apps\Inner Current\Книга — Великий Синтез (Революции материи, трагедия духа и электродинамика человека).pdf"
+DIST_PDF = r"c:\Users\vanya\Antigravity Projects\Apps\Inner Current\dist_site\books\great_synthesis.pdf"
+PUB_PDF = r"c:\Users\vanya\Antigravity Projects\Apps\Inner Current\public\books\great_synthesis.pdf"
+
+if os.path.exists(PDF_SRC):
+    shutil.copyfile(PDF_SRC, DIST_PDF)
+    print(f"Successfully copied PDF to dist_site: {DIST_PDF}")
+    shutil.copyfile(PDF_SRC, PUB_PDF)
+    print(f"Successfully copied PDF to public: {PUB_PDF}")
+

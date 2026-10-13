@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inner Current — Applied Books & Engineering Guides</title>
+  <meta name="description" content="Electrodynamics of consciousness and the architecture of the inner state. Seven practical books and guides: from emergency debugging of acute overload to applied acoustics and the synthesis of physics with consciousness.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+  <!-- Fonts & Math -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['Lora', 'Georgia', 'serif'],
+            display: ['Cinzel', 'serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            slate: {
+              850: '#111827',
+              900: '#090d16',
+              950: '#030712',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #030712;
+      color: #f1f5f9;
+      -webkit-font-smoothing: antialiased;
+    }
+    .text-glow-amber {
+      text-shadow: 0 0 20px rgba(245, 158, 11, 0.35);
+    }
+    .box-glow-amber {
+      box-shadow: 0 0 30px -5px rgba(245, 158, 11, 0.12);
+    }
+    .box-glow-cyan {
+      box-shadow: 0 0 30px -5px rgba(56, 189, 248, 0.12);
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    @keyframes electron-rush {
+      from { stroke-dashoffset: 60; }
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes glow-pulse {
+      0%, 100% { 
+        filter: drop-shadow(0 0 20px rgba(250, 204, 21, 0.8)) drop-shadow(0 0 50px rgba(245, 158, 11, 0.5)); 
+      }
+      50% { 
+        filter: drop-shadow(0 0 40px rgba(254, 240, 138, 0.98)) drop-shadow(0 0 80px rgba(250, 204, 21, 0.7)); 
+      }
+    }
+    .current-mushin-flowing {
+      stroke-dasharray: 8 8;
+      animation: electron-rush 0.7s linear infinite;
+    }
+    .gyo-bulb-active {
+      animation: glow-pulse 2s infinite ease-in-out;
+    }
+    .element-card-active {
+      border-color: #f59e0b !important;
+      background: rgba(245, 158, 11, 0.14) !important;
+      transform: translateY(-2px);
+    }
+    .zen-pointer {
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .zen-pointer:hover {
+      filter: brightness(1.25) drop-shadow(0 0 8px currentColor);
+      transform: scale(1.02);
+      transform-origin: center;
+    }
+  </style>
+</head>
+<body class="selection:bg-amber-500 selection:text-slate-950 min-h-screen flex flex-col">
+
+  <!-- ========================================================= -->
+  <!-- TOP STICKY NAVBAR -->
+  <!-- ========================================================= -->
+  <nav class="sticky top-0 z-50 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80 transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Brand -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 text-slate-950 font-black text-xl flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:scale-105 transition">
+          ⚡
+        </div>
+        <div>
+          <div class="font-display font-bold text-base tracking-wide text-slate-100 group-hover:text-amber-300 transition">
+            INNER CURRENT
+          </div>
+          <div class="text-[10px] uppercase font-mono tracking-widest text-slate-400 font-semibold">
+            Library of Books
+          </div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+        <a href="#books" class="hover:text-amber-300 transition">Books</a>
+        <a href="#reader" class="hover:text-amber-300 transition">Online Reader</a>
+        <a href="#audiobook" class="hover:text-cyan-300 transition flex items-center gap-1.5">
+          <span>🎧</span> Audiobook
+        </a>
+        <a href="#flashlight" class="hover:text-amber-300 transition flex items-center gap-1.5">
+          <span>🔦</span> Zen Flashlight
+        </a>
+        <a href="/en/human/" class="hover:text-amber-300 transition flex items-center gap-1.5">
+          <span>🧘</span> Human Circuit
+        </a>
+        <a href="#monographs" class="hover:text-slate-100 transition">PDF Materials</a>
+        <a href="#principles" class="hover:text-slate-100 transition">Principles</a>
+      </div>
+
+      <!-- Language Switcher & Quick Action Buttons -->
+      <div class="flex items-center gap-3">
+        <!-- Language Switcher -->
+        <div class="flex items-center rounded-xl bg-slate-900 border border-slate-800 p-0.5 text-xs font-mono font-semibold" title="Language selection">
+          <a href="/" onclick="localStorage.setItem('inner_current_lang','ru')" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800/80 transition">RU</a>
+          <span class="px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold shadow-sm cursor-default">EN</span>
+        </div>
+        <a href="#audiobook" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition flex items-center gap-1.5 shadow-sm">
+          <span>🎧</span> <span class="hidden sm:inline">Listen</span>
+        </a>
+        <a href="#reader" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 transition flex items-center gap-1.5 shadow-md shadow-amber-500/20">
+          <span>📖</span> <span>Reader</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================================= -->
+  <!-- HERO SECTION -->
+  <!-- ========================================================= -->
+  <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden border-b border-slate-800/60 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/3 left-1/4 -translate-y-1/2 w-[400px] h-[300px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-700/80 text-amber-300 text-xs font-mono font-medium tracking-wider mb-6">
+        <span>⚡</span> INNER CURRENT • 7 BOOKS & MANUALS
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-100 font-display">
+        Inner Current <br class="hidden sm:inline"/>
+        <span class="bg-gradient-to-r from-amber-400 via-amber-300 to-sky-300 bg-clip-text text-transparent text-glow-amber">
+          Books & Applied Engineering Guides
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="max-w-3xl mx-auto mt-6 text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed font-serif">
+        Practical human electrodynamics: from rapid debugging of acute pain and overload to applied acoustics, somatics, and the synthesis of physical laws with the nature of consciousness.
+      </p>
+
+      <!-- Stats Bar -->
+      <div class="max-w-4xl mx-auto mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-left">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 backdrop-blur-sm">
+          <div class="text-2xl font-black text-amber-400 font-mono">7</div>
+          <div class="text-xs text-slate-400 mt-0.5 font-medium">Books & Manuals</div>
+        </div>
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 backdrop-blur-sm">
+          <div class="text-2xl font-black text-sky-400 font-mono">850+</div>
+          <div class="text-xs text-slate-400 mt-0.5 font-medium">Pages of Text</div>
+        </div>
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 backdrop-blur-sm">
+          <div class="text-2xl font-black text-emerald-400 font-mono">3 Languages</div>
+          <div class="text-xs text-slate-400 mt-0.5 font-medium">RU • EN • IT</div>
+        </div>
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 backdrop-blur-sm">
+          <div class="text-2xl font-black text-indigo-400 font-mono">100%</div>
+          <div class="text-xs text-slate-400 mt-0.5 font-medium">Open Access</div>
+        </div>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <a href="#reader" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-bold text-sm transition shadow-lg shadow-amber-500/25 flex items-center gap-2">
+          <span>📖</span> <span>Online Reader</span>
+        </a>
+        <a href="#audiobook" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-cyan-300 border border-cyan-500/40 font-semibold text-sm transition flex items-center gap-2 shadow-lg shadow-cyan-500/10">
+          <span>🎧</span> <span>Audiobook Online</span>
+        </a>
+        <a href="#books" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold text-sm transition flex items-center gap-2">
+          <span>📚</span> <span>Overview of All Books</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- SECTION: THE BOOKS SHOWCASE (7 BOOKS) -->
+  <!-- ========================================================= -->
+  <section id="books" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-1">
+    
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-10 pb-6 border-b border-slate-800">
+      <div>
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">📚</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-100 font-display">
+            Seven Books of the Library
+          </h2>
+          <span class="text-xs tracking-wider px-2.5 py-1 bg-amber-500/10 text-amber-300 border border-amber-500/30 rounded-full font-mono font-medium">
+            Open Access
+          </span>
+        </div>
+        <p class="text-slate-400 text-sm mt-2 max-w-2xl">
+          Each edition solves a practical engineering challenge: from emergency release of somatic tension to building an integrated worldview.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="../audiobook/index.html" target="_blank" class="px-4 py-2 rounded-xl text-xs font-semibold bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 transition flex items-center gap-1.5 shadow-lg shadow-cyan-500/10">
+          <span>🎧</span> Audio Studio ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- 7 Books Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Book 1: Field Manual -->
+      <div class="bg-gradient-to-b from-amber-950/20 to-slate-900 border border-amber-500/30 rounded-2xl p-6 shadow-xl flex flex-col justify-between relative group hover:border-amber-400 transition-all duration-300">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">🧰</span>
+            <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30 font-semibold">
+              Field Manual
+            </span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-slate-100 group-hover:text-amber-300 transition">
+              Inner Current: Debugging Field Manual
+            </h3>
+            <p class="text-xs text-amber-400/90 font-medium mt-1">
+              Practical human engineering: when the wiring burns
+            </p>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed font-serif">
+            For those experiencing acute overload or pain right now. Express diagnostics of 4 emergency states, 5 relief protocols (somatic ground, Black Start, micro-load, Mushin), daily preventative maintenance.
+          </p>
+        </div>
+        <div class="pt-5 mt-4 border-t border-slate-800/80 flex items-center gap-2">
+          <button onclick="readBookInReader('field_manual')" class="flex-1 py-2.5 px-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition text-center cursor-pointer shadow-md shadow-amber-500/20">
+            📖 Read in Reader
+          </button>
+          <a href="../books/field_manual.html" target="_blank" title="Open in new tab" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
+            ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Book 2: Magnum Opus (Canonical) -->
+      <div class="bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between relative group hover:border-slate-700 transition-all duration-300">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">🏛</span>
+            <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 font-semibold">
+              Master Treatise
+            </span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-slate-100 group-hover:text-cyan-300 transition">
+              Inner Current: The Architecture of Happiness
+            </h3>
+            <p class="text-xs text-cyan-400/90 font-medium mt-1">
+              Physics of superconductivity, Zen ontology, and exact engineering of the spirit
+            </p>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed font-serif">
+            The complete fundamental treatise: 22 chapters, 850 pages. Synthesis of electrodynamics laws, Zen practice, decentralization principles, and creative action. Available in RU, EN, IT.
+          </p>
+        </div>
+        <div class="pt-5 mt-4 border-t border-slate-800/80 flex items-center gap-2">
+          <button onclick="readBookInReader('canonical')" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition text-center cursor-pointer border border-slate-700">
+            📖 Read in Reader
+          </button>
+          <a href="#audiobook" title="Listen to audiobook" class="p-2.5 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 text-xs transition cursor-pointer">
+            🎧
+          </a>
+          <a href="../book/en/index.html" target="_blank" title="Open in new tab" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
+            ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Book 3: Copernicus -->
+      <div class="bg-gradient-to-b from-amber-950/15 via-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between relative group hover:border-amber-400 transition-all duration-300">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">🪞</span>
+            <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30 font-semibold">
+              Attention Anatomy
+            </span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-slate-100 group-hover:text-amber-300 transition">
+              The Copernicus of Consciousness
+            </h3>
+            <p class="text-xs text-amber-400/90 font-medium mt-1">
+              Anatomy of the ego and physics of inner freedom
+            </p>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed font-serif">
+            Why resistance cannot be a conductor (<span class="font-mono text-amber-300">I_life ≠ R_ego</span>). Semmelweis effect, acoustics of a rattling ukulele peg, and the hot coal metaphor without mysticism or abstractions.
+          </p>
+        </div>
+        <div class="pt-5 mt-4 border-t border-slate-800/80 flex items-center gap-2">
+          <button onclick="readBookInReader('copernicus')" class="flex-1 py-2.5 px-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition text-center cursor-pointer shadow-md shadow-amber-500/20">
+            📖 Read in Reader
+          </button>
+          <a href="../books/copernicus.pdf" download title="Download PDF (1.5 MB)" class="px-3 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-semibold transition flex items-center gap-1">
+            <span>📥</span> PDF
+          </a>
+          <a href="../books/copernicus.html" target="_blank" title="Open in new tab" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
+            ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Book 4: Ukulele -->
+      <div class="bg-gradient-to-b from-sky-950/15 to-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between relative group hover:border-sky-500/40 transition-all duration-300">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">🎸</span>
+            <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full bg-sky-500/15 text-sky-300 border border-sky-500/30 font-semibold">
+              Acoustics • Somatics
+            </span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-slate-100 group-hover:text-sky-300 transition">
+              The Ukulele of Being
+            </h3>
+            <p class="text-xs text-sky-400/90 font-medium mt-1">
+              Simple acoustics of a harmonious life and the art of pure resonance
+            </p>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed font-serif">
+            400 grams of wood, 4 strings, and the open resonance principle. A pocket somatic instrument to zero out internal resistance (<span class="font-mono text-sky-300">R → 0</span>) through auditory and body feedback.
+          </p>
+        </div>
+        <div class="pt-5 mt-4 border-t border-slate-800/80 flex items-center gap-2">
+          <button onclick="readBookInReader('ukulele')" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition text-center cursor-pointer border border-slate-700">
+            📖 Read in Reader
+          </button>
+          <a href="../books/ukulele.pdf" download title="Download PDF (1.1 MB)" class="px-3 py-2.5 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 border border-sky-500/40 text-xs font-semibold transition flex items-center gap-1">
+            <span>📥</span> PDF
+          </a>
+          <a href="../books/ukulele.html" target="_blank" title="Open in new tab" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
+            ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Book 5: Kids Primer -->
+      <div class="bg-gradient-to-b from-indigo-950/15 to-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between relative group hover:border-indigo-500/40 transition-all duration-300">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">🧒</span>
+            <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 font-semibold">
+              Primer • Ages 10+
+            </span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-slate-100 group-hover:text-indigo-300 transition">
+              Instructions for Your Supersuit
+            </h3>
+            <p class="text-xs text-indigo-400/90 font-medium mt-1">
+              A guide to the physics of inner equilibrium for teenagers
+            </p>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed font-serif">
+            How the battery of attention is built, the wiring of genuine interest, 6 work bulbs, and how to protect against short circuits during stress. Circuitry without condescension.
+          </p>
+        </div>
+        <div class="pt-5 mt-4 border-t border-slate-800/80 flex items-center gap-2">
+          <button onclick="readBookInReader('primer')" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition text-center cursor-pointer border border-slate-700">
+            📖 Read in Reader
+          </button>
+          <a href="../books/primer.html" target="_blank" title="Open in new tab" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
+            ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Book 6: White Paper -->
+      <div class="bg-gradient-to-b from-emerald-950/15 to-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between relative group hover:border-emerald-500/40 transition-all duration-300">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">📜</span>
+            <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 font-semibold">
+              Macro-Circuit
+            </span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-slate-100 group-hover:text-emerald-300 transition">
+              Inner Current: White Paper
+            </h3>
+            <p class="text-xs text-emerald-400/90 font-medium mt-1">
+              Sovereign thermodynamic circuit of spirit, resources, and society
+            </p>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed font-serif">
+            The direct creative flow manifesto (Zero Parasitic Rent). Structural isomorphism between Bitcoin Protocol, Henry George's Single Tax, and the Inner Current framework.
+          </p>
+        </div>
+        <div class="pt-5 mt-4 border-t border-slate-800/80 flex items-center gap-2">
+          <a href="../books/whitepaper.pdf" download class="flex-1 py-2.5 px-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition text-center shadow-lg shadow-emerald-500/20">
+            📥 Download PDF
+          </a>
+          <a href="../books/whitepaper.pdf" target="_blank" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
+            ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Book 7: The Great Synthesis (Full Width Hero Card) -->
+      <div class="bg-gradient-to-b from-amber-950/25 via-slate-900 to-slate-950 border border-amber-500/40 rounded-2xl p-6 md:p-8 shadow-2xl flex flex-col justify-between relative group hover:border-amber-400 transition-all duration-300 md:col-span-2 lg:col-span-3 box-glow-amber">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-4xl">👑</span>
+            <span class="text-xs font-mono uppercase tracking-wider px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 font-semibold">
+              Book VII • The Great Synthesis
+            </span>
+          </div>
+          <div>
+            <h3 class="text-xl md:text-2xl font-bold text-slate-100 group-hover:text-amber-300 transition font-display">
+              The Great Synthesis: Revolutions of Matter, Tragedy of Spirit, and Human Electrodynamics
+            </h3>
+            <p class="text-xs md:text-sm text-amber-400 font-medium mt-1">
+              Convergence of fundamental physics, engineering history, and the structure of consciousness
+            </p>
+          </div>
+          <p class="text-xs md:text-sm text-slate-300 leading-relaxed font-serif max-w-4xl">
+            How Copernicus, Newton, Watt, Faraday, Maxwell, Benz, Tsiolkovsky, and Satoshi transformed matter via closed circuits; why the moralistic whip in spiritual teachings caused ohmic overheat (<span class="font-mono text-amber-300">Q = I² R t</span>); and how human electrodynamics closes creative current into reality (<span class="font-mono text-amber-300">R_ego → 0</span>).
+          </p>
+        </div>
+        <div class="pt-6 mt-4 border-t border-slate-800/80 flex flex-wrap items-center gap-3">
+          <button onclick="readBookInReader('great_synthesis')" class="flex-1 min-w-[200px] py-3 px-5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-bold text-sm transition text-center cursor-pointer shadow-lg shadow-amber-500/25 flex items-center justify-center gap-2">
+            <span>📖</span> <span>Read Online in Reader</span>
+          </button>
+          <a href="../books/great_synthesis.pdf" download title="Download PDF (30 pages)" class="py-3 px-5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-sm font-semibold transition flex items-center gap-2">
+            <span>📥</span> Book PDF (30 pages)
+          </a>
+          <a href="../books/great_synthesis.html" target="_blank" title="Open in new tab" class="p-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-sm transition">
+            ↗ Fullscreen
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- AUDIOBOOK QUICK PLAYER BANNER -->
+  <!-- ========================================================= -->
+  <section id="audiobook" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+    <div class="bg-gradient-to-r from-slate-900 via-slate-900/95 to-cyan-950/30 border border-cyan-500/30 rounded-2xl p-5 md:p-6 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6 box-glow-cyan">
+      
+      <div class="flex items-center gap-4 min-w-0 w-full lg:w-auto">
+        <button id="quickAudioPlayBtn" onclick="quick_toggleAudio()" class="w-14 h-14 rounded-full bg-gradient-to-tr from-cyan-500 to-sky-400 text-slate-950 font-black text-2xl flex items-center justify-center shadow-lg shadow-cyan-500/30 hover:scale-105 transition shrink-0 cursor-pointer">
+          ▶
+        </button>
+        <div class="min-w-0 flex-1">
+          <div class="flex items-center gap-2">
+            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-cyan-300 px-2.5 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30">
+              🎧 Audiobook
+            </span>
+            <span class="text-[10px] font-mono text-emerald-400 font-semibold" id="quickAudioStatus">
+              1 hr 00 min available
+            </span>
+          </div>
+          <div class="text-sm md:text-base font-bold text-slate-100 truncate mt-1" id="quickAudioTitle">
+            00. Note to the Russian Edition: Russian Synthesis
+          </div>
+          <div class="text-xs text-slate-400 mt-0.5">
+            Voice: Dmitry Neural • Studio Mastering EBU R128 (-16 LUFS)
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls & Chapter Selector -->
+      <div class="flex flex-wrap items-center gap-3 w-full lg:w-auto justify-end">
+        <select id="quickChapterSelect" onchange="quick_changeTrack(this.value)" class="bg-slate-950 border border-slate-700 text-slate-200 text-xs md:text-sm rounded-xl px-3 py-2.5 outline-none cursor-pointer max-w-full sm:max-w-[260px]">
+          <option value="0">00. Note to the Russian Edition (03:56)</option>
+          <option value="1">01. Zen Engineer's Manifesto (10:31)</option>
+          <option value="2">02. Preface: Physics Saves the Soul (23:06)</option>
+          <option value="3">03. Introduction: Inner Current Anatomy (23:18)</option>
+          <option value="4">04. Ch. 1.1 — Anatomy of Triplicity (08:58)</option>
+        </select>
+
+        <div class="flex items-center gap-1.5 bg-slate-950/80 border border-slate-800 rounded-xl px-3 py-2 font-mono text-xs text-slate-400">
+          <span id="quickCurTime">00:00</span>
+          <span>/</span>
+          <span id="quickTotalTime">03:56</span>
+        </div>
+
+        <button onclick="quick_toggleSpeed()" id="quickSpeedBtn" class="px-3 py-2 rounded-xl text-xs font-semibold bg-slate-950 border border-slate-800 text-slate-300 hover:text-white cursor-pointer">
+          1.0x
+        </button>
+
+        <a href="../audiobook/index.html" target="_blank" class="px-4 py-2 rounded-xl text-xs font-semibold bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 transition flex items-center gap-1.5 cursor-pointer shadow-lg shadow-cyan-500/10">
+          <span>🎧</span> <span>Full Studio ↗</span>
+        </a>
+      </div>
+
+      <audio id="quickAudioEl" preload="metadata"></audio>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- SECTION: EMBEDDED INTERACTIVE BOOK READER -->
+  <!-- ========================================================= -->
+  <section id="reader" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <div class="bg-slate-900/90 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col box-glow-amber">
+      
+      <!-- Reader Header Bar -->
+      <div class="bg-slate-950/95 border-b border-slate-800 p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 w-full sm:w-auto">
+          <span class="text-xs text-slate-400 font-mono uppercase tracking-wider mr-2 hidden lg:inline">Reader:</span>
+          
+          <button id="rbtn-canonical" onclick="readBookInReader('canonical')" class="px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-amber-500 text-slate-950 font-bold shrink-0">
+            🏛 Architecture of Happiness
+          </button>
+          <button id="rbtn-field_manual" onclick="readBookInReader('field_manual')" class="px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white shrink-0">
+            🧰 Field Manual
+          </button>
+          <button id="rbtn-copernicus" onclick="readBookInReader('copernicus')" class="px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white shrink-0">
+            🪞 Copernicus
+          </button>
+          <button id="rbtn-ukulele" onclick="readBookInReader('ukulele')" class="px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white shrink-0">
+            🎸 Ukulele of Being
+          </button>
+          <button id="rbtn-primer" onclick="readBookInReader('primer')" class="px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white shrink-0">
+            🧒 Primer
+          </button>
+          <button id="rbtn-great_synthesis" onclick="readBookInReader('great_synthesis')" class="px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white shrink-0">
+            👑 Great Synthesis
+          </button>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <a id="readerExternalBtn" href="../books/field_manual.html" target="_blank" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition flex items-center gap-1.5">
+            <span>↗</span> <span>Fullscreen</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Iframe Frame -->
+      <div class="h-[75vh] min-h-[580px] flex flex-col bg-[#090d16] relative">
+        <iframe id="mainBookIframe" src="../book/en/index.html" class="w-full flex-1 border-none bg-[#090d16]" title="Online Reader: Inner Current"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- SECTION: MONOGRAPHS & SPECIAL ISSUES -->
+  <!-- ========================================================= -->
+  <section id="monographs" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/80">
+    <div class="mb-10">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">🏛</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-100 font-display">
+          Thematic Materials and Special Issues
+        </h2>
+      </div>
+      <p class="text-slate-400 text-sm mt-2 max-w-2xl">
+        Stand-alone applied documents, field guides, and brochures from the library.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Item 1 -->
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-700 transition">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-wider text-amber-400 font-bold">Document • PDF</span>
+          <h4 class="text-base font-bold text-slate-100 mt-2">
+            183. Italian Triptych of Superconductivity
+          </h4>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Olfactory-acoustic bypass of neocortex. Versace and Levante triad.
+          </p>
+        </div>
+        <div class="pt-4 mt-4 border-t border-slate-800 flex items-center gap-2">
+          <a href="../books/183. Итальянский триптих сверхпроводимости.pdf" download class="flex-1 py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold text-center border border-slate-700 transition flex items-center justify-center gap-1.5">
+            <span>📥</span> Download PDF
+          </a>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-700 transition">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-wider text-sky-400 font-bold">Guide • PDF</span>
+          <h4 class="text-base font-bold text-slate-100 mt-2">
+            Transition to the Era of the Automobile (1886–2026)
+          </h4>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Karl Benz Trilogy. Internal combustion engine as analogue to attention electrodynamics.
+          </p>
+        </div>
+        <div class="pt-4 mt-4 border-t border-slate-800 flex items-center gap-2">
+          <a href="../books/Памятка — Переход в эпоху Автомобиля.pdf" download class="flex-1 py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold text-center border border-slate-700 transition flex items-center justify-center gap-1.5">
+            <span>📥</span> Download PDF
+          </a>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-700 transition">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold">Brochure • PDF</span>
+          <h4 class="text-base font-bold text-slate-100 mt-2">
+            Triptych of Superconductivity — Levante
+          </h4>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Levante and Inner Current: physics of creative action and eliminating parasitic links.
+          </p>
+        </div>
+        <div class="pt-4 mt-4 border-t border-slate-800 flex items-center gap-2">
+          <a href="../books/Триптих Сверхпроводимости — Леванте и Внутренний ток.pdf" download class="flex-1 py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold text-center border border-slate-700 transition flex items-center justify-center gap-1.5">
+            <span>📥</span> Download PDF
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- SECTION: FLASHLIGHT (ДЗЕН-ФОНАРИК: 5 ЭЛЕМЕНТОВ) -->
+  <!-- ========================================================= -->
+  <section id="flashlight" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/80">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-10">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-mono font-bold tracking-wider mb-3">
+          <span>⚡</span> INTERACTIVE CIRCUIT DIAGRAM
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-100 font-display">
+          Zen Flashlight: 5 Elements of the Circuit
+        </h2>
+        <p class="text-slate-400 text-sm mt-2 max-w-2xl">
+          Happiness and consciousness obey the laws of a closed electric circuit. Try toggling the "Hotsu" button to send "Mushin" current through the "Zanshin" fuse and illuminate the "Gyo" bulb!
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3 shrink-0 flex-wrap">
+        <a href="/en/flashlight/" class="px-4 py-2.5 rounded-xl text-xs font-bold bg-slate-900 hover:bg-slate-800 text-amber-300 border border-amber-500/30 transition flex items-center gap-2 shadow-sm">
+          <span>🔦</span> Flashlight Page ↗
+        </a>
+        <a href="/human/" class="px-4 py-2.5 rounded-xl text-xs font-bold bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 transition flex items-center gap-2 shadow-sm">
+          <span>🧘</span> Human Circuit ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- Интерактивный виджет фонарика -->
+    <div class="bg-slate-900/90 border border-slate-800 rounded-3xl p-4 sm:p-6 shadow-2xl overflow-hidden box-glow-amber">
+      
+      <!-- Контрольная панель -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-5 pb-4 border-b border-slate-800">
+        <div>
+          <div class="text-xs uppercase font-mono tracking-widest text-amber-400 font-bold mb-1">
+            Live Circuit Workbench
+          </div>
+          <div class="text-lg font-bold text-slate-100 flex items-center gap-2">
+            <span>🔦</span> Closed Loop &bull; Pure Current
+          </div>
+        </div>
+
+        <!-- Кнопка рубильника -->
+        <button id="hotsuActionBtn" onclick="toggleHotsu()" 
+          class="group relative flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-400 active:scale-95 transition-all shadow-xl shadow-amber-500/30 text-slate-950 font-black text-sm sm:text-base cursor-pointer">
+          <span id="hotsuBtnIcon" class="text-2xl animate-bounce">⚡</span>
+          <div class="text-left leading-tight">
+            <div id="hotsuStateBadge" class="text-[11px] uppercase tracking-wider font-extrabold opacity-85">Hotsu Button Pressed (ON)</div>
+            <div id="hotsuBtnSub" class="text-sm font-black">Mushin Current Illuminates Gyo!</div>
+          </div>
+        </button>
+      </div>
+
+      <!-- Экран схемы (SVG) -->
+      <div class="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 rounded-2xl p-3 sm:p-6 border border-slate-800/80 shadow-inner flex flex-col items-center justify-center min-h-[400px] overflow-hidden">
+        
+        <!-- Индикатор статуса -->
+        <div id="flowStatusBadge" class="absolute top-3 left-3 sm:left-4 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-black transition-all">
+          <span id="flowPingDot" class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
+          <span id="flowStatusLabel">⚡ Hotsu Closed: Mushin Current (無心) Flows, Gyo Bulb (行) Shines!</span>
+        </div>
+
+        <div class="w-full max-w-3xl flex justify-center items-center py-2">
+          <svg viewBox="0 0 980 430" class="w-full h-auto max-h-[410px]" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="gyoLightBeamGrad" cx="0%" cy="50%" r="100%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+                <stop offset="25%" stop-color="#fef08a" stop-opacity="0.8" />
+                <stop offset="60%" stop-color="#f59e0b" stop-opacity="0.3" />
+                <stop offset="100%" stop-color="#d97706" stop-opacity="0" />
+              </radialGradient>
+
+              <linearGradient id="tandenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#f59e0b" />
+                <stop offset="35%" stop-color="#d97706" />
+                <stop offset="75%" stop-color="#b45309" />
+                <stop offset="100%" stop-color="#78350f" />
+              </linearGradient>
+
+              <linearGradient id="fuseGlassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.4" />
+                <stop offset="50%" stop-color="#bae6fd" stop-opacity="0.15" />
+                <stop offset="100%" stop-color="#0284c7" stop-opacity="0.4" />
+              </linearGradient>
+
+              <filter id="bulbGlowFilter" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="14" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+
+            <!-- ЛУЧ СВЕТА ОТ ЛАМПОЧКИ ГЁ -->
+            <g id="lightBeamGroup" class="transition-opacity duration-300">
+              <polygon points="180,210 20,50 20,370" fill="url(#gyoLightBeamGrad)" opacity="0.9" />
+              <circle cx="100" cy="130" r="4" fill="#ffffff" opacity="0.9" />
+              <circle cx="60" cy="210" r="5" fill="#fef08a" opacity="0.95" />
+              <circle cx="120" cy="290" r="4" fill="#ffffff" opacity="0.8" />
+              <text x="45" y="110" font-size="16" fill="#fef08a" opacity="0.85">✨</text>
+              <text x="130" y="180" font-size="20" fill="#ffffff" opacity="0.9">✨</text>
+              <text x="50" y="310" font-size="16" fill="#fef08a" opacity="0.85">✨</text>
+            </g>
+
+            <!-- КОРПУС ФОНАРИКА (KANSO: PURE ARCHITECTURE) -->
+            <g>
+              <!-- Основной цилиндрический корпус (y от 120 до 300) -->
+              <rect x="225" y="120" width="555" height="180" rx="22" fill="#1e1b4b" fill-opacity="0.3" stroke="#6366f1" stroke-width="3" stroke-dasharray="6 4" opacity="0.75" />
+              <!-- Передний конус-рефлектор -->
+              <path d="M 180,95 L 230,120 L 230,300 L 180,325 Z" fill="#1e1b4b" fill-opacity="0.35" stroke="#6366f1" stroke-width="3" />
+              <!-- Задняя крышка корпуса -->
+              <rect x="778" y="130" width="20" height="160" rx="6" fill="#334155" stroke="#64748b" stroke-width="3" />
+              <text x="540" y="138" fill="#818cf8" font-size="10" font-weight="bold" letter-spacing="3" opacity="0.45">KANSO: PURE ARCHITECTURE</text>
+            </g>
+
+            <!-- Рефлектор вокруг лампочки -->
+            <path d="M 185,108 Q 235,155 235,210 Q 235,265 185,312 L 185,296 Q 223,255 223,210 Q 223,165 185,124 Z" 
+              fill="#94a3b8" stroke="#cbd5e1" stroke-width="2" opacity="0.8" />
+
+            <!-- 1. ТАНДЭН (БАТАРЕЙКА) — Компактная, центрирована на y=210, провода НЕ сливаются с ней -->
+            <g class="zen-pointer" onclick="showElement('tanden')" id="elem-tanden">
+              <!-- Корпус батарейки (y от 180 до 240, высота 60, отступ до верхнего провода 30px, до нижнего 30px) -->
+              <rect x="510" y="180" width="200" height="60" rx="14" fill="url(#tandenGrad)" stroke="#f59e0b" stroke-width="3.5" />
+              <!-- Плюсовой контактный выступ слева -->
+              <rect x="490" y="196" width="20" height="28" rx="4" fill="#fef08a" stroke="#eab308" stroke-width="2" />
+              
+              <circle cx="530" cy="210" r="12" fill="#ffffff" opacity="0.25" />
+              <text x="524" y="217" fill="#ffffff" font-size="20" font-weight="900">+</text>
+              <circle cx="688" cy="210" r="12" fill="#000000" opacity="0.3" />
+              <text x="683" y="216" fill="#ffffff" font-size="22" font-weight="900">−</text>
+              
+              <g>
+                <rect x="545" y="188" width="130" height="44" rx="10" fill="#451a03" fill-opacity="0.9" stroke="#f59e0b" stroke-width="2" />
+                <circle cx="562" cy="210" r="11" fill="#f59e0b" />
+                <text x="562" y="214" fill="#451a03" font-size="12" font-weight="900" text-anchor="middle">1</text>
+                <text x="580" y="204" fill="#ffffff" font-size="11" font-weight="900">TANDEN (丹田)</text>
+                <text x="580" y="222" fill="#fef3c7" font-size="9" font-weight="bold">Battery • Core</text>
+              </g>
+            </g>
+
+            <!-- 2. ХОЦУ (ВНЕШНЯЯ КНОПКА-ТОЛКАТЕЛЬ И РАЗМЫКАЮЩИЙСЯ КОНТАКТ) -->
+            <g class="zen-pointer" onclick="toggleHotsu()" id="elem-hotsu">
+              <!-- Механический шток-толкатель: выходит из кнопки прямо через стенку корпуса (y=120) к контакту (y=150) -->
+              <line id="hotsuMechanicalPusher" x1="435" y1="120" x2="435" y2="150" stroke="#cbd5e1" stroke-width="5" stroke-dasharray="3 2" stroke-linecap="round" />
+              <circle id="hotsuPusherTip" cx="435" cy="150" r="4.5" fill="#f8fafc" stroke="#64748b" stroke-width="1.5" />
+
+              <!-- Монтажная планка кнопки на корпусе фонарика (y=120) -->
+              <line x1="390" y1="120" x2="485" y2="120" stroke="#475569" stroke-width="4" stroke-linecap="round" />
+              <!-- Сама внешняя кнопка: сидит ПРЯМО НА КОРПУСЕ ФОНАРИКА (y=95..120) -->
+              <rect id="hotsuSwitchBody" x="395" y="95" width="85" height="25" rx="8" fill="#16a34a" stroke="#86efac" stroke-width="2.5" />
+              <circle id="hotsuKnobCircle" cx="445" cy="107" r="8.5" fill="#ffffff" class="transition-all duration-200 shadow-xl cursor-pointer" />
+
+              <!-- Опущенная и удлинённая плашка 2. ХОЦУ (width=230px, весь текст свободно помещается) -->
+              <g>
+                <line x1="440" y1="84" x2="440" y2="95" stroke="#22c55e" stroke-width="2" stroke-dasharray="2 2" />
+                <rect id="hotsuBadgeBg" x="365" y="44" width="230" height="40" rx="12" fill="#052e16" fill-opacity="0.95" stroke="#22c55e" stroke-width="2.5" />
+                <circle id="hotsuBadgeCircle" cx="385" cy="64" r="11" fill="#22c55e" />
+                <text x="385" y="68" fill="#ffffff" font-size="12" font-weight="900" text-anchor="middle">2</text>
+                <text id="hotsuBadgeTitle" x="405" y="59" fill="#86efac" font-size="11" font-weight="900">HOTSU (発) — CLOSED</text>
+                <text id="hotsuBadgeDesc" x="405" y="74" fill="#ffffff" font-size="9" font-weight="bold">Button pushes contact (ON)</text>
+              </g>
+            </g>
+
+            <!-- САМЫЙ ВЕРХНИЙ ПРОВОД (y=150) И РАЗМЫКАЮЩИЙСЯ КОНТАКТ ХОЦУ -->
+            <!-- Когда контакт открывается, он поднимается до y=132 (внутри корпуса y=120..300) и НЕ пересекает никаких проводов! -->
+            <g>
+              <!-- Провод от батарейки (+) к контакту 1 на верхнем проводе -->
+              <path d="M 490,210 L 465,210 L 465,150" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+              
+              <!-- Золотые контактные площадки переключателя -->
+              <circle cx="465" cy="150" r="4.5" fill="#fef08a" stroke="#d97706" stroke-width="1.5" />
+              <circle cx="405" cy="150" r="4.5" fill="#fef08a" stroke="#d97706" stroke-width="1.5" />
+
+              <!-- Размыкающийся контактный лепесток: лежит на верхнем проводе (y=150), при размыкании поднимается к y=132 -->
+              <path id="hotsuContactBlade" d="M 465,150 L 405,150" fill="none" stroke="#f59e0b" stroke-width="7" stroke-linecap="round" class="transition-all duration-200" />
+
+              <!-- Провод от контакта 2 напрямую к цоколю лампочки Гё -->
+              <path d="M 405,150 L 225,150 L 225,195" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+            </g>
+
+            <!-- 3. МУСИН (ТОК) — мчится по верхнему проводу при замыкании цепи -->
+            <g class="zen-pointer" onclick="showElement('mushin')" id="elem-mushin">
+              <line x1="280" y1="84" x2="280" y2="150" stroke="#f97316" stroke-width="2" stroke-dasharray="3 3" />
+              <circle cx="280" cy="150" r="4" fill="#f97316" />
+              <rect id="mushinBadgeBg" x="160" y="44" width="200" height="40" rx="12" fill="#431407" fill-opacity="0.95" stroke="#f97316" stroke-width="2.5" />
+              <circle cx="180" cy="64" r="11" fill="#f97316" />
+              <text x="180" y="68" fill="#ffffff" font-size="12" font-weight="900" text-anchor="middle">3</text>
+              <text x="198" y="59" fill="#fdba74" font-size="11" font-weight="900">MUSHIN (無心) — Flow</text>
+              <text x="198" y="74" fill="#ffffff" font-size="9" font-weight="bold">Pure attention current</text>
+            </g>
+
+            <!-- 4. ГЁ (ЛАМПОЧКА) — рождает свет от протекания тока -->
+            <g class="zen-pointer" onclick="showElement('gyo')" id="elem-gyo">
+              <rect x="215" y="195" width="20" height="30" rx="4" fill="#64748b" stroke="#334155" stroke-width="2" />
+              <circle id="gyoBulbGlass" cx="200" cy="210" r="22" fill="#fef08a" stroke="#fde047" stroke-width="4" filter="url(#bulbGlowFilter)" class="gyo-bulb-active" />
+              <polygon points="197,204 203,204 200,218" fill="#eab308" />
+
+              <g>
+                <line x1="200" y1="232" x2="200" y2="345" stroke="#facc15" stroke-width="2" stroke-dasharray="3 3" />
+                <circle cx="200" cy="232" r="4" fill="#facc15" />
+                <rect x="120" y="345" width="190" height="44" rx="12" fill="#422006" fill-opacity="0.95" stroke="#facc15" stroke-width="2.5" />
+                <circle cx="140" cy="367" r="11" fill="#facc15" />
+                <text x="140" y="371" fill="#713f12" font-size="12" font-weight="900" text-anchor="middle">4</text>
+                <text x="158" y="362" fill="#fef08a" font-size="12" font-weight="900">GYO (行) — Light Bulb</text>
+                <text x="158" y="377" fill="#ffffff" font-size="9" font-weight="bold">Action & Fruit of Light</text>
+              </g>
+            </g>
+
+            <!-- ОБРАТНЫЙ ПРОВОД И 5. ДЗАНСИН (ПРЕДОХРАНИТЕЛЬ) — бережёт ядро от аварий на обратном пути -->
+            <!-- Провод от лампочки к предохранителю -->
+            <path d="M 225,225 L 225,270 L 380,270" fill="none" stroke="#f97316" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+
+            <!-- 5. ДЗАНСИН (ПРЕДОХРАНИТЕЛЬ) — на обратном проводе перед входом в батарейку -->
+            <g class="zen-pointer" onclick="showElement('zanshin')" id="elem-zanshin">
+              <rect x="380" y="259" width="12" height="22" rx="3" fill="#94a3b8" stroke="#cbd5e1" stroke-width="1.5" />
+              <rect x="392" y="256" width="61" height="28" rx="6" fill="url(#fuseGlassGrad)" stroke="#38bdf8" stroke-width="2" />
+              <rect x="453" y="259" width="12" height="22" rx="3" fill="#94a3b8" stroke="#cbd5e1" stroke-width="1.5" />
+              
+              <path id="fuseFilament" d="M 392,270 Q 412,263 422,270 Q 432,277 453,270" 
+                fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" />
+
+              <g>
+                <line x1="422" y1="284" x2="422" y2="345" stroke="#38bdf8" stroke-width="2" stroke-dasharray="3 3" />
+                <circle cx="422" cy="284" r="3.5" fill="#38bdf8" />
+                <rect x="340" y="345" width="210" height="44" rx="12" fill="#082f49" fill-opacity="0.95" stroke="#38bdf8" stroke-width="2.5" />
+                <circle cx="360" cy="367" r="11" fill="#38bdf8" />
+                <text x="360" y="371" fill="#082f49" font-size="12" font-weight="900" text-anchor="middle">5</text>
+                <text x="378" y="362" fill="#7dd3fc" font-size="11" font-weight="900">ZANSHIN (残心)</text>
+                <text x="378" y="377" fill="#ffffff" font-size="9" font-weight="bold">Fuse (Safeguard)</text>
+              </g>
+            </g>
+
+            <!-- Провод от предохранителя обратно в минус батарейки -->
+            <path id="circuitReturnRail" d="M 465,270 L 750,270 L 750,210 L 710,210" 
+              fill="none" stroke="#f97316" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+
+            <!-- АКТИВНЫЙ БЕГУЩИЙ ТОК МУСИН (белая неоновая волна) -->
+            <g id="mushinCurrentLoop" class="current-mushin-flowing" onclick="showElement('mushin')">
+              <path d="M 490,210 L 465,210 L 465,150 L 405,150 L 225,150 L 225,195 M 225,225 L 225,270 L 380,270 M 465,270 L 750,270 L 750,210 L 710,210" 
+                fill="none" stroke="#ffffff" stroke-width="4" opacity="0.95" />
+            </g>
+          </svg>
+        </div>
+
+        <div class="mt-2 text-xs text-slate-400 text-center">
+          <span>👆 Toggle the "Hotsu" button to start the current, or select element cards below!</span>
+        </div>
+      </div>
+
+      <!-- Карточка выбранного элемента -->
+      <div id="elementCard" class="mt-5 p-4 sm:p-5 rounded-2xl bg-slate-950 border border-amber-500/30 transition-all">
+        <div class="flex items-start gap-3 sm:gap-4">
+          <div id="elemBadgeEmoji" class="text-3xl sm:text-4xl p-3 rounded-2xl bg-amber-500/15 flex items-center justify-center shrink-0 border border-amber-500/20">
+            🔋
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-1 flex-wrap">
+              <span id="elemRankTag" class="text-xs font-black px-2.5 py-0.5 rounded-full bg-amber-500 text-slate-950 uppercase tracking-wide">
+                Element #1
+              </span>
+              <h3 id="elemHeaderTitle" class="text-base sm:text-lg font-black text-slate-100">
+                1. Tanden (丹田) — Battery (Energy Core)
+              </h3>
+            </div>
+            <p id="elemMeaningText" class="text-sm text-slate-300 leading-relaxed">
+              Tanden is the source of all vital power in the circuit. In the flashlight, this is the battery: an autonomous energy core. At rest, it holds 100% charge in pure silence without wasting a single microwatt in vain.
+            </p>
+            <div id="elemAnalogyBox" class="mt-2.5 inline-flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
+              <span>✨ Child's explanation: The magical treasure-room of power where all the flashlight's energy rests peacefully!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Кнопки выбора 5 первоэлементов в каноническом порядке 1-2-3-4-5 -->
+      <div class="mt-5 grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+        <button id="btn-tanden" onclick="showElement('tanden')" class="element-card-active flex flex-col items-center p-3 rounded-xl border border-slate-800 bg-slate-950 hover:border-amber-400 transition-all text-center">
+          <span class="text-2xl mb-1">🔋</span>
+          <span class="text-xs font-black text-slate-100">1. Tanden (丹田)</span>
+          <span class="text-[11px] text-slate-400 font-medium">Battery</span>
+        </button>
+
+        <button id="btn-hotsu" onclick="showElement('hotsu')" class="flex flex-col items-center p-3 rounded-xl border border-slate-800 bg-slate-950 hover:border-emerald-400 transition-all text-center">
+          <span class="text-2xl mb-1">🔘</span>
+          <span class="text-xs font-black text-slate-100">2. Hotsu (発)</span>
+          <span class="text-[11px] text-slate-400 font-medium">"I Want" Switch</span>
+        </button>
+
+        <button id="btn-mushin" onclick="showElement('mushin')" class="flex flex-col items-center p-3 rounded-xl border border-slate-800 bg-slate-950 hover:border-orange-400 transition-all text-center">
+          <span class="text-2xl mb-1">⚡</span>
+          <span class="text-xs font-black text-slate-100">3. Mushin (無心)</span>
+          <span class="text-[11px] text-slate-400 font-medium">Pure Current</span>
+        </button>
+
+        <button id="btn-gyo" onclick="showElement('gyo')" class="flex flex-col items-center p-3 rounded-xl border border-slate-800 bg-slate-950 hover:border-yellow-400 transition-all text-center">
+          <span class="text-2xl mb-1">💡</span>
+          <span class="text-xs font-black text-slate-100">4. Gyo (行)</span>
+          <span class="text-[11px] text-slate-400 font-medium">Light Bulb (Action)</span>
+        </button>
+
+        <button id="btn-zanshin" onclick="showElement('zanshin')" class="flex flex-col items-center p-3 rounded-xl border border-slate-800 bg-slate-950 hover:border-sky-400 transition-all text-center">
+          <span class="text-2xl mb-1">🛡️</span>
+          <span class="text-xs font-black text-slate-100">5. Zanshin (残心)</span>
+          <span class="text-[11px] text-slate-400 font-medium">Fuse (Safeguard)</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- SECTION: PRINCIPLES -->
+  <!-- ========================================================= -->
+  <section id="principles" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/80">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-amber-300 text-xs font-mono font-medium tracking-wider mb-3">
+        ⚡ CIRCUIT BASICS
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-100 font-display">
+        Five Principles of the Inner Current
+      </h2>
+      <p class="text-slate-400 text-sm mt-3">
+        Applied Zen engineering, precise circuitry, and elimination of parasitic resistance.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 hover:border-amber-500/40 transition">
+        <div class="text-2xl mb-2">丹</div>
+        <h4 class="text-sm font-bold text-slate-100">Tanden (丹田)</h4>
+        <p class="text-xs text-slate-400 mt-1">Autonomous inner source. Resource of creation independent of external validation.</p>
+      </div>
+
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 hover:border-cyan-500/40 transition">
+        <div class="text-2xl mb-2">心</div>
+        <h4 class="text-sm font-bold text-slate-100">Mushin (無心)</h4>
+        <p class="text-xs text-slate-400 mt-1">Seamless flow of attention without parasitic ohmic losses or self-judgment.</p>
+      </div>
+
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 hover:border-sky-500/40 transition">
+        <div class="text-2xl mb-2">発</div>
+        <h4 class="text-sm font-bold text-slate-100">Hotsu (発)</h4>
+        <p class="text-xs text-slate-400 mt-1">Pure impulse of will. Closing the circuit through immediate desire to act without internal coercion.</p>
+      </div>
+
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 hover:border-indigo-500/40 transition">
+        <div class="text-2xl mb-2">残</div>
+        <h4 class="text-sm font-bold text-slate-100">Zanshin (残心)</h4>
+        <p class="text-xs text-slate-400 mt-1">Vigilant awareness and automatic protection during overload (Circuit Breaker).</p>
+      </div>
+
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 hover:border-amber-400 transition">
+        <div class="text-2xl mb-2">行</div>
+        <h4 class="text-sm font-bold text-slate-100">Gyo (行)</h4>
+        <p class="text-xs text-slate-400 mt-1">Useful work: transforming internal energy into tangible impact in the physical world.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- FOOTER -->
+  <!-- ========================================================= -->
+  <footer class="mt-auto border-t border-slate-800/80 bg-slate-950 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-xl bg-amber-500 text-slate-950 font-black text-lg flex items-center justify-center">
+          ⚡
+        </div>
+        <div>
+          <div class="font-display font-bold text-sm text-slate-100">
+            INNER CURRENT
+          </div>
+          <div class="text-xs text-slate-400">
+            Open library of state architecture and human engineering • innercurrent.ru
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-4 text-xs text-slate-400">
+        <span>© 2026 Inner Current</span>
+        <span>•</span>
+        <span>MIT License (Open Source)</span>
+        <span>•</span>
+        <a href="#books" class="hover:text-amber-300 transition">Books</a>
+        <span>•</span>
+        <a href="#audiobook" class="hover:text-cyan-300 transition">Audiobook</a>
+        <span>•</span>
+        <a href="../audiobook/index.html" target="_blank" class="hover:text-slate-200 transition">Studio ↗</a>
+        <span>•</span>
+        <a href="/" onclick="localStorage.setItem('inner_current_lang','ru')" class="text-amber-400 hover:underline">Русская версия ↗</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================= -->
+  <!-- JAVASCRIPT: READER LOGIC & AUDIO PLAYER LOGIC -->
+  <!-- ========================================================= -->
+  <script>
+    // --- 1. Interactive Book Reader Logic ---
+    const bookSrcMap = {
+      'canonical': '../book/en/index.html',
+      'field_manual': '../books/field_manual.html',
+      'copernicus': '../books/copernicus.html',
+      'ukulele': '../books/ukulele.html',
+      'primer': '../books/primer.html',
+      'great_synthesis': '../books/great_synthesis.html'
+    };
+
+    function readBookInReader(bookKey) {
+      const iframe = document.getElementById('mainBookIframe');
+      const extBtn = document.getElementById('readerExternalBtn');
+      const keys = ['field_manual', 'canonical', 'copernicus', 'ukulele', 'primer', 'great_synthesis'];
+      
+      keys.forEach(k => {
+        const btn = document.getElementById('rbtn-' + k);
+        if (btn) {
+          if (k === bookKey) {
+            btn.className = 'px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-amber-500 text-slate-950 font-bold shrink-0 shadow-md shadow-amber-500/20';
+          } else {
+            btn.className = 'px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white shrink-0';
+          }
+        }
+      });
+
+      const src = bookSrcMap[bookKey] || 'books/field_manual.html';
+      if (iframe) iframe.src = src;
+      if (extBtn) extBtn.href = src;
+
+      // Scroll to reader smoothly
+      const readerEl = document.getElementById('reader');
+      if (readerEl) {
+        readerEl.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // --- 2. Quick Audiobook Player Logic ---
+    const audioTracks = [
+      {
+        title: '00. Note to the Russian Edition: Russian Synthesis',
+        src: '../audio/00_Слово_к_русскому_изданию__Русс.mp3',
+        dur: '03:56',
+        durSec: 236
+      },
+      {
+        title: '01. The Zen Engineer Manifesto: Consciousness Electrodynamics',
+        src: '../audio/01_МАНИФЕСТ_ДЗЕН-ИНЖЕНЕРА.mp3',
+        dur: '10:31',
+        durSec: 631
+      },
+      {
+        title: '02. Preface: How Physics Saves the Soul',
+        src: '../audio/02_ПРЕДИСЛОВИЕ.mp3',
+        dur: '23:06',
+        durSec: 1386
+      },
+      {
+        title: '03. Introduction: Anatomy of the Inner Current',
+        src: '../audio/03_ВВЕДЕНИЕ.mp3',
+        dur: '23:18',
+        durSec: 1398
+      },
+      {
+        title: '04. Ch. 1.1 — Anatomy of Triplicity',
+        src: '../audio/04_Глава_1_1___Анатомия_тройствен.mp3',
+        dur: '08:58',
+        durSec: 538
+      }
+    ];
+
+    let currentTrackIdx = 0;
+    let isPlaying = false;
+    const speeds = [1.0, 1.25, 1.5, 2.0];
+    let curSpeedIdx = 0;
+
+    const audioEl = document.getElementById('quickAudioEl');
+    const playBtn = document.getElementById('quickAudioPlayBtn');
+    const titleEl = document.getElementById('quickAudioTitle');
+    const curTimeEl = document.getElementById('quickCurTime');
+    const totalTimeEl = document.getElementById('quickTotalTime');
+    const speedBtn = document.getElementById('quickSpeedBtn');
+    const selectEl = document.getElementById('quickChapterSelect');
+
+    function quick_loadTrack(idx, autoPlay = false) {
+      currentTrackIdx = idx;
+      const t = audioTracks[idx];
+      audioEl.src = t.src;
+      titleEl.textContent = t.title;
+      totalTimeEl.textContent = t.dur;
+      curTimeEl.textContent = '00:00';
+      if (selectEl) selectEl.value = idx;
+
+      if (autoPlay) {
+        audioEl.play().then(() => {
+          isPlaying = true;
+          playBtn.textContent = '⏸';
+        }).catch(() => {
+          isPlaying = false;
+          playBtn.textContent = '▶';
+        });
+      } else {
+        isPlaying = false;
+        playBtn.textContent = '▶';
+      }
+    }
+
+    function quick_toggleAudio() {
+      if (!audioEl.src || audioEl.src === window.location.href) {
+        quick_loadTrack(0, true);
+        return;
+      }
+      if (audioEl.paused) {
+        audioEl.play().then(() => {
+          isPlaying = true;
+          playBtn.textContent = '⏸';
+        }).catch(err => console.log('Audio play error:', err));
+      } else {
+        audioEl.pause();
+        isPlaying = false;
+        playBtn.textContent = '▶';
+      }
+    }
+
+    function quick_changeTrack(idx) {
+      quick_loadTrack(Number(idx), true);
+    }
+
+    function quick_toggleSpeed() {
+      curSpeedIdx = (curSpeedIdx + 1) % speeds.length;
+      const sp = speeds[curSpeedIdx];
+      audioEl.playbackRate = sp;
+      speedBtn.textContent = sp.toFixed(1) + 'x';
+    }
+
+    function formatTime(s) {
+      if (isNaN(s)) return '00:00';
+      const m = Math.floor(s / 60);
+      const sec = Math.floor(s % 60);
+      return `${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
+    }
+
+    audioEl.addEventListener('timeupdate', () => {
+      curTimeEl.textContent = formatTime(audioEl.currentTime);
+      if (audioEl.duration && !isNaN(audioEl.duration)) {
+        totalTimeEl.textContent = formatTime(audioEl.duration);
+      }
+    });
+
+    audioEl.addEventListener('ended', () => {
+      if (currentTrackIdx < audioTracks.length - 1) {
+        quick_loadTrack(currentTrackIdx + 1, true);
+      } else {
+        isPlaying = false;
+        playBtn.textContent = '▶';
+      }
+    });
+
+    // ==========================================
+    // ZEN FLASHLIGHT SCRIPT LOGIC
+    // ==========================================
+    let isHotsuActive = true;
+    let currentSelectedKey = 'tanden';
+
+    const zenElements = {
+      tanden: {
+        rank: "Element #1",
+        emoji: "🔋",
+        title: "1. Tanden (丹田) — Battery (Energy Core)",
+        desc: "Tanden is the source of all vital power in the circuit. In the flashlight, this is the battery: an autonomous energy core. At rest, it holds 100% charge in pure silence without wasting a single microwatt in vain.",
+        analogy: "✨ Child's explanation: The magical treasure-room of power where all the flashlight's energy rests peacefully!",
+        badgeClass: "bg-amber-500 text-slate-950"
+      },
+      hotsu: {
+        rank: "Element #2",
+        emoji: "🔘",
+        title: "2. Hotsu (発) — Switch of Will & Desire",
+        desc: "Hotsu is the sacred 'I want'! By default, the switch is Normally Open to conserve power. As soon as a sincere living desire to act is born (rather than servile moral duty) — the button closes the circuit!",
+        analogy: "✨ Child's explanation: The power switch: when you truly want something, press the button and open the gate for the current!",
+        badgeClass: "bg-emerald-500 text-slate-950"
+      },
+      mushin: {
+        rank: "Element #3",
+        emoji: "⚡",
+        title: "3. Mushin (無心) — Pure Current (Flow of Attention)",
+        desc: "Mushin is pure electric current traveling at the speed of light! It awakes ONLY when the Hotsu button is pressed. It carries zero ego friction, zero doubt, zero evaluation anxiety: it is free, swift, and direct.",
+        analogy: "✨ Child's explanation: A swift river of electricity racing through wires the moment the button is pressed!",
+        badgeClass: "bg-orange-500 text-white"
+      },
+      gyo: {
+        rank: "Element #4",
+        emoji: "💡",
+        title: "4. Gyo (行) — Light Bulb (Constructive Action)",
+        desc: "Gyo is concrete constructive action in physical reality (work, art, code, sport, assistance). Mushin current enters the Gyo bulb and produces bright visible light, banishing darkness!",
+        analogy: "✨ Child's explanation: The heart of light! A glowing star that radiates whenever current runs through it!",
+        badgeClass: "bg-yellow-400 text-slate-950"
+      },
+      zanshin: {
+        rank: "Element #5",
+        emoji: "🛡️",
+        title: "5. Zanshin (残心) — Fuse (Safeguard)",
+        desc: "Zanshin is the master's vigilance and circuit breaker. Standing guard on the return wire. If the light bulb in the world burns out or an action fails — Zanshin breaks the circuit, saving the Tanden battery from burnout.",
+        analogy: "✨ Child's explanation: The faithful bodyguard protecting the battery from shorts and breakdowns!",
+        badgeClass: "bg-sky-500 text-slate-950"
+      }
+    };
+
+    function showElement(key) {
+      currentSelectedKey = key;
+      const elem = zenElements[key];
+      if (!elem) return;
+
+      const badgeEmoji = document.getElementById('elemBadgeEmoji');
+      const rankTag = document.getElementById('elemRankTag');
+      const headerTitle = document.getElementById('elemHeaderTitle');
+      const meaningText = document.getElementById('elemMeaningText');
+      const analogyBox = document.getElementById('elemAnalogyBox');
+
+      if (badgeEmoji) badgeEmoji.textContent = elem.emoji;
+      if (rankTag) {
+        rankTag.textContent = elem.rank;
+        rankTag.className = `text-xs font-black px-2.5 py-0.5 rounded-full uppercase tracking-wide ${elem.badgeClass}`;
+      }
+      if (headerTitle) headerTitle.textContent = elem.title;
+      if (meaningText) meaningText.textContent = elem.desc;
+      if (analogyBox) analogyBox.innerHTML = `<span>${elem.analogy}</span>`;
+
+      document.querySelectorAll('[id^="btn-"]').forEach(btn => btn.classList.remove('element-card-active'));
+      const activeBtn = document.getElementById(`btn-${key}`);
+      if (activeBtn) activeBtn.classList.add('element-card-active');
+
+      const card = document.getElementById('elementCard');
+      if (card) {
+        card.classList.add('ring-2', 'ring-amber-400/60');
+        setTimeout(() => card.classList.remove('ring-2', 'ring-amber-400/60'), 350);
+      }
+    }
+
+    function toggleHotsu() {
+      isHotsuActive = !isHotsuActive;
+
+      const beam = document.getElementById('lightBeamGroup');
+      const bulb = document.getElementById('gyoBulbGlass');
+      const switchBody = document.getElementById('hotsuSwitchBody');
+      const knob = document.getElementById('hotsuKnobCircle');
+      const pusher = document.getElementById('hotsuMechanicalPusher');
+      const pusherTip = document.getElementById('hotsuPusherTip');
+      const blade = document.getElementById('hotsuContactBlade');
+      const badgeBg = document.getElementById('hotsuBadgeBg');
+      const badgeCircle = document.getElementById('hotsuBadgeCircle');
+      const badgeTitle = document.getElementById('hotsuBadgeTitle');
+      const badgeDesc = document.getElementById('hotsuBadgeDesc');
+      const currentLoop = document.getElementById('mushinCurrentLoop');
+      const badge = document.getElementById('flowStatusBadge');
+      const pingDot = document.getElementById('flowPingDot');
+      const statusLabel = document.getElementById('flowStatusLabel');
+      
+      const actionBtn = document.getElementById('hotsuActionBtn');
+      const btnIcon = document.getElementById('hotsuBtnIcon');
+      const stateBadge = document.getElementById('hotsuStateBadge');
+      const btnSub = document.getElementById('hotsuBtnSub');
+
+      if (isHotsuActive) {
+        // BUTTON CLOSED -> GREEN
+        if (switchBody) {
+          switchBody.setAttribute('fill', '#16a34a');
+          switchBody.setAttribute('stroke', '#86efac');
+        }
+        if (knob) knob.setAttribute('cx', '445');
+        if (pusher) {
+          pusher.setAttribute('x1', '435');
+          pusher.setAttribute('x2', '435');
+          pusher.setAttribute('y1', '120');
+          pusher.setAttribute('y2', '150');
+        }
+        if (pusherTip) {
+          pusherTip.setAttribute('cx', '435');
+          pusherTip.setAttribute('cy', '150');
+        }
+        if (blade) blade.setAttribute('d', 'M 465,150 L 405,150'); // contact closed on top wire
+
+        if (badgeBg) {
+          badgeBg.setAttribute('fill', '#052e16');
+          badgeBg.setAttribute('stroke', '#22c55e');
+        }
+        if (badgeCircle) badgeCircle.setAttribute('fill', '#22c55e');
+        if (badgeTitle) {
+          badgeTitle.textContent = 'HOTSU (発) — CLOSED';
+          badgeTitle.setAttribute('fill', '#86efac');
+        }
+        if (badgeDesc) badgeDesc.textContent = 'Button pushes contact (ON)';
+
+        if (beam) beam.style.opacity = '1';
+        if (bulb) {
+          bulb.setAttribute('fill', '#fef08a');
+          bulb.setAttribute('filter', 'url(#bulbGlowFilter)');
+          bulb.classList.add('gyo-bulb-active');
+        }
+        if (currentLoop) currentLoop.style.display = 'block';
+
+        if (badge) badge.className = 'absolute top-3 left-3 sm:left-4 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-black transition-all';
+        if (pingDot) pingDot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping';
+        if (statusLabel) statusLabel.textContent = '⚡ Hotsu button GREEN (closed): Mushin current flows, Gyo bulb shines!';
+
+        if (actionBtn) actionBtn.className = 'group relative flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 active:scale-95 transition-all shadow-xl shadow-emerald-500/30 text-slate-950 font-black text-sm sm:text-base cursor-pointer';
+        if (btnIcon) {
+          btnIcon.textContent = '⚡';
+          btnIcon.className = 'text-2xl animate-bounce';
+        }
+        if (stateBadge) stateBadge.textContent = 'Hotsu button closed (ON)';
+        if (btnSub) btnSub.textContent = 'Mushin current illuminates Gyo!';
+      } else {
+        // BUTTON OPEN -> RED
+        if (switchBody) {
+          switchBody.setAttribute('fill', '#dc2626');
+          switchBody.setAttribute('stroke', '#fca5a5');
+        }
+        if (knob) knob.setAttribute('cx', '425');
+        if (pusher) {
+          pusher.setAttribute('x1', '435');
+          pusher.setAttribute('x2', '435');
+          pusher.setAttribute('y1', '120');
+          pusher.setAttribute('y2', '132');
+        }
+        if (pusherTip) {
+          pusherTip.setAttribute('cx', '435');
+          pusherTip.setAttribute('cy', '132');
+        }
+        if (blade) blade.setAttribute('d', 'M 465,150 L 410,132'); // contact raised to y=132
+
+        if (badgeBg) {
+          badgeBg.setAttribute('fill', '#450a0a');
+          badgeBg.setAttribute('stroke', '#ef4444');
+        }
+        if (badgeCircle) badgeCircle.setAttribute('fill', '#ef4444');
+        if (badgeTitle) {
+          badgeTitle.textContent = 'HOTSU (発) — OPEN';
+          badgeTitle.setAttribute('fill', '#fca5a5');
+        }
+        if (badgeDesc) badgeDesc.textContent = 'Contact released (OFF)';
+
+        if (beam) beam.style.opacity = '0';
+        if (bulb) {
+          bulb.setAttribute('fill', '#334155');
+          bulb.removeAttribute('filter');
+          bulb.classList.remove('gyo-bulb-active');
+        }
+        if (currentLoop) currentLoop.style.display = 'none';
+
+        if (badge) badge.className = 'absolute top-3 left-3 sm:left-4 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-500/20 border border-rose-500/40 text-rose-300 text-xs font-bold transition-all';
+        if (pingDot) pingDot.className = 'w-2.5 h-2.5 rounded-full bg-rose-500';
+        if (statusLabel) statusLabel.textContent = '💤 Hotsu button RED (open): Contact open, Mushin current is resting';
+
+        if (actionBtn) actionBtn.className = 'group relative flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-rose-600 hover:bg-rose-500 active:scale-95 transition-all shadow-xl shadow-rose-600/30 text-white font-black text-sm sm:text-base cursor-pointer';
+        if (btnIcon) {
+          btnIcon.textContent = '🔘';
+          btnIcon.className = 'text-2xl';
+        }
+        if (stateBadge) stateBadge.textContent = 'Hotsu button open (OFF)';
+        if (btnSub) btnSub.textContent = 'Click Hotsu to start current!';
+      }
+    }
+  </script>
+</body>
+</html>
