@@ -2,8 +2,9 @@ import os
 import re
 import markdown
 
-SOURCE_MD = r"c:\Users\vanya\Antigravity Projects\Apps\Inner Current\wiki\Inner Current (Primer for a Smart 10-Year-Old — The Architecture of Happiness and External Magnetism).md"
-OUTPUT_HTML = r"c:\Users\vanya\Antigravity Projects\Apps\Inner Current\public\books\primer.html"
+SOURCE_MD = r"c:\Users\vanya\Antigravity Projects\Misc\LLM Wiki\02_Wiki\Книга-праймер — Тайна карманного фонарика (Внутренний ток для детей — Система Аньянова).md"
+OUTPUT_HTML_PUBLIC = r"c:\Users\vanya\Antigravity Projects\Apps\Inner Current\public\books\primer.html"
+OUTPUT_HTML_DIST = r"c:\Users\vanya\Antigravity Projects\Apps\Inner Current\dist_site\books\primer.html"
 
 with open(SOURCE_MD, "r", encoding="utf-8") as f:
     raw_md = f.read()
@@ -45,7 +46,7 @@ FULL_HTML = f"""<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Инструкция к твоему суперкостюму: Праймер по физике счастья — Владимир Аньянов</title>
+<title>Тайна карманного фонарика: Как устроена твоя суперсила — Владимир Аньянов</title>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>
   mermaid.initialize({{ startOnLoad: true, theme: 'dark' }});
@@ -58,8 +59,8 @@ FULL_HTML = f"""<!DOCTYPE html>
     --bg-card: #0f172a;
     --text-main: #f1f5f9;
     --text-muted: #94a3b8;
-    --accent: #38bdf8;
-    --accent-light: #7dd3fc;
+    --accent: #f59e0b;
+    --accent-light: #fbbf24;
     --border: #1e293b;
   }}
 
@@ -125,6 +126,7 @@ FULL_HTML = f"""<!DOCTYPE html>
     background: var(--accent);
     color: #020617;
     border: none;
+    font-weight: 700;
   }}
 
   .btn-accent:hover {{ background: var(--accent-light); }}
@@ -155,8 +157,8 @@ FULL_HTML = f"""<!DOCTYPE html>
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--accent);
-    background: rgba(56, 189, 248, 0.1);
-    border: 1px solid rgba(56, 189, 248, 0.3);
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
     padding: 6px 14px;
     border-radius: 9999px;
     margin-bottom: 24px;
@@ -168,7 +170,7 @@ FULL_HTML = f"""<!DOCTYPE html>
     font-weight: 800;
     line-height: 1.2;
     margin: 0 0 16px 0;
-    background: linear-gradient(135deg, #e0f2fe 0%, #38bdf8 100%);
+    background: linear-gradient(135deg, #fef3c7 0%, #f59e0b 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }}
@@ -230,8 +232,8 @@ FULL_HTML = f"""<!DOCTYPE html>
   }}
 
   .callout-quote {{
-    border-left-color: #38bdf8;
-    background: rgba(56, 189, 248, 0.05);
+    border-left-color: var(--accent);
+    background: rgba(245, 158, 11, 0.05);
     font-style: italic;
   }}
 
@@ -247,6 +249,25 @@ FULL_HTML = f"""<!DOCTYPE html>
     overflow-x: auto;
   }}
 
+  /* Code block */
+  pre {{
+    background: #090d16;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 16px;
+    overflow-x: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: #94a3b8;
+    line-height: 1.5;
+  }}
+
+  code {{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+    color: #f59e0b;
+  }}
+
   /* Math */
   .math-display {{
     background: #090d16;
@@ -256,14 +277,14 @@ FULL_HTML = f"""<!DOCTYPE html>
     margin: 20px 0;
     text-align: center;
     font-family: 'JetBrains Mono', monospace;
-    color: #38bdf8;
+    color: var(--accent);
     overflow-x: auto;
   }}
 
   .math-inline {{
     font-family: 'JetBrains Mono', monospace;
-    background: rgba(56, 189, 248, 0.1);
-    color: #38bdf8;
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--accent);
     padding: 2px 6px;
     border-radius: 6px;
     font-size: 0.9em;
@@ -310,7 +331,7 @@ FULL_HTML = f"""<!DOCTYPE html>
 
 <div class="top-bar">
   <a href="../index.html" class="top-brand">
-    <span>⚡</span>
+    <span>🔦</span>
     <span>Inner Current • Библиотека</span>
   </a>
   <div class="top-actions">
@@ -321,9 +342,9 @@ FULL_HTML = f"""<!DOCTYPE html>
 
 <div class="container">
   <div class="book-cover">
-    <div class="cover-badge">Праймер для детей и подростков • Возраст 10+</div>
-    <h1 class="cover-title">Инструкция к твоему<br>суперкостюму</h1>
-    <div class="cover-sub">Праймер по физике счастья и невидимой суперсиле для умных подростков, будущих изобретателей и капитанов своей жизни</div>
+    <div class="cover-badge">Праймер по Внутреннему току • Возраст 10+</div>
+    <h1 class="cover-title">Тайна карманного<br>фонарика</h1>
+    <div class="cover-sub">Как устроена твоя суперсила: Большой иллюстрированный праймер по физике счастья и законам радости для любознательных исследователей и юных капитанов</div>
     <div class="cover-meta">Автор: Владимир Аньянов • Серия «Внутренний ток» • 2026</div>
   </div>
 
@@ -332,7 +353,7 @@ FULL_HTML = f"""<!DOCTYPE html>
   </div>
 
   <footer>
-    © 2026 Владимир Аньянов. Все права защищены. Библиотека «Внутренний ток».
+    © 2026 Владимир Аньянов. Все права защищены. Библиотека «Внутренний ток» (innercurrent.ru).
   </footer>
 </div>
 
@@ -340,7 +361,13 @@ FULL_HTML = f"""<!DOCTYPE html>
 </html>
 """
 
-with open(OUTPUT_HTML, "w", encoding="utf-8") as f:
+os.makedirs(os.path.dirname(OUTPUT_HTML_PUBLIC), exist_ok=True)
+os.makedirs(os.path.dirname(OUTPUT_HTML_DIST), exist_ok=True)
+
+with open(OUTPUT_HTML_PUBLIC, "w", encoding="utf-8") as f:
     f.write(FULL_HTML)
 
-print("Generated Happiness Architecture Primer:", OUTPUT_HTML)
+with open(OUTPUT_HTML_DIST, "w", encoding="utf-8") as f:
+    f.write(FULL_HTML)
+
+print("SUCCESS: Generated primer HTML in public and dist_site!")

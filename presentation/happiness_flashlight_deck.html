@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Счастье: это карманный фонарик — Владимир Аньянов</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+  @page {
+    size: 297mm 167.0625mm; /* 16:9 landscape */
+    margin: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: #080c14;
+    color: #f1f5f9;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* SLIDE CONTAINER FOR SCREEN PRESENTATION */
+  .deck {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .slide {
+    width: 100vw;
+    height: 100vh;
+    max-width: 1920px;
+    max-height: 1080px;
+    aspect-ratio: 16 / 9;
+    padding: 4.5vw 6vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    background: #0b1120;
+    border-bottom: 2px solid #1e293b;
+    page-break-after: always;
+    overflow: hidden;
+  }
+
+  @media print {
+    .slide {
+      width: 297mm !important;
+      height: 167mm !important;
+      max-width: none !important;
+      max-height: none !important;
+      padding: 14mm 18mm !important;
+      border: none !important;
+    }
+  }
+
+  /* DECORATIVE BACKGROUND GLOW */
+  .glow {
+    position: absolute;
+    width: 35vw;
+    height: 35vw;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .glow-amber { background: #f59e0b; top: -10vw; right: -10vw; }
+  .glow-blue { background: #38bdf8; bottom: -10vw; left: -10vw; }
+
+  /* SLIDE CONTENT Z-INDEX */
+  .slide-header, .slide-body, .slide-footer {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* SLIDE HEADER */
+  .slide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .badge-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85vw;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    padding: 0.35vw 0.9vw;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 0.6vw;
+  }
+
+  .slide-title {
+    font-size: 2.5vw;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+  }
+
+  .slide-title span {
+    color: #f59e0b;
+  }
+
+  .slide-subtitle {
+    font-size: 1.1vw;
+    color: #94a3b8;
+    margin-top: 0.4vw;
+  }
+
+  .slide-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1vw;
+    font-weight: 700;
+    color: #475569;
+    background: #111827;
+    padding: 0.3vw 0.8vw;
+    border-radius: 6px;
+    border: 1px solid #1f2937;
+  }
+
+  /* SLIDE BODY */
+  .slide-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1.5vw 0;
+  }
+
+  /* SLIDE FOOTER */
+  .slide-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 1vw;
+    font-size: 0.85vw;
+    color: #64748b;
+  }
+
+  .speaker-brand {
+    font-weight: 700;
+    color: #cbd5e1;
+  }
+
+  /* SPECIAL CARDS & GRIDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2vw;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8vw;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.4vw;
+  }
+
+  .card {
+    background: rgba(17, 24, 39, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 1.5vw;
+    backdrop-filter: blur(10px);
+  }
+
+  .card-highlight {
+    background: rgba(245, 158, 11, 0.05);
+    border-color: rgba(245, 158, 11, 0.3);
+  }
+
+  .card-danger {
+    background: rgba(239, 68, 68, 0.05);
+    border-color: rgba(239, 68, 68, 0.3);
+  }
+
+  .card-success {
+    background: rgba(16, 185, 129, 0.05);
+    border-color: rgba(16, 185, 129, 0.3);
+  }
+
+  .card-icon {
+    font-size: 2.2vw;
+    margin-bottom: 0.8vw;
+  }
+
+  .card-title {
+    font-size: 1.3vw;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5vw;
+  }
+
+  .card-text {
+    font-size: 0.95vw;
+    line-height: 1.45;
+    color: #94a3b8;
+  }
+
+  .card-text strong {
+    color: #f1f5f9;
+  }
+
+  /* BIG HERO CALLOUT */
+  .hero-quote {
+    font-size: 1.8vw;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #f8fafc;
+    border-left: 5px solid #f59e0b;
+    padding-left: 1.8vw;
+    margin: 1vw 0;
+  }
+
+  .hero-quote span {
+    color: #f59e0b;
+  }
+
+  /* SCHEMATIC STRIP */
+  .schematic-bar {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 14px;
+    padding: 1.5vw 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .schematic-node {
+    text-align: center;
+    flex: 1;
+  }
+
+  .node-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75vw;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .node-name {
+    font-size: 1.25vw;
+    font-weight: 800;
+    color: #38bdf8;
+    margin: 0.3vw 0;
+  }
+
+  .node-desc {
+    font-size: 0.85vw;
+    color: #cbd5e1;
+  }
+
+  .node-arrow {
+    font-size: 1.8vw;
+    color: #475569;
+    font-weight: 800;
+    padding: 0 0.8vw;
+  }
+
+  /* INTERACTIVE KEYS HELPER */
+  .nav-hint {
+    position: fixed;
+    bottom: 15px;
+    right: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #64748b;
+    background: #0b1120;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid #1e293b;
+    z-index: 100;
+  }
+
+  @media print {
+    .nav-hint { display: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav-hint">Клавиши: ← / → или Пробел · F: Полный экран</div>
+
+<div class="deck">
+
+  <!-- ==================== СЛАЙД 1: ТИТУЛЬНЫЙ ==================== -->
+  <section class="slide" id="slide-1">
+    <div class="glow glow-amber"></div>
+    <div class="glow glow-blue"></div>
+    
+    <div class="slide-header">
+      <div>
+        <div class="badge-tag">Открытая лекция · Антикафе</div>
+        <div class="slide-subtitle" style="font-size: 1.2vw; color: #94a3b8;">Простая физика человеческого состояния</div>
+      </div>
+      <div class="slide-num">01 / 12</div>
+    </div>
+
+    <div class="slide-body" style="justify-content: center;">
+      <h1 style="font-size: 4vw; font-weight: 800; line-height: 1.1; margin-bottom: 1.2vw; letter-spacing: -1px;">
+        Счастье: это <span style="color: #f59e0b;">карманный фонарик</span>
+      </h1>
+      <p style="font-size: 1.6vw; color: #cbd5e1; max-width: 80%; line-height: 1.4; margin-bottom: 2vw;">
+        Почему мы ждём свет снаружи, покупаем вещи, гонимся за успехом, но чувствуем себя как выключенный прибор — и как устроен наш внутренний контур.
+      </p>
+      
+      <div style="display: flex; gap: 2vw; align-items: center;">
+        <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); padding: 0.8vw 1.5vw; border-radius: 8px;">
+          <div style="font-size: 1.1vw; font-weight: 800; color: #ffffff;">Владимир Аньянов</div>
+          <div style="font-size: 0.85vw; color: #f59e0b;">Исследователь · Автор Системы «Внутренний ток»</div>
+        </div>
+        <div style="font-size: 1vw; color: #64748b;">
+          45 минут живого диалога · Ноль занудства · Только чистая наглядная физика
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Антикафе · Уютный лекторий</div>
+      <div class="speaker-brand">Система Аньянова · Лекция для взрослых</div>
+    </div>
+  </section>
+
+
+  <!-- ==================== СЛАЙД 2: ЛОВУШКА 21 ВЕКА ==================== -->
+  <section class="slide" id="slide-2">
+    <div class="glow glow-amber"></div>
+    <div class="slide-header">
+      <div>
+        <div class="badge-tag">Парадокс современности</div>
+        <div class="slide-title">Великая ловушка: <span>«Вот куплю — и заживу!»</span></div>
+      </div>
+      <div class="slide-num">02 / 12</div>
+    </div>
+
+    <div class="slide-body">
+      <div class="hero-quote">
+        «Каждый из нас хоть раз покупал новый телефон, машину или пальто с тайной мыслью: <span>„Вот теперь моя жизнь станет яркой!“</span>. Но проходит две недели... и магия исчезает».
+      </div>
+
+      <div class="grid-3" style="margin-top: 1.5vw;">
+        <div class="card">
+          <div class="card-icon">📱</div>
+          <div class="card-title">День 1: Эйфория</div>
+          <div class="card-text">
+            Сняли плёночку, глаза горят, восторг! Кажется, что внутри коробки лежало само счастье.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon">⏳</div>
+          <div class="card-title">День 14: Привычка</div>
+          <div class="card-text">
+            Тот же телефон лежит на столе. Обычный кусок стекла и алюминия. Чудо испарилось.
+          </div>
+        </div>
+        <div class="card card-highlight">
+          <div class="card-icon">❓</div>
+          <div class="card-title">Главный вопрос</div>
+          <div class="card-text">
+            <strong>Куда делось счастье?</strong> Украли? Выветрилось? Или его в телефоне никогда и не было?
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Интерактивный вопрос в зал</div>
+      <div>Ловушка материального ожидания</div>
+    </div>
+  </section>
+
+
+  <!-- ==================== СЛАЙД 3: АНАТОМИЯ ПРИБОРА ==================== -->
+  <section class="slide" id="slide-3">
+    <div class="glow glow-blue"></div>
+    <div class="slide-header">
+      <div>
+        <div class="badge-tag">Фундаментальная модель</div>
+        <div class="slide-title">Человек — это <span>Карманный Фонарик</span></div>
+        <div class="slide-subtitle">Мы не ищем свет во тьме. Человек — это сам автономный генератор света</div>
+      </div>
+      <div class="slide-num">03 / 12</div>
+    </div>
+
+    <div class="slide-body">
+      <div class="schematic-bar" style="margin-bottom: 2vw;">
+        <div class="schematic-node">
+          <div class="node-tag">Узел 1</div>
+          <div class="node-name" style="color: #f59e0b;">🔋 Батарейка</div>
+          <div class="node-desc"><strong>Тандэн</strong> (Живот, дыхание)<br>Заряжена с рождения всегда!</div>
+        </div>
+        <div class="node-arrow">→</div>
+        <div class="schematic-node">
+          <div class="node-tag">Узел 2</div>
+          <div class="node-name" style="color: #38bdf8;">🔘 Кнопка «Щёлк!»</div>
+          <div class="node-desc"><strong>Хоцу</strong> (Решение прямо сейчас)<br>Фокус: режим 0 или 1</div>
+        </div>
+        <div class="node-arrow">→</div>
+        <div class="schematic-node">
+          <div class="node-tag">Узел 3</div>
+          <div class="node-name" style="color: #a78bfa;">⚡ Ток в проводе</div>
+          <div class="node-desc"><strong>Мусин</strong> (Чистое внимание)<br>Без ржавчины и сомнений</div>
+        </div>
+        <div class="node-arrow">→</div>
+        <div class="schematic-node">
+          <div class="node-tag">Узел 4</div>
+          <div class="node-name" style="color: #34d399;">💡 Лампочка</div>
+          <div class="node-desc"><strong>Действие в реальности</strong><br>Луч, направленный в мир</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">🔋 Почему батарейка не садится?</div>
+          <div class="card-text">
+            Энергия жизни вырабатывается телом непрерывно (дыхание, сердцебиение, митохондрии). Она не зависит от курса валют, мнения начальника или прогноза погоды.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">🔘 В чём секрет кнопки?</div>
+          <div class="card-text">
+            Фонарик не бывает «на 15% включён». Ты либо находишься в спящем режиме мысленной жвачки, либо нажал «Щёлк!» и делаешь дело прямо сейчас.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Принципиальная схемотехника человека</div>
+      <div>4 неразделимых узла цепи</div>
+    </div>
+  </section>
+
+
+  <!-- ==================== СЛАЙД 4: ОШИБКА ХОЛОДНЫХ ВЕЩЕЙ ==================== -->
+  <section class="slide" id="slide-4">
+    <div class="glow glow-amber"></div>
+    <div class="slide-header">
+      <div>
+        <div class="badge-tag">Оптический закон</div>
+        <div class="slide-title">Разоблачение: <span>Вещи — холодные!</span></div>
+        <div class="slide-subtitle">Ошибка атрибуции: почему мы приписываем вещам собственный свет</div>
+      </div>
+      <div class="slide-num">04 / 12</div>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-2">
+        <div class="card card-danger">
+          <div class="card-title" style="color: #f87171;">❌ Оптическая иллюзия:</div>
+          <div class="card-text" style="font-size: 1.05vw;">
+            «Чашка рафа, новый автомобиль, ресторан или город светятся радостью сами по себе. Мне нужно подойти к ним и впитать их свет».
+            <br><br>
+            <strong>Итог:</strong> Разочарование, ненасытность, бесконечный шопинг и опустошение.
+          </div>
+        </div>
+
+        <div class="card card-success">
+          <div class="card-title" style="color: #4ade80;">✅ Физический факт:</div>
+          <div class="card-text" style="font-size: 1.05vw;">
+            Все предметы в мире — <strong>тёмные и холодные</strong>. Но когда вы смотрите на них с включённым лучом внимания, они <strong>отражают ваш свет обратно</strong>!
+            <br><br>
+            <strong>Итог:</strong> Источник тепла и праздника — вы сами. Вещи лишь экран для вашего луча.
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-quote" style="font-size: 1.4vw; margin-top: 1.5vw;">
+        «Новый айфон не умеет радоваться. Радуетесь вы, когда светите на него. А когда луч уходит — айфон остаётся куском металла».
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Снятие потребительского гипноза</div>
+      <div>Свет рождается внутри</div>
+    </div>
+  </section>
+
+
+  <!-- ==================== СЛАЙД 5: СВЕЧЕНИЕ ВНУТРЬ СЕБЯ ==================== -->
+  <section class="slide" id="slide-5">
+    <div class="glow glow-amber"></div>
+    <div class="slide-header">
+      <div>
+        <div class="badge-tag">Диагностика сбоя</div>
+        <div class="slide-title">Самая нелепая поломка: <span>Светить внутрь себя</span></div>
+        <div class="slide-subtitle">Как рождается взрослая тревожность, паника и бессонница</div>
+      </div>
+      <div class="slide-num">05 / 12</div>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-2">
+        <div>
+          <div class="card card-danger" style="height: 100%;">
+            <div class="card-title" style="color: #f87171;">💥 Что делает взрослый человек:</div>
+            <div class="card-text" style="font-size: 1vw; line-height: 1.5;">
+              Выкручивает лампочку из фонарика и засовывает её внутрь корпуса, прямо к батарейке:
+              <br><br>
+              • <em>«А я достаточно успешен к 30 годам?»</em><br>
+              • <em>«А что обо мне подумал начальник?»</em><br>
+              • <em>«А не глупо ли я сейчас выгляжу со стороны?»</em><br>
+              • <em>«А вдруг я хуже других?»</em>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card" style="height: 100%;">
+            <div class="card-title">🌡️ Физические последствия:</div>
+            <div class="card-text" style="font-size: 1vw; line-height: 1.5;">
+              <strong>1. Корпус раскаляется докрасна:</strong><br>
+              Краснеют щёки, потеют ладони, тахикардия, ком в горле — энергия сжигает саму себя.<br><br>
+              <strong>2. Впереди наступает тьма:</strong><br>
+              Дороги под ногами не видно. Человек спотыкается на работе, в разговорах и делах.<br><br>
+              <strong>3. Ток крадёт ржавый реостат сомнений.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Анатомия невротической рефлексии</div>
+      <div>Перегрев корпуса вместо света</div>
+    </div>
+  </section>
+
+
+  <!-- ==================== СЛАЙД 6: ЗАКОН ПРЯМОГО ЛУЧА ==================== -->
+  <section class="slide" id="slide-6">
+    <div class="glow glow-blue"></div>
+    <div class="slide-header">
+      <div>
+        <div class="badge-tag">Оптический закон №1</div>
+        <div class="slide-title">Закон Прямого Луча: <span>Светить только наружу!</span></div>
+        <div class="slide-subtitle">Мгновенный чит-код от любого социального страха</div>
+      </div>
+      <div class="slide-num">06 / 12</div>
+    </div>
+
+    <div class="slide-body">
+      <div class="hero-quote">
+        «Фонарик конструктивно создан для того, чтобы <span>светить только вперёд</span>. Как только вы направляете луч на собеседника, текст или задачу — корпус мгновенно остывает».
+      </div>
+
+      <div class="grid-3" style="margin-top: 1.5vw;">
+        <div class="card">
+          <div class="card-icon">🎤</div>
+          <div class="card-title">Публичное выступление</div>
+          <div class="card-text">
+            Забудьте о себе. Направьте луч на людей в зале: <em>«Что ценного я могу подарить этим глазам прямо сейчас?»</em>. Страх испаряется за 2 секунды.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon">💼</div>
+          <div class="card-title">Трудные переговоры</div>
+          <div class="card-text">
+            Не думайте «как я выгляжу». Светите на задачу на столе. Собеседник почувствует ваше спокойствие и уважение.
+          </div>
+        </div>
+        <div class="card card-highlight">
+          <div class="card-icon">⚡</div>
+          <div class="card-title">Чистый ток (Мусин)</div>
+          <div class="card-text">
+            Режим, когда между намерением и действием нет трения. Руки делают, слова звучат точно и легко.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Прикладная калибровка внимания</div>
+      <div>Свобода от оценки себя</div>
+    </div>
+  </section>
+
+
+  <!-- ==================== СЛАЙД 7: ЗАМКНУТЫЙ КОНТУР ==================== -->
+  <section class="slide" id="slide-7">
+    <div class="glow glow-amber"></div>
+    <div class="slide-header">
+      <div>
+        <div class="badge-tag">Энергетический баланс</div>
+        <div class="slide-title">Замкнутый контур: <span>Почему диван истощает</span></div>
+        <div class="slide-subtitle">Разгадка феномена усталости от безделья и скроллинга ленты</div>
+      </div>
+      <div class="slide-num">07 / 12</div>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-2">
+        <div class="card card-danger">
+          <div class="card-title" style="color: #f87171;">📴 Разомкнутая цепь (Думскроллинг)</div>
+          <div class="card-text" style="font-size: 1vw;">
+            Лежали 4 часа в телефоне. Ничего не создали. Внимание ушло в холодное мерцание пикселей.
+            <br><br>
+            <strong>Результат:</strong> Ток ушёл в пустоту. Возврата энергии нет. Вы встаёте разбитыми, словно разгружали вагоны с углем.
+          </div>
+        </div>
+
+        <div class="card card-success">
+          <div class="card-title" style="color: #4ade80;">🔄 Замкнутая цепь (Прямое созидание)</div>
+          <div class="card-text" style="font-size: 1vw;">
+            Приготовили ужин, починили стул, написали главу, вышли на пробежку. Луч встретил <strong>реальный предмет</strong>.
+            <br><br>
+            <strong>Результат:</strong> Отражённый свет возвращается теплом победы прямо в батарейку. Цепь замкнута — сил стало БОЛЬШЕ!
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-quote" style="font-size: 1.3vw; margin-top: 1.5vw;">
+        «Батарейка человека садится не от созидательной работы. Она садится от разомкнутого контура — когда энергия вытекает в никуда».
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Электродинамика действия</div>
+      <div>Обратный провод реальности</div>
+    </div>
+  </section>
+
+
+  <!-- ==================== СЛАЙД 8: ФИЗИКА ЛЮБВИ ==================== -->
+  <section class="slide" id="slide-8">
+    <div class="glow glow-amber"></div>
+    <div class="slide-header">
+      <div>
+        <div class="badge-tag">Социология отношений</div>
+        <div class="slide-title">Физика любви: <span>«Правило двух лучей»</span></div>
+        <div class="slide-subtitle">Почему 90% пар выгорают в созависимости и как любить свободно</div>
+      </div>
+      <div class="slide-num">08 / 12</div>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-2">
+        <div class="card card-danger">
+          <div class="card-title" style="color: #f87171;">⚠️ Созависимость (Война вампиров)</div>
+          <div class="card-text" style="font-size: 1vw;">
+            Два выключенных фонарика сидят на кухне и требуют:
+            <br><br>
+            • <em>«Освети меня! Развлеки меня!»</em><br>
+            • <em>«Ты мало отдаёшь мне тепла!»</em><br>
+            • <em>«Сделай меня счастливым!»</em><br><br>
+            <strong>Итог:</strong> Попытка высосать чужую батарейку приводит к короткому замыканию и взаимным ожогам.
+          </div>
+        </div>
+
+        <div class="card card-success">
+          <div class="card-title" style="color: #4ade80;">🌟 Зрелая любовь (Два генератора)</div>
+          <div class="card-text" style="font-size: 1vw;">
+            Два автономных фонарика встречаются вместе:
+            <br><br>
+            • Каждый заряжен и полон сам по себе.<br>
+            • Никто не клянчит чужой свет.<br>
+            • Они встают рядом и <strong>светят в одну сторону</strong> — на общий дом, детей, проекты и жизнь.<br><br>
+            <strong>Итог:</strong> Лучи соединяются — впереди в два раза светлее!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Суверенные генераторы</div>
+      <div>Любовь без паразитизма</div>
+    </div>
+  </section>
+
+
+  <!-- ==================== СЛАЙД 9: МЫТЬЁ РУК ДЛЯ УМА ==================== -->
+  <section class="slide" id="slide-9">
+    <div class="glow glow-blue"></div>
+    <div class="slide-header">
+      <div>
+        <div class="badge-tag">Экспресс-практика</div>
+        <div class="slide-title">Мытьё рук для ума: <span>30-секундный протокол</span></div>
+        <div class="slide-subtitle">Отмена культа многолетней вины и бесконечного копания в прошлом</div>
+      </div>
+      <div class="slide-num">09 / 12</div>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-4">
+        <div class="card">
+          <div class="card-icon">🛑</div>
+          <div class="card-title">1. СТОП</div>
+          <div class="card-text">
+            Опустите плечи. Разожмите челюсти. Не развивайте мысленный спор. Сделайте паузу.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🫁</div>
+          <div class="card-title">2. ВДОХ В ЖИВОТ</div>
+          <div class="card-text">
+            Внимание в Тандэн (низ живота). Выдохните. Батарейка на месте, она полна энергии.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🧼</div>
+          <div class="card-title">3. СБРОС ПЫЛИ</div>
+          <div class="card-text">
+            Стряхните пальцы: <em>«Обида и тревога — это налипшая грязь на стекле, а не мои провода»</em>.
+          </div>
+        </div>
+
+        <div class="card card-highlight">
+          <div class="card-icon">🔦</div>
+          <div class="card-title">4. ЛУЧ ВПЕРЁД!</div>
+          <div class="card-text">
+            Нажмите «Щёлк!». Выберите одно реальное действие прямо сейчас и сделайте его.
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-quote" style="font-size: 1.3vw; margin-top: 1.5vw;">
+        «Вы же не изучаете историю пыли на руках 5 лет у терапевта перед тем, как пообедать? Вы просто моете руки тёплой водой. Точно так же мойте ум».
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Санитарная гигиена сознания</div>
+      <div>Регламент ежедневного ТО</div>
+    </div>
+  </section>
+
+
+  <!-- ==================== СЛАЙД 10: ЭКСПЕРИМЕНТ В ЗАЛЕ ==================== -->
+  <section class="slide" id="slide-10">
+    <div class="glow glow-amber"></div>
+    <div class="slide-header">
+      <div>
+        <div class="badge-tag">Живой интерактив</div>
+        <div class="slide-title">Эксперимент: <span>Тайный свет антикафе</span></div>
+        <div class="slide-subtitle">Наглядная физика прямо сейчас в полумраке зала</div>
+      </div>
+      <div class="slide-num">10 / 12</div>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">🌑</div>
+          <div class="card-title">Шаг 1. Выключаем свет</div>
+          <div class="card-text">
+            Погружаем зал в полумрак. Все предметы вокруг — кружки с чаем, кресла, картины — становятся невидимыми и серыми.
+          </div>
+        </div>
+
+        <div class="card card-highlight">
+          <div class="card-icon">🔦</div>
+          <div class="card-title">Шаг 2. Включаем луч</div>
+          <div class="card-text">
+            Спикер направляет узкий луч на обычную белую чашку. Она вспыхивает ярким сиянием! Вся комната видит её красоту.
+          </div>
+        </div>
+
+        <div class="card card-success">
+          <div class="card-title">👁️ Шаг 3. Инсайт момента</div>
+          <div class="card-text">
+            <strong>Чашка не светится сама.</strong> Но когда вы дарите ей своё внимание, она становится прекрасной. Так устроена вся ваша жизнь!
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-quote" style="margin-top: 1.5vw;">
+        «Ваша работа, ваш дом, ваши близкие — станут тёплыми и светлыми ровно в тот миг, когда вы перестанете ждать света от них и <span>включите свой собственный фонарик</span>».
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Интерактивный опыт в реальном времени</div>
+      <div>От абстракций к соматике</div>
+    </div>
+  </section>
+
+
+  <!-- ==================== СЛАЙД 11: КОДЕКС ЧЕЛОВЕКА ==================== -->
+  <section class="slide" id="slide-11">
+    <div class="glow glow-blue"></div>
+    <div class="slide-header">
+      <div>
+        <div class="badge-tag">Памятка на жизнь</div>
+        <div class="slide-title">Кодекс Свободного Человека: <span>5 Аксиом</span></div>
+        <div class="slide-subtitle">Инструкция, которую забыли приложить к нам при рождении</div>
+      </div>
+      <div class="slide-num">11 / 12</div>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-2">
+        <div class="card">
+          <div style="font-size: 1.1vw; font-weight: 700; color: #f59e0b; margin-bottom: 0.3vw;">1. Я — сам источник света</div>
+          <div class="card-text">Я не нищий в тёмной комнате. Моя батарейка в теле заряжена каждое утро.</div>
+        </div>
+
+        <div class="card">
+          <div style="font-size: 1.1vw; font-weight: 700; color: #f59e0b; margin-bottom: 0.3vw;">2. Вещи — холодные</div>
+          <div class="card-text">Радость не живёт в коробках, покупках и статусах. Они лишь отражают мой луч.</div>
+        </div>
+
+        <div class="card">
+          <div style="font-size: 1.1vw; font-weight: 700; color: #f59e0b; margin-bottom: 0.3vw;">3. Луч светит только наружу</div>
+          <div class="card-text">Я не выжигаю корпус вопросом «а как я выгляжу?». Я свечу на мир и людей.</div>
+        </div>
+
+        <div class="card">
+          <div style="font-size: 1.1vw; font-weight: 700; color: #f59e0b; margin-bottom: 0.3vw;">4. Контур должен быть замкнут</div>
+          <div class="card-text">Я не сливаю ток в пустые экраны. Я создаю реальные дела и забираю радость.</div>
+        </div>
+      </div>
+
+      <div class="card card-highlight" style="margin-top: 1.2vw; text-align: center;">
+        <div style="font-size: 1.2vw; font-weight: 800; color: #ffffff;">5. Дружба и любовь — это светить вместе на общую дорогу!</div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Сверхпроводимость жизни</div>
+      <div>Формула простого счастья</div>
+    </div>
+  </section>
+
+
+  <!-- ==================== СЛАЙД 12: ФИНАЛ ==================== -->
+  <section class="slide" id="slide-12">
+    <div class="glow glow-amber"></div>
+    <div class="glow glow-blue"></div>
+    <div class="slide-header">
+      <div>
+        <div class="badge-tag">Открытый микрофон</div>
+        <div class="slide-title">Чай, вопросы и <span>живой разговор</span></div>
+      </div>
+      <div class="slide-num">12 / 12</div>
+    </div>
+
+    <div class="slide-body" style="text-align: center; justify-content: center;">
+      <div style="font-size: 3.5vw; margin-bottom: 1vw;">🔦✨</div>
+      <h2 style="font-size: 2.8vw; font-weight: 800; margin-bottom: 1vw;">
+        Включайте фонарики.<br>И не забывайте <span style="color: #f59e0b;">светить</span>!
+      </h2>
+      <p style="font-size: 1.3vw; color: #94a3b8; max-width: 60%; margin: 0 auto 2vw auto;">
+        Спасибо за теплоту и внимание. Давайте обсудим ваши вопросы, ситуации и сомнения за чашкой чая.
+      </p>
+
+      <div style="display: inline-flex; gap: 2vw; background: rgba(17, 24, 39, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); padding: 1vw 2vw; border-radius: 12px;">
+        <div style="text-align: left;">
+          <div style="font-size: 1vw; font-weight: 700; color: #ffffff;">Владимир Аньянов</div>
+          <div style="font-size: 0.85vw; color: #f59e0b;">Автор Системы «Внутренний ток»</div>
+        </div>
+        <div style="border-left: 1px solid #334155; padding-left: 2vw; text-align: left;">
+          <div style="font-size: 0.85vw; color: #94a3b8;">Материалы и книги:</div>
+          <div style="font-size: 0.95vw; font-weight: 700; color: #38bdf8;">Внутренний ток · Архитектура прямого потока</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Антикафе · Тёплый вечер воскресенья</div>
+      <div>До новых встреч!</div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // Simple Keyboard Slide Navigation
+  let currentSlide = 1;
+  const totalSlides = 12;
+
+  function scrollToSlide(index) {
+    if (index < 1) index = 1;
+    if (index > totalSlides) index = totalSlides;
+    currentSlide = index;
+    const el = document.getElementById(`slide-${index}`);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault();
+      scrollToSlide(currentSlide + 1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
+      scrollToSlide(currentSlide - 1);
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      scrollToSlide(1);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      scrollToSlide(totalSlides);
+    } else if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    }
+  });
+</script>
+</body>
+</html>
