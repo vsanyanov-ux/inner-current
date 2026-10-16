@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>База Знаний «Внутренний ток» — Онлайн-Ридер (230+ статей)</title>
+  <title>База Знаний «Внутренний ток» — Онлайн-Ридер (500+ статей)</title>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -321,7 +321,7 @@
           <input 
             type="text" 
             id="search-input" 
-            placeholder="Поиск по 230+ статьям (Ctrl+K)..." 
+            placeholder="Поиск по 500+ статьям (Ctrl+K)..." 
             class="w-full bg-slate-950/80 border border-slate-800 focus:border-sky-500 rounded-lg pl-9 pr-8 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
           >
           <button id="clear-search-btn" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white">
@@ -336,7 +336,7 @@
           <button data-filter="layer-2" class="layer-pill px-2 py-1 rounded bg-slate-800/80 text-slate-400 hover:text-slate-200 border border-slate-700/60">II. Практика</button>
           <button data-filter="layer-3" class="layer-pill px-2 py-1 rounded bg-slate-800/80 text-slate-400 hover:text-slate-200 border border-slate-700/60">III. Дзен</button>
           <button data-filter="layer-4" class="layer-pill px-2 py-1 rounded bg-slate-800/80 text-slate-400 hover:text-slate-200 border border-slate-700/60">IV. Продукт</button>
-          <button data-filter="layer-new" class="layer-pill px-2 py-1 rounded bg-slate-800/80 text-slate-400 hover:text-slate-200 border border-slate-700/60">Новые</button>
+          <button data-filter="layer-new" class="layer-pill px-2 py-1 rounded bg-slate-800/80 text-slate-400 hover:text-slate-200 border border-slate-700/60">V. Манифесты</button>
         </div>
       </div>
 
@@ -497,11 +497,42 @@
     // -----------------------------------------------------------------
     // Загрузка каталога с бэкенда
     // -----------------------------------------------------------------
+    // -----------------------------------------------------------------
+    // Загрузка каталога с бэкенда или статических данных
+    // -----------------------------------------------------------------
     async function loadCatalog() {
       try {
-        const resp = await fetch('/api/wiki/articles');
-        if (!resp.ok) throw new Error('Ошибка связи с сервером');
-        catalog = await resp.json();
+        let data = null;
+
+        // 1. Пытаемся загрузить предварительно сгенерированный статический каталог
+        try {
+          const resp = await fetch('data/wiki/catalog.json');
+          if (resp.ok) {
+            const text = await resp.text();
+            if (!text.trim().startsWith('<')) {
+              data = JSON.parse(text);
+            }
+          }
+        } catch (e) {
+          console.warn('Статический каталог не загрузился, пробуем API:', e);
+        }
+
+        // 2. Фолбэк на API (для локального dev-сервера)
+        if (!data) {
+          const resp = await fetch('/api/wiki/articles');
+          if (resp.ok) {
+            const text = await resp.text();
+            if (!text.trim().startsWith('<')) {
+              data = JSON.parse(text);
+            }
+          }
+        }
+
+        if (!data) {
+          throw new Error('Каталог базы знаний недоступен (сервер вернул некорректный ответ)');
+        }
+
+        catalog = data;
 
         // Схлопываем все статьи в плоский массив для удобной навигации
         allArticles = [];
@@ -554,8 +585,8 @@
           if (!query) return true;
           return (
             art.title.toLowerCase().includes(query) ||
-            art.summary.toLowerCase().includes(query) ||
-            art.slug.toLowerCase().includes(query) ||
+            (art.summary && art.summary.toLowerCase().includes(query)) ||
+            (art.slug && art.slug.toLowerCase().includes(query)) ||
             String(art.mocIndex).includes(query)
           );
         });
@@ -577,7 +608,7 @@
         // Список статей в слое
         filteredArticles.forEach(art => {
           const item = document.createElement('div');
-          const isActive = art.slug === currentArticleSlug;
+          const isActive = art.slug === currentArticleSlug || (art.id && art.id === currentArticleSlug);
           
           item.className = `p-2.5 rounded-lg cursor-pointer transition-all border text-left ${
             isActive 
@@ -604,7 +635,7 @@
           `;
 
           item.addEventListener('click', () => {
-            openArticleBySlug(art.slug);
+            openArticleBySlug(art.slug || art.id);
             // Закрываем мобильный сайдбар при клике
             if (window.innerWidth < 1024) {
               closeSidebar();
@@ -630,7 +661,7 @@
     }
 
     // -----------------------------------------------------------------
-    // Открытие статьи по slug
+    // Открытие статьи по slug или id
     // -----------------------------------------------------------------
     async function openArticleBySlug(slug) {
       if (!slug) return;
@@ -648,24 +679,68 @@
       view.classList.add('opacity-40');
 
       try {
-        const resp = await fetch(`/api/wiki/article?file=${encodeURIComponent(slug)}`);
-        if (!resp.ok) throw new Error('Статья не найдена на диске');
-        const art = await resp.json();
+        const rawClean = slug.trim().replace(/^02_Wiki\//, '').replace(/\.md$/, '');
+        const normalized = rawClean.toLowerCase();
+        
+        let targetId = catalog?.slugMap ? (catalog.slugMap[normalized] || catalog.slugMap[rawClean.replace(/^Inner Current \((.+)\)$/, '$1').toLowerCase()]) : null;
+
+        let catInfo = targetId ? allArticles.find(a => a.id === targetId) : null;
+        if (!catInfo) {
+          catInfo = allArticles.find(a => 
+            a.slug.toLowerCase() === normalized || 
+            (a.id && a.id.toLowerCase() === normalized) ||
+            a.filename.toLowerCase() === normalized + '.md' ||
+            a.filename.toLowerCase() === normalized
+          );
+        }
+        if (!catInfo) {
+          catInfo = allArticles.find(a => a.title.toLowerCase().includes(normalized));
+        }
+
+        currentArticleIndex = catInfo ? allArticles.indexOf(catInfo) : -1;
+
+        let art = null;
+
+        // 1. Сначала пробуем загрузить предварительно сгенерированный статический JSON файл статьи
+        if (catInfo && catInfo.dataFile) {
+          try {
+            const resp = await fetch(catInfo.dataFile);
+            if (resp.ok) {
+              const text = await resp.text();
+              if (!text.trim().startsWith('<')) {
+                art = JSON.parse(text);
+              }
+            }
+          } catch (e) {
+            console.warn('Статический JSON статьи недоступен, пробуем API:', e);
+          }
+        }
+
+        // 2. Фолбэк на динамический API для локального dev-сервера
+        if (!art) {
+          const resp = await fetch(`/api/wiki/article?file=${encodeURIComponent(slug)}`);
+          if (resp.ok) {
+            const text = await resp.text();
+            if (!text.trim().startsWith('<')) {
+              art = JSON.parse(text);
+            }
+          }
+        }
+
+        if (!art) {
+          throw new Error(`Статья «${slug}» не найдена на сервере`);
+        }
 
         // Обновляем метаданные
         document.title = `${art.title} — Inner Current Wiki`;
-        
-        // Найдем инфо из каталога
-        const catInfo = allArticles.find(a => a.slug.toLowerCase() === slug.toLowerCase()) || {};
-        currentArticleIndex = allArticles.findIndex(a => a.slug.toLowerCase() === slug.toLowerCase());
 
-        document.getElementById('art-layer-badge').textContent = catInfo.layerName || art.layer || 'Статья базы знаний';
-        document.getElementById('art-date-badge').textContent = art.frontmatter.created || art.mtime.slice(0, 10);
+        document.getElementById('art-layer-badge').textContent = catInfo?.layerName || art.layer || 'Статья базы знаний';
+        document.getElementById('art-date-badge').textContent = (art.frontmatter && art.frontmatter.created) || (art.mtime ? art.mtime.slice(0, 10) : '2026-10-16');
 
         // Теги
         const tagsContainer = document.getElementById('art-tags-container');
         tagsContainer.innerHTML = '';
-        const tags = Array.isArray(art.frontmatter.tags) ? art.frontmatter.tags : [];
+        const tags = Array.isArray(art.frontmatter?.tags) ? art.frontmatter.tags : [];
         tags.forEach(t => {
           const span = document.createElement('span');
           span.className = 'text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-800/80 border border-slate-700/80 text-sky-400';

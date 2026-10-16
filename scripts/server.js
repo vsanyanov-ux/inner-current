@@ -143,7 +143,62 @@ function getWikiCatalog() {
     }
   }
 
-  // Автообнаружение новых/неиндексированных статей прямо на диске
+const NON_IC_KEYWORDS = [
+  'henry george', 'georgism', 'single tax', 'ricardo', 'free trade', 'wages and capital', 'malthusian',
+  'italian', 'krashen', 'vocabulary lists', 'future tense', 'imperative mood',
+  'ai-auditor', 'agentic engineering', 'vram', 'ollama', 'obsidian', 'rag', 'rubber stamping', 
+  'provider pattern', 'software 3.0', 'software entropy', 'spec-driven', 'company world model', 
+  'customer world model', 'code review bottleneck', 'deterministic compiler', 'determinization of chaos',
+  'digital heritage', 'forward deployed engineer', 'hybrid ai', 'intelligence layer', 'intent-driven',
+  'language learning with ai', 'llm wiki', 'productivity paradox', 'unified state space', 'vibe coding',
+  'systems thinking', 'tenchat', 'consequence capital', 'global strategic roadmap', 'philosophy of scientific discovery',
+  'impressionics', 'anyanov impressionics', 'applied impression', 'cognitive impressionics', 
+  'five fundamental laws of impressionics', 'biophysics of axes', 'brand matrix', 'budget vector search',
+  'canonical 10d matrix', 'canonical tetrad of embodiment', 'four olfactory anchors', 'heart distance',
+  'market blindspots', 'mathematical model of note-fabric', 'matrix navigation', 'method of extreme contrasts',
+  'mirror of fragrances', 'monobrand matrix', 'olfactory timeline', 'origin story (lattafa',
+  'perception engine', 'perception engineering', 'perception radar', 'periodic table of clothing',
+  'periodic table of fragrances', 'periodic table of scent', 'psychophysical resonance', 'recommendation pipeline',
+  'retail synergy matrix', 'semiotics of x-axis', 'signal amplitude and expression', 'style solfeggio',
+  'strategic pivot to applied engineering', 'the cardamom case', 'the clone cosine law', 'the overdose paradox',
+  'the pyramid weight problem', 'the royal protocol anomaly', 'the tobacco bifurcation', 'three-level isomorphism',
+  'top-5 practical applications (impressionics', 'triad of carriers', 'two-tier perception funnel',
+  'wearable performance', 'zero-crossing rule', 'импрессионика', 'архитектура впечатления', 
+  'одеколон pitch presentation', 'четырёхэтапная методология вычисления координат xy'
+];
+
+function isInnerCurrent(filename, content = '') {
+  const fnLower = filename.toLowerCase();
+  if (fnLower.includes('moc') || filename === 'index.md') return false;
+  
+  for (const kw of NON_IC_KEYWORDS) {
+    if (fnLower.includes(kw) && !fnLower.includes('inner current') && !fnLower.includes('внутренний ток') && !fnLower.includes('внутреннего тока')) {
+      return false;
+    }
+  }
+
+  if (filename.startsWith('Inner Current')) return true;
+  if (fnLower.includes('внутренний ток') || fnLower.includes('внутреннего тока') || fnLower.includes('inner current')) return true;
+  if (filename.startsWith('Брошюра — ') && !fnLower.includes('импрессионик')) return true;
+  if (filename.startsWith('Книга — ') && ['внутренний', 'синтез', 'фрактал', 'потоковых', 'коперник', 'укулеле', 'триптих'].some(k => fnLower.includes(k))) return true;
+  if (filename.startsWith('Книга-праймер — Тайна')) return true;
+  if (filename.startsWith('Презентация — Счастье')) return true;
+  if (filename.includes('懐中電灯')) return true;
+  if (/^\d{2}-.*\.md$/.test(filename)) return true;
+
+  if (content) {
+    const fmText = content.slice(0, 1200).toLowerCase();
+    if (fmText.includes('inner-current') || fmText.includes('node/tanden') || fmText.includes('node/conductor') || fmText.includes('node/ego-resistor')) {
+      return true;
+    }
+    if (fmText.includes('внутренний ток') || fmText.includes('сверхпроводимость цепи')) {
+      return true;
+    }
+  }
+  return false;
+}
+
+  // Автообнаружение новых/неиндексированных статей прямо на диске (ТОЛЬКО ВНУТРЕННИЙ ТОК)
   const unindexedArticles = [];
   const scanDirs = [OBSIDIAN_VAULT_WIKI, LOCAL_WIKI_DIR];
   const seenFilenames = new Set();
@@ -160,23 +215,29 @@ function getWikiCatalog() {
         if (!indexedFiles.has(base.toLowerCase())) {
           const fullPath = path.join(dir, f);
           const st = fs.statSync(fullPath);
+          let head = '';
+          try {
+            head = fs.readFileSync(fullPath, 'utf-8').slice(0, 1200);
+          } catch (_) {}
+
+          if (!isInnerCurrent(f, head)) {
+            continue;
+          }
+
           let title = base;
           let summary = '';
-          try {
-            const head = fs.readFileSync(fullPath, 'utf-8').slice(0, 1000);
-            const titleMatch = head.match(/^#\s+(.+)$/m);
-            if (titleMatch) title = titleMatch[1].trim();
-            const quoteMatch = head.match(/>\s*\[!quote\]\s*(.+)/);
-            if (quoteMatch) summary = quoteMatch[1].trim();
-          } catch (_) {}
+          const titleMatch = head.match(/^#\s+(.+)$/m);
+          if (titleMatch) title = titleMatch[1].trim();
+          const quoteMatch = head.match(/>\s*\[!quote\]\s*(.+)/);
+          if (quoteMatch) summary = quoteMatch[1].trim();
 
           unindexedArticles.push({
             mocIndex: unindexedArticles.length + 1,
             filename: f,
             slug: base,
             title,
-            summary: summary || 'Новый материал / протокол контура',
-            layer: 'V. Новые входящие статьи и черновики',
+            summary: summary || 'Мастер-рукопись / брошюра контура',
+            layer: 'V. Брошюры-манифесты и мастер-рукописи Внутреннего Тока',
             layerId: 'layer-new',
             mtime: st.mtime.toISOString(),
             size: st.size,
@@ -193,7 +254,7 @@ function getWikiCatalog() {
   if (unindexedArticles.length > 0) {
     layers.push({
       id: 'layer-new',
-      title: 'V. Новые входящие статьи и черновики',
+      title: 'V. Брошюры-манифесты и мастер-рукописи Внутреннего Тока',
       articles: unindexedArticles
     });
   }
