@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Манифест Внутреннего Тока — Электродинамика сознания | innercurrent.ru</title>
+  <meta name="description" content="Манифест Внутреннего Тока: в чем суть открытия, почему мы выгораем, как устроен человек на самом деле и почему в лампочке нет батарейки. 500+ статей, 7 книг, 100% открытый доступ.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+  <!-- Fonts & Math -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['Lora', 'Georgia', 'serif'],
+            display: ['Cinzel', 'serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            slate: {
+              850: '#111827',
+              900: '#090d16',
+              950: '#030712',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #030712;
+      color: #f1f5f9;
+      -webkit-font-smoothing: antialiased;
+    }
+    .text-glow-amber {
+      text-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+    }
+    .box-glow-amber {
+      box-shadow: 0 0 35px -5px rgba(245, 158, 11, 0.15);
+    }
+    .box-glow-cyan {
+      box-shadow: 0 0 35px -5px rgba(56, 189, 248, 0.15);
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    @keyframes electron-rush {
+      from { stroke-dashoffset: 60; }
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes glow-pulse {
+      0%, 100% { 
+        filter: drop-shadow(0 0 15px rgba(250, 204, 21, 0.7)) drop-shadow(0 0 35px rgba(245, 158, 11, 0.4)); 
+      }
+      50% { 
+        filter: drop-shadow(0 0 30px rgba(254, 240, 138, 0.95)) drop-shadow(0 0 60px rgba(250, 204, 21, 0.6)); 
+      }
+    }
+    .current-mushin-flowing {
+      stroke-dasharray: 8 8;
+      animation: electron-rush 0.7s linear infinite;
+    }
+    .gyo-bulb-active {
+      animation: glow-pulse 2.2s infinite ease-in-out;
+    }
+    .reading-content p {
+      margin-bottom: 1.5rem;
+      line-height: 1.85;
+      font-size: 1.125rem;
+    }
+    .reading-content h2 {
+      margin-top: 3rem;
+      margin-bottom: 1.25rem;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      color: #f8fafc;
+      letter-spacing: -0.01em;
+    }
+    .reading-content h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: #fcd34d;
+    }
+  </style>
+</head>
+<body class="selection:bg-amber-500 selection:text-slate-950 min-h-screen flex flex-col">
+
+  <!-- ========================================================= -->
+  <!-- TOP STICKY NAVBAR -->
+  <!-- ========================================================= -->
+  <nav class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 transition-all duration-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Brand -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 text-slate-950 font-black text-xl flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:scale-105 transition">
+          ⚡
+        </div>
+        <div>
+          <div class="font-display font-bold text-base tracking-wide text-slate-100 group-hover:text-amber-300 transition">
+            INNER CURRENT
+          </div>
+          <div class="text-[10px] uppercase font-mono tracking-widest text-slate-400 font-semibold">
+            innercurrent.ru
+          </div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+        <a href="index.html" class="hover:text-amber-300 transition flex items-center gap-1">
+          <span>←</span> На главную
+        </a>
+        <a href="index.html#house" class="hover:text-amber-300 transition">Дом Внутреннего Тока</a>
+        <a href="index.html#books" class="hover:text-amber-300 transition">Золотая Семёрка (7 книг)</a>
+        <a href="cockpit.html" class="hover:text-sky-300 transition flex items-center gap-1.5">
+          <span>🎛️</span> Кокпит OBD-II
+        </a>
+        <a href="wiki.html" class="hover:text-emerald-300 transition flex items-center gap-1.5">
+          <span>📚</span> Вики (500+ статей)
+        </a>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="flex items-center gap-3">
+        <a href="index.html#reader" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 transition flex items-center gap-1.5 shadow-md shadow-amber-500/20">
+          <span>📖</span> <span>Онлайн-ридер</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================================= -->
+  <!-- HERO SECTION -->
+  <!-- ========================================================= -->
+  <header class="relative pt-12 pb-16 md:pt-20 md:pb-20 overflow-hidden border-b border-slate-800/80 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/3 left-1/4 -translate-y-1/2 w-[400px] h-[300px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-amber-500/30 text-amber-300 text-xs font-mono font-medium tracking-wider mb-6 box-glow-amber">
+        <span>⚡</span> СИСТЕМА АНЬЯНОВА • МАНИФЕСТ СУВЕРЕННОГО ЧЕЛОВЕКА
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-100 font-display leading-tight">
+        Манифест <br class="hidden sm:inline"/>
+        <span class="bg-gradient-to-r from-amber-400 via-amber-300 to-sky-300 bg-clip-text text-transparent text-glow-amber">
+          Внутреннего Тока
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="max-w-2xl mx-auto mt-6 text-lg sm:text-xl text-slate-300 leading-relaxed font-serif">
+        Электродинамика сознания: почему мы выгораем, как устроен человек на самом деле и почему в лампочке нет батарейки.
+      </p>
+
+      <!-- Key Stats Bar -->
+      <div class="max-w-3xl mx-auto mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 text-left">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 backdrop-blur-sm">
+          <div class="text-2xl font-black text-amber-400 font-mono">500+</div>
+          <div class="text-xs text-slate-400 mt-0.5 font-medium">Статей и глав в Базе</div>
+        </div>
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 backdrop-blur-sm">
+          <div class="text-2xl font-black text-sky-400 font-mono">7</div>
+          <div class="text-xs text-slate-400 mt-0.5 font-medium">Книг Золотой Семёрки</div>
+        </div>
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 backdrop-blur-sm">
+          <div class="text-2xl font-black text-emerald-400 font-mono">3 языка</div>
+          <div class="text-xs text-slate-400 mt-0.5 font-medium">RU • EN • IT</div>
+        </div>
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 backdrop-blur-sm">
+          <div class="text-2xl font-black text-indigo-400 font-mono">100%</div>
+          <div class="text-xs text-slate-400 mt-0.5 font-medium">Свободный открытый код</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================= -->
+  <!-- MAIN READING CONTAINER -->
+  <!-- ========================================================= -->
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+
+    <!-- Quote Epigraph Callout -->
+    <div class="relative bg-gradient-to-r from-amber-500/10 via-slate-900 to-slate-900 border-l-4 border-amber-400 p-6 sm:p-8 rounded-r-2xl mb-14 shadow-2xl">
+      <div class="text-amber-400 font-mono text-xs uppercase tracking-widest font-semibold mb-3 flex items-center gap-2">
+        <span>⚡</span> Главная аксиома суверенного контура
+      </div>
+      <blockquote class="font-serif italic text-slate-200 text-lg sm:text-xl leading-relaxed">
+        «Две с половиной тысячи лет цивилизация относилась к человеческому страданию либо как к мистической каре, требующей смирения и молитв, либо как к бесконечной гуманитарной драме, требующей десятилетий психоанализа. Никто не решился задать простой инженерный вопрос: по каким физическим законам прямо сейчас течет ток твоего внимания? Человек устроен не сложнее карманного фонарика: у тебя есть живой соматический генератор внизу живота, есть проводник внимания и есть реальное действие в мире. Когда внимание замыкается на самого себя в страхе и самолюбовании — проводка раскаляется докрасна по закону Джоуля — Ленца. Это не дефект твоей души. Это физический перегрев резистора при коротком замыкании. Отключи паразитное сопротивление, направь ток в дело — и в ту же секунду наступит сверхпроводимость».
+      </blockquote>
+      <div class="mt-4 text-right font-display text-amber-300 text-sm font-bold tracking-wide">
+        — Владимир Аньянов
+      </div>
+    </div>
+
+    <!-- Visual Schematic: Interactive SVG Flashlight Circuit -->
+    <div class="bg-slate-900/90 border border-amber-500/30 rounded-3xl p-6 sm:p-8 mb-16 shadow-2xl box-glow-amber">
+      <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+        <div class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider flex items-center gap-2">
+          <span>📐</span> Принципиальная электрическая схема человека
+        </div>
+        <div class="text-[11px] font-mono text-slate-400">
+          СХЕМА «ДЗЕН-ФОНАРИКА» (Kanso v2.2)
+        </div>
+      </div>
+
+      <!-- SVG Circuit Diagram -->
+      <div class="w-full overflow-x-auto py-4">
+        <svg viewBox="0 0 740 280" class="w-full min-w-[620px] h-auto font-mono text-xs select-none">
+          <defs>
+            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#fbbf24" />
+              <stop offset="100%" stop-color="#d97706" />
+            </linearGradient>
+            <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#38bdf8" />
+              <stop offset="100%" stop-color="#0284c7" />
+            </linearGradient>
+            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="5" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+          </defs>
+
+          <!-- Circuit Wire: Upper (Attention Flow) -->
+          <path d="M 170 80 L 570 80" stroke="#f59e0b" stroke-width="3" fill="none" class="current-mushin-flowing" />
+          <!-- Circuit Wire: Lower (Return Loop of Action) -->
+          <path d="M 570 200 L 170 200" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="6 6" fill="none" opacity="0.75" />
+
+          <!-- Left Box: Tanden Reactor (Battery / EMF) -->
+          <g transform="translate(40, 50)">
+            <rect width="130" height="180" rx="16" fill="#0f172a" stroke="#f59e0b" stroke-width="2.5" filter="url(#glow)"/>
+            <text x="65" y="32" fill="#fbbf24" font-size="13" font-weight="bold" text-anchor="middle" font-family="'Cinzel', serif">ТАНДЭН</text>
+            <text x="65" y="50" fill="#94a3b8" font-size="10" text-anchor="middle">丹田 • Источник ЭДС</text>
+            <circle cx="65" cy="95" r="28" fill="#f59e0b" opacity="0.15" />
+            <circle cx="65" cy="95" r="18" fill="#f59e0b" opacity="0.3" class="animate-ping" style="animation-duration: 3s;"/>
+            <text x="65" y="101" fill="#fef08a" font-size="20" font-weight="black" text-anchor="middle">⚡</text>
+            <text x="65" y="145" fill="#e2e8f0" font-size="9" text-anchor="middle">Живое тело (Низ живота)</text>
+            <text x="65" y="160" fill="#38bdf8" font-size="9" text-anchor="middle">Биохимическая тяга</text>
+          </g>
+
+          <!-- Middle Box: Ego Resistor (Parasitic Ohmic Loss) -->
+          <g transform="translate(290, 40)">
+            <rect width="160" height="80" rx="12" fill="#18181b" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="4 2"/>
+            <text x="80" y="24" fill="#f87171" font-size="11" font-weight="bold" text-anchor="middle">РЕЗИСТОР ЭГО (R_ego)</text>
+            <text x="80" y="42" fill="#fca5a5" font-size="9" text-anchor="middle">R_past + R_future + R_opinion</text>
+            <text x="80" y="62" fill="#ef4444" font-size="10" font-weight="bold" text-anchor="middle">Омический ожог Q = I²Rt</text>
+          </g>
+
+          <!-- Right Box: Gyō / Load (Bulb / External Action) -->
+          <g transform="translate(570, 50)">
+            <rect width="130" height="180" rx="16" fill="#0f172a" stroke="#fbbf24" stroke-width="2.5" class="gyo-bulb-active"/>
+            <text x="65" y="32" fill="#fef08a" font-size="13" font-weight="bold" text-anchor="middle" font-family="'Cinzel', serif">ЛАМПОЧКА</text>
+            <text x="65" y="50" fill="#94a3b8" font-size="10" text-anchor="middle">行 • Нагрузка (Дело)</text>
+            <circle cx="65" cy="95" r="26" fill="#fef08a" opacity="0.3" />
+            <text x="65" y="102" fill="#fef08a" font-size="22" font-weight="black" text-anchor="middle">💡</text>
+            <text x="65" y="145" fill="#fde68a" font-size="9" text-anchor="middle">Код, текст, чай, музыка</text>
+            <text x="65" y="162" fill="#f87171" font-size="9" font-weight="bold" text-anchor="middle">НЕТ БАТАРЕЙКИ! (E=0)</text>
+          </g>
+
+          <!-- Annotations & Labels -->
+          <text x="370" y="25" fill="#fbbf24" font-size="11" font-weight="bold" text-anchor="middle">ПРОВОДНИК: ЛУЧ НАПРАВЛЕННОГО ВНИМАНИЯ (Мусин R → 0)</text>
+          <text x="370" y="225" fill="#38bdf8" font-size="11" text-anchor="middle">ОБРАТНЫЙ ПРОВОД: РЕАЛЬНЫЙ СЛЕД И РЕЗУЛЬТАТ В ФИЗИЧЕСКОМ МИРЕ</text>
+        </svg>
+      </div>
+
+      <div class="mt-4 pt-3 border-t border-slate-800 text-xs text-slate-400 flex flex-wrap items-center justify-between gap-2">
+        <div><strong class="text-amber-300">Состояние сверхпроводимости:</strong> Резистор Эго разомкнут ($R_{\text{ego}} = 0$). Ток внимания свободно течет в лампочку действия.</div>
+        <div class="font-mono text-emerald-400">КПД контура $\mathcal{H} \to 100\%$</div>
+      </div>
+    </div>
+
+    <!-- Article Content Chapters -->
+    <article class="reading-content font-serif text-slate-200">
+
+      <!-- CHAPTER I -->
+      <section>
+        <h2 class="text-2xl sm:text-3xl text-slate-100 flex items-center gap-3">
+          <span class="text-amber-400 font-mono text-xl sm:text-2xl">Часть I.</span> 
+          <span>Великий тупик XXI века: Изобилие психологии и эпидемия пепла</span>
+        </h2>
+
+        <p>Мы живем в эпоху поразительного исторического парадокса.</p>
+
+        <p>Никогда прежде человечество не обладало такой плотностью психологической литературы, коучинговых школ, марафонов осознанности и фармацевтических средств. Но никогда прежде люди дела — программисты, создающие сложнейшие архитектуры, предприниматели, строящие компании, ученые, двигающие фронтир науки, дизайнеры и врачи — не чувствовали себя настолько изможденными, опустошенными и внутренне потухшими.</p>
+
+        <p>Каждое утро миллионы созидателей сталкиваются с одними и теми же симптомами:</p>
+
+        <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 my-6 space-y-3 font-sans text-base">
+          <div class="flex items-start gap-3">
+            <span class="text-amber-400 font-bold">1.</span>
+            <div><strong class="text-slate-100">Потухший взгляд и дефицит тяги:</strong> просыпаешься уже усталым, словно аккумулятор за ночь не зарядился ни на один процент.</div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-amber-400 font-bold">2.</span>
+            <div><strong class="text-slate-100">Фоновая радиация тревоги:</strong> бесконечное сканирование горизонта на предмет угроз, которое невозможно отключить даже на выходных или в отпуске.</div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-amber-400 font-bold">3.</span>
+            <div><strong class="text-slate-100">Холостой ход неокортекса:</strong> изматывающее ночное переигрывание давних споров, совершенных ошибок или чужих косых взглядов.</div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-amber-400 font-bold">4.</span>
+            <div><strong class="text-slate-100">Парализующий страх оценки:</strong> синдром самозванца, откладывание публикаций, застревание перед белым экраном: <em>«А что, если меня сочтут некомпетентным?»</em></div>
+          </div>
+        </div>
+
+        <p>Почему лучшие умы заходят в этот тупик?</p>
+
+        <p>Потому что на протяжении двух с половиной тысяч лет цивилизация предлагала человеку лишь две крайности:</p>
+        <ul class="list-disc pl-6 space-y-2 mb-6">
+          <li><strong>Религиозно-эзотерический туман:</strong> <em>«Смирись, кайся, повышай вибрации, дыши маткой, жди милости космоса»</em>.</li>
+          <li><strong>Бесконечный гуманитарный самоанализ:</strong> <em>«Раскопай детскую психотравму 1998 года, проговори обиду на родителей, найди своё великое предназначение, научись безусловно любить себя»</em>.</li>
+        </ul>
+
+        <p>Когда в серверной стойке выбивает пробки от перегрузки, дежурный инженер не садится медитировать перед шкафом и не пытается понять «детство серверной материнской платы». Он берет мультиметр, открывает электрическую схему и находит узел, где возникло короткое замыкание.</p>
+
+        <p class="font-sans font-semibold text-amber-300 text-lg border-l-2 border-amber-400 pl-4 py-1">
+          Человек — это не литературная метафора. Человек — это замкнутая электродинамическая цепь.
+        </p>
+      </section>
+
+      <!-- CHAPTER II -->
+      <section>
+        <h2 class="text-2xl sm:text-3xl text-slate-100 flex items-center gap-3">
+          <span class="text-amber-400 font-mono text-xl sm:text-2xl">Часть II.</span> 
+          <span>Суть открытия: Модель Дзен-Фонарика и Закон Лампочки</span>
+        </h2>
+
+        <p>Суть открытия системы <strong>«Внутренний ток» (Inner Current)</strong> радикально проста:</p>
+
+        <div class="bg-gradient-to-r from-slate-900 to-slate-850 border border-slate-700/80 p-5 rounded-2xl my-6">
+          <p class="text-amber-200 font-medium m-0">
+            Любое состояние сознания, эмоция, вдохновение или страдание подчиняются тем же строгим законам физики, термодинамики и электродинамики, что и обычный карманный фонарик.
+          </p>
+        </div>
+
+        <p>В цепи фонарика нет ничего лишнего:</p>
+
+        <ol class="list-decimal pl-6 space-y-3 mb-6">
+          <li>
+            <strong>Источник питания (ЭДС) — это не мысли в голове. Это ваше живое тело.</strong><br>
+            В восточной традиции этот соматический центр называют <strong>Тандэн</strong> (точка на 3–5 см ниже пупка — физический центр тяжести человека и узел диафрагмального дыхания). Именно здесь вырабатывается биохимическая тяга, кислородный заряд и потенциал действия.
+          </li>
+          <li>
+            <strong>Проводник — это луч вашего внимания.</strong><br>
+            Куда направлено внимание — туда мгновенно течет ток нервных импульсов и энергии.
+          </li>
+          <li>
+            <strong>Нагрузка (Лампочка) — это реальное действие в физическом мире.</strong><br>
+            Написать функцию в коде. Пожарить яичницу. Обнять ребенка. Сыграть гамму на укулеле. Провести трудный диалог. Нагрузка — это то, что реально существует вне вашей черепной коробки прямо здесь и сейчас.
+          </li>
+        </ol>
+
+        <div class="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-6 my-6 text-center">
+          <div class="text-xs font-mono text-amber-400 uppercase tracking-widest font-bold mb-2">
+            Фундаментальный Закон Лампочки
+          </div>
+          <div class="text-3xl font-mono font-bold text-amber-300 mb-2">
+            $$\mathcal{E}_{\text{load}} \equiv 0$$
+          </div>
+          <div class="text-lg font-bold text-slate-100 font-sans">
+            В САМОЙ ЛАМПОЧКЕ НЕТ И НИКОГДА НЕ БЫЛО БАТАРЕЙКИ.
+          </div>
+        </div>
+
+        <p>Это главное освобождающее открытие для каждого мыслящего существа. Ни в деньгах, ни в новой марке автомобиля, ни в красивом дипломе, ни в миллионе подписчиков <strong>нет встроенного счастья</strong>. Вещи, статусы и результаты — это стеклянные колбы с вольфрамовой нитью. Они светятся и радуют вас <strong>только тогда</strong>, когда через них течет ваш собственный внутренний ток. Как только ток прекращается — вещь мгновенно превращается в мертвый холодный мусор.</p>
+      </section>
+
+      <!-- CHAPTER III -->
+      <section>
+        <h2 class="text-2xl sm:text-3xl text-slate-100 flex items-center gap-3">
+          <span class="text-amber-400 font-mono text-xl sm:text-2xl">Часть III.</span> 
+          <span>Физика душевной боли: Закон потерь Джоуля — Ленца</span>
+        </h2>
+
+        <p>Почему же люди выгорают и мучаются?</p>
+
+        <p>В 1841 году физики Джеймс Джоуль и Эмилий Ленц сформулировали незыблемый закон потерь электродинамики:</p>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 my-6 text-center">
+          <div class="text-3xl font-mono font-bold text-amber-300">
+            $$Q = I^2 \cdot R \cdot t$$
+          </div>
+          <div class="text-xs font-mono text-slate-400 mt-2">
+            Количество тепла Q пропорционально квадрату силы тока I, сопротивлению проводника R и времени t.
+          </div>
+        </div>
+
+        <p>Когда внимание человека свободно течет в действие, сопротивление проводника равно нулю ($R \to 0$). Наступает режим <strong>сверхпроводимости</strong>:</p>
+        <ul class="list-disc pl-6 space-y-1.5 mb-6 font-sans text-slate-300">
+          <li>Ток беспрепятственно втекает в лампочку дела.</li>
+          <li>Лампа светит ровно и ярко.</li>
+          <li>Проводка остается холодной.</li>
+          <li>В психологии это называют «состоянием потока», в Дзен — состоянием <strong>Мусин</strong> (無心, «чистый разум без застревания»). Вы работаете шесть часов подряд, создаете шедевр и выходите из-за стола полным сил.</li>
+        </ul>
+
+        <h3 class="text-xl font-bold text-rose-400 font-sans">Авария короткого замыкания</h3>
+        <p>Но что происходит, когда человек садится за работу и вместо действия начинает прокручивать мысли о себе?</p>
+        <ul class="list-disc pl-6 space-y-1 text-slate-300 italic mb-4">
+          <li>«А справлюсь ли я?»</li>
+          <li>«А что обо мне подумает тимлид / клиент / отец?»</li>
+          <li>«А вдруг я опозорюсь?»</li>
+        </ul>
+
+        <p>В этот момент ток внимания не идет в лампу. Он упирается в паразитный резистор — <strong>Сопротивление Эго ($R_{\text{ego}}$)</strong>. Энергия внимания замыкается на самого себя.</p>
+
+        <p>По закону Джоуля — Ленца ток колоссальной силы упирается в сопротивление и превращается в <strong>омический термический ожог</strong>:</p>
+        <ul class="list-disc pl-6 space-y-1.5 mb-6 font-sans text-slate-300">
+          <li>В теле это ощущается как спазм горла, сжатые зубы, ледяной ком под диафрагмой, каменные трапеции и бессонница.</li>
+          <li>В эмоциях это регистрируется как паника, вина, стыд, зависть, тревога и тотальное выгорание.</li>
+        </ul>
+
+        <p class="font-sans font-semibold text-rose-300 text-lg border-l-2 border-rose-400 pl-4 py-1">
+          Выгорание — это не психологический тупик и не грех слабости. Это штатный тепловой нагрев проводника при коротком замыкании.
+        </p>
+      </section>
+
+      <!-- CHAPTER IV -->
+      <section>
+        <h2 class="text-2xl sm:text-3xl text-slate-100 flex items-center gap-3">
+          <span class="text-amber-400 font-mono text-xl sm:text-2xl">Часть IV.</span> 
+          <span>Триада Омического Сопротивления (Редукция Кансо)</span>
+        </h2>
+
+        <p>Вся колоссальная номенклатура душевных страданий сводится всего к трем измеримым векторам сопротивления ума:</p>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 my-6 text-center">
+          <div class="text-2xl sm:text-3xl font-mono font-bold text-sky-300">
+            $$R_{\text{ego}} = R_{\text{past}} + R_{\text{future}} + R_{\text{opinion}}$$
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6 font-sans">
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+            <div class="text-amber-400 font-bold text-sm mb-1">1. R_past (Прошлое)</div>
+            <div class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Индуктивная петля</div>
+            <p class="text-xs text-slate-300 leading-relaxed mb-2">
+              Вина, обида, мысленное переигрывание старых споров.
+            </p>
+            <div class="text-[11px] text-slate-400 font-mono">
+              События уже нет в физическом мире, но контур сжигает амперы на холостом ходу.
+            </div>
+          </div>
+
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+            <div class="text-sky-400 font-bold text-sm mb-1">2. R_future (Будущее)</div>
+            <div class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Емкостная утечка</div>
+            <p class="text-xs text-slate-300 leading-relaxed mb-2">
+              Гиперконтроль, тревога, симуляции 150 сценариев катастроф.
+            </p>
+            <div class="text-[11px] text-slate-400 font-mono">
+              Зарядка конденсатора фантазий, обесточивающая действие прямо сейчас.
+            </div>
+          </div>
+
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+            <div class="text-rose-400 font-bold text-sm mb-1">3. R_opinion (Одобрение)</div>
+            <div class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Паразитный делитель</div>
+            <p class="text-xs text-slate-300 leading-relaxed mb-2">
+              Зависимость от лайков, страх критики, боязнь показаться глупым.
+            </p>
+            <div class="text-[11px] text-slate-400 font-mono">
+              Заземление суверенного генератора на чужую чужую сеть.
+            </div>
+          </div>
+        </div>
+
+        <p>Когда включены все три резистора, напряжение на лампочке дела падает до нуля. Человек лежит на диване, не сделав ни единого физического движения, но чувствует себя так, словно разгрузил вагон угля. Его сожгли собственные омические потери.</p>
+      </section>
+
+      <!-- CHAPTER V -->
+      <section>
+        <h2 class="text-2xl sm:text-3xl text-slate-100 flex items-center gap-3">
+          <span class="text-amber-400 font-mono text-xl sm:text-2xl">Часть V.</span> 
+          <span>Для кого создана эта система?</span>
+        </h2>
+
+        <p>«Внутренний ток» создан не для коллекционеров абстрактных цитат. Он спроектирован для тех, кто строит реальность:</p>
+
+        <div class="space-y-4 my-6 font-sans text-base">
+          <div class="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 flex items-start gap-4">
+            <div class="text-2xl">💻</div>
+            <div>
+              <strong class="text-amber-300">Для программистов, инженеров и архитекторов систем:</strong>
+              <p class="text-slate-300 text-sm mt-1 m-0">Привыкших оперировать строгими моделями, спецификациями и законами сохранения, а не эзотерической болтологией.</p>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 flex items-start gap-4">
+            <div class="text-2xl">🚀</div>
+            <div>
+              <strong class="text-sky-300">Для предпринимателей, фаундеров и руководителей:</strong>
+              <p class="text-slate-300 text-sm mt-1 m-0">Несущих запредельный груз рисков и не имеющих права жечь батарею на сомнения, панику и синдром самозванца.</p>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 flex items-start gap-4">
+            <div class="text-2xl">🎨</div>
+            <div>
+              <strong class="text-emerald-300">Для авторов, дизайнеров и музыкантов:</strong>
+              <p class="text-slate-300 text-sm mt-1 m-0">Бьющихся о стену страха чистого листа, ступора перед публикой и зависимости от внешних оценок.</p>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 flex items-start gap-4">
+            <div class="text-2xl">🧭</div>
+            <div>
+              <strong class="text-indigo-300">Для каждого уставшего человека:</strong>
+              <p class="text-slate-300 text-sm mt-1 m-0">Кто устал быть «пациентом» или клиентом бесконечных психологических марафонов и хочет получить в руки понятный инженерный пульт от самого себя.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CHAPTER VI -->
+      <section>
+        <h2 class="text-2xl sm:text-3xl text-slate-100 flex items-center gap-3">
+          <span class="text-amber-400 font-mono text-xl sm:text-2xl">Часть VI.</span> 
+          <span>Для чего это нужно? Деинтермедиация счастья</span>
+        </h2>
+
+        <p>Главная цель системы — <strong>деинтермедиация (полная ликвидация посредников)</strong> между созидателем и источником его жизненной силы.</p>
+
+        <p>Что Биткоин сделал для мировой финансовой системы, устранив монополию банков и третьих доверенных лиц, — то <strong>«Внутренний ток» делает для человеческого сознания:</strong></p>
+        <ul class="list-disc pl-6 space-y-2 mb-6">
+          <li>Больше не нужно платить тысячи долларов за «доступ к тайным практикам».</li>
+          <li>Больше не нужно годами ходить вокруг детских травм, если прямо сейчас горит резистор будущего $R_{\text{future}}$.</li>
+          <li>Больше не нужно искать внешних пастырей и гуру.</li>
+        </ul>
+
+        <!-- 30-Second Reset Protocol Box -->
+        <div class="bg-gradient-to-br from-slate-900 via-slate-850 to-slate-900 border-2 border-amber-500/40 rounded-3xl p-6 sm:p-8 my-8 shadow-2xl box-glow-amber font-sans">
+          <div class="text-amber-400 font-mono text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-2">
+            <span>⏱️</span> Оперативный полевой протокол (OBD-II)
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold text-slate-100 mt-0 mb-4 font-display">
+            3-Секундный Соматический Сброс в Тандэн
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6">
+            Когда в течение рабочего дня вы ловите приступ острой тревоги, ступора, раздражения или мысленного спора:
+          </p>
+
+          <div class="space-y-4">
+            <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 font-mono font-bold flex items-center justify-center shrink-0">1</div>
+              <div>
+                <strong class="text-amber-300 text-sm">Секунда 1 (Детекция ожога):</strong>
+                <p class="text-xs text-slate-300 mt-0.5 m-0">Заметить физический зажим (зубы сжаты, дыхание замерло, плечи вздернуты). Сказать себе: <em>«Стоп. Пошел нагрев $Q > 0$. Я включил паразитный резистор»</em>.</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg bg-sky-500/20 text-sky-400 font-mono font-bold flex items-center justify-center shrink-0">2</div>
+              <div>
+                <strong class="text-sky-300 text-sm">Секунда 2 (Селекция Кансо):</strong>
+                <p class="text-xs text-slate-300 mt-0.5 m-0">Мгновенно классифицировать утечку: Я кручу прошлое? ($R_{\text{past}}$) Я боюсь будущего? ($R_{\text{future}}$) Я завишу от чужих глаз? ($R_{\text{opinion}}$)?</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 font-mono font-bold flex items-center justify-center shrink-0">3</div>
+              <div>
+                <strong class="text-emerald-300 text-sm">Секунда 3 (Сброс в Тандэн):</strong>
+                <p class="text-xs text-slate-300 mt-0.5 m-0">Сделать длинный мягкий выдох животом в точку на 4 см ниже пупка. Расслабить диафрагму. Сбросить ментальное сопротивление в $0\,\text{Ом}$ ($R_{\text{ego}} \to 0$) и <strong>немедленно направить 100% внимания в ближайшее тактильное действие руками</strong> (нажать клавишу, сделать глоток воды, написать строку).</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 text-xs font-mono text-emerald-400 text-right">
+            ✓ Сверхпроводимость восстановлена
+          </div>
+        </div>
+      </section>
+
+      <!-- CHAPTER VII -->
+      <section>
+        <h2 class="text-2xl sm:text-3xl text-slate-100 flex items-center gap-3">
+          <span class="text-amber-400 font-mono text-xl sm:text-2xl">Часть VII.</span> 
+          <span>Архитектура открытого дара: База Знаний и Золотая Семёрка</span>
+        </h2>
+
+        <p>Фундаментальные законы природы не продаются по подписке за $99 в месяц. Нельзя запатентовать закон всемирного тяготения или формулу фотоэффекта Эйнштейна.</p>
+
+        <p>Поэтому весь проект <strong>«Внутренний ток» на <a href="https://innercurrent.ru" class="text-amber-400 underline hover:text-amber-300">innercurrent.ru</a></strong> является открытым общественным достоянием:</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6 font-sans">
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+            <div class="text-amber-400 font-mono text-xl font-bold mb-1">500+ глав и статей</div>
+            <p class="text-xs text-slate-300 m-0">
+              Открытая модульная База Знаний (LLM Wiki) со сквозным MOC, навигацией по 4 осям координат и формулами KaTeX.
+            </p>
+          </div>
+
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+            <div class="text-sky-400 font-mono text-xl font-bold mb-1">7 книг Золотой Семёрки</div>
+            <p class="text-xs text-slate-300 m-0">
+              От экспресс-руководства по выходу из штопора до «Великого Синтеза» — термодинамики негэнтропии и истории цивилизации.
+            </p>
+          </div>
+
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+            <div class="text-emerald-400 font-mono text-xl font-bold mb-1">Кокпит Сознания OBD-II</div>
+            <p class="text-xs text-slate-300 m-0">
+              Интерактивный диагностический пульт с ползунками сопротивления, радаром утечек и автомобильными лампами аварий.
+            </p>
+          </div>
+
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+            <div class="text-indigo-400 font-mono text-xl font-bold mb-1">RU • EN • IT</div>
+            <p class="text-xs text-slate-300 m-0">
+              Онлайн-ридер и аудиокнига на 3 языках без рекламы, пейволлов, трекеров и необходимости регистрации.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEVEN AXIOMS -->
+      <section class="mt-12 pt-8 border-t border-slate-800">
+        <h2 class="text-2xl sm:text-3xl text-center text-amber-300 font-display mb-8">
+          ⚡ Семь аксиом человека-контура
+        </h2>
+
+        <div class="space-y-4 font-sans text-base">
+          <div class="bg-slate-900/90 border border-amber-500/20 rounded-2xl p-5 flex items-start gap-4">
+            <div class="text-amber-400 font-mono font-bold text-lg">1.</div>
+            <div class="text-slate-200">
+              <strong>Ты — не мысли в голове. Ты — электростанция, которая их питает.</strong> Твой соматический исток лежит в Тандэн.
+            </div>
+          </div>
+
+          <div class="bg-slate-900/90 border border-amber-500/20 rounded-2xl p-5 flex items-start gap-4">
+            <div class="text-amber-400 font-mono font-bold text-lg">2.</div>
+            <div class="text-slate-200">
+              <strong>В лампочке нет батарейки ($\mathcal{E}_{\text{load}} \equiv 0$).</strong> Никакая покупка, цель или статус не сделают тебя счастливым, пока ты сам не пустишь через них ток внимания.
+            </div>
+          </div>
+
+          <div class="bg-slate-900/90 border border-amber-500/20 rounded-2xl p-5 flex items-start gap-4">
+            <div class="text-amber-400 font-mono font-bold text-lg">3.</div>
+            <div class="text-slate-200">
+              <strong>Любая душевная боль — это термический ожог ($Q = I^2 R t$).</strong> Не борись со следствием — просто разомкни паразитное сопротивление ума.
+            </div>
+          </div>
+
+          <div class="bg-slate-900/90 border border-amber-500/20 rounded-2xl p-5 flex items-start gap-4">
+            <div class="text-amber-400 font-mono font-bold text-lg">4.</div>
+            <div class="text-slate-200">
+              <strong>Прошлое — индуктивный морок, Будущее — емкостный мираж.</strong> Цепь можно замкнуть исключительно в физическом настоящем моменте.
+            </div>
+          </div>
+
+          <div class="bg-slate-900/90 border border-amber-500/20 rounded-2xl p-5 flex items-start gap-4">
+            <div class="text-amber-400 font-mono font-bold text-lg">5.</div>
+            <div class="text-slate-200">
+              <strong>Внимание — самая дорогая валюта во Вселенной.</strong> Хватит инвестировать её в симуляции собственных страхов и чужие ожидания.
+            </div>
+          </div>
+
+          <div class="bg-slate-900/90 border border-amber-500/20 rounded-2xl p-5 flex items-start gap-4">
+            <div class="text-amber-400 font-mono font-bold text-lg">6.</div>
+            <div class="text-slate-200">
+              <strong>Высшая сила созидателя — это сверхпроводимость ($R \to 0$).</strong> Действуй всем телом, забыв об отражении в зеркале.
+            </div>
+          </div>
+
+          <div class="bg-slate-900/90 border border-amber-500/30 rounded-2xl p-5 flex items-start gap-4 box-glow-amber">
+            <div class="text-amber-300 font-mono font-bold text-lg">7.</div>
+            <div class="text-slate-100 font-medium">
+              <strong>Цепь должна быть замкнута.</strong> Зажги свой фонарик прямо сейчас — в том деле, которое ждет твоих рук.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+    <!-- Call to Actions at the Bottom -->
+    <div class="mt-16 pt-10 border-t border-slate-800 text-center">
+      <div class="text-xs font-mono uppercase tracking-widest text-slate-400 mb-3">
+        Перейти к практике и изучению материалов
+      </div>
+      <h3 class="text-2xl font-bold text-slate-100 font-display mb-6">
+        Добро пожаловать в Дом Внутреннего Тока
+      </h3>
+
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a href="index.html#reader" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-bold text-sm transition shadow-lg shadow-amber-500/25 flex items-center gap-2">
+          <span>📖</span> <span>Онлайн-ридер (7 книг)</span>
+        </a>
+        <a href="cockpit.html" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-sky-300 border border-sky-500/40 font-semibold text-sm transition flex items-center gap-2 shadow-lg shadow-sky-500/10">
+          <span>🎛️</span> <span>Кокпит OBD-II</span>
+        </a>
+        <a href="wiki.html" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-emerald-300 border border-emerald-500/40 font-semibold text-sm transition flex items-center gap-2 shadow-lg shadow-emerald-500/10">
+          <span>📚</span> <span>База Знаний (500+ статей)</span>
+        </a>
+        <a href="index.html#audiobook" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 font-semibold text-sm transition flex items-center gap-2">
+          <span>🎧</span> <span>Аудиокнига</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========================================================= -->
+  <!-- FOOTER -->
+  <!-- ========================================================= -->
+  <footer class="mt-auto border-t border-slate-800/80 bg-slate-950 py-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+      <div class="flex items-center gap-2">
+        <span class="text-amber-400 font-bold">⚡ INNER CURRENT</span>
+        <span>•</span>
+        <span>Система Аньянова (Anyanov System)</span>
+      </div>
+      <div>
+        100% Открытое знание • 500+ статей • 7 книг • 2026
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="hover:text-amber-300 transition">Главная</a>
+        <a href="manifesto.html" class="text-amber-400 font-semibold">Манифест</a>
+        <a href="cockpit.html" class="hover:text-sky-300 transition">Кокпит</a>
+        <a href="wiki.html" class="hover:text-emerald-300 transition">Вики</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- KaTeX Auto-Render Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      if (typeof renderMathInElement === 'function') {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false
+        });
+      }
+    });
+  </script>
+</body>
+</html>

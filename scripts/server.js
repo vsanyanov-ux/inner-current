@@ -505,11 +505,15 @@ ${payload.field_test_notes || '- Проведено полевое тестир�
     let reqPath = decodeURI(pathname);
 
     // Алиасы для страниц
-    if (reqPath === '/cockpit' || reqPath === '/cockpit/' || reqPath === '/dashboard') {
+    if (reqPath === '/manifesto' || reqPath === '/manifesto/' || reqPath === '/manifest' || reqPath === '/manifest/') {
+      reqPath = '/manifesto.html';
+    } else if (reqPath === '/trainer' || reqPath === '/trainer/' || reqPath === '/simulator' || reqPath === '/app') {
+      reqPath = '/trainer.html';
+    } else if (reqPath === '/cockpit' || reqPath === '/cockpit/' || reqPath === '/dashboard') {
       reqPath = '/cockpit.html';
     } else if (reqPath === '/wiki' || reqPath === '/wiki/' || reqPath === '/reader') {
       reqPath = '/wiki.html';
-    } else if (reqPath === '/' || reqPath === '') {
+    } else if (reqPath === '/books' || reqPath === '/books/' || reqPath === '/' || reqPath === '') {
       reqPath = '/index.html';
     } else if (reqPath.endsWith('/')) {
       reqPath += 'index.html';
@@ -581,11 +585,12 @@ let secondaryServer = null;
 
 server.listen(PORT, () => {
   console.log(`⚡ Inner Current server running:`);
-  console.log(`   - ⚡ Интерактивный тренажер:  http://localhost:${PORT}/`);
-  console.log(`   - 🎛️  Пульт Сверхпроводимости: http://localhost:${PORT}/cockpit`);
-  console.log(`   - 📚 Онлайн-Ридер Вики:       http://localhost:${PORT}/wiki`);
-  console.log(`   - 📖 Веб-ридер книги:         http://localhost:${PORT}/book/`);
-  console.log(`   - 🎧 Веб-аудиоплеер книги:     http://localhost:${PORT}/audiobook/`);
+  console.log(`   - 📚 Библиотека книг (innercurrent.ru): http://localhost:${PORT}/`);
+  console.log(`   - ⚡ Интерактивный тренажер цепи:        http://localhost:${PORT}/trainer`);
+  console.log(`   - 🎛️  Пульт Сверхпроводимости:            http://localhost:${PORT}/cockpit`);
+  console.log(`   - 📚 Онлайн-Ридер Вики:                  http://localhost:${PORT}/wiki`);
+  console.log(`   - 📖 Веб-ридер книги:                    http://localhost:${PORT}/book/`);
+  console.log(`   - 🎧 Веб-аудиоплеер книги:                http://localhost:${PORT}/audiobook/`);
 });
 
 if (PORT !== 3333) {

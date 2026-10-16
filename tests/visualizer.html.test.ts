@@ -54,6 +54,9 @@ describe('Visualizer public/index.html Integrity & Script Syntax Test Suite', ()
     assert.deepEqual(missingFns, [], `Found missing onclick functions: ${missingFns.join(', ')}`);
   });
 
+  const trainerHtmlPath = path.resolve('public/trainer.html');
+  const trainerHtml = fs.existsSync(trainerHtmlPath) ? fs.readFileSync(trainerHtmlPath, 'utf8') : html;
+
   it('3. Happiness Dashboard DOM elements exist and are accessible', () => {
     const requiredIds = [
       'view-happiness-dashboard',
@@ -70,7 +73,7 @@ describe('Visualizer public/index.html Integrity & Script Syntax Test Suite', ()
     ];
 
     for (const id of requiredIds) {
-      assert.ok(html.includes(`id="${id}"`), `Element with id "${id}" should exist in public/index.html`);
+      assert.ok(trainerHtml.includes(`id="${id}"`), `Element with id "${id}" should exist in trainer.html`);
     }
   });
 
@@ -94,7 +97,7 @@ describe('Visualizer public/index.html Integrity & Script Syntax Test Suite', ()
     ];
 
     for (const id of bullIds) {
-      assert.ok(html.includes(`id="${id}"`), `Ten Bulls element with id "${id}" should exist in public/index.html`);
+      assert.ok(trainerHtml.includes(`id="${id}"`), `Ten Bulls element with id "${id}" should exist in trainer.html`);
     }
   });
 
@@ -122,11 +125,11 @@ describe('Visualizer public/index.html Integrity & Script Syntax Test Suite', ()
     ];
 
     for (const id of triadIds) {
-      assert.ok(html.includes(`id="${id}"`), `Triad element with id "${id}" should exist in public/index.html`);
+      assert.ok(trainerHtml.includes(`id="${id}"`), `Triad element with id "${id}" should exist in trainer.html`);
     }
   });
 
-  it('6. Triad of Ego Resistance (Chapter 246) UI elements exist in index.html', () => {
+  it('6. Triad of Ego Resistance (Chapter 246) UI elements exist in trainer.html', () => {
     const triad246Ids = [
       'sc_sliderApproval',
       'sc_labelApproval',
@@ -138,8 +141,18 @@ describe('Visualizer public/index.html Integrity & Script Syntax Test Suite', ()
     ];
 
     for (const id of triad246Ids) {
-      assert.ok(html.includes(`id="${id}"`), `Chapter 246 element with id "${id}" should exist in public/index.html`);
+      assert.ok(trainerHtml.includes(`id="${id}"`), `Chapter 246 element with id "${id}" should exist in trainer.html`);
     }
+  });
+
+  it('7. Manifesto public/manifesto.html Integrity: exists and renders correctly', () => {
+    const manifestoPath = path.resolve('public/manifesto.html');
+    assert.ok(fs.existsSync(manifestoPath), 'public/manifesto.html should exist');
+    const manifestoHtml = fs.readFileSync(manifestoPath, 'utf8');
+    assert.ok(manifestoHtml.includes('Манифест Внутреннего Тока'), 'Manifesto title should exist');
+    assert.ok(manifestoHtml.includes('500+'), 'Manifesto should mention 500+ articles');
+    assert.ok(manifestoHtml.includes('ТАНДЭН'), 'Manifesto should feature Tanden in schematic');
+    assert.ok(manifestoHtml.includes('ЛАМПОЧКА'), 'Manifesto should feature Bulb in schematic');
   });
 
   it('7. Cockpit public/cockpit.html Integrity: scripts parse cleanly and Triad HUD exists', () => {
