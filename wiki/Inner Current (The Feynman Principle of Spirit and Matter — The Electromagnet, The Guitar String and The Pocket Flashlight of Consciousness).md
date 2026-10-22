@@ -2,6 +2,12 @@
 title: "Inner Current: The Feynman Principle of Spirit and Matter — The Electromagnet, The Guitar String and The Pocket Flashlight of Consciousness"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/epistemology
+  - state/superconducting
   - feynman-technique
   - spirit-and-matter
   - monism

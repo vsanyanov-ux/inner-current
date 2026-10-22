@@ -4,7 +4,25 @@ title: "Inner Current — 95. Универсальный Розеттский К
 created: 2026-09-26
 author: Vladimir Anyanov
 layer: III. Дзен-онтология и синтез
-tags: [inner-current, rosetta-stone, seven-enigmas, love, art, addictions, education, power-entropy, singularity, theodicy, direct-flow, disintermediation]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
+  - rosetta-stone
+  - seven-enigmas
+  - love
+  - art
+  - addictions
+  - education
+  - power-entropy
+  - singularity
+  - theodicy
+  - direct-flow
+  - disintermediation
 ---
 
 # 95. Универсальный Розеттский Камень: Дешифровка Семи Великих Загадок Цивилизации — Любовь, Искусство, Зависимости, Воспитание, Власть, Сингулярность и Зло

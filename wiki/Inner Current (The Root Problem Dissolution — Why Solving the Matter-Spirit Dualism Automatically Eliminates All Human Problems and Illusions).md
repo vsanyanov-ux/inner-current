@@ -1,7 +1,26 @@
 ---
 created: 2026-09-30
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, root-problem, dualism, matter-and-spirit, non-duality, circuit-electrodynamics, tanden, deai, superconductivity, cartesian-split, satori, consilience, manuscript]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - root-problem
+  - dualism
+  - matter-and-spirit
+  - non-duality
+  - circuit-electrodynamics
+  - tanden
+  - deai
+  - superconductivity
+  - cartesian-split
+  - satori
+  - consilience
+  - manuscript
 type: canon
 layer: III
 status: evergreen

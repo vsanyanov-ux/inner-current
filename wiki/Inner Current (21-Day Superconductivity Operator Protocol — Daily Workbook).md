@@ -1,7 +1,20 @@
 ---
 created: 2026-09-23
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, workbook, 21-day-protocol, practice, self-calibration, telemetry, daily-routine]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
+  - workbook
+  - 21-day-protocol
+  - practice
+  - self-calibration
+  - telemetry
+  - daily-routine
 type: protocol
 status: evergreen
 ---

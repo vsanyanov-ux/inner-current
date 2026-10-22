@@ -1,7 +1,22 @@
 ---
 created: 2026-09-25
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, newton, paradigm-shift, consilience, epistemology, electrodynamics, zen-engineering, sovereignty, self-hosted-human]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/sovereignty
+  - state/overheating
+  - newton
+  - paradigm-shift
+  - consilience
+  - epistemology
+  - electrodynamics
+  - zen-engineering
+  - sovereignty
+  - self-hosted-human
 aliases:
   - "65-the-newtonian-paradigm-shift-of-consciousness"
   - "Ньютоновский фазовый переход сознания"

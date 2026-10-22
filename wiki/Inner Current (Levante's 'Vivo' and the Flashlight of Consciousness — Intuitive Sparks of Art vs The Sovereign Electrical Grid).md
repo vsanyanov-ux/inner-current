@@ -3,7 +3,24 @@ created: 2026-09-26
 source: [[index|Wiki Index]]
 layer: III
 status: complete
-tags: [inner-current, levante, vivo, art, intuition, electrodynamics, flashlight, music, consilience, mushin, ego-resistor]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
+  - levante
+  - vivo
+  - art
+  - intuition
+  - electrodynamics
+  - flashlight
+  - music
+  - consilience
+  - mushin
+  - ego-resistor
 ---
 
 # 85. Леванте («Vivo») и Фонарик Сознания: Интуитивные искры искусства против суверенной электросети сверхпроводимости

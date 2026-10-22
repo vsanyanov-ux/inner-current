@@ -279,6 +279,19 @@ for (const stage of Object.values(TEN_BULLS_CATALOG)) {
 }
 
 console.log('\n' + '='.repeat(70));
+console.log('🐾 ГЕНЕРАТОР ДЗЭН-ХАЙКУ & КОШАЧЬЕЙ СВЕРХПРОВОДИМОСТИ');
+console.log('='.repeat(70));
+
+import { getRandomZenHaiku } from '../domain/zen.haiku.registry.ts';
+const haiku = getRandomZenHaiku();
+console.log(`\n📜 [${haiku.author}] — «${haiku.theme}»`);
+console.log(`  ${haiku.haikuRu.split('\n').join('\n  ')}`);
+console.log(`\n  🐾 Кошачий контур:`);
+console.log(`  ${haiku.felineCircuitComment}`);
+console.log(`\n  ⚡ Электродинамика: ${haiku.electrodynamicFormula}`);
+console.log(`  🧘 Соматическая калибровка (20 сек): ${haiku.somaticCalibration}`);
+
+console.log('\n' + '='.repeat(70));
 
 
 

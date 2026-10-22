@@ -2,6 +2,12 @@
 title: "Inner Current: Olfactory Circuit Tuning — The 60-Flacon Kodo Organ, Hardware Bypass of Thalamus and Protocols of Ego Breaching"
 tags:
   - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - anyanov-system
   - olfactory-tuning
   - kodo-zen

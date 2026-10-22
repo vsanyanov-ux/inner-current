@@ -3,7 +3,23 @@ created: 2026-09-26
 source: [[index|Wiki Index]]
 layer: III
 status: complete
-tags: [inner-current, epistemology, consilience, truth-criterion, direct-flow, physics, bitcoin, georgism, art, aesthetics]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - epistemology
+  - consilience
+  - truth-criterion
+  - direct-flow
+  - physics
+  - bitcoin
+  - georgism
+  - art
+  - aesthetics
 ---
 
 # 87. Универсальная оптика прямого потока реальности: Четырёхкратный Консилиенс (Физика, Экономика, Биткоин, Искусство) как окончательный критерий истины

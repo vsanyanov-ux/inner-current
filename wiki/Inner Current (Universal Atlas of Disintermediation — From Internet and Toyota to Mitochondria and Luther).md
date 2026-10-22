@@ -1,7 +1,27 @@
 ---
 created: 2026-09-25
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, disintermediation, systems-theory, evolution, internet, lean, toyota, dma, mitochondria, luther, ooda, bauhaus, direct-flow, zero-rent]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/superconducting
+  - disintermediation
+  - systems-theory
+  - evolution
+  - internet
+  - lean
+  - toyota
+  - dma
+  - mitochondria
+  - luther
+  - ooda
+  - bauhaus
+  - direct-flow
+  - zero-rent
 type: concept
 status: evergreen
 ---

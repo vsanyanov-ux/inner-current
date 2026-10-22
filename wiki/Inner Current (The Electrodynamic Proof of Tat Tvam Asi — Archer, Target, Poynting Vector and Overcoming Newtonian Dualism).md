@@ -2,6 +2,12 @@
 title: "Inner Current: The Electrodynamic Proof of Tat Tvam Asi — Archer, Target, Poynting Vector and Overcoming Newtonian Dualism"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
   - tat-tvam-asi
   - electrodynamics
   - poynting-vector

@@ -1,12 +1,39 @@
----
+﻿---
 created: 2026-09-24
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, intermediaries, trusted-third-party, satoshi-nakamoto, henry-george, single-tax, bitcoin, anyanov-system, thermodynamics, entropy, second-law, nick-szabo, direct-flow, disintermediation, superconductivity, truth, freedom, happiness, creation]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/sovereignty
+  - state/superconducting
+  - intermediaries
+  - trusted-third-party
+  - satoshi-nakamoto
+  - henry-george
+  - single-tax
+  - bitcoin
+  - anyanov-system
+  - thermodynamics
+  - entropy
+  - second-law
+  - nick-szabo
+  - direct-flow
+  - disintermediation
+  - superconductivity
+  - truth
+  - freedom
+  - happiness
+  - creation
 type: chapter
 status: evergreen
 ---
 
 # 49. Генезис посредников и термодинамика прямого потока: Почему в уме, финансах и экономике рождается паразитная рента и в чём глубинное единство Биткоина, Единого налога и Системы Аньянова
+
+> [!info] Синтезировано в брошюре [[02_Wiki/Брошюра — Великий Изоморфизм Депосреднизации (Биткоин, налог Джорджа и Архитектура счастья)|Брошюра: Великий Изоморфизм Депосреднизации]]
 
 > [!quote] Каноническая аксиома Системы Аньянова
 > ### ⚡ **«Есть единая жизненная энергия, и она проявляется как Истина, Свобода и Счастье: как Биткоин в деньгах, как Единый налог в экономике и как Система Аньянова в духе.  

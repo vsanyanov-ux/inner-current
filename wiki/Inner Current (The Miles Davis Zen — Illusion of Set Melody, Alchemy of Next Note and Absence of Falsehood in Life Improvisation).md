@@ -2,6 +2,12 @@
 title: "Inner Current: The Miles Davis Zen — Illusion of Set Melody, Alchemy of Next Note and Absence of Falsehood in Life Improvisation"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - miles-davis
   - jazz-zen
   - ukulele

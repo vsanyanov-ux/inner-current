@@ -1,7 +1,24 @@
 ---
 created: 2026-09-30
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, epistemology, maslows-hammer, popper-falsifiability, consilience, model-boundaries, bypass-detector, verification, zanshin, hard-science, layer-1]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/load
+  - node/zanshin
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/leak
+  - epistemology
+  - maslows-hammer
+  - popper-falsifiability
+  - consilience
+  - model-boundaries
+  - bypass-detector
+  - verification
+  - zanshin
+  - hard-science
+  - layer-1
 aliases:
   - "151-epistemological-audit-of-doubts"
   - "Эпистемологический аудит сомнений в истинности"

@@ -4,7 +4,21 @@ source: [[index|Wiki Index]]
 author: Владимир Аньянов
 chapter: 55
 layer: "III. Дзен-онтология и синтез (Высший дух и физика)"
-tags: [inner-current, ship-of-theseus, identity-crisis, dissipative-structure, anatta, prigogine, zen-engineering, electrodynamics]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/zen
+  - state/open-loop
+  - ship-of-theseus
+  - identity-crisis
+  - dissipative-structure
+  - anatta
+  - prigogine
+  - zen-engineering
+  - electrodynamics
 ---
 
 # 55. Корабль Тесея и Кризис Идентичности: Инвариантность топологии цепи, динамическая диссипативная структура и иллюзия неизменного эго

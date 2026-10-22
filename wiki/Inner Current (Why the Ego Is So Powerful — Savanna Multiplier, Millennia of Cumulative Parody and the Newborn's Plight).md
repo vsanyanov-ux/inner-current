@@ -2,6 +2,12 @@
 title: "Inner Current: Why the Ego Is So Powerful — Savanna Multiplier, Millennia of Cumulative Parody and the Newborn's Plight"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - ego-genesis
   - savanna-multiplier
   - evolutionary-biology

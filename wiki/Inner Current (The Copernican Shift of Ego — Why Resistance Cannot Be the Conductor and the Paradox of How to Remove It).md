@@ -1,7 +1,24 @@
 ---
 created: 2026-10-01
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, ego, copernican-shift, resistance, conductor, zen-engineering, paradox-of-removal, hot-coal, tanden, mushin, joule-lenz]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/epistemology
+  - state/overheating
+  - ego
+  - copernican-shift
+  - resistance
+  - conductor
+  - zen-engineering
+  - paradox-of-removal
+  - hot-coal
+  - tanden
+  - mushin
+  - joule-lenz
 type: concept
 status: evergreen
 ---

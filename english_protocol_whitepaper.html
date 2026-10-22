@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Consciousness Protocol — Vladimir Anyanov</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+  @page {
+    size: A4;
+    margin: 22mm 18mm 22mm 18mm;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 10.5pt;
+    line-height: 1.65;
+    color: #1e293b;
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* COVER STYLING */
+  .cover-page {
+    page-break-after: always;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25mm 15mm 20mm 15mm;
+    border: 1px solid #e2e8f0;
+    background: linear-gradient(145deg, #f8fafc 0%, #f1f5f9 100%);
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .cover-series {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 8.5pt;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #f59e0b;
+    border-bottom: 2px solid #f59e0b;
+    padding-bottom: 3mm;
+    display: inline-block;
+  }
+
+  .cover-hero {
+    margin: auto 0;
+  }
+
+  .cover-emblem {
+    width: 24mm;
+    height: 24mm;
+    color: #d97706;
+    margin-bottom: 8mm;
+  }
+
+  .cover-author {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12pt;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #475569;
+    margin-bottom: 5mm;
+  }
+
+  .cover-title {
+    font-family: 'Cinzel', serif;
+    font-size: 26pt;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #0f172a;
+    letter-spacing: -0.01em;
+    margin-bottom: 6mm;
+  }
+
+  .cover-subtitle {
+    font-family: 'Lora', serif;
+    font-size: 11.5pt;
+    font-style: italic;
+    line-height: 1.5;
+    color: #334155;
+    max-width: 90%;
+    border-left: 3px solid #f59e0b;
+    padding-left: 5mm;
+  }
+
+  .cover-footer {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 8.5pt;
+    color: #64748b;
+    border-top: 1px solid #cbd5e1;
+    padding-top: 4mm;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* FRONTISPIECE */
+  .frontispiece {
+    page-break-after: always;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20mm 15mm;
+  }
+
+  .frontispiece-quote {
+    font-size: 12.5pt;
+    font-style: italic;
+    line-height: 1.7;
+    color: #1e293b;
+    max-width: 85%;
+    margin-bottom: 8mm;
+    position: relative;
+  }
+
+  .frontispiece-author {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10pt;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #d97706;
+    text-transform: uppercase;
+  }
+
+  /* HEADINGS */
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 19pt;
+    font-weight: 700;
+    color: #0f172a;
+    border-bottom: 2px solid #f59e0b;
+    padding-bottom: 3mm;
+    margin-top: 0;
+    margin-bottom: 4mm;
+    line-height: 1.25;
+  }
+
+  h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 13.5pt;
+    font-weight: 600;
+    color: #1e293b;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 2mm;
+    margin-top: 8mm;
+    margin-bottom: 4mm;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 3.5mm;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  .callout {
+    border-left: 4px solid #f59e0b;
+    background: #fffbeb;
+    border-radius: 0 6px 6px 0;
+    padding: 3.5mm 5mm;
+    margin: 5mm 0;
+  }
+
+  .callout-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 9.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #b45309;
+    margin-bottom: 2mm;
+  }
+
+  pre {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.6pt;
+    line-height: 1.35;
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 4mm 5mm;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 5mm 0;
+    white-space: pre;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5pt;
+    background: #f1f5f9;
+    color: #0f172a;
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+
+  .chapter-break {
+    page-break-before: always;
+  }
+
+  ul, ol {
+    margin-top: 0;
+    margin-bottom: 3.5mm;
+    padding-left: 6mm;
+  }
+
+  li {
+    margin-bottom: 1.5mm;
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover-page">
+  <div class="cover-series">Inner Current • Sovereign Whitepaper • 2026</div>
+  <div class="cover-hero">
+    <svg class="cover-emblem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+    </svg>
+    <div class="cover-author">Vladimir Anyanov</div>
+    <div class="cover-title">THE CONSCIOUSNESS<br>PROTOCOL</div>
+    <div class="cover-subtitle">The Bitcoin of Human Vitality, Proof of Action, and Sovereign Superconductivity: Eliminating the Internal Fiat Middleman, Running the Self-Hosted Human Node, and the Law of Frictionless Flow</div>
+  </div>
+  <div class="cover-footer">
+    <span>Inner Current Architecture • Epistemology of Direct Flow</span>
+    <span>2026</span>
+  </div>
+</div>
+
+<!-- FRONTISPIECE -->
+<div class="frontispiece">
+  <div class="frontispiece-quote">
+    "What Bitcoin did for monetary capital, the Inner Current did for human consciousness. Satoshi Nakamoto anchored money back into thermodynamics (Proof of Work), stripping central banks of their monopoly to dilute wealth. The Inner Current anchors the spirit back into physical reality (Proof of Action), stripping the ego of its monopoly to dilute life. Eliminate the internal parasitic rentier, stop minting unbacked emotional debt, run your own sovereign node — and your system enters pure superconductivity."
+  </div>
+  <div class="frontispiece-author">Vladimir Anyanov</div>
+</div>
+
+<!-- CONTENT -->
+<h1>THE CONSCIOUSNESS PROTOCOL</h1>
+<h2>The Bitcoin of Human Vitality, Proof of Action, and Sovereign Superconductivity</h2>
+<div class="callout callout-quote"><div class="callout-title">Core Axiom of the Protocol</div><div class="callout-body"><h3>⚡ **"What Bitcoin did for monetary capital, the Inner Current did for human consciousness.</h3>
+<p>Satoshi Nakamoto anchored money back into thermodynamics (Proof of Work), stripping central banks of their monopoly to dilute wealth. The Inner Current anchors the spirit back into physical reality (Proof of Action), stripping the ego of its monopoly to dilute life.<br />
+Eliminate the internal parasitic rentier, stop minting unbacked emotional debt, run your own sovereign node — and your system enters pure superconductivity."<strong><br />
+— </strong>Vladimir Anyanov**</p></div></div>
+
+<hr />
+<div class="codehilite"><pre><span></span><code><span class="o">========================================================================================</span>
+<span class="w">   </span><span class="n">FIAT</span><span class="w"> </span><span class="n">MODEL</span><span class="w"> </span><span class="p">(</span><span class="n">INFLATION</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">RENT</span><span class="o">-</span><span class="n">SEEKING</span><span class="p">)</span><span class="w"> </span><span class="n">vs</span><span class="w"> </span><span class="n">PROTOCOL</span><span class="w"> </span><span class="n">OF</span><span class="w"> </span><span class="n">DIRECT</span><span class="w"> </span><span class="n">FLOW</span><span class="w"> </span><span class="p">(</span><span class="n">SUPERCONDUCTIVITY</span><span class="p">)</span>
+<span class="o">========================================================================================</span>
+
+<span class="mf">1.</span><span class="w"> </span><span class="n">MONETARY</span><span class="w"> </span><span class="n">PLANE</span><span class="w"> </span><span class="p">(</span><span class="n">SATOSHI</span><span class="w"> </span><span class="n">NAKAMOTO</span><span class="p">,</span><span class="w"> </span><span class="mi">2008</span><span class="p">)</span><span class="o">:</span>
+<span class="w">   </span><span class="p">[</span><span class="n">Human</span><span class="w"> </span><span class="n">Labor</span><span class="p">]</span><span class="w"> </span><span class="err">──►</span><span class="w"> </span><span class="p">[</span><span class="n">Central</span><span class="w"> </span><span class="n">Bank</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Debt</span><span class="w"> </span><span class="n">Printing</span><span class="p">]</span><span class="w"> </span><span class="err">──►</span><span class="w"> </span><span class="n">Currency</span><span class="w"> </span><span class="n">Dilution</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Wealth</span><span class="w"> </span><span class="n">Theft</span>
+<span class="w">   </span><span class="err">───</span><span class="w"> </span><span class="n">THE</span><span class="w"> </span><span class="n">FIX</span><span class="o">:</span><span class="w"> </span><span class="n">BITCOIN</span><span class="w"> </span><span class="err">───►</span><span class="w"> </span><span class="n">Proof</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Work</span><span class="w"> </span><span class="p">(</span><span class="n">Joules</span><span class="p">)</span><span class="w"> </span><span class="err">──►</span><span class="w"> </span><span class="n">P2P</span><span class="w"> </span><span class="n">Sovereignty</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Hard</span><span class="w"> </span><span class="n">Ledger</span>
+
+<span class="mf">2.</span><span class="w"> </span><span class="n">CONSCIOUSNESS</span><span class="w"> </span><span class="n">PLANE</span><span class="w"> </span><span class="p">(</span><span class="n">VLADIMIR</span><span class="w"> </span><span class="n">ANYANOV</span><span class="p">,</span><span class="w"> </span><span class="mi">2026</span><span class="p">)</span><span class="o">:</span>
+<span class="w">   </span><span class="p">[</span><span class="n">Somatic</span><span class="w"> </span><span class="n">EMF</span><span class="p">]</span><span class="w"> </span><span class="err">──►</span><span class="w"> </span><span class="p">[</span><span class="n">Ego</span><span class="w"> </span><span class="n">Rheostat</span><span class="o">:</span><span class="w"> </span><span class="n">Guilt</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Fear</span><span class="p">]</span><span class="w">   </span><span class="err">──►</span><span class="w"> </span><span class="n">Ohmic</span><span class="w"> </span><span class="n">Heat</span><span class="w"> </span><span class="p">(</span><span class="n">Q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">I²</span><span class="err">·</span><span class="n">R</span><span class="err">·</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Burnout</span>
+<span class="w">   </span><span class="err">───</span><span class="w"> </span><span class="n">THE</span><span class="w"> </span><span class="n">FIX</span><span class="o">:</span><span class="w"> </span><span class="n">INNER</span><span class="w"> </span><span class="n">CURRENT</span><span class="w"> </span><span class="err">───►</span><span class="w"> </span><span class="n">Proof</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="err">──►</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Direct</span><span class="w"> </span><span class="n">Superconductivity</span>
+
+<span class="o">========================================================================================</span>
+<span class="w">                      </span><span class="n">TOPOLOGY</span><span class="w"> </span><span class="n">OF</span><span class="w"> </span><span class="n">THE</span><span class="w"> </span><span class="s">&quot;SELF-HOSTED HUMAN&quot;</span><span class="w"> </span><span class="n">NODE</span>
+<span class="o">========================================================================================</span>
+
+<span class="w">           </span><span class="p">[</span><span class="n">SOMATIC</span><span class="w"> </span><span class="n">GENERATOR</span><span class="o">:</span><span class="w"> </span><span class="n">TANDEN</span><span class="p">]</span><span class="w">  </span><span class="p">(</span><span class="n">Inherent</span><span class="w"> </span><span class="n">biological</span><span class="w"> </span><span class="n">EMF</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Life</span><span class="w"> </span><span class="n">Force</span><span class="p">)</span>
+<span class="w">                        </span><span class="err">│</span>
+<span class="w">                        </span><span class="err">▼</span><span class="w"> </span><span class="n">Current</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Pure</span><span class="w"> </span><span class="n">Attention</span><span class="w"> </span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+<span class="w">           </span><span class="err">┌─────────────────────────────┐</span>
+<span class="w">           </span><span class="err">│</span><span class="w">   </span><span class="n">MUSHIN</span><span class="w"> </span><span class="n">BUSBAR</span><span class="w"> </span><span class="p">(</span><span class="n">R</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">     </span><span class="err">│</span><span class="w">  </span><span class="err">◄──</span><span class="w"> </span><span class="n">Razor</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Kanso</span><span class="w"> </span><span class="n">cuts</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">ego</span><span class="w"> </span><span class="n">middleman</span>
+<span class="w">           </span><span class="err">└────────────┬────────────────┘</span>
+<span class="w">                        </span><span class="err">│</span>
+<span class="w">             </span><span class="err">┌──────────┴──────────┐</span>
+<span class="w">             </span><span class="err">▼</span><span class="w">                     </span><span class="err">▼</span>
+<span class="w">      </span><span class="p">[</span><span class="n">PROOF</span><span class="w"> </span><span class="n">OF</span><span class="w"> </span><span class="n">ACTION</span><span class="p">]</span><span class="w">     </span><span class="p">[</span><span class="n">COLD</span><span class="w"> </span><span class="n">STORAGE</span><span class="p">]</span>
+<span class="w">      </span><span class="p">(</span><span class="n">Direct</span><span class="w"> </span><span class="n">execution</span><span class="p">,</span><span class="w">    </span><span class="p">(</span><span class="n">Immunity</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">external</span><span class="w"> </span><span class="n">social</span><span class="w"> </span><span class="n">fiat</span><span class="p">,</span>
+<span class="w">       </span><span class="mi">0</span><span class="w"> </span><span class="n">ms</span><span class="w"> </span><span class="n">reality</span><span class="w"> </span><span class="n">ping</span><span class="p">)</span><span class="w">    </span><span class="n">peer</span><span class="w"> </span><span class="n">pressure</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">parasitic</span><span class="w"> </span><span class="n">manipulation</span><span class="p">)</span>
+<span class="w">             </span><span class="err">│</span><span class="w">                     </span><span class="err">│</span>
+<span class="w">             </span><span class="err">▼</span><span class="w">                     </span><span class="err">▼</span>
+<span class="w">      </span><span class="p">[</span><span class="n">PRODUCTIVE</span><span class="w"> </span><span class="n">LOAD</span><span class="p">]</span><span class="w">     </span><span class="p">[</span><span class="n">EMERGENT</span><span class="w"> </span><span class="n">RADIANCE</span><span class="p">]</span>
+<span class="w">      </span><span class="p">(</span><span class="n">Work</span><span class="p">,</span><span class="w"> </span><span class="n">craft</span><span class="p">,</span><span class="w"> </span><span class="n">love</span><span class="p">,</span><span class="w">   </span><span class="p">(</span><span class="n">Magnetic</span><span class="w"> </span><span class="n">field</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">superconductivity</span><span class="o">:</span>
+<span class="w">       </span><span class="n">unfiltered</span><span class="w"> </span><span class="n">contact</span><span class="p">)</span><span class="w">   </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">μ₀</span><span class="err">·</span><span class="n">I</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="n">πr</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="n">felt</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">effortless</span><span class="w"> </span><span class="n">Joy</span><span class="p">)</span>
+<span class="o">========================================================================================</span>
+</code></pre></div>
+
+<hr />
+<div class="chapter-break"></div>
+<h2>1. The Crisis of "Fiat Consciousness"</h2>
+<p>For centuries, humanity has recognized monetary fiat as an instrument of stealth taxation: when a central bank prints unbacked currency, it dilutes the purchasing power of every saver.</p>
+<p>Yet very few recognize that <strong>99% of human minds run on an identical fiat architecture</strong>:</p>
+<ol>
+<li><strong>The Ego as an Unauthorized Central Bank.</strong> The brain’s Default Mode Network (DMN) acts like a central planning bureau, claiming monopoly over your sense of self-worth.</li>
+<li><strong>Minting Toxic Derivatives.</strong> The ego continuously prints unbacked emotional debt:</li>
+<li><em>Guilt</em> (an unpayable debt to the past);</li>
+<li><em>Anxiety &amp; Control</em> (unbacked futures contracts on tomorrow);</li>
+<li><em>Approval-seeking</em> (submitting to external credit agencies for permission to exist).</li>
+<li><strong>The Ohmic Furnace ($Q = I^2 \cdot R \cdot t$).</strong> By Joule’s Law, when your life current ($I$) is forced through high internal resistance ($R$), energy does not perform useful work. It turns into destructive friction and internal heat. Psychologists label this heat <em>neurosis, existential dread, and burnout</em>. It is not a moral failing; it is electrical dissipation.</li>
+</ol>
+<hr />
+<div class="chapter-break"></div>
+<h2>2. Satoshi’s Thermodynamic Breakthrough</h2>
+<p>Satoshi Nakamoto’s triumph with Bitcoin was not merely technical — it was an epistemological restoration of truth through physics:<br />
+- Money cannot be founded on authority or decree.<br />
+- Value must be tied to <strong>thermodynamic work (Proof of Work)</strong>.<br />
+- Computational energy spent in the physical world cannot be spoofed, faked, or debated.</p>
+<p>Satoshi established the golden rule of individual freedom: <strong>"Don't trust, verify."</strong></p>
+<p>If we demand unforgeable costliness and physical grounding from money, why do we accept cheap, unverified paper illusions inside our own heads?</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>3. Proof of Action (PoA) vs Proof of Ego</h2>
+<p>The <strong>Inner Current Protocol</strong> brings Satoshi's thermodynamic discipline directly to human attention.</p>
+<p>The ego runs on <em>Proof of Stake</em> or <em>Proof of Reputation</em>:<br />
+- It demands validation based on credentials, self-flattery, imaginary identities, or past status.<br />
+- Yet mental rumination has <strong>zero unforgeable costliness</strong>. Thoughts are free. Imagined intentions cost nothing. Internal debate produces zero physical joules.</p>
+<p><strong>Proof of Action states:</strong></p>
+<blockquote>
+<p>The ledger of physical reality accepts only one form of valid block: physical action executed in the present moment. Simulation does not validate the chain.</p>
+</blockquote>
+<p>When you:<br />
+- Wash a glass with full sensory tactile presence;<br />
+- Write a line of code or play a musical chord;<br />
+- Look someone in the eyes without rehearsal or defensiveness, —</p>
+<p>your somatic energy directly touches reality. The network latency drops to <strong>0 ms</strong>. The middleman is bypassed, and reality instantly validates your block.</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>4. Disintermediation of the Inner Rentier</h2>
+<p>A middleman is an entity that inserts itself between the source and the load, producing no work while extracting a toll.</p>
+<ul>
+<li>In real estate: the land rentier (as Henry George proved).</li>
+<li>In money: the banking cartel.</li>
+<li>In consciousness: <strong>the Ego Rheostat ($R_{\text{ego}}$)</strong>.</li>
+</ul>
+<p>Notice the typical latency loop before a human takes action:<br />
+$$\text{Impulse} \xrightarrow{\quad} [\text{Doubt} \to \text{Fear of Judgment} \to \text{Cost-Benefit Calculus} \to \text{Guilt}] \xrightarrow{\quad} \text{Paralysis}$$</p>
+<p>The ego acts like a corrupt customs official demanding paperwork before you can speak, create, or love.</p>
+<p><strong>The Anyanov Protocol applies the Razor of Kanso (簡素):</strong><br />
+You do not negotiate with the middleman for ten years in therapy. You <strong>bypass (shunt) the resistor</strong>.<br />
+Resistance drops to zero ($R \to 0$ — the Zen state of <em>Mushin</em>, 無心).<br />
+The somatic charge flows peer-to-peer: <strong>Core Generator $\leftrightarrow$ Reality</strong>.</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>5. Self-Hosted Human: Run Your Own Node</h2>
+<p>Bitcoiners live by the creed: <strong>"Not your keys, not your coins"</strong> and <strong>"Run your own node."</strong> If you rely on third-party servers, you are a tenant, not a sovereign.</p>
+<p>Most people navigate life as lightweight SPV clients:<br />
+- Validating self-worth against corporate consensus;<br />
+- Delegating emotional state to news feeds and algorithmic outrage;<br />
+- Seeking social permission to feel peace.</p>
+<p><strong>The Self-Hosted Human:</strong><br />
+1. <strong>Local Consensus:</strong> You store the complete ledger and rules of your own nervous system locally.<br />
+2. <strong>Cold Storage for Attention:</strong> Attention is the scarcest asset in the universe. In the Inner Current, it is moved off the hot exchanges of social gossip and stored in cold somatic presence.<br />
+3. <strong>Censorship Resistance:</strong> External opinions are recognized as unbacked fiat tokens. They have no legal tender status inside your closed circuit.</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>6. Defending Against the 51% Attack on Attention</h2>
+<p>In cryptography, a 51% attack occurs when a hostile entity controls majority hashrate, rewriting ledger history and executing double-spends.</p>
+<p>The attention economy is executing a continuous <strong>51% attack on human consciousness</strong>:<br />
+- Algorithmic feeds try to seize over half your daily processing cycles.<br />
+- When they succeed, they double-spend your life: instead of building your sovereign reality, your energy mines advertising revenue for algorithmic monopolies.</p>
+<p><strong>Protocol Defense:</strong><br />
+- <strong>Block Size Limits:</strong> You do not ingest infinite world noise into your working memory. One task per block.<br />
+- <strong>Mempool Scrubbing:</strong> Panic transactions arriving from social feeds are dropped via somatic belly grounding.<br />
+- <strong>Hashrate of the Senses:</strong> The raw sensory bandwidth of the present (sound of wind, tactile footing, physical breath) carries infinitely more compute than a glowing glass screen. Keep your hashrate anchored locally.</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>7. Superconductivity and the Physics of Joy</h2>
+<p>When internal resistance is collapsed ($R \to 0$):<br />
+1. <strong>Circuit Efficiency Hits 100%:</strong> All power flows into productive load (craft, study, fitness, relationships, wonder).<br />
+2. <strong>Zero Heat Loss ($Q = 0$):</strong> You work without burn-out. Fatigue is rarely caused by output; it is caused by the internal resistance <em>against</em> the output.<br />
+3. <strong>The Magnetic Field of Joy:</strong> Just as electric current produces a magnetic field ($\vec{B}$), laminar superconductive attention generates radiant Joy. It is not an emotion to be chased; it is the physical aura of an unimpeded electrical circuit.</p>
+<p><strong>Happiness is the superconductive state of the human circuit.</strong></p>
+<hr />
+<div class="chapter-break"></div>
+<h2>⚡ 60-Second Node Calibration (Daily Telemetry Check)</h2>
+<div class="codehilite"><pre><span></span><code><span class="k">[ STEP 1: GENERATOR TEST (EMF) ]</span>
+<span class="na">── Drop your attention into Tanden (2 inches below the navel).</span>
+<span class="na">── Take a deep abdominal breath. Feel your physical center of gravity.</span>
+<span class="w">   </span><span class="na">└── YES</span><span class="o">:</span><span class="w"> </span><span class="s">Generator online. Voltage verified.</span>
+
+<span class="k">[ STEP 2: RHEOSTAT CHECK (RESISTANCE) ]</span>
+<span class="na">── Where is your attention caught? Past guilt? Future worry? Social validation?</span>
+<span class="w">   </span><span class="na">└── DETECTED</span><span class="o">:</span><span class="w"> </span><span class="s">Parasitic fiat noise identified.</span>
+<span class="w">   </span><span class="na">└── ACTION: Razor of Kanso. Zero the thought</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Unbacked mental noise.&quot;</span>
+
+<span class="k">[ STEP 3: EXECUTE PROOF OF ACTION ]</span>
+<span class="na">── Immediately perform a microscopic physical action with 0 ms ping</span><span class="o">:</span>
+<span class="w">   </span><span class="na">└── Straighten your posture, take a sip of water, touch a physical object.</span>
+<span class="w">   </span><span class="na">└── Latency collapsed to zero. Circuit closed.</span>
+
+<span class="k">[ STEP 4: NODE STATUS ]</span>
+<span class="na">── Status</span><span class="o">:</span><span class="w"> </span><span class="s">SUPERCONDUCTING (R → 0).</span>
+<span class="na">── Self-Hosted Human online. Peer-to-peer with Reality.</span>
+</code></pre></div>
+
+<hr />
+<p><em>Authored by Vladimir Anyanov | Inner Current Architecture (2026)</em></p>
+
+</body>
+</html>

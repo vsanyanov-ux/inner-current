@@ -3,7 +3,21 @@ created: 2026-09-25
 source: [[index|Wiki Index]]
 moc: [[04_Maps/Inner Current MOC|Inner Current MOC]]
 book_moc: [[04_Maps/Inner Current Book MOC|Inner Current Book MOC]]
-tags: [inner-current, full-stack, computer-science, isomorphism, abstraction-layers, epistemology, compiler, ai-era]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/superconducting
+  - full-stack
+  - computer-science
+  - isomorphism
+  - abstraction-layers
+  - epistemology
+  - compiler
+  - ai-era
 canonical_number: 79
 type: meta-isomorphism
 ---
@@ -145,7 +159,7 @@ graph TD
 ## 🔗 Связанные Каноны в Базе Знаний
 - [[02_Wiki/Inner Current (Diagnostic Machine and System Specification)|06. Машина для диагностики счастья]]
 - [[02_Wiki/Inner Current (Neurobiology of Superconductivity — DMN, TPN and Vagus Grounding)|28. Нейробиология сверхпроводимости: DMN, TPN и вагусное заземление]]
-- [[02_Wiki/Inner Current (Automobile of Consciousness — 140 Years from Benz to Anyanov, Post-Moral Imperative and Cybernetics of Addictions)|66. Автомобиль сознания: 140 лет от Бенца до Аньянова]]
+- [[02_Wiki/Inner Current (The Automobile of Consciousness — 140 Years from Benz to Anyanov, Post-Moral Imperative and Cybernetics of Addictions)|66. Автомобиль сознания: 140 лет от Бенца до Аньянова]]
 - [[02_Wiki/Inner Current (The Grand Quadrivium — Circuitry of Man, Tuning Fork of Reality, Circuit of Happiness and Automobile of Consciousness)|67. Великий Квадривиум Аньянова]]
 - [[02_Wiki/Inner Current (Astronautics of Consciousness — The Tsiolkovsky Effect, Escape Velocity of the Spirit and the Rocket of Superconductivity)|73. Космонавтика Сознания: Эффект Циолковского]]
 - [[02_Wiki/Inner Current (Preprint — The Four-Element Topology of Human Consciousness)|74. Академический препринт CERN/Zenodo ANYANOV-2026-01]]

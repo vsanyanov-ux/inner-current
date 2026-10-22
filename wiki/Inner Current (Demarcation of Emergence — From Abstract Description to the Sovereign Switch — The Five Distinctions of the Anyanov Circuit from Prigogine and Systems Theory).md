@@ -2,6 +2,12 @@
 title: "Inner Current: Demarcation of Emergence — From Abstract Description to the Sovereign Switch — The Five Distinctions of the Anyanov Circuit from Prigogine and Systems Theory"
 tags:
   - inner-current
+  - scale/protocol
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - emergence-demarcation
   - prigogine-critique
   - systems-theory

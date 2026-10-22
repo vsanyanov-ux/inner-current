@@ -1,7 +1,25 @@
 ---
 created: 2026-10-05
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, stress-telemetry, xiaomi-band, hrv, vagus, dmn, tpn, ego-resistance, morning-circuit, car-response, mushin, kanso]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
+  - stress-telemetry
+  - xiaomi-band
+  - hrv
+  - vagus
+  - dmn
+  - tpn
+  - ego-resistance
+  - morning-circuit
+  - car-response
+  - mushin
+  - kanso
 type: wiki-article
 status: evergreen
 article_number: 241
@@ -9,6 +27,8 @@ layer: "IV. Мета-система и продукт (Инструменты, �
 ---
 
 # 241. Телеметрия стресса на Xiaomi Smart Band 7: Метрология HRV, кортизоловый ответ пробуждения (CAR) и сопротивление эго ($R_{\text{ego}}$) при утреннем старте контура
+
+> [!info] Синтезировано в брошюре [[02_Wiki/Брошюра — Биометрическая электродинамика (Тело как живой проводник, объективная телеметрия Smart Band и ночной расправленный контур)|Брошюра: Биометрическая электродинамика]]
 ## Аппаратный разбор фотоплетизмографии и алгоритмов вариабельности пульса (RR-интервалов): почему утренний показатель 35 пунктов фиксирует чистоту проводника, как спящая DMN удерживает реостат около нуля и протокол перехода от холостого хода к сверхпроводимости полезного действия
 
 > [!quote] Каноническая аксиома утренней калибровки

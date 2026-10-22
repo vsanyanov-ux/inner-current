@@ -2,6 +2,12 @@
 title: "Inner Current: Stealth Protocols for Ego Dam Breach — Olfactory Bypass, Resonant Music, Thermal Reset, Biomechanical Unbendable Arm and Vagal Attunement to Tanden"
 tags:
   - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - anyanov-system
   - stealth-protocols
   - dam-breach

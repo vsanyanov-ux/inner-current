@@ -4,7 +4,28 @@ source: [[index|Wiki Index]]
 author: Владимир Аньянов
 chapter: 182
 layer: "III. Дзен-онтология и синтез (Высший дух и физика)"
-tags: [inner-current, levante, sono-blu, verified-lyrics, electrodynamics, joule-lenz, bugia, la-resa, surrender-without-loss, somatic-spasm, club-culture, superconductivity, tanden, mushin, consilience]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - levante
+  - sono-blu
+  - verified-lyrics
+  - electrodynamics
+  - joule-lenz
+  - bugia
+  - la-resa
+  - surrender-without-loss
+  - somatic-spasm
+  - club-culture
+  - superconductivity
+  - tanden
+  - mushin
+  - consilience
 ---
 
 # 182. Анатомия ментальной лжи и сдача без потерь: «Sono blu» Леванте, закон Джоуля — Ленца и холодная синева сверхпроводимости
@@ -166,7 +187,7 @@ Senza perdere
    * «La mappa del dove» — судорожная попытка неокортекса построить когнитивную карту («где я ошибся? куда мне деться?»). Но карта не спасает, когда горит проводка.
 2. **«Il suono ostinato di un mondo che implode»** *(«Упрямый звук мира, который схлопывается»)*:
    * Акустика ментального краха. Старая система координат эго трещит по швам и коллапсирует внутрь себя (имплозия).
-3. **«La resa non всегда è la scelta peggiore»** *(«Сдача — не всегда худший выбор»)*:
+3. **«La resa non sempre è la scelta peggiore»** *(«Сдача — не всегда худший выбор»)*:
    * **Точка первого слома парадигмы.** Эго всегда учит: «Борись до конца, держи контроль, не сдавайся». 
    * Здесь звучит первый осторожный допуск: сдача сопротивления — возможно, не самая худшая вещь на свете.
 

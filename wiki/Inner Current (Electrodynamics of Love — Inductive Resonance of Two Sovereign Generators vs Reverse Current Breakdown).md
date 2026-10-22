@@ -1,12 +1,30 @@
----
+﻿---
 created: 2026-09-25
-source: [[Inner Current - MOC|Inner Current MOC]]
-tags: [inner-current, love, electrodynamics, mutual-induction, faraday-maxwell, resonance, polarity, mushin, relationships, zanshin]
+source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/epistemology
+  - state/overheating
+  - love
+  - electrodynamics
+  - mutual-induction
+  - faraday-maxwell
+  - resonance
+  - polarity
+  - mushin
+  - relationships
+  - zanshin
 type: chapter
 status: evergreen
 ---
 
 # 68. Электродинамика Любви: Индуктивный резонанс двух суверенных генераторов ($M > 0$) против аварии обратного тока и паразитной созависимости
+
+> [!info] Синтезировано в брошюре [[02_Wiki/Брошюра — Электродинамика любви (Взаимная индукция двух суверенных генераторов)|Брошюра: Электродинамика любви]]
 
 > [!quote] Каноническая дефиниция Любви
 > **«Любовь — это не то, что можно "получить", "заслужить" или "выпросить". В электродинамике полярность абсолютна: лампа не питает генератор. Пытаться сделать другого человека источником своего счастья — значит включить цепь в обратной полярности и сжечь её дотла.**  

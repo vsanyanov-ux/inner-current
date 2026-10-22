@@ -5,6 +5,12 @@ type: article
 layer: III
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/open-loop
   - golden-age
   - utopia-deconstruction
   - edward-wilson

@@ -8,6 +8,12 @@ aliases:
   - "Великий исторический консилиенс революций"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/superconducting
   - anyanov-system
   - copernicus
   - newton

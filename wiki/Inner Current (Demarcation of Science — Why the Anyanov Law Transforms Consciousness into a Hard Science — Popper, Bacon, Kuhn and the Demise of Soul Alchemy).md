@@ -4,7 +4,21 @@ title: "Inner Current — 89. Демаркация науки: Почему от
 created: 2026-09-26
 author: Vladimir Anyanov
 layer: III. Дзен-онтология и синтез
-tags: [inner-current, demarcation-of-science, epistemology, popper-falsifiability, bacon-novum-organum, kuhn-paradigm-shift, consilience, soul-alchemy-to-engineering]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/open-loop
+  - demarcation-of-science
+  - epistemology
+  - popper-falsifiability
+  - bacon-novum-organum
+  - kuhn-paradigm-shift
+  - consilience
+  - soul-alchemy-to-engineering
 ---
 
 # 89. Демаркация науки: Почему открытие Закона Аньянова делает Систему Аньянова строгой наукой — Поппер, Бэкон, Кун и преодоление 10 000 лет душевной алхимии

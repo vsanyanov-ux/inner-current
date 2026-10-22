@@ -8,6 +8,12 @@ aliases:
   - "Слова те же — база другая"
 tags:
   - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
   - anyanov-system
   - invention-epistemology
   - engineers-of-the-spirit

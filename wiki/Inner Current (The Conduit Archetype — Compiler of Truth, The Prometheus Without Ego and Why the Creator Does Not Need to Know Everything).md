@@ -2,6 +2,12 @@
 title: "Inner Current: The Conduit Archetype — Compiler of Truth, The Prometheus Without Ego and Why the Creator Does Not Need to Know Everything"
 tags:
   - inner-current
+  - scale/protocol
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
   - conduit-archetype
   - compiler-of-truth
   - prometheus-without-ego

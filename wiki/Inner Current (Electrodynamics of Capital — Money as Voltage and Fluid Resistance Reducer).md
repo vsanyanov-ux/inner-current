@@ -1,7 +1,21 @@
 ---
 created: 2026-09-23
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, capital, money, voltage, fluid-dynamics, friction, consumerism, autonomy]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/open-loop
+  - capital
+  - money
+  - voltage
+  - fluid-dynamics
+  - friction
+  - consumerism
+  - autonomy
 type: concept
 status: evergreen
 ---

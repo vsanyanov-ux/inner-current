@@ -2,6 +2,12 @@
 title: "Inner Current: Architecture of Circuit Self-Respect — Emergent Nature of Consciousness, Closed Loop and the Post-Moral Hygiene Against Alcohol and Anger"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - self-respect
   - emergent-consciousness
   - autopoiesis

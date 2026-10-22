@@ -4,7 +4,24 @@ source: [[index|Wiki Index]]
 author: Владимир Аньянов
 chapter: 180
 layer: "III. Дзен-онтология и синтез (Высший дух и физика)"
-tags: [inner-current, cold-war, bipolar-world, dipole, ussr, usa, nuclear-zanshin, dielectric-breakdown, fukuyama-fallacy, monopoly-collapse, layer-3]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - cold-war
+  - bipolar-world
+  - dipole
+  - ussr
+  - usa
+  - nuclear-zanshin
+  - dielectric-breakdown
+  - fukuyama-fallacy
+  - monopoly-collapse
+  - layer-3
 ---
 
 # 180. Электродинамика двухполярного мира (1945–1991): Высоковольтный диполь холодной войны, ядерный диэлектрик Дзансин и трагедия монопольного коллапса

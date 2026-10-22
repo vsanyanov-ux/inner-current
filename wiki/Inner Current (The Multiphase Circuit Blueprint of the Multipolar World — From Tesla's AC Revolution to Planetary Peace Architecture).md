@@ -4,7 +4,23 @@ source: [[index|Wiki Index]]
 author: Владимир Аньянов
 chapter: 179
 layer: "III. Дзен-онтология и синтез (Высший дух и физика)"
-tags: [inner-current, multipolarity, tesla-polyphase, civilizational-blueprint, edison-dc, 1914-catastrophe, sovereign-poles, tanden, zanshin, layer-3]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
+  - multipolarity
+  - tesla-polyphase
+  - civilizational-blueprint
+  - edison-dc
+  - 1914-catastrophe
+  - sovereign-poles
+  - tanden
+  - zanshin
+  - layer-3
 ---
 
 # 179. Принципиальная схема многополярного мира: Многофазная электродинамика цивилизаций — От переменного тока Теслы к безыскровой архитектуре планеты

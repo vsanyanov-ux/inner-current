@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>懐中電灯の原理 — ウラジーミル・アニャノフ</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+  @page {
+    size: A4;
+    margin: 20mm 18mm 20mm 18mm;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Noto Sans JP', 'Noto Serif JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 10pt;
+    line-height: 1.75;
+    color: #1e293b;
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* COVER STYLING */
+  .cover-page {
+    page-break-after: always;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25mm 15mm 20mm 15mm;
+    border: 1px solid #cbd5e1;
+    background: linear-gradient(150deg, #f8fafc 0%, #f1f5f9 45%, #e2e8f0 100%);
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .cover-series {
+    font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+    font-size: 8.5pt;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: #0369a1;
+    border-bottom: 2px solid #0284c7;
+    padding-bottom: 3mm;
+    display: inline-block;
+  }
+
+  .cover-hero {
+    margin: auto 0;
+  }
+
+  .cover-emblem {
+    width: 22mm;
+    height: 22mm;
+    color: #0284c7;
+    margin-bottom: 8mm;
+  }
+
+  .cover-author {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 11pt;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #334155;
+    margin-bottom: 4mm;
+  }
+
+  .cover-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 26pt;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #0f172a;
+    letter-spacing: 0.02em;
+    margin-bottom: 6mm;
+  }
+
+  .cover-subtitle {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 11pt;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #0369a1;
+    max-width: 95%;
+    border-left: 3px solid #0284c7;
+    padding-left: 5mm;
+  }
+
+  .cover-footer {
+    font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+    font-size: 8.5pt;
+    color: #64748b;
+    border-top: 1px solid #cbd5e1;
+    padding-top: 4mm;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* FRONTISPIECE */
+  .frontispiece {
+    page-break-after: always;
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20mm 15mm;
+  }
+
+  .frontispiece-quote {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 12.5pt;
+    line-height: 1.9;
+    color: #1e293b;
+    max-width: 90%;
+    margin-bottom: 8mm;
+    position: relative;
+  }
+
+  .frontispiece-quote::before {
+    content: "“";
+    font-family: 'Cinzel', serif;
+    font-size: 40pt;
+    color: #38bdf8;
+    position: absolute;
+    top: -20px;
+    left: -25px;
+    opacity: 0.5;
+  }
+
+  .frontispiece-author {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    font-size: 10pt;
+    letter-spacing: 0.15em;
+    color: #0284c7;
+  }
+
+  /* TYPOGRAPHY */
+  h1, h2, h3, h4 {
+    font-family: 'Noto Serif JP', serif;
+    color: #0f172a;
+  }
+
+  h1 {
+    font-size: 18pt;
+    text-align: center;
+    margin-top: 8mm;
+    margin-bottom: 4mm;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #0369a1;
+  }
+
+  h2 {
+    font-size: 13pt;
+    margin-top: 8mm;
+    margin-bottom: 3.5mm;
+    padding-bottom: 2mm;
+    border-bottom: 1px solid #cbd5e1;
+    color: #0369a1;
+    page-break-after: avoid;
+  }
+
+  h3 {
+    font-size: 10.5pt;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    color: #1e293b;
+    margin-top: 5mm;
+    margin-bottom: 2.5mm;
+    page-break-after: avoid;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 3.5mm;
+    text-align: justify;
+  }
+
+  strong {
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  /* CALLOUTS */
+  .callout {
+    margin: 5mm 0;
+    padding: 4mm 5mm;
+    border-radius: 2mm;
+    background: #f0f9ff;
+    border-left: 4px solid #0284c7;
+    page-break-inside: avoid;
+  }
+
+  .callout-title {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    font-size: 9.5pt;
+    color: #0369a1;
+    margin-bottom: 2mm;
+    letter-spacing: 0.05em;
+  }
+
+  .callout-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* TABLES */
+  .table-wrapper {
+    margin: 5mm 0;
+    page-break-inside: avoid;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8.5pt;
+    line-height: 1.5;
+  }
+
+  th {
+    background: #f1f5f9;
+    color: #0f172a;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    text-align: left;
+    padding: 2.5mm 3mm;
+    border-bottom: 2px solid #cbd5e1;
+  }
+
+  td {
+    padding: 2.5mm 3mm;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+  }
+
+  tr:nth-child(even) td {
+    background: #f8fafc;
+  }
+
+  /* PRE & CODE */
+  pre {
+    font-family: 'JetBrains Mono', 'Noto Sans JP', monospace;
+    font-size: 7.8pt;
+    line-height: 1.45;
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 4mm;
+    border-radius: 2mm;
+    overflow-x: auto;
+    page-break-inside: avoid;
+    margin: 4mm 0;
+    border: 1px solid #1e293b;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5pt;
+    background: #f1f5f9;
+    color: #0369a1;
+    padding: 1px 4px;
+    border-radius: 1mm;
+  }
+
+  pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+
+  .chapter-break {
+    page-break-before: always;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #e2e8f0;
+    margin: 5mm 0;
+  }
+
+  ul, ol {
+    margin-top: 0;
+    margin-bottom: 3.5mm;
+    padding-left: 5mm;
+  }
+
+  li {
+    margin-bottom: 1.5mm;
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover-page">
+  <div class="cover-series">インナーカーレント・ライブラリー • 特別支援ガイド</div>
+  <div class="cover-hero">
+    <svg class="cover-emblem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2v8"></path>
+      <path d="m4.93 10.93 1.41 1.41"></path>
+      <path d="M2 18h2"></path>
+      <path d="M20 18h2"></path>
+      <path d="m19.07 10.93-1.41 1.41"></path>
+      <path d="M22 22H2"></path>
+      <path d="m8 22 4-10 4 10"></path>
+    </svg>
+    <div class="cover-author">ウラジーミル・アニャノフ（Vladimir Anyanov）</div>
+    <div class="cover-title">懐中電灯の原理</div>
+    <div class="cover-subtitle">ひきこもり脱出のための意識回路設計と身体的アプローチ<br>— 部屋が暗いのはあなたがダメだからではない。光の向きを1ミリ外に向ける60秒プロトコル</div>
+  </div>
+  <div class="cover-footer">
+    <span>Inner Current Project • 意識の電磁気学</span>
+    <span>2026年</span>
+  </div>
+</div>
+
+<!-- FRONTISPIECE -->
+<div class="frontispiece">
+  <div class="frontispiece-quote">
+    「部屋が暗いのは、あなたがダメな人間だからではありません。懐中電灯の光が、内側の機械に向けて曲がってしまっているだけです。心の中をいくら照らしても、答えは見つかりません。光を外の小さな現実に向けるだけで、内側の火事は止まります。」
+  </div>
+  <div class="frontispiece-author">ウラジーミル・アニャノフ</div>
+</div>
+
+<!-- CONTENT -->
+<h1>懐中電灯の原理：ひきこもり脱出のための意識回路設計と身体的アプローチ</h1>
+<h3>The Principle of the Pocket Flashlight — Somatic &amp; Circuit Guide for Hikikomori Recovery</h3>
+<div class="callout callout-quote"><div class="callout-title">核心の真理</div><div class="callout-body"><h3>⚡ <strong>「部屋が暗いのは、あなたがダメな人間だからではありません。懐中電灯の光が、内側の機械に向けて曲がってしまっているだけです。心の中をいくら照らしても、答えは見つかりません。光を外の小さな現実に向けるだけで、内側の火事は止まります。」</strong></h3>
+<p>— <strong>ウラジーミル・アニャノフ (Vladimir Anyanov)</strong></p></div></div>
+
+<hr />
+<div class="codehilite"><pre><span></span><code><span class="w">                   </span><span class="err">【</span><span class="w"> </span><span class="err">回路の比較：事故状態</span><span class="w"> </span><span class="n">vs</span><span class="w"> </span><span class="err">正常状態</span><span class="w"> </span><span class="err">】</span>
+
+<span class="w">   </span><span class="p">[</span><span class="w"> </span><span class="err">事故状態：ひきこもり・自責のループ</span><span class="w"> </span><span class="p">]</span>
+<span class="w">   </span><span class="o">+-----------------------------------------------------------+</span>
+<span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="err">人間の内部</span><span class="w">                                                </span><span class="o">|</span>
+<span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="p">[</span><span class="err">丹田：バッテリー</span><span class="p">]</span><span class="w"> </span><span class="o">---&gt;</span><span class="w"> </span><span class="p">[</span><span class="err">世間体・恥・罪悪感の抵抗</span><span class="p">]</span><span class="w">      </span><span class="o">|</span>
+<span class="w">   </span><span class="o">|</span><span class="w">                                  </span><span class="o">|</span><span class="w">                        </span><span class="o">|</span>
+<span class="w">   </span><span class="o">|</span><span class="w">                         </span><span class="err">ジュール熱</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">I²Rt</span><span class="w">               </span><span class="o">|</span>
+<span class="w">   </span><span class="o">|</span><span class="w">                         </span><span class="p">(</span><span class="err">激しい苦しみ・パニック</span><span class="p">)</span><span class="w">          </span><span class="o">|</span>
+<span class="w">   </span><span class="o">|</span><span class="w">                                  </span><span class="o">|</span><span class="w">                        </span><span class="o">|</span>
+<span class="w">   </span><span class="o">|</span><span class="w">    </span><span class="err">内側への火事</span><span class="w"> </span><span class="o">&lt;----------------+</span><span class="w">                        </span><span class="o">|</span>
+<span class="w">   </span><span class="o">|</span><span class="w">    </span><span class="p">(</span><span class="err">光が自分の頭に向けられ、目を焼いている</span><span class="p">)</span><span class="w">               </span><span class="o">|</span>
+<span class="w">   </span><span class="o">+-----------------------------------------------------------+</span>
+<span class="w">            </span><span class="o">|</span>
+<span class="w">            </span><span class="n">X</span><span class="w">  </span><span class="p">(</span><span class="err">外の世界へ光が出ない</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">暗闇と恐怖</span><span class="p">)</span>
+
+<span class="w">   </span><span class="o">=============================================================</span>
+
+<span class="w">   </span><span class="p">[</span><span class="w"> </span><span class="err">正常状態：直接照射の法則（超伝導）</span><span class="w"> </span><span class="p">]</span>
+<span class="w">   </span><span class="o">+--------------------+</span>
+<span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="err">人間の内部</span><span class="w">         </span><span class="o">|</span><span class="w">          </span><span class="err">直接の光</span><span class="w">            </span><span class="err">冷たい外部現実</span>
+<span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="err">丹田：お腹</span><span class="p">]</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="o">======</span><span class="p">(</span><span class="err">無心：注意</span><span class="p">)</span><span class="o">======&gt;</span><span class="w"> </span><span class="p">[</span><span class="err">お茶</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="err">床</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="err">風</span><span class="p">]</span>
+<span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="err">呼吸が落ちる</span><span class="p">]</span><span class="w">     </span><span class="o">|</span><span class="w">                                  </span><span class="o">|</span>
+<span class="w">   </span><span class="o">+--------------------+</span><span class="w">                                  </span><span class="o">|</span>
+<span class="w">            </span><span class="o">^</span><span class="w">                                          </span><span class="err">反射した光</span>
+<span class="w">            </span><span class="o">|</span><span class="w">                                      </span><span class="p">(</span><span class="err">穏やかな充足</span><span class="p">)</span>
+<span class="w">            </span><span class="o">+-----------------</span><span class="w"> </span><span class="err">回路の接続</span><span class="w"> </span><span class="o">&lt;----------------+</span>
+</code></pre></div>
+
+<hr />
+<h2>はじめに：あなたは壊れていません</h2>
+<p>現代の日本において、数十万人もの人々が部屋のドアを閉ざし、苦しんでいます。世間はそれを「怠惰」や「心の病」「甘え」と呼びますが、それは根本的な誤解です。</p>
+<p><strong>あなたは壊れていません。あなたの生命のバッテリーは、今も正常に動いています。</strong></p>
+<p>毎朝目覚め、心臓が鼓動し、呼吸が続いていること自体が、あなたの内部に強力なエネルギーが存在している証拠です。</p>
+<p>問題はあなたの人間性や能力にあるのではなく、<strong>「光の向き（回路の接続）」</strong>にあります。あなたは今、強力な懐中電灯を持ちながら、そのレンズを自分自身の頭の内部に向けてしまっているのです。</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>第1章 人間の基本回路（5つの要素）</h2>
+<p>「インナーカーレント（内なる電流）」の工学モデルにおいて、人間はシンプルな5つの部品からなる「懐中電灯」として定義されます。</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align: left;">部品</th>
+<th style="text-align: left;">身体の場所</th>
+<th style="text-align: left;">役割</th>
+<th style="text-align: left;">ひきこもり時の状態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>1. バッテリー（丹田）</strong></td>
+<td style="text-align: left;">おへその下（下腹部）</td>
+<td style="text-align: left;">生命エネルギーの源（起電力 $\mathcal{E} &gt; 0$）</td>
+<td style="text-align: left;">忘れ去られ、エネルギーが頭に偏っている</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2. スイッチ（意志）</strong></td>
+<td style="text-align: left;">前頭葉（注意の焦点）</td>
+<td style="text-align: left;">「今、ここ」へ接続する切り替え</td>
+<td style="text-align: left;">過去の後悔や未来の恐怖で空回りしている</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>3. 反射鏡（無心）</strong></td>
+<td style="text-align: left;">純粋な注意の伝導路</td>
+<td style="text-align: left;">抵抗ゼロ（$R \to 0$）で光を束ねる</td>
+<td style="text-align: left;">恥・世間体・評価への恐れで濁っている</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>4. 電球（行動）</strong></td>
+<td style="text-align: left;">手、足、声、呼吸</td>
+<td style="text-align: left;">エネルギーを外の世界へ出す物理的動作</td>
+<td style="text-align: left;">「完全な自分」を求めすぎてブロックされている</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>5. 対象（外部現実）</strong></td>
+<td style="text-align: left;">コップ、床、空、机</td>
+<td style="text-align: left;">光を受け止めて回路を閉じる負荷</td>
+<td style="text-align: left;">頭の中の恐ろしい妄想に置き換わっている</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<div class="chapter-break"></div>
+<h2>第2章 回路事故の正体：ジュール熱（自責の地獄）</h2>
+<p>なぜ部屋に閉じこもっていると、胸が苦しくなり、パニックや絶望に襲われるのでしょうか？</p>
+<p>物理学には<strong>ジュール＝レンツの法則</strong>があります。電流が抵抗を通過するとき、熱が発生します：</p>
+<p>$$Q = I^2 \cdot R \cdot t$$</p>
+<ul>
+<li>$I$（電流）：あなたの生きるエネルギー、意識の強さ。</li>
+<li>$R$（抵抗）：恥、世間体、自己否定、「なぜ自分はこうなんだ」という思考。</li>
+<li>$t$（時間）：その状態でいる時間。</li>
+</ul>
+<p>外の世界に出ることを恐れて光を頭の内側に向けると、意識の全エネルギーが「自己否定の抵抗」に激突します。その結果、神経回路が焼き切れんばかりの熱（苦しみ・激しい不安）が発生します。</p>
+<h3>直接照射の法則：</h3>
+<blockquote>
+<p><strong>懐中電灯は、自分自身の電池を照らすようには作られていません。</strong><br />
+目は自分自身の網膜を見ることができません。<br />
+心の内面をどれだけ分析しても、光が内側を向いている限り、内部の火事は燃え広がるだけです。</p>
+</blockquote>
+<hr />
+<div class="chapter-break"></div>
+<h2>第3章 脱出のための「60秒・直接照射プロトコル」</h2>
+<p>不安を消そうとしたり、自信をつけようとする必要はありません。電球は「自信満々な気持ち」にならなくても、スイッチを入れれば光ります。</p>
+<p>次の3つのステップを、その場で60秒だけ試してください。</p>
+<div class="codehilite"><pre><span></span><code>+------------------------------------------------------------------------------+
+|                    【 60秒クイック・リセット手順 】                          |
++------------------------------------------------------------------------------+
+|                                                                              |
+|  【ステップ 1】 丹田へのリセット（0〜20秒）                                  |
+|  ・視線を下に落とします。                                                    |
+|  ・右の手のひらをおへその下3センチ（丹田）に当てます。                       |
+|  ・鼻からゆっくりと息を吐ききり、お腹がへこむのを感じます。                 |
+|  ・心の中で確認します：「私のバッテリーは今も生きている」。                 |
+|                                                                              |
+|  【ステップ 2】 自己治療の放棄（20〜40秒）                                   |
+|  ・「前向きになろう」「不安を消そう」とする努力を完全にやめます。             |
+|  ・怖いままでいい、震えたままでいいと許可します。                            |
+|  ・電球は、自分の外見を好きにならなくても、外を照らすことができます。        |
+|                                                                              |
+|  【ステップ 3】 評価のない小さな物への直接照射（40〜60秒）                   |
+|  ・手の届く範囲にある「冷たい物理的な物」を1つ選びます。                     |
+|    （コップの水、机の角、毛布の繊維、床の感触）                              |
+|  ・指先でそれに触れ、その質感（冷たい、硬い、滑らか）に意識を100%向けます。   |
+|                                                                              |
+|  結果：光が1ミリでも外に出た瞬間、内側のジュール熱（火事）は止まります。     |
++------------------------------------------------------------------------------+
+</code></pre></div>
+
+<hr />
+<div class="chapter-break"></div>
+<h2>第4章 出会い（出会い / インピーダンス整合）の技術</h2>
+<p>社会復帰を目指すとき、いきなり「就業面接」や「人混み」という巨大な負荷に挑んではいけません。回路がショートしてしまいます。</p>
+<p>最初は、<strong>「人間関係の摩擦がゼロ（0オーム）の対象」</strong>から光を当てます：</p>
+<ol>
+<li><strong>レベル 1：部屋の中の物質（安全な負荷）</strong></li>
+<li>お茶を丁寧に淹れ、湯気をじっと見る。</li>
+<li>雑巾で机の上をひと拭きする。</li>
+<li>
+<p>窓を1センチ開けて、外の冷たい空気を手の甲に受ける。</p>
+</li>
+<li>
+<p><strong>レベル 2：人がいない時間と空間</strong></p>
+</li>
+<li>朝の5時、誰もいない街の空気を吸いに玄関先に立つ。</li>
+<li>アスファルトの地面を踏みしめる（アスファルトはあなたを批判しません）。</li>
+<li>
+<p>近くの自販機で缶コーヒーを買い、その温かさを手のひらで味わう。</p>
+</li>
+<li>
+<p><strong>レベル 3：無言の共存</strong></p>
+</li>
+<li>会話をしなくてもよい場所（図書館、公園のベンチ、寺院の庭）で座る。</li>
+<li>他者と目を合わせず、同じ空間にただ「在る」。</li>
+</ol>
+<hr />
+<div class="chapter-break"></div>
+<h2>第5章 ご家族と支援者の方へ</h2>
+<p>ひきこもりの方を救うために、以下の3つの原則を心にとめてください：</p>
+<ol>
+<li>
+<p><strong>「なぜ？」と理由を尋ねるのをやめてください。</strong><br />
+   「どうして部屋から出ないの？」「将来どうするの？」という問いは、本人の懐中電灯をさらに強く内側（自己否定）に向けさせ、火事を激しくするだけです。</p>
+</li>
+<li>
+<p><strong>言葉の代わりに「物理的な小さな負荷」を共有してください。</strong><br />
+   ドア越しに説教をするのではなく、温かいお茶をそっと置く、庭に咲いた小さな花を一輪置く、固くて開かないビンのフタを開けてもらうなど、「手を使う具体的な小さな事」を依頼してください。</p>
+</li>
+<li>
+<p><strong>本人の生命力（丹田）を信頼してください。</strong><br />
+   本人は怠けているのではなく、全身全霊で内側の火事と戦って疲れ果てています。火事が止まりさえすれば、光は自然と外に向かって伸びていきます。</p>
+</li>
+</ol>
+<hr />
+<div class="chapter-break"></div>
+<h2>7つの原則（まとめ）</h2>
+<ol>
+<li><strong>人間は懐中電灯である：</strong> 光は外にあるのではなく、あなたの内側から放射される。</li>
+<li><strong>あなたは壊れていない：</strong> バッテリーは正常。光の向きが逆になっているだけ。</li>
+<li><strong>自責はジュール熱である：</strong> 内面を分析するほど、神経回路はオーバーヒートする。</li>
+<li><strong>光は外にしか向けられない：</strong> 懐中電灯で自分の電池を照らすことはできない。</li>
+<li><strong>自信は必要ない：</strong> 不安なままでスイッチを入れれば、電球は光る。</li>
+<li><strong>小さな物から照らす：</strong> コップ、床、水。物はあなたを批判しない。</li>
+<li><strong>光が出た瞬間、解放される：</strong> 外の世界に光が届いた瞬間、内側の地獄は消滅する。</li>
+</ol>
+<hr />
+<p><em>著：ウラジーミル・アニャノフ（Vladimir Anyanov）</em><br />
+<em>インナーカーレント（Inner Current）プロジェクト</em><br />
+<em>ロシア・ロストフ・ナ・ドヌ（2026年）</em></p>
+
+</body>
+</html>

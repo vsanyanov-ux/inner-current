@@ -2,6 +2,12 @@
 title: "Inner Current: The Ukulele of Consciousness — Acoustic Ontology of Four Strings, Joy as Pure Resonance and the Triumph of Kanso"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/superconducting
   - ukulele
   - acoustic-ontology
   - resonance

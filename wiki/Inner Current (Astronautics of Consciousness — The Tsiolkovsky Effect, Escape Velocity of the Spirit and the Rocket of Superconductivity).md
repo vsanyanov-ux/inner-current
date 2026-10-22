@@ -3,7 +3,23 @@ created: 2026-09-25
 source: [[index|Wiki Index]]
 layer: III
 status: complete
-tags: [inner-current, astronautics, tsiolkovsky, escape-velocity, superconductivity, rocket-equation, consilience, kanso, mushin, tanden]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/epistemology
+  - state/superconducting
+  - astronautics
+  - tsiolkovsky
+  - escape-velocity
+  - superconductivity
+  - rocket-equation
+  - consilience
+  - kanso
+  - mushin
+  - tanden
 ---
 
 # 73. Космонавтика Сознания: Эффект Циолковского, Вторая космическая скорость духа и Ракета Сверхпроводимости

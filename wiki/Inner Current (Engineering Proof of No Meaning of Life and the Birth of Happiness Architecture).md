@@ -1,7 +1,22 @@
 ---
 created: 2026-09-23
-source: [[Inner Current - MOC|Inner Current MOC]]
-tags: [inner-current, meaning-of-life, engineering-mindset, teleology, thermodynamics, superconductivity, existentialism, zen-engineering, foundation, master-leak]
+source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - state/overheating
+  - meaning-of-life
+  - engineering-mindset
+  - teleology
+  - thermodynamics
+  - superconductivity
+  - existentialism
+  - zen-engineering
+  - foundation
+  - master-leak
 type: chapter
 status: evergreen
 ---
@@ -237,6 +252,6 @@ graph LR
 - [[02_Wiki/Inner Current (The Nature of the Light Bulb and Zen Load)|17. Природа лампочки и закон нагрузки по канонам Дзена]] — почему лампочка не содержит тока и светит только при прохождении внешнего потока.
 - [[02_Wiki/Inner Current (The 'Am I Happy' Question and Circuit Telemetry)|21. Ответ на вопрос «Счастлив ли я?»: Парадокс Милля и 5 датчиков телеметрии]] — ликвидация ментального тупика через прямое снятие телеметрии с цепи.
 - [[02_Wiki/Inner Current (Zen-Thermodynamics Synthesis and Happiness Breakthrough)|25. Синтез дзена и термодинамики как прорыв в понимании счастья]] — биекция дзенского канона Шуньяты и уравнений электродинамики.
-- [[Inner Current (Tolstoy Existential Crisis vs Happiness Architecture)|27. Сравнительный анализ: Духовный кризис Льва Толстого («Исповедь») vs Архитектура счастья]] — исторический кейс магистральной утечки и трагедия омического перегрева морального долга.
-- [[Inner Current (Circuitry of Existential Fault and Ground Leak)|28. Схемотехника экзистенциальной аварии: Почему утечка смысла не отражается как сопротивление на принципиальной схеме]] — штатный Golden Path vs аварийный Ground Fault и реле Interlock.
-- [[Inner Current - MOC|Inner Current MOC (Мастер-карта цепи)]]
+- [[02_Wiki/Inner Current (Tolstoy Existential Crisis vs Happiness Architecture)|27. Сравнительный анализ: Духовный кризис Льва Толстого («Исповедь») vs Архитектура счастья]] — исторический кейс магистральной утечки и трагедия омического перегрева морального долга.
+- [[02_Wiki/Inner Current (Circuitry of Existential Fault and Ground Leak)|28. Схемотехника экзистенциальной аварии: Почему утечка смысла не отражается как сопротивление на принципиальной схеме]] — штатный Golden Path vs аварийный Ground Fault и реле Interlock.
+- [[04_Maps/Inner Current MOC|Inner Current MOC (Мастер-карта цепи)]]

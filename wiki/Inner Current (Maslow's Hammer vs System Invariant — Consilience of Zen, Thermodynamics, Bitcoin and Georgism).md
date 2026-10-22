@@ -1,7 +1,26 @@
 ---
 created: 2026-09-25
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, epistemology, maslows-hammer, consilience, isomorphism, zen, thermodynamics, bitcoin, henry-george, single-tax, zero-parasitic-rent, direct-flow, tanden, musin]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
+  - epistemology
+  - maslows-hammer
+  - consilience
+  - isomorphism
+  - zen
+  - thermodynamics
+  - bitcoin
+  - henry-george
+  - single-tax
+  - zero-parasitic-rent
+  - direct-flow
+  - tanden
+  - musin
 type: concept
 status: evergreen
 ---

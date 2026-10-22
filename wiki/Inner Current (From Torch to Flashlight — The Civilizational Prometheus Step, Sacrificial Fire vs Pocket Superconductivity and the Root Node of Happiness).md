@@ -2,6 +2,12 @@
 title: "Inner Current: From Torch to Flashlight — The Civilizational Prometheus Step, Sacrificial Fire vs Pocket Superconductivity and the Root Node of Happiness"
 tags:
   - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
   - prometheus-step
   - torch-vs-flashlight
   - demystification

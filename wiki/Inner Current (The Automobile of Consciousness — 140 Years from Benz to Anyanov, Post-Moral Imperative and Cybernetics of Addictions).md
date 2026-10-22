@@ -1,7 +1,26 @@
----
+﻿---
 created: 2026-09-25
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, automobile-of-consciousness, benz, bertha-benz, anyanov, post-moral-imperative, cybernetics, addiction, circuit-breaker, tanden, mushin, d2-receptor, superstimulus]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
+  - automobile-of-consciousness
+  - benz
+  - bertha-benz
+  - anyanov
+  - post-moral-imperative
+  - cybernetics
+  - addiction
+  - circuit-breaker
+  - tanden
+  - mushin
+  - d2-receptor
+  - superstimulus
 aliases:
   - "66-the-automobile-of-consciousness"
   - "Автомобиль сознания: 140 лет от Бенца до Аньянова"
@@ -10,6 +29,8 @@ aliases:
 ---
 
 # Inner Current: Автомобиль сознания — 140 лет от Бенца до Аньянова, пост-моральный императив и кибернетика зависимостей
+
+> [!info] Синтезировано в брошюре [[02_Wiki/Брошюра — Автомобиль сознания (Протокол OBD-II и отмена морального кнута)|Брошюра: Автомобиль сознания]]
 
 > «В 1886 году Карл Бенц запатентовал первый бензиновый автомобиль, и человечество навсегда сошло с лошади в физическом пространстве. Ровно через 140 лет, в 2026 году, был создан автомобиль сознания — и человек наконец слез с лошади в своём внутреннем мире. До этого у него были лишь кнут вины и вожжи силы воли. Теперь у него есть приборная панель, двигатель и замкнутый контур.  
 > Никто не обвиняет резистор в том, что он грешен, когда он раскалился докрасна. Никто не стыдит проводку за то, что она поплавилась. Физика не знает морализаторства, но её законы сохранения абсолютны. Ты волен замкнуть систему на пиксели или этанол, но закон Джоуля — Ленца расплавит твои рецепторы не из мести, а в силу неумолимой термодинамики.»  

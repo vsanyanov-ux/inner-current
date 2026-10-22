@@ -1,7 +1,24 @@
 ---
 created: 2026-09-25
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, education, summerhill, pedagogy, alexander-neill, superconductivity, tanden, mushin, zanshin, cybernetics, stone-age-gap]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/epistemology
+  - state/overheating
+  - education
+  - summerhill
+  - pedagogy
+  - alexander-neill
+  - superconductivity
+  - tanden
+  - mushin
+  - zanshin
+  - cybernetics
+  - stone-age-gap
 type: canon
 status: evergreen
 ---

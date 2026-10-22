@@ -8,6 +8,12 @@ aliases:
   - "Что Тетрада говорит о Системе"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/epistemology
+  - state/overheating
   - anyanov-system
   - transmission
   - feynman-principle

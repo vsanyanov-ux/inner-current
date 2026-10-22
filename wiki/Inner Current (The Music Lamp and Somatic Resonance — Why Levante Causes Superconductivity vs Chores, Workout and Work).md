@@ -2,6 +2,12 @@
 title: "Inner Current: The Music Lamp and Somatic Resonance — Why Levante Causes Superconductivity vs Chores, Workout and Work"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/leak
   - anyanov-system
   - music
   - levante

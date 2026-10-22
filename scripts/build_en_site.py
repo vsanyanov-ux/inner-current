@@ -129,29 +129,81 @@ def generate_en_index():
     content = content.replace('<a href="#monographs" class="hover:text-slate-100 transition">Материалы PDF</a>', '<a href="#monographs" class="hover:text-slate-100 transition">PDF Materials</a>', 1)
     content = content.replace('<a href="#principles" class="hover:text-slate-100 transition">Принципы</a>', '<a href="#principles" class="hover:text-slate-100 transition">Principles</a>', 1)
 
-    # 5. Language Switcher in EN navbar
-    en_switcher = """        <!-- Language Switcher -->
-        <div class="flex items-center rounded-xl bg-slate-900 border border-slate-800 p-0.5 text-xs font-mono font-semibold" title="Language selection">
-          <a href="/" onclick="localStorage.setItem('inner_current_lang','ru')" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800/80 transition">RU</a>
-          <span class="px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold shadow-sm cursor-default">EN</span>
-        </div>"""
-    ru_switcher_search = """        <!-- Language Switcher -->
-        <div class="flex items-center rounded-xl bg-slate-900 border border-slate-800 p-0.5 text-xs font-mono font-semibold" title="Выбор языка / Language selection">
-          <span class="px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold shadow-sm cursor-default">RU</span>
-          <a href="/en/" onclick="localStorage.setItem('inner_current_lang','en')" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800/80 transition">EN</a>
-        </div>"""
-    if ru_switcher_search in content:
-        content = content.replace(ru_switcher_search, en_switcher, 1)
+    # 4b. Sidebar translation
+    content = content.replace('title="Свернуть сайдбар [Ctrl+B или [ ]"', 'title="Collapse sidebar [Ctrl+B or [ ]"')
+    content = content.replace('title="Закрыть меню"', 'title="Close menu"')
+    content = content.replace('Цепь замкнута', 'Circuit Closed')
+    content = content.replace('7 книг • 500+ ст.', '7 Books • 500+ Arts.')
+    content = content.replace('placeholder="Быстрый поиск по сайту..."', 'placeholder="Search sections (press /)..."')
+    content = content.replace('<span>Манифесты &amp; Протоколы</span>', '<span>Manifestos &amp; Protocols</span>')
+    content = content.replace('<span>Манифест Тока</span>', '<span>Current Manifesto</span>')
+    content = content.replace('<span>Дом Внутреннего Тока</span>', '<span>House of Inner Current</span>')
+    content = content.replace('<span>Золотая Семёрка 2.0</span>', '<span>Golden Seven 2.0</span>')
+    content = content.replace('<span class="text-slate-400">7 книг</span>', '<span class="text-slate-400">7 Books</span>')
+    content = content.replace('<span>Все книги (Обзор)</span>', '<span>All Books (Overview)</span>')
+    content = content.replace('<span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300">7 томов</span>', '<span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300">7 Volumes</span>')
+    content = content.replace('<span>Онлайн-ридер книг</span>', '<span>Online Book Reader</span>')
+    content = content.replace('<span>Аудиокнига онлайн</span>', '<span>Audiobook Online</span>')
+    content = content.replace('Внутренний ток (Базис)', 'Inner Current (Basis)')
+    content = content.replace('Четверичный фрактал (C₄)', 'Quaternary Fractal (C₄)')
+    content = content.replace('Универсальный закон', 'Universal Flow Law')
+    content = content.replace('Тайна фонарика (Детям)', 'Flashlight Primer (Ages 10+)')
+    content = content.replace('Полевое руководство', 'Field Manual')
+    content = content.replace('Дзен-гитара &amp; Укулеле', 'Zen Ukulele of Being')
+    content = content.replace('Великий Синтез 2.0', 'The Great Synthesis 2.0')
+    content = content.replace('Двухконтурный каскад', 'Dual-Circuit Cascade')
+    content = content.replace('<span>Интерактивные приборы</span>', '<span>Interactive Instruments</span>')
+    content = content.replace('<span>Дзен-фонарик (Схема)</span>', '<span>Zen Flashlight (Circuit)</span>')
+    content = content.replace('<span>Человек-контур</span>', '<span>Human Circuit</span>')
+    content = content.replace('<span>Тренажер цепи</span>', '<span>Circuit Workbench</span>')
+    content = content.replace('<span>Пульт Сверхпроводимости</span>', '<span>Superconductivity Cockpit</span>')
+    content = content.replace('border-amber-500/30">Стенд</span>', 'border-amber-500/30">Lab</span>')
+    content = content.replace('<span>База Знаний &amp; PDF</span>', '<span>Knowledge Base &amp; PDF</span>')
+    content = content.replace('<span>Вики-ридер (LLM Wiki)</span>', '<span>Wiki Reader (LLM Wiki)</span>')
+    content = content.replace('<span>Материалы и брошюры PDF</span>', '<span>PDF Materials &amp; Guides</span>')
+    content = content.replace('<span>English Edition</span>', '<span>Russian Edition</span>')
+    content = content.replace('href="/en/" onclick="localStorage.setItem(\'inner_current_lang\',\'en\')"', 'href="/" onclick="localStorage.setItem(\'inner_current_lang\',\'ru\')"')
+    content = content.replace('<span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300">EN</span>', '<span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300">RU</span>')
+    content = content.replace('<span>Telegram-канал</span>', '<span>Telegram Channel</span>')
 
-    # Navbar action buttons
-    content = content.replace('<span class="hidden sm:inline">Слушать</span>', '<span class="hidden sm:inline">Listen</span>', 1)
-    content = content.replace('<span>📖</span> <span>Ридер</span>', '<span>📖</span> <span>Reader</span>', 1)
+    # 4c. Top Navbar buttons & items
+    content = content.replace('title="Скрыть/показать сайдбар (Ctrl+B)"', 'title="Toggle sidebar (Ctrl+B)"')
+    content = content.replace('<span class="text-xs font-semibold">Меню</span>', '<span class="text-xs font-semibold">Menu</span>')
+    content = content.replace('<span class="text-xs font-mono font-medium">Панель</span>', '<span class="text-xs font-mono font-medium">Panel</span>')
+    content = content.replace('<span>⚡</span> Манифест', '<span>⚡</span> Manifesto')
+    content = content.replace('<span>📄</span> Whitepaper', '<span>📄</span> White Paper')
+    content = content.replace('<span>🏛️</span> Дом', '<span>🏛️</span> House')
+    content = content.replace('<span>📚</span> Вики', '<span>📚</span> Wiki')
+    content = content.replace('<span>🎛️</span> Тренажер', '<span>🎛️</span> Workbench')
+    content = content.replace('<span class="hidden sm:inline">Аудио</span>', '<span class="hidden sm:inline">Audio</span>')
+    content = content.replace('<span>📖</span> <span>Ридер</span>', '<span>📖</span> <span>Reader</span>')
+
+    # 5. Language Switcher in EN navbar
+    en_switcher_new = """          <!-- Language Switcher -->
+          <div class="flex items-center rounded-xl bg-slate-900 border border-slate-800 p-0.5 text-xs font-mono font-semibold" title="Language selection">
+            <a href="/" onclick="setLanguage('ru')" class="px-2 py-1 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800/80 transition text-[11px]">RU</a>
+            <span class="px-2 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold shadow-sm cursor-default text-[11px]">EN</span>
+          </div>"""
+
+    ru_switcher_search_new = """          <!-- Language Switcher -->
+          <div class="flex items-center rounded-xl bg-slate-900 border border-slate-800 p-0.5 text-xs font-mono font-semibold" title="Выбор языка">
+            <span class="px-2 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold shadow-sm cursor-default text-[11px]">RU</span>
+            <a href="/en/" onclick="setLanguage('en')" class="px-2 py-1 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800/80 transition text-[11px]">EN</a>
+          </div>"""
+
+    if ru_switcher_search_new in content:
+        content = content.replace(ru_switcher_search_new, en_switcher_new, 1)
 
     # 6. Hero section
+    content = content.replace('<span>🏛️</span> СИСТЕМА АНЬЯНОВА • ЗОЛОТАЯ СЕМЁРКА 2.0', '<span>🏛️</span> ANYANOV SYSTEM • GOLDEN SEVEN 2.0')
     content = content.replace('<span>⚡</span> ВНУТРЕННИЙ ТОК • 7 КНИГ И РУКОВОДСТВ', '<span>⚡</span> INNER CURRENT • 7 BOOKS & MANUALS', 1)
     content = content.replace(
         'Внутренний ток <br class="hidden sm:inline"/>\n        <span class="bg-gradient-to-r from-amber-400 via-amber-300 to-sky-300 bg-clip-text text-transparent text-glow-amber">\n          Книги и прикладные руководства\n        </span>',
         'Inner Current <br class="hidden sm:inline"/>\n        <span class="bg-gradient-to-r from-amber-400 via-amber-300 to-sky-300 bg-clip-text text-transparent text-glow-amber">\n          Books & Applied Engineering Guides\n        </span>', 1
+    )
+    content = content.replace(
+        'Архитектура «Дома Внутреннего Тока»: от соматического фундамента человека (N=1) и топологии четверичного фрактала (C₄) до термодинамики негэнтропии и макроистории цивилизации.',
+        'Architecture of the "House of Inner Current": from somatic foundation (N=1) and quaternary fractal topology (C₄) to negentropy thermodynamics and macrohistory of civilization.'
     )
     content = content.replace(
         'Практическая схемотехника человека: от экспресс-отладки острой боли и перегрузки до прикладной акустики, соматики и синтеза законов физики с природой сознания.',
@@ -162,9 +214,21 @@ def generate_en_index():
     content = content.replace('<div class="text-2xl font-black text-emerald-400 font-mono">3 языка</div>', '<div class="text-2xl font-black text-emerald-400 font-mono">3 Languages</div>', 1)
     content = content.replace('<div class="text-xs text-slate-400 mt-0.5 font-medium">Свободный доступ</div>', '<div class="text-xs text-slate-400 mt-0.5 font-medium">Open Access</div>', 1)
 
-    content = content.replace('<span>📖</span> <span>Онлайн-ридер</span>', '<span>📖</span> <span>Online Reader</span>', 1)
-    content = content.replace('<span>🎧</span> <span>Аудиокнига онлайн</span>', '<span>🎧</span> <span>Audiobook Online</span>', 1)
-    content = content.replace('<span>📚</span> <span>Обзор всех изданий</span>', '<span>📚</span> <span>Overview of All Books</span>', 1)
+    content = content.replace('<span>Читать Манифест</span>', '<span>Read Manifesto</span>')
+    content = content.replace('<span>Онлайн-ридер</span>', '<span>Online Reader</span>')
+    content = content.replace('<span>Аудиокнига онлайн</span>', '<span>Audiobook Online</span>')
+    content = content.replace('<span>Дом Внутреннего Тока</span>', '<span>House of Inner Current</span>')
+    content = content.replace('<span>Золотая Семёрка (7 книг)</span>', '<span>Overview (7 Books)</span>')
+    content = content.replace('<span>Обзор всех изданий</span>', '<span>Overview of All Books</span>')
+
+    wp_hero_btn = """        <a href="whitepaper.html" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-sky-300 border border-sky-500/40 font-bold text-sm transition shadow-lg shadow-sky-500/10 flex items-center gap-2">
+          <span>📄</span> <span>White Paper</span>
+        </a>"""
+    if 'Read Manifesto</span>\n        </a>\n' + wp_hero_btn not in content and 'Read Manifesto</span>\r\n        </a>\r\n' + wp_hero_btn not in content:
+        if '<span>Read Manifesto</span>\n        </a>' in content:
+            content = content.replace('<span>Read Manifesto</span>\n        </a>', '<span>Read Manifesto</span>\n        </a>\n' + wp_hero_btn, 1)
+        elif '<span>Read Manifesto</span>\r\n        </a>' in content:
+            content = content.replace('<span>Read Manifesto</span>\r\n        </a>', '<span>Read Manifesto</span>\r\n        </a>\r\n' + wp_hero_btn, 1)
 
     # 7. Books Showcase Header
     content = content.replace('Семь книг библиотеки', 'Seven Books of the Library', 1)
@@ -535,6 +599,16 @@ def generate_en_index():
           </button>"""
     )
     content = content.replace('href="books/field_manual.html"', 'href="../book/en/index.html"')
+
+    # Footer translation
+    content = content.replace('⚡ Манифест', '⚡ Manifesto')
+    content = content.replace('Книги (7)', 'Books (7)')
+    content = content.replace('>Ридер<', '>Reader<')
+    content = content.replace('Кокпит OBD-II', 'Cockpit OBD-II')
+    content = content.replace('Вики (500+)', 'Wiki (500+)')
+    footer_idx = content.rfind('<footer')
+    if footer_idx != -1 and 'href="whitepaper.html"' not in content[footer_idx:]:
+        content = content.replace('⚡ Manifesto</a>', '⚡ Manifesto</a>\n        <span>•</span>\n        <a href="whitepaper.html" class="text-sky-300 font-semibold hover:text-sky-200 transition">📄 White Paper</a>', 1)
 
     # Write out
     with open(out_path, "w", encoding="utf-8") as f:
@@ -1014,4 +1088,14 @@ if __name__ == "__main__":
     generate_en_index()
     generate_en_flashlight()
     generate_en_human()
+
+    # Build English Manifesto and White Paper
+    import build_en_manifesto_whitepaper
+    print("Building English Manifesto and White Paper...")
+    build_en_manifesto_whitepaper.update_russian_manifesto()
+    build_en_manifesto_whitepaper.update_russian_whitepaper()
+    build_en_manifesto_whitepaper.build_en_manifesto()
+    build_en_manifesto_whitepaper.build_en_whitepaper()
+    build_en_manifesto_whitepaper.update_en_index()
+
     print("=== All English pages generated and synchronized successfully! ===")

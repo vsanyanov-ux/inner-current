@@ -1,7 +1,22 @@
 ---
 created: 2026-09-30
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, haiku-and-circuitry, kanso, poetic-sensitivity, engineering-mindset, snow-two-cultures, zen-synthesis, author-archetype, layer-3]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - haiku-and-circuitry
+  - kanso
+  - poetic-sensitivity
+  - engineering-mindset
+  - snow-two-cultures
+  - zen-synthesis
+  - author-archetype
+  - layer-3
 aliases:
   - "157-consilience-of-haiku-and-circuitry"
   - "Консилиенс Хайку и Схемотехники"

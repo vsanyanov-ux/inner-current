@@ -1,7 +1,23 @@
 ---
 created: 2026-09-27
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, compassion, esoterics, pain, rationalism, reconciliation, self-hosted-human, dignity, epistemology, consilience]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/sovereignty
+  - state/overheating
+  - compassion
+  - esoterics
+  - pain
+  - rationalism
+  - reconciliation
+  - self-hosted-human
+  - dignity
+  - epistemology
+  - consilience
 aliases:
   - "108-the-real-pain-behind-esoterics"
   - "Настоящая боль за эзотерикой"

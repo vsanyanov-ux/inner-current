@@ -1,7 +1,23 @@
 ---
 created: 2026-09-30
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, terminology, flashlight-model, tanden, mushin, ego-rheostat, load, return-wire, operational-language, layer-1]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
+  - terminology
+  - flashlight-model
+  - tanden
+  - mushin
+  - ego-rheostat
+  - load
+  - return-wire
+  - operational-language
+  - layer-1
 aliases:
   - "154-flashlight-lexicon-and-hierarchy-of-terms"
   - "Терминологический канон Фонарика"

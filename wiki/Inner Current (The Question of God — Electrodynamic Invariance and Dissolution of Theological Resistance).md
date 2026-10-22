@@ -1,7 +1,22 @@
 ---
 created: 2026-09-24
-source: [[Inner Current - MOC|Inner Current MOC]]
-tags: [inner-current, theology, god, electrodynamics, invariance, pascal-wager, mushin, tanden, zen-engineering]
+source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - theology
+  - god
+  - electrodynamics
+  - invariance
+  - pascal-wager
+  - mushin
+  - tanden
+  - zen-engineering
 type: concept
 status: evergreen
 ---
@@ -16,7 +31,7 @@ status: evergreen
 
 ## 🧭 Введение: Преодоление поиска смысла и следующий экзистенциальный барьер
 
-В фундаментальном труде по инженерному доказательству отсутствия внешнего смысла жизни ([[26-engineering-proof-of-no-meaning-of-life|26. Инженерное доказательство отсутствия смысла жизни]]) система «Внутренний ток» ликвидировала главную телеологическую иллюзию человечества:
+В фундаментальном труде по инженерному доказательству отсутствия внешнего смысла жизни ([[02_Wiki/Inner Current (Engineering Proof of No Meaning of Life and the Birth of Happiness Architecture)|26. Инженерное доказательство отсутствия смысла жизни]]) система «Внутренний ток» ликвидировала главную телеологическую иллюзию человечества:
 $$\mathcal{M}_{\text{ext}} \equiv 0$$
 Человек — это не молоток и не лопата, изготовленные внешним мастером под узкое утилитарное техзадание. Человек — суверенная, открытая термодинамическая система, генерирующая собственную мощность из ядра (**Тандэн**).
 
@@ -66,7 +81,7 @@ flowchart TD
 ### А. Бог как антропоморфный «Хозяин Виноградника» (Ловушка Льва Толстого)
 Если под Богом понимается внешний начальник, который следит за грехами, требует отчетов и навязывает рабский статус («человек — поденщик на чужом винограднике»):
 - Для Архитектуры счастья это **архитектурная диверсия**. 
-- Как показано в сравнительном анализе духовного кризиса Льва Толстого ([[Inner Current (Tolstoy Existential Crisis vs Happiness Architecture)|27. Кризис Толстого vs Архитектура счастья]]), попытка опереться на такого «Хозяина» взвинчивает моральное сопротивление цепи до небес ($R_{\text{moral}} \to \infty$).
+- Как показано в сравнительном анализе духовного кризиса Льва Толстого ([[02_Wiki/Inner Current (Tolstoy Existential Crisis vs Happiness Architecture)|27. Кризис Толстого vs Архитектура счастья]]), попытка опереться на такого «Хозяина» взвинчивает моральное сопротивление цепи до небес ($R_{\text{moral}} \to \infty$).
 - Человек начинает ежесекундно судить себя: *«Святой ли я? Не согрешил ли я тем, что выпил кофе с круассаном, пока в мире есть голод?»*. Результат — неизбежный омический взрыв и катастрофа на станции Астапово.
 
 ### Б. Бог как Реальность, Источник Сущего и Физика Бытия
@@ -81,7 +96,7 @@ flowchart TD
 
 Классический философ Блез Паскаль предлагал прагматическое пари: выгоднее верить в Бога, потому что выигрыш бесконечен (вечная жизнь), а проигрыш ничтожен. Однако пари Паскаля опиралось на страх перед адом и порождало лицемерие ума.
 
-Система Владимира Аньянова формулирует **Сверхпроводящее пари Паскаля**, основанное не на страхе, а на **электродинамической инвариантности оптимума цепи** *(развёрнутый исторический аудит и демонтаж богословской рулетки см. в отдельной статье: [[Inner Current (Deconstruction of Pascal's Wager — Theological Roulette vs Superconducting Invariance)|42. Деконструкция пари Паскаля]])*:
+Система Владимира Аньянова формулирует **Сверхпроводящее пари Паскаля**, основанное не на страхе, а на **электродинамической инвариантности оптимума цепи** *(развёрнутый исторический аудит и демонтаж богословской рулетки см. в отдельной статье: [[02_Wiki/Inner Current (Deconstruction of Pascal's Wager — Theological Roulette vs Superconducting Invariance)|42. Деконструкция пари Паскаля]])*:
 
 $$\text{Целевая функция оператора: } \mathcal{H} = \lim_{R \to 0} \frac{I^2 R_{\text{load}}}{I^2 (R_{\text{load}} + R_{\text{circuit}})} \equiv 100\%$$
 
@@ -149,12 +164,12 @@ $$\mathbf{OptimalStrategy} \iff \{ R_{\text{ego}} = 0, \quad R_{\text{theology}}
 ---
 
 ## 🔗 Связи и консилиенс
-- [[01-core-topology|01. Базовая топология цепи и закон полярности]]
-- [[07-nature-and-illusion-of-ego|07. Природа и иллюзия эго: демистификация мировых религий]]
-- [[12-zen-as-happiness-architecture-foundation|12. Дзен как фундамент Архитектуры счастья]]
-- [[26-engineering-proof-of-no-meaning-of-life|26. Инженерное доказательство отсутствия смысла жизни]]
-- [[Inner Current (Tolstoy Existential Crisis vs Happiness Architecture)|27. Духовный кризис Льва Толстого vs Архитектура счастья]]
-- [[Inner Current (Tolstoy and Osho — Two Views on Happiness)|36. Толстой и Ошо: два взгляда на счастье]]
-- [[Inner Current (Double Verification Principle — Zen-Electrodynamics Cross-Validation and Tanden Generator)|39. Принцип двойной проверки]]
-- [[Inner Current (Copernican Revolution in Ontology — Bottom-Up Circuit Dissolution of Metaphysics and Human-AI Zanshin)|41. Коперниканский переворот в онтологии]]
-- [[Inner Current (Deconstruction of Pascal's Wager — Theological Roulette vs Superconducting Invariance)|42. Деконструкция пари Паскаля]]
+- [[02_Wiki/Inner Current (Core Topology and Polarity Law)|01. Базовая топология цепи и закон полярности]]
+- [[02_Wiki/Inner Current (Nature and Illusion of Ego)|07. Природа и иллюзия эго: демистификация мировых религий]]
+- [[02_Wiki/Inner Current (Zen as Happiness Architecture Foundation)|12. Дзен как фундамент Архитектуры счастья]]
+- [[02_Wiki/Inner Current (Engineering Proof of No Meaning of Life and the Birth of Happiness Architecture)|26. Инженерное доказательство отсутствия смысла жизни]]
+- [[02_Wiki/Inner Current (Tolstoy Existential Crisis vs Happiness Architecture)|27. Духовный кризис Льва Толстого vs Архитектура счастья]]
+- [[02_Wiki/Inner Current (Tolstoy and Osho — Two Views on Happiness)|36. Толстой и Ошо: два взгляда на счастье]]
+- [[02_Wiki/Inner Current (Double Verification Principle — Zen-Electrodynamics Cross-Validation and Tanden Generator)|39. Принцип двойной проверки]]
+- [[02_Wiki/Inner Current (Copernican Revolution in Ontology — Bottom-Up Circuit Dissolution of Metaphysics and Human-AI Zanshin)|41. Коперниканский переворот в онтологии]]
+- [[02_Wiki/Inner Current (Deconstruction of Pascal's Wager — Theological Roulette vs Superconducting Invariance)|42. Деконструкция пари Паскаля]]

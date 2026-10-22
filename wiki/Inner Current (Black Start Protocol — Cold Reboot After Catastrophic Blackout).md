@@ -1,7 +1,20 @@
 ---
 created: 2026-09-23
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, crisis-protocol, black-start, blackout, grief, burnout, resilience, antifragile]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - state/overheating
+  - crisis-protocol
+  - black-start
+  - blackout
+  - grief
+  - burnout
+  - resilience
+  - antifragile
 type: protocol
 status: evergreen
 ---

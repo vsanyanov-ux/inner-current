@@ -27,6 +27,23 @@ processed_md = re.sub(r"^>\s*\[!(\w+)\]([^\n]*(?:\n>[^\n]*)*)", replace_callout,
 processed_md = re.sub(r"^(## Часть [^\n]+)", r'<div class="part-header">\1</div>', processed_md, flags=re.MULTILINE)
 processed_md = re.sub(r"^(### Глава [^\n]+)", r'<div class="chapter-break"></div>\n\1', processed_md, flags=re.MULTILINE)
 
+# Protect math blocks and inline formulas before markdown parsing
+math_blocks = []
+def save_block(m):
+    idx = len(math_blocks)
+    math_blocks.append(m.group(1))
+    return f"@@MATH_BLOCK_{idx}@@"
+
+processed_md = re.sub(r"\$\$(.*?)\$\$", save_block, processed_md, flags=re.DOTALL)
+
+math_inlines = []
+def save_inline(m):
+    idx = len(math_inlines)
+    math_inlines.append(m.group(1))
+    return f"@@MATH_INLINE_{idx}@@"
+
+processed_md = re.sub(r"\$([^\$\n]+)\$", save_inline, processed_md)
+
 # Convert Markdown to HTML
 md_extensions = ['tables', 'fenced_code', 'codehilite', 'def_list', 'nl2br']
 html_body = markdown.markdown(processed_md, extensions=md_extensions)
@@ -35,9 +52,13 @@ html_body = markdown.markdown(processed_md, extensions=md_extensions)
 html_body = html_body.replace("<table>", '<div class="table-wrapper"><table>')
 html_body = html_body.replace("</table>", '</table></div>')
 
-# Beautify math inline and display
-html_body = re.sub(r"\$\$(.*?)\$\$", r'<div class="math-display">\1</div>', html_body, flags=re.DOTALL)
-html_body = re.sub(r"\$([^\$\n]+)\$", r'<span class="math-inline">\1</span>', html_body)
+# Restore math blocks and inlines
+for idx, b in enumerate(math_blocks):
+    html_body = html_body.replace(f"@@MATH_BLOCK_{idx}@@", f'<div class="math-display">\[{b.strip()}\]</div>')
+    html_body = re.sub(rf'<p>\s*(<div class="math-display">.*?</div>)\s*</p>', r'\1', html_body, flags=re.DOTALL)
+
+for idx, i in enumerate(math_inlines):
+    html_body = html_body.replace(f"@@MATH_INLINE_{idx}@@", f'<span class="math-inline">\({i}\)</span>')
 
 FULL_HTML = f"""<!DOCTYPE html>
 <html lang="ru">
@@ -46,6 +67,28 @@ FULL_HTML = f"""<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Внутренний ток: Полевой мануал отладки — Владимир Аньянов</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {{
+    function initKaTeX() {{
+      if (typeof renderMathInElement === 'function') {{
+        renderMathInElement(document.body, {{
+          delimiters: [
+            {{left: '$$', right: '$$', display: true}},
+            {{left: '\\[', right: '\\]', display: true}},
+            {{left: '\\(', right: '\\)', display: false}},
+            {{left: '$', right: '$', display: false}}
+          ],
+          throwOnError: false
+        }});
+      }} else {{
+        setTimeout(initKaTeX, 50);
+      }}
+    }}
+    initKaTeX();
+  }});
+</script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 

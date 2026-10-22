@@ -4,7 +4,20 @@ title: "Inner Current — 92. Цивилизационные Катастроф�
 created: 2026-09-26
 author: Vladimir Anyanov
 layer: III. Дзен-онтология и синтез
-tags: [inner-current, newtonian-physics, anyanov-science, civilizational-catastrophes, historical-epistemology, burnout-epidemic, self-hosted-human, paradigm-shift]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - newtonian-physics
+  - anyanov-science
+  - civilizational-catastrophes
+  - historical-epistemology
+  - burnout-epidemic
+  - self-hosted-human
+  - paradigm-shift
 ---
 
 # 92. Цивилизационные Катастрофы: До и После Ньютона vs До и После Аньянова — Как Контурная Электродинамика ликвидирует 10 000 лет душевных бедствий человечества

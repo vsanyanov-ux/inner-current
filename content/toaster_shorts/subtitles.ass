@@ -1,0 +1,43 @@
+[Script Info]
+Title: Toaster and Socket Metaphor Shorts
+ScriptType: v4.00+
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+YCbCr Matrix: TV.601
+PlayResX: 1080
+PlayResY: 1920
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Header,Arial,58,&H00FFFFFF,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,6,2,8,40,40,140,1
+Style: Subtitle,Arial,64,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,7,3,2,60,60,420,1
+Style: SubtitleGold,Arial,66,&H0000D7FF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,8,4,2,60,60,420,1
+Style: SubtitleGreen,Arial,66,&H0099D334,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,8,4,2,60,60,420,1
+Style: SubtitleRed,Arial,66,&H004141FF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,8,4,2,60,60,420,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:13.26,Header,,0,0,0,,{\an8\bord6\shad3\c&H00D7FF&}«У МЕНЯ ЖЕ ЕСТЬ РАФ!»{\c&HFFFFFF&}
+Dialogue: 0,0:00:13.26,0:00:21.14,Header,,0,0,0,,{\an8\bord6\shad3\c&H4141FF&}ВЫБИЛО ПРОБКИ?{\c&HFFFFFF&}
+Dialogue: 0,0:00:21.14,0:00:29.14,Header,,0,0,0,,{\an8\bord6\shad3\c&H4141FF&}ТОКА НЕТ В СЕТИ{\c&HFFFFFF&}
+Dialogue: 0,0:00:29.14,0:00:40.92,Header,,0,0,0,,{\an8\bord6\shad3\c&H34D399&}В ЧЁМ СЕКРЕТ?{\c&HFFFFFF&}
+Dialogue: 0,0:00:40.92,0:00:49.73,Header,,0,0,0,,{\an8\bord6\shad3\c&H00D7FF&}СВЕРХПРОВОДИМОСТЬ{\c&HFFFFFF&}
+Dialogue: 0,0:00:49.73,0:00:59.71,Header,,0,0,0,,{\an8\bord6\shad3\c&H00D7FF&}ВКЛЮЧИ СВОЙ ТОК{\c&HFFFFFF&}
+
+Dialogue: 0,0:00:00.10,0:00:04.20,Subtitle,,0,0,0,,Человек защищается списком радостей:\N«У меня же есть раф, море, шопинг!»
+Dialogue: 0,0:00:04.20,0:00:13.16,SubtitleGold,,0,0,0,,Но твой раф или отпуск —\Nэто {\c&H00D7FF&}ПРОСТО КРУТОЙ ТОСТЕР!{\c&HFFFFFF&}
+
+Dialogue: 0,0:00:13.36,0:00:17.06,Subtitle,,0,0,0,,Если в розетке нет тока\Nили выбило пробки —
+Dialogue: 0,0:00:17.06,0:00:21.04,SubtitleRed,,0,0,0,,Сколько тостеров ни тыкай,\N{\c&H4141FF&}ХЛЕБ ОСТАНЕТСЯ СЫРЫМ!{\c&HFFFFFF&}
+
+Dialogue: 0,0:00:21.24,0:00:25.14,Subtitle,,0,0,0,,Если проводка сожжена тревогой\Nи зажимом эго —
+Dialogue: 0,0:00:25.14,0:00:29.04,SubtitleRed,,0,0,0,,Самый дорогой раф на пляже\N{\c&H4141FF&}ВСТАЁТ СУХИМ КОМОМ В ГОРЛЕ!{\c&HFFFFFF&}
+
+Dialogue: 0,0:00:29.24,0:00:33.14,SubtitleGreen,,0,0,0,,Внутренний ток — это {\c&H34D399&}ЭЛЕКТРИЧЕСТВО!{\c&HFFFFFF&}\NУдовольствия — лишь приборы.
+Dialogue: 0,0:00:33.14,0:00:40.82,SubtitleGold,,0,0,0,,Источник счастья —\N{\c&H00D7FF&}В НАПРЯЖЕНИИ ТВОЕЙ СЕТИ!{\c&HFFFFFF&}
+
+Dialogue: 0,0:00:41.02,0:00:43.92,Subtitle,,0,0,0,,Когда ток течёт чисто —
+Dialogue: 0,0:00:43.92,0:00:49.63,SubtitleGold,,0,0,0,,Даже кусок чёрного хлеба с водой\N{\c&H00D7FF&}ДАЁТ ВОСТОРГ БЫТИЯ!{\c&HFFFFFF&}
+
+Dialogue: 0,0:00:49.83,0:00:53.23,SubtitleGreen,,0,0,0,,Перестань скупать тостеры.\N{\c&H34D399&}ВКЛЮЧИ ТОК В РОЗЕТКЕ!{\c&HFFFFFF&}
+Dialogue: 0,0:00:53.23,0:00:59.61,SubtitleGold,,0,0,0,,Подпишись на канал, чтобы\N{\c&H00D7FF&}НАСТРОИТЬ ВНУТРЕННИЙ ТОК!{\c&HFFFFFF&}

@@ -3,7 +3,27 @@ created: 2026-09-25
 source: [[index|Wiki Index]]
 layer: IV
 status: complete
-tags: [inner-current, preprint, zenodo, cern, doi, four-element-topology, electrodynamics, mushin, tanden, zanshin, dmn, tpn, joule-lenz, open-science]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/open-loop
+  - preprint
+  - zenodo
+  - cern
+  - doi
+  - four-element-topology
+  - electrodynamics
+  - mushin
+  - tanden
+  - zanshin
+  - dmn
+  - tpn
+  - joule-lenz
+  - open-science
 type: preprint
 ---
 
@@ -20,7 +40,7 @@ type: preprint
 
 ---
 
-# The Four-Element Topology of Human Consciousness: An Electrodynamic Model of Generator, Fuse, Resistor, and Load in State Dynamics and Well-Being Architecture
+## The Four-Element Topology of Human Consciousness: An Electrodynamic Model of Generator, Fuse, Resistor, and Load in State Dynamics and Well-Being Architecture
 
 ### *Топология четырёх элементов сознания: Электродинамическая модель генератора, предохранителя, резистора и нагрузки в динамике состояний и архитектуре благополучия*
 

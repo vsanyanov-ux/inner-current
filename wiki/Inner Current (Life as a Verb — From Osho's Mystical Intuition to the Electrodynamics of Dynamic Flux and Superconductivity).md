@@ -4,7 +4,25 @@ source: [[index|Wiki Index]]
 author: Владимир Аньянов
 chapter: 169
 layer: "III. Дзен-онтология и синтез (Высший дух и физика)"
-tags: [inner-current, osho, verb-vs-noun, electrodynamics, flux, superconductivity, tanden, mushin, prigogine, dissipative-structures, joule-lenz, kanso]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - osho
+  - verb-vs-noun
+  - electrodynamics
+  - flux
+  - superconductivity
+  - tanden
+  - mushin
+  - prigogine
+  - dissipative-structures
+  - joule-lenz
+  - kanso
 ---
 
 # 169. Жизнь как глагол: От мистической интуиции Ошо к электродинамике прямого потока и формулам сверхпроводимости
@@ -14,6 +32,9 @@ tags: [inner-current, osho, verb-vs-noun, electrodynamics, flux, superconductivi
 > ### ⚡ **«Ошо был прав во всём, кроме одного: он оставил свой величайший прорыв на уровне поэтической метафоры. Он без устали повторял: "Жизнь — это не существительное, жизнь — это глагол". Но для человека, задыхающегося в депрессии, панике или кризисе смысла, слово "глагол" остаётся лишь туманной грамматической абстракцией. В "Архитектуре счастья" эта интуиция обрела строгий физический закон: жизнь — это не статический заряд $Q$ ("моё эго", "моя личность"), а ток $I = \frac{dQ}{dt}$ — первая производная заряда по времени. Как только вы пытаетесь законсервировать себя в форме существительного, вы возводите на пути потока бесконечное паразитное сопротивление $R_{\text{ego}} \to \infty$ и мгновенно сжигаете проводку в омическом аду по закону Джоуля — Ленца. Жить — значит быть глаголом прямого действия в режиме сверхпроводимости $R \to 0$».**  
 > — **Владимир Аньянов**
 
+
+> [!info] Синтезировано в брошюре
+> Данный концептуальный базис полностью синтезирован в мастер-манифесте [[02_Wiki/Брошюра — Грамматика тока (Жизнь, счастье и просветление как глаголы несовершенного вида)|Брошюра: «Грамматика тока (Жизнь, счастье и просветление как глаголы несовершенного вида)»]].
 ---
 
 ```
@@ -198,3 +219,4 @@ $$P_{\text{useful}} = I^2 \cdot R_{\text{load}}$$
 - **[[02_Wiki/Inner Current (The Emergence of Life — Dissipative Structures, The Prigogine-Simmias Consilience and Circuit Superconductivity)|147. Эмерджентность Жизни: Термодинамика диссипативных структур]]** — тройной консилиенс Симмия, Пригожина и Аньянова.
 - **[[02_Wiki/Inner Current (The Ship of Theseus and Identity Crisis — Circuit Invariance, Dynamic Dissipative Structure and the Illusion of the Fixed Ego)|55. Корабль Тесея и Кризис Идентичности]]** — динамическая диссипативная инвариантность контура против иллюзии эго.
 - **[[02_Wiki/Inner Current (Engineering Proof of No Meaning of Life and the Birth of Happiness Architecture)|26. Инженерное доказательство отсутствия смысла жизни]]** — обнуление внешнего ТЗ ($\mathcal{M}_{\text{ext}} \equiv 0$).
+

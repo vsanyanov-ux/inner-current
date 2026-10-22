@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=JetBrains+Mono:wght@700;800&display=swap');
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    width: 1080px;
+    height: 1920px;
+    background: #060709;
+    color: #f1f5f9;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    position: relative;
+    /* Учет безопасных зон Shorts: 110px сверху, 260px снизу */
+    padding: 110px 40px 260px 40px;
+    gap: 30px;
+  }
+
+  /* Фоновые вспышки неона */
+  .glow-top {
+    position: absolute;
+    top: -100px;
+    left: 20%;
+    width: 700px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .glow-bottom {
+    position: absolute;
+    bottom: -100px;
+    right: 10%;
+    width: 700px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Верхняя метка */
+  .top-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+  }
+
+  .badge {
+    background: rgba(236, 72, 153, 0.25);
+    border: 2px solid rgba(236, 72, 153, 0.8);
+    color: #f472b6;
+    padding: 10px 24px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    box-shadow: 0 0 30px rgba(236, 72, 153, 0.4);
+  }
+
+  .brand-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 17px;
+    color: #94a3b8;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 800;
+  }
+  .brand-tag span {
+    color: #38bdf8;
+  }
+
+  /* ОГРОМНЫЙ КРУПНЫЙ ЗАГОЛОВОК */
+  .headline {
+    font-size: 52px;
+    font-weight: 900;
+    line-height: 1.12;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    z-index: 10;
+  }
+  .headline .highlight-pink {
+    color: #f43f5e;
+    text-shadow: 0 0 35px rgba(244, 63, 94, 0.6);
+  }
+  .headline .highlight-cyan {
+    color: #38bdf8;
+    text-shadow: 0 0 35px rgba(56, 189, 248, 0.5);
+  }
+
+  /* ГИГАНТСКАЯ КАРТИНКА */
+  .visual-container {
+    position: relative;
+    z-index: 10;
+    width: 1000px;
+    height: 1000px;
+    margin: 0 auto;
+  }
+
+  .image-wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 32px;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+  }
+
+  .main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ЧИСТЫЙ МИНИМАЛИСТИЧНЫЙ НИЗ: ТОЛЬКО 1 СТРОКА И CTA */
+  .bottom-bar {
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .punchline-strip {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(16px);
+    border-radius: 20px;
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  }
+
+  .punchline-quote {
+    font-size: 21px;
+    font-weight: 900;
+    color: #f8fafc;
+    letter-spacing: -0.3px;
+  }
+  .punchline-quote span {
+    color: #facc15;
+    text-shadow: 0 0 20px rgba(250, 204, 21, 0.4);
+  }
+
+  .cta-pill {
+    background: #0284c7;
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 800;
+    font-size: 18px;
+    padding: 12px 26px;
+    border-radius: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 25px rgba(2, 132, 199, 0.5);
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+
+  <div class="glow-top"></div>
+  <div class="glow-bottom"></div>
+
+  <!-- ВЕРХНЯЯ ПЛАШКА -->
+  <div class="top-meta">
+    <div class="badge">Взлом догмы #03</div>
+    <div class="brand-tag">⚡ <span>INNER CURRENT</span> // SHORTS</div>
+  </div>
+
+  <!-- БОЛЬШОЙ КРУПНЫЙ ЗАГОЛОВОК -->
+  <div class="headline">
+    Ты взял кайф <span class="highlight-pink">в кредит на 2 часа</span>.<br>
+    Понедельник пришел <span class="highlight-cyan">за процентами.</span>
+  </div>
+
+  <!-- ГИГАНТСКАЯ КАРТИНКА (1000 x 1000 PX) -->
+  <div class="visual-container">
+    <div class="image-wrapper">
+      <img src="meme_concert_raw.jpg" class="main-image" alt="Суббота 01:00 vs Понедельник 08:00">
+    </div>
+  </div>
+
+  <!-- ТОЛЬКО ОДНА КРУПНАЯ ЧИСТАЯ СТРОКА СНИЗУ -->
+  <div class="bottom-bar">
+    <div class="punchline-strip">
+      <div class="punchline-quote">
+        Чужие софиты погасли. <span>Почему ты снова в темноте?</span>
+      </div>
+      <div class="cta-pill">@inner_current ➔</div>
+    </div>
+  </div>
+
+</body>
+</html>

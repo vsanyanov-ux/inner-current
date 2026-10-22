@@ -8,6 +8,12 @@ aliases:
   - "Демистификация схоластической сложности"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/epistemology
+  - state/superconducting
   - anyanov-system
   - feynman-principle
   - epistemology

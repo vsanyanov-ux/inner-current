@@ -2,6 +2,12 @@
 title: "Inner Current: Physics of Frisson and Somatic Skin Effect — Why Levante's Vivo Causes Goosebumps, Biot-Savart Magnetic Lines and Z-Matching"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/superconducting
   - anyanov-system
   - levante
   - vivo

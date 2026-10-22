@@ -1,7 +1,23 @@
 ---
 created: 2026-09-24
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, theodicy, problem-of-evil, epicurus, electrodynamics, short-circuit, ohmic-heat, zanshin, shunyata, ethics]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/epistemology
+  - state/overheating
+  - theodicy
+  - problem-of-evil
+  - epicurus
+  - electrodynamics
+  - short-circuit
+  - ohmic-heat
+  - zanshin
+  - shunyata
+  - ethics
 type: concept
 status: evergreen
 ---

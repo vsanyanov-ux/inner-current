@@ -2,6 +2,12 @@
 title: "Inner Current: The Attention Current Quadratic — Why Current Is Never Fixed, Dynamics of Focus Density and Resting Pulse Telemetry"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - metrology
   - telemetry
   - attention-current

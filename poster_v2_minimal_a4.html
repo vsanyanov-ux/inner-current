@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Афиша А4 (Версия 2) — Счастье — это карманный фонарик</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      background-color: #080a0f;
+      color: #f1f5f9;
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* Холст ISO A4: 210mm x 297mm */
+    .poster-v2 {
+      width: 210mm;
+      height: 297mm;
+      background: #090c12;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 14mm 15mm 14mm 15mm;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
+    }
+
+    /* Геометрический световой конус (чистый CSS вектор без пикселей) */
+    .light-beam-layer {
+      position: absolute;
+      top: -60px;
+      right: 15%;
+      width: 520px;
+      height: 1100px;
+      background: linear-gradient(
+        165deg, 
+        rgba(245, 182, 67, 0.28) 0%, 
+        rgba(245, 182, 67, 0.12) 30%, 
+        rgba(245, 182, 67, 0.03) 65%, 
+        transparent 90%
+      );
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+      transform: rotate(-14deg);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Мягкие световые пятна (фоновые блики) */
+    .glow-source {
+      position: absolute;
+      top: 2%;
+      right: 28%;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(255, 215, 128, 0.45) 0%, rgba(245, 182, 67, 0.15) 45%, transparent 75%);
+      filter: blur(20px);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .ambient-blue {
+      position: absolute;
+      bottom: -10%;
+      left: -10%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(30, 58, 138, 0.22) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Архитектурная тонкая рамка */
+    .decor-frame {
+      position: absolute;
+      inset: 6mm;
+      border: 1px solid rgba(245, 182, 67, 0.25);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .decor-frame::after {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    /* Угловые метки калибровки */
+    .corner-mark {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-color: #f5b643;
+      border-style: solid;
+      pointer-events: none;
+      z-index: 4;
+    }
+    .cm-tl { top: 5mm; left: 5mm; border-width: 2px 0 0 2px; }
+    .cm-tr { top: 5mm; right: 5mm; border-width: 2px 2px 0 0; }
+    .cm-bl { bottom: 5mm; left: 5mm; border-width: 0 0 2px 2px; }
+    .cm-br { bottom: 5mm; right: 5mm; border-width: 0 2px 2px 0; }
+
+    /* --- КОНТЕНТ --- */
+    .content-wrap {
+      position: relative;
+      z-index: 10;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* 1. Верхняя строка: Метаданные */
+    .top-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 3.5mm;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .meta-tag {
+      font-size: 8.5pt;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #f5b643;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .meta-tag span.badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #f5b643;
+      box-shadow: 0 0 8px #f5b643;
+    }
+
+    .meta-location {
+      font-size: 8.5pt;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #94a3b8;
+    }
+
+    /* 2. Заголовочный блок */
+    .headline-block {
+      margin-top: 3.5mm;
+    }
+
+    .pre-title {
+      font-size: 10.5pt;
+      font-weight: 700;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: #cbd5e1;
+      margin-bottom: 2mm;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .pre-title::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: #f5b643;
+    }
+
+    .main-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 35pt;
+      line-height: 1.08;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+
+    .main-title .gold-accent {
+      background: linear-gradient(135deg, #fff2cc 0%, #f5b643 55%, #df8d1a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .title-description {
+      font-size: 11.5pt;
+      line-height: 1.45;
+      color: #cbd5e1;
+      margin-top: 3mm;
+      max-width: 95%;
+      font-weight: 400;
+    }
+
+    /* 3. Центральная часть: Спикер + Тезисы лекции */
+    .grid-center {
+      display: grid;
+      grid-template-columns: 78mm 1fr;
+      gap: 7mm;
+      align-items: stretch;
+      margin-top: 2.5mm;
+      margin-bottom: 2.5mm;
+    }
+
+    /* Колонка спикера */
+    .speaker-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(245, 182, 67, 0.35);
+      border-radius: 12px;
+      padding: 4.5mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .speaker-photo-wrapper {
+      width: 100%;
+      height: 82mm;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .speaker-photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+    }
+
+    .speaker-photo-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 70%, rgba(9, 12, 18, 0.8) 100%);
+    }
+
+    .speaker-caption {
+      margin-top: 3.5mm;
+    }
+
+    .speaker-name {
+      font-size: 13.5pt;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+    }
+
+    .speaker-role {
+      font-size: 8.5pt;
+      line-height: 1.35;
+      color: #f5b643;
+      margin-top: 1.2mm;
+      font-weight: 500;
+    }
+
+    /* Колонка смыслов / тезисов */
+    .insights-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 3.5mm;
+    }
+
+    .insights-header {
+      font-size: 10pt;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .insights-header::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .insight-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-left: 3px solid #f5b643;
+      padding: 3.5mm 4.5mm;
+      border-radius: 0 10px 10px 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .insight-num {
+      font-family: 'Cinzel', serif;
+      font-size: 9pt;
+      font-weight: 700;
+      color: #f5b643;
+      letter-spacing: 0.08em;
+      margin-bottom: 1mm;
+      text-transform: uppercase;
+    }
+
+    .insight-title {
+      font-size: 11pt;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 1mm;
+      line-height: 1.25;
+    }
+
+    .insight-desc {
+      font-size: 8.8pt;
+      line-height: 1.4;
+      color: #94a3b8;
+      font-weight: 400;
+    }
+
+    /* 4. Нижний блок: Дата, Место, Тариф */
+    .footer-panel {
+      background: linear-gradient(135deg, rgba(245, 182, 67, 0.14) 0%, rgba(15, 23, 42, 0.85) 100%);
+      border: 1px solid rgba(245, 182, 67, 0.4);
+      border-radius: 12px;
+      padding: 4mm 6mm;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 6mm;
+      align-items: center;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .date-badge {
+      display: flex;
+      align-items: center;
+      gap: 4mm;
+      padding-right: 5mm;
+      border-right: 1px solid rgba(245, 182, 67, 0.25);
+    }
+
+    .big-day {
+      font-family: 'Cinzel', serif;
+      font-size: 32pt;
+      font-weight: 800;
+      color: #f5b643;
+      line-height: 0.85;
+    }
+
+    .month-time-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .month-name {
+      font-size: 13pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #ffffff;
+    }
+
+    .time-slot {
+      font-size: 11.5pt;
+      font-weight: 700;
+      color: #f5b643;
+      margin-top: 1px;
+    }
+
+    .location-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cafe-name {
+      font-size: 13pt;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.01em;
+    }
+
+    .address-line {
+      font-size: 10pt;
+      color: #fcd34d;
+      font-weight: 600;
+      margin-top: 1mm;
+    }
+
+    .format-note {
+      font-size: 8.5pt;
+      color: #94a3b8;
+      margin-top: 0.8mm;
+    }
+
+    .tariff-badge {
+      text-align: right;
+    }
+
+    .tariff-pill {
+      background: #f5b643;
+      color: #090c12;
+      font-size: 10pt;
+      font-weight: 800;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: inline-block;
+      box-shadow: 0 4px 16px rgba(245, 182, 67, 0.35);
+    }
+
+    .tariff-sub {
+      font-size: 7.8pt;
+      color: #94a3b8;
+      margin-top: 1.5mm;
+    }
+
+    /* Кнопка печати на экране */
+    .print-bar {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
+
+    .print-btn {
+      background: #f5b643;
+      color: #090c12;
+      border: none;
+      padding: 11px 20px;
+      font-size: 13px;
+      font-weight: 800;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.2s;
+    }
+
+    .print-btn:hover {
+      background: #ffc966;
+      transform: translateY(-2px);
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: none;
+      }
+      .poster-v2 {
+        box-shadow: none;
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+      }
+      .print-bar {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Кнопка печати / сохранения PDF -->
+  <div class="print-bar">
+    <button class="print-btn" onclick="window.print()">🖨️ Печать / Сохранить в PDF (A4)</button>
+  </div>
+
+  <div class="poster-v2">
+    <!-- Световой векторный луч (чистый CSS, без наложения чужих картинок) -->
+    <div class="light-beam-layer"></div>
+    <div class="glow-source"></div>
+    <div class="ambient-blue"></div>
+
+    <!-- Декоративная рамка и калибровочные метки -->
+    <div class="decor-frame"></div>
+    <div class="corner-mark cm-tl"></div>
+    <div class="corner-mark cm-tr"></div>
+    <div class="corner-mark cm-bl"></div>
+    <div class="corner-mark cm-br"></div>
+
+    <div class="content-wrap">
+      <!-- 1. Верхняя строка: Метаданные -->
+      <div class="top-meta-row">
+        <div class="meta-tag">
+          <span class="badge-dot"></span>
+          Живая лекция · Практикум осознанности
+        </div>
+        <div class="meta-location">
+          Антикафе «Точка» · ТРЦ
+        </div>
+      </div>
+
+      <!-- 2. Главный заголовок -->
+      <div class="headline-block">
+        <div class="pre-title">Оптика внимания и внутренний свет</div>
+        <h1 class="main-title">
+          Счастье — это<br>
+          <span class="gold-accent">карманный фонарик</span>
+        </h1>
+        <p class="title-description">
+          Куда направлен луч твоего внимания — то и становится твоей реальностью. 
+          Как перестать освещать чужие страхи и вернуть себе управление собственным светом.
+        </p>
+      </div>
+
+      <!-- 3. Центральная часть: Спикер + 3 тезиса -->
+      <div class="grid-center">
+        <!-- Карточка спикера -->
+        <div class="speaker-box">
+          <div class="speaker-photo-wrapper">
+            <img src="C:/Users/vanya/.gemini/antigravity/brain/595d7ab7-6eb8-4a63-a314-66f392e88f80/.user_uploaded/media_1791828744136_3f4d95f3.jpg" alt="Владимир Аньянов">
+          </div>
+          <div class="speaker-caption">
+            <div class="speaker-name">Владимир Аньянов</div>
+            <div class="speaker-role">Исследователь состояний и внимания, автор концепции «Внутренний ток»</div>
+          </div>
+        </div>
+
+        <!-- 3 тезиса встречи -->
+        <div class="insights-box">
+          <div class="insights-header">О чём пойдёт речь</div>
+
+          <div class="insight-card">
+            <div class="insight-num">I. Устройство фонарика</div>
+            <div class="insight-title">Батарейка, тумблер и фокус</div>
+            <div class="insight-desc">Почему мы годами ищем свет во тьме, пока собственный выключатель нажат чужими руками?</div>
+          </div>
+
+          <div class="insight-card">
+            <div class="insight-num">II. Утечки энергии</div>
+            <div class="insight-title">Внутренняя цепь vs Внешний шум</div>
+            <div class="insight-desc">Как социальные сети и чужие ожидания воруют заряд, и как замкнуть контур на себе.</div>
+          </div>
+
+          <div class="insight-card">
+            <div class="insight-num">III. Практика заземления</div>
+            <div class="insight-title">Калибровка чистого луча</div>
+            <div class="insight-desc">Простая техника саморегуляции: как за 30 секунд вернуть луч внимания в центр при любом стрессе.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Нижняя плашка: Дата, Время, Адрес, Тариф -->
+      <div class="footer-panel">
+        <!-- Дата и время -->
+        <div class="date-badge">
+          <div class="big-day">18</div>
+          <div class="month-time-col">
+            <div class="month-name">Октября</div>
+            <div class="time-slot">18:00 (Сб)</div>
+          </div>
+        </div>
+
+        <!-- Локация -->
+        <div class="location-info">
+          <div class="cafe-name">Антикафе «Точка»</div>
+          <div class="address-line">📍 ТРЦ, ул. Весенняя, 56</div>
+          <div class="format-note">Уютная атмосфера · Чай, кофе, печенье и честный диалог</div>
+        </div>
+
+        <!-- Кнопка тарифа -->
+        <div class="tariff-badge">
+          <div class="tariff-pill">Вход по тарифу</div>
+          <div class="tariff-sub">*по тарифу антикафе</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

@@ -3,7 +3,23 @@ created: 2026-09-25
 source: [[index|Wiki Index]]
 layer: IV
 status: complete
-tags: [inner-current, simplicity, kanso, flashlight-model, ego-trap, intermediaries-trap, suitcase-wheels, consilience, tanden, joule-lenz]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/superconducting
+  - simplicity
+  - kanso
+  - flashlight-model
+  - ego-trap
+  - intermediaries-trap
+  - suitcase-wheels
+  - consilience
+  - tanden
+  - joule-lenz
 ---
 
 # 80. Анатомия Простоты: Что на Самом Деле Открыл «Внутренний Ток» и Почему до Этого Не Додумались Раньше

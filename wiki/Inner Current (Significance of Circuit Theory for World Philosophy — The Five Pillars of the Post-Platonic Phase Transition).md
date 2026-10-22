@@ -2,6 +2,12 @@
 title: "Inner Current: Significance of Circuit Theory for World Philosophy — The Five Pillars of the Post-Platonic Phase Transition"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - world-philosophy
   - history-of-philosophy
   - mind-body-problem

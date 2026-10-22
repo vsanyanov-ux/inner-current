@@ -8,6 +8,12 @@ aliases:
   - "Десятая ступень Дзен: Вхождение на базар с открытыми руками"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
   - anyanov-system
   - buddha-anatta
   - monastic-escapism

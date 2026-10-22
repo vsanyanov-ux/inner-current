@@ -1,7 +1,25 @@
 ---
 created: 2026-09-24
-source: [[Inner Current - MOC|Inner Current MOC]]
-tags: [inner-current, four-element-topology, generator, fuse, resistor, load, human-circuitry, nature, victories, superconductivity, joule-lenz, consilience]
+source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/open-loop
+  - four-element-topology
+  - generator
+  - fuse
+  - resistor
+  - load
+  - human-circuitry
+  - nature
+  - victories
+  - superconductivity
+  - joule-lenz
+  - consilience
 type: concept
 status: evergreen
 ---

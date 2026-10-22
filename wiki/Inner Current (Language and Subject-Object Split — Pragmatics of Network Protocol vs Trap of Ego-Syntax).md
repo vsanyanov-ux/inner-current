@@ -4,7 +4,28 @@ source: [[index|Wiki Index]]
 author: Владимир Аньянов
 chapter: 175
 layer: "III. Дзен-онтология и синтез (Высший дух и физика)"
-tags: [inner-current, language, subject-object-split, linguistics, sapir-whorf, rheomode, david-bohm, pro-drop, italian, tanden, mushin, kanso, network-protocol, l7-osi, non-duality]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - language
+  - subject-object-split
+  - linguistics
+  - sapir-whorf
+  - rheomode
+  - david-bohm
+  - pro-drop
+  - italian
+  - tanden
+  - mushin
+  - kanso
+  - network-protocol
+  - l7-osi
+  - non-duality
 ---
 
 # 175. Язык и субъектно-объектный раскол: Сетевой протокол прикладного уровня (L7) против грамматического эго-капкана

@@ -6,6 +6,12 @@ category: "III. Дзен-онтология и синтез"
 chapter: 209
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
   - spirit-soul-consciousness
   - electrodynamics
   - triad

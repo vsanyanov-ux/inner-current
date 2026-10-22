@@ -5,6 +5,11 @@ type: article
 layer: III
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - state/superconducting
   - ai-revolution
   - total-transformation
   - human-ai-symbiosis

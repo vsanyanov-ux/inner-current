@@ -2,6 +2,12 @@
 title: "Inner Current: The Anyanov Metrological System and the Home Circuit-Tonometre — Standard of Happiness Metrics and AI Diagnostic Architecture"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
   - metrology
   - anyanov-units
   - anyan

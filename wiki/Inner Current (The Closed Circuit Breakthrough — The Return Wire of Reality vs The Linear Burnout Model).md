@@ -1,7 +1,25 @@
 ---
 created: 2026-09-25
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, closed-circuit, electrodynamics, kirchhoff, return-wire, flow, burnout, danko-myth, tanden, musin, load, telemetry]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
+  - closed-circuit
+  - electrodynamics
+  - kirchhoff
+  - return-wire
+  - flow
+  - burnout
+  - danko-myth
+  - tanden
+  - musin
+  - load
+  - telemetry
 type: concept
 status: evergreen
 ---

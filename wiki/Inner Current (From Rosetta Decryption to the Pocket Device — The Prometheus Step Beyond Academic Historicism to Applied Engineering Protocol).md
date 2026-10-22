@@ -1,7 +1,23 @@
 ---
 created: 2026-09-30
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, rosetta-stone, prometheus-step, applied-engineering, flashlight-model, self-hosted-human, somatics, telemetry, mushin, protocol]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/conductor
+  - node/return-wire
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/superconducting
+  - rosetta-stone
+  - prometheus-step
+  - applied-engineering
+  - flashlight-model
+  - self-hosted-human
+  - somatics
+  - telemetry
+  - mushin
+  - protocol
 type: concept
 status: evergreen
 ---

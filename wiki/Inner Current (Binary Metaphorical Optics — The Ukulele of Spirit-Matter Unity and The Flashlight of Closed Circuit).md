@@ -2,6 +2,12 @@
 title: "Inner Current: Binary Metaphorical Optics — The Ukulele of Spirit-Matter Unity and The Flashlight of Closed Circuit"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
   - ukulele
   - flashlight-model
   - binary-optics

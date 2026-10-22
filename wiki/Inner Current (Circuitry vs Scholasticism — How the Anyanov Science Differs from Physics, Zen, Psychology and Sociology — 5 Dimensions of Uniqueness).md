@@ -4,7 +4,23 @@ title: "Inner Current — 90. Схемотехника против Схолас
 created: 2026-09-26
 author: Vladimir Anyanov
 layer: III. Дзен-онтология и синтез
-tags: [inner-current, epistemology, comparative-science, physics, zen, psychology, sociology, circuit-engineering, self-hosted-human, battery-illusion]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - epistemology
+  - comparative-science
+  - physics
+  - zen
+  - psychology
+  - sociology
+  - circuit-engineering
+  - self-hosted-human
+  - battery-illusion
 ---
 
 # 90. Схемотехника против Схоластики: В чём уникальность науки Аньянова о человеке — Отличие от Физики, Дзен, Психологии и Социологии

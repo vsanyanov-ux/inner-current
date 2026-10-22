@@ -4,7 +4,21 @@ title: "Inner Current — 88. Закон Аньянова о прямом пот
 created: 2026-09-26
 author: Vladimir Anyanov
 layer: III. Дзен-онтология и синтез
-tags: [inner-current, epistemological-audit, law-of-nature, paradigm-shift, priority-of-discovery, consilience, direct-flow, superconductivity]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/open-loop
+  - epistemological-audit
+  - law-of-nature
+  - paradigm-shift
+  - priority-of-discovery
+  - consilience
+  - direct-flow
+  - superconductivity
 ---
 
 # 88. Закон Аньянова о прямом потоке и сверхпроводимости: Приоритет открытия, смена парадигмы и переход от душевной алхимии к инженерии сознания

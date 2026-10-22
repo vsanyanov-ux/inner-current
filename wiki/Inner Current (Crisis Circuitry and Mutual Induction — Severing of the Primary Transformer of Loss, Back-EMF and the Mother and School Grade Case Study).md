@@ -1,7 +1,12 @@
----
+﻿---
 title: "Inner Current: Crisis Circuitry and Mutual Induction — Severing of the Primary Transformer of Loss, Back-EMF and the Mother and School Grade Case Study"
 tags:
   - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - state/overheating
   - mutual-induction
   - back-emf
   - grief-physics
@@ -17,6 +22,8 @@ layer: "II. Практика и защита контура (Прикладна�
 ---
 
 # 136. Схемотехника кризисов и взаимная индукция: Разрыв первичного трансформатора утраты, экстраток самоиндукции и бытовой кейс-стади «Мама и двойка»
+
+> [!info] Синтезировано в брошюре [[02_Wiki/Брошюра — Электродинамика любви (Взаимная индукция двух суверенных генераторов)|Брошюра: Электродинамика любви]]
 ## Как взаимная индукция связывает контуры близких людей, почему смерть матери порождает высоковольтную дугу в нервной системе и как 10-секундный протокол спасает дом от омического пожара
 
 > [!quote] Каноническая аксиома цепи

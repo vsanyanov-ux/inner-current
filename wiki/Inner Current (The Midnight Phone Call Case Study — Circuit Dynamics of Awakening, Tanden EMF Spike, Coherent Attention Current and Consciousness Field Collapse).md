@@ -2,6 +2,12 @@
 title: "Inner Current: The Midnight Phone Call Case Study — Circuit Dynamics of Awakening, Tanden EMF Spike, Coherent Attention Current and Consciousness Field Collapse"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - case-study
   - awakening
   - sleep-cycle

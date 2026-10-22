@@ -2,6 +2,12 @@
 title: "Inner Current: Consciousness Defined — Electrodynamic Current of Attention, The Triad of Circuit States and From Noise to Superconductivity"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - consciousness
   - attention
   - triad-of-states

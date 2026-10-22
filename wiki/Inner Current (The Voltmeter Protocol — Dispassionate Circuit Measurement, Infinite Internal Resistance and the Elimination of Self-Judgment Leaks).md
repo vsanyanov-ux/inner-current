@@ -1,7 +1,20 @@
 ---
 title: "Inner Current (The Voltmeter Protocol — Dispassionate Circuit Measurement, Infinite Internal Resistance and the Elimination of Self-Judgment Leaks)"
 created: 2026-10-03
-tags: [inner-current, voltmeter-protocol, circuit-telemetry, non-judgment, mushin, joule-lenz, observer-effect]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - voltmeter-protocol
+  - circuit-telemetry
+  - non-judgment
+  - mushin
+  - joule-lenz
+  - observer-effect
 type: protocol
 status: evergreen
 layer: II

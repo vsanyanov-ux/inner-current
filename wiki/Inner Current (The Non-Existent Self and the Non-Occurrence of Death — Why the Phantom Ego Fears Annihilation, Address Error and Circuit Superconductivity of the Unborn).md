@@ -2,6 +2,12 @@
 title: "Inner Current: The Non-Existent Self and the Non-Occurrence of Death — Why the Phantom Ego Fears Annihilation, Address Error and Circuit Superconductivity of the Unborn"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
   - death
   - anatta
   - ego-illusion

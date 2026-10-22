@@ -2,6 +2,12 @@
 title: "Inner Current: Creator's Mushin and Continuous Ideation — Creative Obsession vs Mind Fixation, The Desk vs Walk Regimes and Circuit Thermal Balance"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
   - mushin
   - jyushin
   - creative-obsession

@@ -1,7 +1,24 @@
 ---
 created: 2026-10-01
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, psychology, behaviorism, gestalt, open-loop-vs-closed-circuit, disintermediation, self-hosted-human, joule-lenz, tanden, musin, falsifiability]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/open-loop
+  - psychology
+  - behaviorism
+  - gestalt
+  - open-loop-vs-closed-circuit
+  - disintermediation
+  - self-hosted-human
+  - joule-lenz
+  - tanden
+  - musin
+  - falsifiability
 type: concept
 status: evergreen
 ---

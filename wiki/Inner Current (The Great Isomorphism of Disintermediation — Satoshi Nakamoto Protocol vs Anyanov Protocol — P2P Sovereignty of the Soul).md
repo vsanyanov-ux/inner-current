@@ -1,7 +1,22 @@
----
+﻿---
 created: 2026-09-29
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, bitcoin, disintermediation, proof-of-action, sovereignty, p2p, self-hosted-human, tandem, electrodynamics]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/sovereignty
+  - state/leak
+  - bitcoin
+  - disintermediation
+  - proof-of-action
+  - sovereignty
+  - p2p
+  - self-hosted-human
+  - tandem
+  - electrodynamics
 type: canon
 layer: I
 status: evergreen
@@ -9,6 +24,8 @@ number: 114
 ---
 
 # 114. Великий Изоморфизм Депосреднизации: Протокол Сатоши Накамото vs Протокол Аньянова — Одноранговый Суверенитет Духа
+
+> [!info] Синтезировано в брошюре [[02_Wiki/Брошюра — Великий Изоморфизм Депосреднизации (Биткоин, налог Джорджа и Архитектура счастья)|Брошюра: Великий Изоморфизм Депосреднизации]]
 
 > [!quote] Главная аксиома изоморфизма
 > **«Сатоши устранил доверенного посредника из финансовой цепи. Аньянов устранил его из цепи сознания. Оба вернули суверенитет туда, где он всегда и был — в тело самого участника.»**

@@ -4,7 +4,21 @@ source: [[index|Wiki Index]]
 author: Владимир Аньянов
 chapter: 59
 layer: "III. Дзен-онтология и синтез (Высший дух и физика)"
-tags: [inner-current, millennial-synthesis, paradigm-shift, consilience, bottom-up, eternal-questions, zen-engineering, electrodynamics]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/return-wire
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/open-loop
+  - millennial-synthesis
+  - paradigm-shift
+  - consilience
+  - bottom-up
+  - eternal-questions
+  - zen-engineering
+  - electrodynamics
 ---
 
 # 59. Великий Тысячелетний Синтез: Как «Архитектура счастья» разрешила вечные вопросы человечества

@@ -4,7 +4,24 @@ source: [[Inner Current MOC]]
 author: Владимир Аньянов
 chapter: 109
 layer: "I. Физический базис цепи (Фундамент)"
-tags: [inner-current, spirit, matter, joy, magnetic-field, radiance, monism, electrodynamics, bio-savart, induction, dualism]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - spirit
+  - matter
+  - joy
+  - magnetic-field
+  - radiance
+  - monism
+  - electrodynamics
+  - bio-savart
+  - induction
+  - dualism
 type: concept
 status: evergreen
 ---

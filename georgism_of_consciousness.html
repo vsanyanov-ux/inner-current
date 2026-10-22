@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Georgism of Consciousness — Vladimir Anyanov</title>
+<link rel="stylesheet" href="file:///c:/Users/vanya/Antigravity Projects/Apps/Inner Current/node_modules/katex/dist/katex.min.css">
+<script src="file:///c:/Users/vanya/Antigravity Projects/Apps/Inner Current/node_modules/katex/dist/katex.min.js"></script>
+<script src="file:///c:/Users/vanya/Antigravity Projects/Apps/Inner Current/node_modules/katex/dist/contrib/auto-render.min.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    if (typeof renderMathInElement !== 'undefined') {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '\\[', right: '\\]', display: true},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false}
+        ],
+        throwOnError: false
+      });
+    }
+  });
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+  @page {
+    size: A4;
+    margin: 22mm 18mm 22mm 18mm;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 10.5pt;
+    line-height: 1.68;
+    color: #1e293b;
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* COVER STYLING */
+  .cover-page {
+    page-break-after: always;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24mm 16mm 20mm 16mm;
+    border: 1px solid #e2e8f0;
+    background: radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.08) 0%, transparent 60%),
+                linear-gradient(145deg, #f8fafc 0%, #f1f5f9 100%);
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .cover-series {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 8.5pt;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #b45309;
+    border-bottom: 2px solid #f59e0b;
+    padding-bottom: 3.5mm;
+    display: inline-block;
+  }
+
+  .cover-hero {
+    margin: auto 0;
+  }
+
+  .cover-emblem {
+    width: 58px;
+    height: 58px;
+    margin-bottom: 6mm;
+    color: #f59e0b;
+  }
+
+  .cover-author {
+    font-family: 'Cinzel', serif;
+    font-size: 13pt;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #64748b;
+    margin-bottom: 4mm;
+  }
+
+  .cover-title {
+    font-family: 'Cinzel', serif;
+    font-size: 26pt;
+    font-weight: 700;
+    line-height: 1.18;
+    color: #0f172a;
+    letter-spacing: -0.01em;
+    margin-bottom: 6mm;
+  }
+
+  .cover-subtitle {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11pt;
+    font-weight: 400;
+    line-height: 1.55;
+    color: #475569;
+    max-width: 92%;
+    border-left: 3px solid #f59e0b;
+    padding-left: 5mm;
+  }
+
+  .cover-footer {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 8pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #94a3b8;
+    border-top: 1px solid #cbd5e1;
+    padding-top: 4mm;
+  }
+
+  /* FRONTISPIECE */
+  .frontispiece {
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 0 14mm;
+    text-align: center;
+  }
+
+  .frontispiece-quote {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 13pt;
+    font-style: italic;
+    line-height: 1.8;
+    color: #334155;
+    margin-bottom: 7mm;
+    position: relative;
+  }
+
+  .frontispiece-quote::before {
+    content: "“";
+    font-family: 'Cinzel', serif;
+    font-size: 50pt;
+    color: #f59e0b;
+    opacity: 0.35;
+    position: absolute;
+    top: -24px;
+    left: -28px;
+  }
+
+  .frontispiece-author {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #b45309;
+  }
+
+  /* HEADINGS */
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 20pt;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.3;
+    margin-top: 0;
+    margin-bottom: 5mm;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 3mm;
+  }
+
+  h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 14pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 8mm;
+    margin-bottom: 3.5mm;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 2mm;
+  }
+
+  h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11pt;
+    font-weight: 700;
+    color: #1e293b;
+    margin-top: 5mm;
+    margin-bottom: 2.5mm;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 3.5mm;
+    text-align: justify;
+  }
+
+  .chapter-break {
+    page-break-before: always;
+  }
+
+  /* CALLOUTS */
+  .callout {
+    margin: 5mm 0;
+    padding: 4mm 5mm;
+    border-radius: 6px;
+    border-left: 4px solid #f59e0b;
+    background: #fffbeb;
+    page-break-inside: avoid;
+  }
+
+  .callout-quote {
+    border-left-color: #f59e0b;
+    background: #fffbeb;
+  }
+
+  .callout-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 9pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #92400e;
+    margin-bottom: 2mm;
+  }
+
+  .callout-body {
+    font-size: 10pt;
+    line-height: 1.6;
+    color: #78350f;
+  }
+
+  /* CODE & ASCII DIAGRAMS */
+  pre {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.8pt;
+    line-height: 1.4;
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 4mm 5mm;
+    border-radius: 6px;
+    overflow-x: auto;
+    page-break-inside: avoid;
+    margin: 4mm 0;
+    border: 1px solid #1e293b;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.8pt;
+    background: #f1f5f9;
+    color: #0f172a;
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+
+  /* LISTS */
+  ul, ol {
+    margin-top: 0;
+    margin-bottom: 3.5mm;
+    padding-left: 6mm;
+  }
+
+  li {
+    margin-bottom: 1.8mm;
+    text-align: justify;
+  }
+
+  /* BLOCKQUOTE */
+  blockquote {
+    margin: 4mm 0;
+    padding: 3mm 5mm;
+    border-left: 3px solid #cbd5e1;
+    color: #475569;
+    font-style: italic;
+    background: #f8fafc;
+    border-radius: 0 4px 4px 0;
+    page-break-inside: avoid;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #e2e8f0;
+    margin: 6mm 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover-page">
+  <div class="cover-series">Inner Current • Classical Synthesis • 2026</div>
+  <div class="cover-hero">
+    <svg class="cover-emblem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+    </svg>
+    <div class="cover-author">Vladimir Anyanov</div>
+    <div class="cover-title">THE GEORGISM OF<br>CONSCIOUSNESS</div>
+    <div class="cover-subtitle">The Historical Paradox of Progress and the Triad of Mind: Attention as Land, Tanden as Labor, Gyo as Manifest Action, and the Expropriation of the Ego-Rentier</div>
+  </div>
+  <div class="cover-footer">
+    <span>Inner Current Architecture • Epistemology of Direct Flow</span>
+    <span>2026</span>
+  </div>
+</div>
+
+<!-- FRONTISPIECE -->
+<div class="frontispiece">
+  <div class="frontispiece-quote">
+    "Creators do not suffer from a deficit of vitality; their physical core is capable of moving mountains. Creators are dying because they have become indentured serfs upon their own territory: their entire attention has been monopolized by a speculative Ego-Rentier, demanding an extortionate toll of anxiety for every heartbeat of real life."
+  </div>
+  <div class="frontispiece-author">Vladimir Anyanov • 2026</div>
+</div>
+
+<!-- CONTENT -->
+<h1>⚡ The Georgism of Consciousness: Attention as Land, Tanden as Labor, Gyo and the Ego-Rentier</h1>
+<div class="callout callout-quote"><div class="callout-title">The Circuit Axiom</div><div class="callout-body"><p><strong>"Creators do not suffer from a deficit of vitality; their physical core is capable of moving mountains. Creators are dying because they have become indentured serfs upon their own territory: their entire attention has been monopolized by a speculative Ego-Rentier, demanding an extortionate toll of anxiety for every heartbeat of real life."</strong><br />
+— <em>Vladimir Anyanov</em></p></div></div>
+
+<hr />
+<h3>Architectural Schematic: The Great Production Isomorphism</h3>
+<div class="codehilite"><pre><span></span><code>   CLASSICAL GEORGISM (Henry George, 1879)       ELECTRODYNAMICS OF CONSCIOUSNESS (Anyanov, 2026)
+ ┌────────────────────────────────────────────┐  ┌────────────────────────────────────────────┐
+ │  LAND (Passive Natural Substrate)          │  │  ATTENTION (Unproduced Fabric of Presence) │
+ │  Free cosmic baseline, finite and given    │  │  The uncreated ground of conscious reality │
+ ├────────────────────────────────────────────┤  ├────────────────────────────────────────────┤
+ │  LABOR (Active Human Exertion)             │  │  TANDEN (Somatic Metabolic Reactor)        │
+ │  Physical work, muscle, nervous impulse    │  │  Lower-abdomen center, embodied execution  │
+ ├────────────────────────────────────────────┤  ├────────────────────────────────────────────┤
+ │  WEALTH / CAPITAL (Manifested Artifacts)   │  │  GYO (行, Pure Unmediated Action)          │
+ │  Product of Labor applied to Land          │  │  Code, craft, surgery, finished work       │
+ └─────────────────────┬──────────────────────┘  └─────────────────────┬──────────────────────┘
+                       │                                               │
+                       ▼                                               ▼
+ ┌────────────────────────────────────────────┐  ┌────────────────────────────────────────────┐
+ │  MONOPOLIST: The Speculative Landlord      │  │  MONOPOLIST: The Reflexive Ego             │
+ │  Encloses Land, extracts unearned rent     │  │  Encloses Attention, extracts anxiety rent │
+ └─────────────────────┬──────────────────────┘  └─────────────────────┬──────────────────────┘
+                       │                                               │
+                       ▼                                               ▼
+ ┌────────────────────────────────────────────┐  ┌────────────────────────────────────────────┐
+ │  RESULT: Wages fall to starvation margin   │  │  RESULT: Somatic collapse, psychic burnout │
+ │  Producers starved amidst extreme wealth   │  │  Ohmic inferno: Q = I² · R · t             │
+ └────────────────────────────────────────────┘  └────────────────────────────────────────────┘
+</code></pre></div>
+
+<hr />
+<div class="chapter-break"></div>
+<h2>Part I. The Historical Paradox of Progress and Spiritual Burnout</h2>
+<p>We inhabit the epicenter of an astounding historical paradox.</p>
+<p>Never before in human history has our civilization possessed such a monumental density of psychological literature, coaching academies, mindfulness seminars, neurobiological biohacking stacks, and pharmaceutical interventions. The shelves of modern bookshops buckle under the weight of guides on "healing childhood trauma," corporations appoint Chief Well-Being Officers, meditation apps command multi-billion-dollar valuations, and SSRIs are dispensed by the millions.</p>
+<p>Yet never before have <strong>makers and creators</strong> — the driving vanguard of human civilization:<br />
+- Software engineers deploying planetary distributed architectures,<br />
+- Founders bearing the brutal atmospheric pressure of free markets,<br />
+- Scientists pushing back the frontiers of physics and biology,<br />
+- Surgeons, industrial designers, and craftsmen sculpting tangible reality,</p>
+<p>felt so <strong>utterly exhausted, depleted, hollowed out, and spiritually extinguished</strong>.</p>
+<p>This modern tragedy mirrors with mathematical precision the crisis observed by the American political economist <strong>Henry George</strong> in 1879. Arriving in New York during the incandescent explosion of industrial progress, George was confronted by an inexplicable spectacle: amid soaring wealth, steam engines, roaring factories, and transcontinental telegraph cables, he found not the emancipation of the laborer, but abysmal poverty, cholera-ridden tenements, and human degradation.</p>
+<p>Material progress had not liberated the worker; it had deepened his destitution.</p>
+<p>In his masterwork <em>Progress and Poverty</em>, George delivered an unflinching diagnostic: <strong>the private monopoly of Land — the primary, unproduced substrate of existence.</strong> Labor and Capital produce all wealth, but they cannot float in thin air. They require access to physical space, to the earth, to natural opportunity. Because land had been privately enclosed, every surge in technological productivity merely drove up ground rents. Instead of enriching the creator, every new steam engine enriched the non-producing landlord, forcing wages down to the bare subsistence level.</p>
+<p>Why is the contemporary mind caught in an identical trap? What is the root cause of the modern epidemic of psychic burnout in an age of therapeutic abundance?</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>Part II. The Enclosure of Being: The Privatization of Internal Land</h2>
+<p>What constitutes "Land" in the architecture of human consciousness?</p>
+<p>The primary, unproduced natural substrate of human existence is <strong>Embodied Presence, Somatic Vitality (Tanden), and the Direct Current of Being</strong>.</p>
+<p>In its natural, native state, human consciousness is a superconducting circuit. Perception passes seamlessly into physical action; action touches material reality; reality yields an immediate sensory response (<em>Zanshin</em>, 残心); and the system returns to tranquil zero. Neither a soaring falcon, nor a child engaged in play, nor a Zen master in the state of <em>Mushin</em> (無心, No-Mind) requires an operational manual for breathing. Presence is given freely as an intrinsic law of the cosmos.</p>
+<p>Over the past few decades, however, an unprecedented <strong>internal enclosure of the commons</strong> has taken place.</p>
+<p>The mental rentier — <strong>the Reflexive Ego-Resistor</strong> — has privatized living presence and declared it its private property. Modern therapeutic culture has indoctrinated the creator with a devastating ontological lie:</p>
+<blockquote>
+<p><em>"You, as a living organism here and now, are fundamentally broken, defective, and ungrounded. Your existence does not belong to you by sovereign birthright. To exist without guilt, you must continuously police yourself, analyze your inner child, track your dopamine baselines, soothe your impostor syndrome, and pay an endless cognitive tax to credentialed intermediaries."</em></p>
+</blockquote>
+<p>Living presence is no longer the open, clean air of reality. It has been partitioned, fenced off, and converted into a privatized real-estate estate with minute-by-minute rental tariffs.</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>Part III. The Joule-Lenz Law of Mental Rent: Why Knowledge Burns the Maker</h2>
+<p>In Henry George’s political economy, technological advance does not suspend physical reality; it merely funnels the surplus into the pockets of the idle rentier.</p>
+<p>In the electrodynamics of consciousness, the physical law is equally immutable. By the <strong>Joule-Lenz Law</strong>, the quantity of parasitic heat (existential friction, psychic pain, exhaustion) generated within a circuit is:<br />
+<div class="math-display">\[Q = I^2 \cdot R_{\text{ego}} \cdot t\]</div></p>
+<p>People of action — builders, engineers, system architects — operate under an immense current (<span class="math-inline">\(I\)</span>). Their cognitive throughput, creative audacity, and systemic responsibility are massive.</p>
+<p>When such a maker experiences existential stress, they invariably turn to contemporary psychology. But the vast majority of psychological approaches are fundamentally scholastic: <strong>they attempt to treat thoughts with more thoughts</strong>.<br />
+- They install an intrusive supervisory committee inside the neural loop: <em>"I am executing a task"</em> <span class="math-inline">\(\to\)</span> <em>"I must continuously evaluate whether I feel fulfilled, whether my boundaries are intact, whether I am manifesting trauma, or whether my burnout is properly managed"</em>.<br />
+- Every introspective label, rather than grounding the current into physical action, solders a <strong>massive series resistance (<span class="math-inline">\(R_{\text{ego}}\)</span>)</strong> directly into the conductor.</p>
+<p>The mathematical outcome is lethal: because heat scales <strong>quadratically with current (<span class="math-inline">\(I^2\)</span>)</strong>, even a marginal increase in mental resistance (<span class="math-inline">\(R\)</span>) produces a catastrophic thermal blowout.</p>
+<p>The maker does not burn out from labor. <strong>The maker burns out because their internal wiring is glowing red-hot from the toll extracted by their mental rentier.</strong></p>
+<hr />
+<div class="chapter-break"></div>
+<h2>Part IV. The Wellness Industry as Victorian Soup Kitchens</h2>
+<p>In <em>Progress and Poverty</em>, Henry George reserved his most scathing prose for Victorian philanthropy. Charity soup kitchens, municipal workhouses, and private handouts did not cure poverty:</p>
+<blockquote>
+<p><em>"They merely subsidize the system of extraction, allowing the landlord to extort even higher rents, knowing that public charity will keep the laborer alive enough to report to work tomorrow."</em></p>
+</blockquote>
+<p>The contemporary multi-billion-dollar wellness complex — corporate burnout workshops, meditation subscriptions, wellness retreats, and microdosing protocols — functions precisely as <strong>soup kitchens for an alienated consciousness</strong>.</p>
+<p>They do not dismantle the landlord’s tollbooth; they do not restore direct somatic access to the earth of action. Instead, they whisper:</p>
+<blockquote>
+<p><em>"We recognize that the rent demanded by your neurotic ego is excruciating. Take this 3-minute breathwork app, this selective serotonin booster, and this corporate mindfulness session. Use them to endure another seventy hours of serfdom under your internal overseer."</em></p>
+</blockquote>
+<p>The self-help market parasitizes the very deficiency it perpetuates. As long as human attention remains trapped within the conceptual hall of mirrors, the individual is condemned to purchase ever more sophisticated remedies, strengthening the very monopoly that bleeds them dry.</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>Part V. The Great Production Isomorphism: Land, Labor, and Capital</h2>
+<p>To understand how the circuit can be permanently repaired, we must formalize the <strong>Georgist Triad of Consciousness</strong>:</p>
+<div class="codehilite"><pre><span></span><code>      THE UNIVERSAL TRIAD OF PRODUCTION
+┌───────────────────────────────────────────────┐
+│  1. LAND (Земля)      ═► ATTENTION (Внимание) │
+│  2. LABOR (Труд)      ═► TANDEN (Тандэн)      │
+│  3. CAPITAL (Капитал) ═► GYO (行, Действие)   │
+└───────────────────────────────────────────────┘
+</code></pre></div>
+
+<h3>1. Land = Attention</h3>
+<p>In George’s philosophy, Land is the passive, uncreated baseline. No human being built the planet. It is finite, irreplaceable, and non-negotiable.</p>
+<p><strong>Attention is the pure Land of consciousness.</strong><br />
+You do not manufacture the field of conscious awareness through intellectual effort. The capacity to be aware is an unearned, primordial gift of nature. Attention is the sacred canvas upon which every reality is planted: a mathematical proof, a software codebase, a musical composition, or human affection.</p>
+<h3>2. Labor = Tanden</h3>
+<p>Labor is the living human effort that transforms raw potential into manifest actuality.</p>
+<p><strong>In the human architecture, Labor is Tanden (丹田) — the embodied somatic reactor.</strong><br />
+Real work is never performed by disembodied concepts. Work is executed by somatic biology: the diaphragm draws oxygen, the cardiovascular system supplies glucose to neural tissue, and motor circuits drive the hands across keys, scalpels, and lathes.<br />
+The <strong>Tanden</strong> (the physical center of mass located two inches below the navel) is the biological furnace where intentional motor impulses (<em>Hotsu</em>, 發) originate. The Tanden does not theorize about greatness — the Tanden breathes, stands, and labors.</p>
+<h3>3. Capital / Wealth = Gyō (行)</h3>
+<p>In political economy, the application of Labor to Land yields Wealth.<br />
+In Zen ontology and the Anyanov System, the application of Somatic Labor (Tanden) to Living Presence (Attention) yields <strong>Gyō (行)</strong>.</p>
+<p><strong>Gyō is pure, unmediated, consecrated action.</strong><br />
+It is an operational microservice, a completed cardiac bypass, a precision-machined axle, a piano sonata cleanly struck, a desk cleared of debris. Gyō is matter infused with focused presence — the permanent mark of direct flow stamped onto reality. When a circuit is healthy, the fruits of Gyō flow back into the organism as deep physiological satiety, sovereign calm, and unshakeable self-respect (<em>Zanshin</em>).</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>Part VI. The Usurpation by the Ego-Rentier: The Extraction of Vital Wages</h2>
+<p>If the triad of creation is so clean, why does the modern builder collapse?</p>
+<p>Because of <strong>the Law of Rent</strong>.<br />
+In any economic system where an idle class secures private title to Land, it captures the power of life and death over Labor and Capital. The landlord neither sows nor reaps; he merely erects a barricade: <em>"You wish to touch this soil? Surrender eighty percent of your harvest."</em></p>
+<p>In the human nervous system, this barricade was erected by the <strong>Reflexive Ego</strong>:</p>
+<div class="codehilite"><pre><span></span><code>      THE RENTIER EXTRACTION ARCHITECTURE
+
+   [Pure Attention (The Sacred Land)]
+                 ▲
+                 │  ◄── THE EGO TOLLBOOTH: &quot;Pay your identity tax!&quot;
+                 ▼
+   [Tanden / Somatics (The Working Class)]
+                 │
+                 │ (Exhaustive Ohmic Strain: Q = I² · R · t)
+                 ▼
+   [Gyō / Production (Alienated &amp; Stripped of Joy)]
+</code></pre></div>
+
+<ol>
+<li><strong>The Ego produces no Attention:</strong> It cannot generate a single millisecond of conscious awareness.</li>
+<li><strong>The Ego performs no real Labor:</strong> When an engineer designs an algorithm, motor and somatic networks execute the task; the ego merely sits in the prefrontal cortex, whining: <em>"Will the seniors mock this? What if you're exposed as an impostor?"</em></li>
+<li><strong>The Ego has enclosed the access to Attention:</strong> It has proclaimed the uncreated territory of presence as its private fiefdom:</li>
+<li><em>"Attention belongs to ME!"</em></li>
+<li><em>"You are forbidden to simply perceive the task. First, you must service MY self-esteem, defend MY insecurities, calculate MY social capital, and brood over MY historical grievances!"</em></li>
+</ol>
+<h3>The Cardinal Axiom: Stress is Rent Paid to the Ego-Rentier</h3>
+<div class="callout callout-quote"><div class="callout-title">The Core Axiom of Stress</div><div class="callout-body"><p><strong>"Stress is not the price of great ambition, nor the inevitable cost of high stakes. Stress is literally the unearned rent extracted by the speculative Ego-Rentier for the permission to touch the valuable land of focused attention."</strong></p></div></div>
+
+<p>In the modern world, creators are indoctrinated to believe that stress is a natural reaction to hard work. Physiology and thermodynamics prove the opposite:<br />
+- The heart of an athlete pumping at maximum capacity feels no neurosis.<br />
+- The hands of a master surgeon performing a ten-hour procedure feel no burnout.<br />
+- The mind of an engineer in flow orchestrating an enormous architecture feels exhilaration, not panic.</p>
+<p>These are regimes of <strong>high useful power</strong> (<span class="math-inline">\(P = I \cdot U\)</span>). Stress begins only when the <strong>idle landlord installs an anxiety tollbooth</strong>:<br />
+As the stakes rise and the project expands, the "land" of attention becomes immensely valuable (like real estate on Manhattan). The Ego immediately jacks up its tariffs (<span class="math-inline">\(R_{\text{ego}}\)</span> explodes). And by the <strong>Joule-Lenz Law</strong> (<span class="math-inline">\(Q = I^2 \cdot R_{\text{ego}} \cdot t\)</span>), the massive current <span class="math-inline">\(I\)</span> required for the task turns into a raging fire of cortisol, panic, and psychic burnout.</p>
+<p><strong>Stress management is a protection racket:</strong> attempting to manage stress without evicting the ego is like negotiating a 5% discount with a mafia cartel while they extort your entire livelihood. The solution is not to lower your ambition (lowering current <span class="math-inline">\(I\)</span>), but to <strong>evict the racketeer (<span class="math-inline">\(R_{\text{ego}} \to 0\)</span>)</strong> — unlocking the freezing superconductivity of Mushin.</p>
+<h3>The Equation of Soul Starvation</h3>
+<p>In classical economics:<br />
+<div class="math-display">\[\text{Total Production} = \text{Rent} + \text{Wages} + \text{Interest}\]</div></p>
+<p>In the electrodynamics of consciousness:<br />
+<div class="math-display">\[\text{Vital Energy of Tanden} = \text{Ego-Rent (Anxiety)} + \text{Somatic Wages (Health)} + \text{Resonance of Gyō (Joy)}\]</div></p>
+<p>When the Ego monopolizes Attention, <strong>Rent expands until it absorbs the entire energetic margin</strong>.<br />
+- <strong>Somatic Wages collapse below zero:</strong> The Tanden works fourteen-hour shifts, but receives no replenishment. The body descends into insomnia, chronic autonomic arousal, gut inflammation, and autoimmune breakdown.<br />
+- <strong>The product (Gyō) is alienated:</strong> The creator deploys a magnificent technical milestone, yet feels completely dead inside. The Ego immediately confiscates the achievement: <em>"This is insufficient. Competitors have already surpassed you. You are still nothing."</em></p>
+<p>The creator has been reduced to an <strong>indentured serf upon their own ground of consciousness</strong>.</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>Part VII. The Inner Single Tax: The Physics of Mushin (<span class="math-inline">\(R_{\text{ego}} \to 0\)</span>)</h2>
+<p>Henry George’s revolutionary legacy was the <strong>Single Tax on Land Values (LVT)</strong>. He recognized that one must not abolish property in the products of labor, nor micromanage the worker. One needs only to <strong>abolish the unearned profit of land monopoly</strong>, making the speculative holding of nature impossible. The land must belong to whoever puts it to use.</p>
+<p>In the architecture of the Inner Current, this economic law is realized through <strong>Mushin (無心, No-Mind)</strong>:</p>
+<div class="codehilite"><pre><span></span><code>        THE LIBERATED SUPERCONDUCTING CIRCUIT
+
+   [Attention (Land)] ◄────────► [Tanden (Labor)]
+            │                           │
+            └─────────────┬─────────────┘
+                          │ (R_ego ≡ 0: Direct Coupling)
+                          ▼
+                  [Pure Gyō (Wealth)]
+                          │
+                          ▼ (Zanshin Return Wire)
+         [100% Energetic Restitution to Body]
+</code></pre></div>
+
+<ol>
+<li><strong>Stripping the Ego of its Title to Attention:</strong><br />
+   Attention is recognized as an uncreated cosmic common, entirely unowned by the discursive narrator in the head.</li>
+<li><strong>Direct Coupling of Labor (Tanden) to Land (Attention):</strong><br />
+   The moment attention is dropped out of conceptual self-referencing and rooted physically into the <strong>Tanden</strong> (breath, pelvic ground, somatic sensation), the rentier's tollbooth evaporates.</li>
+<li><strong>The Collapse of Ohmic Losses (<span class="math-inline">\(R_{\text{ego}} \to 0\)</span>):</strong><br />
+   With the tollbooth removed, parasitic resistance drops to absolute zero. 100% of somatic energy converts into Gyō (pure execution). The biological substrate instantly receives its full wage (profound parasympathetic calm), and the creator enters unshakeable sovereign superconductivity.</li>
+</ol>
+<hr />
+<div class="chapter-break"></div>
+<h2>Part VIII. The 45-Second De-Enclosure Calibration Protocol</h2>
+<p>Whenever an operator notices the internal rentier attempting to extort cognitive tribute during high-stakes work:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">┌────────────────────────────────────────────────────────────────────────┐</span>
+<span class="err">│</span><span class="w">               </span><span class="n">THE</span><span class="w"> </span><span class="mi">45</span><span class="o">-</span><span class="n">SECOND</span><span class="w"> </span><span class="n">SOVEREIGN</span><span class="w"> </span><span class="n">GROUNDING</span><span class="w"> </span><span class="n">PROTOCOL</span><span class="w">               </span><span class="err">│</span>
+<span class="err">└────────────────────────────────────────────────────────────────────────┘</span>
+
+<span class="w">  </span><span class="p">[</span><span class="mf">1.</span><span class="w"> </span><span class="n">DETECT</span><span class="w"> </span><span class="n">THE</span><span class="w"> </span><span class="n">RENTIER</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="n">Seconds</span><span class="p">)]</span>
+<span class="w">  </span><span class="n">Catch</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">discursive</span><span class="w"> </span><span class="n">friction</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="s2">&quot;The landlord is speaking. The ego is attempting to levy an anxiety </span>
+<span class="w">  </span><span class="n">tax</span><span class="w"> </span><span class="n">upon</span><span class="w"> </span><span class="n">my</span><span class="w"> </span><span class="n">work</span><span class="o">.</span><span class="s2">&quot;</span>
+<span class="w">             </span><span class="err">│</span>
+<span class="w">             </span><span class="err">▼</span>
+<span class="w">  </span><span class="p">[</span><span class="mf">2.</span><span class="w"> </span><span class="n">RETURN</span><span class="w"> </span><span class="n">THE</span><span class="w"> </span><span class="n">LAND</span><span class="w"> </span><span class="n">TO</span><span class="w"> </span><span class="n">LABOR</span><span class="w"> </span><span class="p">(</span><span class="mi">20</span><span class="w"> </span><span class="n">Seconds</span><span class="p">)]</span>
+<span class="w">  </span><span class="n">Reroute</span><span class="w"> </span><span class="mi">100</span><span class="o">%</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">attention</span><span class="w"> </span><span class="p">(</span><span class="n">Land</span><span class="p">)</span><span class="w"> </span><span class="n">away</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">mental</span><span class="w"> </span><span class="n">narratives</span><span class="w"> </span><span class="n">directly</span><span class="w"> </span>
+<span class="w">  </span><span class="n">into</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">physical</span><span class="w"> </span><span class="n">Tanden</span><span class="w"> </span><span class="p">(</span><span class="n">Labor</span><span class="p">)</span><span class="o">.</span>
+<span class="w">  </span><span class="err">•</span><span class="w"> </span><span class="n">Drop</span><span class="w"> </span><span class="n">weight</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">chair</span><span class="p">;</span><span class="w"> </span><span class="n">feel</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">soles</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">both</span><span class="w"> </span><span class="n">feet</span><span class="w"> </span><span class="n">against</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nb">floor</span><span class="o">.</span>
+<span class="w">  </span><span class="err">•</span><span class="w"> </span><span class="n">Take</span><span class="w"> </span><span class="n">three</span><span class="w"> </span><span class="n">deep</span><span class="w"> </span><span class="n">diaphragmatic</span><span class="w"> </span><span class="n">exhalations</span><span class="p">,</span><span class="w"> </span><span class="n">rooting</span><span class="w"> </span><span class="n">tension</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">pelvis</span><span class="o">.</span>
+<span class="w">  </span><span class="err">•</span><span class="w"> </span><span class="n">Confirm</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;I am not the judge of this creation. I am the physical </span>
+<span class="w">    </span><span class="n">hands</span><span class="w"> </span><span class="n">executing</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">right</span><span class="w"> </span><span class="n">now</span><span class="o">.</span><span class="s2">&quot;</span>
+<span class="w">             </span><span class="err">│</span>
+<span class="w">             </span><span class="err">▼</span>
+<span class="w">  </span><span class="p">[</span><span class="mf">3.</span><span class="w"> </span><span class="n">ENGAGE</span><span class="w"> </span><span class="n">PURE</span><span class="w"> </span><span class="n">GYŌ</span><span class="w"> </span><span class="p">(</span><span class="mi">20</span><span class="w"> </span><span class="n">Seconds</span><span class="p">)]</span>
+<span class="w">  </span><span class="n">Execute</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">single</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="n">physical</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="n">without</span><span class="w"> </span><span class="n">evaluating</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">outcome</span><span class="o">.</span>
+<span class="w">  </span><span class="err">•</span><span class="w"> </span><span class="n">Type</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">single</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">code</span><span class="o">.</span>
+<span class="w">  </span><span class="err">•</span><span class="w"> </span><span class="n">Make</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">single</span><span class="w"> </span><span class="n">precise</span><span class="w"> </span><span class="n">cut</span><span class="o">.</span>
+<span class="w">  </span><span class="err">•</span><span class="w"> </span><span class="n">Clean</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">single</span><span class="w"> </span><span class="k">tool</span><span class="o">.</span>
+<span class="w">  </span><span class="n">The</span><span class="w"> </span><span class="n">circuit</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">closed</span><span class="o">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">landlord</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">bankrupt</span><span class="o">.</span><span class="w"> </span><span class="n">Flow</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">restored</span><span class="o">.</span>
+</code></pre></div>
+
+<hr />
+<div class="chapter-break"></div>
+<h2>Part IX. The Seven Axioms of Consciousness Georgism</h2>
+<ol>
+<li><strong>The Axiom of the Natural Substrate:</strong> Attention is the unproduced, finite ground of consciousness, structurally identical to Land in classical political economy.</li>
+<li><strong>The Axiom of Somatic Labor:</strong> The sole legitimate generator of real action within the human organism is the embodied somatic reactor centered in the Tanden.</li>
+<li><strong>The Axiom of the Rentier:</strong> The reflexive Ego neither creates awareness nor executes work; its sole function in neurosis is the predatory extraction of cognitive rent.</li>
+<li><strong>The Law of Quadratic Heat (<span class="math-inline">\(Q = I^2 R t\)</span>):</strong> The greater the creative voltage of the maker (<span class="math-inline">\(I\)</span>), the more lethal the parasitic resistance of egoic self-monitoring (<span class="math-inline">\(R\)</span>).</li>
+<li><strong>The Bankruptcy of Philanthropy:</strong> Therapeutic wellness modalities operating solely within the intellect serve as Victorian soup kitchens, perpetuating serfdom under the internal rentier.</li>
+<li><strong>The Law of Pure Gyō:</strong> Mastery and enduring joy occur only when Somatic Labor couples directly to the Land of Attention without cognitive intermediaries.</li>
+<li><strong>The Single Sovereign Tax:</strong> Liberation is not the cessation of work, but the expropriation of attention from the ego, returning consciousness to its native, unencumbered superconductivity.</li>
+</ol>
+<hr />
+<h3>Canonical Registers &amp; Cross-References</h3>
+<ul>
+<li>[[04_Maps/Inner Current MOC|Inner Current Master Map (Architectural Registry)]]</li>
+<li>[[02_Wiki/Inner Current (The Paradox of Progress and Soul Burnout — Henry George and Enclosure of Presence)|503. The Paradox of Progress and Soul Burnout: Henry George and Enclosure of Presence]]</li>
+<li>[[02_Wiki/Inner Current (The Georgist Triad — Attention as Land, Tanden as Labor, Gyo and the Ego-Rentier)|504. The Georgist Triad of Consciousness: Attention as Land, Tanden as Labor, Gyo and the Ego-Rentier]]</li>
+<li>[[02_Wiki/Inner Current (The Henry George Principle — Single Tax, Bitcoin and Circuit Superconductivity — Law of Direct Flow and Elimination of Parasitic Rent)|48. The Henry George Principle, Bitcoin and the Architecture of Happiness]]</li>
+<li>[[02_Wiki/Inner Current (The Joule-Lenz Cornerstone — Why the Law of Losses is the Master Manifest of Freedom, Quadratic Will Trap and Mathematics of Superconductivity)|212. The Joule-Lenz Cornerstone: Law of Losses as Master Manifest of Freedom]]</li>
+<li>[[02_Wiki/Брошюра — Великий Изоморфизм Депосреднизации (Биткоин, налог Джорджа и Архитектура счастья)|Brochure: The Great Isomorphism of Disintermediation]]</li>
+</ul>
+
+</body>
+</html>

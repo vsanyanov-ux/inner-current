@@ -2,6 +2,12 @@
 title: "Inner Current: The Circuit Is Not a Metaphor — Literal Electrodynamics of the Biological Substrate, Proton Currents and the Zen Engineer Synthesis"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - not-a-metaphor
   - literal-physics
   - electrodynamics

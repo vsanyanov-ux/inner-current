@@ -1,7 +1,20 @@
 ---
 title: "Inner Current (The Deai Protocol — Field Test Stand of Reality Contact, Impedance Matching and the Dissolution of Social Rejection Fear)"
 created: 2026-10-03
-tags: [inner-current, deai, impedance-matching, field-test, rejection-fear, zen-engineering, circuit-laws]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/epistemology
+  - state/overheating
+  - deai
+  - impedance-matching
+  - field-test
+  - rejection-fear
+  - zen-engineering
+  - circuit-laws
 type: protocol
 status: evergreen
 layer: II

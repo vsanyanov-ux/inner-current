@@ -100,64 +100,332 @@
       transform: scale(1.02);
       transform-origin: center;
     }
+      /* ========================================================= */
+    /* LEFT SIDEBAR STYLES (INNERCURRENT.RU) */
+    /* ========================================================= */
+    .custom-sidebar-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-sidebar-scroll::-webkit-scrollbar-track {
+      background: rgba(9, 13, 22, 0.4);
+    }
+    .custom-sidebar-scroll::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 2px;
+    }
+    .custom-sidebar-scroll::-webkit-scrollbar-thumb:hover {
+      background: #f59e0b;
+    }
+    .sidebar-nav-item.active {
+      background: rgba(245, 158, 11, 0.12) !important;
+      border-color: rgba(245, 158, 11, 0.4) !important;
+      color: #fcd34d !important;
+      font-weight: 600 !important;
+    }
+    .sidebar-nav-item.active .sidebar-icon {
+      filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.6));
+    }
+
   </style>
 </head>
 <body class="selection:bg-amber-500 selection:text-slate-950 min-h-screen flex flex-col">
 
   <!-- ========================================================= -->
-  <!-- TOP STICKY NAVBAR -->
+  <!-- LEFT SIDEBAR & MOBILE DRAWER OVERLAY -->
   <!-- ========================================================= -->
-  <nav class="sticky top-0 z-50 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80 transition-all duration-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <!-- Brand -->
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 text-slate-950 font-black text-xl flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:scale-105 transition">
+  <div id="sidebar-backdrop" onclick="toggleSidebarMobile(false)" class="fixed inset-0 z-40 bg-slate-950/80 backdrop-blur-sm hidden transition-opacity duration-300 lg:hidden"></div>
+
+  <aside id="app-sidebar" class="fixed top-0 bottom-0 left-0 z-50 w-72 bg-[#070c18]/95 backdrop-blur-xl border-r border-slate-800/80 flex flex-col transition-transform duration-300 ease-in-out -translate-x-full lg:translate-x-0 shadow-2xl">
+    
+    <!-- Sidebar Header & Brand -->
+    <div class="h-16 px-4 border-b border-slate-800/80 flex items-center justify-between shrink-0 bg-slate-950/70">
+      <a href="#" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 text-slate-950 font-black text-lg flex items-center justify-center shadow-md shadow-amber-500/20 group-hover:scale-105 transition">
           ⚡
         </div>
         <div>
-          <div class="font-display font-bold text-base tracking-wide text-slate-100 group-hover:text-amber-300 transition">
+          <div class="font-display font-bold text-sm tracking-wide text-slate-100 group-hover:text-amber-300 transition">
             INNER CURRENT
           </div>
-          <div class="text-[10px] uppercase font-mono tracking-widest text-slate-400 font-semibold">
-            Библиотека книг
+          <div class="text-[9px] uppercase font-mono tracking-widest text-slate-400 font-semibold">
+            innercurrent.ru
           </div>
         </div>
       </a>
-
-      <!-- Desktop Nav Links -->
-      <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
-        <a href="manifesto.html" class="hover:text-amber-200 transition flex items-center gap-1.5 text-amber-300 font-bold px-2.5 py-1 rounded-lg bg-amber-500/15 border border-amber-500/30 box-glow-amber"><span>⚡</span> Манифест</a>
-        <a href="#house" class="hover:text-amber-300 transition flex items-center gap-1.5 text-amber-400 font-semibold"><span>🏛️</span> Дом Внутреннего Тока</a>
-        <a href="#books" class="hover:text-amber-300 transition">Книги (7)</a>
-        <a href="#reader" class="hover:text-amber-300 transition">Онлайн-ридер</a>
-        <a href="#audiobook" class="hover:text-cyan-300 transition flex items-center gap-1.5">
-          <span>🎧</span> Аудиокнига
-        </a>
-        <a href="#flashlight" class="hover:text-amber-300 transition flex items-center gap-1.5">
-          <span>🔦</span> Дзен-фонарик
-        </a>
-        <a href="/human/" class="hover:text-amber-300 transition flex items-center gap-1.5">
-          <span>🧘</span> Человек-контур
-        </a>
-        <a href="#monographs" class="hover:text-slate-100 transition">Материалы PDF</a>
-        <a href="#principles" class="hover:text-slate-100 transition">Принципы</a>
-        <a href="trainer.html" class="hover:text-amber-300 transition flex items-center gap-1.5 text-slate-400"><span class="text-xs">🎛️</span> Тренажер</a>
-      </div>
-
-      <!-- Quick Action Buttons -->
-      <div class="flex items-center gap-3">
-        <a href="manifesto.html" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 transition flex items-center gap-1.5 shadow-sm">
-          <span>⚡</span> <span class="hidden sm:inline">Манифест</span>
-        </a>
-        <a href="#audiobook" class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition flex items-center gap-1.5 shadow-sm">
-          <span>🎧</span> <span class="hidden sm:inline">Слушать</span>
-        </a>
-        <a href="#reader" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 transition flex items-center gap-1.5 shadow-md shadow-amber-500/20">
-          <span>📖</span> <span>Ридер</span>
-        </a>
+      
+      <div class="flex items-center gap-1">
+        <!-- Collapse on Desktop -->
+        <button onclick="toggleSidebarDesktop()" title="Свернуть сайдбар [Ctrl+B или [ ]" class="hidden lg:flex p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/80 transition cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
+        </button>
+        <!-- Close on Mobile -->
+        <button onclick="toggleSidebarMobile(false)" title="Закрыть меню" class="lg:hidden p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
       </div>
     </div>
-  </nav>
+
+    <!-- Telemetry Status Bar -->
+    <div class="px-4 py-2 bg-slate-900/60 border-b border-slate-800/60 flex items-center justify-between text-[11px] font-mono">
+      <span class="flex items-center gap-2 text-emerald-400 font-medium">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        Цепь замкнута
+      </span>
+      <span class="text-slate-400 text-[10px]">7 книг • 500+ ст.</span>
+    </div>
+
+    <!-- Live Section Search -->
+    <div class="p-3 border-b border-slate-800/60">
+      <div class="relative">
+        <input 
+          type="text" 
+          id="sidebar-search-input" 
+          oninput="filterSidebar(this.value)" 
+          placeholder="Быстрый поиск по сайту..." 
+          class="w-full bg-slate-950/80 border border-slate-800 focus:border-amber-500/60 rounded-xl px-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-amber-500/40 font-sans"
+        >
+        <span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-[10px] font-mono text-slate-500 pointer-events-none">/</span>
+      </div>
+    </div>
+
+    <!-- Navigation Scroll Container -->
+    <div id="sidebar-nav-container" class="flex-1 overflow-y-auto px-3 py-3 space-y-5 custom-sidebar-scroll">
+      
+      <!-- Group: Манифесты и Протоколы -->
+      <div class="sidebar-group">
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 px-2 mb-1.5 flex items-center justify-between">
+          <span>Манифесты &amp; Протоколы</span>
+          <span class="text-amber-400">⚡</span>
+        </div>
+        <div class="space-y-1 text-xs">
+          <a href="manifesto.html" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-amber-400">⚡</span>
+              <span>Манифест Тока</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 font-bold">Free</span>
+          </a>
+          <a href="whitepaper.html" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-sky-400">📄</span>
+              <span>Master Whitepaper</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30 font-bold">L1</span>
+          </a>
+          <a href="#house" onclick="navigateSidebar('#house')" data-section="house" class="sidebar-nav-item flex items-center gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="sidebar-icon text-amber-400">🏛️</span>
+            <span>Дом Внутреннего Тока</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Group: Библиотека Книг (Золотая Семёрка) -->
+      <div class="sidebar-group">
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 px-2 mb-1.5 flex items-center justify-between">
+          <span>Золотая Семёрка 2.0</span>
+          <span class="text-slate-400">7 книг</span>
+        </div>
+        <div class="space-y-1 text-xs">
+          <a href="#books" onclick="navigateSidebar('#books')" data-section="books" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-amber-400">📚</span>
+              <span class="font-semibold">Все книги (Обзор)</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300">7 томов</span>
+          </a>
+          <a href="#reader" onclick="navigateSidebar('#reader')" data-section="reader" class="sidebar-nav-item flex items-center gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="sidebar-icon text-amber-300">📖</span>
+            <span class="font-semibold">Онлайн-ридер книг</span>
+          </a>
+          <a href="#audiobook" onclick="navigateSidebar('#audiobook')" data-section="audiobook" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-cyan-400">🎧</span>
+              <span class="font-semibold">Аудиокнига онлайн</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">Audio</span>
+          </a>
+
+          <!-- Вложенный список 7 книг для мгновенного чтения -->
+          <div class="pt-1.5 pl-2 border-l border-slate-800 ml-3 space-y-0.5 text-[11px]">
+            <button onclick="openBookFromSidebar('01_inner_current')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-amber-400 font-mono text-[10px]">1.</span>
+              <span class="truncate">Внутренний ток (Базис)</span>
+            </button>
+            <button onclick="openBookFromSidebar('02_quaternary_fractal')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-sky-400 font-mono text-[10px]">2.</span>
+              <span class="truncate">Четверичный фрактал (C₄)</span>
+            </button>
+            <button onclick="openBookFromSidebar('03_universal_law')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-indigo-400 font-mono text-[10px]">3.</span>
+              <span class="truncate">Универсальный закон</span>
+            </button>
+            <button onclick="openBookFromSidebar('04_primer')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-pink-400 font-mono text-[10px]">4.</span>
+              <span class="truncate">Тайна фонарика (Детям)</span>
+            </button>
+            <button onclick="openBookFromSidebar('05_field_manual')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-emerald-400 font-mono text-[10px]">5.</span>
+              <span class="truncate">Полевое руководство</span>
+            </button>
+            <button onclick="openBookFromSidebar('06_ukulele')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-amber-400 font-mono text-[10px]">6.</span>
+              <span class="truncate">Дзен-гитара &amp; Укулеле</span>
+            </button>
+            <button onclick="openBookFromSidebar('07_great_synthesis')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-amber-300 font-mono text-[10px]">7.</span>
+              <span class="truncate font-semibold text-amber-300">Великий Синтез 2.0</span>
+            </button>
+            <button onclick="openBookFromSidebar('dual_circuit')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-amber-400 font-mono text-[10px]">⚡</span>
+              <span class="truncate text-amber-400/90 font-medium">Двухконтурный каскад</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group: Инструменты и Тренажеры -->
+      <div class="sidebar-group">
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 px-2 mb-1.5 flex items-center justify-between">
+          <span>Интерактивные приборы</span>
+          <span class="text-slate-400">🎛️</span>
+        </div>
+        <div class="space-y-1 text-xs">
+          <a href="#flashlight" onclick="navigateSidebar('#flashlight')" data-section="flashlight" class="sidebar-nav-item flex items-center gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="sidebar-icon text-amber-400">🔦</span>
+            <span>Дзен-фонарик (Схема)</span>
+          </a>
+          <a href="/human/" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-sky-400">🧘</span>
+              <span>Человек-контур</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-sky-500/10 text-sky-300 border border-sky-500/20">3D</span>
+          </a>
+          <a href="trainer.html" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-amber-400">🎛️</span>
+              <span>Тренажер цепи</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">Стенд</span>
+          </a>
+          <a href="cockpit.html" class="sidebar-nav-item flex items-center gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="sidebar-icon text-purple-400">📊</span>
+            <span>Пульт Сверхпроводимости</span>
+          </a>
+          <a id="zen-haiku-nav" href="#zen-haiku" onclick="navigateSidebar('#zen-haiku')" data-section="zen-haiku" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-amber-300">🐾</span>
+              <span>Кошачий Дзэн (Хайку)</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20 font-bold">Zen</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Group: База Знаний и Документы -->
+      <div class="sidebar-group">
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 px-2 mb-1.5 flex items-center justify-between">
+          <span>База Знаний &amp; PDF</span>
+          <span class="text-slate-400">📚</span>
+        </div>
+        <div class="space-y-1 text-xs">
+          <a href="wiki.html" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-sky-400">📚</span>
+              <span>Вики-ридер (LLM Wiki)</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30 font-bold">500+</span>
+          </a>
+          <a href="#monographs" onclick="navigateSidebar('#monographs')" data-section="monographs" class="sidebar-nav-item flex items-center gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="sidebar-icon text-slate-400">📑</span>
+            <span>Материалы и брошюры PDF</span>
+          </a>
+          <a href="/en/" onclick="setLanguage('en')" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon">🌐</span>
+              <span>English Edition</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300">EN</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Sidebar Footer -->
+    <div class="p-3 border-t border-slate-800/80 bg-slate-950/90 text-xs shrink-0 space-y-2">
+      <a href="https://t.me/inner_current" target="_blank" rel="noopener noreferrer" class="w-full py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-sky-500/40 text-slate-200 transition flex items-center justify-center gap-2 font-medium text-xs">
+        <span>💬</span> <span>Telegram-канал</span> ↗
+      </a>
+      <div class="text-[10px] text-center text-slate-400 font-mono">
+        © 2026 Владимир Аньянов
+      </div>
+    </div>
+  </aside>
+
+
+  <div id="main-layout" class="flex-1 flex flex-col min-w-0 transition-all duration-300 lg:pl-72">
+    <!-- TOP STICKY NAVBAR -->
+    <nav class="sticky top-0 z-40 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80 transition-all duration-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+        
+        <!-- Left: Sidebar Trigger & Brand -->
+        <div class="flex items-center gap-3">
+          <!-- Mobile Hamburger Button -->
+          <button onclick="toggleSidebarMobile(true)" class="lg:hidden p-2 rounded-xl bg-slate-900 border border-slate-800 text-amber-300 hover:bg-slate-800 transition cursor-pointer flex items-center gap-1.5" title="Открыть меню">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <span class="text-xs font-semibold">Меню</span>
+          </button>
+
+          <!-- Desktop Sidebar Toggle Button -->
+          <button id="desktop-sidebar-btn" onclick="toggleSidebarDesktop()" class="hidden lg:flex p-2 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-amber-300 hover:border-amber-500/40 transition cursor-pointer items-center gap-1.5" title="Скрыть/показать сайдбар (Ctrl+B)">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
+            <span class="text-xs font-mono font-medium">Панель</span>
+          </button>
+
+          <!-- Brand -->
+          <a href="#" class="flex items-center gap-2.5 group">
+            <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 text-slate-950 font-black text-lg flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:scale-105 transition">
+              ⚡
+            </div>
+            <div>
+              <div class="font-display font-bold text-sm tracking-wide text-slate-100 group-hover:text-amber-300 transition">
+                INNER CURRENT
+              </div>
+              <div class="text-[9px] uppercase font-mono tracking-widest text-slate-400 font-semibold">
+                Библиотека книг
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Desktop Quick Nav Links -->
+        <div class="hidden xl:flex items-center gap-4 text-xs font-medium text-slate-300">
+          <a href="manifesto.html" class="hover:text-amber-200 transition flex items-center gap-1.5 text-amber-300 font-bold px-2.5 py-1 rounded-lg bg-amber-500/15 border border-amber-500/30"><span>⚡</span> Манифест</a>
+          <a href="whitepaper.html" class="hover:text-sky-300 transition flex items-center gap-1.5 text-slate-300 font-semibold px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 hover:border-sky-500/40"><span>📄</span> Whitepaper</a>
+          <a href="#house" class="hover:text-amber-300 transition flex items-center gap-1 text-amber-400 font-semibold"><span>🏛️</span> Дом</a>
+          <a href="#books" class="hover:text-amber-300 transition">Книги (7)</a>
+          <a href="wiki.html" class="hover:text-sky-300 transition flex items-center gap-1"><span>📚</span> Вики</a>
+          <a href="trainer.html" class="hover:text-amber-300 transition flex items-center gap-1 text-slate-400"><span>🎛️</span> Тренажер</a>
+        </div>
+
+        <!-- Quick Action Buttons -->
+        <div class="flex items-center gap-2">
+          <!-- Language Switcher -->
+          <div class="flex items-center rounded-xl bg-slate-900 border border-slate-800 p-0.5 text-xs font-mono font-semibold" title="Выбор языка">
+            <span class="px-2 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold shadow-sm cursor-default text-[11px]">RU</span>
+            <a href="/en/" onclick="setLanguage('en')" class="px-2 py-1 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800/80 transition text-[11px]">EN</a>
+          </div>
+
+          <a href="#audiobook" class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition flex items-center gap-1.5 shadow-sm">
+            <span>🎧</span> <span class="hidden sm:inline">Аудио</span>
+          </a>
+          <a href="#reader" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 transition flex items-center gap-1.5 shadow-md shadow-amber-500/20">
+            <span>📖</span> <span>Ридер</span>
+          </a>
+        </div>
+      </div>
+    </nav>
 
   <!-- ========================================================= -->
   <!-- HERO SECTION -->
@@ -182,7 +450,7 @@
 
       <!-- Subtitle -->
       <p class="max-w-3xl mx-auto mt-6 text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed font-serif">
-        Архитектура «Дома Внутреннего Тока»: от соматического фундамента человека ($N=1$) и топологии четверичного фрактала ($C_4$) до термодинамики негэнтропии и макроистории цивилизации.
+        Архитектура «Дома Внутреннего Тока»: от соматического фундамента человека (N=1) и топологии четверичного фрактала (C₄) до термодинамики негэнтропии и макроистории цивилизации.
       </p>
 
       <!-- Stats Bar -->
@@ -241,7 +509,7 @@
         Дом Внутреннего Тока
       </h2>
       <p class="text-slate-300 text-sm sm:text-base mt-4 leading-relaxed font-serif">
-        Принцип познания природы строится строго снизу вверх (<span class="font-mono text-amber-300">Ordo cognoscendi</span>): от прямого соматического опыта живого тела ($N=1$) через инвариант систем ($C_4$) к космологическому закону термодинамики негэнтропии.
+        Принцип познания природы строится строго снизу вверх (<span class="font-mono text-amber-300">Ordo cognoscendi</span>): от прямого соматического опыта живого тела (N=1) через инвариант систем (C₄) к космологическому закону термодинамики негэнтропии.
       </p>
     </div>
 
@@ -277,7 +545,7 @@
             </div>
           </div>
           <p class="text-xs text-slate-300 mt-2 font-serif leading-relaxed">
-            Термодинамика негэнтропии, открытые системы, экспорт энтропии наружу и формула КПД бытия $\mathcal{H} = P_{\\text{load}} / P_{\\text{total}}$.
+            Термодинамика негэнтропии, открытые системы, экспорт энтропии наружу и формула КПД бытия H = P_load / P_total.
           </p>
           <div class="mt-3 flex items-center gap-2">
             <button onclick="readBookInReader('03_universal_law')" class="px-3 py-1.5 rounded-lg bg-sky-500/20 text-sky-300 border border-sky-500/40 text-xs font-semibold hover:bg-sky-500/30 transition">
@@ -299,7 +567,7 @@
             </div>
           </div>
           <p class="text-xs text-slate-300 mt-2 font-serif leading-relaxed">
-            Топологический инвариант ($C_4$): 4 узла цепи в природе, клетке, человеке, Биткоине и обществе. Теория депосреднизации (Zero Parasitic Rent).
+            Топологический инвариант (C₄): 4 узла цепи в природе, клетке, человеке, Биткоине и обществе. Теория депосреднизации (Zero Parasitic Rent).
           </p>
           <div class="mt-3 flex items-center gap-2">
             <button onclick="readBookInReader('02_quaternary_fractal')" class="px-3 py-1.5 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs font-semibold hover:bg-amber-500/30 transition">
@@ -321,7 +589,7 @@
             </div>
           </div>
           <p class="text-xs text-slate-300 mt-2 font-serif leading-relaxed">
-            Соматический базис человека: карманный фонарик, реактор Тандэн, проводник Мусин ($R_{\text{ego}} \to 0$), закон Джоуля — Ленца.
+            Соматический базис человека: карманный фонарик, реактор Тандэн, проводник Мусин (R_ego → 0), закон Джоуля — Ленца.
           </p>
           <div class="mt-3 flex items-center gap-2">
             <button onclick="readBookInReader('01_inner_current')" class="px-3 py-1.5 rounded-lg bg-amber-500 text-slate-950 font-bold text-xs hover:bg-amber-400 transition shadow-md shadow-amber-500/20">
@@ -405,11 +673,11 @@
               Внутренний ток: Архитектура Человека (Канон 3.0)
             </h3>
             <p class="text-xs text-amber-400 font-medium mt-1">
-              Канон Сверхпроводимости: соматика $N=1$, Русский синтез и протокол Self-Hosted Human
+              Канон Сверхпроводимости: соматика N=1, Русский синтез и протокол Self-Hosted Human
             </p>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed font-serif">
-            Новейший канон на базе 400+ исследований: Русский синтез (Толстой, Достоевский, Ленц $Q = I^2 R t$), Акустический монизм (Укулеле Бытия), деконструкция 4 эпидемий цивилизации, бортовое табло OBD-II и соматический суверенитет человека перед лицом AGI.
+            Новейший канон на базе 400+ исследований: Русский синтез (Толстой, Достоевский, закон Джоуля — Ленца Q = I²·R·t), Акустический монизм (Укулеле Бытия), деконструкция 4 эпидемий цивилизации, бортовое табло OBD-II и соматический суверенитет человека перед лицом AGI.
           </p>
         </div>
         <div class="pt-5 mt-4 border-t border-slate-800/80 flex items-center gap-2">
@@ -443,7 +711,7 @@
             </p>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed font-serif">
-            Архитектурно-топологический инвариант: 44 страницы. 4 узла контура (Источник $\to$ Проводник $\to$ Нагрузка $\to$ Обратный провод). Теория депосреднизации (Zero Parasitic Rent), Биткоин Сатоши Накамото и налог Генри Джорджа.
+            Архитектурно-топологический инвариант: 44 страницы. 4 узла контура (Источник → Проводник → Нагрузка → Обратный провод). Теория депосреднизации (Zero Parasitic Rent), Биткоин Сатоши Накамото и налог Генри Джорджа.
           </p>
         </div>
         <div class="pt-5 mt-4 border-t border-slate-800/80 flex items-center gap-2">
@@ -477,7 +745,7 @@
             </p>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed font-serif">
-            Космологическая термодинамика: 45 страниц. Неравновесная физика Больцмана, Шрёдингера и Пригожина. Каноническая формула КПД потока $\mathcal{H} = P_{\text{load}} / P_{\text{total}}$, три следствия и строгая фальсифицируемость по Карлу Попперу.
+            Космологическая термодинамика: 45 страниц. Неравновесная физика Больцмана, Шрёдингера и Пригожина. Каноническая формула КПД потока H = P_load / P_total, три следствия и строгая фальсифицируемость по Карлу Попперу.
           </p>
         </div>
         <div class="pt-5 mt-4 border-t border-slate-800/80 flex items-center gap-2">
@@ -613,7 +881,7 @@
             </p>
           </div>
           <p class="text-xs md:text-sm text-slate-300 leading-relaxed font-serif max-w-4xl">
-            Макроисторический манифест: 52 страницы. 10 000 лет цивилизации: от открытия огня через конденсатор Уатта, автомобиль Карла Бенца и Биткоин к искусственному интеллекту. Преодоление 2500-летнего раскола Запада и Востока и замыкание двух абсолютных вершин познания (Дзен изнутри $R_{\\text{ego}} \\to 0$ и диссипативные структуры Пригожина снаружи).
+            Макроисторический манифест: 52 страницы. 10 000 лет цивилизации: от открытия огня через конденсатор Уатта, автомобиль Карла Бенца и Биткоин к искусственному интеллекту. Преодоление 2500-летнего раскола Запада и Востока и замыкание двух абсолютных вершин познания (Дзен изнутри R_ego → 0 и диссипативные структуры Пригожина снаружи).
           </p>
         </div>
         <div class="pt-6 mt-4 border-t border-slate-800/80 flex flex-wrap items-center gap-3">
@@ -1201,6 +1469,85 @@
     </div>
   </section>
 
+
+  <!-- ========================================================= -->
+  <!-- ZEN HAIKU & FELINE CIRCUIT GENERATOR -->
+  <!-- ========================================================= -->
+  <section id="zen-haiku" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/80">
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-amber-300 text-xs font-mono font-medium tracking-wider mb-3">
+        🐾 КВАНТ ДЗЭНА &amp; СВЕРХПРОВОДИМОСТЬ
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-100 font-display">
+        Кошачий дзэн: Осциллограф живого присутствия
+      </h2>
+      <p class="text-slate-400 text-sm mt-3">
+        Внутренний ток — не сухой механизм: он про изобилие жизни, поэзию и созерцание невыразимого. Дзэн-хайку и повадки кошек — два зеркала чистой проводимости без эго-шума.
+      </p>
+    </div>
+
+    <!-- Haiku Card Container -->
+    <div class="max-w-3xl mx-auto bg-gradient-to-b from-slate-900/90 to-slate-950 border border-slate-800/90 hover:border-amber-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden transition-all duration-300">
+      <div class="absolute -right-16 -top-16 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-16 -bottom-16 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- Card Top: Author & Kanji -->
+      <div class="flex items-center justify-between border-b border-slate-800/80 pb-4 mb-6">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">🐾</span>
+          <div>
+            <div id="zen-haiku-author" class="font-display font-bold text-amber-300 text-base">Басё (Basho)</div>
+            <div id="zen-haiku-theme" class="text-xs font-mono text-slate-400">Мгновенный сброс эго-сопротивления</div>
+          </div>
+        </div>
+        <div id="zen-haiku-kanji" class="text-2xl font-serif text-slate-500/40 select-none">松尾芭蕉</div>
+      </div>
+
+      <!-- Haiku Russian Text (Display) -->
+      <div class="my-6 text-center">
+        <blockquote id="zen-haiku-text-ru" class="font-serif italic text-lg sm:text-xl text-slate-100 leading-relaxed tracking-wide">
+          Холодный дождь пошёл,<br>А я без шляпы...<br>Впрочем, какое мне до этого дело?
+        </blockquote>
+        <div id="zen-haiku-text-orig" class="text-[11px] font-mono text-slate-500 mt-3 tracking-widest uppercase">
+          A COLD RAIN STARTING, AND ME WITHOUT A HAT. ON SECOND THOUGHT, WHO CARES?
+        </div>
+      </div>
+
+      <!-- Feline Circuit Insight -->
+      <div class="bg-slate-950/70 border border-slate-800/80 rounded-2xl p-4 sm:p-5 my-5 space-y-2">
+        <div class="text-[11px] font-mono uppercase tracking-wider text-amber-400 font-semibold flex items-center gap-2">
+          <span>🐾 Кошачий контур</span>
+          <span class="text-slate-600">•</span>
+          <span id="zen-haiku-formula" class="text-cyan-400 normal-case font-normal">R_ego: 100 Ω → 0 Ω за 0.05 с, Q_joule = 0</span>
+        </div>
+        <p id="zen-haiku-feline" class="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+          Кот выходит на веранду под моросящий дождь. Никаких жалоб на климат, никакого самобичевания: уши прижаты, лапы пружинят, сопротивление R_ego мгновенно обнулено. Мокрая шерсть — это просто физика, а не трагедия.
+        </p>
+      </div>
+
+      <!-- Somatic Calibration Hint -->
+      <div class="bg-amber-500/5 border border-amber-500/20 rounded-xl p-3.5 flex items-start gap-3 text-xs text-amber-200/90 font-sans mb-6">
+        <span class="text-base shrink-0">🧘</span>
+        <div>
+          <span class="font-semibold text-amber-300">Соматическая юстировка (20 сек):</span>
+          <span id="zen-haiku-somatic" class="text-slate-300 ml-1">Разомкните зубы, сбросьте плечи вниз и спросите себя: «Какое мне до этого дело?» Почувствуйте, как уходит спазм со скул.</span>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+        <button onclick="nextZenHaiku()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-semibold text-xs tracking-wide shadow-lg hover:shadow-amber-500/20 transition flex items-center justify-center gap-2 cursor-pointer">
+          <span>⚡ Следующий квант</span>
+          <span class="text-[10px] font-mono opacity-80">(Space)</span>
+        </button>
+
+        <a href="wiki.html" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white text-xs transition flex items-center justify-center gap-2">
+          <span>📖 Читать манифест «Кошачий дзэн» в Вики</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ========================================================= -->
   <!-- FOOTER -->
   <!-- ========================================================= -->
@@ -1632,5 +1979,197 @@
       }
     }
   </script>
+  </div> <!-- /#main-layout -->
+
+  <!-- ========================================================= -->
+  <!-- SIDEBAR CONTROLLER & SCROLLSPY (INNERCURRENT.RU) -->
+  <!-- ========================================================= -->
+  <script>
+    function setLanguage(lang) { try { localStorage.setItem('inner_current_lang', lang); } catch(e){} }
+    function toggleSidebarMobile(open) {
+      const sidebar = document.getElementById('app-sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (!sidebar || !backdrop) return;
+      
+      if (open) {
+        sidebar.classList.remove('-translate-x-full');
+        sidebar.classList.add('translate-x-0');
+        backdrop.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        sidebar.classList.remove('translate-x-0');
+        backdrop.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function toggleSidebarDesktop() {
+      const sidebar = document.getElementById('app-sidebar');
+      const layout = document.getElementById('main-layout');
+      if (!sidebar || !layout) return;
+
+      const isCollapsed = sidebar.classList.contains('lg:-translate-x-full');
+      if (isCollapsed) {
+        // Развернуть
+        sidebar.classList.remove('lg:-translate-x-full');
+        layout.classList.remove('lg:pl-0');
+        layout.classList.add('lg:pl-72');
+        localStorage.setItem('innercurrent_sidebar_desktop', 'expanded');
+      } else {
+        // Свернуть
+        sidebar.classList.add('lg:-translate-x-full');
+        layout.classList.remove('lg:pl-72');
+        layout.classList.add('lg:pl-0');
+        localStorage.setItem('innercurrent_sidebar_desktop', 'collapsed');
+      }
+    }
+
+    // Восстановление состояния десктопного сайдбара
+    (function initSidebar() {
+      if (window.innerWidth >= 1024) {
+        const pref = localStorage.getItem('innercurrent_sidebar_desktop');
+        if (pref === 'collapsed') {
+          const sidebar = document.getElementById('app-sidebar');
+          const layout = document.getElementById('main-layout');
+          if (sidebar && layout) {
+            sidebar.classList.add('lg:-translate-x-full');
+            layout.classList.remove('lg:pl-72');
+            layout.classList.add('lg:pl-0');
+          }
+        }
+      }
+    })();
+
+    // Хоткей Ctrl+B или [ для быстрого переключения сайдбара
+    window.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey && e.key.toLowerCase() === 'b') || (e.key === '[' && !['INPUT', 'TEXTAREA'].includes(e.target.tagName))) {
+        e.preventDefault();
+        if (window.innerWidth >= 1024) {
+          toggleSidebarDesktop();
+        } else {
+          const sidebar = document.getElementById('app-sidebar');
+          const isOpen = !sidebar.classList.contains('-translate-x-full');
+          toggleSidebarMobile(!isOpen);
+        }
+      } else if (e.key === 'Escape') {
+        toggleSidebarMobile(false);
+      }
+    });
+
+    // Навигация по якорю с закрытием мобильного меню
+    function navigateSidebar(anchor) {
+      if (window.innerWidth < 1024) {
+        toggleSidebarMobile(false);
+      }
+    }
+
+    // Открытие книги в ридере из сайдбара
+    function openBookFromSidebar(bookKey) {
+      if (typeof readBookInReader === 'function') {
+        readBookInReader(bookKey);
+      }
+      const readerSection = document.getElementById('reader');
+      if (readerSection) {
+        readerSection.scrollIntoView({ behavior: 'smooth' });
+      }
+      if (window.innerWidth < 1024) {
+        toggleSidebarMobile(false);
+      }
+    }
+
+    // Живой фильтр разделов сайдбара
+    function filterSidebar(query) {
+      const q = (query || '').toLowerCase().trim();
+      const items = document.querySelectorAll('#sidebar-nav-container .sidebar-nav-item, #sidebar-nav-container button');
+      items.forEach(el => {
+        const text = el.textContent.toLowerCase();
+        if (!q || text.includes(q)) {
+          el.style.display = '';
+        } else {
+          el.style.display = 'none';
+        }
+      });
+    }
+
+
+    // ZEN HAIKU & FELINE CIRCUIT ENGINE
+    const ZEN_HAIKUS = [{"id": "basho-cold-rain", "author": "Басё (Basho)", "authorKanji": "松尾芭蕉", "haikuOriginal": "A COLD RAIN STARTING,\nAND ME WITHOUT A HAT.\nON SECOND THOUGHT, WHO CARES?", "haikuRu": "Холодный дождь пошёл,\nА я без шляпы...\nВпрочем, какое мне до этого дело?", "theme": "Мгновенный сброс эго-сопротивления", "felineCircuitComment": "Кот выходит на веранду под моросящий дождь. Никаких жалоб на климат, никакого самобичевания: уши прижаты, лапы пружинят, сопротивление R_ego мгновенно обнулено. Мокрая шерсть — это просто физика, а не трагедия.", "electrodynamicFormula": "R_ego: 100 Ω → 0 Ω за 0.05 с, Q_joule = 0", "somaticCalibration": "Разомкните зубы, сбросьте плечи вниз и спросите себя: «Какое мне до этого дело?» Почувствуйте, как уходит спазм со скул."}, {"id": "ryokan-the-thief", "author": "Рёкан (Ryokan)", "authorKanji": "良寛", "haikuOriginal": "THE THIEF\nLEFT IT BEHIND —\nTHE MOON AT THE WINDOW.", "haikuRu": "Вор оставил её\nНетронутой —\nЛуна в окне.", "theme": "Неуязвимость пустой полости (Шуньята)", "felineCircuitComment": "Вор обчистил хижину монаха, но кот продолжает дремать на подоконнике в пятне лунного света. Нельзя украсть то, за что ты не цепляешься когтями. Лунный свет принадлежит коту целиком, потому что кот пуст.", "electrodynamicFormula": "E_load = 0, Z_0 = const, I_theft = 0", "somaticCalibration": "Положите ладонь на живот под пупком. Выдохните всё имущество и тревогу. Внутренний свет украсть невозможно."}, {"id": "ryokan-stretched-out", "author": "Рёкан (Ryokan)", "authorKanji": "良寛", "haikuOriginal": "FORGETTING THE EQUAL DUSTS OF NAME AND FORTUNE,\nLISTENING TO THE NIGHT RAIN ON THE ROOF OF MY HUT,\nI SIT AT EASE,\nBOTH LEGS STRETCHED OUT.", "haikuRu": "Забыв одинаковую пыль славы и богатства,\nСлушаю ночной дождь по крыше хижины,\nСижу в полном покое,\nВытянув обе ноги.", "theme": "Соматическая капитуляция в Тандэн", "felineCircuitComment": "Кот лежит на спине посреди ковра, раскинув лапы в форме звезды, подставив теплому воздуху беззащитное брюхо. Абсолютное доверие к несущей среде: социальный радар выключен, ток течет без омического сопротивления.", "electrodynamicFormula": "R_ego = 0, η = 100%, P_dissipated = 0", "somaticCalibration": "Вытяните ноги, размягчите живот так, чтобы он колыхался при дыхании. Пусть шум мира станет шелестом дождя по соломе."}, {"id": "basho-wild-violet", "author": "Басё (Basho)", "authorKanji": "松尾芭蕉", "haikuOriginal": "ALONG THE MOUNTAIN ROAD\nSOMEHOW IT TUGS AT MY HEART:\nA WILD VIOLET.", "haikuRu": "Вдоль горной дороги\nЧто-то тронуло сердце:\nДикая фиалка.", "theme": "Сверхпроводимость эстетического резонанса", "felineCircuitComment": "Кот замирает перед трепещущим листком папоротника. Никакой утилитарной цели: листок несъедобен, за него не дадут мышь. Но внимание кота целокупно и бесконечно. Контур замкнут через красоту момента.", "electrodynamicFormula": "Z_in = Z_load (Идеальное согласование импедансов)", "somaticCalibration": "Остановите взгляд на любой случайной детали: узоре дерева, блике света на столе. Смотрите без названия 10 секунд."}, {"id": "issa-dewdrop-world", "author": "Исса (Issa)", "authorKanji": "小林一茶", "haikuOriginal": "THIS DEWDROP WORLD —\nIT MAY BE A DEWDROP,\nAND YET ... AND YET ...", "haikuRu": "Этот мир — капля росы.\nПусть всего лишь капля росы,\nИ все же... и все же...", "theme": "Нежность к хрупкости бытия (Гальваническая развязка)", "felineCircuitComment": "Кот смотрит на тающую снежинку на кончике собственного носа. Она исчезнет через миг. Дзэн не требует быть каменным истуканом; дзэн позволяет любить каплю росы, не пытаясь запаять ее в сейф.", "electrodynamicFormula": "M_ind > 0, без короткого замыкания созависимости", "somaticCalibration": "Позвольте себе почувствовать грусть или нежность без попытки их исправить или подавить. Дайте току просто протечь."}, {"id": "basho-cicada-shell", "author": "Басё (Basho)", "authorKanji": "松尾芭蕉", "haikuOriginal": "ONLY THE SHELL\nOF THE CICADA LEFT?\nDID IT SING ITSELF OUT OF EXISTENCE?", "haikuRu": "Только сухая скорлупка\nОсталась от цикады?\nНеужели она выпела себя из бытия?", "theme": "Предельная отдача в нагрузку (100% КПД)", "felineCircuitComment": "Кот, преследующий солнечный зайчик, отдает броску всю свою кошачью массу, до кончика вибрирующего хвоста. Никаких резервов на завтра, никакого сомнения. Спеть себя без остатка — единственный способ победить смерть.", "electrodynamicFormula": "η = P_out / P_in = 1.0, W_useful = max", "somaticCalibration": "Если делаете что-то прямо сейчас (пьете чай, пишете код, гладите кота) — погрузитесь в это так, будто завтра не существует."}, {"id": "zen-expression-grass", "author": "Дзэнский канон", "authorKanji": "禅", "haikuOriginal": "ENTERING THE FOREST,\nHE MOVES NOT THE GRASS.\nENTERING THE WATER,\nHE MAKES NOT A RIPPLE.", "haikuRu": "Входя в густой лес,\nНе колыхнет травинку.\nВступая в воду,\nНе поднимет ряби.", "theme": "Ламинарный ток без омического следа", "felineCircuitComment": "Черный кот бесшумно ступает мягкими подушечками по скрипучему паркету старого дома. Ни звука когтей, ни удара пятки. Он движется не вопреки пространству, а протекая сквозь него, как жидкий ток.", "electrodynamicFormula": "R_contact → 0, ∇ × B = 0 (Безвихревой поток)", "somaticCalibration": "Сделайте следующий шаг или движение рукой медленно и бесшумно, как кот крадущийся по ветке. Почувствуйте кончики пальцев."}, {"id": "basho-wild-heron", "author": "Басё (Basho)", "authorKanji": "松尾芭蕉", "haikuOriginal": "THE WILD HERON\nSLEEPING —\nUNDISTURBED NOBILITY.", "haikuRu": "Дикая цапля уснула —\nНепоколебимое\nБлагородство.", "theme": "Холостой ход чистого Тандэна (Дзансин)", "felineCircuitComment": "Сибирский кот спит на спинке дивана над пропастью в полтора метра. Баланс абсолютен. В его сне нет кошмаров о дедлайнах и невыплаченных кредитах. Он царственен, потому что не играет роль царя.", "electrodynamicFormula": "E = const, I = 0, P_loss = 0", "somaticCalibration": "Выпрямите позвоночник без натуги. Ощутите, что ваше достоинство вшито в саму гравитацию тела, а не в одобрение толпы."}, {"id": "shiki-tiny-village", "author": "Сики (Shiki)", "authorKanji": "正岡子規", "haikuOriginal": "ALONE, I GO THROUGH A TINY VILLAGE,\nA DARK WINTER DAY.\nA DOG BARKS AND BARKS.", "haikuRu": "Один иду сквозь глухую деревню,\nТемный зимний день.\nСобака лает и лает.", "theme": "Слон и лающие собаки ума", "felineCircuitComment": "Дворовый кот неторопливо шествует по верхушке забора. Внизу захлебывается лаем соседская такса. Кот даже не поворачивает уха: собачий лай — это лишь шум генератора чужой тревоги. Забор прочен, путь свободен.", "electrodynamicFormula": "SNR → ∞ (Подавление синфазного шума DMN)", "somaticCalibration": "Заметьте навязчивую тревожную мысль. Скажите себе: «Пусть лает, это просто бродячая собака ума». Продолжайте свой шаг."}, {"id": "kikaku-straw-mat", "author": "Кикаку (Kikaku)", "authorKanji": "宝井其角", "haikuOriginal": "A BRILLIANT FULL MOON!\nON THE MATTING OF MY FLOOR\nSHADOWS OF PINES FALL.", "haikuRu": "Ослепительное полнолуние!\nНа циновку моего пола\nПадают тени сосен.", "theme": "Созерцание без оценки (Мусин)", "felineCircuitComment": "Кот ловит лапой тень сосновой ветки на деревянном полу. Тень неосязаема, но игра с ней реальна на все сто процентов. Дзэн — это способность наслаждаться иллюзией игры, зная, что основание пола неколебимо.", "electrodynamicFormula": "Lila = True, R_friction = 0", "somaticCalibration": "Улыбнитесь уголками губ. Всё, что вас сейчас тревожит — лишь тени сосен на полу вашей спальни."}, {"id": "basho-spring-scene", "author": "Басё (Basho)", "authorKanji": "松尾芭蕉", "haikuOriginal": "SPRING TOO, VERY SOON!\nTHEY ARE SETTING THE SCENE FOR IT —\nPLUM TREE AND MOON.", "haikuRu": "Весна тоже придёт совсем скоро!\nДекорации для неё уже расставлены —\nДерево сливы и луна.", "theme": "Готовность контура к фазовому переходу", "felineCircuitComment": "Февральский кот сидит у закрытой форточки и щурится на холодное солнце. Снег еще лежит, но в шерсти кота уже проснулась весна. Не нужно подгонять реку — когда созреют условия, весна взорвется цветением сама.", "electrodynamicFormula": "T → T_c (Приближение к критической температуре сверхпроводимости)", "somaticCalibration": "Сделайте глубокий медленный вдох носом. Не торопите события. Почувствуйте, как в глубине тела уже есть всё необходимое."}, {"id": "ekon-swan-flight", "author": "Экон (Ekon)", "authorKanji": "慧可", "haikuOriginal": "WHO SHALL HALT THE SWAN\nIN ITS FLIGHT?\nOR LIFE IN ITS FLOW?", "haikuRu": "Кто сможет остановить лебедя\nВ его свободном полете?\nИли жизнь в её течении?", "theme": "Неостановимость естественного потока", "felineCircuitComment": "Попробуйте запереть кота в коробке — он станет жидкостью и вытечет в щель. Попробуйте навязать коту чужие планы — он мягко оттолкнется лапой и уйдет в сад. Жизнь нельзя удержать в кулаке; ее можно только прожить.", "electrodynamicFormula": "I = const, непрерывность уравнения Максвелла ∇ · J = -∂ρ/∂t", "somaticCalibration": "Раскройте сжатые кулаки ладонями вверх. Отпустите контроль над тем, что от вас не зависит."}];
+    let currentZenHaikuIndex = 0;
+
+    function renderZenHaiku(index) {
+      const h = ZEN_HAIKUS[index];
+      if (!h) return;
+      const elAuthor = document.getElementById('zen-haiku-author');
+      const elTheme = document.getElementById('zen-haiku-theme');
+      const elKanji = document.getElementById('zen-haiku-kanji');
+      const elRu = document.getElementById('zen-haiku-text-ru');
+      const elOrig = document.getElementById('zen-haiku-text-orig');
+      const elFormula = document.getElementById('zen-haiku-formula');
+      const elFeline = document.getElementById('zen-haiku-feline');
+      const elSomatic = document.getElementById('zen-haiku-somatic');
+
+      if (elAuthor) elAuthor.textContent = h.author;
+      if (elTheme) elTheme.textContent = h.theme;
+      if (elKanji) elKanji.textContent = h.authorKanji || '禅';
+      if (elRu) elRu.innerHTML = h.haikuRu.replace(/\n/g, '<br>');
+      if (elOrig) elOrig.textContent = h.haikuOriginal.replace(/\n/g, ' / ');
+      if (elFormula) elFormula.textContent = h.electrodynamicFormula;
+      if (elFeline) elFeline.textContent = h.felineCircuitComment;
+      if (elSomatic) elSomatic.textContent = h.somaticCalibration;
+    }
+
+    function nextZenHaiku() {
+      currentZenHaikuIndex = (currentZenHaikuIndex + 1) % ZEN_HAIKUS.length;
+      renderZenHaiku(currentZenHaikuIndex);
+    }
+    window.nextZenHaiku = nextZenHaiku;
+
+    // Hotkey: Space to cycle haiku when in #zen-haiku section
+    window.addEventListener('keydown', function(e) {
+      if (e.code === 'Space' && e.target === document.body) {
+        const section = document.getElementById('zen-haiku');
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            e.preventDefault();
+            nextZenHaiku();
+          }
+        }
+      }
+    });
+
+    // Scrollspy: подсветка активного раздела в сайдбаре
+    (function initScrollspy() {
+      const sections = ['house', 'books', 'audiobook', 'reader', 'monographs', 'flashlight'];
+      const navItems = document.querySelectorAll('.sidebar-nav-item[data-section]');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        
+        sections.forEach(id => {
+          const el = document.getElementById(id);
+          if (el) {
+            const top = el.offsetTop - 140;
+            const height = el.offsetHeight;
+            if (scrollY >= top && scrollY < top + height) {
+              current = id;
+            }
+          }
+        });
+        
+        navItems.forEach(item => {
+          if (item.getAttribute('data-section') === current) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+      }, { passive: true });
+    })();
+  </script>
+
+  <script src="/assets/tracker.js" defer></script>
 </body>
 </html>

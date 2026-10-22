@@ -8,6 +8,12 @@ aliases:
   - "Четыре фронта Внутреннего тока"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - anyanov-system
   - sensory-bypass
   - versace

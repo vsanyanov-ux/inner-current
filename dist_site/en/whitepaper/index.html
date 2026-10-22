@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>White Paper: Inner Current — The Open Protocol of Sovereign Human Electrodynamics | innercurrent.ru</title>
+  <meta name="description" content="Official Master Protocol Whitepaper of the Inner Current system: dual-circuit human electrodynamics, Proof-of-Action, Joule-Lenz law, lightbulb theorem, and superconductivity mode.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+  <!-- Fonts & Math -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+
+  <!-- Mermaid Diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        darkMode: true,
+        background: '#090d16',
+        mainBkg: '#0f172a',
+        nodeBorder: '#f59e0b',
+        textColor: '#f8fafc',
+        lineColor: '#38bdf8',
+        secondaryColor: '#1e293b',
+        tertiaryColor: '#0f172a',
+        fontFamily: 'Inter, system-ui, sans-serif',
+        fontSize: '13px'
+      },
+      securityLevel: 'loose'
+    });
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['Lora', 'Georgia', 'serif'],
+            display: ['Cinzel', 'serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            slate: {
+              850: '#111827',
+              900: '#090d16',
+              950: '#030712',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #030712;
+      color: #f1f5f9;
+      -webkit-font-smoothing: antialiased;
+    }
+    .prose h1, .prose h2, .prose h3 {
+      font-family: 'Cinzel', serif;
+      color: #f8fafc;
+    }
+    .prose p, .prose li {
+      font-family: 'Lora', Georgia, serif;
+      color: #cbd5e1;
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+    .prose strong {
+      color: #f8fafc;
+    }
+    .prose blockquote {
+      border-left: 4px solid #f59e0b;
+      background: rgba(245, 158, 11, 0.05);
+      border-radius: 0 0.75rem 0.75rem 0;
+      padding: 1rem 1.25rem;
+      color: #fef3c7;
+      font-style: italic;
+    }
+    .callout {
+      border-left: 4px solid #f59e0b;
+      background: rgba(245, 158, 11, 0.07);
+      border-radius: 0 0.75rem 0.75rem 0;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .callout-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      color: #fbbf24;
+      margin-bottom: 0.5rem;
+    }
+    pre {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      background: #090d16;
+      border: 1px solid #1e293b;
+      color: #38bdf8;
+      padding: 1.25rem;
+      border-radius: 0.75rem;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      background: #1e293b;
+      color: #fbbf24;
+      padding: 0.15rem 0.35rem;
+      border-radius: 0.25rem;
+    }
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+    .mermaid-web-block {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .mermaid-web-block .mermaid {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    .mermaid-web-block .mermaid svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body class="selection:bg-amber-500 selection:text-slate-950 min-h-screen flex flex-col">
+
+  <!-- TOP STICKY NAVBAR -->
+  <nav class="sticky top-0 z-50 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-amber-500 to-amber-300 text-slate-950 font-black text-lg flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:scale-105 transition">
+          ⚡
+        </div>
+        <div>
+          <div class="font-display font-bold text-sm tracking-wide text-slate-100 group-hover:text-amber-300 transition">
+            INNER CURRENT
+          </div>
+          <div class="text-[9px] uppercase font-mono tracking-widest text-slate-400 font-semibold">
+            Master Protocol Whitepaper
+          </div>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-3 text-xs font-medium">
+        <a href="index.html" class="text-slate-400 hover:text-slate-200 transition">Home</a>
+        <a href="manifesto.html" class="text-amber-400 hover:text-amber-300 transition flex items-center gap-1 font-semibold"><span>⚡</span> Manifesto</a>
+        <!-- Language Switcher -->
+        <div class="flex items-center rounded-xl bg-slate-900 border border-slate-800 p-0.5 text-xs font-mono font-semibold" title="Выбор языка / Language selection">
+          <a href="/whitepaper.html" onclick="setLanguage('ru')" class="px-2 py-1 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800/80 transition text-[11px]">RU</a>
+          <span class="px-2 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold shadow-sm cursor-default text-[11px]">EN</span>
+        </div>
+        <a href="../books/whitepaper.pdf" download class="px-3.5 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold transition flex items-center gap-1.5 shadow-md shadow-amber-500/10">
+          <span>📥</span> <span>Download PDF</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO HEADER -->
+  <header class="py-16 sm:py-20 border-b border-slate-800/80 bg-gradient-to-b from-slate-900/50 via-slate-950 to-slate-950 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-mono font-semibold tracking-wider uppercase mb-6">
+        <span>⚡</span> OFFICIAL PROTOCOL SPECIFICATION • 2026
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-100 tracking-tight leading-tight font-display mb-4">
+        White Paper: Inner Current
+      </h1>
+      <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto font-serif italic mb-8">
+        The Open Protocol of Sovereign Human Electrodynamics and Dual-Circuit Superconductivity
+      </p>
+      
+      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-slate-400 mb-8">
+        <div>Author: <span class="text-slate-200 font-semibold">Vladimir Anyanov</span></div>
+        <div class="hidden sm:inline">•</div>
+        <div>Version: <span class="text-amber-400 font-semibold">Master Standard 2.0</span></div>
+        <div class="hidden sm:inline">•</div>
+        <div>Status: <span class="text-emerald-400 font-semibold">Evergreen / Open-Source</span></div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <a href="../books/whitepaper.pdf" download class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition flex items-center gap-2 shadow-lg shadow-amber-500/20">
+          <span>📥</span> Download Official White Paper (PDF)
+        </a>
+        <a href="manifesto.html" class="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold text-sm transition flex items-center gap-2">
+          <span>⚡</span> Read Inner Current Manifesto
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN ARTICLE -->
+  <main class="flex-1 py-12 max-w-4xl mx-auto px-4 sm:px-6 w-full">
+    <article class="prose prose-invert max-w-none">
+      <h1>⚡ White Paper: Inner Current</h1>
+<h3>The Open Protocol of Sovereign Human Electrodynamics and Dual-Circuit Superconductivity (Master Protocol Standard)</h3>
+<p><em>(Inner Current: The Open Protocol of Sovereign Human Electrodynamics and Dual-Circuit Superconductivity — Master Protocol Standard)</em></p>
+<p><strong>Vladimir Anyanov</strong><br />
+<em>Creator of the Anyanov System and Inner Current Architecture</em><br />
+<code>v.s.anyanov@gmail.com</code> · <code>https://innercurrent.ru</code></p>
+<hr />
+<h2>⚡ Abstract</h2>
+<p>Traditional institutions of human well-being — from religious dogmas to modern academic pop-psychology and coaching — rely on a <strong>trust-based model of external intermediaries</strong>: social validators, cultural clearinghouses, peer approval, and verbal simulations of the neocortex. Much like fiat financial systems with their hidden inflation and seigniorage, this architecture drives a chronic crisis of the human energy system: burnout, depression, anxiety, and imposter syndrome. The fundamental flaw of the legacy approach is its <strong>non-falsifiability</strong>: whenever the system collapses, blame is placed upon the operator (<em>“you didn’t think positively enough”</em>), because metaphorical frameworks lack closed conservation equations.</p>
+<p>This White Paper introduces <strong>Inner Current</strong> — an open, mathematically rigorous, trustless protocol of consciousness electrodynamics. We formulate human beings not as static objects possessing thoughts, but as a <strong>cascade of two open non-equilibrium dissipative systems (two vortices)</strong>:<br />
+1. <strong>Circuit I (Biochemical Substrate — Prigogine 1977 Body):</strong> an open metabolic system (37 trillion mitochondria, ATP synthesis, respiration) dissipating entropy via heat and sustaining biological order.<br />
+2. <strong>Circuit II (Cognitive Consciousness — Anyanov 2026 Spirit):</strong> an electrodynamic circuit of directed attention ($I$) performing constructive thermodynamic work in physical reality.</p>
+<p>The circuits interface through an <strong>inter-circuit galvanic gateway (Tanden)</strong>, transducing the biochemical potential of diaphragmatic respiration into somatic electromotive force ($\mathcal{E} \approx 1.5\text{ V}$).</p>
+<p>We rigorously prove:<br />
+* <strong>Закон потерь Джоуля — Ленца ($Q = I^2 R t$):</strong> душевное страдание — это не моральный дефект, а штатный омический перегрев проводников внимания при коротком замыкании на паразитный нихромовый реостат эго ($R_{\text{ego}} &gt; 0$).<br />
+* <strong>The Quadratic Trap of Willpower:</strong> attempting to push through internal resistance via sheer willpower ($I \uparrow$) causes a quadratic explosion of heat losses ($Q \sim I^2$), frying the nervous system.<br />
+* <strong>The Fundamental Load Theorem (The Lightbulb Law: $\mathcal{E}_{\text{load}} \equiv 0$):</strong> external objects, capital, prestige, and titles possess zero intrinsic electromotive force; they illuminate strictly through the operator's current flowing through them.<br />
+* <strong>The Proof-of-Action Protocol (PoA):</strong> resolving the “Double-Spending of Attention” problem by anchoring attention quanta into the physical Timestamp Server of the “Here and Now” ($t_{\text{now}}$) with zero network latency ($0\text{ ms}$).<br />
+* <strong>Superconductivity ($R \to 0$):</strong> the formal mathematical definition of happiness as a zero-resistance circuit state where thermodynamic efficiency approaches $100\%$ ($\eta \to 1$), thermal dissipation vanishes ($Q \to 0$), and a coherent magnetic field of joy emerges around the loop.</p>
+<p>The protocol is safeguarded by hardware circuit breakers (<strong>Zanshin</strong>) and mathematically immune to external crowd interference (<strong>51% Social Consensus Attack</strong>).</p>
+<hr />
+<h2>1. Paradigmatic Shift: From Fiat Consciousness to Circuit Physics</h2>
+<p>For millennia, civilization examined the inner state of human beings through subjective drama: theology, mysticism, or psychotherapy. When a modern creator runs out of energy and burns out, society prescribes:<br />
+* <em>“Excavate a twenty-year-old childhood trauma”</em>;<br />
+* <em>“Discover your metaphysical life purpose”</em>;<br />
+* <em>“Meditate on the light and elevate your vibrations”</em>;<br />
+* <em>“Use willpower to overcome laziness and defeat procrastination.”</em></p>
+<p>When the wiring burns out inside a data center server rack, the engineer on duty does not analyze the “childhood of the motherboard” or lecture the server on morality. The engineer takes a multimeter, opens the wiring diagram, and localizes the short circuit or insulation breakdown to ground.</p>
+<div class="mermaid-web-block my-10 p-4 sm:p-6 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-xl overflow-x-auto"><div class="mermaid flex justify-center min-w-[320px]">
+flowchart LR
+    subgraph FiatModel["TRADITIONAL 'FIAT' MODEL (Trust-Based)"]
+        direction TB
+        A1["Action Impulse"] --> A2["Intermediary: Ego / Peer Approval"]
+        A2 --> A3["Commission: Doubt, Guilt, Shame, Fear"]
+        A3 --> A4["Parasitic Ohmic Heat Q = I²Rt"]
+        A4 --> A5["Chronic Burnout & Apathy"]
+    end
+
+    subgraph SovereignProtocol["INNER CURRENT PROTOCOL (Trustless Circuit)"]
+        direction TB
+        B1["Tanden Reactor: Autonomous EMF"] --> B2["Ego Shunt (Kanso: R -> 0)"]
+        B2 --> B3["Direct Attention Current I"]
+        B3 --> B4["Proof-of-Action: Physical Work Load"]
+        B4 --> B5["Closed Restoration Loop dS/dt < 0"]
+    end
+
+    FiatModel -.->|"Paradigmatic Shift"| SovereignProtocol
+</div></div>
+<h3>Principles of Protocol Engineering Rigor:</h3>
+<ol>
+<li><strong>Circuit State Binarity:</strong> an electrical circuit is either closed or open. Attention current either performs constructive work in the physical world or dissipates as a thermal burn across neural pathways. Self-deception is physically impossible.</li>
+<li><strong>Абсолютная фальсифицируемость (Критерий Поппера):</strong> любой экзистенциальный сбой регистрируется в виде конкретной невязки баланса Кирхгофа ($\Delta I \ne 0$), падения напряжения на клеммах действия или соматического перегрева проводников ($Q &gt; 0$).</li>
+<li><strong>Blameless Debugging:</strong> suffering is neither a moral defect nor character weakness. It is an objective physical consequence of high impedance during electric current flow.</li>
+</ol>
+<hr />
+<h2>2. Dual-Circuit Architecture: Cascade of Open Dissipative Systems</h2>
+<p>The fatal error of classical philosophy was treating human beings as closed, equilibrium thermodynamic systems (analogous to a Carnot calorimeter). In closed systems, entropy monotonically increases ($dS/dt \ge 0$), condemning philosophy to romanticize decay, existential despair, and heat death.</p>
+<p>In 1977, Ilya Prigogine received the Nobel Prize in Chemistry for proving that <strong>in open non-equilibrium systems, matter spontaneously organizes into intricate, self-sustaining order (dissipative structures)</strong> as long as a continuous throughput of energy and matter is maintained.</p>
+<p>The Anyanov System establishes: <strong>A human being is a cascade of two open non-equilibrium dissipative systems (two vortices)</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">========================================================================================</span>
+<span class="w">   </span><span class="err">АРХИТЕКТУРА</span><span class="w"> </span><span class="err">ДВУХКОНТУРНОГО</span><span class="w"> </span><span class="err">ДИССИПАТИВНОГО</span><span class="w"> </span><span class="err">ЧЕЛОВЕКА</span><span class="w"> </span><span class="p">(</span><span class="err">ПРИГОЖИН</span><span class="w"> </span><span class="mi">1977</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="err">АНЬЯНОВ</span><span class="w"> </span><span class="mi">2026</span><span class="p">)</span>
+<span class="o">========================================================================================</span>
+
+<span class="w">   </span><span class="p">[</span><span class="w"> </span><span class="err">КОНТУР</span><span class="w"> </span><span class="n">I</span><span class="o">:</span><span class="w"> </span><span class="err">БИОХИМИЧЕСКИЙ</span><span class="w"> </span><span class="err">СУБСТРАТ</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="err">ТЕЛО</span><span class="w"> </span><span class="p">(</span><span class="err">ИЛЬЯ</span><span class="w"> </span><span class="err">ПРИГОЖИН</span><span class="p">,</span><span class="w"> </span><span class="mi">1977</span><span class="p">)</span><span class="w"> </span><span class="p">]</span>
+
+<span class="w">     </span><span class="err">Поток</span><span class="w"> </span><span class="err">вещества</span><span class="o">:</span><span class="w"> </span><span class="err">Пища</span><span class="p">,</span><span class="w"> </span><span class="n">H2O</span><span class="p">,</span><span class="w"> </span><span class="n">O2</span><span class="w">  </span><span class="err">──►</span><span class="w">  </span><span class="p">[</span><span class="w"> </span><span class="err">МЕТАБОЛИЧЕСКИЙ</span><span class="w"> </span><span class="err">ВИХРЬ</span><span class="w"> </span><span class="p">]</span><span class="w">  </span><span class="err">──►</span><span class="w"> </span><span class="err">Сброс</span><span class="w"> </span><span class="n">CO2</span><span class="p">,</span><span class="w"> </span><span class="err">тепла</span>
+<span class="w">                                         </span><span class="p">(</span><span class="mi">37</span><span class="w"> </span><span class="err">трлн</span><span class="w"> </span><span class="err">митохондрий</span><span class="p">,</span><span class="w"> </span><span class="err">АТФ</span><span class="p">)</span><span class="w">      </span><span class="p">(</span><span class="err">Выдох</span><span class="w"> </span><span class="err">Карно</span><span class="p">)</span>
+<span class="w">                                                    </span><span class="err">│</span>
+<span class="w">                                                    </span><span class="err">▼</span>
+<span class="w">   </span><span class="err">═════════════════════════════════════════════════════════════════════════════════════</span>
+<span class="w">   </span><span class="p">[</span><span class="w"> </span><span class="err">МЕЖКОНТУРНЫЙ</span><span class="w"> </span><span class="err">ГАЛЬВАНИЧЕСКИЙ</span><span class="w"> </span><span class="err">ШЛЮЗ</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="err">ТАНДЭН</span><span class="w"> </span><span class="p">(</span><span class="err">丹田</span><span class="p">)</span><span class="w"> </span><span class="p">]</span>
+
+<span class="w">     </span><span class="err">•</span><span class="w"> </span><span class="err">Энтеральная</span><span class="w"> </span><span class="err">нервная</span><span class="w"> </span><span class="err">система</span><span class="w"> </span><span class="p">(</span><span class="n">ENS</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="w"> </span><span class="err">млн</span><span class="w"> </span><span class="err">нейронов</span><span class="p">),</span><span class="w"> </span><span class="err">венозная</span><span class="w"> </span><span class="err">диафрагмальная</span><span class="w"> </span><span class="err">помпа</span>
+<span class="w">     </span><span class="err">•</span><span class="w"> </span><span class="err">Преобразователь</span><span class="w"> </span><span class="err">мощности</span><span class="w"> </span><span class="err">АТФ</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">соматическую</span><span class="w"> </span><span class="err">ЭДС</span><span class="w"> </span><span class="p">(</span><span class="err">ℰ</span><span class="w"> </span><span class="err">≈</span><span class="w"> </span><span class="mf">1.5</span><span class="w"> </span><span class="err">В</span><span class="p">)</span>
+<span class="w">   </span><span class="err">═════════════════════════════════════════════════════════════════════════════════════</span>
+<span class="w">                                                    </span><span class="err">│</span>
+<span class="w">                                                    </span><span class="err">▼</span><span class="w"> </span><span class="n">I_attention</span><span class="w"> </span><span class="p">(</span><span class="err">Ток</span><span class="w"> </span><span class="err">внимания</span><span class="p">)</span>
+<span class="w">   </span><span class="p">[</span><span class="w"> </span><span class="err">КОНТУР</span><span class="w"> </span><span class="n">II</span><span class="o">:</span><span class="w"> </span><span class="err">КОГНИТИВНОЕ</span><span class="w"> </span><span class="err">СОЗНАНИЕ</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="err">ДУХ</span><span class="w"> </span><span class="p">(</span><span class="err">ВЛАДИМИР</span><span class="w"> </span><span class="err">АНЬЯНОВ</span><span class="p">,</span><span class="w"> </span><span class="mi">2026</span><span class="p">)</span><span class="w"> </span><span class="p">]</span>
+
+<span class="w">                     </span><span class="p">[</span><span class="w"> </span><span class="err">РАЗВИЛКА</span><span class="w"> </span><span class="err">РЕЖИМА</span><span class="w"> </span><span class="err">ПРОВОДИМОСТИ</span><span class="w"> </span><span class="err">ВТОРОГО</span><span class="w"> </span><span class="err">КОНТУРА</span><span class="w"> </span><span class="p">]</span>
+<span class="w">                                  </span><span class="o">/</span><span class="w">                    </span><span class="err">\</span>
+<span class="w">              </span><span class="p">(</span><span class="n">R_ego</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">       </span><span class="o">/</span><span class="w">                      </span><span class="err">\</span><span class="w">       </span><span class="p">(</span><span class="n">R_ego</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">                                </span><span class="o">/</span><span class="w">                        </span><span class="err">\</span>
+<span class="w">   </span><span class="err">┌───────────────────────────┐</span><span class="w">                          </span><span class="err">┌───────────────────────────┐</span>
+<span class="w">   </span><span class="err">│</span><span class="w">    </span><span class="err">ПАРАЗИТНЫЙ</span><span class="w"> </span><span class="err">РЕОСТАТ</span><span class="w"> </span><span class="err">ЭГО</span><span class="w"> </span><span class="err">│</span><span class="w">                          </span><span class="err">│</span><span class="w">   </span><span class="err">СВЕРХПРОВОДНИК</span><span class="w"> </span><span class="err">МУСИН</span><span class="w">    </span><span class="err">│</span>
+<span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="err">Руминация</span><span class="p">,</span><span class="w"> </span><span class="err">вина</span><span class="p">,</span><span class="w"> </span><span class="err">тревога</span><span class="w"> </span><span class="err">│</span><span class="w">                          </span><span class="err">│</span><span class="w">    </span><span class="p">(</span><span class="err">Бесшовное</span><span class="w"> </span><span class="err">присутствие</span><span class="p">)</span><span class="err">│</span>
+<span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="s">&quot;Что обо мне подумают?&quot;</span><span class="w">  </span><span class="err">│</span><span class="w">                          </span><span class="err">│</span><span class="w">    </span><span class="err">Внимание</span><span class="w"> </span><span class="err">течет</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">дело</span><span class="w">  </span><span class="err">│</span>
+<span class="w">   </span><span class="err">└─────────────┬─────────────┘</span><span class="w">                          </span><span class="err">└─────────────┬─────────────┘</span>
+<span class="w">                 </span><span class="err">│</span><span class="w">                                                      </span><span class="err">│</span>
+<span class="w">          </span><span class="n">Q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">I²</span><span class="w"> </span><span class="n">R_ego</span><span class="w"> </span><span class="n">t</span><span class="w">                                                </span><span class="err">▼</span>
+<span class="w">                 </span><span class="err">▼</span><span class="w">                                        </span><span class="err">┌───────────────────────────┐</span>
+<span class="w">   </span><span class="p">[</span><span class="w"> </span><span class="err">ОМИЧЕСКИЙ</span><span class="w"> </span><span class="err">ПЕРЕГРЕВ</span><span class="o">:</span><span class="w"> </span><span class="err">ТОСКА</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="w">                         </span><span class="err">│</span><span class="w">     </span><span class="err">ПОЛЕЗНАЯ</span><span class="w"> </span><span class="err">НАГРУЗКА</span><span class="w">     </span><span class="err">│</span>
+<span class="w">   </span><span class="p">[</span><span class="w"> </span><span class="err">ВЫГОРАНИЕ</span><span class="p">,</span><span class="w"> </span><span class="err">ДЕПРЕССИЯ</span><span class="p">,</span><span class="w"> </span><span class="err">АД</span><span class="w">   </span><span class="p">]</span><span class="w">                         </span><span class="err">│</span><span class="w">  </span><span class="p">(</span><span class="err">ЩИТ</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="err">ЛАМП</span><span class="w"> </span><span class="err">ДЕЙСТВИЯ</span><span class="p">)</span><span class="w">    </span><span class="err">│</span>
+<span class="w">   </span><span class="p">(</span><span class="err">Короткое</span><span class="w"> </span><span class="err">замыкание</span><span class="w"> </span><span class="err">на</span><span class="w"> </span><span class="err">себя</span><span class="p">)</span><span class="w">                           </span><span class="err">│</span><span class="w">  </span><span class="err">Код</span><span class="p">,</span><span class="w"> </span><span class="err">текст</span><span class="p">,</span><span class="w"> </span><span class="err">музыка</span><span class="p">,</span><span class="w"> </span><span class="err">диалог│</span>
+<span class="w">                                                          </span><span class="err">└─────────────┬─────────────┘</span>
+<span class="w">                                                                        </span><span class="err">│</span>
+<span class="w">                                                           </span><span class="kr">Return</span><span class="w"> </span><span class="n">Wire</span><span class="w">  </span><span class="err">│</span><span class="w"> </span><span class="p">(</span><span class="err">Сенсорный</span><span class="w"> </span><span class="err">отклик</span><span class="p">)</span>
+<span class="w">                                                                        </span><span class="err">▼</span>
+<span class="w">                                                          </span><span class="err">┌───────────────────────────┐</span>
+<span class="w">                                                          </span><span class="err">│</span><span class="w">   </span><span class="err">СЧАСТЬЕ</span><span class="o">:</span><span class="w"> </span><span class="n">dS_total</span><span class="o">/</span><span class="n">dt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="err">│</span>
+<span class="w">                                                          </span><span class="err">│</span><span class="w">   </span><span class="err">СВЕРХПРОВОДИМОСТЬ</span><span class="w"> </span><span class="p">(</span><span class="err">η</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="err">│</span>
+<span class="w">                                                          </span><span class="err">└───────────────────────────┘</span>
+<span class="o">========================================================================================</span>
+</code></pre></div>
+
+<h3>2.1. Circuit I: The Metabolic Vortex of the Body</h3>
+<ul>
+<li><strong>Function:</strong> Sustaining biological life via continuous throughput of energy substrates (oxygen, glucose, hydration).</li>
+<li><strong>Entropy Equation:</strong><br />
+  $$\frac{dS_I}{dt} = \frac{d_i S_I}{dt} + \frac{d_e S_I}{dt} \le 0$$<br />
+  где $d_i S_I &gt; 0$ — внутреннее производство энтропии метаболизма, а $d_e S_I &lt; 0$ — сброс энтропии в окружающую среду через выдох, теплоотдачу и экскрецию.</li>
+<li><strong>Property:</strong> An impeccably tuned Circuit I (gym, sleep, nutrition, biohacking) delivers immense electrical power, <strong>yet alone never guarantees human happiness</strong>.</li>
+</ul>
+<h3>2.2. Circuit II: The Electrodynamic Vortex of the Spirit</h3>
+<ul>
+<li><strong>Function:</strong> Throughput of information, meaning, and attention quanta through physical action into the objective fabric of reality.</li>
+<li><strong>Isomorphism Principle:</strong> Attention obeys the exact same conservation laws of open flow systems as water in a vortex. If attention is throttled inside itself (blocking the drain via self-referential rumination), the system instantly degrades into an entropy swamp of despair.</li>
+</ul>
+<hr />
+<h2>3. Inter-Circuit Galvanic Gateway: Tanden</h2>
+<p>In traditional Eastern treatises, the somatic center in the lower abdomen (<strong>Tanden / 丹田</strong>, 3–5 cm below the navel) was described in terms of mystical “Qi.” The Inner Current Protocol strips away esoteric fog, establishing an exact anatomical and electrodynamic definition:</p>
+<blockquote>
+<p><strong>Tanden is the inter-circuit galvanic gateway (somatic transformer)</strong>, converting the biochemical power of ATP and diaphragmatic hemodynamics in Circuit I into directed electromotive force of intention ($\mathcal{E}_{\text{tanden}} \approx 1.5\text{ V}$) across Circuit II.</p>
+</blockquote>
+<div class="mermaid-web-block my-10 p-4 sm:p-6 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-xl overflow-x-auto"><div class="mermaid flex justify-center min-w-[320px]">
+flowchart TD
+    subgraph Circuit1["Circuit I: Metabolism (Body)"]
+        ENS["Enteric Nervous System
+(ENS: 500M Neurons)"]
+        VAGUS["Vagus Nerve
+(Nervus Vagus)"]
+        DIAPH["Diaphragmatic Pump
+(Venous Return)"]
+    end
+
+    subgraph Gateway["TANDEN (丹田) — Inter-Circuit Gateway"]
+        TRANS["Somatic Transducer:
+ATP + Respiration ──► EMF ℰ_tanden"]
+    end
+
+    subgraph Circuit2["Circuit II: Attention & Action (Spirit)"]
+        ATTN["Attention Beam I
+(Task-Positive Network)"]
+    end
+
+    ENS --> TRANS
+    VAGUS --> TRANS
+    DIAPH --> TRANS
+    TRANS --> ATTN
+</div></div>
+<h3>Hardware Substrate of Tanden:</h3>
+<ol>
+<li><strong>Enteric Nervous System (ENS):</strong> the autonomous neural network of the gut, containing over 500 million neurons (more than the spinal cord) and synthesizing $90\%$ of the body's serotonin and $50\%$ of dopamine.</li>
+<li><strong>Diaphragmatic Hemodynamic Pump:</strong> during deep abdominal inhalation, the descending diaphragmatic dome massages visceral organs and generates negative intrathoracic pressure, dramatically accelerating venous return to the right atrium.</li>
+<li><strong>Parasympathetic Vagal Tone (<em>Nervus Vagus</em>):</strong> somatic anchoring into Tanden instantly shifts the autonomic nervous system from sympathetic fight-or-flight into high heart rate variability (HRV), opening the superconductivity channel.</li>
+</ol>
+<p>The Tanden generator is <strong>autonomous</strong>: its voltage is generated directly from somatic contact with breath and gravity, physically immune to external peer validation or crowd opinion.</p>
+<hr />
+<h2>4. Physics of Emotional Pain: The Joule–Lenz Law and the Quadratic Will Trap</h2>
+<p>In 1841–1842, physicists James Prescott Joule and Emil Lenz independently formulated the invariant law of thermal electrical dissipation:</p>
+<p>$$Q = I^2 \cdot R \cdot t$$</p>
+<p><em>The heat energy $Q$ dissipated in a conductor is directly proportional to the square of current $I$, electrical resistance $R$, and duration $t$.</em></p>
+<h3>4.1. The Nature of Suffering and Burnout</h3>
+<p>The full taxonomy of existential suffering (anxiety, panic attacks, despair, guilt, shame, imposter syndrome) represents <strong>textbook ohmic thermal damage to nervous system conductors</strong>.</p>
+<p>Whenever an operator diverts attention from physical action into self-referential rumination:<br />
+* <em>“What if I fail?”</em><br />
+* <em>“What will they think of me?”</em><br />
+* <em>“Why was it me who made this mistake?”</em></p>
+<p>At that instant, Circuit II engages a parasitic shunt — the <strong>Ego Resistance ($R_{\text{ego}} \gg 0$)</strong>:<br />
+$$R_{\text{ego}} = R_{\text{past}} + R_{\text{future}} + R_{\text{opinion}}$$<br />
+High-power current $I$ generated by the living body hits high resistance. Under the Joule–Lenz law, the entire power of the circuit converts into destructive heat $Q$:<br />
+* Somatically: laryngeal spasm (“lump in throat”), clenched jaw, shoulder hypertonus, cold abdominal core.<br />
+* Psychoemotionally: sensations of burning agony, paralysis, and exhaustion.</p>
+<blockquote>
+<p><strong>Burnout is not a spiritual flaw or laziness. It is predictable thermal dissipation in a conductor during a short circuit.</strong></p>
+</blockquote>
+<h3>4.2. Theorem of the Quadratic Will Trap (The Quadratic Trap of Ego-Will)</h3>
+<p>In conventional self-help culture, when output drops, individuals are urged to “grit their teeth” and apply “willpower.” The Inner Current Protocol proves the mathematical catastrophe of this approach:</p>
+<div class="mermaid-web-block my-10 p-4 sm:p-6 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-xl overflow-x-auto"><div class="mermaid flex justify-center min-w-[320px]">
+flowchart TD
+    subgraph Trap["QUADRATIC WILLPOWER TRAP"]
+        A["Ego Resistance R_ego > 0
+(Fear, Doubt, Guilt)"] --> B["Drop in Constructive Output"]
+        B --> C["Willpower Forcing:
+Doubling Current (2 * I)"]
+        C --> D["THERMAL EXPLOSION:
+Heat Dissipation Q = (2*I)² · R · t = 4 · Q_0"]
+        D --> E["Catastrophic Insulation Breakdown:
+Deep Burnout, Panic, Breakdown"]
+    end
+</div></div>
+<blockquote>
+<p><strong>ТЕОРЕМА I (О квадратичном штрафе):</strong><br />
+Если оператор пытается преодолеть внутреннее сопротивление $R_{\text{ego}} &gt; 0$ путём волевого увеличения силы тока ($I \to k \cdot I$, где $k &gt; 1$), количество паразитного разрушительного тепла возрастает <strong>пропорционально квадрату коэффициента усилия</strong>:<br />
+$$Q_{\text{new}} = k^2 \cdot Q_{\text{base}}$$<br />
+Попытка преодолеть страх «насилием над собой» гарантированно ведёт к омическому разрушению нейросети.</p>
+</blockquote>
+<p><strong>Engineering Conclusion:</strong> Resistance cannot be forced. The only sustainable solution is <strong>instant shunting of the parasitic resistor to zero ($R_{\text{ego}} \to 0$) via the Canon of Kanso</strong>.</p>
+<hr />
+<h2>5. Fundamental Load Theorem: The Lightbulb Law ($\mathcal{E}_{\text{load}} \equiv 0$)</h2>
+<p>The great scourge of consumer civilization is the illusion that happiness resides inside external objects: capital, real estate, supercars, corporate ranks, or romantic partners. The individual naively believes: <em>“Once I acquire this house, I will finally be happy.”</em></p>
+<p>The Inner Current Protocol states an immutable physical law:</p>
+<blockquote>
+<p><strong>THEOREM II (The Lightbulb Law):</strong><br />
+Every external material or social artifact is an electrical load (power consumer) whose intrinsic electromotive force is identically zero:<br />
+$$\mathcal{E}_{\text{load}} \equiv 0$$<br />
+<strong>THERE IS NO BATTERY INSIDE THE LIGHTBULB ITSELF.</strong></p>
+</blockquote>
+<div class="codehilite"><pre><span></span><code><span class="w">          </span><span class="err">ИЛЛЮЗИЯ</span><span class="w"> </span><span class="err">ПОТРЕБЛЕНИЯ</span><span class="w">                      </span><span class="err">ФИЗИЧЕСКАЯ</span><span class="w"> </span><span class="err">РЕАЛЬНОСТЬ</span>
+<span class="w">   </span><span class="err">┌───────────────────────────────┐</span><span class="w">         </span><span class="err">┌───────────────────────────────┐</span>
+<span class="w">   </span><span class="err">│</span><span class="w"> </span><span class="s2">&quot;В машине / деньгах / статусе │         │ Любая вещь — это пассивная    │</span>
+<span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="err">содержится</span><span class="w"> </span><span class="err">энергия</span><span class="w"> </span><span class="err">счастья</span><span class="s2">&quot;  │   VS    │ вольфрамовая нить лампы.      │</span>
+<span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="p">(</span><span class="n">E_load</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="err">ЛОЖЬ</span><span class="o">!</span><span class="w">        </span><span class="err">│</span><span class="w">         </span><span class="err">│</span><span class="w"> </span><span class="n">E_load</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.</span><span class="w">                   </span><span class="err">│</span>
+<span class="w">   </span><span class="err">│</span><span class="w">                               </span><span class="err">│</span><span class="w">         </span><span class="err">│</span><span class="w"> </span><span class="err">Лампа</span><span class="w"> </span><span class="err">светит</span><span class="w"> </span><span class="err">ТОЛЬКО</span><span class="w"> </span><span class="err">ТОГДА</span><span class="p">,</span><span class="w">    </span><span class="err">│</span>
+<span class="w">   </span><span class="err">│</span><span class="w"> </span><span class="err">Результат</span><span class="p">:</span><span class="w"> </span><span class="err">гедонистический</span><span class="w">    </span><span class="err">│</span><span class="w">         </span><span class="err">│</span><span class="w"> </span><span class="err">когда</span><span class="w"> </span><span class="err">СКВОЗЬ</span><span class="w"> </span><span class="err">НЕЁ</span><span class="w"> </span><span class="err">течет</span><span class="w"> </span><span class="err">ток</span><span class="w">    </span><span class="err">│</span>
+<span class="w">   </span><span class="err">│</span><span class="w"> </span><span class="err">тупик</span><span class="p">,</span><span class="w"> </span><span class="err">разочарование</span><span class="p">,</span><span class="w"> </span><span class="err">пустота</span><span class="w"> </span><span class="err">│</span><span class="w">         </span><span class="err">│</span><span class="w"> </span><span class="err">вашего</span><span class="w"> </span><span class="err">собственного</span><span class="w"> </span><span class="err">генератора│</span>
+<span class="w">   </span><span class="err">└───────────────────────────────┘</span><span class="w">         </span><span class="err">└───────────────────────────────┘</span>
+</code></pre></div>
+
+<p>Neither a cup of tea, nor a million dollars, nor a line of code contains built-in joy. They are glass bulbs. They illuminate <strong>strictly during the seconds when your own current of directed attention and craft passes through them</strong>.</p>
+<p>The moment current ceases, the most luxurious vehicle or highest title instantly reverts to dead weight. Demanding that the lightbulb recharge the generator is physical absurdity, breeding deep disillusionment.</p>
+<h3>5.1. Distribution Board of 6 Bulbs</h3>
+<p>A resilient human architecture relies on the parallel distribution of generator current across <strong>6 independent work load terminals</strong>:</p>
+<p>$$\mathbf{P}<em>{\text{load}} = \sum</em>{i=1}^{6} P_i = P_{\text{Тело}} + P_{\text{Дело}} + P_{\text{Люди}} + P_{\text{Дом}} + P_{\text{Ум}} + P_{\text{Игра}}$$</p>
+<div class="mermaid-web-block my-10 p-4 sm:p-6 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-xl overflow-x-auto"><div class="mermaid flex justify-center min-w-[320px]">
+flowchart TD
+    T["Tanden Reactor
+(EMF ℰ_tanden)"] --> Dist["Circuit Distribution Board"]
+    Dist --> L1["1. BODY (Somatic Health, Sleep, Circuit I)"]
+    Dist --> L2["2. WORK (Craftsmanship, Architecture, Code)"]
+    Dist --> L3["3. PEOPLE (Authentic Resonance, Intimate Circle)"]
+    Dist --> L4["4. HOME (Physical Space, Order, Samu Practice)"]
+    Dist --> L5["5. MIND (Consilience, Truth, Reason, Reading)"]
+    Dist --> L6["6. PLAY (Pure Spontaneity, Music, Celebration)"]
+</div></div>
+<ol>
+<li><strong>Law of Parallel Reliability:</strong> no single bulb may consume $100\%$ of circuit power. Workaholism (running Work while Body is switched off) melts the socket, triggering an emergency substation blackout.</li>
+<li><strong>Fault Isolation:</strong> a burnout on one terminal (e.g. temporary project setback) must never extinguish the remaining 5 bulbs. The circuit breaker isolates the faulted branch, safeguarding overall continuity.</li>
+</ol>
+<hr />
+<h2>6. The Proof-of-Action Protocol (PoA) and the Physical Timestamp Server ($t_{\text{now}}$)</h2>
+<p>In cryptography, Satoshi Nakamoto's breakthrough was solving the Double-Spending Problem without trusting a central authority: every block of transactions is anchored by thermodynamic verification (Proof-of-Work).</p>
+<p>Within human consciousness exists an identical, destructive vulnerability:</p>
+<h3>6.1. The Double-Spending of Attention Problem</h3>
+<p>An individual sits physically at a desk or dines with family (allocating attention quantum $N$ to tangible reality), yet simultaneously attempts to double-spend <strong>that very same indivisible quantum</strong> on:<br />
+* Replaying yesterday's grievance (double-spend #1);<br />
+* Simulating next quarter's deadlines (double-spend #2);<br />
+* Auditing how one appears to external observers (double-spend #3).</p>
+<p>In electrodynamics, attempting to drive the same generator current simultaneously into multiple mismatched circuits with conflicting impedances causes severe phase distortion, resonant surge, and insulation breakdown.</p>
+<div class="codehilite"><pre><span></span><code>       <span class="p">[</span> <span class="err">ПРОБЛЕМА</span> <span class="err">ДВОЙНОЙ</span> <span class="err">ТРАТЫ</span> <span class="err">ВНИМАНИЯ</span> <span class="p">(</span><span class="n">DOUBLE</span><span class="o">-</span><span class="n">SPENDING</span><span class="p">)</span> <span class="p">]</span>
+
+                    <span class="err">┌──►</span> <span class="err">Трата</span> <span class="mi">1</span><span class="p">:</span> <span class="err">Реальное</span> <span class="err">действие</span> <span class="p">(</span><span class="err">Код</span><span class="p">,</span> <span class="err">чай</span><span class="p">)</span>
+                    <span class="err">│</span>
+   <span class="p">[</span> <span class="err">Квант</span> <span class="err">Тока</span> <span class="n">I</span> <span class="p">]</span> <span class="err">┼──►</span> <span class="err">Трата</span> <span class="mi">2</span><span class="p">:</span> <span class="err">Руминация</span> <span class="err">прошлого</span> <span class="p">(</span><span class="err">Вина</span><span class="p">,</span> <span class="err">обида</span><span class="p">)</span>  <span class="err">──►</span> <span class="err">АВАРИЯ</span> <span class="err">КЗ</span><span class="p">,</span>
+                    <span class="err">│</span>                                                    <span class="err">РАЗРЫВ</span> <span class="err">ЦЕПИ</span><span class="p">,</span>
+                    <span class="err">└──►</span> <span class="err">Трата</span> <span class="mi">3</span><span class="p">:</span> <span class="err">Симуляция</span> <span class="err">будущего</span> <span class="p">(</span><span class="err">Паника</span><span class="p">,</span> <span class="err">страх</span><span class="p">)</span>     <span class="err">ПЕРЕГРЕВ</span> <span class="n">Q</span>
+</code></pre></div>
+
+<h3>6.2. Solution: The Physical Timestamp Server ($t_{\text{now}}$)</h3>
+<p>The Inner Current Protocol resolves double-spending by anchoring attention into a physical <strong>Timestamp Server</strong>: the immediate material slice of the “Here and Now” ($t_{\text{now}}$).</p>
+<div class="mermaid-web-block my-10 p-4 sm:p-6 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-xl overflow-x-auto"><div class="mermaid flex justify-center min-w-[320px]">
+flowchart TD
+    TS["Material Timestamp Server (t_now)"]
+    S1["Sensory Hash: Foot contact, diaphragmatic breath, tactile touch"] --> TS
+    TS --> B1["Sealed Block N (t_0)"]
+    B1 --> S2["Physical Confirmation: Keystroke, sip of water, spoken word"]
+    S2 --> B2["Sealed Block N+1 (t_1)"]
+</div></div>
+<ol>
+<li><strong>Прошлое и Будущее не проводят ток:</strong> Прошлое ($t &lt; t_{\text{now}}$) и Будущее ($t &gt; t_{\text{now}}$) в физической реальности не имеют материальных проводников. Это нематериальные виртуальные симуляции в дефолт-системе мозга (DMN). Подача реального тока внимания в виртуальные координаты тождественна подаче высокого напряжения на разомкнутые клеммы: $R_{\text{simulation}} \to \infty \implies Q \to \infty$.</li>
+<li><strong>The Proof-of-Action (PoA) Protocol:</strong><br />
+   The only transaction validated by the circuit is an irreversible physical act executed at time $t_{\text{now}}$:</li>
+<li>Striking a mechanical keystroke;</li>
+<li>Tactile contact of fingers against a teacup;</li>
+<li>Diaphragmatic exhalation into Tanden;</li>
+<li>Speaking a clear, truthful word aloud.</li>
+</ol>
+<p>The moment physical action is executed, the block is permanently sealed. Network latency drops to <strong>$0\text{ ms}$</strong>. Doubts evaporate because physical action is thermodynamically irreversible.</p>
+<hr />
+<h2>7. The Canon of Kanso: Instant Ego Shunting and Memory Pruning</h2>
+<p>In Zen aesthetics, the canon of <strong>Kanso (簡素)</strong> signifies supreme simplicity — eliminating all decorative and superfluous clutter. In the Inner Current Protocol, Kanso is a surgical engineering tool.</p>
+<h3>7.1. The Blade of Kanso (Ego Shunt)</h3>
+<p>One does not need years of psychotherapy to “negotiate with the ego.” One does not negotiate with parasitic resistance — one <strong>shunts it via a zero-resistance superconductor</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="w">                       </span><span class="err">КЛИНОК</span><span class="w"> </span><span class="err">КАНСО</span><span class="o">:</span><span class="w"> </span><span class="err">ШУНТИРОВАНИЕ</span><span class="w"> </span><span class="err">ЭГО</span>
+
+<span class="w">               </span><span class="err">┌───────►</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">СВЕРХПРОВОДНИК</span><span class="w"> </span><span class="err">МУСИН</span><span class="o">:</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="err">───────┐</span>
+<span class="w">               </span><span class="err">│</span><span class="w">         </span><span class="p">(</span><span class="err">Прямое</span><span class="w"> </span><span class="err">включение</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">действие</span><span class="p">)</span><span class="w">           </span><span class="err">│</span>
+<span class="w">   </span><span class="err">Ток</span><span class="w"> </span><span class="err">Тандэна</span><span class="w"> </span><span class="err">│</span><span class="w">                                                 </span><span class="err">▼</span><span class="w"> </span><span class="err">Нагрузка</span>
+<span class="w">  </span><span class="err">─────────────┤</span><span class="w">                                                 </span><span class="err">├────────►</span>
+<span class="w">   </span><span class="p">(</span><span class="err">Внимание</span><span class="p">)</span><span class="w">  </span><span class="err">│</span><span class="w">         </span><span class="err">┌──────────────────────────────┐</span><span class="w">        </span><span class="err">│</span>
+<span class="w">               </span><span class="err">└───────</span><span class="n">X</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">ПАРАЗИТНЫЙ</span><span class="w"> </span><span class="err">РЕЗИСТОР</span><span class="w"> </span><span class="err">ЭГО</span><span class="w">      </span><span class="err">│</span><span class="w"> </span><span class="n">X</span><span class="err">──────┘</span>
+<span class="w">                         </span><span class="err">│</span><span class="w"> </span><span class="p">(</span><span class="err">Сомнения</span><span class="p">,</span><span class="w"> </span><span class="err">страх</span><span class="p">,</span><span class="w"> </span><span class="err">оценка</span><span class="p">)</span><span class="w">    </span><span class="err">│</span>
+<span class="w">                         </span><span class="err">│</span><span class="w"> </span><span class="n">R_ego</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="err">ШУНТИРОВАН</span><span class="w"> </span><span class="err">В</span><span class="w"> </span><span class="mi">0</span><span class="o">!</span><span class="w"> </span><span class="err">│</span>
+<span class="w">                         </span><span class="err">└──────────────────────────────┘</span>
+</code></pre></div>
+
+<p>Under Kirchhoff’s laws of parallel conductors, current follows the path of least resistance:<br />
+$$I_{\text{ego}} = I \cdot \frac{R_{\text{mushin}}}{R_{\text{mushin}} + R_{\text{ego}}} \xrightarrow{R_{\text{mushin}} \to 0} 0$$<br />
+In the very microsecond the operator directs attention away from self-reflection into tangible physical action, current across the ego resistor collapses to zero. Ohmic heating ceases instantly.</p>
+<h3>7.2. State Space Pruning</h3>
+<p>Much like blockchain full nodes employ state pruning to discard obsolete history and conserve disk space, the Inner Current operator uses Kanso to prune working memory:<br />
+* Any past failure is compressed into <strong>a single line of engineering conclusion (hash root)</strong>;<br />
+* Raw emotional logs (resentment, shame, debate replays) are purged permanently. Conductor wiring is freed from parasitic capacitance.</p>
+<hr />
+<h2>8. Hardware Safeguards: Zanshin Circuit Breaker and Resistance to “51% Attacks”</h2>
+<h3>8.1. Circuit Breaker: Zanshin (残心)</h3>
+<p>In martial arts, Zanshin denotes unshakeable presence and sustained awareness after delivering a strike. In electrodynamics, it functions as an <strong>automatic differential Circuit Breaker</strong>:</p>
+<div class="mermaid-web-block my-10 p-4 sm:p-6 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-xl overflow-x-auto"><div class="mermaid flex justify-center min-w-[320px]">
+flowchart LR
+    L["Load (Action)"] --> CB{"ZANSHIN (Circuit Breaker)
+Leakage current I_leak > I_safe?"}
+    CB -- "NO: Nominal" --> RET["Closed Restoration Loop"]
+    CB -- "YES: Shock (Critique, loss, blow)" --> TRIP["Instant Trip & Isolation
+Contain Fault
+Ground Current to Tanden"]
+</div></div>
+<p>When action outcomes prove catastrophic (deal failure, betrayal, external crisis), an untrained operator shorts the circuit to ground: descending into panic or self-loathing.<br />
+The Zanshin circuit breaker trips before the neocortex can initiate rumination: it <strong>instantly isolates the damaged circuit branch</strong>, shielding the somatic power plant from collapse.</p>
+<h3>8.2. Mathematical Proof: Protection Against the “51% Social Consensus Attack”</h3>
+<p>In distributed networks, a 51% Attack represents malicious takeover of the transaction ledger by a cartel controlling more than half of the mining hashpower.</p>
+<p>In society, a sovereign human node faces a perpetual <strong>51% Attack of Social Noise</strong>: crowds, algorithmic feeds, and media cartels attempt to force invalid transactions into the local ledger: fear, outrage, conformity, and submission.</p>
+<div class="codehilite"><pre><span></span><code><span class="w">                  </span><span class="err">АТАКА</span><span class="w"> </span><span class="mi">51</span><span class="o">%</span><span class="w"> </span><span class="err">СОЦИАЛЬНОГО</span><span class="w"> </span><span class="err">КОНСЕНСУСА</span>
+<span class="w">   </span><span class="err">Внешний</span><span class="w"> </span><span class="err">хаос</span><span class="o">:</span><span class="w"> </span><span class="mi">99</span><span class="o">%</span><span class="w"> </span><span class="err">голосов</span><span class="w"> </span><span class="err">толпы</span><span class="w">      </span><span class="err">Суверенная</span><span class="w"> </span><span class="err">Нода</span><span class="w"> </span><span class="err">Аньянова</span>
+<span class="w">   </span><span class="p">[</span><span class="w"> </span><span class="err">КРИТИКА</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="err">ПАНИКА</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="err">ТРЕНДЫ</span><span class="w"> </span><span class="p">]</span><span class="w">  </span><span class="err">───►</span><span class="w">  </span><span class="p">[</span><span class="w"> </span><span class="err">ЛОКАЛЬНЫЙ</span><span class="w"> </span><span class="err">РЕЕСТР</span><span class="o">:</span><span class="w"> </span><span class="err">ТАНДЭН</span><span class="w"> </span><span class="p">]</span>
+<span class="w">                                        </span><span class="err">•</span><span class="w"> </span><span class="err">Валидация</span><span class="w"> </span><span class="err">только</span><span class="w"> </span><span class="err">по</span><span class="w"> </span><span class="n">Proof</span><span class="o">-</span><span class="kr">of</span><span class="o">-</span><span class="n">Action</span>
+<span class="w">                                        </span><span class="err">•</span><span class="w"> </span><span class="err">Внешний</span><span class="w"> </span><span class="err">шум</span><span class="w"> </span><span class="err">признан</span><span class="w"> </span><span class="err">фальшивым</span><span class="w"> </span><span class="err">блоком</span>
+<span class="w">                                        </span><span class="err">•</span><span class="w"> </span><span class="err">Результат</span><span class="w"> </span><span class="err">атаки</span><span class="o">:</span><span class="w"> </span><span class="err">ОТКЛОНЕНО</span><span class="w"> </span><span class="p">(</span><span class="n">P_z</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Let $p$ be the probability that an operator maintains focus in Tanden and direct action ($R_{\text{ego}} = 0$), and $q = 1 - p$ the probability of capitulating to external social coercion.<br />
+The odds ratio of ledger takeover follows the Gambler's Ruin random walk:</p>
+<p>$$\lambda = \frac{q}{p}$$</p>
+<p>Если оператор заземлён в материальном поле ($p &gt; q$), вероятность успешного захвата контура $P_z$ внешним шумом на глубине заземления $z$ (где $z$ — число точек соматического контроля по канону Дзансин) падает <strong>экспоненциально</strong>:</p>
+<p>$$P_z = \sum_{k=0}^{\infty} \frac{\lambda^k e^{-\lambda}}{k!} \cdot \min\left(1, \left(\frac{q}{p}\right)^{\max(z - k, 0)}\right)$$</p>
+<p>With as few as three physical grounding anchors ($z \ge 3$: feet firmly on floor, diaphragmatic exhalation, concrete physical object in hands):<br />
+$$P_z \to 0 \quad \text{as } z \to \infty$$</p>
+<p><strong>Engineering Theorem of Sovereignty:</strong></p>
+<blockquote>
+<p>No external majority — even commanding $99.9\%$ of crowd noise — <strong>can physically destabilize a sovereign node</strong> as long as the node maintains Cold Storage of attention and refuses to validate ungrounded external projections.</p>
+</blockquote>
+<hr />
+<h2>9. Finite State Machine (FSM) Specification and 30-Second Calibration</h2>
+<p>The sovereign human node is modeled as a deterministic <strong>Finite State Machine (FSM)</strong>:</p>
+<div class="mermaid-web-block my-10 p-4 sm:p-6 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-xl overflow-x-auto"><div class="mermaid flex justify-center min-w-[320px]">
+stateDiagram-v2
+    [*] --> STATE_SUPERCONDUCTING
+
+    STATE_SUPERCONDUCTING: SUPERCONDUCTING (Mushin)
+    STATE_SUPERCONDUCTING: R = 0, I > 0, Q = 0, η = 100%
+    STATE_SUPERCONDUCTING: Frictionless flow, joy, tangible output
+
+    STATE_OHMIC_OVERHEAT: OHMIC OVERHEAT (Short Circuit)
+    STATE_OHMIC_OVERHEAT: R_ego >> 0, Q -> Max, I_load = 0
+    STATE_OHMIC_OVERHEAT: Anxiety, guilt, shame, burnout
+
+    STATE_OPEN_CIRCUIT: OPEN CIRCUIT (Idle Disconnection)
+    STATE_OPEN_CIRCUIT: I = 0, Load de-energized
+    STATE_OPEN_CIRCUIT: Apathy, procrastination, numbness
+
+    STATE_GROUND_FAULT: GROUND FAULT (Entropy Leak)
+    STATE_GROUND_FAULT: I_leak > 0, Attention siphoned away
+    STATE_GROUND_FAULT: Compulsive feeds, validation seeking
+
+    STATE_SUPERCONDUCTING --> STATE_OHMIC_OVERHEAT: Ego reflection triggered (R_ego > 0)
+    STATE_OHMIC_OVERHEAT --> STATE_SUPERCONDUCTING: Blade of Kanso (Zero shunt + Exhale)
+
+    STATE_SUPERCONDUCTING --> STATE_OPEN_CIRCUIT: Disconnection from action load
+    STATE_OPEN_CIRCUIT --> STATE_SUPERCONDUCTING: Tanden impulse (Proof-of-Action)
+
+    STATE_SUPERCONDUCTING --> STATE_GROUND_FAULT: External validation drain (Cold storage breach)
+    STATE_GROUND_FAULT --> STATE_SUPERCONDUCTING: Zanshin breaker: Disconnect leak + Ground
+</div></div>
+<h3>Node State Matrix:</h3>
+<div class="overflow-x-auto my-6 border border-slate-800 rounded-xl"><table class="min-w-full divide-y divide-slate-800 text-sm">
+<thead>
+<tr>
+<th style="text-align: left;">State</th>
+<th style="text-align: left;">Physical Marker</th>
+<th style="text-align: left;">Circuit Metrics</th>
+<th style="text-align: left;">Diagnosis</th>
+<th style="text-align: left;">Remediation Protocol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>SUPERCONDUCTING</code></strong></td>
+<td style="text-align: left;">Buoyancy, warmth in belly, razor focus</td>
+<td style="text-align: left;">$R \to 0, I &gt; 0, Q = 0$</td>
+<td style="text-align: left;"><strong>NOMINAL OPERATING MODE (MUSHIN)</strong></td>
+<td style="text-align: left;">Maintain operating cadence</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>OHMIC_OVERHEAT</code></strong></td>
+<td style="text-align: left;">Clenched jaw, throat spasm, panic</td>
+<td style="text-align: left;">$R_{\text{ego}} \gg 0, Q \uparrow$</td>
+<td style="text-align: left;"><strong>SHORT CIRCUIT (OVERHEAT)</strong></td>
+<td style="text-align: left;">Kanso cut, abdominal exhalation to Tanden</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>OPEN_CIRCUIT</code></strong></td>
+<td style="text-align: left;">Heavy eyelids, brain fog, apathy</td>
+<td style="text-align: left;">$I \to 0, \mathcal{E} = \text{idle}$</td>
+<td style="text-align: left;"><strong>OPEN CIRCUIT (DISCONNECTED)</strong></td>
+<td style="text-align: left;">Micro-action (Proof-of-Action)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>GROUND_FAULT</code></strong></td>
+<td style="text-align: left;">Restless fingers, doomscrolling feeds</td>
+<td style="text-align: left;">$I_{\text{leakage}} &gt; 0$</td>
+<td style="text-align: left;"><strong>GROUND FAULT (ENERGY LEAK)</strong></td>
+<td style="text-align: left;">Zanshin circuit trip, quarantine</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Express Calibration Protocol: 30-Second SPV Audit</h3>
+<p>Operator calibration requires no complex apparatus, executed in 4 crisp steps:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">┌────────────────────────────────────────────────────────────────────────┐</span>
+<span class="err">│</span><span class="w">               </span><span class="mi">30</span><span class="o">-</span><span class="err">СЕКУНДНЫЙ</span><span class="w"> </span><span class="err">АЛГОРИТМ</span><span class="w"> </span><span class="err">КАЛИБРОВКИ</span><span class="w"> </span><span class="err">ОПЕРАТОРА</span><span class="w">               </span><span class="err">│</span>
+<span class="err">├────────────────────────────────────────────────────────────────────────┤</span>
+<span class="err">│</span><span class="w"> </span><span class="mf">1.</span><span class="w"> </span><span class="err">ТЕСТ</span><span class="w"> </span><span class="err">ГЕНЕРАТОРА</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="err">–</span><span class="mi">5</span><span class="w"> </span><span class="err">сек</span><span class="p">)</span><span class="o">:</span><span class="w">                                          </span><span class="err">│</span>
+<span class="err">│</span><span class="w">    </span><span class="err">Переведи</span><span class="w"> </span><span class="err">внимание</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">точку</span><span class="w"> </span><span class="err">на</span><span class="w"> </span><span class="mi">3</span><span class="o">-</span><span class="mi">5</span><span class="w"> </span><span class="err">см</span><span class="w"> </span><span class="err">ниже</span><span class="w"> </span><span class="err">пупка</span><span class="w"> </span><span class="p">(</span><span class="err">Тандэн</span><span class="p">).</span><span class="w">            </span><span class="err">│</span>
+<span class="err">│</span><span class="w">    </span><span class="err">Сделай</span><span class="w"> </span><span class="err">глубокий</span><span class="w"> </span><span class="err">брюшной</span><span class="w"> </span><span class="err">вдох</span><span class="w"> </span><span class="err">диафрагмой</span><span class="p">.</span><span class="w"> </span><span class="err">Ощути</span><span class="w"> </span><span class="err">физический</span><span class="w"> </span><span class="err">вес</span><span class="w"> </span><span class="err">тела</span><span class="p">.</span><span class="w"> </span><span class="err">│</span>
+<span class="err">│</span><span class="w">    </span><span class="err">──►</span><span class="w"> </span><span class="err">СТАТУС</span><span class="o">:</span><span class="w"> </span><span class="err">Генератор</span><span class="w"> </span><span class="err">онлайн</span><span class="p">.</span><span class="w"> </span><span class="err">Первичное</span><span class="w"> </span><span class="err">напряжение</span><span class="w"> </span><span class="err">верифицировано</span><span class="p">.</span><span class="w">   </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                                                                        </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="mf">2.</span><span class="w"> </span><span class="err">ТЕСТ</span><span class="w"> </span><span class="err">РЕОСТАТА</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="err">–</span><span class="mi">12</span><span class="w"> </span><span class="err">сек</span><span class="p">)</span><span class="o">:</span><span class="w">                                           </span><span class="err">│</span>
+<span class="err">│</span><span class="w">    </span><span class="err">Где</span><span class="w"> </span><span class="err">застряло</span><span class="w"> </span><span class="err">внимание</span><span class="o">?</span><span class="w"> </span><span class="err">В</span><span class="w"> </span><span class="err">прошлом</span><span class="w"> </span><span class="p">(</span><span class="err">вина</span><span class="p">)</span><span class="o">?</span><span class="w"> </span><span class="err">Будущем</span><span class="w"> </span><span class="p">(</span><span class="err">страх</span><span class="p">)</span><span class="o">?</span><span class="w"> </span><span class="err">В</span><span class="w"> </span><span class="err">оценке</span><span class="o">?</span><span class="w"> </span><span class="err">│</span>
+<span class="err">│</span><span class="w">    </span><span class="err">──►</span><span class="w"> </span><span class="err">ДЕЙСТВИЕ</span><span class="o">:</span><span class="w"> </span><span class="err">Примени</span><span class="w"> </span><span class="err">Клинок</span><span class="w"> </span><span class="err">Кансо</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Это нематериальный шум&quot;</span><span class="p">.</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">    </span><span class="err">Сбрось</span><span class="w"> </span><span class="err">сопротивление</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">ноль</span><span class="o">:</span><span class="w"> </span><span class="n">R_ego</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.</span><span class="w">                            </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                                                                        </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="mf">3.</span><span class="w"> </span><span class="err">ВЫПОЛНЕНИЕ</span><span class="w"> </span><span class="n">PROOF</span><span class="o">-</span><span class="kr">OF</span><span class="o">-</span><span class="n">ACTION</span><span class="w"> </span><span class="p">(</span><span class="mi">12</span><span class="err">–</span><span class="mi">25</span><span class="w"> </span><span class="err">сек</span><span class="p">)</span><span class="o">:</span><span class="w">                             </span><span class="err">│</span>
+<span class="err">│</span><span class="w">    </span><span class="err">Мгновенно</span><span class="w"> </span><span class="err">соверши</span><span class="w"> </span><span class="err">микроскопическое</span><span class="w"> </span><span class="err">действие</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">материальном</span><span class="w"> </span><span class="err">мире</span><span class="w">     </span><span class="err">│</span>
+<span class="err">│</span><span class="w">    </span><span class="err">с</span><span class="w"> </span><span class="err">задержкой</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">мс</span><span class="o">:</span><span class="w"> </span><span class="err">выпей</span><span class="w"> </span><span class="err">глоток</span><span class="w"> </span><span class="err">воды</span><span class="p">,</span><span class="w"> </span><span class="err">расправь</span><span class="w"> </span><span class="err">плечи</span><span class="p">,</span><span class="w"> </span><span class="err">напечатай</span><span class="w">      </span><span class="err">│</span>
+<span class="err">│</span><span class="w">    </span><span class="err">строку</span><span class="p">,</span><span class="w"> </span><span class="err">прикоснись</span><span class="w"> </span><span class="err">к</span><span class="w"> </span><span class="err">столу</span><span class="p">.</span><span class="w">                                         </span><span class="err">│</span>
+<span class="err">│</span><span class="w">    </span><span class="err">──►</span><span class="w"> </span><span class="err">СТАТУС</span><span class="o">:</span><span class="w"> </span><span class="err">Блок</span><span class="w"> </span><span class="err">запечатан</span><span class="p">.</span><span class="w"> </span><span class="err">Ток</span><span class="w"> </span><span class="err">течет</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">нагрузку</span><span class="p">.</span><span class="w">                   </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                                                                        </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="mf">4.</span><span class="w"> </span><span class="err">АКТИВАЦИЯ</span><span class="w"> </span><span class="err">СВЕРХПРОВОДИМОСТИ</span><span class="w"> </span><span class="p">(</span><span class="mi">25</span><span class="err">–</span><span class="mi">30</span><span class="w"> </span><span class="err">сек</span><span class="p">)</span><span class="o">:</span><span class="w">                            </span><span class="err">│</span>
+<span class="err">│</span><span class="w">    </span><span class="err">Контур</span><span class="w"> </span><span class="err">замкнут</span><span class="p">.</span><span class="w"> </span><span class="err">Нагрузка</span><span class="w"> </span><span class="err">светит</span><span class="p">.</span><span class="w"> </span><span class="err">Проводка</span><span class="w"> </span><span class="err">холодная</span><span class="p">.</span><span class="w">                 </span><span class="err">│</span>
+<span class="err">│</span><span class="w">    </span><span class="err">СУВЕРЕННЫЙ</span><span class="w"> </span><span class="err">ЧЕЛОВЕК</span><span class="w"> </span><span class="err">НА</span><span class="w"> </span><span class="err">СВЯЗИ</span><span class="w"> </span><span class="err">С</span><span class="w"> </span><span class="err">РЕАЛЬНОСТЬЮ</span><span class="p">.</span><span class="w">                          </span><span class="err">│</span>
+<span class="err">└────────────────────────────────────────────────────────────────────────┘</span>
+</code></pre></div>
+
+<hr />
+<h2>10. Conclusion: Architecture of a Sovereign Civilization</h2>
+<p>The Inner Current Protocol strips human well-being of millennia of psychological helplessness and esoteric fatalism.</p>
+<ol>
+<li><strong>Human beings are not broken.</strong> There is no built-in flaw in human nature. Suffering is not a divine curse, but a precise multimeter reading signaling parasitic ohmic resistance in the loop.</li>
+<li><strong>Objects do not hold happiness.</strong> No external bulb has an internal battery ($\mathcal{E}_{\text{load}} \equiv 0$). Life illuminates only when the operator's free current of attention passes through it.</li>
+<li><strong>Two circuits form the bedrock of resilience.</strong> Circuit I (Prigogine Body) supplies metabolic vital energy; Circuit II (Anyanov Spirit) transduces it into order, craft, and superconductivity via direct action (Proof-of-Action).</li>
+</ol>
+<p>Every human being is a complete, autonomous, sovereign node of this universal electrodynamic network. To enter an unshakable state of peace and creative power, the operator requires no intermediaries, no gurus, and no external clearinghouses.</p>
+<p><strong>It is enough to close your circuit, cool the wiring of attention into superconductivity, and illuminate the bulbs of direct action.</strong></p>
+<hr />
+<h2>📚 References</h2>
+<ol>
+<li><strong>Пригожин, И. Р. (1977).</strong> <em>Время, структура и флуктуации.</em> Nobel Lecture in Chemistry. / <em>Prigogine, I. Time, Structure, and Fluctuations. Science, 201(4358), 777–785 (1978).</em></li>
+<li><strong>Nakamoto, S. (2008).</strong> <em>Bitcoin: A Peer-to-Peer Electronic Cash System.</em> <code>https://bitcoin.org/bitcoin.pdf</code></li>
+<li><strong>Джоуль, Д. П. (1841).</strong> <em>On the heat produced by metallic conductors of electricity.</em> Philosophical Magazine, 19, 260.</li>
+<li><strong>Ленц, Э. Х. (1842).</strong> <em>On the laws of heat dissipation by galvanic currents.</em> Proceedings of the Imperial Academy of Sciences, St. Petersburg.</li>
+<li><strong>Кирхгоф, Г. Р. (1845).</strong> <em>On the laws of distribution of electrical currents in branched conductors.</em> Annalen der Physik und Chemie, 64(4), 497–514.</li>
+<li><strong>Такуан Сохо (1632).</strong> <em>Fudōshin Shinsetsu (The Mysterious Record of Immovable Wisdom) — on the nature of Mushin.</em></li>
+<li><strong>Поппер, К. (1934).</strong> <em>The Logic of Scientific Discovery (Logik der Forschung).</em> Springer, Vienna.</li>
+<li><strong>Шрёдингер, Э. (1944).</strong> <em>What is Life? The Physical Aspect of the Living Cell. (What is Life? The Physical Aspect of the Living Cell).</em> Cambridge University Press.</li>
+<li><strong>Gershon, M. D. (1998).</strong> <em>The Second Brain: A Groundbreaking New Understanding of Nervous Disorders of the Stomach and Intestine.</em> HarperCollins.</li>
+<li><strong>Аньянов, В. (2026).</strong> <em>Architecture of the Inner Current: Dual-Circuit Consciousness Electrodynamics, Cascading Dissipative Systems, and the Ontology of Happiness.</em> База знаний LLM Wiki.</li>
+</ol>
+    </article>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800/80 bg-slate-950 py-12 mt-16 text-center text-xs font-mono text-slate-500">
+    <div class="max-w-4xl mx-auto px-4 space-y-3">
+      <div>© 2026 Vladimir Anyanov • Architecture of the Inner Current</div>
+      <div>The open protocol of human well-being and sovereign superconductivity.</div>
+      <div class="pt-3">
+        <a href="../books/whitepaper.pdf" download class="text-amber-400 hover:underline">Download White Paper (PDF)</a> • 
+        <a href="manifesto.html" class="text-amber-400 hover:underline">Manifesto</a> • 
+        <a href="index.html" class="text-amber-400 hover:underline">The Golden Seven Library</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/tracker.js" defer></script>
+</body>
+</html>

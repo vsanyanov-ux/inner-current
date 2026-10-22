@@ -2,6 +2,12 @@
 title: "Inner Current: The Great Synthesis — From the Vedas and Lao Tzu to Circuit Electrodynamics — The Elimination of 10,000 Years of Matter vs Spirit Dualism"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/epistemology
+  - state/overheating
   - great-synthesis
   - vedas
   - lao-tzu

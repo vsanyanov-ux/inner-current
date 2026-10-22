@@ -1,0 +1,3319 @@
+{
+  "nodes": [
+    {
+      "id": "group_tanden",
+      "type": "group",
+      "x": -3230,
+      "y": -340,
+      "width": 1495,
+      "height": 1880,
+      "label": "🌋 ВУЛКАН ТАНДЭН (Квантовый Генератор ЭДС и Источник Жизни) (34 статей)",
+      "color": "3"
+    },
+    {
+      "id": "card_tanden_intro",
+      "type": "text",
+      "x": -3200,
+      "y": -300,
+      "width": 705,
+      "height": 180,
+      "color": "3",
+      "text": "### ⚡ Квантовый Реактор Тандэн (丹田)\n\n• Напряжение покоя: 1.5 В (батарейка жизни)\n• Соматический ключ Хоцу (発 / Хочу)\n• Первичная чистая ЭДС (E), суверенная от внешнего одобрения."
+    },
+    {
+      "id": "file_tanden_0",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Circuit Boundaries — Physics of Anesthesia, Coma, Sleep and Biological Death — Breaking the Attention Circuit vs Collapse of Tanden Generator).md",
+      "x": -2470,
+      "y": -300,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_1",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Circuit Schematics of Disintermediation — Parasitic Resistor Between Tanden and Deai and Universal Registry of Eliminated Middlemen).md",
+      "x": -2105,
+      "y": -300,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_2",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Civilizational Electrodynamics — Overcoming Neocolonial Breakdown, The Newtonian Tribal Split and the P2P Grid of Sovereign Generators).md",
+      "x": -3200,
+      "y": -95,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_3",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Death as Conductor Entropy vs Tanden Generator — Thermodynamics of Biological Wear, 300-Year Longevity and Superconducting Joy).md",
+      "x": -2835,
+      "y": -95,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_4",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Demystification of Chakras — Esoteric Epicycles vs Conductor Rheostats, Sovereign Tanden Generator and Ockham's Razor of the Circuit).md",
+      "x": -2470,
+      "y": -95,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_5",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Double Verification Principle — Zen-Electrodynamics Cross-Validation and Tanden Generator).md",
+      "x": -2105,
+      "y": -95,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_6",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Electrodynamics of Love — Inductive Resonance of Two Sovereign Generators vs Reverse Current Breakdown).md",
+      "x": -3200,
+      "y": 110,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_7",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (European Circuit Sovereignty — Deconstruction of the Battery Fallacy, The ASML Monopoly and Eurasian Impedance Matching).md",
+      "x": -2835,
+      "y": 110,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_8",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Is the Circuit for Atheists — Demystification of Tanden, Category Error of the Generator and Electrodynamic Invariance).md",
+      "x": -2470,
+      "y": 110,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_9",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Italian Triptych of Superconductivity — Olfactory-Acoustic Neocortex Bypass, The Versace Triad, Levante and Tanden Grounding).md",
+      "x": -2105,
+      "y": 110,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_10",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Meditation, Feverish Activity and Awake Stillness — Zero Tanden Calibration vs Battery Idle, Ego Panic Before Pausing and the An-Yang Formula).md",
+      "x": -3200,
+      "y": 315,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_11",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Neurobiology of Superconductivity — DMN, TPN and Vagus Grounding).md",
+      "x": -2835,
+      "y": 315,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_12",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Somatic Transformation on Hotsu Trigger — Phase Transition from Matter to Field, Beyond the Conductor and the Physics of Weightless Action).md",
+      "x": -2470,
+      "y": 315,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_13",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Spirit vs Attention — Power of the Generator vs Vector of Focus, Total Vital Flux vs Drift Current Density).md",
+      "x": -2105,
+      "y": 315,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_14",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Stealth Protocols for Ego Dam Breach — Olfactory Bypass, Resonant Music, Thermal Reset, Biomechanical Unbendable Arm and Vagal Attunement to Tanden).md",
+      "x": -3200,
+      "y": 520,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_15",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Tanden as Alternating Current EMF — Reactive Impedance of Ego, Future Capacitance, Past Inductance and Man as a Verb).md",
+      "x": -2835,
+      "y": 520,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_16",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Battery Illusion of Material Possessions and Emptiness of Form).md",
+      "x": -2470,
+      "y": 520,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_17",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Body as Circuit Lines When Hotsu Is Open — Somatic Topology of Stillness, The Closed Loop of Flesh and Unity of Conductor and Current).md",
+      "x": -2105,
+      "y": 520,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_18",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Complete Electrodynamic Triad of Happiness Calculation — Sleep Battery 1.5V, Pulse Current and Stress Resistance).md",
+      "x": -3200,
+      "y": 725,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_19",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The De-Deification of Tanden — Why Seeking God is an Ego Bargain for Grace, Broken Loop of Idols vs Sovereign Flashlight Electrodynamics).md",
+      "x": -2835,
+      "y": 725,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_20",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Electrodynamics of Will — Volitional Desire as Hotsu Switch, The Operator of Circuit Closure and Elimination of Mental Violence).md",
+      "x": -2470,
+      "y": 725,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_21",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Five Scenes Syndrome — Deconstruction of The Lover, Gym, Child, Work and Travel Checklist, The Lamp vs Generator Fallacy and Scenery Vulnerability Test).md",
+      "x": -2105,
+      "y": 725,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_22",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Four-Element Topology — Generator, Fuse, Resistor and Load as Complete Human Circuitry, Dynamics of Victories and Nature Itself).md",
+      "x": -3200,
+      "y": 930,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_23",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Halves Paradox Resolution — Two Sovereign Generators, Galvanic Isolation and Mutual Induction vs Codependency Breakdown).md",
+      "x": -2835,
+      "y": 930,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_24",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Kingdom of God Within, Tanden and Circuit Superconductivity — Feynman Demystification of Eastern Mysticism).md",
+      "x": -2470,
+      "y": 930,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_25",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Midnight Phone Call Case Study — Circuit Dynamics of Awakening, Tanden EMF Spike, Coherent Attention Current and Consciousness Field Collapse).md",
+      "x": -2105,
+      "y": 930,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_26",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Plow Pose and Living Circuit Electrodynamics — Halasana, Tanden Compression, Vagus Nerve Reset and Superconductivity Phase Transition).md",
+      "x": -3200,
+      "y": 1135,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_27",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Silicon Dead-End and Machine Consciousness — Why AI Has No Tanden, Transformer Self-Attention vs Physical Charge Drift).md",
+      "x": -2835,
+      "y": 1135,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_28",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The THGDM Pentad — The Normally Open Hotsu Switch, Gyō Action Load and the Five-Letter Somatic Flashlight Code).md",
+      "x": -2470,
+      "y": 1135,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_29",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Triad of Ego Resistance — Guilt, Control and Approval — Kanso Reduction of Resistance and Somatic Reset to Tanden).md",
+      "x": -2105,
+      "y": 1135,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_30",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Universal Atlas of Human Myths Debunked — The Battery Illusion, Ego-Shunt Release and Circuit Truth).md",
+      "x": -3200,
+      "y": 1340,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_31",
+      "type": "file",
+      "file": "02_Wiki/Брошюра — На схеме контура нет Бога (Десакрализация Тандэна, похмелье от 5000 лет торга и почему для счастья не нужен Хозяин).md",
+      "x": -2835,
+      "y": 1340,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_32",
+      "type": "file",
+      "file": "02_Wiki/Брошюра — Тайна тока и свет в квартире (Парадокс Штейнмеца, соматика Хоцу и почему для счастья не нужно разгадывать смысл жизни).md",
+      "x": -2470,
+      "y": 1340,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_tanden_33",
+      "type": "file",
+      "file": "02_Wiki/Брошюра — Электродинамика любви (Взаимная индукция двух суверенных генераторов, гальваническая развязка и преодоление аварии созависимости).md",
+      "x": -2105,
+      "y": 1340,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "group_bonno",
+      "type": "group",
+      "x": -1530,
+      "y": -2740,
+      "width": 2225,
+      "height": 2495,
+      "label": "🔴 УЩЕЛЬЕ ОМИЧЕСКОГО ПЕРЕГРЕВА (Балласт Бонно / Эго-Шунт) (65 статей)",
+      "color": "1"
+    },
+    {
+      "id": "card_bonno_intro",
+      "type": "text",
+      "x": -1500,
+      "y": -2700,
+      "width": 705,
+      "height": 180,
+      "color": "1",
+      "text": "### 🔥 Омический Пожар ума (Q = I²Rt)\n\n• Балластный нихром эго и шум дефолт-системы (DMN)\n• Квадратичная ловушка силы воли (I²)\n• Тревога, выгорание, алкоголь, трудоголизм, порно, вина\n• Клинок Кансо: сброс балласта (R → 0) как гигиена мытья рук."
+    },
+    {
+      "id": "file_bonno_0",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Acoustics of Ego Lie and Surrender — Levante's Sono Blu, The Blue Cold Superconductivity and Surrender Without Loss).md",
+      "x": -770,
+      "y": -2700,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_1",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Apophatic Physics of Happiness — Decrypting the 'Do Not Chase Happiness' Paradox via Joule-Lenz Law, Neti Neti and Via Negativa Genesis).md",
+      "x": -405,
+      "y": -2700,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_2",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Bodhi Tree and the Car Wash — Demystification of Enlightenment, The Spiritual Ego Resistor and Superconductivity of Everyday Action).md",
+      "x": -40,
+      "y": -2700,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_3",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Circuit Architectural Taxonomy — Three, Four or Five Elements, The Electrodynamic Triad, Perfect Circuit Tetrad and Ego Parasitic Shunt).md",
+      "x": 325,
+      "y": -2700,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_4",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Circuitry of Madness — Electrodynamic Classification of Mental Illnesses, Ego Short Circuit, Open Loop, Ohmic Melt and Self-Oscillation).md",
+      "x": -1500,
+      "y": -2495,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_5",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Cognition of Pure Consciousness vs Ego Thinking — The Telescope vs Parasitic Clamping and Dissolution of the Fear of Intellect Annihilation).md",
+      "x": -1135,
+      "y": -2495,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_6",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Collective Circuitry — Team Impedance, Status Ohmic Overheat and Leader Induction).md",
+      "x": -770,
+      "y": -2495,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_7",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Consilience of Truth — Why the Henry George Model and Circuit Architecture Cannot Be Refuted — The Ego as Internal Landlord).md",
+      "x": -405,
+      "y": -2495,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_8",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Creator as Universal Invariants vs The Flashlight Switch — Spiritual Ego, Law of Conservation and Terror of Total Responsibility).md",
+      "x": -40,
+      "y": -2495,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_9",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Disintermediation of Labor — Completing the Tetrad of Freedom, From Ego Indulgence to P2P Creative Flow and Sacred Samu).md",
+      "x": 325,
+      "y": -2495,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_10",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Ego Dissolution as Washing Hands — Sanitary Revolution of Consciousness and Scientific Hygiene vs Martyrdom).md",
+      "x": -1500,
+      "y": -2290,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_11",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Ego as the Mind's Screensaver on Idle — DMN as screensaver.exe, The CRT Burn-In Illusion, False Identification and the Mouse Click of Pure Presence).md",
+      "x": -1135,
+      "y": -2290,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_12",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Electrodynamics of Ego Illusion — Parasitic Resistance, Lightbulb Fallacy and Center Restoration).md",
+      "x": -770,
+      "y": -2290,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_13",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Enlightenment as a Verb and Hardware Ego Lockout — Why the Car Wash Equals Buddha and the Physics of Irreversible Superconductivity).md",
+      "x": -405,
+      "y": -2290,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_14",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Genesis of Self-Importance in Ego — Savanna Social Landscape vs Physical Predator, Ostracism Fear and Trivers Self-Deception Paradox).md",
+      "x": -40,
+      "y": -2290,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_15",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Language and Subject-Object Split — Pragmatics of Network Protocol vs Trap of Ego-Syntax).md",
+      "x": 325,
+      "y": -2290,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_16",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Life Operating System — Seven Disarmed Catastrophes, From Danko Burnout to Tolstoy Crisis and Egoless Presence).md",
+      "x": -1500,
+      "y": -2085,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_17",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Martin Luther, 95 Theses and Inner Current — From Religious Disintermediation to Ego Elimination, Weberian Workaholism and Five Circuit Theses).md",
+      "x": -1135,
+      "y": -2085,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_18",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Mushin Is Obscured, Not Destroyed — Why Bonno Interrupts Superconductivity Without Cancelling the Nature of the Conductor, and Why the Return Costs Nothing).md",
+      "x": -770,
+      "y": -2085,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_19",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Nature and Illusion of Ego).md",
+      "x": -405,
+      "y": -2085,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_20",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Olfactory Circuit Tuning — The 60-Flacon Kodo Organ, Hardware Bypass of Thalamus and Protocols of Ego Breaching).md",
+      "x": -40,
+      "y": -2085,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_21",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Physical Bounds of Circuit Parameters — Why EMF, Attention Current and Ego Resistance Have Exact Minima and Finite Limits, The Open Circuit Paradox and Biological Protection).md",
+      "x": 325,
+      "y": -2085,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_22",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Progress and Misery of the Spirit — The Henry George Effect, The Ego-Rentier and Thermodynamics of Direct Flow).md",
+      "x": -1500,
+      "y": -1880,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_23",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Satori as the Superconducting Phase Transition — Meissner Effect, Collapse of Bonno Resistance to Zero and Full Circuit Efficiency).md",
+      "x": -1135,
+      "y": -1880,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_24",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Six Traps of Emotional Pain — The Priest, Fortune-Teller, Psychologist, Philosopher, Kitchen Friend and 'Time Heals' vs The Sovereign Circuit Operator).md",
+      "x": -770,
+      "y": -1880,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_25",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Stress Telemetry of Xiaomi Smart Band 7 — HRV Metrology, Cortisol Awakening and Ego Resistance of Morning Awakening).md",
+      "x": -405,
+      "y": -1880,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_26",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The 'I Have Not Lived Yet' Awakening — Chronic Ohmic Fire, Ego Resistance and Egoless Weightlessness).md",
+      "x": -40,
+      "y": -1880,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_27",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Binocular Optics of Disintermediation — Somatic Nichrome in Temples vs Systemic Middleman — Landlord, Central Bank, Middle Management and the Collapse of Ego's Alibi).md",
+      "x": 325,
+      "y": -1880,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_28",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Body as the Living Cable — Distributed Conductor Resistance vs The Ego Resistor, Kanso Schematic Minimalism and Physical Training as Cross-Section Expansion).md",
+      "x": -1500,
+      "y": -1675,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_29",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Bonno Resistor — Series Parasitic Ballast, Kyo Conductivity Dropout and the Return to Zero Ohm by Ohm).md",
+      "x": -1135,
+      "y": -1675,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_30",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Closed Circuit Breakthrough — The Return Wire of Reality vs The Linear Burnout Model).md",
+      "x": -770,
+      "y": -1675,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_31",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Conduit Archetype — Compiler of Truth, The Prometheus Without Ego and Why the Creator Does Not Need to Know Everything).md",
+      "x": -405,
+      "y": -1675,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_32",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Copernican Shift of Ego — Why Resistance Cannot Be the Conductor and the Paradox of How to Remove It).md",
+      "x": -40,
+      "y": -1675,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_33",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Feverish Creator Paradox — Dopamine Rush vs Superconductivity, Ego Panic Before Pausing and Rest as the Ultimate Circuit Test).md",
+      "x": 325,
+      "y": -1675,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_34",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Fifth Category of Knowledge About the Soul — Religion, Esoterics, Philosophy, Psychology and Circuit Electrodynamics of Consciousness).md",
+      "x": -1500,
+      "y": -1470,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_35",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Flashlight Inversion — Blinding the Eye with Anticipatory Ego Judgment vs Direct Workload Illumination).md",
+      "x": -1135,
+      "y": -1470,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_36",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Formula of Happiness and Unhappiness — Circuit Superconductivity vs Ohmic Overheat and the First Law of Soul Thermodynamics).md",
+      "x": -770,
+      "y": -1470,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_37",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Four Barriers of Ego Defense and Transmission Interface — Overcoming The 'I Know It All', Strobe Flash Illusion, Semantic Drift and Annihilation Panic).md",
+      "x": -405,
+      "y": -1470,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_38",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Headphone Dam Breach Protocol — Bypassing Dopamine Dogma via Somatic Music Test-Drive and First Ego Crack).md",
+      "x": -40,
+      "y": -1470,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_39",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Illusion of Cleansing Suffering — Parasitic Ego Overheat as False Spiritual Virtue, Demystification of Martyrdom and Electrodynamics of Mushin).md",
+      "x": 325,
+      "y": -1470,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_40",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Impossibility of Happiness Theorem — Dual Civilizational Indoctrination of Ego as Self and Happiness as Pleasure).md",
+      "x": -1500,
+      "y": -1265,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_41",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Joule-Lenz Cornerstone — Why the Law of Losses is the Master Manifest of Freedom, Quadratic Will Trap and Mathematics of Superconductivity).md",
+      "x": -1135,
+      "y": -1265,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_42",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Kantian Impasse — Ding an sich, The Ohmic Fire of the Categorical Imperative and Post-Moral Superconductivity).md",
+      "x": -770,
+      "y": -1265,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_43",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Law of Chronic Burn — Why the Street Skeptic is Right that You Cannot Be Constantly Happy, Ego as Resistance and Superconductivity Without Ego).md",
+      "x": -405,
+      "y": -1265,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_44",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Master's Paradox — Why Enlightened Teachers Build Ego-Centric Systems).md",
+      "x": -40,
+      "y": -1265,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_45",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Non-Existent Self and the Non-Occurrence of Death — Why the Phantom Ego Fears Annihilation, Address Error and Circuit Superconductivity of the Unborn).md",
+      "x": 325,
+      "y": -1265,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_46",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Proof of Action Protocol and 0 ms Ping — Deconstruction of Social RLC Filter, Three-Vector Ego DDoS, Screensaver Face Fallacy and Zero-Latency Romantic Approach).md",
+      "x": -1500,
+      "y": -1060,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_47",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Radiance of Female Beauty vs Aging Panic — Biological Youth Loan, Cosmetology Without Ego and Care for the Somatic Conductor).md",
+      "x": -1135,
+      "y": -1060,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_48",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Ship of Theseus and Identity Crisis — Circuit Invariance, Dynamic Dissipative Structure and the Illusion of the Fixed Ego).md",
+      "x": -770,
+      "y": -1060,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_49",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Starozolotovka Breakthrough — Living Without Ego, Debunking the Vegetable Myth, Tanya's Bathhouse Case and Don Scale Calibration).md",
+      "x": -405,
+      "y": -1060,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_50",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Tetrad of Irresistibility — Sensory Bypass of Ego Defense via Versace, Levante, Ukulele and Flashlight).md",
+      "x": -40,
+      "y": -1060,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_51",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Thief Caught on the Schematic — Ego as Ohmic Resistor, Demystification of the Afterlife and Smoke Screens of Suffering).md",
+      "x": 325,
+      "y": -1060,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_52",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Thought Test and the Anatomy of Conditioned Happiness — Why Children, Work and Bali Collapse in Two Seconds and the Physics of Superconductivity Without Ego).md",
+      "x": -1500,
+      "y": -855,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_53",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Two Fatal Circuit Errors — Ego Resistor Misidentification and Dopamine Flash vs Superconductivity).md",
+      "x": -1135,
+      "y": -855,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_54",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Ukulele and the Rattling Fret — Acoustic Anatomy of Ego, Parasitic Buzz vs Pure Melody and the Fear of Resonator Emptiness).md",
+      "x": -770,
+      "y": -855,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_55",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Universal Key — Dissolution of Ego, Convergence of World Religions and the Electrodynamics of Non-Resistance).md",
+      "x": -405,
+      "y": -855,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_56",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Why the Ego Is So Powerful — Savanna Multiplier, Millennia of Cumulative Parody and the Newborn's Plight).md",
+      "x": -40,
+      "y": -855,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_57",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Workaholism Circuitry — Quadratic Will Trap, Burnout Electrodynamics and the Transition from Hustle to Mushin).md",
+      "x": 325,
+      "y": -855,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_58",
+      "type": "file",
+      "file": "02_Wiki/Брошюра — Алкоголизм и внутренний ток (Химический лом в неокортексе, банкротство института вины и штатное охлаждение цепи).md",
+      "x": -1500,
+      "y": -650,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_59",
+      "type": "file",
+      "file": "02_Wiki/Брошюра — Великий Изоморфизм Депосреднизации (Биткоин, Единый налог Генри Джорджа и Архитектура счастья — Ликвидация паразитной ренты в деньгах, экономике и духе).md",
+      "x": -1135,
+      "y": -650,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_60",
+      "type": "file",
+      "file": "02_Wiki/Брошюра — Костыльный цех метафизики (Четыре псевдо-инженера цивилизации, иллюзия очищающего страдания и почему для счастья не нужны философские протезы).md",
+      "x": -770,
+      "y": -650,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_61",
+      "type": "file",
+      "file": "02_Wiki/Брошюра — Порно-зависимость и внутренний ток (Дофаминовое короткое замыкание, обрыв живого контура и банкротство силы воли).md",
+      "x": -405,
+      "y": -650,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_62",
+      "type": "file",
+      "file": "02_Wiki/Брошюра — Почему мы несчастны (Деконструкция дофаминового тупика, ошибка фонарика и возврат к замкнутому контуру).md",
+      "x": -40,
+      "y": -650,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_63",
+      "type": "file",
+      "file": "02_Wiki/Брошюра — Трудоголизм и внутренний ток (Схемотехника выгорания, квадратичная ловушка воли и освобождение созидателя).md",
+      "x": 325,
+      "y": -650,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_bonno_64",
+      "type": "file",
+      "file": "02_Wiki/Брошюра — Хикикомори и физика фонарика (Электродинамика запертого сознания, парадокс японского стыда и размыкание контура изоляции).md",
+      "x": -1500,
+      "y": -445,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "group_mushin",
+      "type": "group",
+      "x": -1530,
+      "y": -340,
+      "width": 3685,
+      "height": 3930,
+      "label": "🔵 МАГИСТРАЛЬ МУСИН (Тракт Внимания, Прямой Луч и Сверхпроводимость) (180 статей)",
+      "color": "5"
+    },
+    {
+      "id": "card_mushin_intro",
+      "type": "text",
+      "x": -1500,
+      "y": -300,
+      "width": 705,
+      "height": 180,
+      "color": "5",
+      "text": "### 🌊 Сверхпроводимость Сознания (R → 0)\n\n• Закон прямого луча: карманный фонарик светит только наружу\n• Режим Мусин (無心): внимание без паразитного трения\n• Фазовый переход Сатори и вытеснение полей Мейснера\n• Счастье как объективный штатный режим контура (КПД = 100%)."
+    },
+    {
+      "id": "file_mushin_0",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (21-Day Superconductivity Operator Protocol — Daily Workbook).md",
+      "x": -770,
+      "y": -300,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_1",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Acoustics of Phase Transition — Levante's Cuori d'Artificio, Anguish Without Despair and the Sensory Benchmark of Superconductivity).md",
+      "x": -405,
+      "y": -300,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_2",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Alcoholism Electrodynamics — Chemical Crowbar of the Neocortex, Bankruptcy of Guilt Institutions and Circuit Cooling).md",
+      "x": -40,
+      "y": -300,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_3",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Anatomy of the Paradigm Shift — Ptolemaic Epicycles vs Kanso Simplicity and Falling of False Questions).md",
+      "x": 325,
+      "y": -300,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_4",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Architecture of the New Science — Circuit Electrodynamics of Consciousness — Canonical Naming, 5-Level Academic Edifice, University Syllabus and the Self-Hosted Generation).md",
+      "x": 690,
+      "y": -300,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_5",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Astronautics of Consciousness — The Tsiolkovsky Effect, Escape Velocity of the Spirit and the Rocket of Superconductivity).md",
+      "x": 1055,
+      "y": -300,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_6",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Black Start Protocol — Cold Reboot After Catastrophic Blackout).md",
+      "x": 1420,
+      "y": -300,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_7",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Buddha's Topological Revolution — From Fatal Circuit to Reconfigurable Architecture, Radical Kanso vs New Elements and Multimodal Topology of Man).md",
+      "x": 1785,
+      "y": -300,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_8",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Canonical Definitions of Happiness — Technical and Intuitive Formulations).md",
+      "x": -1500,
+      "y": -95,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_9",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Case Study - Engineer Romance Approach).md",
+      "x": -1135,
+      "y": -95,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_10",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Case Study — Tennis Tournament, External Judge Relay and the Protocol of Mushin in Competition).md",
+      "x": -770,
+      "y": -95,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_11",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Circuit Breakers of Fame — Five Architectural Shields Against Osho's Error, How the Author of a Fundamental System Avoids the Cult Trap and Preserves Everyman Superconductivity Under Mega-Amps of Attention).md",
+      "x": -405,
+      "y": -95,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_12",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Circuit Electrodynamics of Man — The 2026 Copernican Revolution in Human Science and the Dissolution of Ptolemaic Epicycles).md",
+      "x": -40,
+      "y": -95,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_13",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Circuit Frequency — High Frequency Hurry, Baseline Stupor and Superconductivity Resonance).md",
+      "x": 325,
+      "y": -95,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_14",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Circuitry of Existential Fault and Ground Leak).md",
+      "x": 690,
+      "y": -95,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_15",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Circuitry vs Scholasticism — How the Anyanov Science Differs from Physics, Zen, Psychology and Sociology — 5 Dimensions of Uniqueness).md",
+      "x": 1055,
+      "y": -95,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_16",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Civilizational Catastrophes — Before and After Newton vs Before and After Anyanov — The Elimination of 10,000 Years of Soul Disasters).md",
+      "x": 1420,
+      "y": -95,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_17",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Civilizational Fuse of Singularity — 5 Reasons Why Inner Current Answers the Chief Challenge of the AI Era).md",
+      "x": 1785,
+      "y": -95,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_18",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Complete Zen-Electrodynamic Ontological Atlas).md",
+      "x": -1500,
+      "y": 110,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_19",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Consciousness Defined — Electrodynamic Current of Attention, The Triad of Circuit States and From Noise to Superconductivity).md",
+      "x": -1135,
+      "y": 110,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_20",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Copernican Revolution in Ontology — Bottom-Up Circuit Dissolution of Metaphysics and Human-AI Zanshin).md",
+      "x": -770,
+      "y": 110,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_21",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Core Topology and Polarity Law).md",
+      "x": -405,
+      "y": 110,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_22",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Creator's Mushin and the Fire of Ideation — Creative Obsession vs Mind Fixation, The Desk vs Walk Regimes and Circuit Thermal Balance).md",
+      "x": -40,
+      "y": 110,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_23",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Crisis Circuitry and Mutual Induction — Severing of the Primary Transformer of Loss, Back-EMF and the Mother and School Grade Case Study).md",
+      "x": 325,
+      "y": 110,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_24",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Debunking the Thought-Stoppage Mirage — Why Sitting Motionless in a Dark Room is Cataleptic Stupor Rather than Superconductivity, and How the Calm Circuit Restores Sahaja Samadhi).md",
+      "x": 690,
+      "y": 110,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_25",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Deconstruction of Pascal's Wager — Theological Roulette vs Superconducting Invariance).md",
+      "x": 1055,
+      "y": 110,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_26",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Diagnostic Machine and System Specification).md",
+      "x": 1420,
+      "y": 110,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_27",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Dissolution of Eternal Questions — From Humanitarian Deadlock to Scientific Circuitry).md",
+      "x": 1785,
+      "y": 110,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_28",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (East-West Synthesis and Demystification).md",
+      "x": -1500,
+      "y": 315,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_29",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Electrodynamics of Capital — Money as Voltage and Fluid Resistance Reducer).md",
+      "x": -1135,
+      "y": 315,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_30",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Engineer of One's Own Spirit — The End of Fairy Tales and Poetry, Ohm's Law of Consciousness, The Attention Voltmeter and Overcoming the Technical Barrier).md",
+      "x": -770,
+      "y": 315,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_31",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Engineering Proof of No Meaning of Life and the Birth of Happiness Architecture).md",
+      "x": -405,
+      "y": 315,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_32",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Epistemology of the 200-Year Gap — Three Barriers, Institutional Resistance of Academia and the Inevitable Synthesis of Circuit and Consciousness).md",
+      "x": -40,
+      "y": 315,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_33",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Everything Is a Verb — Nominalization as Freezing of Current, Process Speed Spectrum, Dogen's Firewood and the Two Truths).md",
+      "x": 325,
+      "y": 315,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_34",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Evolutionary Morphogenesis of the Circuit — Abiogenesis, Bipedalism and the Hardware Assembly of the Flashlight).md",
+      "x": 690,
+      "y": 315,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_35",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Feynman Primer — Happiness Architecture in Plain Words for the Unprepared Reader).md",
+      "x": 1055,
+      "y": 315,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_36",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (From Newton to Watt and Inner Current — Thermodynamics of the Industrial Revolution and the Phase Shift of Consciousness).md",
+      "x": 1420,
+      "y": 315,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_37",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (From Rosetta Decryption to the Pocket Device — The Prometheus Step Beyond Academic Historicism to Applied Engineering Protocol).md",
+      "x": 1785,
+      "y": 315,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_38",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (From Torch to Flashlight — The Civilizational Prometheus Step, Sacrificial Fire vs Pocket Superconductivity and the Root Node of Happiness).md",
+      "x": -1500,
+      "y": 520,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_39",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (From the Treadmill to the Monism of Reality — The Trajectory of Discovery — How an Honest Question on Happiness Led to the Proof of Non-Duality).md",
+      "x": -1135,
+      "y": 520,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_40",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Fundamental Laws of the Happiness Thermodynamics).md",
+      "x": -770,
+      "y": 520,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_41",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Genesis of Intermediaries and the Thermodynamics of Direct Flow — Why Parasites Arise and How the Triad Restores Purity).md",
+      "x": -405,
+      "y": 520,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_42",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Giordano Bruno at the Stake and Inner Current — Infinite Worlds vs Centralized Dogma, The Ohmic Fire of Inquisition and Superconductivity of Heroic Frenzy).md",
+      "x": -40,
+      "y": 520,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_43",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Grammar of Awakening — Aspect Is Not Duration, Sudden vs Gradual Enlightenment, Iterative Suddenness, Chinul's Formula and Dogen's Practice-Realization).md",
+      "x": 325,
+      "y": 520,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_44",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Grammar of Current — Verbal Aspect as a Model of Practice, Perfective Has No Present, Russian vs Latin and Germanic, and Jakobson's Law).md",
+      "x": 690,
+      "y": 520,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_45",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Happiness Dashboard and Superconductivity Telemetry).md",
+      "x": 1055,
+      "y": 520,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_46",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Happiness Index vs UN World Happiness Report).md",
+      "x": 1420,
+      "y": 520,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_47",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Happiness Is a Verb, Not a Noun — The Fallacy of the Static Question, Dynamic Conductivity in Anyans and Intra-Day Telemetry of the Circuit).md",
+      "x": 1785,
+      "y": 520,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_48",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Happiness Relativity vs Circuit Invariance).md",
+      "x": -1500,
+      "y": 725,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_49",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Human Self-Check Protocol and Sensation Translator).md",
+      "x": -1135,
+      "y": 725,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_50",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Illusion of the Separate Self — Is Eastern Claim True, Anatta Is Not Nihilism, Four Falsifiable Tests and the Boundary of the Model).md",
+      "x": -770,
+      "y": 725,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_51",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Impression Architecture and Impedance Matching).md",
+      "x": -405,
+      "y": 725,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_52",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Joy as Magnetic Field — Spirit as Emergent Property of Matter and the Law of Radiance).md",
+      "x": -40,
+      "y": 725,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_53",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Karma and Cosmic Justice — Instantaneous Local Thermodynamics vs Deferred Posthumous Trial).md",
+      "x": 325,
+      "y": 725,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_54",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Legacy Wiki Index — Original App Chapters).md",
+      "x": 690,
+      "y": 725,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_55",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Life as a Verb — From Osho's Mystical Intuition to the Electrodynamics of Dynamic Flux and Superconductivity).md",
+      "x": 1055,
+      "y": 725,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_56",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Loneliness and Solipsism — The Problem of Other Minds, Inductive Resonance and the Circuitry of Empathy).md",
+      "x": 1420,
+      "y": 725,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_57",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Monism of Circuit Electrodynamics — Proof of Unity of Spirit and Matter and Elimination of Dualism).md",
+      "x": 1785,
+      "y": 725,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_58",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Novelty and Value Proposition).md",
+      "x": -1500,
+      "y": 930,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_59",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Ontology of the Circuit — Human vs State and the Triad of Terms).md",
+      "x": -1135,
+      "y": 930,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_60",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Physics of Frisson and Somatic Skin Effect — Why Levante's Vivo Causes Goosebumps, Biot-Savart Magnetic Lines and Z-Matching).md",
+      "x": -770,
+      "y": 930,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_61",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Physics of Indivisible Charge — Why There Are No Spiritual Electrons and What Current Returns Through the Other).md",
+      "x": -405,
+      "y": 930,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_62",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Physics of Presence and Superconductivity).md",
+      "x": -40,
+      "y": 930,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_63",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Plato's Epicycles and the Mirage of Ideas — Reification Fallacy, The Museum of Phlogiston and Objective Invariants of Matter).md",
+      "x": 325,
+      "y": 930,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_64",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Platonism as Soil for Christianity — Soma-Sema, Mortification of the Deck and the 2,000-Year Ohmic Hell).md",
+      "x": 690,
+      "y": 930,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_65",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Pornography Addiction Circuitry — Dopamine Short Circuit, Broken Return Loop and the Bankruptcy of Willpower, Therapy and Meds).md",
+      "x": 1055,
+      "y": 930,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_66",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Preprint — The Four-Element Topology of Human Consciousness).md",
+      "x": 1420,
+      "y": 930,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_67",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Primer for a Smart 10-Year-Old — The Architecture of Happiness and External Magnetism).md",
+      "x": 1785,
+      "y": 930,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_68",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Pure Consciousness — Dissolution of the Hard Problem, Circuit Superconductivity and the Physics of Direct Presence).md",
+      "x": -1500,
+      "y": 1135,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_69",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Russia as a Distinct Civilization — Electrodynamic Proof, Life Without Damper, Ontology of Truth and Laboratory of Spirit Superconductivity).md",
+      "x": -1135,
+      "y": 1135,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_70",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Russian Intellectual Matrix — Three Fundamental Cuts of Synthesis).md",
+      "x": -770,
+      "y": 1135,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_71",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Russian Synthesis — From Ohmic Hell to Tsiolkovsky's Blueprint — Author's Foreword to the Russian Edition).md",
+      "x": -405,
+      "y": 1135,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_72",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Safety, Antifragility and Zanshin).md",
+      "x": -40,
+      "y": 1135,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_73",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Scale Invariance and Tea Ceremony).md",
+      "x": 325,
+      "y": 1135,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_74",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Significance of Circuit Theory for World Philosophy — The Five Pillars of the Post-Platonic Phase Transition).md",
+      "x": 690,
+      "y": 1135,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_75",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Summum Bonum and Epistemological Grounding — The Root Node of Happiness vs Limits of the Model).md",
+      "x": 1055,
+      "y": 1135,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_76",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Tagging and Cartography Canon — Navigation System of Knowledge Base).md",
+      "x": 1420,
+      "y": 1135,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_77",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Ten Bulls of Zen — 10 Stages of Superconductivity Operator Evolution).md",
+      "x": 1785,
+      "y": 1135,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_78",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The 'Am I Happy' Question and Circuit Telemetry).md",
+      "x": -1500,
+      "y": 1340,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_79",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The 'Spiritual Self' Paradox — Socratic Test of Spiritual Deficiency, Spiritual Materialism and Freedom as Conductor Superconductivity).md",
+      "x": -1135,
+      "y": 1340,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_80",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The 5+1 Master Formula — Five Circuit Elements and One Operator Tool, Hardware Topology vs Executive Actuator).md",
+      "x": -770,
+      "y": 1340,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_81",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Anyanov Law of Direct Flow — Priority of Discovery, Paradigm Shift and the Transition from Soul Alchemy to Consciousness Engineering).md",
+      "x": -405,
+      "y": 1340,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_82",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Anyanov Metrological System and the Home Circuit-Tonometre — Standard of Happiness Metrics and AI Diagnostic Architecture).md",
+      "x": -40,
+      "y": 1340,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_83",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Anyanov Triad and Tetrad — Truth, Freedom, Happiness, Creation and the Biographical Proof).md",
+      "x": 325,
+      "y": 1340,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_84",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Attention Current Quadratic — Why Current Is Never Fixed, Dynamics of Focus Density and Resting Pulse Telemetry).md",
+      "x": 690,
+      "y": 1340,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_85",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Automobile as the Ultimate Physical Anchor — Materializing the Invisible, Dashboard of Consciousness and the End of the Moral Whip).md",
+      "x": 1055,
+      "y": 1340,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_86",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Automobile of Consciousness — 140 Years from Benz to Anyanov, Post-Moral Imperative and Cybernetics of Addictions).md",
+      "x": 1420,
+      "y": 1340,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_87",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Bathhouse Depression Paradox and Flashlight Physics — Debunking Woe from Wit, The Tennis Crutch Trap and Direct Beam Calibration in Stillness).md",
+      "x": 1785,
+      "y": 1340,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_88",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Benz Motorwagen Paradox — Clumsy Prototypes, The Faster Horse Trap and the Calibration of the Happiness Law).md",
+      "x": -1500,
+      "y": 1545,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_89",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Bipolar Dipole — High-Voltage Capacitor of the Cold War, Nuclear Zanshin and the Fallacy of the Monopole).md",
+      "x": -1135,
+      "y": 1545,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_90",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Chain Reaction of Conductivity — Instant Happiness, The Explorer's Questions and The Hunger for the Master Blueprint).md",
+      "x": -770,
+      "y": 1545,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_91",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Champollion of Consciousness and the Rosetta Stone of Zen — Decryption of Eastern Hieroglyphs and the Creation of the Applied Pocket Tool).md",
+      "x": -405,
+      "y": 1545,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_92",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Circuit Is Not a Metaphor — Literal Electrodynamics of the Biological Substrate and the Zen Engineer Synthesis).md",
+      "x": -40,
+      "y": 1545,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_93",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Circuit Triad — Spirit, Soul and Consciousness in Human Electrodynamics — Spirit as Current, Soul as Living Resonator and Consciousness as Vortex Field).md",
+      "x": 325,
+      "y": 1545,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_94",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Circuit as the Great Demystifier — Predictable Hardware Elements vs Esoteric Mist, Meditation as Hygiene Calibration and Dissolution of Spiritual Superiority).md",
+      "x": 690,
+      "y": 1545,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_95",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Copernican Revolution in Psychology — Circuit Architecture vs 'I See You' and Subpersonality Epicycles).md",
+      "x": 1055,
+      "y": 1545,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_96",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Dashboard of Consciousness — Seven Warning Lamps, Automotive OBD-II Protocol of the Soul and Instant DTC Clearing).md",
+      "x": 1420,
+      "y": 1545,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_97",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Dual-Cable Architecture — Western Functional UI vs Zen Ontological Kernel).md",
+      "x": 1785,
+      "y": 1545,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_98",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Educational Hierarchy of Human Science — From School Ohm's Law to Wiener Cybernetics, Friston Free Energy and Prigogine Thermodynamics).md",
+      "x": -1500,
+      "y": 1750,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_99",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Electrodynamic Field Triad — Electric, Magnetic and Total Electromagnetic Field as Intention, Joy and Unified Being).md",
+      "x": -1135,
+      "y": 1750,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_100",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Electrodynamic Proof of Tat Tvam Asi — Archer, Target, Poynting Vector and Overcoming Newtonian Dualism).md",
+      "x": -770,
+      "y": 1750,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_101",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The End of Chekhovian Despair — From Taganrog Radio Engineering to Tolstoy and Circuit Electrodynamics — Dissolution of Intelligentsia Epicycles).md",
+      "x": -405,
+      "y": 1750,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_102",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The English Bus, Citizen of the World and the Any-anov Paradox — Anatta, Everyman and the Law of 8 Billion Invariance).md",
+      "x": -40,
+      "y": 1750,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_103",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Epistemological Triumph — Why the Circuit Explains Everything and the Five Axioms of Universal Invariance).md",
+      "x": 325,
+      "y": 1750,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_104",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Essence of Invention and Engineers of the Spirit — Deconstructing 'Everyone Already Said That' via Watt, Satoshi and Copernicus — Same Words, New Substrate).md",
+      "x": 690,
+      "y": 1750,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_105",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Fear of Death and Non-Existence — Epicurean Paradox, Physics of Phase Transition and Current Invariance).md",
+      "x": 1055,
+      "y": 1750,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_106",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Feynman Criterion of Truth — Simplicity as the Certificate of Validity, Explaining via Everyday Objects and the Demystification of Complexity).md",
+      "x": 1420,
+      "y": 1750,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_107",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Feynman Principle of Spirit and Matter — The Electromagnet, The Guitar String and The Pocket Flashlight of Consciousness).md",
+      "x": 1785,
+      "y": 1750,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_108",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Flashlight Code — Etymological Paradox, FLASH plus LIGHT and the Constant Light Transition).md",
+      "x": -1500,
+      "y": 1955,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_109",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Flashlight Lexicon and Hierarchy of Terms — From Internal Current to Anyanov System — Three Levels of Understanding and the Operational Vocabulary).md",
+      "x": -1135,
+      "y": 1955,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_110",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Flashlight Model of Man — Optical-Electrodynamic Ontology of Consciousness, The Light Source vs Illuminated Object and the Law of the Direct Beam).md",
+      "x": -770,
+      "y": 1955,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_111",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Flashlight and Criticism of Other Flashlights — Stray Light, Optical Telemetry and Autonomous Circuit Invariance).md",
+      "x": -405,
+      "y": 1955,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_112",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Four Pseudo-Engineers of Civilization — How the Priest, Astrologer, Philosopher, and Psychologist Repaired the Circuit Without a Schematic, Satirical Chronicle of Breakdowns, and the 2026 Zen Engineer).md",
+      "x": -40,
+      "y": 1955,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_113",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Four States of Consciousness in Hinduism and Circuit Electrodynamics — Mandukya Upanishad, Susupti, Svapna, Jagrat and Turiya as Superconductivity).md",
+      "x": 325,
+      "y": 1955,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_114",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Grand Quadrivium — Circuitry of Man, Tuning Fork of Reality, Circuit of Happiness and Automobile of Consciousness).md",
+      "x": 690,
+      "y": 1955,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_115",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Great Asymmetry of Civilization — How Circuit Architecture Closes the 10,000-Year Chasm Between Nuclear Technology and the Stone Age Psyche).md",
+      "x": 1055,
+      "y": 1955,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_116",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Great Historical Triad — 200 Years of Electrodynamics, 140 Years of Automobile and the Genesis of Inner Current).md",
+      "x": 1420,
+      "y": 1955,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_117",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Great Synthesis — From the Vedas and Lao Tzu to Circuit Electrodynamics — The Elimination of 10,000 Years of Matter vs Spirit Dualism).md",
+      "x": 1785,
+      "y": 1955,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_118",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Hedonistic Paradox — Dopamine Downregulation, Reverse Polarity and Superconductivity Byproduct).md",
+      "x": -1500,
+      "y": 2160,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_119",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Horse to Automobile Transition — Three-Phase Onboarding of Consciousness, Post-Moral Relief and the Somatic Test Drive).md",
+      "x": -1135,
+      "y": 2160,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_120",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Indivisibility of the Circuit — Why Four Revolutions Snapped into One, Collapse of Solo Breakthroughs and the Flashlight Synthesis).md",
+      "x": -770,
+      "y": 2160,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_121",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Japanese Paradox — Why the Capital of Zen and Electronics Failed to Synthesize Them, Cultural Shunt of Giri-Haji, Karoshi and Prometheus Step of Anyanov).md",
+      "x": -405,
+      "y": 2160,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_122",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Laplace Response to Napoleon and Circuit Schematics — I Had No Need for That Hypothesis, Eliminating Parasitic Resistance and Will Break).md",
+      "x": -40,
+      "y": 2160,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_123",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Lyre of Simmias and the Ukulele of Consciousness — 2,400 Years from Plato's Error to the Somatic Monism of Inner Current).md",
+      "x": 325,
+      "y": 2160,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_124",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Miles Davis Zen — Illusion of Set Melody, Alchemy of Next Note and Absence of Falsehood in Life Improvisation).md",
+      "x": 690,
+      "y": 2160,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_125",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Millennial Synthesis — How Circuit Electrodynamics Dissolved the Seven Eternal Questions of Humanity).md",
+      "x": 1055,
+      "y": 2160,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_126",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Multiphase Circuit Blueprint of the Multipolar World — From Tesla's AC Revolution to Planetary Peace Architecture).md",
+      "x": 1420,
+      "y": 2160,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_127",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Multiplication Table of the Nervous System — Why the Circuit is Not a Sect, Axiomatic Biophysics vs Esoteric Cults and Demystification of Human Conductance).md",
+      "x": 1785,
+      "y": 2160,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_128",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Music Lamp and Somatic Resonance — Why Levante Causes Superconductivity vs Chores, Workout and Work).md",
+      "x": -1500,
+      "y": 2365,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_129",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Musician of Life and the Ukulele of Being — Touching the Strings, Tuning Calibration and the Melody of Circumstances).md",
+      "x": -1135,
+      "y": 2365,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_130",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Nature of Attention — Physics of Directed Charge Drift, Phase Transition from Thermal Chaos and Biot-Savart Generation of Consciousness).md",
+      "x": -770,
+      "y": 2365,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_131",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Nature of Human Current and Physical Demystification of Mushin — Bioelectrochemical Substrate of Attention vs Electron Drift in Copper, and Zero Resistance of Pure Action).md",
+      "x": -405,
+      "y": 2365,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_132",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Negative Theory of Happiness — Via Negativa, Default State of Conductance and Circuit Schematics Against False Worldviews).md",
+      "x": -40,
+      "y": 2365,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_133",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Newtonian Paradigm Shift of Consciousness — From Mysticism to Circuit Conservation Laws).md",
+      "x": 325,
+      "y": 2365,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_134",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Novum Organum of Psychology — Bacon's Fruit Criterion, Overcoming the Four Idols and the Circuit Transition).md",
+      "x": 690,
+      "y": 2365,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_135",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Ontological Formula of Anyan — Somatic Peace of An, Radiant Action of Yang and the Kanso Surnaming).md",
+      "x": 1055,
+      "y": 2365,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_136",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Operator Vladimir Anyan — East-West Cartographic Synthesis, Impedance Matching of Peace and the Crimean Bridge).md",
+      "x": 1420,
+      "y": 2365,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_137",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Pantheon of Guardians — Somatic Totems and Cinematic IP of Pure Consciousness).md",
+      "x": 1785,
+      "y": 2365,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_138",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Philosopher's Stone, Spells and the 2x2 Formula — Why Man Craves Mystery When Happiness Becomes Deterministic, The Harry Potter Paradox and Wonder Beyond Suffering).md",
+      "x": -1500,
+      "y": 2570,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_139",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Planck Paradox and Coconut Raff Syndrome — Why People Confuse Happiness with Pleasure, The Abstraction Barrier and The Sudden-Thought Test).md",
+      "x": -1135,
+      "y": 2570,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_140",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Prometheus Step — Fire of Inner Current from Monastic Olympus to the Safe Flashlight of Humanity).md",
+      "x": -770,
+      "y": 2570,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_141",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Protocol vs The Altcoin Foundation — Why Anyanov Followed the Satoshi Canon Rather than Ethereum Privatization).md",
+      "x": -405,
+      "y": 2570,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_142",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Ptolemaic Horror of Death and the Copernican Shift — Why the False Center Panics, Deconstruction of Energy Tropes and Current Invariance).md",
+      "x": -40,
+      "y": 2570,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_143",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Quadruple Revolution — Copernicus, Newton, Watt, Benz and the Great Synthesis of Anyanov).md",
+      "x": 325,
+      "y": 2570,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_144",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Question of God — Electrodynamic Invariance and Dissolution of Theological Resistance).md",
+      "x": 690,
+      "y": 2570,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_145",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Real Pain Behind Esoterics — Why People Go to Fortune Tellers Not from Stupidity but from Despair and How Inner Current Reconciles Mind and Inner State).md",
+      "x": 1055,
+      "y": 2570,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_146",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Root Problem Dissolution — Why Solving the Matter-Spirit Dualism Automatically Eliminates All Human Problems and Illusions).md",
+      "x": 1420,
+      "y": 2570,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_147",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Rosetta Stone of the Soul — Electrodynamics as the Greek Decryption Code for Zen Hieroglyphs and the Synthesis of Poet and Engineer).md",
+      "x": 1785,
+      "y": 2570,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_148",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Stone Age of the Spirit — Why Esoterics in the 21st Century Proves the Absence of a System and How Inner Current Is the Newton of Consciousness).md",
+      "x": -1500,
+      "y": 2775,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_149",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Summerhill Proof and Pedagogy of Superconductivity — How Circuit Electrodynamics Solves the 100-Year Crisis of Education).md",
+      "x": -1135,
+      "y": 2775,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_150",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Thermodynamic Golden Age — Why Previous Utopias Collapsed and How the Dual Convergence of AI and the Anyanov Circuit Realizes the Millennial Dream).md",
+      "x": -770,
+      "y": 2775,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_151",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Total Transformation — How the Anyanov Law and AI Reshape All Spheres of Civilization — From Intimacy to Cosmetology, Law and Human-AI Symbiosis).md",
+      "x": -405,
+      "y": 2775,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_152",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Ukulele of Consciousness — Acoustic Ontology of Four Strings, Joy as Pure Resonance and the Triumph of Kanso).md",
+      "x": -40,
+      "y": 2775,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_153",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Vertical of Ascension — 6 Stages of Evolution of the Anyanov System from Engineer First Aid to Civilizational Fuse of Singularity).md",
+      "x": 325,
+      "y": 2775,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_154",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Voltmeter Protocol — Dispassionate Circuit Measurement, Infinite Internal Resistance and the Elimination of Self-Judgment Leaks).md",
+      "x": 690,
+      "y": 2775,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_155",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Wall Socket and Appliance Fallacy — Why Pleasures Are Toasters and Inner Current Is Grid Voltage, Deconstruction of The Defense List and Bread with Water Test).md",
+      "x": 1055,
+      "y": 2775,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_156",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Working Circuit Priority — Why Happiness Trumps Scholastic Defense, The Three-Resistor Baseline and Non-Dogmatic Subtle Inquiry).md",
+      "x": 1420,
+      "y": 2775,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_157",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Wristwatch HUD and Two-Dial Dashboard of Happiness — Reading State in One Second via Pulse and Stress, The Four-Quadrant Matrix and Zero-Friction Telemetry).md",
+      "x": 1785,
+      "y": 2775,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_158",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The iPhone of Consciousness — Five Paradigms of Jobsian Ergonomics, Zero Resistance and Hardware-Software Integration).md",
+      "x": -1500,
+      "y": 2980,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_159",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Theodicy and the Problem of Evil — Circuit Breakdown, Ohmic Fire and the Mirage of Darkness).md",
+      "x": -1135,
+      "y": 2980,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_160",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Tolstoy Existential Crisis vs Happiness Architecture).md",
+      "x": -770,
+      "y": 2980,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_161",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Tolstoy and Osho — Two Views on Happiness).md",
+      "x": -405,
+      "y": 2980,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_162",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Tolstoy and Steve Jobs — The Two Titans of Kanso and the Tragedy of Externalization of the Direct Flow).md",
+      "x": -40,
+      "y": 2980,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_163",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Tolstoy's 'What is Art' vs Happiness Architecture — Inductive Resonance vs The Moral Rheostat).md",
+      "x": 325,
+      "y": 2980,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_164",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Topology of the Five Systems — How Circuit Electrodynamics Transforms Religion, Esoterics, Philosophy and Psychology).md",
+      "x": 690,
+      "y": 2980,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_165",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Tuning Fork of Reality — Universal Calibration Tool, B2B Audit and Corporate Monetization).md",
+      "x": 1055,
+      "y": 2980,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_166",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Unhappiness as Dissipated Energy of Happiness — Lack of Ontological Essence, Cold as Lack of Heat, and Parasitic Dissipation).md",
+      "x": 1420,
+      "y": 2980,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_167",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Universal Demystification of Religions — Electrodynamic Translation, Linguistic Canon of Nirodha and Circuit Schematics).md",
+      "x": 1785,
+      "y": 2980,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_168",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Volgodonsk vs Metropolises — Why Inner Current Could Not Be Born in Sated Moscow, Laboratory of Bare Nichrome, Nuclear Engineering and Provincial Quest for Truth).md",
+      "x": -1500,
+      "y": 3185,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_169",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (What is Happiness — Deconstruction of To Each His Own and The Fishing and Nuts Fallacy).md",
+      "x": -1135,
+      "y": 3185,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_170",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Whitepaper — Variant 2 Pure Engineering Architecture).md",
+      "x": -770,
+      "y": 3185,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_171",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Why Born in Russia — Russian Classical Literature as Cradle of Happiness Architecture, Chekhov's Despair and Tolstoy's Guilt).md",
+      "x": -405,
+      "y": 3185,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_172",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Why Consciousness is Described by a Formula — Ontology of Mathematical Relations, Predictive Circuit and Physics of Frictionless Flow).md",
+      "x": -40,
+      "y": 3185,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_173",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Zen as Happiness Architecture Foundation).md",
+      "x": 325,
+      "y": 3185,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_174",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Zen-Thermodynamics Synthesis and Happiness Breakthrough).md",
+      "x": 690,
+      "y": 3185,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_175",
+      "type": "file",
+      "file": "02_Wiki/Брошюра — Грамматика тока (Жизнь, счастье и просветление как глаголы несовершенного вида).md",
+      "x": 1055,
+      "y": 3185,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_176",
+      "type": "file",
+      "file": "02_Wiki/Брошюра — Многофазный мир (Электродинамика планетарного согласия).md",
+      "x": 1420,
+      "y": 3185,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_177",
+      "type": "file",
+      "file": "02_Wiki/Брошюра — Синдром Кокосового Рафа (Почему люди путают счастье с удовольствием, иллюзия Пяти Сцен и трагедия починки исправной лампочки).md",
+      "x": 1785,
+      "y": 3185,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_178",
+      "type": "file",
+      "file": "02_Wiki/Брошюра — Схемотехника просветления (Сверхпроводимость как глагол, аппаратный замок Будды и физика Everyman).md",
+      "x": -1500,
+      "y": 3390,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_mushin_179",
+      "type": "file",
+      "file": "02_Wiki/Брошюра — Электродинамика сознания (Снятие трудной проблемы, физика внимания и контур сверхпроводимости).md",
+      "x": -1135,
+      "y": 3390,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "group_load",
+      "type": "group",
+      "x": 2370,
+      "y": -340,
+      "width": 1495,
+      "height": 1470,
+      "label": "🟢 ШЕСТЬ ГОРОДОВ НАГРУЗКИ (Дэай, Действие и Z-согласование) (26 статей)",
+      "color": "4"
+    },
+    {
+      "id": "card_load_intro",
+      "type": "text",
+      "x": 2400,
+      "y": -300,
+      "width": 705,
+      "height": 180,
+      "color": "4",
+      "text": "### 💡 Полезная Мощность (P = I²R_load)\n\n• Шесть ламп: Труд, Любовь, Творчество, Тело, Саму, Базар\n• Протокол Дэай (出会い): прямое соприкосновение с реальностью\n• Согласование импедансов и взаимная индукция суверенных сердец."
+    },
+    {
+      "id": "file_load_0",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Anatomy of Simplicity — What Was Truly Discovered and Why Nobody Thought of It Before).md",
+      "x": 3130,
+      "y": -300,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_1",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Be as Children and the Nature of Love — The Unified Invariant of Disintermediation, Bottom-Up Method and Ohm's Law Invariance).md",
+      "x": 3495,
+      "y": -300,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_2",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Buddha's Copernican Shift and Monastic Escapism — Why the Lack of Electrodynamics Led to Extinguishing Instead of Superconductivity in the Marketplace).md",
+      "x": 2400,
+      "y": -95,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_3",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Efficiency vs Load Power — Why Happiness is H and Not Watts, Anyan Metrology and Electrodynamic Isomorphism).md",
+      "x": 2765,
+      "y": -95,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_4",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Flashlight Circuit Alignment — Action-Gyō Load Triad and Deai Decoupling).md",
+      "x": 3130,
+      "y": -95,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_5",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (From Fragmented Biometrics to the Resonant Biocircuit — Why Sleep, Oxygen, Pulse and Stress Form the Physical Conductive Substrate of Happiness).md",
+      "x": 3495,
+      "y": -95,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_6",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Max Planck's Discovery — Quantum of Action, Blackbody Radiation, Planck's Principle and Circuit Electrodynamics of Truth).md",
+      "x": 2400,
+      "y": 110,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_7",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Practice of Kodo 2.0 — Field Manual for Olfactory Circuit Calibration via Real Fragrances — Bleu de Chanel, Versace Eros, Encre Noire, Oud Wood and Daily Operator Protocols).md",
+      "x": 2765,
+      "y": 110,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_8",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Samu of the Household Circuit — Car Wash, Cleaning and Laundry as Kyudo of Superconductivity).md",
+      "x": 3130,
+      "y": 110,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_9",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Blind Sensor vs Circuit Ontology — Why Fitness Trackers Measured Stress Without Happiness, The Thermometer Parable and Real-Time Telemetry).md",
+      "x": 3495,
+      "y": 110,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_10",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Body as Happiness Conductor — Overcoming Aesthetic Shame, Metabolic Resistance of Obesity and the Gym as Superconductivity Calibration).md",
+      "x": 2400,
+      "y": 315,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_11",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Child Hug vs Coconut Raff — Passive Resistive Dissipation vs Two-Reactor Transformer Induction, Equifinality Trap and Circuit Topology of Intimacy).md",
+      "x": 2765,
+      "y": 315,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_12",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Crutch Factory of Metaphysics — Why Superconductivity Renders Philosophy Obsolete, Happiness as Direct Action, Symphony, Hug and Tennis).md",
+      "x": 3130,
+      "y": 315,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_13",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Deai Protocol — Field Test Stand of Reality Contact, Impedance Matching and the Dissolution of Social Rejection Fear).md",
+      "x": 3495,
+      "y": 315,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_14",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Fitness Revolution — Somatic Superconductivity vs Aesthetic Shame, Pleasure Fallacy, and the Salvation of Gym Economics).md",
+      "x": 2400,
+      "y": 520,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_15",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Full-Stack of Consciousness — Computer Isomorphism from Body Assembly to the Natural Language of Civilization).md",
+      "x": 2765,
+      "y": 520,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_16",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Irrigation of Being — From Monastic Riverbank Monopoly to Engineering Canals of Happiness and Six Fields of Load).md",
+      "x": 3130,
+      "y": 520,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_17",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Layman's Self-Deception — How Man Explains the Loss of Hug Happiness Without Circuit Theory, External Object Fallacy, Conditional Contract and Repairing the Working Lightbulb).md",
+      "x": 3495,
+      "y": 520,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_18",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Marketplace Emperor Trap — Where Osho Got Stuck in the Ten Oxen Canon, Why 93 Rolls-Royces Refuted the 10th Stage of Zen and the Greatness of the Invisible Everyman).md",
+      "x": 2400,
+      "y": 725,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_19",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Marketplace Test — Demystification of Satori and Turiya, Why Monastic Superconductivity Was a Myth and How the Buddha Buys Potatoes at the Market).md",
+      "x": 2765,
+      "y": 725,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_20",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Nature of the Light Bulb and Zen Load).md",
+      "x": 3130,
+      "y": 725,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_21",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Paradox of World Discovery — Why Achievement Brings No Happiness, Circuit Self-Consistent Interlock and Superconductivity of the Gym).md",
+      "x": 3495,
+      "y": 725,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_22",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Shield of Six Lamps — Exhaustive Basis of Load and the Kanso Canon).md",
+      "x": 2400,
+      "y": 930,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_23",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Unfolded Circuit Sleep — Biomechanics of Supine Alignment, Palatal Vacuum Lock Against Airway Drop, 18-Point Stress Telemetry and Sensation of Flight).md",
+      "x": 2765,
+      "y": 930,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_24",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Universal Rosetta Stone — Decrypting the Seven Great Enigmas of Civilization — Love, Art, Addictions, Education, Power, Singularity and Evil).md",
+      "x": 3130,
+      "y": 930,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_load_25",
+      "type": "file",
+      "file": "02_Wiki/Брошюра — Биометрическая электродинамика (Тело как живой проводник, объективная телеметрия Smart Band и ночной расправленный контур).md",
+      "x": 3495,
+      "y": 930,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "group_ocean",
+      "type": "group",
+      "x": -1530,
+      "y": 3810,
+      "width": 2225,
+      "height": 1675,
+      "label": "🟣 ОКЕАН ЗАМКНУТОГО КОНТУРА (Обратный Провод Реальности и P2P-Суверенитет) (46 статей)",
+      "color": "6"
+    },
+    {
+      "id": "card_ocean_intro",
+      "type": "text",
+      "x": -1500,
+      "y": 3850,
+      "width": 705,
+      "height": 180,
+      "color": "6",
+      "text": "### ⚡ Закон Замкнутой Цепи и Депосреднизация\n\n• Баланс Кирхгофа: ток невозможен в разомкнутой цепи\n• Снятие синдрома Данко и вековых моделей жертвенности\n• Великий Изоморфизм: Внутренний ток + Биткоин + Единый налог Джорджа\n• Self-Hosted Human: суверенная Full Node духа."
+    },
+    {
+      "id": "file_ocean_0",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Any-anov and the Everyman Archetype — Linguistic Consilience, From the Medieval Morality Play to the 10th Ox-Herding Picture, and Why the Law of Direct Flow Belongs to Anyone).md",
+      "x": -770,
+      "y": 3850,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_1",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Architecture of Circuit Self-Respect — Emergent Nature of Consciousness, Closed Loop and the Post-Moral Hygiene Against Alcohol and Anger).md",
+      "x": -405,
+      "y": 3850,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_2",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Binary Metaphorical Optics — The Ukulele of Spirit-Matter Unity and The Flashlight of Closed Circuit).md",
+      "x": -40,
+      "y": 3850,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_3",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Biographical Consilience — The Taganrog Circuit, Tolstoy, Ukulele, Inline Hockey and the Asphalt Puck Invention).md",
+      "x": 325,
+      "y": 3850,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_4",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Closed Thermodynamic System as Criterion of Truth).md",
+      "x": -1500,
+      "y": 4055,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_5",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Demarcation of Emergence — From Abstract Description to the Sovereign Switch — The Five Distinctions of the Anyanov Circuit from Prigogine and Systems Theory).md",
+      "x": -1135,
+      "y": 4055,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_6",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Demarcation of Science — Why the Anyanov Law Transforms Consciousness into a Hard Science — Popper, Bacon, Kuhn and the Demise of Soul Alchemy).md",
+      "x": -770,
+      "y": 4055,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_7",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Engineering Epistemology and Bitcoin Law).md",
+      "x": -405,
+      "y": 4055,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_8",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Epistemological Audit of Doubts — Maslow's Hammer, Popper Falsifiability, Model Boundaries and the Bypass Detector).md",
+      "x": -40,
+      "y": 4055,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_9",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Evolution of Consciousness — Cambrian Explosion of Sentience vs Panpsychism, Proto-Experience and the Emergence of the Closed Loop).md",
+      "x": 325,
+      "y": 4055,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_10",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (From Hierarchy to Intelligence — Jack Dorsey's Block Manifesto, Disintermediation of Middle Management, Honest Signal and Circuit Superconductivity).md",
+      "x": -1500,
+      "y": 4260,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_11",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Genesis of the Anyanov System — Consilience of Zen, Bitcoin and Georgism as Transfer of System Laws to Soul Architecture).md",
+      "x": -1135,
+      "y": 4260,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_12",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Inner Current vs Gestalt and Behaviorism — Open Model vs Closed Circuit and the Break with Psychological Scholasticism).md",
+      "x": -770,
+      "y": 4260,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_13",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Is the Circuit Just a Metaphor — Structural Isomorphism vs Poetic Tropes, Operational Falsifiability and Demystification of Ineffable States).md",
+      "x": -405,
+      "y": 4260,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_14",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Levante's 'Vivo' and the Flashlight of Consciousness — Intuitive Sparks of Art vs The Sovereign Electrical Grid).md",
+      "x": -40,
+      "y": 4260,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_15",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Maslow's Hammer vs System Invariant — Consilience of Zen, Thermodynamics, Bitcoin and Georgism).md",
+      "x": 325,
+      "y": 4260,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_16",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Mathematics of Harmony and Consilience).md",
+      "x": -1500,
+      "y": 4465,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_17",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Not Finding Happiness, But Finding Its Formula — Verification, Scalability, Disintermediation of Masters and the Ten Flaws Eliminated by the Circuit Architecture).md",
+      "x": -1135,
+      "y": 4465,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_18",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Patanjali Yoga Sutras and Circuit Electrodynamics — Citta Vritti Nirodha as Superconductivity Phase Transition, Ashtanga as Hardware Alignment and Kaivalya as Thermodynamic Sovereignty).md",
+      "x": -770,
+      "y": 4465,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_19",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Surfaceology and Circuit Electrodynamics — Carolina Figueiredo's Geometric Revolution vs 50 Years of Feynman Diagrams, Collapsing Epicycles of Psychology and the Kanso Law of Direct Flow).md",
+      "x": -405,
+      "y": 4465,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_20",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Closed-Loop Breakthrough — Why the Circuit is Revolutionary vs 10,000 Years of Linear Open Models).md",
+      "x": -40,
+      "y": 4465,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_21",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Consilience of Haiku and Circuitry — The Rare Synthesis of Poetic Sensitivity and Engineering Architecture).md",
+      "x": 325,
+      "y": 4465,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_22",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Emergence of Life — Dissipative Structures, The Prigogine-Simmias Consilience and Circuit Superconductivity).md",
+      "x": -1500,
+      "y": 4670,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_23",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The First Seamless End-to-End Architecture of Consciousness — From Bit to Universe, Overcoming the Great Schism of Knowledge and Universal Isomorphism).md",
+      "x": -1135,
+      "y": 4670,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_24",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Five Protocols of Civilization and the Protocol of Happiness — English, TCP-IP, Mathematics, Bitcoin and the L1 Architecture of Conscious Superconductivity).md",
+      "x": -770,
+      "y": 4670,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_25",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Flashlight Epiphany — Frisson of Consilience, Irresistible Elegance of Everyday Circuitry and Why Truth Causes Goosebumps).md",
+      "x": -405,
+      "y": 4670,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_26",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Flashlight Outreach Protocol — Binary Resonance Funnel, Contact Cleaning vs 10,000 Years of Guilt, and the Sovereign Filter of Direct Flow).md",
+      "x": -40,
+      "y": 4670,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_27",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Four Great Disintermediations — Luther, George, Satoshi, Anyanov and the Implementation Paradox).md",
+      "x": 325,
+      "y": 4670,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_28",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Golden Seven as Epistemological Proof of Truth — Scale Invariance, Whewell's Consilience and Demarcation from Psychology).md",
+      "x": -1500,
+      "y": 4875,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_29",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Great Disintermediation of the Psyche — The Therapeutic Indulgence System vs The Sovereign Circuit Operator).md",
+      "x": -1135,
+      "y": 4875,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_30",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Great Isomorphism of Disintermediation — Satoshi Nakamoto Protocol vs Anyanov Protocol — P2P Sovereignty of the Soul).md",
+      "x": -770,
+      "y": 4875,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_31",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Henry George Principle — Single Tax, Bitcoin and Circuit Superconductivity — Law of Direct Flow and Elimination of Parasitic Rent).md",
+      "x": -405,
+      "y": 4875,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_32",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Master Science of Civilization — The Multiplier Law of Life, Summum Bonum and the Root Node — Why Material Progress Without the Closed Circuit Multiplies by Zero).md",
+      "x": -40,
+      "y": 4875,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_33",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Reverse Induction Effect and the Rosetta Stone of Reality — How Happiness Architecture Repays its Debt to Zen, Bitcoin and Georgism by Making Them Transparent Through the Unified Law of Direct Flow).md",
+      "x": 325,
+      "y": 4875,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_34",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Single Tax and Closed Circuit Isomorphism — Henry George Principle of Making All Other Problems Easier to Solve).md",
+      "x": -1500,
+      "y": 5080,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_35",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Steinmetz-Feynman Paradox — Why You Do Not Need to Know the Ultimate Nature of Electricity to Light the Room, Operational Sovereignty vs Metaphysical Scholasticism).md",
+      "x": -1135,
+      "y": 5080,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_36",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Tolstoy Paradox — Why 2,000 Years of Self-Improvement Failed and How Circuit Electrodynamics Replaced Moral Agony with a Closed Loop).md",
+      "x": -770,
+      "y": 5080,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_37",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (The Unified Taxonomy of Intermediaries — Esoterics, Psychotherapy and the Priestly Monopoly on Pain vs The Sovereign Circuit).md",
+      "x": -405,
+      "y": 5080,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_38",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Universal Atlas of Disintermediation — From Internet and Toyota to Mitochondria and Luther).md",
+      "x": -40,
+      "y": 5080,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_39",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Universal Optics of Direct Flow — Quadruple Consilience of Physics, Economics, Bitcoin and Art as Ultimate Truth Criterion).md",
+      "x": 325,
+      "y": 5080,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_40",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (What Bitcoin Did for Finance, Inner Current Did for Happiness).md",
+      "x": -1500,
+      "y": 5285,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_41",
+      "type": "file",
+      "file": "02_Wiki/Inner Current (Whitepaper — Variant 1 Satoshi Canon — Sovereign Thermodynamic Circuit).md",
+      "x": -1135,
+      "y": 5285,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_42",
+      "type": "file",
+      "file": "02_Wiki/Inner Current — The Protocol of Consciousness (The Bitcoin of Human Energy and Sovereign Superconductivity).md",
+      "x": -770,
+      "y": 5285,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_43",
+      "type": "file",
+      "file": "02_Wiki/Брошюра — Автомобиль сознания (140 лет от Карла Бенца к Архитектуре счастья — протокол OBD-II, семь контрольных ламп и отмена морального кнута).md",
+      "x": -405,
+      "y": 5285,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_44",
+      "type": "file",
+      "file": "02_Wiki/Брошюра — География контура (Почему Запад полирует резистор, Восток размыкает цепь, а Внутренний Ток родился в России).md",
+      "x": -40,
+      "y": 5285,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "file_ocean_45",
+      "type": "file",
+      "file": "02_Wiki/Брошюра — Протокол сознания (Биткоин человеческой энергии, Proof of Action и суверенная сверхпроводимость духа).md",
+      "x": 325,
+      "y": 5285,
+      "width": 340,
+      "height": 180
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge_tanden_mushin",
+      "fromNode": "group_tanden",
+      "fromSide": "right",
+      "toNode": "group_mushin",
+      "toSide": "left",
+      "label": "Чистая ЭДС (Ток Хоцу)",
+      "color": "3"
+    },
+    {
+      "id": "edge_tanden_bonno",
+      "fromNode": "group_tanden",
+      "fromSide": "top",
+      "toNode": "group_bonno",
+      "toSide": "left",
+      "label": "Аварийный шунт эго (Утечка)",
+      "color": "1"
+    },
+    {
+      "id": "edge_bonno_mushin",
+      "fromNode": "group_bonno",
+      "fromSide": "bottom",
+      "toNode": "group_mushin",
+      "toSide": "top",
+      "label": "Сброс балласта (Клинок Кансо: R → 0)",
+      "color": "5"
+    },
+    {
+      "id": "edge_mushin_load",
+      "fromNode": "group_mushin",
+      "fromSide": "right",
+      "toNode": "group_load",
+      "toSide": "left",
+      "label": "Прямой луч в действие (P = I²R_load)",
+      "color": "4"
+    },
+    {
+      "id": "edge_load_ocean",
+      "fromNode": "group_load",
+      "fromSide": "bottom",
+      "toNode": "group_ocean",
+      "toSide": "right",
+      "label": "Обратный провод реальности",
+      "color": "6"
+    },
+    {
+      "id": "edge_ocean_tanden",
+      "fromNode": "group_ocean",
+      "fromSide": "left",
+      "toNode": "group_tanden",
+      "toSide": "bottom",
+      "label": "Замыкание контура (Баланс Кирхгофа)",
+      "color": "3"
+    }
+  ]
+}

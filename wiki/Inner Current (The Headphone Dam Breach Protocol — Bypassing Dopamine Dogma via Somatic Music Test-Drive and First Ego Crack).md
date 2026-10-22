@@ -2,6 +2,12 @@
 title: "Inner Current: The Headphone Dam Breach Protocol — Bypassing Dopamine Dogma via Somatic Music Test-Drive and First Ego Crack"
 tags:
   - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - anyanov-system
   - dam-breach-protocol
   - headphone-trojan-horse

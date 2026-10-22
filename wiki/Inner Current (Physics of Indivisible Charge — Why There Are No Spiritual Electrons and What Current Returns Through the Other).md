@@ -2,6 +2,12 @@
 title: "Inner Current: Physics of Indivisible Charge — Why There Are No Spiritual Electrons and What Current Returns Through the Other"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/superconducting
   - quantum-monism
   - electrodynamics
   - closed-circuit

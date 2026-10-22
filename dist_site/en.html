@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inner Current — Applied Books & Engineering Guides</title>
+  <title>Внутренний ток — Библиотека «Золотая Семёрка 2.0» и Дом Внутреннего Тока</title>
   <meta name="description" content="Electrodynamics of consciousness and the architecture of the inner state. Seven practical books and guides: from emergency debugging of acute overload to applied acoustics and the synthesis of physics with consciousness.">
   
   <!-- Favicon -->
@@ -100,63 +100,325 @@
       transform: scale(1.02);
       transform-origin: center;
     }
+      /* ========================================================= */
+    /* LEFT SIDEBAR STYLES (INNERCURRENT.RU) */
+    /* ========================================================= */
+    .custom-sidebar-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-sidebar-scroll::-webkit-scrollbar-track {
+      background: rgba(9, 13, 22, 0.4);
+    }
+    .custom-sidebar-scroll::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 2px;
+    }
+    .custom-sidebar-scroll::-webkit-scrollbar-thumb:hover {
+      background: #f59e0b;
+    }
+    .sidebar-nav-item.active {
+      background: rgba(245, 158, 11, 0.12) !important;
+      border-color: rgba(245, 158, 11, 0.4) !important;
+      color: #fcd34d !important;
+      font-weight: 600 !important;
+    }
+    .sidebar-nav-item.active .sidebar-icon {
+      filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.6));
+    }
+
   </style>
 </head>
 <body class="selection:bg-amber-500 selection:text-slate-950 min-h-screen flex flex-col">
 
   <!-- ========================================================= -->
-  <!-- TOP STICKY NAVBAR -->
+  <!-- LEFT SIDEBAR & MOBILE DRAWER OVERLAY -->
   <!-- ========================================================= -->
-  <nav class="sticky top-0 z-50 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80 transition-all duration-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <!-- Brand -->
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 text-slate-950 font-black text-xl flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:scale-105 transition">
+  <div id="sidebar-backdrop" onclick="toggleSidebarMobile(false)" class="fixed inset-0 z-40 bg-slate-950/80 backdrop-blur-sm hidden transition-opacity duration-300 lg:hidden"></div>
+
+  <aside id="app-sidebar" class="fixed top-0 bottom-0 left-0 z-50 w-72 bg-[#070c18]/95 backdrop-blur-xl border-r border-slate-800/80 flex flex-col transition-transform duration-300 ease-in-out -translate-x-full lg:translate-x-0 shadow-2xl">
+    
+    <!-- Sidebar Header & Brand -->
+    <div class="h-16 px-4 border-b border-slate-800/80 flex items-center justify-between shrink-0 bg-slate-950/70">
+      <a href="#" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 text-slate-950 font-black text-lg flex items-center justify-center shadow-md shadow-amber-500/20 group-hover:scale-105 transition">
           ⚡
         </div>
         <div>
-          <div class="font-display font-bold text-base tracking-wide text-slate-100 group-hover:text-amber-300 transition">
+          <div class="font-display font-bold text-sm tracking-wide text-slate-100 group-hover:text-amber-300 transition">
             INNER CURRENT
           </div>
-          <div class="text-[10px] uppercase font-mono tracking-widest text-slate-400 font-semibold">
-            Library of Books
+          <div class="text-[9px] uppercase font-mono tracking-widest text-slate-400 font-semibold">
+            innercurrent.ru
           </div>
         </div>
       </a>
-
-      <!-- Desktop Nav Links -->
-      <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
-        <a href="#books" class="hover:text-amber-300 transition">Books</a>
-        <a href="#reader" class="hover:text-amber-300 transition">Online Reader</a>
-        <a href="#audiobook" class="hover:text-cyan-300 transition flex items-center gap-1.5">
-          <span>🎧</span> Audiobook
-        </a>
-        <a href="#flashlight" class="hover:text-amber-300 transition flex items-center gap-1.5">
-          <span>🔦</span> Zen Flashlight
-        </a>
-        <a href="/en/human/" class="hover:text-amber-300 transition flex items-center gap-1.5">
-          <span>🧘</span> Human Circuit
-        </a>
-        <a href="#monographs" class="hover:text-slate-100 transition">PDF Materials</a>
-        <a href="#principles" class="hover:text-slate-100 transition">Principles</a>
-      </div>
-
-      <!-- Language Switcher & Quick Action Buttons -->
-      <div class="flex items-center gap-3">
-        <!-- Language Switcher -->
-        <div class="flex items-center rounded-xl bg-slate-900 border border-slate-800 p-0.5 text-xs font-mono font-semibold" title="Language selection">
-          <a href="/" onclick="localStorage.setItem('inner_current_lang','ru')" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800/80 transition">RU</a>
-          <span class="px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold shadow-sm cursor-default">EN</span>
-        </div>
-        <a href="#audiobook" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition flex items-center gap-1.5 shadow-sm">
-          <span>🎧</span> <span class="hidden sm:inline">Listen</span>
-        </a>
-        <a href="#reader" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 transition flex items-center gap-1.5 shadow-md shadow-amber-500/20">
-          <span>📖</span> <span>Reader</span>
-        </a>
+      
+      <div class="flex items-center gap-1">
+        <!-- Collapse on Desktop -->
+        <button onclick="toggleSidebarDesktop()" title="Collapse sidebar [Ctrl+B or [ ]" class="hidden lg:flex p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/80 transition cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
+        </button>
+        <!-- Close on Mobile -->
+        <button onclick="toggleSidebarMobile(false)" title="Close menu" class="lg:hidden p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
       </div>
     </div>
-  </nav>
+
+    <!-- Telemetry Status Bar -->
+    <div class="px-4 py-2 bg-slate-900/60 border-b border-slate-800/60 flex items-center justify-between text-[11px] font-mono">
+      <span class="flex items-center gap-2 text-emerald-400 font-medium">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        Circuit Closed
+      </span>
+      <span class="text-slate-400 text-[10px]">7 Books • 500+ Arts.</span>
+    </div>
+
+    <!-- Live Section Search -->
+    <div class="p-3 border-b border-slate-800/60">
+      <div class="relative">
+        <input 
+          type="text" 
+          id="sidebar-search-input" 
+          oninput="filterSidebar(this.value)" 
+          placeholder="Search sections (press /)..." 
+          class="w-full bg-slate-950/80 border border-slate-800 focus:border-amber-500/60 rounded-xl px-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-amber-500/40 font-sans"
+        >
+        <span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-[10px] font-mono text-slate-500 pointer-events-none">/</span>
+      </div>
+    </div>
+
+    <!-- Navigation Scroll Container -->
+    <div id="sidebar-nav-container" class="flex-1 overflow-y-auto px-3 py-3 space-y-5 custom-sidebar-scroll">
+      
+      <!-- Group: Манифесты и Протоколы -->
+      <div class="sidebar-group">
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 px-2 mb-1.5 flex items-center justify-between">
+          <span>Manifestos &amp; Protocols</span>
+          <span class="text-amber-400">⚡</span>
+        </div>
+        <div class="space-y-1 text-xs">
+          <a href="manifesto.html" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-amber-400">⚡</span>
+              <span>Current Manifesto</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 font-bold">Free</span>
+          </a>
+          <a href="whitepaper.html" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-sky-400">📄</span>
+              <span>Master Whitepaper</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30 font-bold">L1</span>
+          </a>
+          <a href="#house" onclick="navigateSidebar('#house')" data-section="house" class="sidebar-nav-item flex items-center gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="sidebar-icon text-amber-400">🏛️</span>
+            <span>House of Inner Current</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Group: Библиотека Книг (Золотая Семёрка) -->
+      <div class="sidebar-group">
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 px-2 mb-1.5 flex items-center justify-between">
+          <span>Golden Seven 2.0</span>
+          <span class="text-slate-400">7 Books</span>
+        </div>
+        <div class="space-y-1 text-xs">
+          <a href="#books" onclick="navigateSidebar('#books')" data-section="books" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-amber-400">📚</span>
+              <span class="font-semibold">Все книги (Обзор)</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300">7 Volumes</span>
+          </a>
+          <a href="#reader" onclick="navigateSidebar('#reader')" data-section="reader" class="sidebar-nav-item flex items-center gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="sidebar-icon text-amber-300">📖</span>
+            <span class="font-semibold">Онлайн-ридер книг</span>
+          </a>
+          <a href="#audiobook" onclick="navigateSidebar('#audiobook')" data-section="audiobook" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-cyan-400">🎧</span>
+              <span class="font-semibold">Аудиокнига онлайн</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">Audio</span>
+          </a>
+
+          <!-- Вложенный список 7 книг для мгновенного чтения -->
+          <div class="pt-1.5 pl-2 border-l border-slate-800 ml-3 space-y-0.5 text-[11px]">
+            <button onclick="openBookFromSidebar('01_inner_current')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-amber-400 font-mono text-[10px]">1.</span>
+              <span class="truncate">Inner Current (Basis)</span>
+            </button>
+            <button onclick="openBookFromSidebar('02_quaternary_fractal')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-sky-400 font-mono text-[10px]">2.</span>
+              <span class="truncate">Quaternary Fractal (C₄)</span>
+            </button>
+            <button onclick="openBookFromSidebar('03_universal_law')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-indigo-400 font-mono text-[10px]">3.</span>
+              <span class="truncate">Universal Flow Law</span>
+            </button>
+            <button onclick="openBookFromSidebar('04_primer')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-pink-400 font-mono text-[10px]">4.</span>
+              <span class="truncate">Flashlight Primer (Ages 10+)</span>
+            </button>
+            <button onclick="openBookFromSidebar('05_field_manual')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-emerald-400 font-mono text-[10px]">5.</span>
+              <span class="truncate">Field Manual</span>
+            </button>
+            <button onclick="openBookFromSidebar('06_ukulele')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-amber-400 font-mono text-[10px]">6.</span>
+              <span class="truncate">Zen Ukulele of Being</span>
+            </button>
+            <button onclick="openBookFromSidebar('07_great_synthesis')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-amber-300 font-mono text-[10px]">7.</span>
+              <span class="truncate font-semibold text-amber-300">The Great Synthesis 2.0</span>
+            </button>
+            <button onclick="openBookFromSidebar('dual_circuit')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-amber-400 font-mono text-[10px]">⚡</span>
+              <span class="truncate text-amber-400/90 font-medium">Dual-Circuit Cascade</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group: Инструменты и Тренажеры -->
+      <div class="sidebar-group">
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 px-2 mb-1.5 flex items-center justify-between">
+          <span>Interactive Instruments</span>
+          <span class="text-slate-400">🎛️</span>
+        </div>
+        <div class="space-y-1 text-xs">
+          <a href="#flashlight" onclick="navigateSidebar('#flashlight')" data-section="flashlight" class="sidebar-nav-item flex items-center gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="sidebar-icon text-amber-400">🔦</span>
+            <span>Zen Flashlight (Circuit)</span>
+          </a>
+          <a href="/human/" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-sky-400">🧘</span>
+              <span>Human Circuit</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-sky-500/10 text-sky-300 border border-sky-500/20">3D</span>
+          </a>
+          <a href="trainer.html" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-amber-400">🎛️</span>
+              <span>Circuit Workbench</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">Lab</span>
+          </a>
+          <a href="cockpit.html" class="sidebar-nav-item flex items-center gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="sidebar-icon text-purple-400">📊</span>
+            <span>Superconductivity Cockpit</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Group: База Знаний и Документы -->
+      <div class="sidebar-group">
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 px-2 mb-1.5 flex items-center justify-between">
+          <span>Knowledge Base &amp; PDF</span>
+          <span class="text-slate-400">📚</span>
+        </div>
+        <div class="space-y-1 text-xs">
+          <a href="wiki.html" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-sky-400">📚</span>
+              <span>Wiki Reader (LLM Wiki)</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30 font-bold">500+</span>
+          </a>
+          <a href="#monographs" onclick="navigateSidebar('#monographs')" data-section="monographs" class="sidebar-nav-item flex items-center gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="sidebar-icon text-slate-400">📑</span>
+            <span>PDF Materials &amp; Guides</span>
+          </a>
+          <a href="/en/" onclick="setLanguage('en')" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon">🌐</span>
+              <span>Russian Edition</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300">RU</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Sidebar Footer -->
+    <div class="p-3 border-t border-slate-800/80 bg-slate-950/90 text-xs shrink-0 space-y-2">
+      <a href="https://t.me/inner_current" target="_blank" rel="noopener noreferrer" class="w-full py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-sky-500/40 text-slate-200 transition flex items-center justify-center gap-2 font-medium text-xs">
+        <span>💬</span> <span>Telegram Channel</span> ↗
+      </a>
+      <div class="text-[10px] text-center text-slate-400 font-mono">
+        © 2026 Владимир Аньянов
+      </div>
+    </div>
+  </aside>
+
+
+  <div id="main-layout" class="flex-1 flex flex-col min-w-0 transition-all duration-300 lg:pl-72">
+    <!-- TOP STICKY NAVBAR -->
+    <nav class="sticky top-0 z-40 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80 transition-all duration-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+        
+        <!-- Left: Sidebar Trigger & Brand -->
+        <div class="flex items-center gap-3">
+          <!-- Mobile Hamburger Button -->
+          <button onclick="toggleSidebarMobile(true)" class="lg:hidden p-2 rounded-xl bg-slate-900 border border-slate-800 text-amber-300 hover:bg-slate-800 transition cursor-pointer flex items-center gap-1.5" title="Открыть меню">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <span class="text-xs font-semibold">Menu</span>
+          </button>
+
+          <!-- Desktop Sidebar Toggle Button -->
+          <button id="desktop-sidebar-btn" onclick="toggleSidebarDesktop()" class="hidden lg:flex p-2 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-amber-300 hover:border-amber-500/40 transition cursor-pointer items-center gap-1.5" title="Toggle sidebar (Ctrl+B)">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
+            <span class="text-xs font-mono font-medium">Panel</span>
+          </button>
+
+          <!-- Brand -->
+          <a href="#" class="flex items-center gap-2.5 group">
+            <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 text-slate-950 font-black text-lg flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:scale-105 transition">
+              ⚡
+            </div>
+            <div>
+              <div class="font-display font-bold text-sm tracking-wide text-slate-100 group-hover:text-amber-300 transition">
+                INNER CURRENT
+              </div>
+              <div class="text-[9px] uppercase font-mono tracking-widest text-slate-400 font-semibold">
+                Library of Books
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Desktop Quick Nav Links -->
+        <div class="hidden xl:flex items-center gap-4 text-xs font-medium text-slate-300">
+          <a href="manifesto.html" class="hover:text-amber-200 transition flex items-center gap-1.5 text-amber-300 font-bold px-2.5 py-1 rounded-lg bg-amber-500/15 border border-amber-500/30"><span>⚡</span> Manifesto</a>
+          <a href="whitepaper.html" class="hover:text-sky-300 transition flex items-center gap-1.5 text-slate-300 font-semibold px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 hover:border-sky-500/40"><span>📄</span> White Paper</a>
+          <a href="#house" class="hover:text-amber-300 transition flex items-center gap-1 text-amber-400 font-semibold"><span>🏛️</span> House</a>
+          <a href="#books" class="hover:text-amber-300 transition">Books (7)</a>
+          <a href="wiki.html" class="hover:text-sky-300 transition flex items-center gap-1"><span>📚</span> Wiki</a>
+          <a href="trainer.html" class="hover:text-amber-300 transition flex items-center gap-1 text-slate-400"><span>🎛️</span> Workbench</a>
+        </div>
+
+        <!-- Quick Action Buttons -->
+        <div class="flex items-center gap-2">
+          <!-- Language Switcher -->
+          <div class="flex items-center rounded-xl bg-slate-900 border border-slate-800 p-0.5 text-xs font-mono font-semibold" title="Language selection">
+            <a href="/" onclick="setLanguage('ru')" class="px-2 py-1 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800/80 transition text-[11px]">RU</a>
+            <span class="px-2 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold shadow-sm cursor-default text-[11px]">EN</span>
+          </div>
+
+          <a href="#audiobook" class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition flex items-center gap-1.5 shadow-sm">
+            <span>🎧</span> <span class="hidden sm:inline">Audio</span>
+          </a>
+          <a href="#reader" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 transition flex items-center gap-1.5 shadow-md shadow-amber-500/20">
+            <span>📖</span> <span>Reader</span>
+          </a>
+        </div>
+      </div>
+    </nav>
 
   <!-- ========================================================= -->
   <!-- HERO SECTION -->
@@ -168,7 +430,7 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
       <!-- Badge -->
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-700/80 text-amber-300 text-xs font-mono font-medium tracking-wider mb-6">
-        <span>⚡</span> INNER CURRENT • 7 BOOKS & MANUALS
+        <span>🏛️</span> ANYANOV SYSTEM • GOLDEN SEVEN 2.0
       </div>
 
       <!-- Main Headline -->
@@ -181,7 +443,7 @@
 
       <!-- Subtitle -->
       <p class="max-w-3xl mx-auto mt-6 text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed font-serif">
-        Practical human electrodynamics: from rapid debugging of acute pain and overload to applied acoustics, somatics, and the synthesis of physical laws with the nature of consciousness.
+        Architecture of the "House of Inner Current": from somatic foundation (N=1) and quaternary fractal topology (C₄) to negentropy thermodynamics and macrohistory of civilization.
       </p>
 
       <!-- Stats Bar -->
@@ -206,14 +468,23 @@
 
       <!-- Quick Action Buttons -->
       <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
-        <a href="#reader" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-bold text-sm transition shadow-lg shadow-amber-500/25 flex items-center gap-2">
+        <a href="manifesto.html" class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-300 hover:from-amber-400 hover:to-amber-200 text-slate-950 font-black text-sm transition shadow-xl shadow-amber-500/30 flex items-center gap-2 transform hover:-translate-y-0.5">
+          <span class="text-base">⚡</span> <span>Read Manifesto</span>
+        </a>
+        <a href="whitepaper.html" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-sky-300 border border-sky-500/40 font-bold text-sm transition shadow-lg shadow-sky-500/10 flex items-center gap-2">
+          <span>📄</span> <span>White Paper</span>
+        </a>
+        <a href="#reader" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-300 border border-amber-500/40 font-bold text-sm transition shadow-lg shadow-amber-500/10 flex items-center gap-2">
           <span>📖</span> <span>Online Reader</span>
         </a>
         <a href="#audiobook" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-cyan-300 border border-cyan-500/40 font-semibold text-sm transition flex items-center gap-2 shadow-lg shadow-cyan-500/10">
           <span>🎧</span> <span>Audiobook Online</span>
         </a>
+        <a href="#house" class="px-6 py-3.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/40 font-semibold text-sm transition flex items-center gap-2 shadow-lg shadow-amber-500/10">
+          <span>🏛️</span> <span>House of Inner Current</span>
+        </a>
         <a href="#books" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold text-sm transition flex items-center gap-2">
-          <span>📚</span> <span>Overview of All Books</span>
+          <span>📚</span> <span>Overview (7 Books)</span>
         </a>
       </div>
     </div>
@@ -222,6 +493,140 @@
   <!-- ========================================================= -->
   <!-- SECTION: THE BOOKS SHOWCASE (7 BOOKS) -->
   <!-- ========================================================= -->
+    <!-- ========================================================= -->
+  <!-- SECTION: THE HOUSE OF INNER CURRENT (ДОМ ВНУТРЕННЕГО ТОКА) -->
+  <!-- ========================================================= -->
+  <section id="house" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-800/80">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30 text-xs font-mono font-medium tracking-wider mb-4">
+        <span>🏛️</span> АРХИТЕКТУРНАЯ МОДЕЛЬ «ФУНДАМЕНТ → СТЕНЫ → КРЫША»
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-100 font-display">
+        Дом Внутреннего Тока
+      </h2>
+      <p class="text-slate-300 text-sm sm:text-base mt-4 leading-relaxed font-serif">
+        Принцип познания природы строится строго снизу вверх (<span class="font-mono text-amber-300">Ordo cognoscendi</span>): от прямого соматического опыта живого тела (N=1) через инвариант систем (C₄) к космологическому закону термодинамики негэнтропии.
+      </p>
+    </div>
+
+    <!-- House Blueprint & Render Showcase Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-16">
+      
+      <!-- Left: Interactive Isometric Blueprint -->
+      <div class="lg:col-span-7 bg-slate-900/90 border border-amber-500/40 rounded-3xl p-4 sm:p-6 shadow-2xl relative group overflow-hidden box-glow-amber">
+        <div class="relative rounded-2xl overflow-hidden bg-slate-950">
+          <img src="assets/house_blueprint_cutaway.jpg" alt="Изометрический чертёж-разрез Дома Внутреннего Тока" class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+          <div class="absolute bottom-3 left-3 right-3 bg-slate-950/85 backdrop-blur-md border border-slate-800 p-3 rounded-xl flex items-center justify-between">
+            <div class="text-xs">
+              <div class="font-bold text-amber-300 font-mono">ЧЕРТЁЖ ДОМА ВНУТРЕННЕГО ТОКА</div>
+              <div class="text-[11px] text-slate-400">Трёхмерный архитектурный срез: Фундамент • Стены • Крыша</div>
+            </div>
+            <a href="assets/house_blueprint_cutaway.jpg" target="_blank" class="px-3 py-1.5 rounded-lg bg-amber-500 text-slate-950 text-xs font-bold transition hover:bg-amber-400">
+              Увеличить ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Tiers Breakdown -->
+      <div class="lg:col-span-5 space-y-4">
+        
+        <!-- Tier 3: Roof -->
+        <div class="p-5 rounded-2xl bg-gradient-to-r from-sky-950/30 to-slate-900 border border-sky-500/30 relative">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🌌</span>
+            <div>
+              <div class="text-[10px] font-mono text-sky-400 font-bold uppercase tracking-wider">КРЫША И КОСМИЧЕСКИЙ КУПОЛ</div>
+              <h4 class="text-base font-bold text-slate-100">Книга 3: Universal Flow Law потоковых систем</h4>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 mt-2 font-serif leading-relaxed">
+            Термодинамика негэнтропии, открытые системы, экспорт энтропии наружу и формула КПД бытия H = P_load / P_total.
+          </p>
+          <div class="mt-3 flex items-center gap-2">
+            <button onclick="readBookInReader('03_universal_law')" class="px-3 py-1.5 rounded-lg bg-sky-500/20 text-sky-300 border border-sky-500/40 text-xs font-semibold hover:bg-sky-500/30 transition">
+              📖 Read in Reader
+            </button>
+            <a href="../books/03_universal_law.pdf" download class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 text-xs font-medium hover:text-white transition">
+              📥 PDF (45 стр.)
+            </a>
+          </div>
+        </div>
+
+        <!-- Tier 2: Walls -->
+        <div class="p-5 rounded-2xl bg-gradient-to-r from-amber-950/30 to-slate-900 border border-amber-500/30 relative">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🏛️</span>
+            <div>
+              <div class="text-[10px] font-mono text-amber-400 font-bold uppercase tracking-wider">НЕСУЩИЕ СТЕНЫ И 4 КОЛОННЫ</div>
+              <h4 class="text-base font-bold text-slate-100">Книга 2: Четверичный фрактал цепи</h4>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 mt-2 font-serif leading-relaxed">
+            Топологический инвариант (C₄): 4 узла цепи в природе, клетке, человеке, Биткоине и обществе. Теория депосреднизации (Zero Parasitic Rent).
+          </p>
+          <div class="mt-3 flex items-center gap-2">
+            <button onclick="readBookInReader('02_quaternary_fractal')" class="px-3 py-1.5 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs font-semibold hover:bg-amber-500/30 transition">
+              📖 Read in Reader
+            </button>
+            <a href="../books/02_quaternary_fractal.pdf" download class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 text-xs font-medium hover:text-white transition">
+              📥 PDF (44 стр.)
+            </a>
+          </div>
+        </div>
+
+        <!-- Tier 1: Foundation -->
+        <div class="p-5 rounded-2xl bg-gradient-to-r from-amber-950/40 to-slate-900 border border-amber-500/50 relative shadow-lg shadow-amber-500/10">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🪨</span>
+            <div>
+              <div class="text-[10px] font-mono text-amber-300 font-bold uppercase tracking-wider">МОНОЛИТНЫЙ ФУНДАМЕНТ (N=1)</div>
+              <h4 class="text-base font-bold text-slate-100">Книга 1: Внутренний ток (Архитектура человека)</h4>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 mt-2 font-serif leading-relaxed">
+            Соматический базис человека: карманный фонарик, реактор Тандэн, проводник Мусин (R_ego → 0), закон Джоуля — Ленца.
+          </p>
+          <div class="mt-3 flex items-center gap-2">
+            <button onclick="readBookInReader('01_inner_current')" class="px-3 py-1.5 rounded-lg bg-amber-500 text-slate-950 font-bold text-xs hover:bg-amber-400 transition shadow-md shadow-amber-500/20">
+              📖 Read in Reader
+            </button>
+            <a href="../books/01_inner_current.pdf" download class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 text-xs font-medium hover:text-white transition">
+              📥 PDF (221 стр.)
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Additional Blueprint Downloads Gallery -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <a href="assets/house_blueprint_cutaway.jpg" target="_blank" class="p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-amber-400/50 transition flex items-center gap-3 group">
+        <span class="text-2xl group-hover:scale-110 transition">📐</span>
+        <div class="min-w-0">
+          <div class="text-xs font-bold text-slate-200 group-hover:text-amber-300 transition truncate">Изометрия Дома (3D Разрез)</div>
+          <div class="text-[10px] text-slate-400">Аксонометрический чертёж JPG ↗</div>
+        </div>
+      </a>
+      <a href="assets/house_blueprint_vector.png" target="_blank" class="p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-amber-400/50 transition flex items-center gap-3 group">
+        <span class="text-2xl group-hover:scale-110 transition">📊</span>
+        <div class="min-w-0">
+          <div class="text-xs font-bold text-slate-200 group-hover:text-amber-300 transition truncate">Архитектурная схема (2D)</div>
+          <div class="text-[10px] text-slate-400">Поэтажный план PNG / SVG ↗</div>
+        </div>
+      </a>
+      <a href="assets/house_concept_render.jpg" target="_blank" class="p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-amber-400/50 transition flex items-center gap-3 group">
+        <span class="text-2xl group-hover:scale-110 transition">🌄</span>
+        <div class="min-w-0">
+          <div class="text-xs font-bold text-slate-200 group-hover:text-amber-300 transition truncate">Концепт-арт Дома</div>
+          <div class="text-[10px] text-slate-400">Кинематографический рендер ↗</div>
+        </div>
+      </a>
+    </div>
+
+  </section>
+
   <section id="books" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-1">
     
     <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-10 pb-6 border-b border-slate-800">
@@ -247,67 +652,36 @@
       </div>
     </div>
 
-    <!-- 7 Books Grid -->
+        <!-- 7 Books Grid: Golden Seven 2.0 -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      <!-- Book 1: Field Manual -->
-      <div class="bg-gradient-to-b from-amber-950/20 to-slate-900 border border-amber-500/30 rounded-2xl p-6 shadow-xl flex flex-col justify-between relative group hover:border-amber-400 transition-all duration-300">
+      <!-- Book 01: Inner Current (Foundation) -->
+      <div class="bg-gradient-to-b from-amber-950/30 to-slate-900 border border-amber-500/40 rounded-2xl p-6 shadow-xl flex flex-col justify-between relative group hover:border-amber-400 transition-all duration-300 box-glow-amber">
         <div class="space-y-4">
           <div class="flex items-center justify-between">
-            <span class="text-3xl">🧰</span>
-            <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30 font-semibold">
-              Field Manual
+            <span class="text-3xl">🪨</span>
+            <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold">
+              Книга 1 • Фундамент (N=1)
             </span>
           </div>
           <div>
             <h3 class="text-lg font-bold text-slate-100 group-hover:text-amber-300 transition">
-              Inner Current: Debugging Field Manual
+              Внутренний ток: Архитектура Человека (Канон 3.0)
             </h3>
-            <p class="text-xs text-amber-400/90 font-medium mt-1">
-              Practical human engineering: when the wiring burns
+            <p class="text-xs text-amber-400 font-medium mt-1">
+              Канон Сверхпроводимости: соматика N=1, Русский синтез и протокол Self-Hosted Human
             </p>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed font-serif">
-            For those experiencing acute overload or pain right now. Express diagnostics of 4 emergency states, 5 relief protocols (somatic ground, Black Start, micro-load, Mushin), daily preventative maintenance.
+            Новейший канон на базе 400+ исследований: Русский синтез (Толстой, Достоевский, закон Джоуля — Ленца Q = I²·R·t), Акустический монизм (The Ukulele of Being), деконструкция 4 эпидемий цивилизации, бортовое табло OBD-II и соматический суверенитет человека перед лицом AGI.
           </p>
         </div>
         <div class="pt-5 mt-4 border-t border-slate-800/80 flex items-center gap-2">
-          <button onclick="readBookInReader('field_manual')" class="flex-1 py-2.5 px-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition text-center cursor-pointer shadow-md shadow-amber-500/20">
+          <button onclick="readBookInReader('01_inner_current')" class="flex-1 py-2.5 px-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition text-center cursor-pointer shadow-md shadow-amber-500/20">
             📖 Read in Reader
           </button>
-          <a href="../books/field_manual.html" target="_blank" title="Open in new tab" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
-            ↗
-          </a>
-        </div>
-      </div>
-
-      <!-- Book 2: Magnum Opus (Canonical) -->
-      <div class="bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between relative group hover:border-slate-700 transition-all duration-300">
-        <div class="space-y-4">
-          <div class="flex items-center justify-between">
-            <span class="text-3xl">🏛</span>
-            <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 font-semibold">
-              Master Treatise
-            </span>
-          </div>
-          <div>
-            <h3 class="text-lg font-bold text-slate-100 group-hover:text-cyan-300 transition">
-              Inner Current: The Architecture of Happiness
-            </h3>
-            <p class="text-xs text-cyan-400/90 font-medium mt-1">
-              Physics of superconductivity, Zen ontology, and exact engineering of the spirit
-            </p>
-          </div>
-          <p class="text-xs text-slate-300 leading-relaxed font-serif">
-            The complete fundamental treatise: 22 chapters, 850 pages. Synthesis of electrodynamics laws, Zen practice, decentralization principles, and creative action. Available in RU, EN, IT.
-          </p>
-        </div>
-        <div class="pt-5 mt-4 border-t border-slate-800/80 flex items-center gap-2">
-          <button onclick="readBookInReader('canonical')" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition text-center cursor-pointer border border-slate-700">
-            📖 Read in Reader
-          </button>
-          <a href="#audiobook" title="Listen to audiobook" class="p-2.5 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 text-xs transition cursor-pointer">
-            🎧
+          <a href="../books/01_inner_current.pdf" download title="Скачать PDF книги (221 стр.)" class="px-3 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-semibold transition flex items-center gap-1">
+            <span>📥</span> PDF (221 с.)
           </a>
           <a href="../book/en/index.html" target="_blank" title="Open in new tab" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
             ↗
@@ -315,67 +689,169 @@
         </div>
       </div>
 
-      <!-- Book 3: Copernicus -->
-      <div class="bg-gradient-to-b from-amber-950/15 via-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between relative group hover:border-amber-400 transition-all duration-300">
+      <!-- Book 02: Quaternary Fractal (Walls) -->
+      <div class="bg-gradient-to-b from-amber-950/20 to-slate-900 border border-amber-500/30 rounded-2xl p-6 shadow-xl flex flex-col justify-between relative group hover:border-amber-400 transition-all duration-300">
         <div class="space-y-4">
           <div class="flex items-center justify-between">
-            <span class="text-3xl">🪞</span>
+            <span class="text-3xl">🏛️</span>
             <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30 font-semibold">
-              Attention Anatomy
+              Книга 2 • Стены (C4)
             </span>
           </div>
           <div>
             <h3 class="text-lg font-bold text-slate-100 group-hover:text-amber-300 transition">
-              The Copernicus of Consciousness
+              Четверичный фрактал цепи
             </h3>
             <p class="text-xs text-amber-400/90 font-medium mt-1">
-              Anatomy of the ego and physics of inner freedom
+              Архитектурный инвариант природы: от клетки и фонарика до Биткоина и общества
             </p>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed font-serif">
-            Why resistance cannot be a conductor (<span class="font-mono text-amber-300">I_life ≠ R_ego</span>). Semmelweis effect, acoustics of a rattling ukulele peg, and the hot coal metaphor without mysticism or abstractions.
+            Архитектурно-топологический инвариант: 44 страницы. 4 узла контура (Источник → Проводник → Нагрузка → Обратный провод). Теория депосреднизации (Zero Parasitic Rent), Биткоин Сатоши Накамото и налог Генри Джорджа.
           </p>
         </div>
         <div class="pt-5 mt-4 border-t border-slate-800/80 flex items-center gap-2">
-          <button onclick="readBookInReader('copernicus')" class="flex-1 py-2.5 px-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition text-center cursor-pointer shadow-md shadow-amber-500/20">
+          <button onclick="readBookInReader('02_quaternary_fractal')" class="flex-1 py-2.5 px-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition text-center cursor-pointer shadow-md shadow-amber-500/20">
             📖 Read in Reader
           </button>
-          <a href="../books/copernicus.pdf" download title="Download PDF (1.5 MB)" class="px-3 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-semibold transition flex items-center gap-1">
-            <span>📥</span> PDF
+          <a href="../books/02_quaternary_fractal.pdf" download title="Скачать PDF книги (44 стр.)" class="px-3 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-semibold transition flex items-center gap-1">
+            <span>📥</span> PDF (44 с.)
           </a>
-          <a href="../books/copernicus.html" target="_blank" title="Open in new tab" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
+          <a href="../books/quaternary_fractal.html" target="_blank" title="Open in new tab" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
             ↗
           </a>
         </div>
       </div>
 
-      <!-- Book 4: Ukulele -->
-      <div class="bg-gradient-to-b from-sky-950/15 to-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between relative group hover:border-sky-500/40 transition-all duration-300">
+      <!-- Book 03: Universal Law (Roof) -->
+      <div class="bg-gradient-to-b from-sky-950/25 to-slate-900 border border-sky-500/30 rounded-2xl p-6 shadow-xl flex flex-col justify-between relative group hover:border-sky-400 transition-all duration-300 box-glow-cyan">
         <div class="space-y-4">
           <div class="flex items-center justify-between">
-            <span class="text-3xl">🎸</span>
+            <span class="text-3xl">🌌</span>
             <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full bg-sky-500/15 text-sky-300 border border-sky-500/30 font-semibold">
-              Acoustics • Somatics
+              Книга 3 • Крыша (Космос)
             </span>
           </div>
           <div>
             <h3 class="text-lg font-bold text-slate-100 group-hover:text-sky-300 transition">
-              The Ukulele of Being
+              Universal Flow Law потоковых систем
             </h3>
             <p class="text-xs text-sky-400/90 font-medium mt-1">
-              Simple acoustics of a harmonious life and the art of pure resonance
+              Термодинамика негэнтропии, открытые системы и КПД бытия
             </p>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed font-serif">
-            400 grams of wood, 4 strings, and the open resonance principle. A pocket somatic instrument to zero out internal resistance (<span class="font-mono text-sky-300">R → 0</span>) through auditory and body feedback.
+            Космологическая термодинамика: 45 страниц. Неравновесная физика Больцмана, Шрёдингера и Пригожина. Каноническая формула КПД потока H = P_load / P_total, три следствия и строгая фальсифицируемость по Карлу Попперу.
           </p>
         </div>
         <div class="pt-5 mt-4 border-t border-slate-800/80 flex items-center gap-2">
-          <button onclick="readBookInReader('ukulele')" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition text-center cursor-pointer border border-slate-700">
-            📖 Read in Reader
+          <button onclick="readBookInReader('03_universal_law')" class="flex-1 py-2.5 px-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs transition text-center cursor-pointer shadow-md shadow-sky-500/20">
+            📖 Читать в ридере
           </button>
-          <a href="../books/ukulele.pdf" download title="Download PDF (1.1 MB)" class="px-3 py-2.5 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 border border-sky-500/40 text-xs font-semibold transition flex items-center gap-1">
-            <span>📥</span> PDF
+          <a href="../books/03_universal_law.pdf" download title="Скачать PDF книги (45 стр.)" class="px-3 py-2.5 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 border border-sky-500/40 text-xs font-semibold transition flex items-center gap-1">
+            <span>📥</span> PDF (45 с.)
+          </a>
+          <a href="../books/universal_law.html" target="_blank" title="Open in new tab" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
+            ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Book 04: Kids Primer -->
+      <div class="bg-gradient-to-b from-amber-950/20 to-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between relative group hover:border-amber-500/40 transition-all duration-300">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">🧸</span>
+            <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30 font-semibold">
+              Книга 4 • Детская (10+)
+            </span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-slate-100 group-hover:text-amber-300 transition">
+              Тайна карманного фонарика
+            </h3>
+            <p class="text-xs text-amber-400/90 font-medium mt-1">
+              Внутренний ток для детей и подростков — как устроена твоя суперсила
+            </p>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed font-serif">
+            Детский праймер: 11 страниц. Батарейка в животике, кнопка действия и чистый луч внимания. Почему обижаться — это жечь свои проводки, и как сберечь проводимость с юных лет.
+          </p>
+        </div>
+        <div class="pt-5 mt-4 border-t border-slate-800/80 flex items-center gap-2">
+          <button onclick="readBookInReader('04_primer')" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition text-center cursor-pointer border border-slate-700">
+            📖 Читать в ридере
+          </button>
+          <a href="../books/04_flashlight_primer.pdf" download title="Скачать PDF книги (11 стр.)" class="px-3 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-semibold transition flex items-center gap-1">
+            <span>📥</span> PDF (11 с.)
+          </a>
+          <a href="../books/primer_flashlight.html" target="_blank" title="Open in new tab" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
+            ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Book 05: Field Manual -->
+      <div class="bg-gradient-to-b from-amber-950/20 to-slate-900 border border-amber-500/30 rounded-2xl p-6 shadow-xl flex flex-col justify-between relative group hover:border-amber-400 transition-all duration-300">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">🧰</span>
+            <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30 font-semibold">
+              Книга 5 • Аптечка (30 сек)
+            </span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-slate-100 group-hover:text-amber-300 transition">
+              Field Manual оператора
+            </h3>
+            <p class="text-xs text-amber-400/90 font-medium mt-1">
+              Карманная аптечка первой помощи — 30-секундный протокол соматической отладки
+            </p>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed font-serif">
+            Скорая помощь при остром стрессе и выгорании: 31 страница. Сброс аварийных кодов ошибок DTC OBD-II сознания, соматический сброс, запуск с толкача Black Start и тест мурашек.
+          </p>
+        </div>
+        <div class="pt-5 mt-4 border-t border-slate-800/80 flex items-center gap-2">
+          <button onclick="readBookInReader('05_field_manual')" class="flex-1 py-2.5 px-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition text-center cursor-pointer shadow-md shadow-amber-500/20">
+            📖 Читать в ридере
+          </button>
+          <a href="../books/05_field_manual.pdf" download title="Скачать PDF книги (31 стр.)" class="px-3 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-semibold transition flex items-center gap-1">
+            <span>📥</span> PDF (31 с.)
+          </a>
+          <a href="../books/field_manual.html" target="_blank" title="Open in new tab" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
+            ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Book 06: Ukulele of Being -->
+      <div class="bg-gradient-to-b from-sky-950/15 to-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between relative group hover:border-sky-500/40 transition-all duration-300">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">🎶</span>
+            <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full bg-sky-500/15 text-sky-300 border border-sky-500/30 font-semibold">
+              Книга 6 • Гостиная (Акустика)
+            </span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-slate-100 group-hover:text-sky-300 transition">
+              Укулеле Бытия
+            </h3>
+            <p class="text-xs text-sky-400/90 font-medium mt-1">
+              Акустическая физика счастливой жизни — материя, звук и резонанс Мусин
+            </p>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed font-serif">
+            Чувственный монизм: 46 страниц. 400 граммов дерева, 4 струны и снятие дуализма Декарта. Как звук рождается из материи без мистики, и почему струна под зажимом эго дребезжит.
+          </p>
+        </div>
+        <div class="pt-5 mt-4 border-t border-slate-800/80 flex items-center gap-2">
+          <button onclick="readBookInReader('06_ukulele')" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition text-center cursor-pointer border border-slate-700">
+            📖 Читать в ридере
+          </button>
+          <a href="../books/06_ukulele.pdf" download title="Скачать PDF книги (46 стр.)" class="px-3 py-2.5 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 border border-sky-500/40 text-xs font-semibold transition flex items-center gap-1">
+            <span>📥</span> PDF (46 с.)
           </a>
           <a href="../books/ukulele.html" target="_blank" title="Open in new tab" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
             ↗
@@ -383,95 +859,33 @@
         </div>
       </div>
 
-      <!-- Book 5: Kids Primer -->
-      <div class="bg-gradient-to-b from-indigo-950/15 to-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between relative group hover:border-indigo-500/40 transition-all duration-300">
-        <div class="space-y-4">
-          <div class="flex items-center justify-between">
-            <span class="text-3xl">🧒</span>
-            <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 font-semibold">
-              Primer • Ages 10+
-            </span>
-          </div>
-          <div>
-            <h3 class="text-lg font-bold text-slate-100 group-hover:text-indigo-300 transition">
-              Instructions for Your Supersuit
-            </h3>
-            <p class="text-xs text-indigo-400/90 font-medium mt-1">
-              A guide to the physics of inner equilibrium for teenagers
-            </p>
-          </div>
-          <p class="text-xs text-slate-300 leading-relaxed font-serif">
-            How the battery of attention is built, the wiring of genuine interest, 6 work bulbs, and how to protect against short circuits during stress. Circuitry without condescension.
-          </p>
-        </div>
-        <div class="pt-5 mt-4 border-t border-slate-800/80 flex items-center gap-2">
-          <button onclick="readBookInReader('primer')" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition text-center cursor-pointer border border-slate-700">
-            📖 Read in Reader
-          </button>
-          <a href="../books/primer.html" target="_blank" title="Open in new tab" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
-            ↗
-          </a>
-        </div>
-      </div>
-
-      <!-- Book 6: White Paper -->
-      <div class="bg-gradient-to-b from-emerald-950/15 to-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between relative group hover:border-emerald-500/40 transition-all duration-300">
-        <div class="space-y-4">
-          <div class="flex items-center justify-between">
-            <span class="text-3xl">📜</span>
-            <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 font-semibold">
-              Macro-Circuit
-            </span>
-          </div>
-          <div>
-            <h3 class="text-lg font-bold text-slate-100 group-hover:text-emerald-300 transition">
-              Inner Current: White Paper
-            </h3>
-            <p class="text-xs text-emerald-400/90 font-medium mt-1">
-              Sovereign thermodynamic circuit of spirit, resources, and society
-            </p>
-          </div>
-          <p class="text-xs text-slate-300 leading-relaxed font-serif">
-            The direct creative flow manifesto (Zero Parasitic Rent). Structural isomorphism between Bitcoin Protocol, Henry George's Single Tax, and the Inner Current framework.
-          </p>
-        </div>
-        <div class="pt-5 mt-4 border-t border-slate-800/80 flex items-center gap-2">
-          <a href="../books/whitepaper.pdf" download class="flex-1 py-2.5 px-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition text-center shadow-lg shadow-emerald-500/20">
-            📥 Download PDF
-          </a>
-          <a href="../books/whitepaper.pdf" target="_blank" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
-            ↗
-          </a>
-        </div>
-      </div>
-
-      <!-- Book 7: The Great Synthesis (Full Width Hero Card) -->
+      <!-- Book 07: The Great Synthesis (Master Edition 2.0 Full Width Hero Card) -->
       <div class="bg-gradient-to-b from-amber-950/25 via-slate-900 to-slate-950 border border-amber-500/40 rounded-2xl p-6 md:p-8 shadow-2xl flex flex-col justify-between relative group hover:border-amber-400 transition-all duration-300 md:col-span-2 lg:col-span-3 box-glow-amber">
         <div class="space-y-4">
           <div class="flex items-center justify-between">
-            <span class="text-4xl">👑</span>
+            <span class="text-4xl">📜</span>
             <span class="text-xs font-mono uppercase tracking-wider px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 font-semibold">
-              Book VII • The Great Synthesis
+              Книга 7 • Архив и библиотека (Макроистория)
             </span>
           </div>
           <div>
-            <h3 class="text-xl md:text-2xl font-bold text-slate-100 group-hover:text-amber-300 transition font-display">
-              The Great Synthesis: Revolutions of Matter, Tragedy of Spirit, and Human Electrodynamics
+            <h3 class="text-xl md:text-2xl font-black text-slate-100 group-hover:text-amber-300 transition font-display">
+              Великий Синтез (Master Edition 2.0)
             </h3>
             <p class="text-xs md:text-sm text-amber-400 font-medium mt-1">
-              Convergence of fundamental physics, engineering history, and the structure of consciousness
+              Революции материи, трагедия духа и электродинамика человека
             </p>
           </div>
           <p class="text-xs md:text-sm text-slate-300 leading-relaxed font-serif max-w-4xl">
-            How Copernicus, Newton, Watt, Faraday, Maxwell, Benz, Tsiolkovsky, and Satoshi transformed matter via closed circuits; why the moralistic whip in spiritual teachings caused ohmic overheat (<span class="font-mono text-amber-300">Q = I² R t</span>); and how human electrodynamics closes creative current into reality (<span class="font-mono text-amber-300">R_ego → 0</span>).
+            Макроисторический манифест: 52 страницы. 10 000 лет цивилизации: от открытия огня через конденсатор Уатта, автомобиль Карла Бенца и Биткоин к искусственному интеллекту. Преодоление 2500-летнего раскола Запада и Востока и замыкание двух абсолютных вершин познания (Дзен изнутри R_ego → 0 и диссипативные структуры Пригожина снаружи).
           </p>
         </div>
         <div class="pt-6 mt-4 border-t border-slate-800/80 flex flex-wrap items-center gap-3">
-          <button onclick="readBookInReader('great_synthesis')" class="flex-1 min-w-[200px] py-3 px-5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-bold text-sm transition text-center cursor-pointer shadow-lg shadow-amber-500/25 flex items-center justify-center gap-2">
+          <button onclick="readBookInReader('07_great_synthesis')" class="flex-1 min-w-[200px] py-3 px-5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-bold text-sm transition text-center cursor-pointer shadow-lg shadow-amber-500/25 flex items-center justify-center gap-2">
             <span>📖</span> <span>Read Online in Reader</span>
           </button>
-          <a href="../books/great_synthesis.pdf" download title="Download PDF (30 pages)" class="py-3 px-5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-sm font-semibold transition flex items-center gap-2">
-            <span>📥</span> Book PDF (30 pages)
+          <a href="../books/07_great_synthesis.pdf" download title="Скачать PDF книги (52 стр., Master Edition 2.0)" class="py-3 px-5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-sm font-semibold transition flex items-center gap-2">
+            <span>📥</span> PDF книги (52 стр., Master Edition 2.0)
           </a>
           <a href="../books/great_synthesis.html" target="_blank" title="Open in new tab" class="p-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-sm transition">
             ↗ Fullscreen
@@ -547,26 +961,32 @@
       
       <!-- Reader Header Bar -->
       <div class="bg-slate-950/95 border-b border-slate-800 p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4">
-        <div class="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 w-full sm:w-auto">
+                <div class="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 w-full sm:w-auto">
           <span class="text-xs text-slate-400 font-mono uppercase tracking-wider mr-2 hidden lg:inline">Reader:</span>
           
-          <button id="rbtn-canonical" onclick="readBookInReader('canonical')" class="px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-amber-500 text-slate-950 font-bold shrink-0">
-            🏛 Architecture of Happiness
+          <button id="rbtn-01_inner_current" onclick="readBookInReader('01_inner_current')" class="px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white shrink-0">
+            🪨 1. Внутренний ток
           </button>
-          <button id="rbtn-field_manual" onclick="readBookInReader('field_manual')" class="px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white shrink-0">
-            🧰 Field Manual
+          <button id="rbtn-02_quaternary_fractal" onclick="readBookInReader('02_quaternary_fractal')" class="px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white shrink-0">
+            🏛️ 2. Четверичный фрактал
           </button>
-          <button id="rbtn-copernicus" onclick="readBookInReader('copernicus')" class="px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white shrink-0">
-            🪞 Copernicus
+          <button id="rbtn-03_universal_law" onclick="readBookInReader('03_universal_law')" class="px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white shrink-0">
+            🌌 3. Universal Flow Law
           </button>
-          <button id="rbtn-ukulele" onclick="readBookInReader('ukulele')" class="px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white shrink-0">
-            🎸 Ukulele of Being
+          <button id="rbtn-04_primer" onclick="readBookInReader('04_primer')" class="px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white shrink-0">
+            🧸 4. Тайна фонарика
           </button>
-          <button id="rbtn-primer" onclick="readBookInReader('primer')" class="px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white shrink-0">
-            🧒 Primer
+          <button id="rbtn-05_field_manual" onclick="readBookInReader('05_field_manual')" class="px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-amber-500 text-slate-950 font-bold shrink-0 shadow-md shadow-amber-500/20">
+            🧰 5. Полевой мануал
           </button>
-          <button id="rbtn-great_synthesis" onclick="readBookInReader('great_synthesis')" class="px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white shrink-0">
-            👑 Great Synthesis
+          <button id="rbtn-06_ukulele" onclick="readBookInReader('06_ukulele')" class="px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white shrink-0">
+            🎶 6. Укулеле Бытия
+          </button>
+          <button id="rbtn-07_great_synthesis" onclick="readBookInReader('07_great_synthesis')" class="px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white shrink-0">
+            📜 7. Великий Синтез
+          </button>
+          <button id="rbtn-dual_circuit" onclick="readBookInReader('dual_circuit')" class="px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-slate-800 text-amber-300 border border-amber-500/30 hover:text-white hover:bg-slate-700 shrink-0">
+            ⚡ Двухконтурный человек
           </button>
         </div>
 
@@ -600,8 +1020,38 @@
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       
+      <!-- Item 0: Breakthrough Manifesto -->
+      <div class="bg-gradient-to-b from-amber-950/40 via-slate-900 to-slate-900 border border-amber-500/50 rounded-2xl p-5 flex flex-col justify-between hover:border-amber-400 transition shadow-lg shadow-amber-500/10 relative">
+        <div class="absolute -top-2.5 right-4 px-2 py-0.5 rounded-full bg-amber-500 text-slate-950 font-bold text-[9px] uppercase tracking-wider font-mono">
+          Манифест 2026
+        </div>
+        <div>
+          <span class="text-xs font-mono uppercase tracking-wider text-amber-300 font-bold">Brochure • PDF + Web</span>
+          <h4 class="text-base font-bold text-slate-100 mt-2">
+            Двухконтурный человек
+          </h4>
+          <p class="text-xs text-amber-400/90 font-mono text-[10px] mt-0.5">
+            Тело Пригожина (1977) и Дух Аньянова (2026)
+          </p>
+          <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+            Фундаментальный манифест: открытая система метаболизма против замкнутого квантового контура сознания. Парадокс здорового страдальца, вихрь в ванне и синдром сорванного яблока.
+          </p>
+        </div>
+        <div class="pt-4 mt-4 border-t border-slate-800 flex flex-wrap items-center gap-2">
+          <button onclick="readBookInReader('dual_circuit')" class="flex-1 py-2 px-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold text-center transition cursor-pointer shadow-sm">
+            📖 Читать
+          </button>
+          <a href="../books/dual_circuit.pdf" download class="py-2 px-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold text-center border border-slate-700 transition flex items-center justify-center gap-1">
+            <span>📥</span> PDF
+          </a>
+          <a href="../books/dual_circuit.html" target="_blank" title="Open in new tab" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
+            ↗
+          </a>
+        </div>
+      </div>
+
       <!-- Item 1 -->
       <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-700 transition">
         <div>
@@ -641,7 +1091,7 @@
       <!-- Item 3 -->
       <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-700 transition">
         <div>
-          <span class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold">Brochure • PDF</span>
+          <span class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold">Брошюра • PDF</span>
           <h4 class="text-base font-bold text-slate-100 mt-2">
             Triptych of Superconductivity — Levante
           </h4>
@@ -1038,15 +1488,21 @@
       <div class="flex flex-wrap items-center gap-4 text-xs text-slate-400">
         <span>© 2026 Inner Current</span>
         <span>•</span>
-        <span>MIT License (Open Source)</span>
+        <a href="manifesto.html" class="text-amber-300 font-bold hover:text-amber-200 transition">⚡ Manifesto</a>
         <span>•</span>
-        <a href="#books" class="hover:text-amber-300 transition">Books</a>
+        <a href="whitepaper.html" class="text-sky-300 font-semibold hover:text-sky-200 transition">📄 White Paper</a>
+        <span>•</span>
+        <a href="#books" class="hover:text-amber-300 transition">Books (7)</a>
+        <span>•</span>
+        <a href="#reader" class="hover:text-amber-300 transition">Reader</a>
         <span>•</span>
         <a href="#audiobook" class="hover:text-cyan-300 transition">Audiobook</a>
         <span>•</span>
-        <a href="../audiobook/index.html" target="_blank" class="hover:text-slate-200 transition">Studio ↗</a>
+        <a href="cockpit.html" class="hover:text-sky-300 transition">Cockpit OBD-II</a>
         <span>•</span>
-        <a href="/" onclick="localStorage.setItem('inner_current_lang','ru')" class="text-amber-400 hover:underline">Русская версия ↗</a>
+        <a href="wiki.html" class="hover:text-emerald-300 transition">Wiki (500+)</a>
+        <span>•</span>
+        <span>Open Source</span>
       </div>
 
     </div>
@@ -1056,25 +1512,48 @@
   <!-- JAVASCRIPT: READER LOGIC & AUDIO PLAYER LOGIC -->
   <!-- ========================================================= -->
   <script>
-    // --- 1. Interactive Book Reader Logic ---
+        // --- 1. Interactive Book Reader Logic (Golden Seven 2.0) ---
     const bookSrcMap = {
-      'canonical': '../book/en/index.html',
-      'field_manual': '../books/field_manual.html',
-      'copernicus': '../books/copernicus.html',
-      'ukulele': '../books/ukulele.html',
-      'primer': '../books/primer.html',
-      'great_synthesis': '../books/great_synthesis.html'
+      '01_inner_current': 'book/index.html',
+      '02_quaternary_fractal': 'books/quaternary_fractal.html',
+      '03_universal_law': 'books/universal_law.html',
+      '04_primer': 'books/primer_flashlight.html',
+      '05_field_manual': 'books/field_manual.html',
+      '06_ukulele': 'books/ukulele.html',
+      '07_great_synthesis': 'books/great_synthesis.html',
+      'dual_circuit': 'books/dual_circuit.html',
+      // backward aliases
+      'field_manual': 'books/field_manual.html',
+      'canonical': 'book/index.html',
+      'copernicus': 'books/copernicus.html',
+      'ukulele': 'books/ukulele.html',
+      'primer': 'books/primer_flashlight.html',
+      'great_synthesis': 'books/great_synthesis.html'
     };
 
     function readBookInReader(bookKey) {
       const iframe = document.getElementById('mainBookIframe');
       const extBtn = document.getElementById('readerExternalBtn');
-      const keys = ['field_manual', 'canonical', 'copernicus', 'ukulele', 'primer', 'great_synthesis'];
+      const keys = [
+        '01_inner_current', '02_quaternary_fractal', '03_universal_law',
+        '04_primer', '05_field_manual', '06_ukulele', '07_great_synthesis',
+        'dual_circuit'
+      ];
       
+      // map aliases to canonical keys for button highlighting
+      const aliasMap = {
+        'canonical': '01_inner_current',
+        'primer': '04_primer',
+        'field_manual': '05_field_manual',
+        'ukulele': '06_ukulele',
+        'great_synthesis': '07_great_synthesis'
+      };
+      const activeKey = aliasMap[bookKey] || bookKey;
+
       keys.forEach(k => {
         const btn = document.getElementById('rbtn-' + k);
         if (btn) {
-          if (k === bookKey) {
+          if (k === activeKey) {
             btn.className = 'px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-amber-500 text-slate-950 font-bold shrink-0 shadow-md shadow-amber-500/20';
           } else {
             btn.className = 'px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer bg-slate-800 text-slate-300 hover:text-white shrink-0';
@@ -1419,5 +1898,150 @@
       }
     }
   </script>
+  </div> <!-- /#main-layout -->
+
+  <!-- ========================================================= -->
+  <!-- SIDEBAR CONTROLLER & SCROLLSPY (INNERCURRENT.RU) -->
+  <!-- ========================================================= -->
+  <script>
+    function setLanguage(lang) { try { localStorage.setItem('inner_current_lang', lang); } catch(e){} }
+    function toggleSidebarMobile(open) {
+      const sidebar = document.getElementById('app-sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (!sidebar || !backdrop) return;
+      
+      if (open) {
+        sidebar.classList.remove('-translate-x-full');
+        sidebar.classList.add('translate-x-0');
+        backdrop.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        sidebar.classList.remove('translate-x-0');
+        backdrop.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function toggleSidebarDesktop() {
+      const sidebar = document.getElementById('app-sidebar');
+      const layout = document.getElementById('main-layout');
+      if (!sidebar || !layout) return;
+
+      const isCollapsed = sidebar.classList.contains('lg:-translate-x-full');
+      if (isCollapsed) {
+        // Развернуть
+        sidebar.classList.remove('lg:-translate-x-full');
+        layout.classList.remove('lg:pl-0');
+        layout.classList.add('lg:pl-72');
+        localStorage.setItem('innercurrent_sidebar_desktop', 'expanded');
+      } else {
+        // Свернуть
+        sidebar.classList.add('lg:-translate-x-full');
+        layout.classList.remove('lg:pl-72');
+        layout.classList.add('lg:pl-0');
+        localStorage.setItem('innercurrent_sidebar_desktop', 'collapsed');
+      }
+    }
+
+    // Восстановление состояния десктопного сайдбара
+    (function initSidebar() {
+      if (window.innerWidth >= 1024) {
+        const pref = localStorage.getItem('innercurrent_sidebar_desktop');
+        if (pref === 'collapsed') {
+          const sidebar = document.getElementById('app-sidebar');
+          const layout = document.getElementById('main-layout');
+          if (sidebar && layout) {
+            sidebar.classList.add('lg:-translate-x-full');
+            layout.classList.remove('lg:pl-72');
+            layout.classList.add('lg:pl-0');
+          }
+        }
+      }
+    })();
+
+    // Хоткей Ctrl+B или [ для быстрого переключения сайдбара
+    window.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey && e.key.toLowerCase() === 'b') || (e.key === '[' && !['INPUT', 'TEXTAREA'].includes(e.target.tagName))) {
+        e.preventDefault();
+        if (window.innerWidth >= 1024) {
+          toggleSidebarDesktop();
+        } else {
+          const sidebar = document.getElementById('app-sidebar');
+          const isOpen = !sidebar.classList.contains('-translate-x-full');
+          toggleSidebarMobile(!isOpen);
+        }
+      } else if (e.key === 'Escape') {
+        toggleSidebarMobile(false);
+      }
+    });
+
+    // Навигация по якорю с закрытием мобильного меню
+    function navigateSidebar(anchor) {
+      if (window.innerWidth < 1024) {
+        toggleSidebarMobile(false);
+      }
+    }
+
+    // Открытие книги в ридере из сайдбара
+    function openBookFromSidebar(bookKey) {
+      if (typeof readBookInReader === 'function') {
+        readBookInReader(bookKey);
+      }
+      const readerSection = document.getElementById('reader');
+      if (readerSection) {
+        readerSection.scrollIntoView({ behavior: 'smooth' });
+      }
+      if (window.innerWidth < 1024) {
+        toggleSidebarMobile(false);
+      }
+    }
+
+    // Живой фильтр разделов сайдбара
+    function filterSidebar(query) {
+      const q = (query || '').toLowerCase().trim();
+      const items = document.querySelectorAll('#sidebar-nav-container .sidebar-nav-item, #sidebar-nav-container button');
+      items.forEach(el => {
+        const text = el.textContent.toLowerCase();
+        if (!q || text.includes(q)) {
+          el.style.display = '';
+        } else {
+          el.style.display = 'none';
+        }
+      });
+    }
+
+    // Scrollspy: подсветка активного раздела в сайдбаре
+    (function initScrollspy() {
+      const sections = ['house', 'books', 'audiobook', 'reader', 'monographs', 'flashlight'];
+      const navItems = document.querySelectorAll('.sidebar-nav-item[data-section]');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        
+        sections.forEach(id => {
+          const el = document.getElementById(id);
+          if (el) {
+            const top = el.offsetTop - 140;
+            const height = el.offsetHeight;
+            if (scrollY >= top && scrollY < top + height) {
+              current = id;
+            }
+          }
+        });
+        
+        navItems.forEach(item => {
+          if (item.getAttribute('data-section') === current) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+      }, { passive: true });
+    })();
+  </script>
+
+  <script src="/assets/tracker.js" defer></script>
 </body>
 </html>

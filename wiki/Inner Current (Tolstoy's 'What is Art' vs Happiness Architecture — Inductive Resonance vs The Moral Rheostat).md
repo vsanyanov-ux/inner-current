@@ -3,7 +3,22 @@ created: 2026-09-26
 source: [[index|Wiki Index]]
 layer: III
 status: complete
-tags: [inner-current, tolstoy, art, aesthetics, inductive-resonance, faraday-maxwell, moral-rheostat, consilience, beethoven]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/epistemology
+  - state/overheating
+  - tolstoy
+  - art
+  - aesthetics
+  - inductive-resonance
+  - faraday-maxwell
+  - moral-rheostat
+  - consilience
+  - beethoven
 ---
 
 # 86. «Что такое искусство?» Льва Толстого vs Архитектура счастья: Индуктивный резонанс против морального реостата
@@ -145,7 +160,7 @@ $$\mathbf{Истина \longrightarrow Свобода \longrightarrow Счаст
 - [[02_Wiki/Inner Current (Levante's 'Vivo' and the Flashlight of Consciousness — Intuitive Sparks of Art vs The Sovereign Electrical Grid)|85. Леванте («Vivo») и Фонарик Сознания: Интуитивные искры искусства]]
 - [[02_Wiki/Inner Current (Tolstoy Existential Crisis vs Happiness Architecture)|27. Духовный кризис Льва Толстого vs Архитектура счастья]]
 - [[02_Wiki/Inner Current (Tolstoy and Osho — Two Views on Happiness)|36. Толстой и Ошо: два взгляда на счастье]]
-- [[02_Wiki/Inner Current (Loneliness and Solipsism — The Problem of Other Minds, Индуктивный резонанс эмпатии)|58. Одиночество и Солипсизм: Индуктивный резонанс эмпатии]]
+- [[02_Wiki/Inner Current (Loneliness and Solipsism — The Problem of Other Minds, Inductive Resonance and the Circuitry of Empathy)|58. Одиночество и Солипсизм: Индуктивный резонанс эмпатии]]
 - [[02_Wiki/Inner Current (The Anyanov Triad and Tetrad — Truth, Freedom, Happiness, Creation and the Biographical Proof)|47. Триада и Тетрада Аньянова: Истина, Свобода, Счастье, Созидание]]
 - [[index|Главный индекс LLM Wiki]]
 

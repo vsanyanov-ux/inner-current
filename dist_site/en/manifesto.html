@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Inner Current Manifesto — Consciousness Electrodynamics | innercurrent.ru/en</title>
+  <meta name="description" content="The Inner Current Manifesto: why we burn out, how human beings are actually wired, and why there is no battery inside the lightbulb. 500+ articles, 7 books, 100% open access.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+  <!-- Fonts & Math -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['Lora', 'Georgia', 'serif'],
+            display: ['Cinzel', 'serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            slate: {
+              850: '#111827',
+              900: '#090d16',
+              950: '#030712',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #030712;
+      color: #f1f5f9;
+      -webkit-font-smoothing: antialiased;
+    }
+    .text-glow-amber {
+      text-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+    }
+    .box-glow-amber {
+      box-shadow: 0 0 35px -5px rgba(245, 158, 11, 0.15);
+    }
+    .box-glow-cyan {
+      box-shadow: 0 0 35px -5px rgba(56, 189, 248, 0.15);
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    @keyframes electron-rush {
+      from { stroke-dashoffset: 60; }
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes glow-pulse {
+      0%, 100% { 
+        filter: drop-shadow(0 0 15px rgba(250, 204, 21, 0.7)) drop-shadow(0 0 35px rgba(245, 158, 11, 0.4)); 
+      }
+      50% { 
+        filter: drop-shadow(0 0 30px rgba(254, 240, 138, 0.95)) drop-shadow(0 0 60px rgba(250, 204, 21, 0.6)); 
+      }
+    }
+    .current-mushin-flowing {
+      stroke-dasharray: 8 8;
+      animation: electron-rush 0.7s linear infinite;
+    }
+    .gyo-bulb-active {
+      animation: glow-pulse 2.2s infinite ease-in-out;
+    }
+    .reading-content p {
+      margin-bottom: 1.5rem;
+      line-height: 1.85;
+      font-size: 1.125rem;
+    }
+    .reading-content h2 {
+      margin-top: 3rem;
+      margin-bottom: 1.25rem;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      color: #f8fafc;
+      letter-spacing: -0.01em;
+    }
+    .reading-content h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: #fcd34d;
+    }
+      /* ========================================================= */
+    /* LEFT SIDEBAR STYLES (INNERCURRENT.RU) */
+    /* ========================================================= */
+    .custom-sidebar-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-sidebar-scroll::-webkit-scrollbar-track {
+      background: rgba(9, 13, 22, 0.4);
+    }
+    .custom-sidebar-scroll::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 2px;
+    }
+    .custom-sidebar-scroll::-webkit-scrollbar-thumb:hover {
+      background: #f59e0b;
+    }
+    .sidebar-nav-item.active {
+      background: rgba(245, 158, 11, 0.12) !important;
+      border-color: rgba(245, 158, 11, 0.4) !important;
+      color: #fcd34d !important;
+      font-weight: 600 !important;
+    }
+    .sidebar-nav-item.active .sidebar-icon {
+      filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.6));
+    }
+
+  </style>
+</head>
+<body class="selection:bg-amber-500 selection:text-slate-950 min-h-screen flex flex-col">
+
+  <!-- ========================================================= -->
+  <!-- LEFT SIDEBAR & MOBILE DRAWER OVERLAY -->
+  <!-- ========================================================= -->
+  <div id="sidebar-backdrop" onclick="toggleSidebarMobile(false)" class="fixed inset-0 z-40 bg-slate-950/80 backdrop-blur-sm hidden transition-opacity duration-300 lg:hidden"></div>
+
+  <aside id="app-sidebar" class="fixed top-0 bottom-0 left-0 z-50 w-72 bg-[#070c18]/95 backdrop-blur-xl border-r border-slate-800/80 flex flex-col transition-transform duration-300 ease-in-out -translate-x-full lg:translate-x-0 shadow-2xl">
+    
+    <!-- Sidebar Header & Brand -->
+    <div class="h-16 px-4 border-b border-slate-800/80 flex items-center justify-between shrink-0 bg-slate-950/70">
+      <a href="index.html#" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 text-slate-950 font-black text-lg flex items-center justify-center shadow-md shadow-amber-500/20 group-hover:scale-105 transition">
+          ⚡
+        </div>
+        <div>
+          <div class="font-display font-bold text-sm tracking-wide text-slate-100 group-hover:text-amber-300 transition">
+            INNER CURRENT
+          </div>
+          <div class="text-[9px] uppercase font-mono tracking-widest text-slate-400 font-semibold">
+            innercurrent.ru/en
+          </div>
+        </div>
+      </a>
+      
+      <div class="flex items-center gap-1">
+        <!-- Collapse on Desktop -->
+        <button onclick="toggleSidebarDesktop()" title="Collapse sidebar [Ctrl+B or [ ]" class="hidden lg:flex p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/80 transition cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
+        </button>
+        <!-- Close on Mobile -->
+        <button onclick="toggleSidebarMobile(false)" title="Close menu" class="lg:hidden p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Telemetry Status Bar -->
+    <div class="px-4 py-2 bg-slate-900/60 border-b border-slate-800/60 flex items-center justify-between text-[11px] font-mono">
+      <span class="flex items-center gap-2 text-emerald-400 font-medium">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        Circuit Closed
+      </span>
+      <span class="text-slate-400 text-[10px]">7 Books • 500+ Arts.</span>
+    </div>
+
+    <!-- Live Section Search -->
+    <div class="p-3 border-b border-slate-800/60">
+      <div class="relative">
+        <input 
+          type="text" 
+          id="sidebar-search-input" 
+          oninput="filterSidebar(this.value)" 
+          placeholder="Быстрый поиск раздела..." 
+          class="w-full bg-slate-950/80 border border-slate-800 focus:border-amber-500/60 rounded-xl px-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-amber-500/40 font-sans"
+        >
+        <span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-[10px] font-mono text-slate-500 pointer-events-none">/</span>
+      </div>
+    </div>
+
+    <!-- Navigation Scroll Container -->
+    <div id="sidebar-nav-container" class="flex-1 overflow-y-auto px-3 py-3 space-y-5 custom-sidebar-scroll">
+      
+      <!-- Group: Манифесты и Протоколы -->
+      <div class="sidebar-group">
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 px-2 mb-1.5 flex items-center justify-between">
+          <span>Manifestos &amp; Protocols</span>
+          <span class="text-amber-400">⚡</span>
+        </div>
+        <div class="space-y-1 text-xs">
+          <a href="manifesto.html" class="sidebar-nav-item active flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-amber-400">⚡</span>
+              <span>Current Manifesto</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 font-bold">Free</span>
+          </a>
+          <a href="whitepaper.html" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-sky-400">📄</span>
+              <span>Master Whitepaper</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30 font-bold">L1</span>
+          </a>
+          <a href="index.html#house" onclick="navigateSidebar('index.html#house')" data-section="house" class="sidebar-nav-item flex items-center gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="sidebar-icon text-amber-400">🏛️</span>
+            <span>House of Inner Current</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Group: Библиотека Книг (Золотая Семёрка) -->
+      <div class="sidebar-group">
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 px-2 mb-1.5 flex items-center justify-between">
+          <span>Golden Seven 2.0</span>
+          <span class="text-slate-400">7 Books</span>
+        </div>
+        <div class="space-y-1 text-xs">
+          <a href="index.html#books" onclick="navigateSidebar('index.html#books')" data-section="books" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-amber-400">📚</span>
+              <span class="font-semibold">All Books (Overview)</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300">7 Volumes</span>
+          </a>
+          <a href="index.html#reader" onclick="navigateSidebar('index.html#reader')" data-section="reader" class="sidebar-nav-item flex items-center gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="sidebar-icon text-amber-300">📖</span>
+            <span class="font-semibold">Online Book Reader</span>
+          </a>
+          <a href="index.html#audiobook" onclick="navigateSidebar('index.html#audiobook')" data-section="audiobook" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-cyan-400">🎧</span>
+              <span class="font-semibold">Аудиокнига онлайн</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">Audio</span>
+          </a>
+
+          <!-- Вложенный список 7 книг для мгновенного чтения -->
+          <div class="pt-1.5 pl-2 border-l border-slate-800 ml-3 space-y-0.5 text-[11px]">
+            <button onclick="openBookFromSidebar('01_inner_current')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-amber-400 font-mono text-[10px]">1.</span>
+              <span class="truncate">Inner Current (Basis)</span>
+            </button>
+            <button onclick="openBookFromSidebar('02_quaternary_fractal')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-sky-400 font-mono text-[10px]">2.</span>
+              <span class="truncate">Quaternary Fractal (C₄)</span>
+            </button>
+            <button onclick="openBookFromSidebar('03_universal_law')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-indigo-400 font-mono text-[10px]">3.</span>
+              <span class="truncate">Universal Flow Law</span>
+            </button>
+            <button onclick="openBookFromSidebar('04_primer')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-pink-400 font-mono text-[10px]">4.</span>
+              <span class="truncate">Flashlight Primer (Ages 10+)</span>
+            </button>
+            <button onclick="openBookFromSidebar('05_field_manual')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-emerald-400 font-mono text-[10px]">5.</span>
+              <span class="truncate">Field Manual</span>
+            </button>
+            <button onclick="openBookFromSidebar('06_ukulele')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-amber-400 font-mono text-[10px]">6.</span>
+              <span class="truncate">Zen Ukulele of Being</span>
+            </button>
+            <button onclick="openBookFromSidebar('07_great_synthesis')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-amber-300 font-mono text-[10px]">7.</span>
+              <span class="truncate font-semibold text-amber-300">The Great Synthesis 2.0</span>
+            </button>
+            <button onclick="openBookFromSidebar('dual_circuit')" class="w-full text-left px-2 py-1.5 rounded-lg text-slate-400 hover:text-amber-200 hover:bg-slate-800/40 transition flex items-center gap-2">
+              <span class="text-amber-400 font-mono text-[10px]">⚡</span>
+              <span class="truncate text-amber-400/90 font-medium">Dual-Circuit Cascade</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group: Инструменты и Тренажеры -->
+      <div class="sidebar-group">
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 px-2 mb-1.5 flex items-center justify-between">
+          <span>Interactive Instruments</span>
+          <span class="text-slate-400">🎛️</span>
+        </div>
+        <div class="space-y-1 text-xs">
+          <a href="index.html#flashlight" onclick="navigateSidebar('index.html#flashlight')" data-section="flashlight" class="sidebar-nav-item flex items-center gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="sidebar-icon text-amber-400">🔦</span>
+            <span>Zen Flashlight (Circuit)</span>
+          </a>
+          <a href="/human/" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-sky-400">🧘</span>
+              <span>Human Circuit</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-sky-500/10 text-sky-300 border border-sky-500/20">3D</span>
+          </a>
+          <a href="trainer.html" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-amber-400">🎛️</span>
+              <span>Circuit Workbench</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">Lab</span>
+          </a>
+          <a href="cockpit.html" class="sidebar-nav-item flex items-center gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="sidebar-icon text-purple-400">📊</span>
+            <span>Superconductivity Cockpit</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Group: База Знаний и Документы -->
+      <div class="sidebar-group">
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 px-2 mb-1.5 flex items-center justify-between">
+          <span>Knowledge Base &amp; PDF</span>
+          <span class="text-slate-400">📚</span>
+        </div>
+        <div class="space-y-1 text-xs">
+          <a href="wiki.html" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon text-sky-400">📚</span>
+              <span>Wiki Reader (LLM Wiki)</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30 font-bold">500+</span>
+          </a>
+          <a href="index.html#monographs" onclick="navigateSidebar('index.html#monographs')" data-section="monographs" class="sidebar-nav-item flex items-center gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="sidebar-icon text-slate-400">📑</span>
+            <span>PDF Materials &amp; Guides</span>
+          </a>
+          <a href="/manifesto.html" onclick="setLanguage('ru')" class="sidebar-nav-item flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent transition">
+            <span class="flex items-center gap-2">
+              <span class="sidebar-icon">🌐</span>
+              <span>Russian Edition</span>
+            </span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300">RU</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Sidebar Footer -->
+    <div class="p-3 border-t border-slate-800/80 bg-slate-950/90 text-xs shrink-0 space-y-2">
+      <a href="https://t.me/inner_current" target="_blank" rel="noopener noreferrer" class="w-full py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-sky-500/40 text-slate-200 transition flex items-center justify-center gap-2 font-medium text-xs">
+        <span>💬</span> <span>Telegram Channel</span> ↗
+      </a>
+      <div class="text-[10px] text-center text-slate-400 font-mono">
+        © 2026 Владимир Аньянов
+      </div>
+    </div>
+  </aside>
+
+
+  <div id="main-layout" class="flex-1 flex flex-col min-w-0 transition-all duration-300 lg:pl-72">
+    <!-- TOP STICKY NAVBAR -->
+    <nav class="sticky top-0 z-40 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 transition-all duration-200">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+        <!-- Left: Sidebar Trigger & Brand -->
+        <div class="flex items-center gap-3">
+          <button onclick="toggleSidebarMobile(true)" class="lg:hidden p-2 rounded-xl bg-slate-900 border border-slate-800 text-amber-300 hover:bg-slate-800 transition cursor-pointer flex items-center gap-1.5" title="Open menu">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <span class="text-xs font-semibold">Menu</span>
+          </button>
+          <button id="desktop-sidebar-btn" onclick="toggleSidebarDesktop()" class="hidden lg:flex p-2 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-amber-300 hover:border-amber-500/40 transition cursor-pointer items-center gap-1.5" title="Toggle sidebar (Ctrl+B)">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
+            <span class="text-xs font-mono font-medium">Panel</span>
+          </button>
+          <a href="index.html" class="flex items-center gap-2.5 group">
+            <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 text-slate-950 font-black text-lg flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:scale-105 transition">⚡</div>
+            <div>
+              <div class="font-display font-bold text-sm tracking-wide text-slate-100 group-hover:text-amber-300 transition">INNER CURRENT</div>
+              <div class="text-[9px] uppercase font-mono tracking-widest text-slate-400 font-semibold">Current Manifesto</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Desktop Nav Links -->
+        <div class="hidden md:flex items-center gap-5 text-xs font-medium text-slate-300">
+          <a href="index.html" class="hover:text-amber-300 transition flex items-center gap-1"><span>←</span> Home</a>
+          <a href="whitepaper.html" class="text-sky-300 hover:text-sky-200 transition flex items-center gap-1 font-semibold"><span>📄</span> White Paper</a>
+          <a href="/en/flashlight/" class="hover:text-amber-300 transition flex items-center gap-1"><span>🔦</span> Flashlight</a>
+          <a href="/en/human/" class="hover:text-amber-300 transition flex items-center gap-1"><span>🧘</span> Human Circuit</a>
+          <a href="wiki.html" class="hover:text-emerald-300 transition flex items-center gap-1"><span>📚</span> Wiki</a>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <!-- Language Switcher -->
+          <div class="flex items-center rounded-xl bg-slate-900 border border-slate-800 p-0.5 text-xs font-mono font-semibold" title="Выбор языка / Language selection">
+            <span class="px-2 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold shadow-sm cursor-default text-[11px]">RU</span>
+            <a href="/manifesto.html" onclick="setLanguage('ru')" class="px-2 py-1 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800/80 transition text-[11px]">EN</a>
+          </div>
+          <a href="books/manifesto.pdf" download class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 transition flex items-center gap-1.5 shadow-md shadow-amber-500/20" title="Скачать Манифест в PDF">
+            <span>📥</span> <span>Скачать PDF</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+  <!-- ========================================================= -->
+  <!-- HERO SECTION -->
+  <!-- ========================================================= -->
+  <header class="relative pt-12 pb-16 md:pt-20 md:pb-20 overflow-hidden border-b border-slate-800/80 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/3 left-1/4 -translate-y-1/2 w-[400px] h-[300px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-amber-500/30 text-amber-300 text-xs font-mono font-medium tracking-wider mb-6 box-glow-amber">
+        <span>⚡</span> ANYANOV SYSTEM • MANIFESTO OF THE SOVEREIGN HUMAN
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-100 font-display leading-tight">
+        The Inner Current <br class="hidden sm:inline"/>
+        <span class="bg-gradient-to-r from-amber-400 via-amber-300 to-sky-300 bg-clip-text text-transparent text-glow-amber">
+          Manifesto
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="max-w-2xl mx-auto mt-6 text-lg sm:text-xl text-slate-300 leading-relaxed font-serif">
+        Consciousness electrodynamics: why we burn out, how human beings are actually wired, and why there is no battery inside the lightbulb.
+      </p>
+
+      <!-- Key Stats Bar -->
+      <div class="max-w-3xl mx-auto mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 text-left">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 backdrop-blur-sm">
+          <div class="text-2xl font-black text-amber-400 font-mono">500+</div>
+          <div class="text-xs text-slate-400 mt-0.5 font-medium">Articles in Knowledge Base</div>
+        </div>
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 backdrop-blur-sm">
+          <div class="text-2xl font-black text-sky-400 font-mono">7</div>
+          <div class="text-xs text-slate-400 mt-0.5 font-medium">Golden Seven Books</div>
+        </div>
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 backdrop-blur-sm">
+          <div class="text-2xl font-black text-emerald-400 font-mono">3 языка</div>
+          <div class="text-xs text-slate-400 mt-0.5 font-medium">RU • EN • IT</div>
+        </div>
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 backdrop-blur-sm">
+          <div class="text-2xl font-black text-indigo-400 font-mono">100%</div>
+          <div class="text-xs text-slate-400 mt-0.5 font-medium">Free &amp; Open Access</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================= -->
+  <!-- MAIN READING CONTAINER -->
+  <!-- ========================================================= -->
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+
+    <!-- Quote Epigraph Callout -->
+    <div class="relative bg-gradient-to-r from-amber-500/10 via-slate-900 to-slate-900 border-l-4 border-amber-400 p-6 sm:p-8 rounded-r-2xl mb-14 shadow-2xl">
+      <div class="text-amber-400 font-mono text-xs uppercase tracking-widest font-semibold mb-3 flex items-center gap-2">
+        <span>⚡</span> Core Axiom of the Sovereign Circuit
+      </div>
+      <blockquote class="font-serif italic text-slate-200 text-lg sm:text-xl leading-relaxed">
+        “For two and a half thousand years, civilization treated human suffering either as mystical punishment requiring prayers and submission, or as an endless psychological drama requiring decades of psychoanalysis. No one dared to ask a simple engineering question: by what physical laws does the current of your attention flow right now? A human being is wired no more complexly than a pocket flashlight: you have a living somatic generator in the lower abdomen, you have the conductor of attention, and you have real action in the world. When attention shorts into itself in fear and ego-vanity — the wiring turns red-hot according to the Joule–Lenz law. This is not a moral defect of your soul. This is physical ohmic overheating of a resistor during a short circuit. Disconnect the parasitic resistance, direct current into action — and in that very second, superconductivity arrives.”
+      </blockquote>
+      <div class="mt-4 text-right font-display text-amber-300 text-sm font-bold tracking-wide">
+        — Vladimir Anyanov
+      </div>
+    </div>
+
+    <!-- Visual Schematic: Interactive SVG Flashlight Circuit -->
+    <div class="bg-slate-900/90 border border-amber-500/30 rounded-3xl p-6 sm:p-8 mb-16 shadow-2xl box-glow-amber">
+      <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+        <div class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider flex items-center gap-2">
+          <span>📐</span> Principal Electrical Circuit of a Human Being
+        </div>
+        <div class="text-[11px] font-mono text-slate-400">
+          ZEN FLASHLIGHT CIRCUIT (Kanso v2.2)
+        </div>
+      </div>
+
+      <!-- SVG Circuit Diagram -->
+      <div class="w-full overflow-x-auto py-4">
+        <svg viewBox="0 0 740 280" class="w-full min-w-[620px] h-auto font-mono text-xs select-none">
+          <defs>
+            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#fbbf24" />
+              <stop offset="100%" stop-color="#d97706" />
+            </linearGradient>
+            <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#38bdf8" />
+              <stop offset="100%" stop-color="#0284c7" />
+            </linearGradient>
+            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="5" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+          </defs>
+
+          <!-- Circuit Wire: Upper (Attention Flow) -->
+          <path d="M 170 80 L 570 80" stroke="#f59e0b" stroke-width="3" fill="none" class="current-mushin-flowing" />
+          <!-- Circuit Wire: Lower (Return Loop of Action) -->
+          <path d="M 570 200 L 170 200" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="6 6" fill="none" opacity="0.75" />
+
+          <!-- Left Box: Tanden Reactor (Battery / EMF) -->
+          <g transform="translate(40, 50)">
+            <rect width="130" height="180" rx="16" fill="#0f172a" stroke="#f59e0b" stroke-width="2.5" filter="url(#glow)"/>
+            <text x="65" y="32" fill="#fbbf24" font-size="13" font-weight="bold" text-anchor="middle" font-family="'Cinzel', serif">TANDEN</text>
+            <text x="65" y="50" fill="#94a3b8" font-size="10" text-anchor="middle">丹田 • Source of EMF</text>
+            <circle cx="65" cy="95" r="28" fill="#f59e0b" opacity="0.15" />
+            <circle cx="65" cy="95" r="18" fill="#f59e0b" opacity="0.3" class="animate-ping" style="animation-duration: 3s;"/>
+            <text x="65" y="101" fill="#fef08a" font-size="20" font-weight="black" text-anchor="middle">⚡</text>
+            <text x="65" y="145" fill="#e2e8f0" font-size="9" text-anchor="middle">Living Body (Lower belly)</text>
+            <text x="65" y="160" fill="#38bdf8" font-size="9" text-anchor="middle">Biochemical drive</text>
+          </g>
+
+          <!-- Middle Box: Ego Resistor (Parasitic Ohmic Loss) -->
+          <g transform="translate(290, 40)">
+            <rect width="160" height="80" rx="12" fill="#18181b" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="4 2"/>
+            <text x="80" y="24" fill="#f87171" font-size="11" font-weight="bold" text-anchor="middle">EGO RESISTOR (R_ego)</text>
+            <text x="80" y="42" fill="#fca5a5" font-size="9" text-anchor="middle">R_past + R_future + R_opinion</text>
+            <text x="80" y="62" fill="#ef4444" font-size="10" font-weight="bold" text-anchor="middle">Ohmic Burn Q = I²·R·t</text>
+          </g>
+
+          <!-- Right Box: Gyō / Load (Bulb / External Action) -->
+          <g transform="translate(570, 50)">
+            <rect width="130" height="180" rx="16" fill="#0f172a" stroke="#fbbf24" stroke-width="2.5" class="gyo-bulb-active"/>
+            <text x="65" y="32" fill="#fef08a" font-size="13" font-weight="bold" text-anchor="middle" font-family="'Cinzel', serif">LIGHTBULB</text>
+            <text x="65" y="50" fill="#94a3b8" font-size="10" text-anchor="middle">行 • Load (Action)</text>
+            <circle cx="65" cy="95" r="26" fill="#fef08a" opacity="0.3" />
+            <text x="65" y="102" fill="#fef08a" font-size="22" font-weight="black" text-anchor="middle">💡</text>
+            <text x="65" y="145" fill="#fde68a" font-size="9" text-anchor="middle">Code, text, tea, music</text>
+            <text x="65" y="162" fill="#f87171" font-size="9" font-weight="bold" text-anchor="middle">NO BATTERY! (E_load=0)</text>
+          </g>
+
+          <!-- Annotations & Labels -->
+          <text x="370" y="25" fill="#fbbf24" font-size="11" font-weight="bold" text-anchor="middle">CONDUCTOR: BEAM OF DIRECTED ATTENTION (Mushin R → 0)</text>
+          <text x="370" y="225" fill="#38bdf8" font-size="11" text-anchor="middle">RETURN WIRE: REAL TRACE &amp; FRUIT IN PHYSICAL REALITY</text>
+        </svg>
+      </div>
+
+      <div class="mt-4 pt-3 border-t border-slate-800 text-xs text-slate-400 flex flex-wrap items-center justify-between gap-2">
+        <div><strong class="text-amber-300">Superconductivity State:</strong> Ego resistor bypassed ($R_{\text{ego}} = 0$). Attention current flows unimpeded into the action bulb.</div>
+        <div class="font-mono text-emerald-400">Circuit Efficiency $\eta \to 100\%$</div>
+      </div>
+    </div>
+
+    <!-- Article Content Chapters -->
+    <article class="reading-content font-serif text-slate-200">
+
+      <!-- CHAPTER I -->
+      <section>
+        <h2 class="text-2xl sm:text-3xl text-slate-100 flex items-center gap-3">
+          <span class="text-amber-400 font-mono text-xl sm:text-2xl">Part I.</span> 
+          <span>The Great Dead-End of the 21st Century: Abundance of Psychology and Epidemic of Ashes</span>
+        </h2>
+
+        <p>We live in a striking historical paradox.</p>
+
+        <p>Never before has humanity possessed such a density of psychological literature, coaching academies, mindfulness marathons, and pharmaceutical therapies. Yet never before have creators — engineers designing massive software systems, entrepreneurs building companies, scientists advancing the frontier of knowledge, designers, and surgeons — felt so utterly exhausted, hollowed out, and depleted.</p>
+
+        <p>Every morning millions of productive minds confront the exact same four failure states:</p>
+
+        <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 my-6 space-y-3 font-sans text-base">
+          <div class="flex items-start gap-3">
+            <span class="text-amber-400 font-bold">1.</span>
+            <div><strong class="text-slate-100">Extinguished Gaze and Drive Deficit:</strong> waking up pre-exhausted, as though the somatic battery failed to charge by even a single percent overnight.</div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-amber-400 font-bold">2.</span>
+            <div><strong class="text-slate-100">Background Radiation of Anxiety:</strong> an endless scanning of the horizon for invisible threats that cannot be disabled on weekends or holidays.</div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-amber-400 font-bold">3.</span>
+            <div><strong class="text-slate-100">Idle Churn of the Neocortex:</strong> agonizing nighttime replays of old disputes, past mistakes, or perceived judgments from peers.</div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-amber-400 font-bold">4.</span>
+            <div><strong class="text-slate-100">Paralyzing Fear of Evaluation:</strong> imposter syndrome, hesitation to ship, freezing before the blank canvas: <em>“What if they find me inadequate?”</em></div>
+          </div>
+        </div>
+
+        <p>Why do the finest minds find themselves in this trap?</p>
+
+        <p>Because for two and a half millennia, civilization offered only two polarized escapes:</p>
+        <ul class="list-disc pl-6 space-y-2 mb-6">
+          <li><strong>The Esoteric Mist:</strong> <em>“Submit, repent, raise your vibrations, breathe into cosmic abundance, wait for grace.”</em></li>
+          <li><strong>The Endless Psychoanalytic Ruminate:</strong> <em>“Excavate your 1998 childhood trauma, talk through your grievances with your parents, discover your higher purpose, learn unconditional self-love.”</em></li>
+        </ul>
+
+        <p>When an electrical server rack blows a breaker under heavy load, the systems engineer on duty does not sit down to meditate before the cabinet or psychoanalyze the “childhood of the motherboard.” The engineer pulls out a digital multimeter, consults the electrical schematic, and localizes the exact junction where a short circuit occurred.</p>
+
+        <p class="font-sans font-semibold text-amber-300 text-lg border-l-2 border-amber-400 pl-4 py-1">
+          A human being is not a literary metaphor. A human being is a closed electrodynamic circuit.
+        </p>
+      </section>
+
+      <!-- CHAPTER II -->
+      <section>
+        <h2 class="text-2xl sm:text-3xl text-slate-100 flex items-center gap-3">
+          <span class="text-amber-400 font-mono text-xl sm:text-2xl">Part II.</span> 
+          <span>The Core Discovery: The Zen Flashlight Model and the Bulb Law</span>
+        </h2>
+
+        <p>The core breakthrough of the <strong>Inner Current</strong> framework is radically simple:</p>
+
+        <div class="bg-gradient-to-r from-slate-900 to-slate-850 border border-slate-700/80 p-5 rounded-2xl my-6">
+          <p class="text-amber-200 font-medium m-0">
+            Every conscious state, emotion, creative spark, or existential dread obeys the exact same physical, thermodynamic, and electrodynamic laws as an ordinary pocket flashlight.
+          </p>
+        </div>
+
+        <p>There are no extraneous components in this circuit:</p>
+
+        <ol class="list-decimal pl-6 space-y-3 mb-6">
+          <li>
+            <strong>Power Source (EMF) — is not thoughts in your head. It is your living body.</strong><br>\n            In Eastern somatic traditions, this center is known as <strong>Tanden (丹田)</strong> — the somatic center of gravity located 3–5 cm below the navel, the anchor of diaphragmatic breathing. Here, biochemical ATP conversion and oxygen transport generate authentic somatic electromotive force ($\mathcal{E} \approx 1.5\text{ V}$).
+          </li>
+          <li>
+            <strong>Conductor — is the beam of your directed attention.</strong><br>
+            Wherever attention is pointed, electrical action potentials and neural transmission flow instantaneously.
+          </li>
+          <li>
+            <strong>Load (Lightbulb) — is physical action in the real world.</strong><br>
+            Writing a line of code. Frying an egg. Embracing your child. Playing a chord on an acoustic instrument. Conducting a straightforward conversation. The load exists strictly outside your skull in the physical “Here and Now.”
+          </li>
+        </ol>
+
+        <div class="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-6 my-6 text-center">
+          <div class="text-xs font-mono text-amber-400 uppercase tracking-widest font-bold mb-2">
+            The Fundamental Bulb Law
+          </div>
+          <div class="text-3xl font-mono font-bold text-amber-300 mb-2">
+            $$\mathcal{E}_{\text{load}} \equiv 0$$
+          </div>
+          <div class="text-lg font-bold text-slate-100 font-sans">
+            THERE IS NO BATTERY INSIDE THE LIGHTBULB ITSELF.
+          </div>
+        </div>
+
+        <p>This is the central liberating theorem of the Anyanov System. Neither money, nor luxury automobiles, nor prestigious titles, nor follower counts possess <strong>built-in happiness</strong>. Material artifacts and social status are hollow glass envelopes containing inert tungsten filaments. They illuminate <strong>only when your own inner current flows through them</strong>. The moment your attention retreats, the object instantly reverts to cold, dead matter.</p>
+      </section>
+
+      <!-- CHAPTER III -->
+      <section>
+        <h2 class="text-2xl sm:text-3xl text-slate-100 flex items-center gap-3">
+          <span class="text-amber-400 font-mono text-xl sm:text-2xl">Part III.</span> 
+          <span>Physics of Emotional Pain: The Joule–Lenz Law of Losses</span>
+        </h2>
+
+        <p>Why do intelligent people suffer and burn out?</p>
+
+        <p>In 1841–1842, James Prescott Joule and Emil Lenz formulated the invariant law of electrical heat dissipation:</p>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 my-6 text-center">
+          <div class="text-3xl font-mono font-bold text-amber-300">
+            $$Q = I^2 \cdot R \cdot t$$
+          </div>
+          <div class="text-xs font-mono text-slate-400 mt-2">
+            Heat Q is directly proportional to the square of current I, resistance R, and time t.
+          </div>
+        </div>
+
+        <p>When attention flows cleanly into tangible action, resistance tends to zero ($R \to 0$). The system enters <strong>superconductivity</strong>:</p>
+        <ul class="list-disc pl-6 space-y-1.5 mb-6 font-sans text-slate-300">
+          <li>Current flows unimpeded into the load of work.</li>
+          <li>The bulb shines brightly and steadily.</li>
+          <li>The wiring remains ice-cold.</li>
+          <li>In psychology, this is called “flow”; in Zen, it is <strong>Mushin (無心)</strong> — mind without friction. You work for six hours straight, deliver a masterpiece, and rise from your desk revitalized.</li>
+        </ul>
+
+        <h3 class="text-xl font-bold text-rose-400 font-sans">The Short-Circuit Emergency</h3>
+        <p>What happens when an operator sits down to work but, instead of acting, loops attention into thoughts about themselves?</p>
+        <ul class="list-disc pl-6 space-y-1 text-slate-300 italic mb-4">
+          <li>“Will I succeed?”</li>
+          <li>“What will the lead / client / peer think of me?”</li>
+          <li>“What if I embarrass myself?”</li>
+        </ul>
+
+        <p>At that instant, current is diverted into a parasitic shunt — the <strong>Ego Resistor ($R_{\text{ego}}$)</strong>. Attention shorts directly into self-reflection.</p>
+
+        <p>Under Joule’s Law, high-amperage current encountering high ohmic resistance generates <strong>destructive thermal heat</strong>:</p>
+        <ul class="list-disc pl-6 space-y-1.5 mb-6 font-sans text-slate-300">
+          <li>Somatically: tight throat, clenched jaw, frozen diaphragm, knotted shoulders, insomnia.</li>
+          <li>Emotionally: panic, guilt, shame, envy, anxiety, and catastrophic burnout.</li>
+        </ul>
+
+        <p class="font-sans font-semibold text-rose-300 text-lg border-l-2 border-rose-400 pl-4 py-1">
+          Burnout is not a moral failure or psychological weakness. It is textbook ohmic overheating of an electrical conductor during a short circuit.
+        </p>
+      </section>
+
+      <!-- CHAPTER IV -->
+      <section>
+        <h2 class="text-2xl sm:text-3xl text-slate-100 flex items-center gap-3">
+          <span class="text-amber-400 font-mono text-xl sm:text-2xl">Part IV.</span> 
+          <span>The Triad of Ohmic Resistance (Kanso Reduction)</span>
+        </h2>
+
+        <p>The entire inventory of human existential misery collapses into three measurable resistance vectors:</p>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 my-6 text-center">
+          <div class="text-2xl sm:text-3xl font-mono font-bold text-sky-300">
+            $$R_{\text{ego}} = R_{\text{past}} + R_{\text{future}} + R_{\text{opinion}}$$
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6 font-sans">
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+            <div class="text-amber-400 font-bold text-sm mb-1">1. R_past (Past)</div>
+            <div class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Inductive Loop</div>
+            <p class="text-xs text-slate-300 leading-relaxed mb-2">
+              Guilt, resentment, mental replay of old arguments.
+            </p>
+            <div class="text-[11px] text-slate-400 font-mono">
+              The event no longer exists in physical spacetime, yet the circuit incinerates life energy in an idle loop.
+            </div>
+          </div>
+
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+            <div class="text-sky-400 font-bold text-sm mb-1">2. R_future (Future)</div>
+            <div class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Capacitive Leak</div>
+            <p class="text-xs text-slate-300 leading-relaxed mb-2">
+              Hyper-control, anxiety, simulating 150 catastrophe scenarios.
+            </p>
+            <div class="text-[11px] text-slate-400 font-mono">
+              Charging an imaginary capacitor while draining the power needed for right now.
+            </div>
+          </div>
+
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+            <div class="text-rose-400 font-bold text-sm mb-1">3. R_opinion (Validation)</div>
+            <div class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Parasitic Voltage Divider</div>
+            <p class="text-xs text-slate-300 leading-relaxed mb-2">
+              Addiction to likes, fear of criticism, obsession with looking foolish.
+            </p>
+            <div class="text-[11px] text-slate-400 font-mono">
+              Grounding your sovereign generator into someone else's external power grid.
+            </div>
+          </div>
+        </div>
+
+        <p>When all three resistors engage simultaneously, voltage across the action load drops to zero. You lie exhausted on the couch without having taken a single physical step. Your own ohmic losses burned you alive.</p>
+      </section>
+
+      <!-- CHAPTER V -->
+      <section>
+        <h2 class="text-2xl sm:text-3xl text-slate-100 flex items-center gap-3">
+          <span class="text-amber-400 font-mono text-xl sm:text-2xl">Part V.</span> 
+          <span>Who This System Is Built For</span>
+        </h2>
+
+        <p>The Inner Current is engineered for reality builders:</p>
+
+        <div class="space-y-4 my-6 font-sans text-base">
+          <div class="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 flex items-start gap-4">
+            <div class="text-2xl">💻</div>
+            <div>
+              <strong class="text-amber-300">For Engineers, Programmers, and System Architects:</strong>
+              <p class="text-slate-300 text-sm mt-1 m-0">Used to operating with rigorous models, state machines, and conservation laws rather than esoteric rhetoric.</p>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 flex items-start gap-4">
+            <div class="text-2xl">🚀</div>
+            <div>
+              <strong class="text-sky-300">For Founders, Executives, and Leaders:</strong>
+              <p class="text-slate-300 text-sm mt-1 m-0">Carrying extreme risk who cannot afford to incinerate their battery on panic, hesitation, and imposter syndrome.</p>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 flex items-start gap-4">
+            <div class="text-2xl">🎨</div>
+            <div>
+              <strong class="text-emerald-300">For Artists, Authors, and Designers:</strong>
+              <p class="text-slate-300 text-sm mt-1 m-0">Facing the void of the blank screen, public exposure, and creative block.</p>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 flex items-start gap-4">
+            <div class="text-2xl">🧭</div>
+            <div>
+              <strong class="text-indigo-300">For Every Exhausted Human Being:</strong>
+              <p class="text-slate-300 text-sm mt-1 m-0">Tired of endless self-help loops, ready to master the sovereign dashboard of their own consciousness.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CHAPTER VI -->
+      <section>
+        <h2 class="text-2xl sm:text-3xl text-slate-100 flex items-center gap-3">
+          <span class="text-amber-400 font-mono text-xl sm:text-2xl">Part VI.</span> 
+          <span>The Purpose: Disintermediation of Happiness</span>
+        </h2>
+
+        <p>The supreme purpose of this architecture is <strong>disintermediation — the total elimination of middlemen</strong> between a creator and their vital source of power.</p>
+
+        <p>What Bitcoin achieved for financial sovereignty by eliminating central banks and trusted third parties, <strong>Inner Current achieves for consciousness:</strong></p>
+        <ul class="list-disc pl-6 space-y-2 mb-6">
+          <li>No expensive gatekeepers to “secret wisdom.”</li>
+          <li>No years wasted excavating childhood grievances when the future resistor $R_{\text{future}}$ is what is overheating today.</li>
+          <li>No dependence on external gurus or ideological clearance houses.</li>
+        </ul>
+
+        <!-- 30-Second Reset Protocol Box -->
+        <div class="bg-gradient-to-br from-slate-900 via-slate-850 to-slate-900 border-2 border-amber-500/40 rounded-3xl p-6 sm:p-8 my-8 shadow-2xl box-glow-amber font-sans">
+          <div class="text-amber-400 font-mono text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-2">
+            <span>⏱️</span> Operator Field Protocol (OBD-II)
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold text-slate-100 mt-0 mb-4 font-display">
+            The 3-Second Somatic Reset to Tanden
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6">
+            Whenever acute anxiety, hesitation, or mental loops strike during the workday:
+          </p>
+
+          <div class="space-y-4">
+            <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 font-mono font-bold flex items-center justify-center shrink-0">1</div>
+              <div>
+                <strong class="text-amber-300 text-sm">Second 1 (Detect the Burn):</strong>
+                <p class="text-xs text-slate-300 mt-0.5 m-0">Notice physical tension (jaw clenched, breath held, shoulders raised). Acknowledge: <em>“Stop. Ohmic heat detected ($Q > 0$). Parasitic resistor active.”</em></p>
+              </div>
+            </div>
+
+            <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg bg-sky-500/20 text-sky-400 font-mono font-bold flex items-center justify-center shrink-0">2</div>
+              <div>
+                <strong class="text-sky-300 text-sm">Second 2 (Classify with Kanso):</strong>
+                <p class="text-xs text-slate-300 mt-0.5 m-0">Instantly classify the leak: Past guilt ($R_{\text{past}}$)? Future fear ($R_{\text{future}}$)? Social validation ($R_{\text{opinion}}$)? State: <em>“This is virtual noise.”</em></p>
+              </div>
+            </div>
+
+            <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 font-mono font-bold flex items-center justify-center shrink-0">3</div>
+              <div>
+                <strong class="text-emerald-300 text-sm">Second 3 (Drop to Tanden):</strong>
+                <p class="text-xs text-slate-300 mt-0.5 m-0">Exhale gently into the belly 4 cm below the navel. Relax the diaphragm. Zero out the mental resistor ($R_{\text{ego}} \to 0$) and <strong>immediately deliver 100% of attention into a concrete physical action with your hands</strong> (strike a key, drink water, write one line).</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 text-xs font-mono text-emerald-400 text-right">
+            ✓ Superconductivity restored
+          </div>
+        </div>
+      </section>
+
+      <!-- CHAPTER VII -->
+      <section>
+        <h2 class="text-2xl sm:text-3xl text-slate-100 flex items-center gap-3">
+          <span class="text-amber-400 font-mono text-xl sm:text-2xl">Part VII.</span> 
+          <span>Architecture of the Open Gift: Knowledge Base and the Golden Seven</span>
+        </h2>
+
+        <p>Fundamental physical laws cannot be locked behind a $99/month paywall. You cannot copyright universal gravitation or Ohm’s law.</p>
+
+        <p>Поэтому весь проект <strong>«Внутренний ток» на <a href="https://innercurrent.ru/en" class="text-amber-400 underline hover:text-amber-300">innercurrent.ru/en</a></strong> является открытым общественным достоянием:</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6 font-sans">
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+            <div class="text-amber-400 font-mono text-xl font-bold mb-1">500+ Chapters & Articles</div>
+            <p class="text-xs text-slate-300 m-0">
+              Open modular Knowledge Base (LLM Wiki) with global MOC, 4-axis navigation, and KaTeX equations.
+            </p>
+          </div>
+
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+            <div class="text-sky-400 font-mono text-xl font-bold mb-1">7 Books of the Golden Seven</div>
+            <p class="text-xs text-slate-300 m-0">
+              From rapid crisis recovery manuals to “The Great Synthesis” — negentropy thermodynamics and civilization history.
+            </p>
+          </div>
+
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+            <div class="text-emerald-400 font-mono text-xl font-bold mb-1">OBD-II Consciousness Cockpit</div>
+            <p class="text-xs text-slate-300 m-0">
+              Interactive diagnostic console with resistance sliders, leak radar, and automotive fault indicators.
+            </p>
+          </div>
+
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+            <div class="text-indigo-400 font-mono text-xl font-bold mb-1">RU • EN • IT</div>
+            <p class="text-xs text-slate-300 m-0">
+              Online reader and audiobook in 3 languages without ads, paywalls, trackers, or registration.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEVEN AXIOMS -->
+      <section class="mt-12 pt-8 border-t border-slate-800">
+        <h2 class="text-2xl sm:text-3xl text-center text-amber-300 font-display mb-8">
+          ⚡ Seven Axioms of the Human Circuit
+        </h2>
+
+        <div class="space-y-4 font-sans text-base">
+          <div class="bg-slate-900/90 border border-amber-500/20 rounded-2xl p-5 flex items-start gap-4">
+            <div class="text-amber-400 font-mono font-bold text-lg">1.</div>
+            <div class="text-slate-200">
+              <strong>You are not the thoughts in your head. You are the power station that energizes them.</strong> Your somatic generator resides in Tanden.
+            </div>
+          </div>
+
+          <div class="bg-slate-900/90 border border-amber-500/20 rounded-2xl p-5 flex items-start gap-4">
+            <div class="text-amber-400 font-mono font-bold text-lg">2.</div>
+            <div class="text-slate-200">
+              <strong>There is no battery inside the lightbulb ($\mathcal{E}_{\text{load}} \equiv 0$).</strong> No external acquisition, title, or status contains happiness until your own current flows through it.
+            </div>
+          </div>
+
+          <div class="bg-slate-900/90 border border-amber-500/20 rounded-2xl p-5 flex items-start gap-4">
+            <div class="text-amber-400 font-mono font-bold text-lg">3.</div>
+            <div class="text-slate-200">
+              <strong>All psychological suffering is ohmic dissipation ($Q = I^2 R t$).</strong> Do not fight the heat — open the parasitic resistance of ego.
+            </div>
+          </div>
+
+          <div class="bg-slate-900/90 border border-amber-500/20 rounded-2xl p-5 flex items-start gap-4">
+            <div class="text-amber-400 font-mono font-bold text-lg">4.</div>
+            <div class="text-slate-200">
+              <strong>The past is an inductive illusion; the future is a capacitive mirage.</strong> The circuit closes only in physical present reality.
+            </div>
+          </div>
+
+          <div class="bg-slate-900/90 border border-amber-500/20 rounded-2xl p-5 flex items-start gap-4">
+            <div class="text-amber-400 font-mono font-bold text-lg">5.</div>
+            <div class="text-slate-200">
+              <strong>Attention is the most precious thermodynamic currency in the universe.</strong> Stop spending it on phantom simulations.
+            </div>
+          </div>
+
+          <div class="bg-slate-900/90 border border-amber-500/20 rounded-2xl p-5 flex items-start gap-4">
+            <div class="text-amber-400 font-mono font-bold text-lg">6.</div>
+            <div class="text-slate-200">
+              <strong>The ultimate power of the creator is superconductivity ($R \to 0$).</strong> Act with the whole body, free from the mirror of self-consciousness.
+            </div>
+          </div>
+
+          <div class="bg-slate-900/90 border border-amber-500/30 rounded-2xl p-5 flex items-start gap-4 box-glow-amber">
+            <div class="text-amber-300 font-mono font-bold text-lg">7.</div>
+            <div class="text-slate-100 font-medium">
+              <strong>The circuit must be closed.</strong> Illuminate your flashlight right now — in the work waiting for your hands.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+    <!-- Call to Actions at the Bottom -->
+    <div class="mt-16 pt-10 border-t border-slate-800 text-center">
+      <div class="text-xs font-mono uppercase tracking-widest text-slate-400 mb-3">
+        PROCEED TO PRACTICE &amp; STUDY MATERIALS
+      </div>
+      <h3 class="text-2xl font-bold text-slate-100 font-display mb-6">
+        Welcome to the House of Inner Current
+      </h3>
+
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a href="whitepaper.html" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-400 hover:from-sky-400 hover:to-cyan-300 text-slate-950 font-bold text-sm transition shadow-lg shadow-sky-500/25 flex items-center gap-2">
+          <span>📄</span> <span>White Paper (L1 Protocol)</span>
+        </a>
+        <a href="index.html#reader" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-bold text-sm transition shadow-lg shadow-amber-500/25 flex items-center gap-2">
+          <span>📖</span> <span>Online Reader (7 Books)</span>
+        </a>
+        <a href="cockpit.html" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-sky-300 border border-sky-500/40 font-semibold text-sm transition flex items-center gap-2 shadow-lg shadow-sky-500/10">
+          <span>🎛️</span> <span>OBD-II Cockpit</span>
+        </a>
+        <a href="wiki.html" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-emerald-300 border border-emerald-500/40 font-semibold text-sm transition flex items-center gap-2 shadow-lg shadow-emerald-500/10">
+          <span>📚</span> <span>Knowledge Base (500+ Articles)</span>
+        </a>
+        <a href="index.html#audiobook" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 font-semibold text-sm transition flex items-center gap-2">
+          <span>🎧</span> <span>Audiobook</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========================================================= -->
+  <!-- FOOTER -->
+  <!-- ========================================================= -->
+  <footer class="mt-auto border-t border-slate-800/80 bg-slate-950 py-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+      <div class="flex items-center gap-2">
+        <span class="text-amber-400 font-bold">⚡ INNER CURRENT</span>
+        <span>•</span>
+        <span>Система Аньянова (Anyanov System)</span>
+      </div>
+      <div>
+        100% Open Knowledge • 500+ Articles • 7 Books • 2026
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="hover:text-amber-300 transition">Home</a>
+        <a href="manifesto.html" class="text-amber-400 font-semibold">Manifesto</a>
+        <a href="whitepaper.html" class="hover:text-sky-300 transition">White Paper</a>
+        <a href="/cockpit.html" class="hover:text-sky-300 transition">Cockpit</a>
+        <a href="/wiki.html" class="hover:text-emerald-300 transition">Wiki</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- KaTeX Auto-Render Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      if (typeof renderMathInElement === 'function') {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false
+        });
+      }
+    });
+  </script>
+  </div> <!-- /#main-layout -->
+
+  <!-- ========================================================= -->
+  <!-- SIDEBAR CONTROLLER & SCROLLSPY (INNERCURRENT.RU) -->
+  <!-- ========================================================= -->
+  <script>
+    function setLanguage(lang) { try { localStorage.setItem('inner_current_lang', lang); } catch(e){} }
+    function toggleSidebarMobile(open) {
+      const sidebar = document.getElementById('app-sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (!sidebar || !backdrop) return;
+      
+      if (open) {
+        sidebar.classList.remove('-translate-x-full');
+        sidebar.classList.add('translate-x-0');
+        backdrop.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        sidebar.classList.remove('translate-x-0');
+        backdrop.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function toggleSidebarDesktop() {
+      const sidebar = document.getElementById('app-sidebar');
+      const layout = document.getElementById('main-layout');
+      if (!sidebar || !layout) return;
+
+      const isCollapsed = sidebar.classList.contains('lg:-translate-x-full');
+      if (isCollapsed) {
+        // Развернуть
+        sidebar.classList.remove('lg:-translate-x-full');
+        layout.classList.remove('lg:pl-0');
+        layout.classList.add('lg:pl-72');
+        localStorage.setItem('innercurrent_sidebar_desktop', 'expanded');
+      } else {
+        // Свернуть
+        sidebar.classList.add('lg:-translate-x-full');
+        layout.classList.remove('lg:pl-72');
+        layout.classList.add('lg:pl-0');
+        localStorage.setItem('innercurrent_sidebar_desktop', 'collapsed');
+      }
+    }
+
+    // Восстановление состояния десктопного сайдбара
+    (function initSidebar() {
+      if (window.innerWidth >= 1024) {
+        const pref = localStorage.getItem('innercurrent_sidebar_desktop');
+        if (pref === 'collapsed') {
+          const sidebar = document.getElementById('app-sidebar');
+          const layout = document.getElementById('main-layout');
+          if (sidebar && layout) {
+            sidebar.classList.add('lg:-translate-x-full');
+            layout.classList.remove('lg:pl-72');
+            layout.classList.add('lg:pl-0');
+          }
+        }
+      }
+    })();
+
+    // Хоткей Ctrl+B или [ для быстрого переключения сайдбара
+    window.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey && e.key.toLowerCase() === 'b') || (e.key === '[' && !['INPUT', 'TEXTAREA'].includes(e.target.tagName))) {
+        e.preventDefault();
+        if (window.innerWidth >= 1024) {
+          toggleSidebarDesktop();
+        } else {
+          const sidebar = document.getElementById('app-sidebar');
+          const isOpen = !sidebar.classList.contains('-translate-x-full');
+          toggleSidebarMobile(!isOpen);
+        }
+      } else if (e.key === 'Escape') {
+        toggleSidebarMobile(false);
+      }
+    });
+
+    // Навигация по якорю с закрытием мобильного меню
+    function navigateSidebar(anchor) {
+      if (window.innerWidth < 1024) {
+        toggleSidebarMobile(false);
+      }
+      if (!false && anchor.startsWith('index.html')) {
+        window.location.href = anchor;
+      }
+    }
+
+    // Открытие книги в ридере из сайдбара
+    function openBookFromSidebar(bookKey) {
+      if (false) {
+        if (typeof readBookInReader === 'function') {
+          readBookInReader(bookKey);
+        }
+        const readerSection = document.getElementById('reader');
+        if (readerSection) {
+          readerSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        window.location.href = 'index.html?book=' + encodeURIComponent(bookKey) + '#reader';
+      }
+      if (window.innerWidth < 1024) {
+        toggleSidebarMobile(false);
+      }
+    }
+
+    // Живой фильтр разделов сайдбара
+    function filterSidebar(query) {
+      const q = (query || '').toLowerCase().trim();
+      const items = document.querySelectorAll('#sidebar-nav-container .sidebar-nav-item, #sidebar-nav-container button');
+      items.forEach(el => {
+        const text = el.textContent.toLowerCase();
+        if (!q || text.includes(q)) {
+          el.style.display = '';
+        } else {
+          el.style.display = 'none';
+        }
+      });
+    }
+
+    // Scrollspy (только на главной странице)
+    if (false) {
+      (function initScrollspy() {
+        const sections = ['house', 'books', 'audiobook', 'reader', 'monographs', 'flashlight'];
+        const navItems = document.querySelectorAll('.sidebar-nav-item[data-section]');
+        
+        window.addEventListener('scroll', function() {
+          let current = '';
+          const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+          
+          sections.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+              const top = el.offsetTop - 140;
+              const height = el.offsetHeight;
+              if (scrollY >= top && scrollY < top + height) {
+                current = id;
+              }
+            }
+          });
+          
+          navItems.forEach(item => {
+            if (item.getAttribute('data-section') === current) {
+              item.classList.add('active');
+            } else {
+              item.classList.remove('active');
+            }
+          });
+        }, { passive: true });
+      })();
+
+      // Read ?book= parameter from URL on page load
+      (function checkUrlBookParam() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const bookParam = urlParams.get('book');
+        if (bookParam && typeof readBookInReader === 'function') {
+          readBookInReader(bookParam);
+        }
+      })();
+    }
+  </script>
+
+  <script src="/assets/tracker.js" defer></script>
+</body>
+</html>

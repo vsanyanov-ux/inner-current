@@ -3,8 +3,25 @@ created: 2026-09-25
 source: [[index|Wiki Index]]
 layer: IV
 status: complete
-tags: [inner-current, novum-organum, francis-bacon, epistemology, idols-of-mind, falsifiability, criterion-of-truth, fruitfulness, scholasticism]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/ego-resistor
+  - node/load
+  - domain/electrodynamics
+  - domain/epistemology
+  - state/overheating
+  - novum-organum
+  - francis-bacon
+  - epistemology
+  - idols-of-mind
+  - falsifiability
+  - criterion-of-truth
+  - fruitfulness
+  - scholasticism
 ---
+
+> [!info] Синтезировано в брошюре [[02_Wiki/Брошюра — Новый Органон Сознания (Почему Внутренний Ток — не 1001-я школа психологии, а объективный закон природы)|Брошюра: «Новый Органон Сознания»]]
 
 # 82. Новый Органон Психологии: Критерий Плодов Бэкона, Сокрушение Четырёх Идолов Души и Переход от Схоластики к Электродинамике Цепи
 

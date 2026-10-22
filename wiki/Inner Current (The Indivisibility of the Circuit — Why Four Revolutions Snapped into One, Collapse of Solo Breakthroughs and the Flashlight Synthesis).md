@@ -8,6 +8,12 @@ aliases:
   - "Синтез карманного фонарика"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/superconducting
   - anyanov-system
   - indivisible-circuit
   - quadruple-singularity

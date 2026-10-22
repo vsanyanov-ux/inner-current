@@ -4,7 +4,26 @@ source: [[index|Wiki Index]]
 author: Владимир Аньянов
 chapter: 60
 layer: "III. Дзен-онтология и синтез (Высший дух и физика)"
-tags: [inner-current, ego-dissolution, religions-convergence, buddhism, christianity, advaita, daoism, sufism, electrodynamics, joule-lenz, ohm-law, mushin, kanso]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - ego-dissolution
+  - religions-convergence
+  - buddhism
+  - christianity
+  - advaita
+  - daoism
+  - sufism
+  - electrodynamics
+  - joule-lenz
+  - ohm-law
+  - mushin
+  - kanso
 ---
 
 # 60. Универсальный Ключ: Растворение Эго как схождение всех мировых религий и его строгое доказательство на уровне физики

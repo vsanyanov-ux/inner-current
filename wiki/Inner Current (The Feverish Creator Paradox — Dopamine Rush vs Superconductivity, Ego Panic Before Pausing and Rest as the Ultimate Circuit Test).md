@@ -1,7 +1,22 @@
 ---
 title: "Inner Current (The Feverish Creator Paradox — Dopamine Rush vs Superconductivity, Ego Panic Before Pausing and Rest as the Ultimate Circuit Test)"
 created: 2026-10-03
-tags: [inner-current, creator-paradox, dopamine-rush, superconductivity, ego-panic, zanshin, circuit-calibration, tanden, mushin]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
+  - creator-paradox
+  - dopamine-rush
+  - superconductivity
+  - ego-panic
+  - zanshin
+  - circuit-calibration
+  - tanden
+  - mushin
 type: concept
 status: evergreen
 layer: II

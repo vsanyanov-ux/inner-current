@@ -4,7 +4,24 @@ source: [[index|Wiki Index]]
 author: Владимир Аньянов
 chapter: 168
 layer: "III. Дзен-онтология и синтез (Высший дух и физика)"
-tags: [inner-current, death, ego, ptolemy, copernican-shift, thermodynamics, daishi, thanatophobia, phase-transition, kanso, mushin]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
+  - death
+  - ego
+  - ptolemy
+  - copernican-shift
+  - thermodynamics
+  - daishi
+  - thanatophobia
+  - phase-transition
+  - kanso
+  - mushin
 ---
 
 # 168. Птолемеев Ужас Смерти и Коперниканский Сдвиг: Почему ложный центр обречён на панику, деконструкция фальшивых утешений («ты просто энергия») и физика живого Тока

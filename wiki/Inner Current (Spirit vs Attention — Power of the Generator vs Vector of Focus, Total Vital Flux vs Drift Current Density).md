@@ -6,6 +6,12 @@ category: "III. Дзен-онтология и синтез"
 chapter: 210
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/superconducting
   - spirit-vs-attention
   - electrodynamics
   - current-density

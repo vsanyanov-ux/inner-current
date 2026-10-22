@@ -3,482 +3,409 @@
 <head>
 <meta charset="UTF-8">
 <title>Великий Синтез: Революции Материи, Трагедия Духа и Электродинамика Человека</title>
-
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
-<!-- KaTeX for pristine math rendering -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    if (typeof renderMathInElement !== 'undefined') {
+      renderMathInElement(document.body, {
         delimiters: [
-            {left: '$$', right: '$$', display: true},
-            {left: '$', right: '$', display: false}
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false}
         ],
         throwOnError: false
-    });"></script>
-
+      });
+    }
+    window.katexDone = true;
+  });
+</script>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
   @page {
     size: A4;
-    margin: 18mm 16mm 18mm 16mm;
-    @bottom-center {
-      content: counter(page);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 8pt;
-      color: #94a3b8;
-    }
-  }
-
-  @page:first {
-    margin: 0;
-    @bottom-center {
-      content: none;
-    }
+    margin: 22mm 18mm 22mm 18mm;
   }
 
   * {
     box-sizing: border-box;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
   }
 
-  html, body {
+  body {
+    font-family: 'Lora', 'Georgia', serif;
+    font-size: 11pt;
+    line-height: 1.68;
+    color: #24292f;
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-size: 9.6pt;
-    line-height: 1.62;
-    color: #1e293b;
-    background: #ffffff;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* ==========================================
-     COVER PAGE: WHITE BACKGROUND (ТИТУЛ С БЕЛЫМ ФОНОМ)
-     ========================================== */
+  /* COVER PAGE */
   .cover-page {
-    width: 210mm;
-    height: 297mm;
     page-break-after: always;
+    height: 100vh;
+    min-height: 250mm;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: #ffffff;
-    padding: 22mm 20mm 20mm 20mm;
+    align-items: center;
+    text-align: center;
+    padding: 30mm 15mm 20mm 15mm;
+    background: radial-gradient(circle at 50% 30%, #ffffff 0%, #faf8f5 100%);
+    border: 1px solid #eae5df;
     position: relative;
-    box-sizing: border-box;
-    border: 1px solid #ffffff;
   }
 
-  /* Architectural geometric hairline border */
-  .cover-frame {
-    position: absolute;
-    top: 12mm;
-    left: 12mm;
-    right: 12mm;
-    bottom: 12mm;
-    border: 1px solid #e2e8f0;
-    pointer-events: none;
-  }
-
-  .cover-frame::before {
-    content: "";
-    position: absolute;
-    top: 3mm;
-    left: 3mm;
-    right: 3mm;
-    bottom: 3mm;
-    border: 0.5px solid #cbd5e1;
-  }
-
-  .cover-corner-tl, .cover-corner-tr, .cover-corner-bl, .cover-corner-br {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-color: #0284c7;
-    pointer-events: none;
-  }
-  .cover-corner-tl { top: 10mm; left: 10mm; border-top: 2px solid #0284c7; border-left: 2px solid #0284c7; }
-  .cover-corner-tr { top: 10mm; right: 10mm; border-top: 2px solid #0284c7; border-right: 2px solid #0284c7; }
-  .cover-corner-bl { bottom: 10mm; left: 10mm; border-bottom: 2px solid #0284c7; border-left: 2px solid #0284c7; }
-  .cover-corner-br { bottom: 10mm; right: 10mm; border-bottom: 2px solid #0284c7; border-right: 2px solid #0284c7; }
-
-  .cover-top {
-    text-align: center;
-    padding-top: 10mm;
-    z-index: 10;
-  }
-
-  .cover-series-badge {
-    display: inline-block;
-    font-family: 'Cinzel', serif;
-    font-size: 8pt;
-    font-weight: 700;
-    letter-spacing: 4px;
+  .cover-series {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 8.5pt;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: #0284c7;
-    background: #f0f9ff;
-    border: 1px solid #bae6fd;
-    padding: 4px 14px;
-    border-radius: 20px;
-    margin-bottom: 8mm;
+    color: #8c8275;
+    font-weight: 600;
   }
 
-  .cover-author {
-    font-family: 'Cinzel', serif;
-    font-size: 13pt;
-    font-weight: 700;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    color: #334155;
-    margin: 0;
-  }
-
-  .cover-center {
-    text-align: center;
-    padding: 0 4mm;
-    z-index: 10;
-    margin: auto 0;
+  .cover-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15mm;
   }
 
   .cover-emblem {
-    width: 72px;
-    height: 72px;
-    margin: 0 auto 8mm auto;
+    width: 68px;
+    height: 68px;
+    margin-bottom: 8mm;
+    color: #bfa15f;
+  }
+
+  .cover-author {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #4a453e;
+    font-weight: 500;
+    margin-bottom: 6mm;
   }
 
   .cover-title {
-    font-family: 'Cinzel', serif;
-    font-size: 32pt;
-    font-weight: 900;
-    letter-spacing: 2px;
-    color: #0f172a;
+    font-family: 'Cinzel', 'Lora', serif;
+    font-size: 28pt;
+    font-weight: 700;
     line-height: 1.15;
+    color: #1a1816;
+    letter-spacing: 0.04em;
     margin: 0 0 5mm 0;
-    text-transform: uppercase;
-  }
-
-  .cover-subtitle {
-    font-family: 'Lora', Georgia, serif;
-    font-size: 13.5pt;
-    font-weight: 500;
-    font-style: italic;
-    color: #0284c7;
-    line-height: 1.45;
-    margin: 0 0 7mm 0;
   }
 
   .cover-divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 7mm auto;
-    width: 60%;
+    width: 60px;
+    height: 2px;
+    background: #bfa15f;
+    margin: 4mm 0 6mm 0;
   }
 
-  .cover-divider-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
-  }
-
-  .cover-divider-symbol {
-    padding: 0 12px;
-    color: #0284c7;
-    font-size: 11pt;
+  .cover-subtitle {
+    font-family: 'Lora', serif;
+    font-size: 13pt;
+    font-style: italic;
+    color: #615a51;
+    max-width: 520px;
+    margin: 0 auto 8mm auto;
+    line-height: 1.45;
   }
 
   .cover-tagline {
-    font-size: 10pt;
-    color: #475569;
-    max-width: 145mm;
-    margin: 0 auto;
-    line-height: 1.6;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 9.5pt;
+    color: #7d756a;
+    max-width: 480px;
+    line-height: 1.55;
     font-weight: 400;
   }
 
-  .cover-bottom {
-    text-align: center;
-    padding-bottom: 8mm;
-    z-index: 10;
+  .cover-footer {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 8.5pt;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #999083;
   }
 
-  .cover-quote-box {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-left: 3px solid #0284c7;
-    padding: 4mm 6mm;
-    border-radius: 4px;
-    max-width: 145mm;
-    margin: 0 auto 6mm auto;
-    text-align: left;
+  /* EPIGRAPH / FRONTISPIECE */
+  .frontispiece {
+    page-break-after: always;
+    min-height: 240mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40mm 15mm;
   }
 
-  .cover-quote-text {
-    font-family: 'Lora', serif;
+  .frontispiece-quote {
+    max-width: 540px;
+    font-size: 12.5pt;
     font-style: italic;
-    font-size: 8.8pt;
-    color: #334155;
-    line-height: 1.5;
+    line-height: 1.75;
+    color: #3d3730;
+    text-align: center;
+    position: relative;
+    padding: 0 10mm;
+  }
+
+  .frontispiece-quote::before {
+    content: "“";
+    font-family: 'Cinzel', serif;
+    font-size: 50pt;
+    position: absolute;
+    top: -25px;
+    left: -10px;
+    color: #dfd7cc;
+  }
+
+  .frontispiece-author {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 9.5pt;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8c8275;
+    margin-top: 8mm;
+    font-weight: 600;
+  }
+
+  /* HEADINGS & BREAKS */
+  .part-header {
+    page-break-before: always;
+    margin-top: 15mm;
+    margin-bottom: 10mm;
+    border-bottom: 2px solid #1a1816;
+    padding-bottom: 4mm;
+  }
+
+  .part-header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 20pt;
+    color: #1a1816;
+    letter-spacing: 0.05em;
     margin: 0;
   }
 
-  .cover-meta {
-    font-size: 7.5pt;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #94a3b8;
-    line-height: 1.6;
-  }
-
-  /* ==========================================
-     INTERIOR CONTENT STYLING
-     ========================================== */
-  .book-content {
-    padding: 0;
-  }
-
-  .part-page-break {
+  .chapter-break {
     page-break-before: always;
   }
 
-  .part-title {
-    font-family: 'Cinzel', serif;
-    font-size: 18pt;
-    font-weight: 800;
-    color: #0f172a;
-    border-bottom: 2px solid #0284c7;
-    padding-bottom: 3mm;
-    margin-top: 10mm;
-    margin-bottom: 6mm;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    break-after: avoid;
-  }
-
-  .chapter-title {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 12.5pt;
-    font-weight: 700;
-    color: #0369a1;
+  h2 {
+    font-family: 'Lora', serif;
+    font-size: 15pt;
+    font-weight: 600;
+    color: #1a1816;
     margin-top: 8mm;
-    margin-bottom: 3.5mm;
+    margin-bottom: 4mm;
+    line-height: 1.35;
     break-after: avoid;
   }
 
   h3 {
-    font-size: 10.5pt;
-    font-weight: 700;
-    color: #1e293b;
-    margin-top: 5mm;
-    margin-bottom: 2.5mm;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12pt;
+    font-weight: 600;
+    color: #3a352f;
+    margin-top: 6mm;
+    margin-bottom: 3mm;
     break-after: avoid;
   }
 
   p {
     margin: 0 0 3.5mm 0;
     text-align: justify;
-    text-justify: inter-word;
     hyphens: auto;
   }
 
   strong {
-    color: #0f172a;
     font-weight: 600;
+    color: #141210;
   }
 
   em {
-    font-family: 'Lora', Georgia, serif;
+    font-style: italic;
   }
 
-  hr {
-    border: none;
-    border-top: 1px solid #e2e8f0;
-    margin: 6mm 0;
-  }
-
-  /* Lists */
-  ul, ol {
-    margin: 0 0 4mm 0;
-    padding-left: 6mm;
-  }
-
-  li {
-    margin-bottom: 1.5mm;
-  }
-
-  /* Callouts */
+  /* CALLOUTS */
   .callout {
-    margin: 5mm 0;
+    margin: 5mm 0 6mm 0;
     padding: 4mm 5mm;
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-left: 4px solid #0284c7;
-    border-radius: 4px;
+    background: #fbf9f6;
+    border-left: 3px solid #bfa15f;
+    border-radius: 2px;
     break-inside: avoid;
   }
 
   .callout-quote {
-    background: #f0fdf4;
-    border-color: #bbf7d0;
-    border-left-color: #16a34a;
-  }
-
-  .callout-title {
-    font-family: 'Cinzel', serif;
-    font-size: 9pt;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #166534;
-    margin-bottom: 2mm;
+    border-left-color: #bfa15f;
+    background: #faf7f2;
   }
 
   .callout-body p:last-child {
     margin-bottom: 0;
   }
 
-  /* Code / Preformatted ASCII diagrams */
+  /* CODE & DIAGRAMS */
   pre {
-    font-family: 'JetBrains Mono', Consolas, monospace;
-    font-size: 7.8pt;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
     line-height: 1.35;
-    background: #f8fafc;
-    color: #0f172a;
-    border: 1px solid #e2e8f0;
-    border-left: 3px solid #0284c7;
-    padding: 3.5mm 4mm;
+    background-color: #f7f5f2;
+    border: 1px solid #e5dfd7;
     border-radius: 4px;
+    padding: 3.5mm 4mm;
+    margin: 4mm 0 5mm 0;
     overflow-x: auto;
-    margin: 4mm 0;
+    color: #2b2723;
     break-inside: avoid;
-    white-space: pre;
   }
 
   code {
     font-family: 'JetBrains Mono', monospace;
     font-size: 8.5pt;
-    background: #f1f5f9;
+    background-color: #f3efe9;
     padding: 1px 4px;
     border-radius: 3px;
-    color: #0369a1;
+    color: #2b2723;
   }
 
-  pre code {
-    background: transparent;
-    padding: 0;
-    color: inherit;
-    font-size: inherit;
-  }
-
-  /* Tables */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 5mm 0;
-    font-size: 8.8pt;
+  /* TABLES */
+  .table-wrapper {
+    margin: 4mm 0 6mm 0;
     break-inside: avoid;
   }
 
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8.5pt;
+    line-height: 1.45;
+  }
+
   th, td {
-    border: 1px solid #cbd5e1;
-    padding: 2.5mm 3.5mm;
+    border: 1px solid #dfd8cf;
+    padding: 2.2mm 2.8mm;
     text-align: left;
     vertical-align: top;
   }
 
   th {
-    background: #f1f5f9;
-    color: #0f172a;
-    font-weight: 700;
+    background-color: #f5f1eb;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    color: #332d26;
   }
 
   tr:nth-child(even) td {
-    background: #f8fafc;
+    background-color: #fbf9f6;
   }
 
-  /* Math */
-  .katex {
-    font-size: 1.05em !important;
+  /* BLOCKQUOTES */
+  blockquote {
+    margin: 4mm 0 4mm 5mm;
+    padding-left: 4mm;
+    border-left: 3px solid #bfa15f;
+    color: #4a453e;
+    font-style: italic;
+    break-inside: avoid;
   }
 
-  .katex-display {
-    margin: 4mm 0 !important;
-    padding: 2mm 0;
+  /* MATH STYLING */
+  .math-display {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    text-align: center;
+    margin: 3.5mm 0;
+    padding: 2mm;
+    background: #fbf9f5;
+    border-radius: 4px;
+    color: #2b2723;
+    break-inside: avoid;
   }
 
+  .math-inline {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    color: #2b2723;
+  }
+
+  /* HR / DIVIDERS */
+  hr {
+    border: 0;
+    height: 1px;
+    background: #e2ddd5;
+    margin: 8mm 0;
+  }
+
+  /* LISTS */
+  ul, ol {
+    margin: 2mm 0 4mm 0;
+    padding-left: 6mm;
+  }
+
+  li {
+    margin-bottom: 1.8mm;
+    text-align: justify;
+  }
 </style>
 </head>
 <body>
 
-<!-- ==========================================
-     TITLE / COVER PAGE (WHITE BACKGROUND)
-     ========================================== -->
+<!-- COVER PAGE -->
 <div class="cover-page">
-  <div class="cover-frame"></div>
-  <div class="cover-corner-tl"></div>
-  <div class="cover-corner-tr"></div>
-  <div class="cover-corner-bl"></div>
-  <div class="cover-corner-br"></div>
-
-  <div class="cover-top">
-    <div class="cover-series-badge">Библиотека «Внутренний ток» • Мастер-рукопись</div>
-    <div class="cover-author">Владимир Аньянов</div>
-  </div>
-
-  <div class="cover-center">
-    <!-- Minimalist Vector Emblem of Closed Circuit & Superconductivity -->
-    <svg class="cover-emblem" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="44" stroke="#e2e8f0" stroke-width="2"/>
-      <circle cx="50" cy="50" r="38" stroke="#0284c7" stroke-width="2.5" stroke-dasharray="8 4"/>
-      <circle cx="50" cy="50" r="24" stroke="#0f172a" stroke-width="2"/>
-      <circle cx="50" cy="50" r="10" fill="#0284c7"/>
-      <!-- Cardinal Axis Circuit Keys -->
-      <line x1="50" y1="2" x2="50" y2="12" stroke="#0284c7" stroke-width="3"/>
-      <line x1="50" y1="88" x2="50" y2="98" stroke="#0284c7" stroke-width="3"/>
-      <line x1="2" y1="50" x2="12" y2="50" stroke="#0284c7" stroke-width="3"/>
-      <line x1="88" y1="50" x2="98" y2="50" stroke="#0284c7" stroke-width="3"/>
-      <!-- Energy Radiance Ray -->
-      <path d="M50 40 L53 47 L60 50 L53 53 L50 60 L47 53 L40 50 L47 47 Z" fill="#ffffff"/>
+  <div class="cover-series">Серия «Внутренний ток» • Библиотека «Золотая Семёрка»</div>
+  
+  <div class="cover-hero">
+    <svg class="cover-emblem" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8">
+      <circle cx="50" cy="50" r="45" stroke-dasharray="3 3"/>
+      <!-- Lightning and Circuit Icon -->
+      <path d="M 50 18 L 38 52 L 48 52 L 44 82 L 62 46 L 52 46 Z" stroke="#bfa15f" stroke-width="1.5" fill="#faf6ed"/>
+      <circle cx="50" cy="50" r="32" stroke="currentColor" stroke-width="1.2"/>
     </svg>
-
+    <div class="cover-author">Владимир Аньянов</div>
     <h1 class="cover-title">ВЕЛИКИЙ СИНТЕЗ</h1>
+    <div class="cover-divider"></div>
     <div class="cover-subtitle">Революции Материи, Трагедия Духа и Электродинамика Человека</div>
-
-    <div class="cover-divider">
-      <div class="cover-divider-line"></div>
-      <div class="cover-divider-symbol">⚡</div>
-      <div class="cover-divider-line"></div>
-    </div>
-
     <div class="cover-tagline">
-      Как наука покорила вещество, почему десять тысяч лет поисков не спасли душу и как замкнутый контур соединил две половины бытия
+      Как наука покорила вещество, почему десять тысяч лет поисков не спасли душу и как Универсальный закон потоковых систем соединил две половины бытия
     </div>
   </div>
 
-  <div class="cover-bottom">
-    <div class="cover-quote-box">
-      <p class="cover-quote-text">
-        «Счастье оказалось не наградой на небесах и не генетической лотереей, а режимом сверхпроводимости замкнутого контура. Великий Синтез свершился: дух и материя соединились в одном строгом уравнении жизни.»
-      </p>
-    </div>
-    <div class="cover-meta">
-      Каноническая мастер-рукопись • Издание 2026<br>
-      DOI: 10.5281/zenodo.22958926 • Creative Commons CC BY 4.0
-    </div>
+  <div class="cover-footer">
+    Master Edition 2.0 • Волгодонск 2026
   </div>
 </div>
 
-<!-- ==========================================
-     BOOK INTERIOR
-     ========================================== -->
-<div class="book-content">
-<div class="callout callout-quote"><div class="callout-title">Главная аксиома книги</div><div class="callout-body"><p>«Человечество совершило величайший подвиг: оно исследовало край наблюдаемой Вселенной, расщепило атомное ядро, расшифровало геном и научило кремниевые кристаллы мыслить. Но оставшись наедине с собой в ночной тишине, современный создатель космических станций испытывает тот же первобытный ужас, тоску, вину и бессилие, что и кроманьонец у догорающего костра. </p>
-<p>Десять тысяч лет великие мыслители, пророки и философы пытались исцелить человеческий дух. Но у них ничего не получалось в масштабах цивилизации, потому что они не знали законов сохранения. Они боролись со следствиями, хлестали волю моральным кнутом, объявляли тело греховным, а ум — неисправимым. Они не видели, что человек — это не поле битвы богов и демонов, а <strong>замкнутая электродинамическая цепь</strong>. </p>
-<p>Стоило развернуть объективные законы физики, термодинамики и электродинамики внутрь человека — и раскол исчез. Счастье оказалось не наградой на небесах и не генетической лотереей, а режимом сверхпроводимости контура ($R_{\text{ego}} \to 0$). Великий Синтез свершился: дух и материя соединились в одном строгом, проверяемом и суверенном уравнении жизни.»  </p>
+<!-- FRONTISPIECE EPIGRAPH -->
+<div class="frontispiece">
+  <div class="frontispiece-quote">
+    «Человечество совершило величайший подвиг: оно исследовало край наблюдаемой Вселенной, расщепило атомное ядро и научило кремний мыслить. Но оставшись наедине с собой в ночной тишине, создатель космических станций испытывает тот же палеолитический страх, что и кроманьонец у костра. Стоило развернуть объективные законы термодинамики открытых систем, негэнтропии и электродинамики внутрь человека — и раскол исчез. Счастье оказалось не наградой на небесах, а режимом сверхпроводимости открытого контура. Великий Синтез свершился: дух и материя соединились в одном строгом уравнении жизни.»
+  </div>
+  <div class="frontispiece-author">Владимир Аньянов</div>
+</div>
+
+<!-- BOOK CONTENT -->
+
+<p><strong>Автор:</strong> Владимир Аньянов<br />
+<strong>Серия:</strong> Библиотека «Внутренний ток»<br />
+<strong>Статус:</strong> Каноническая мастер-рукопись книги (Master Edition 2.0 — Расширенная редакция Универсального закона потоковых систем)<br />
+<strong>Год создания:</strong> 2026  </p>
+<hr />
+<div class="callout callout-quote"><div class="callout-title" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 8.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #8c8275; margin-bottom: 3mm;">Главная аксиома книги</div><div class="callout-body"><p>«Человечество совершило величайший подвиг: оно исследовало край наблюдаемой Вселенной, расщепило атомное ядро, расшифровало геном и научило кремниевые кристаллы мыслить. Но оставшись наедине с собой в ночной тишине, современный создатель космических станций испытывает тот же первобытный ужас, тоску, вину и бессилие, что и кроманьонец у догорающего костра. </p>
+<p>Десять тысяч лет великие мыслители, пророки и философы пытались исцелить человеческий дух. Но у них ничего не получалось в масштабах цивилизации, потому что они не знали законов сохранения. Они боролись со следствиями, хлестали волю моральным кнутом, объявляли тело греховным, а ум — неисправимым. Они не видели, что человек — это не поле битвы богов и демонов, а <strong>самый чувствительный биологический проводник и природный осциллограф Универсального закона потоковых систем</strong>. </p>
+<p>Стоило развернуть объективные законы неравновесной термодинамики, негэнтропии и контурной электродинамики внутрь человека — и вековой раскол исчез. Счастье оказалось не мистической наградой на небесах и не генетической лотереей, а естественным режимом сверхпроводимости открытого диссипативного контура:</p>
+<p><div class="math-display">$<span class="math-inline">$\mathcal{H} = \frac{P_{\text{load}}}{P_{\text{total}}} = 1 - \frac{R_{\text{ego}}}{R_{\text{total}}} \xrightarrow{R_{\text{ego}} \to 0} 1.0$</span>$</div></p>
+<p>Великий Синтез свершился: дух и материя соединились в одном строгом, проверяемом и суверенном уравнении жизни.»  </p>
 <p>— <strong>Владимир Аньянов</strong></p></div></div>
 
 <hr />
@@ -496,38 +423,38 @@
 </li>
 <li><em>Глава 1. Коперниканский рубеж: Отмена священного центра.</em> Сдвиг точки отсчёта, падение птолемеевских эпициклов и рождение объективного метода.</li>
 <li><em>Глава 2. Ньютоновские рельсы реальности: Законы сохранения и конец магии.</em> Почему перестали падать мосты. Изгнание вины из материального мира: поломка как перегруз, а не грех.</li>
-<li><em>Глава 3. Кансо в чугуне: Джеймс Ватт и рождение полезного действия.</em> Почему машина Ньюкомена пожирала уголь впустую. Изоляция конденсатора как первый триумф термодинамики прямого потока.</li>
+<li><em>Глава 3. Кансо в чугуне и термодинамика потока: Джеймс Ватт, Сади Карно и рождение полезного действия.</em> Почему машина Ньюкомена пожирала уголь впустую. Изоляция конденсатора как первый триумф термодинамики прямого потока и четыре такта цикла Карно.</li>
 <li><em>Глава 4. Поле, ток и свет: Фарадей, Максвелл и победа над тьмой.</em> Замкнутый контур, уравнения электромагнетизма и перенос энергии сквозь пространство.</li>
 <li><em>Глава 5. Сход с измученной лошади: Карл Бенц и автономный привод.</em> Замена биологического насилия над живым существом на расчётный термодинамический цикл.</li>
 <li>
-<p><em>Итог Части I: Пять столпов материального триумфа.</em></p>
+<p><em>Итог Части I: Пять столпов материального триумфа и Великая Родословная законов сохранения.</em> От Карно, Ома и Больцмана к Шеннону, Пригожину и Бежану. Почему даже Эйнштейн искал геометрию в закрытом вакууме и не замкнул открытую потоковую цепь.</p>
 </li>
 <li>
 <p><strong>Часть II. Трагедия Духа: Десять тысяч лет бессилия титанов мысли</strong></p>
 </li>
 <li><em>Глава 6. Вавилон благочестия: Религиозный тупик и жреческая монополия на боль.</em> Оазисы Будды и Христа, превращённые наследниками в крепости догм, вины и отложенного загробного суда.</li>
-<li><em>Глава 7. Омический пожар Ясной Поляны: Лев Толстой и крах морального насилия.</em> Трагедия величайшего искателя чистоты. Закон Джоуля — Ленца ($Q = I^2 R t$) и почему святость Толстого и бунт Ницше привели к омическому взрыву.</li>
-<li><em>Глава 8. Индустрия суррогатов: От кушетки психоаналитика до карт Таро.</em> 150 лет терапевтического лабиринта, 50 субличностей, платные индульгенции века информации и почему люди идут к гадалкам рядом с адронным коллайдером.</li>
+<li><em>Глава 7. Омический пожар Ясной Поляны: Лев Толстой и крах морального насилия.</em> Трагедия величайшего искателя чистоты. Закон Джоуля — Ленца (<span class="math-inline">$Q = I^2 R t$</span>) и почему святость Толстого и бунт Ницше привели к омическому взрыву.</li>
+<li><em>Глава 8. Индустрия суррогатов: От кушетки психоаналитика до карт Таро.</em> 150 лет терапевтического лабиринта, полировка нихромового резистора вместо обнуления сопротивления и почему люди идут к гадалкам рядом с адронным коллайдером.</li>
 <li>
 <p><em>Итог Части II: Почему великие умы не спасли дух?</em></p>
 </li>
 <li>
 <p><strong>Часть III. Рождение Великого Синтеза: Контурная Электродинамика Человека</strong></p>
 </li>
-<li><em>Глава 9. Инверсия законов природы: Разворот физики внутрь.</em> Смелый шаг Системы Аньянова: биофизический паспорт человека (37 трлн митохондрий, протонный ток) и универсальность законов сохранения.</li>
-<li><em>Глава 10. Топология четырёх узлов: Карманный фонарик сознания.</em> Источник (Тандэн) $\to$ Проводник внимания (Мусин) $\to$ Нагрузка реальности (Щит 6 ламп) $\to$ Предохранитель (Дзансин).</li>
-<li><em>Глава 11. Демистификация Эго: Омический нагар вместо демона.</em> Эго как паразитное переходное сопротивление ($R_{\text{ego}} &gt; 0$).</li>
-<li><em>Глава 12. Формула Счастья и Формула Несчастья.</em> Сверхпроводимость ($\mathcal{H} = 1 - R_{\text{ego}}/R_{\text{total}}$) против омического пожара ($Q = I^2 R t$).</li>
+<li><em>Глава 9. Инверсия законов природы: Разворот физики внутрь, Онтологическая триада и Две Абсолютные Вершины Познания.</em> Смелый шаг Системы Аньянова: биофизический паспорт человека (37 трлн митохондрий, протонный ток). Онтологическая триада (Универсальный закон <span class="math-inline">$\to$</span> Четверичный фрактал <span class="math-inline">$\to$</span> Внутренний ток). Преодоление 2500-летнего языкового раскола: культ существительных Запада против культа глагола Востока. Внутренний предел Дзен (<span class="math-inline">$R \to 0$</span>) и внешний предел диссипативных структур Пригожина (<span class="math-inline">$dS &lt; 0$</span>). Великий консилиенс.</li>
+<li><em>Глава 10. Топология четырёх узлов: Карманный фонарик сознания как Четверичный фрактал мироздания.</em> Источник (Тандэн) <span class="math-inline">$\to$</span> Проводник внимания (Мусин) <span class="math-inline">$\to$</span> Нагрузка реальности (Щит 6 ламп) <span class="math-inline">$\to$</span> Предохранитель и обратный провод (Дзансин). Масштабная инвариантность фрактала от клетки (<span class="math-inline">$10^{-15}$</span> м) до общества (<span class="math-inline">$10^9$</span> м).</li>
+<li><em>Глава 11. Демистификация Эго: Омический нагар вместо демона.</em> Эго как паразитное сопротивление (<span class="math-inline">$R_{\text{ego}} &gt; 0$</span>). Активное сопротивление и реактивная ловушка умственной руминации.</li>
+<li><em>Глава 12. Формула Счастья и Формула Несчастья.</em> Универсальный термодинамический КПД упорядочивания среды (<span class="math-inline">$\mathcal{H} = P_{\text{load}}/P_{\text{total}}$</span>) против омического пожара (<span class="math-inline">$Q = I^2 R_{\text{ego}} t$</span>). Квадратичный капкан сильной воли (<span class="math-inline">$I^2$</span>).</li>
 <li>
-<p><em>Глава 13. Обратный провод реальности: Преодоление мифа Данко.</em> Законы Кирхгофа, почему ток не течёт в разомкнутой цепи и как реальность возвращает энергию через созидание.</p>
+<p><em>Глава 13. Обратный провод реальности и термодинамический сброс энтропии: Преодоление мифа Данко.</em> Законы Кирхгофа, холодильник Карно и почему ток не течёт в разомкнутой цепи. Как реальность возвращает энергию через созидание.</p>
 </li>
 <li>
 <p><strong>Часть IV. Прикладной Суверенитет: Единый Код Жизни</strong></p>
 </li>
-<li><em>Глава 14. Одноранговый Суверенитет: Биткоин, Генри Джордж и Self-Hosted Human.</em> Ликвидация паразитной ренты посредников духа, Proof-of-Action и человек как суверенная нода бытия.</li>
-<li><em>Глава 15. Дзен на шумном базаре: Освобождение мудрости Востока.</em> 30-секундный соматический протокол мгновенного обнуления сопротивления в реальной жизни (на работе, в пробке, при конфликте).</li>
+<li><em>Глава 14. Одноранговый Суверенитет: Биткоин, Генри Джордж, Всеобщая Депосреднизация и Self-Hosted Human.</em> Ликвидация паразитной ренты посредников духа, Proof-of-Action и человек как суверенная нода бытия.</li>
+<li><em>Глава 15. Дзен на шумном базаре: Освобождение мудрости Востока.</em> Соматическая сверхпроводимость диссипативного потока, снятие монастырского тумана и 30-секундный протокол прямого действия.</li>
 <li>
-<p><em>Глава 16. Электродинамика Любви: Индукция Максвелла ($M &gt; 0$).</em> Снятие мифа о «половинках». Резонанс двух суверенных генераторов вместо короткого замыкания созависимости.</p>
+<p><em>Глава 16. Электродинамика Любви: Индукция Максвелла (<span class="math-inline">$M &gt; 0$</span>).</em> Снятие мифа о «половинках». Резонанс двух суверенных генераторов вместо короткого замыкания созависимости.</p>
 </li>
 <li>
 <p><strong>Заключение. Человек Лучистый: Космонавтика Сознания перед Сингулярностью</strong></p>
@@ -549,7 +476,7 @@
 <p>Тот самый инженер, который рассчитывает траекторию посадки спускаемого аппарата на Марс, просыпается в четыре утра от удушающего приступа паники: <em>«А что, если меня уволят? Что обо мне подумало руководство? Достаточно ли я успешен по сравнению с одноклассниками?»</em>.<br />
 Тот самый хирург, который с ювелирной точностью сшивает микрососуды бьющегося человеческого сердца, вечерами глушит стаканом виски невыносимый звон экзистенциальной пустоты.<br />
 Миллионы образованных, обеспеченных, защищённых от холода и голода людей в самых благополучных мегаполисах планеты принимают антидепрессанты горстями, страдают от панических атак, разрушают семьи в мелких статусных ссорах и идут к гадалкам на картах Таро, чтобы узнать, «любит ли их партнёр».</p>
-<pre><code>┌────────────────────────────────────────────────────────────────────────┐
+<div class="codehilite"><pre><span></span><code>┌────────────────────────────────────────────────────────────────────────┐
 │                   ВЕЛИКАЯ АСИММЕТРИЯ ЦИВИЛИЗАЦИИ                      │
 ├───────────────────────────────────┬────────────────────────────────────┤
 │ ВНЕШНИЙ МИР (МАТЕРИЯ)             │ ВНУТРЕННИЙ МИР (ДУХ)               │
@@ -560,7 +487,8 @@
 │ • Автоматизированное изобилие     │ • Хроническая пустота и тоска      │
 │ • Строгие законы физики           │ • Допарадигмальный алхимический ад │
 └───────────────────────────────────┴────────────────────────────────────┘
-</code></pre>
+</code></pre></div>
+
 <p>Великий социобиолог Эдвард Уилсон сформулировал этот диагноз с предельной беспощадностью:  </p>
 <blockquote>
 <p><em>«Главная проблема человечества в том, что у нас палеолитические эмоции, средневековые институты и божественные технологии».</em></p>
@@ -568,7 +496,7 @@
 <p>Это и есть <strong>Великая Асимметрия Цивилизации</strong>.</p>
 <p>Но почему так произошло? Почему в познании внешнего мира мы совершили ослепительный рывок от кремневого наконечника к квантовому процессору, а в познании самих себя застряли на уровне каменного века?</p>
 <p>Ответ прост и фундаментален:<br />
-<strong>В исследовании материи человек нашёл объективные законы сохранения и замкнутые контуры прямого потока. В исследовании духа он остался в плену разомкнутых сказок, морального кнута и громоздких костылей.</strong></p>
+<strong>В исследовании материи человек нашёл объективные законы сохранения, негэнтропии и замкнутые контуры прямого потока. В исследовании духа он остался в плену разомкнутых сказок, морального кнута и громоздких костылей.</strong></p>
 <p>Посмотрите, что предлагает человеку современная индустрия душевного здоровья:<br />
 Вам предлагают те самые <strong>сорок пластиковых кнопок и потерянный стилус</strong>:<br />
 * Годами раскапывать детские обиды и перинатальные травмы;<br />
@@ -580,26 +508,29 @@
 Что, если внутри каждого из нас уже заложен мощный, чистый генератор жизни — и нужно лишь убрать паразитное сопротивление, выкинуть лишние детали и дать энергии течь напрямую?</p>
 <p>Мы отсекли всё лишнее.<br />
 Мы выбросили стилус и сорок кнопок психологической зауми.<br />
-Мы применили законы строгой электродинамики и дзенского канона простоты к самому оператору жизни.</p>
-<p>Мы пройдем путь титанов материального мира — от Коперника и Ньютона до Ватта, Бенца, Циолковского и Сатоши Накамото — и поймём, почему у них <strong>всё получилось</strong>.<br />
+Мы применили законы строгой электродинамики, неравновесной термодинамики и дзенского канона простоты к самому оператору жизни.</p>
+<p>Мы пройдем путь титанов материального мира — от Коперника и Ньютона до Ватта, Карно, Бенца, Пригожина и Сатоши Накамото — и поймём, почему у них <strong>всё получилось</strong>.<br />
 Затем мы беспристрастно исследуем путь величайших пророков, философов и реформаторов духа — от Будды и Христа до Канта, Толстого и Ницше — и вскроем безжалостную причину, почему у них <strong>ничего не получилось</strong> в масштабах истории.<br />
-И, наконец, мы увидим, как <strong>Внутренний ток</strong> соединяет обе половины бытия в единый, строгий и проверяемый синтез.</p>
+И, наконец, мы увидим, как <strong>Внутренний ток</strong> соединяет обе половины бытия в единый, строгий и проверяемый синтез на фундаменте <strong>Универсального закона потоковых систем</strong>.</p>
 <p>Перед вами — система, где внимание соединяется с действием мгновенно, без задержки и самоедства. Где вы нажимаете кнопку — и свет загорается.</p>
 <p><strong>Это iPhone для вашего сознания.</strong><br />
 <em>It just works.</em></p>
 <hr />
 <hr />
-<div class="part-page-break"></div><h1 class="part-title">Часть I. Триумф Материи: Как учёные и изобретатели преобразили мир</h1>
-<div class="chapter-anchor"></div><h2 class="chapter-title">Глава 1. Коперниканский рубеж: Отмена священного центра</h2>
+<div class="part-header"># Часть I. Триумф Материи: Как учёные и изобретатели преобразили мир</div>
+
+<div class="chapter-break"></div>
+<h2>Глава 1. Коперниканский рубеж: Отмена священного центра</h2>
 <p>Полторы тысячи лет европейская и арабская цивилизации жили внутри картины мира, созданной Клавдием Птолемеем. Эта картина опиралась на самый очевидный, самый непререкаемый «жизненный опыт»: каждый человек своими глазами видит, что Земля под ногами неподвижна и тверда, а Солнце, Луна и звёзды восходят на востоке и заходят на западе.</p>
 <p>Но у этой очевидности была чудовищная цена. Планеты на небосводе отказывались двигаться по правильным кругам: они то замедляли ход, то останавливались, то чертили в созвездиях причудливые петли, двигаясь вспять.</p>
 <p>Чтобы спасти модель, в которой Земля оставалась центром Вселенной, астрономам приходилось выдумывать чудовищные математические костыли. Они вводили <strong>эпициклы</strong> — малые круги, центры которых двигались по большим кругам (<strong>деферентам</strong>). Когда планета снова сбивалась с расписания, поверх первого эпицикла громоздили второй, третий, четвёртый. Небосвод превратился в скрипящий механизм из десятков хрустальных сфер и зубчатых колес. Модель становилась всё более сложной, требовала всё больше изощрённых вычислений, но оставалась безнадёжно ложной.</p>
-<pre><code>       ГЕОЦЕНТРИЗМ (ПТОЛЕМЕЙ)                     ГЕЛИОЦЕНТРИЗМ (КОПЕРНИК)
+<div class="codehilite"><pre><span></span><code>       ГЕОЦЕНТРИЗМ (ПТОЛЕМЕЙ)                     ГЕЛИОЦЕНТРИЗМ (КОПЕРНИК)
   Земля («Я») стоит в центре.                Солнце (Источник) в центре.
   Планеты выписывают дикие петли.            Орбиты просты, гармоничны и ясны.
   Громоздятся эпициклы на эпициклах.         Земля — скромный проводник,
   Сложность запредельна, истина нулевая.     вращающийся вокруг света.
-</code></pre>
+</code></pre></div>
+
 <p>В 1543 году польский каноник Николай Коперник сделал шаг, перевернувший судьбу цивилизации. Он не стал придумывать сотый по счёту эпицикл. Он не стал уточнять форму хрустальных сфер.</p>
 <p><strong>Он просто убрал человека из центра мира.</strong></p>
 <p>Коперник мысленно перенёс точку отсчёта на Солнце. И в то же мгновение произошло чудо простоты, которое японцы называют <em>Кансо</em> (簡素):<br />
@@ -609,29 +540,33 @@
 <p>Урок Коперника был первым великим триумфом материи над человеческой гордыней: <strong>истина открывается только тогда, когда наблюдатель соглашается снять себя с пьедестала центра Вселенной</strong>. До тех пор, пока человек мнит себя неподвижной точкой, вокруг которой обязана вращаться реальность, он обречён плодить эпициклы безумия.</p>
 <hr />
 <hr />
-<div class="chapter-anchor"></div><h2 class="chapter-title">Глава 2. Ньютоновские рельсы реальности: Законы сохранения и конец магии</h2>
+<div class="chapter-break"></div>
+<h2>Глава 2. Ньютоновские рельсы реальности: Законы сохранения и конец магии</h2>
 <p>Если Коперник очистил геометрию неба, то Исаак Ньютон создал фундамент, на котором выросла вся материальная мощь современного мира.</p>
 <p>До 1687 года, когда вышли в свет «Математические начала натуральной философии», мир людей был пространством мистического произвола. Если обрушивался свод собора — винили грехи горожан или происки ведьм. Если пушечное ядро летело мимо цели — считали, что на него дунул бес. Материальный мир казался капризным, одушевлённым и непредсказуемым.</p>
 <p>Ньютон совершил фундаментальный переворот: он связал причину и следствие железной математической необходимостью. Он установил законы сохранения, доказав, что материальный мир подчиняется не божественному капризу, а строгим уравнениям движения и гравитации.</p>
-<pre><code>       ДО НЬЮТОНА (МАГИЯ И ВИНА)                 ПОСЛЕ НЬЮТОНА (ИНЖЕНЕРИЯ)
+<div class="codehilite"><pre><span></span><code>       ДО НЬЮТОНА (МАГИЯ И ВИНА)                 ПОСЛЕ НЬЮТОНА (ИНЖЕНЕРИЯ)
   Мост рухнул: «Бог покарал за грехи»        Мост рухнул: не учли нагрузку F &gt; F_предел
   Болезнь: «Вселился нечистый дух»          Событие: следствие конкретной силы
   Труд: молитва о хорошем ветре              Труд: расчёт паруса и сопротивления среды
-</code></pre>
+</code></pre></div>
+
 <p>Что сделал Ньютон для цивилизации?<br />
 Он <strong>навсегда изгнал вину и произвол из материального мира</strong>.<br />
 Если балка моста треснула под весом тяжело нагруженной телеги, строитель больше не шёл каяться священнику и не посыпал голову пеплом. Он брал перо, рассчитывал механическое напряжение материала, увеличивал сечение опоры — и следующий мост стоял столетиями.</p>
 <p>Материальный мир стал предсказуемым, проверяемым и покорным человеку именно потому, что поломка перестала быть «грехом». <strong>Поломка стала физическим фактом: внешняя нагрузка превысила расчётный предел прочности.</strong> Впервые возникло понятие <strong>замкнутой системы</strong>, в которой ни один грамм массы и ни одна единица импульса не могли появиться из воздуха или исчезнуть в никуда.</p>
 <p>Этот шаг избавил инженерию от чувства вины. Но когда речь заходила о человеческой душе, люди продолжали винить во всём «грех».</p>
 <hr />
-<div class="chapter-anchor"></div><h2 class="chapter-title">Глава 3. Кансо в чугуне: Джеймс Ватт и рождение полезного действия</h2>
+<hr />
+<div class="chapter-break"></div>
+<h2>Глава 3. Кансо в чугуне и термодинамика потока: Джеймс Ватт, Сади Карно и рождение полезного действия</h2>
 <p>К началу XVIII века английские угольные шахты затапливало грунтовыми водами. Для откачки воды изобретатель Томас Ньюкомен построил первую в истории действующую паровую поршневую машину (1712 год).</p>
-<p>Это был гигантский шаг вперед, но машина Ньюкомена обладала чудовищным изъяном: её коэффициент полезного действия (КПД) составлял меньше ** одного процента**. Девяносто девять процентов тепла, выделяемого горящим углем, сгорало впустую.</p>
+<p>Это был гигантский шаг вперед, но машина Ньюкомена обладала чудовищным изъяном: её коэффициент полезного действия (КПД) составлял меньше <strong>одного процента</strong>. Девяносто девять процентов тепла, выделяемого горящим углем, сгорало впустую.</p>
 <p>Почему?<br />
 Потому что в машине Ньюкомена рабочий цилиндр был одновременно и местом нагрева, и местом охлаждения. В цилиндр впускали раскаленный пар, который толкал поршень вверх. Затем прямо в этот же раскаленный металлический цилиндр впрыскивали струю ледяной воды, чтобы пар сконденсировался, возник вакуум, и атмосферное давление толкнуло поршень вниз. Но для следующего цикла массивный чугунный цилиндр нужно было снова раскалить паром с нуля!</p>
 <p>Цилиндр тратил 99% своей энергии на <strong>собственный внутренний нагрев и охлаждение</strong>. Он непрерывно боролся сам с собой.</p>
 <p>В 1765 году шотландский механик Джеймс Ватт, ремонтируя модель машины Ньюкомена в университете Глазго, совершил инженерный прорыв, давший старт Промышленной революции:</p>
-<pre><code>┌────────────────────────────────────────────────────────────────────────┐
+<div class="codehilite"><pre><span></span><code>┌────────────────────────────────────────────────────────────────────────┐
 │                   ПРИНЦИП ОТДЕЛЬНОГО КОНДЕНСАТОРА ВАТТА               │
 ├───────────────────────────────────┬────────────────────────────────────┤
 │ МАШИНА НЬЮКОМЕНА (КПД &lt; 1%)       │ МАШИНА ВАТТА (КПД ВЫРОС В 4 РАЗА)  │
@@ -642,14 +577,21 @@
 │ омическом трении металла.         │ Вся энергия пара идёт в полезную   │
 │ Машина борется сама с собой.      │ механическую работу на валу!       │
 └───────────────────────────────────┴────────────────────────────────────┘
-</code></pre>
-<p>Ватт отделил место полезной работы от зоны охлаждения. Цилиндр оставался постоянно раскалённым, а конденсация пара происходила в отдельной, изолированной камере.</p>
-<p>Потребление угля упало вчетверо. Машина Ватта смогла не просто качать воду в шахте — она стала универсальным приводом для ткацких фабрик, пароходов и паровозов.</p>
-<p>Ватт открыл фундаментальный закон, который спустя 250 лет станет третьим каноном «Внутреннего тока» — каноном <strong>Кансо</strong> (簡素):<br />
-<strong>Система, которая тратит энергию на поддержание внутреннего конфликта между своими узлами, обречена на паразитный перегрев и нулевой КПД. Чтобы совершить полезную работу, контур должен быть избавлен от внутреннего самосожжения.</strong></p>
+</code></pre></div>
+
+<p>Ватт отделил место полезной работы от зоны охлаждения. Цилиндр оставался постоянно раскалённым, а конденсация пара происходила в отдельной, изолированной камере. Потребление угля упало вчетверо. Машина Ватта смогла стать универсальным приводом для ткацких фабрик, пароходов и паровозов.</p>
+<h3>Четыре такта Сади Карно: рождение науки о потоках</h3>
+<p>Спустя 60 лет после Ватта, в 1824 году, молодой французский офицер Никола Леонар Сади Карно опубликовал бессмертный труд <em>«Размышления о движущей силе огня и о машинах, способных развивать эту силу»</em>. Карно исследовал ту же самую задачу: <em>«Как извлечь максимум работы из сжигания угля?»</em>.</p>
+<p>И в этот момент родилась <strong>термодинамика Вселенной</strong>. Карно доказал:<br />
+1. Тепловой поток производит механическую работу исключительно при наличии перепада температур (градиента потенциалов <span class="math-inline">$T_1 - T_2$</span>).<br />
+2. Невозможно превратить всё тепло в полезную работу: термодинамический цикл принципиально требует <strong>холодильника (стока тепла)</strong>, куда сбрасывается отработанная энтропия.<br />
+3. Идеальный цикл состоит ровно из <strong>четырёх фаз (тактов)</strong>: изотермическое расширение, адиабатическое расширение, изотермическое сжатие, адиабатическое сжатие.</p>
+<p>Ватт и Карно открыли фундаментальный закон, который спустя 200 лет станет стержнем Внутреннего тока — каноном <strong>Кансо</strong> (簡素):<br />
+<strong>Система, которая тратит энергию на поддержание внутреннего конфликта между своими узлами, обречена на паразитный перегрев и нулевой КПД. Чтобы совершить полезную работу, поток должен быть ламинарным, а контур — снабжён изолированным сбросом энтропии.</strong></p>
 <hr />
 <hr />
-<div class="chapter-anchor"></div><h2 class="chapter-title">Глава 4. Поле, ток и свет: Фарадей, Максвелл и победа над тьмой</h2>
+<div class="chapter-break"></div>
+<h2>Глава 4. Поле, ток и свет: Фарадей, Максвелл и победа над тьмой</h2>
 <p>В XIX веке человечество совершило переход от пара к электричеству — невидимой субстанции, пронизывающей ткань Вселенной.</p>
 <p>Майкл Фарадей — сын бедного лондонского кузнеца, не имевший высшего образования, — обладал поразительной визуальной интуицией. В 1831 году он взял железное кольцо, намотал на противоположные стороны две изолированные проволочные катушки и подключил одну катушку к батарее. В момент замыкания ключа стрелка гальванометра на второй катушке дрогнула!</p>
 <p>Родилось величайшее открытие в истории энергетики: <strong>явление электромагнитной индукции</strong>.<br />
@@ -657,27 +599,29 @@
 <p>Спустя тридцать лет гениальный шотландский математик Джеймс Клерк Максвелл облёк открытия Фарадея в строгую систему четырёх дифференциальных уравнений. Из уравнений Максвелла следовало:<br />
 1. Электрический ток порождает магнитное поле.<br />
 2. Изменяющееся магнитное поле порождает вихревое электрическое поле.<br />
-3. Электромагнитная волна распространяется в пространстве со скоростью света ($c \approx 300\,000\text{ км/с}$).<br />
+3. Электромагнитная волна распространяется в пространстве со скоростью света (<span class="math-inline">$c pprox 300\,000\text{ км/с}$</span>).<br />
 4. Свет — это электромагнитное колебание.</p>
-<pre><code>       ПРОВОДНИК ПОД ТОКОМ                    ЭЛЕКТРОМАГНИТНАЯ ИНДУКЦИЯ
+<div class="codehilite"><pre><span></span><code>       ПРОВОДНИК ПОД ТОКОМ                    ЭЛЕКТРОМАГНИТНАЯ ИНДУКЦИЯ
          ┌─────────────┐                      Контур 1           Контур 2
       ───┴─────────────┴───                   ┌───┐   M &gt; 0      ┌───┐
          ═══════════════                      │ ~ ├──))))  ((((──┤ 💡│
                Ток I                          └───┘              └───┘
          Энергия не внутри провода,           Энергия передается без проводов
          а в силовом поле вокруг него!         через взаимный резонанс поля!
-</code></pre>
-<p>Вслед за Фарадеем и Максвеллом пришли Георг Ом с формулой проводимости ($I = U/R$), Густав Кирхгоф с законами баланса токов в узлах ($\sum I = 0$) и Генрих Ленц с Джеймсом Джоулем с законом тепловых потерь ($Q = I^2 R t$).</p>
+</code></pre></div>
+
+<p>Вслед за Фарадеем и Максвеллом пришли Георг Ом с формулой проводимости (<span class="math-inline">$I = U/R$</span>), Густав Кирхгоф с законами баланса токов в узлах (<span class="math-inline">$\sum I = 0$</span>) и Генрих Ленц с Джеймсом Джоулем с законом тепловых потерь (<span class="math-inline">$Q = I^2 R t$</span>).</p>
 <p>Материальный мир стал электрическим. Люди научились строить генераторы, тянуть линии передач за тысячи километров и зажигать миллиарды ламп простым щелчком тумблера.</p>
 <p>Почему электричество покорилось человеку?<br />
 Потому что физики поняли железный закон: <strong>электрический ток не может течь в разомкнутой цепи. Чтобы лампочка горела, контур должен быть замкнут, а паразитное сопротивление проводника должно стремиться к нулю.</strong></p>
 <hr />
 <hr />
-<div class="chapter-anchor"></div><h2 class="chapter-title">Глава 5. Сход с измученной лошади: Карл Бенц и автономный привод</h2>
+<div class="chapter-break"></div>
+<h2>Глава 5. Сход с измученной лошади: Карл Бенц и автономный привод</h2>
 <p>На протяжении тысячелетий главным двигателем цивилизации была лошадь. На спинах и в упряжках лошадей строились империи, велись войны и вспахивались поля.</p>
 <p>Но лошадь была трагическим двигателем. Она требовала постоянного морального принуждения: кнута, шпор, волевого насилия всадника. Когда лошадь падала от изнеможения, всадник либо яростно хлестал её, либо чувствовал мучительную жалость, но не мог изменить ситуацию, потому что у него не было альтернативы.</p>
 <p>29 января 1886 года немецкий инженер Карл Бенц получил патент № 37435 на трёхколёсный двухместный экипаж с бензиновым двигателем внутреннего сгорания — первый в мире автомобиль.</p>
-<pre><code>┌────────────────────────────────────────────────────────────────────────┐
+<div class="codehilite"><pre><span></span><code>┌────────────────────────────────────────────────────────────────────────┐
 │                   ЭВОЛЮЦИОННЫЙ СДВИГ: ОТ ЛОШАДИ К МОТОРУ               │
 ├───────────────────────────────────┬────────────────────────────────────┤
 │ ЭПОХА ЛОШАДИ                      │ ЭПОХА АВТОМОБИЛЯ                   │
@@ -687,34 +631,88 @@
 │ • Поломка = «упрямство/грех»      │ • Поломка = износ свечи или засор  │
 │ • Лечение: насилие над волей      │ • Ремонт: замена узла по схеме     │
 └───────────────────────────────────┴────────────────────────────────────┘
-</code></pre>
+</code></pre></div>
+
 <p>С появлением автомобиля Бенца произошло фундаментальное событие: <strong>человек пересел с биологического существа, от которого требовали морального повиновения, на термодинамическую машину, требующую понимания схемы</strong>.</p>
 <p>Если мотор Бенца глохнет, водитель не читает ему проповедей о грехе гордыни. Он не хлещет капот кожаным кнутом. Он открывает крышку карбюратора, проверяет искру на свече зажигания и поступление бензина.</p>
 <p>Наука о материи окончательно попрощалась с понятием «вины железа». Железо не грешит — оно подчиняется законам термодинамики.</p>
 <hr />
 <hr />
-<h2>Итог Части I: Пять столпов материального триумфа</h2>
+<h2>Итог Части I: Пять столпов материального триумфа и Великая Родословная законов сохранения</h2>
 <p>Почему ученые и изобретатели преобразили материальный мир?<br />
 Потому что они строго соблюдали пять принципов объективной реальности:</p>
 <ol>
 <li><strong>Замкнутость контура:</strong> энергия не возникает из ниоткуда и не течет в пустоту. Для любого потока необходим обратный провод.</li>
 <li><strong>Законы сохранения:</strong> масса, энергия, импульс и заряд инвариантны. Никакие молитвы и волевые усилия не могут нарушить баланс системы.</li>
-<li><strong>Минимизация внутреннего сопротивления ($R \to 0$):</strong> отсечение паразитного трения, изоляция конденсатора Ватта, чистые контакты в электрической сети.</li>
+<li><strong>Минимизация внутреннего сопротивления (<span class="math-inline">$R \to 0$</span>):</strong> отсечение паразитного трения, изоляция конденсатора Ватта, чистые контакты в электрической сети.</li>
 <li><strong>Фальсифицируемость и объективность:</strong> если расчет неверен, мост рушится сразу, мотор не заводится, ракета падает. Природа не вступает в философские споры.</li>
 <li><strong>Пост-моральный ремонт:</strong> сломанный узел не обвиняют в грехе, а калибруют по чертежу.</li>
 </ol>
-<p>Материя сдалась, потому что человек заговорил с ней на её родном языке — языке математических формул и замкнутых контуров.</p>
+<h3>Великая родословная: 200 лет сборки Универсального закона</h3>
+<p>Но за этими инженерными победами стояла ещё более глубокая, подземная река познания — наука о неравновесных потоках и сохранении порядка:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">====================================================================================================</span>
+<span class="w">           </span><span class="err">ВЕЛИКАЯ</span><span class="w"> </span><span class="err">РОДОСЛОВНАЯ</span><span class="w"> </span><span class="err">ПРИКЛАДНЫХ</span><span class="w"> </span><span class="err">ПРОРЫВОВ</span><span class="w"> </span><span class="err">В</span><span class="w"> </span><span class="err">ФУНДАМЕНТАЛЬНЫЕ</span><span class="w"> </span><span class="err">ЗАКОНЫ</span><span class="w"> </span><span class="err">ПРИРОДЫ</span>
+<span class="o">====================================================================================================</span>
+
+<span class="w"> </span><span class="err">ГОД</span><span class="w"> </span><span class="err">И</span><span class="w"> </span><span class="err">АВТОР</span><span class="w">           </span><span class="err">УЗКАЯ</span><span class="w"> </span><span class="err">ПРИКЛАДНАЯ</span><span class="w"> </span><span class="err">ЗАДАЧА</span><span class="w">                     </span><span class="err">ФУНДАМЕНТАЛЬНЫЙ</span><span class="w"> </span><span class="err">ЗАКОН</span><span class="w"> </span><span class="err">ВСЕЛЕННОЙ</span>
+<span class="err">────────────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="w"> </span><span class="mi">1824</span><span class="w"> </span><span class="err">год</span><span class="w">              </span><span class="err">«Как</span><span class="w"> </span><span class="err">повысить</span><span class="w"> </span><span class="err">КПД</span><span class="w"> </span><span class="err">поршня</span><span class="w"> </span><span class="err">паровой</span><span class="w">           </span><span class="err">ВТОРОЕ</span><span class="w"> </span><span class="err">НАЧАЛО</span><span class="w"> </span><span class="err">ТЕРМОДИНАМИКИ</span>
+<span class="w"> </span><span class="err">Сади</span><span class="w"> </span><span class="err">Карно</span><span class="w">            </span><span class="err">машины</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">шахте</span><span class="p">,</span><span class="w"> </span><span class="err">сжигая</span><span class="w"> </span><span class="err">меньше</span><span class="w"> </span><span class="err">угля?»</span><span class="w">       </span><span class="err">Закон</span><span class="w"> </span><span class="err">энтропии</span><span class="p">,</span><span class="w"> </span><span class="err">тепловая</span><span class="w"> </span><span class="err">смерть</span><span class="p">,</span>
+<span class="w">                                                                  </span><span class="err">необратимость</span><span class="w"> </span><span class="err">стрелы</span><span class="w"> </span><span class="err">времени</span><span class="o">.</span>
+<span class="err">────────────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="w"> </span><span class="mi">1826</span><span class="w"> </span><span class="err">год</span><span class="w">              </span><span class="err">«Какова</span><span class="w"> </span><span class="err">связь</span><span class="w"> </span><span class="err">между</span><span class="w"> </span><span class="err">напряжением</span><span class="w"> </span><span class="err">батареи</span><span class="w">    </span><span class="err">ЗАКОН</span><span class="w"> </span><span class="err">ОМА</span>
+<span class="w"> </span><span class="err">Георг</span><span class="w"> </span><span class="err">Ом</span><span class="w">              </span><span class="err">и</span><span class="w"> </span><span class="err">толщиной</span><span class="w"> </span><span class="err">медной</span><span class="w"> </span><span class="err">проволоки?»</span><span class="w">              </span><span class="err">Линейная</span><span class="w"> </span><span class="err">проводимость</span><span class="w"> </span><span class="err">потока</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">R</span><span class="p">,</span>
+<span class="w">                                                                  </span><span class="err">инвариант</span><span class="w"> </span><span class="err">переноса</span><span class="w"> </span><span class="err">потенциала</span><span class="o">.</span>
+<span class="err">────────────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="w"> </span><span class="mi">1886</span><span class="w"> </span><span class="err">год</span><span class="w">              </span><span class="err">«Что</span><span class="w"> </span><span class="err">движет</span><span class="w"> </span><span class="err">биологической</span><span class="w"> </span><span class="err">эволюцией</span><span class="p">,</span><span class="w">      </span><span class="err">БОРЬБА</span><span class="w"> </span><span class="err">ЗА</span><span class="w"> </span><span class="err">НЕГЭНТРОПИЮ</span>
+<span class="w"> </span><span class="err">Людвиг</span><span class="w"> </span><span class="err">Больцман</span><span class="w">       </span><span class="err">если</span><span class="w"> </span><span class="err">энергия</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">мире</span><span class="w"> </span><span class="err">сохраняется?»</span><span class="w">          </span><span class="err">Жизнь</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="err">это</span><span class="w"> </span><span class="err">борьба</span><span class="w"> </span><span class="err">за</span><span class="w"> </span><span class="err">свободную</span><span class="w"> </span><span class="err">энтропию</span>
+<span class="w">                                                                  </span><span class="err">потока</span><span class="w"> </span><span class="err">от</span><span class="w"> </span><span class="err">горячего</span><span class="w"> </span><span class="err">Солнца</span><span class="w"> </span><span class="err">к</span><span class="w"> </span><span class="err">Земле</span><span class="o">.</span>
+<span class="err">────────────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="w"> </span><span class="mi">1900</span><span class="w"> </span><span class="err">год</span><span class="w">              </span><span class="err">«Почему</span><span class="w"> </span><span class="err">спектр</span><span class="w"> </span><span class="err">излучения</span><span class="w"> </span><span class="err">нагретой</span><span class="w"> </span><span class="err">печи</span><span class="w">     </span><span class="err">КВАНТОВАЯ</span><span class="w"> </span><span class="err">МЕХАНИКА</span>
+<span class="w"> </span><span class="err">Макс</span><span class="w"> </span><span class="err">Планк</span><span class="w">            </span><span class="err">не</span><span class="w"> </span><span class="err">уходит</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">ультрафиолетовую</span><span class="w"> </span><span class="err">катастрофу?»</span><span class="w">  </span><span class="err">Квант</span><span class="w"> </span><span class="err">действия</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="err">дискретность</span><span class="w"> </span><span class="err">материи</span><span class="p">,</span>
+<span class="w">                                                                  </span><span class="err">рождение</span><span class="w"> </span><span class="err">новой</span><span class="w"> </span><span class="err">физики</span><span class="o">.</span>
+<span class="err">────────────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="w"> </span><span class="mi">1944</span><span class="w"> </span><span class="err">год</span><span class="w">              </span><span class="err">«Как</span><span class="w"> </span><span class="err">живой</span><span class="w"> </span><span class="err">организм</span><span class="w"> </span><span class="err">борется</span><span class="w"> </span><span class="err">с</span><span class="w"> </span><span class="err">распадом</span><span class="w">     </span><span class="err">КОНЦЕПЦИЯ</span><span class="w"> </span><span class="err">НЕГЭНТРОПИИ</span>
+<span class="w"> </span><span class="err">Эрвин</span><span class="w"> </span><span class="err">Шрёдингер</span><span class="w">       </span><span class="err">в</span><span class="w"> </span><span class="err">свете</span><span class="w"> </span><span class="err">законов</span><span class="w"> </span><span class="err">статистической</span><span class="w"> </span><span class="err">физики?»</span><span class="w">    </span><span class="err">Живое</span><span class="w"> </span><span class="err">непрерывно</span><span class="w"> </span><span class="err">втягивает</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">себя</span>
+<span class="w">                                                                  </span><span class="err">отрицательную</span><span class="w"> </span><span class="err">энтропию</span><span class="w"> </span><span class="err">из</span><span class="w"> </span><span class="err">среды</span><span class="o">.</span>
+<span class="err">────────────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="w"> </span><span class="mi">1948</span><span class="w"> </span><span class="err">год</span><span class="w">              </span><span class="err">«Как</span><span class="w"> </span><span class="err">передать</span><span class="w"> </span><span class="err">телеграмму</span><span class="w"> </span><span class="err">по</span><span class="w"> </span><span class="err">кабелю</span><span class="w">         </span><span class="err">ТЕОРИЯ</span><span class="w"> </span><span class="err">ИНФОРМАЦИИ</span>
+<span class="w"> </span><span class="err">Клод</span><span class="w"> </span><span class="err">Шеннон</span><span class="w">           </span><span class="n">Bell</span><span class="w"> </span><span class="n">Labs</span><span class="w"> </span><span class="err">сквозь</span><span class="w"> </span><span class="err">белый</span><span class="w"> </span><span class="err">шум?»</span><span class="w">               </span><span class="err">Бит</span><span class="w"> </span><span class="err">как</span><span class="w"> </span><span class="err">мера</span><span class="w"> </span><span class="err">порядка</span><span class="p">,</span><span class="w"> </span><span class="err">пропускная</span>
+<span class="w">                                                                  </span><span class="err">способность</span><span class="w"> </span><span class="err">канала</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="nb">log</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">S</span><span class="o">/</span><span class="n">N</span><span class="p">)</span><span class="o">.</span>
+<span class="err">────────────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="w"> </span><span class="mi">1977</span><span class="w"> </span><span class="err">год</span><span class="w">              </span><span class="err">«Как</span><span class="w"> </span><span class="err">порядок</span><span class="w"> </span><span class="err">самозарождается</span><span class="w"> </span><span class="err">из</span><span class="w"> </span><span class="err">хаоса</span><span class="w">      </span><span class="err">ДИССИПАТИВНЫЕ</span><span class="w"> </span><span class="err">СТРУКТУРЫ</span>
+<span class="w"> </span><span class="err">Илья</span><span class="w"> </span><span class="err">Пригожин</span><span class="w">         </span><span class="err">в</span><span class="w"> </span><span class="err">химических</span><span class="w"> </span><span class="err">растворах</span><span class="w"> </span><span class="err">и</span><span class="w"> </span><span class="err">живых</span><span class="w"> </span><span class="err">клетках?»</span><span class="w">   </span><span class="err">Нобелевская</span><span class="w"> </span><span class="err">премия</span><span class="w"> </span><span class="err">за</span><span class="w"> </span><span class="err">неравновесную</span>
+<span class="w">                                                                  </span><span class="err">термодинамику</span><span class="w"> </span><span class="err">открытых</span><span class="w"> </span><span class="err">систем</span><span class="o">.</span>
+<span class="err">────────────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="w"> </span><span class="mi">1996</span><span class="w"> </span><span class="err">год</span><span class="w">              </span><span class="err">«Почему</span><span class="w"> </span><span class="err">кровеносные</span><span class="w"> </span><span class="err">сосуды</span><span class="p">,</span><span class="w"> </span><span class="err">молнии</span><span class="w"> </span><span class="err">и</span><span class="w"> </span><span class="err">реки</span><span class="w">  </span><span class="n">CONSTRUCTAL</span><span class="w"> </span><span class="n">LAW</span>
+<span class="w"> </span><span class="err">Адриан</span><span class="w"> </span><span class="err">Бежан</span><span class="w">          </span><span class="err">имеют</span><span class="w"> </span><span class="err">одинаковую</span><span class="w"> </span><span class="err">ветвящуюся</span><span class="w"> </span><span class="err">форму?»</span><span class="w">        </span><span class="err">Потоковые</span><span class="w"> </span><span class="err">структуры</span><span class="w"> </span><span class="err">эволюционируют</span>
+<span class="w">                                                                  </span><span class="err">к</span><span class="w"> </span><span class="err">снижению</span><span class="w"> </span><span class="err">глобального</span><span class="w"> </span><span class="err">сопротивления</span><span class="o">.</span>
+<span class="err">────────────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="w"> </span><span class="mi">2026</span><span class="w"> </span><span class="err">год</span><span class="w">              </span><span class="err">«Почему</span><span class="w"> </span><span class="err">человек</span><span class="w"> </span><span class="err">страдает</span><span class="w"> </span><span class="err">на</span><span class="w"> </span><span class="err">ровном</span><span class="w"> </span><span class="err">месте</span><span class="w">   </span><span class="err">УНИВЕРСАЛЬНЫЙ</span><span class="w"> </span><span class="err">ЗАКОН</span><span class="w"> </span><span class="err">ПОТОКОВЫХ</span><span class="w"> </span><span class="err">СИСТЕМ</span>
+<span class="w"> </span><span class="err">Владимир</span><span class="w"> </span><span class="err">Аньянов</span><span class="w">      </span><span class="err">и</span><span class="w"> </span><span class="err">как</span><span class="w"> </span><span class="err">замкнуть</span><span class="w"> </span><span class="err">рубильник</span><span class="w"> </span><span class="err">счастья?»</span><span class="w">         </span><span class="err">Замкнутый</span><span class="w"> </span><span class="err">четверичный</span><span class="w"> </span><span class="err">контур</span><span class="p">,</span><span class="w"> </span><span class="err">соматическая</span>
+<span class="w">                                                                  </span><span class="err">сверхпроводимость</span><span class="w"> </span><span class="n">R_ego</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">P_load</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">P_total</span><span class="o">.</span>
+<span class="o">====================================================================================================</span>
+</code></pre></div>
+
+<h3>Почему Альберт Эйнштейн не замкнул эту цепь?</h3>
+<p>Альберт Эйнштейн был величайшим физиком XX века. Он создал специальную и общую теорию относительности, доказал эквивалентность массы и энергии (<span class="math-inline">$E = mc^2$</span>) и преклонялся перед термодинамикой, называя её единственной теорией общего содержания, которая никогда не будет опровергнута.</p>
+<p>Но к Универсальному закону потоковых систем Эйнштейн не подошёл по двум фундаментальным историческим причинам:<br />
+1. <strong>Слепая зона релятивистской геометрии:</strong> Эйнштейн искал предельную истину в <strong>статической геометрии уравнений поля в вакууме</strong> (искривление пространства-времени, единая теория поля). Но живые организмы, нейросети, психика и человеческие сообщества не живут в вакууме. Они существуют исключительно как <strong>неравновесные открытые потоковые структуры</strong>, непрерывно прокачивающие сквозь себя градиент энергии.<br />
+2. <strong>Термодинамика закрытых систем:</strong> Классическая термодинамика эпохи Эйнштейна знала только замкнутые изолированные сосуды, остывание газов и неизбежную тепловую смерть Вселенной. Физика открытых диссипативных систем (Пригожин, Бежан) родилась лишь на закате и после жизни Эйнштейна.</p>
+<p>Материя была покорена. Но пока человек исследовал далёкие квазары и атомные ядра, проводка его собственной души оставалась объята омическим пламенем.</p>
 <hr />
 <hr />
-<div class="part-page-break"></div><h1 class="part-title">Часть II. Трагедия Духа: Десять тысяч лет бессилия титанов мысли</h1>
-<div class="chapter-anchor"></div><h2 class="chapter-title">Глава 6. Вавилон благочестия: Религиозный тупик и жреческая монополия на боль</h2>
+<div class="part-header"># Часть II. Трагедия Духа: Десять тысяч лет бессилия титанов мысли</div>
+
+<div class="chapter-break"></div>
+<h2>Глава 6. Вавилон благочестия: Религиозный тупик и жреческая монополия на боль</h2>
 <p>Параллельно с покорением материи разворачивалась великая и мучительная драма человеческого духа.</p>
 <p>На протяжении всей истории на Земле появлялись гиганты сознания.<br />
 Две с половиной тысячи лет назад в долине Ганга Сиддхартха Гаутама (Будда) сел под дерево Бодхи и обнаружил корень человеческого страдания: иллюзию неизменного «Я» (<em>Анатта</em>). Он открыл, что страдание (<em>дуккха</em>) возникает из-за слепой жажды обладания и отвращения, и показал путь полного угасания страстей (<em>Ниродха</em>).<br />
 Спустя пять веков в пыльной Иудее Иисус из Назарета провозгласил радикальную истину: <em>«Царство Божие внутрь вас есть»</em> (Лк 17:21), призвав людей отбросить фарисейский формализм внешних правил и открыться потоку безусловной любви.</p>
 <p>Казалось бы, рецепт спасения дан. Человечество должно было стать счастливым уже в первом веке нашей эры.</p>
 <p>Но что произошло на самом деле?</p>
-<pre><code>┌────────────────────────────────────────────────────────────────────────┐
+<div class="codehilite"><pre><span></span><code>┌────────────────────────────────────────────────────────────────────────┐
 │                   ЭНТРОПИЯ РЕЛИГИОЗНОГО ИНСТИТУТА                      │
 ├───────────────────────────────────┬────────────────────────────────────┤
 │ ПЕРВИЧНЫЙ ОАЗИС МАСТЕРА           │ ИСТОРИЧЕСКИЙ ЖРЕЧЕСКИЙ ИНСТИТУТ    │
@@ -725,7 +723,8 @@
 │ • «Царство внутри вас»            │ • Костры инквизиции и войны веры   │
 │ • Радость присутствия в моменте   │ • Отложенный загробный суд         │
 └───────────────────────────────────┴────────────────────────────────────┘
-</code></pre>
+</code></pre></div>
+
 <p>Как только живой носитель опыта уходил, немедленно включался закон энтропии посредника:<br />
 1. Вокруг живого переживания собиралась каста толкователей.<br />
 2. Простое и ясное соматическое состояние («Царство внутри», «угасание эго») объявлялось недостижимой тайной, уделом святых и схимников.<br />
@@ -736,7 +735,8 @@
 <p>Религия провалилась как массовая технология счастья, потому что <strong>не дала человеку воспроизводимой схемы</strong>. Она заменила понимание законов контура слепой верой, а калибровку проводника — пожизненным самобичеванием.</p>
 <hr />
 <hr />
-<div class="chapter-anchor"></div><h2 class="chapter-title">Глава 7. Омический пожар Ясной Поляны: Лев Толстой и крах морального насилия</h2>
+<div class="chapter-break"></div>
+<h2>Глава 7. Омический пожар Ясной Поляны: Лев Толстой и крах морального насилия</h2>
 <p>Величайший пример трагедии духа дал нам Лев Николаевич Толстой. Трагедия Толстого — это самый чистый, обнажённый и драматический эксперимент по «улучшению духа через моральное насилие» в истории цивилизации.</p>
 <p>В возрасте пятидесяти лет, будучи всемирно признанным гением, автором «Войны и мира» и «Анны Карениной», владельцем имения, отцом счастливого семейства, Толстой внезапно уперся в глухую стену экзистенциального ужаса.<br />
 В своей пронзительной «Исповеди» (1882) он описал состояние, когда жизнь обессмыслилась за считанные дни:  </p>
@@ -746,7 +746,7 @@
 <p>Толстой спрятал верёвку, чтобы не повеситься на перекладине между шкафами в своем яснополянском кабинете, и перестал ходить на охоту с ружьём, боясь повернуть дуло к собственному виску.</p>
 <p>Что сделал Толстой?<br />
 Он бросил вызов всему: официальной церкви, государству, богатству, сословию. Он выучил древнегреческий и древнееврейский языки, заново перевёл Евангелие, сформулировал пять заповедей Христа, провозгласил закон непротивления злу насилием, отказался от авторских прав на свои произведения, надел крестьянскую рубаху, сам пахал землю, шил сапоги и призывал человечество к абсолютному нравственному опрощению и святости.</p>
-<pre><code>┌────────────────────────────────────────────────────────────────────────┐
+<div class="codehilite"><pre><span></span><code>┌────────────────────────────────────────────────────────────────────────┐
 │                   АВАРИЯ КОНТУРА ЛЬВА ТОЛСТОГО                         │
 ├───────────────────────────────────┬────────────────────────────────────┤
 │ УБЕЖДЕНИЕ ТОЛСТОГО                │ ЭЛЕКТРОДИНАМИЧЕСКИЙ РАСЧЕТ         │
@@ -762,30 +762,34 @@
 │ 1910 года, воспаление лёгких, бред │ сжёг проводку физического тела.   │
 │ на скамейке в избе начальника.    │ Замыкание эго на само эго.         │
 └───────────────────────────────────┴────────────────────────────────────┘
-</code></pre>
+</code></pre></div>
+
 <p>Каков был результат этого титанического тридцатилетнего духовного подвига?</p>
 <p><strong>Катастрофа.</strong> Полное омическое самосожжение.<br />
 Толстой превратил свою жизнь и жизнь своих близких в непрерывный ад. Он судил себя за каждое съеденное яблоко, за каждую минуту отдыха на диване, за поездку на велосипеде. Он требовал от жены Софьи Андреевны немедленно раздать всё имущество крестьянам, доведя женщину до нервных срывов и попыток самоубийства. В доме царила атмосфера взаимной слежки, подозрительности и мучительного лицемерия.</p>
 <p>В ночь на 28 октября 1910 года 82-летний старик не выдержал внутреннего омического ада. Он тайно бежал из Ясной Поляны в метель, простудился в промозглом вагоне и спустя неделю умер от пневмонии на затерянной железнодорожной станции Астапово, шепча в бреду: <em>«Мужики... мужики как умирают...»</em>.</p>
 <p>Почему Толстой потерпел крах?<br />
 Потому что он <strong>пытался погасить омический пожар эго керосином ещё большего эго!</strong><br />
-Его «святое Я» непрерывно судило и хлестало его «грешное Я». На принципиальной схеме это выглядит как короткое замыкание двух одинаково ядовитых реостатов. По закону Джоуля — Ленца ($Q = I^2 R t$), чем сильнее ток его титанической совести ($I$) упирался в сопротивление вины ($R$), тем сильнее раскалялась и плавилась нервная проводка.</p>
+Его «святое Я» непрерывно судило и хлестало его «грешное Я». На принципиальной схеме это выглядит как короткое замыкание двух одинаково ядовитых реостатов. По закону Джоуля — Ленца (<span class="math-inline">$Q = I^2 R t$</span>), чем сильнее ток его титанической совести (<span class="math-inline">$I$</span>) упирался в сопротивление вины (<span class="math-inline">$R$</span>), тем сильнее раскалялась и плавилась нервная проводка.</p>
 <h3>Параллельная катастрофа: бунт Ницше</h3>
 <p>Пока Толстой в России пытался усмирить эго христианской святостью, в Европе Фридрих Ницше предпринял зеркальную попытку: взорвать мораль яростью гордого духа. Ницше объявил смирение «моралью рабов» и призвал выкрутить реостат воли на максимум — к «Сверхчеловеку» (<em>Übermensch</em>) и Воле к Власти. </p>
-<p>Казалось, это альтернатива толстовскому самоедству: не каяться, а повелевать! Но что произошло на самом деле? Ток воли Ницше возрос стократно, а сопротивление гордыни ($R_{\text{pride}}$) не просто не обнулилось — оно было возведено в абсолютный культ.</p>
-<pre><code>       ДВЕ КРАЙНОСТИ ОДНОГО ОМИЧЕСКОГО ТУПИКА:
+<p>Казалось, это альтернатива толстовскому самоедству: не каяться, а повелевать! Но что произошло на самом деле? Ток воли Ницше возрос стократно, а сопротивление гордыни (<span class="math-inline">$R_{\text{pride}}$</span>) не просто не обнулилось — оно было возведено в абсолютный культ.</p>
+<div class="codehilite"><pre><span></span><code>       ДВЕ КРАЙНОСТИ ОДНОГО ОМИЧЕСКОГО ТУПИКА:
 
        ТОЛСТОЙ (Святость):   [Ток совести I] ───&gt; [Реостат вины R]  ===&gt; Пожар в Астапово
        НИЦШЕ (Сверхчеловек): [Ток гордыни I] ───&gt; [Реостат эго R]   ===&gt; Взрыв в Турине
-</code></pre>
+</code></pre></div>
+
 <p>Финал эксперимента Ницше потряс мир 3 января 1889 года в Турине: увидев, как кучер хлещет старую лошадь, философ Сверхчеловека со слезами обнял её за шею со словами <em>«Я понимаю тебя, брат мой!»</em> — и навсегда лишился рассудка.</p>
 <p>И святость Толстого, и бунт Ницше потерпели сокрушительный крах по одной причине: <strong>они оба пытались решить проблему эго средствами самого эго</strong>. Один строил эго праведника, другой — эго титана. Но для закона Джоуля — Ленца нет никакой разницы: любой ток, загнанный в сопротивление личности, превращается в пепел.</p>
 <hr />
-<div class="chapter-anchor"></div><h2 class="chapter-title">Глава 8. Индустрия суррогатов: От кушетки психоаналитика до карт Таро</h2>
+<hr />
+<div class="chapter-break"></div>
+<h2>Глава 8. Индустрия суррогатов: От кушетки психоаналитика до карт Таро</h2>
 <p>В XX веке эстафету спасения духа перехватили секулярные жрецы — психоаналитики и психологи. Зигмунд Фрейд объявил душу полем битвы между инстинктами бессознательного (<em>Id</em>), социальными запретами (<em>Superego</em>) и перепуганным сознательным «Я» (<em>Ego</em>).</p>
 <p>За 130 лет психология разрослась в колоссальную индустрию. Но сделала ли эта армия специалистов человечество счастливее? Статистика беспощадна: потребление антидепрессантов в мире выросло на 400%, а ВОЗ объявила депрессию и тревогу главной неинфекционной эпидемией XXI века.</p>
 <p>Психотерапия повторила ту же ошибку, что и астрономия Птолемея — <strong>нагромоздила десятки концептуальных эпициклов</strong>:</p>
-<pre><code>┌────────────────────────────────────────────────────────────────────────┐
+<div class="codehilite"><pre><span></span><code>┌────────────────────────────────────────────────────────────────────────┐
 │                   ПОЧЕМУ ПСИХОТЕРАПИЯ НЕ РЕШАЕТ ПРОБЛЕМУ               │
 ├───────────────────────────────────┬────────────────────────────────────┤
 │ ДИАГНОЗ «ТЕРАПЕВТИЧЕСКОГО БИЗНЕСА»│ СХЕМОТЕХНИЧЕСКИЙ СБОЙ              │
@@ -802,14 +806,23 @@
 │    100–200 долларов в час за      │ починить клиента за одну сессию.   │
 │    бесконечную рефлексию боли.    │ Нужна «терапия длиной в 5 лет».    │
 └───────────────────────────────────┴────────────────────────────────────┘
-</code></pre>
+</code></pre></div>
+
 <p>Человека научили птичьему языку: он больше не говорит «я разозлился», он говорит: <em>«У меня произошла ретравматизация нарциссического дефицита из-за токсичного триггера»</em>. Но от латинских названий омический перегрев нервной системы не снизился ни на градус.</p>
+<h3>Онтологический тупик: полировка нихромового резистора</h3>
+<p>Почему же психотерапия за 150 лет не смогла исцелить человечество? Дело не в недостатке эмпатии или знаний. Дело в фундаментальной порочности исходной модели: <strong>вся западная психотерапия пытается сделать эго счастливым</strong>.</p>
+<p>Она постулирует наличие фиксированного концептуального субъекта — «Я» (застывшего существительного), у которого есть «детская травма», «дефицит самооценки» или «дисфункциональный сценарий». И затем десятилетиями пытается «исцелить», «укрепить» или «наполнить» эту ментальную конструкцию:<br />
+- <strong>Психоанализ</strong> годами копается в обидах прошлого, цементируя образ страдающего «Я»;<br />
+- <strong>Когнитивно-поведенческая терапия (КПТ)</strong> заставляет неокортекс бесконечно спорить с собственными мыслями («оспаривание искажений»), то есть сталкивать мысль с мыслью (<span class="math-inline">$R \gg 0$</span>);<br />
+- <strong>Поп-психология</strong> учит «полюбить себя» и «выстроить личные границы», возводя вокруг эго диэлектрический саркофаг изоляции от мира.</p>
+<p>Но в контурной электродинамике эго — это паразитное омическое сопротивление (<span class="math-inline">$R_{\text{ego}}$</span>). Пытаться сделать эго счастливым — это всё равно что пытаться отполировать нихромовую спираль электроплитки до зеркального блеска в надежде, что она перестанет раскаляться при прохождении тока! Сколько бы вы ни полировали нихром бархатом психологических сессий, закон Джоуля — Ленца неумолим: пока в цепи есть сопротивление, любой импульс жизни неизбежно превращается в разрушительный жар боли (<span class="math-inline">$Q = I^2 R_{\text{ego}} t$</span>).</p>
+<p>Выход лежит не в ремонте резистора, а в <strong>обнулении сопротивления</strong> проводника (<span class="math-inline">$R_{\text{ego}} \to 0$</span>).</p>
 <h3>Каменный век рядом с адронным коллайдером</h3>
 <p>Именно бессилие официальной психологии породило самый дикий парадокс 2020-х годов: массовый уход образованных людей в астрологию, тарологию и бытовую магию. </p>
 <p>Топ-менеджеры корпораций сверяют графики слияний с ретроградным Меркурием, а миллионы благополучных людей раскладывают карты Таро, чтобы справиться с тревогой.</p>
 <p>Интеллектуалы высокомерно называют это «мракобесием масс». Но Система Аньянова выносит иной, честный вердикт:<br />
 <strong>Люди идут к гадалкам не от глупости. Они идут туда от отчаяния.</strong></p>
-<pre><code>       ПОЧЕМУ ЧЕЛОВЕК XXI ВЕКА ВЫНУЖДЕН ИДТИ К ГАДАЛКЕ?
+<div class="codehilite"><pre><span></span><code>       ПОЧЕМУ ЧЕЛОВЕК XXI ВЕКА ВЫНУЖДЕН ИДТИ К ГАДАЛКЕ?
 
    1. Человек чувствует РЕАЛЬНЫЙ омический пожар внутри (Q = I² R t).
    2. Официальная биология говорит: «Ты биоробот, выпей таблетку, смысла нет».
@@ -818,9 +831,11 @@
    5. Психолог предлагает 5 лет разбираться, как на тебя посмотрела мама.
    6. И только гадалка смотрит в глаза и говорит: «Я вижу твою боль.
       Скоро это закончится, свет близко».
-</code></pre>
+</code></pre></div>
+
 <p>Присутствие эзотерики рядом с квантовым компьютером — это приговор науке о душе, которая за 300 лет так и не смогла дать человеку простой, проверяемой схемы управления собственным контуром.</p>
 <p>Они искали мораль, догмы и термины. А нужна была <strong>схемотехника</strong>.</p>
+<hr />
 <hr />
 <h2>Итог Части II: Почему великие умы не спасли дух?</h2>
 <p>Подведём безжалостный инженерный итог десяти тысячам лет духовных исканий человечества.<br />
@@ -835,8 +850,10 @@
 <p>Дух оставался во тьме, потому что к нему ни разу не применили точные формулы электродинамики и термодинамики.</p>
 <hr />
 <hr />
-<div class="part-page-break"></div><h1 class="part-title">Часть III. Рождение Великого Синтеза: Контурная Электродинамика Человека</h1>
-<div class="chapter-anchor"></div><h2 class="chapter-title">Глава 9. Инверсия законов природы: Разворот физики внутрь</h2>
+<div class="part-header"># Часть III. Рождение Великого Синтеза: Контурная Электродинамика Человека</div>
+
+<div class="chapter-break"></div>
+<h2>Глава 9. Инверсия законов природы: Разворот физики внутрь и Онтологическая триада</h2>
 <p>В 2026 году произошло событие, сопоставимое по масштабу с коперниканским переворотом и публикацией «Начал» Ньютона.</p>
 <p>Владимир Аньянов совершил предельно простое, дерзкое и кристально ясное действие:<br />
 <strong>Он взял фундаментальные законы материального мира — законы Ома, Джоуля — Ленца, Кирхгофа, Фарадея и Карно — и развернул их внутрь человеческого существа.</strong></p>
@@ -845,26 +862,181 @@
 <em>«Если человеческое тело состоит из тех же самых атомов, что и физическая материя, если по его нервным волокнам бегут реальные электрические импульсы, а 37 триллионов митохондрий непрерывно качают протонный потенциал в 150–200 милливольт — то по какому безумному капризу законы сохранения энергии должны переставать действовать внутри человеческой психики?»</em></p>
 <p>Ответ был ошеломляющим:<br />
 <strong>Они никогда не переставали действовать. Человек — это буквальный, строгий, биологический электродинамический контур.</strong></p>
-<pre><code>┌────────────────────────────────────────────────────────────────────────┐
-│                   ВЕЛИКИЙ СИНТЕЗ СИСТЕМЫ АНЬЯНОВА                      │
-├───────────────────────────────────┬────────────────────────────────────┤
-│ ФИЗИЧЕСКИЙ МИР (МАТЕРИЯ)          │ ВНУТРЕННИЙ МИР (ДУХ)               │
-├───────────────────────────────────┼────────────────────────────────────┤
-│ • Источник питания (ЭДС E)        │ • Соматический реактор Тандэн      │
-│ • Проводник с током (I)           │ • Луч живого внимания человека     │
-│ • Полезная нагрузка (R_load)      │ • Щит 6 ламп реальной жизни        │
-│ • Сопротивление проводника (R)    │ • Эго, сомнения, суждения, обиды   │
-│ • Тепловые потери (Q = I² R t)    │ • Страдание, тревога, выгорание    │
-│ • Сверхпроводимость (R → 0)       │ • Счастье, Дзен, Мусин, Любовь     │
-└───────────────────────────────────┴────────────────────────────────────┘
-</code></pre>
-<p>Душевный разлад перестал быть «тайной грехопадения» или «неразрешимой экзистенциальной драмой». Он стал <strong>обыкновенной инженерной аварией контура</strong>, поддающейся мгновенной локализации и устранению за тридцать секунд!</p>
+<div class="codehilite"><pre><span></span><code><span class="err">┌────────────────────────────────────────────────────────────────────────┐</span>
+<span class="err">│</span><span class="w">                   </span><span class="err">ВЕЛИКИЙ</span><span class="w"> </span><span class="err">СИНТЕЗ</span><span class="w"> </span><span class="err">СИСТЕМЫ</span><span class="w"> </span><span class="err">АНЬЯНОВА</span><span class="w">                      </span><span class="err">│</span>
+<span class="err">├───────────────────────────────────┬────────────────────────────────────┤</span>
+<span class="err">│</span><span class="w"> </span><span class="err">ФИЗИЧЕСКИЙ</span><span class="w"> </span><span class="err">МИР</span><span class="w"> </span><span class="p">(</span><span class="err">МАТЕРИЯ</span><span class="p">)</span><span class="w">          </span><span class="err">│</span><span class="w"> </span><span class="err">ВНУТРЕННИЙ</span><span class="w"> </span><span class="err">МИР</span><span class="w"> </span><span class="p">(</span><span class="err">ДУХ</span><span class="p">)</span><span class="w">               </span><span class="err">│</span>
+<span class="err">├───────────────────────────────────┼────────────────────────────────────┤</span>
+<span class="err">│</span><span class="w"> </span><span class="err">•</span><span class="w"> </span><span class="err">Источник</span><span class="w"> </span><span class="err">питания</span><span class="w"> </span><span class="p">(</span><span class="err">ЭДС</span><span class="w"> </span><span class="n">E</span><span class="p">)</span><span class="w">        </span><span class="err">│</span><span class="w"> </span><span class="err">•</span><span class="w"> </span><span class="err">Соматический</span><span class="w"> </span><span class="err">реактор</span><span class="w"> </span><span class="err">Тандэн</span><span class="w">      </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="err">•</span><span class="w"> </span><span class="err">Проводник</span><span class="w"> </span><span class="err">с</span><span class="w"> </span><span class="err">током</span><span class="w"> </span><span class="p">(</span><span class="n">I</span><span class="p">)</span><span class="w">           </span><span class="err">│</span><span class="w"> </span><span class="err">•</span><span class="w"> </span><span class="err">Луч</span><span class="w"> </span><span class="err">живого</span><span class="w"> </span><span class="err">внимания</span><span class="w"> </span><span class="err">человека</span><span class="w">     </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="err">•</span><span class="w"> </span><span class="err">Полезная</span><span class="w"> </span><span class="err">нагрузка</span><span class="w"> </span><span class="p">(</span><span class="n">R_load</span><span class="p">)</span><span class="w">      </span><span class="err">│</span><span class="w"> </span><span class="err">•</span><span class="w"> </span><span class="err">Щит</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="err">ламп</span><span class="w"> </span><span class="err">реальной</span><span class="w"> </span><span class="err">жизни</span><span class="w">        </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="err">•</span><span class="w"> </span><span class="err">Сопротивление</span><span class="w"> </span><span class="err">проводника</span><span class="w"> </span><span class="p">(</span><span class="n">R</span><span class="p">)</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="err">•</span><span class="w"> </span><span class="err">Эго</span><span class="p">,</span><span class="w"> </span><span class="err">сомнения</span><span class="p">,</span><span class="w"> </span><span class="err">суждения</span><span class="p">,</span><span class="w"> </span><span class="err">обиды</span><span class="w">   </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="err">•</span><span class="w"> </span><span class="err">Тепловые</span><span class="w"> </span><span class="err">потери</span><span class="w"> </span><span class="p">(</span><span class="n">Q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">I²</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="err">•</span><span class="w"> </span><span class="err">Страдание</span><span class="p">,</span><span class="w"> </span><span class="err">тревога</span><span class="p">,</span><span class="w"> </span><span class="err">выгорание</span><span class="w">    </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="err">•</span><span class="w"> </span><span class="err">Сверхпроводимость</span><span class="w"> </span><span class="p">(</span><span class="n">R</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">       </span><span class="err">│</span><span class="w"> </span><span class="err">•</span><span class="w"> </span><span class="err">Счастье</span><span class="p">,</span><span class="w"> </span><span class="err">Дзен</span><span class="p">,</span><span class="w"> </span><span class="err">Мусин</span><span class="p">,</span><span class="w"> </span><span class="err">Любовь</span><span class="w">     </span><span class="err">│</span>
+<span class="err">└───────────────────────────────────┴────────────────────────────────────┘</span>
+</code></pre></div>
+
+<h3>Онтологическая триада познания: Трёхслойная матрёшка от космоса к соматике</h3>
+<p>Однако открытие не остановилось на индивидуальной биологии. Вскоре стало очевидно, что перед нами не просто «техника снятия стресса», а строгая <strong>трёхуровневая архитектурная матрёшка познания</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">┌────────────────────────────────────────────────────────────────────────┐</span>
+<span class="err">│</span><span class="w"> </span><span class="n">I</span><span class="o">.</span><span class="w"> </span><span class="err">УНИВЕРСАЛЬНЫЙ</span><span class="w"> </span><span class="err">ЗАКОН</span><span class="w"> </span><span class="err">ПОТОКОВЫХ</span><span class="w"> </span><span class="err">СИСТЕМ</span><span class="w"> </span><span class="p">(</span><span class="err">Фундаментальная</span><span class="w"> </span><span class="err">Физика</span><span class="p">)</span><span class="w">      </span><span class="err">│</span>
+<span class="err">│</span><span class="w">    </span><span class="err">Неравновесная</span><span class="w"> </span><span class="err">термодинамика</span><span class="p">,</span><span class="w"> </span><span class="err">негэнтропия</span><span class="w"> </span><span class="err">Шрёдингера</span><span class="p">,</span><span class="w"> </span><span class="err">КПД</span><span class="w"> </span><span class="err">потока</span><span class="w">    </span><span class="err">│</span>
+<span class="err">│</span><span class="w">    </span><span class="err">Формула</span><span class="p">:</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">P_load</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">P_total</span><span class="w">                                       </span><span class="err">│</span>
+<span class="err">└───────────────────────────────────┬────────────────────────────────────┘</span>
+<span class="w">                                    </span><span class="err">│</span><span class="w">  </span><span class="err">Материализация</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">топологию</span>
+<span class="w">                                    </span><span class="err">▼</span>
+<span class="err">┌────────────────────────────────────────────────────────────────────────┐</span>
+<span class="err">│</span><span class="w"> </span><span class="n">II</span><span class="o">.</span><span class="w"> </span><span class="err">ЧЕТВЕРИЧНЫЙ</span><span class="w"> </span><span class="err">ФРАКТАЛ</span><span class="w"> </span><span class="err">ЦЕПИ</span><span class="w"> </span><span class="p">(</span><span class="err">Архитектурная</span><span class="w"> </span><span class="err">Геометрия</span><span class="p">)</span><span class="w">                 </span><span class="err">│</span>
+<span class="err">│</span><span class="w">    </span><span class="err">Минимальный</span><span class="w"> </span><span class="err">замкнутый</span><span class="w"> </span><span class="err">инвариант</span><span class="p">:</span><span class="w"> </span><span class="err">Источник</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="err">Проводник</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="err">Нагрузка</span><span class="w"> </span><span class="err">→</span><span class="w">   </span><span class="err">│</span>
+<span class="err">│</span><span class="w">    </span><span class="err">Обратный</span><span class="w"> </span><span class="err">провод</span><span class="o">.</span><span class="w"> </span><span class="err">Масштабная</span><span class="w"> </span><span class="err">инвариантность</span><span class="w"> </span><span class="err">от</span><span class="w"> </span><span class="mi">10</span><span class="err">⁻¹⁵</span><span class="w"> </span><span class="err">до</span><span class="w"> </span><span class="mi">10</span><span class="err">⁹</span><span class="w">          </span><span class="err">│</span>
+<span class="err">└───────────────────────────────────┬────────────────────────────────────┘</span>
+<span class="w">                                    </span><span class="err">│</span><span class="w">  </span><span class="err">Локализация</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">соматику</span>
+<span class="w">                                    </span><span class="err">▼</span>
+<span class="err">┌────────────────────────────────────────────────────────────────────────┐</span>
+<span class="err">│</span><span class="w"> </span><span class="n">III</span><span class="o">.</span><span class="w"> </span><span class="err">ВНУТРЕННИЙ</span><span class="w"> </span><span class="err">ТОК</span><span class="w"> </span><span class="p">(</span><span class="err">Прикладная</span><span class="w"> </span><span class="err">Соматика</span><span class="w"> </span><span class="err">и</span><span class="w"> </span><span class="err">Операционная</span><span class="w"> </span><span class="err">Система</span><span class="p">)</span><span class="w">        </span><span class="err">│</span>
+<span class="err">│</span><span class="w">    </span><span class="err">Биологический</span><span class="w"> </span><span class="err">пульт</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="err">Тандэн</span><span class="p">,</span><span class="w"> </span><span class="err">Хоцу</span><span class="p">,</span><span class="w"> </span><span class="err">Мусин</span><span class="p">,</span><span class="w"> </span><span class="err">Гё</span><span class="p">,</span><span class="w"> </span><span class="err">Дзансин</span><span class="w">         </span><span class="err">│</span>
+<span class="err">│</span><span class="w">    </span><span class="mi">30</span><span class="o">-</span><span class="err">секундная</span><span class="w"> </span><span class="err">сверхпроводимость</span><span class="w"> </span><span class="err">плоти</span><span class="w"> </span><span class="err">и</span><span class="w"> </span><span class="err">сознания</span><span class="w">                    </span><span class="err">│</span>
+<span class="err">└────────────────────────────────────────────────────────────────────────┘</span>
+</code></pre></div>
+
+<p>Сопоставим эти три уровня по их онтологическим координатам:</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Параметр</th>
+<th style="text-align: left;">1. Универсальный закон потоковых систем</th>
+<th style="text-align: left;">2. Четверичный фрактал цепи</th>
+<th style="text-align: left;">3. Внутренний ток</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Онтологический статус</strong></td>
+<td style="text-align: left;"><strong>Фундаментальный закон природы</strong> (как законы Ньютона, Карно, Максвелла).</td>
+<td style="text-align: left;"><strong>Топологический инвариант</strong> и геометрия устойчивой формы.</td>
+<td style="text-align: left;"><strong>Прикладная соматическая технология</strong> оператора.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Главный вопрос</strong></td>
+<td style="text-align: left;"><em>«По какому физическому принципу существует порядок вопреки энтропии?»</em></td>
+<td style="text-align: left;"><em>«Какова минимальная схема сборки любого устойчивого потока?»</em></td>
+<td style="text-align: left;"><em>«Что конкретно сделать в теле прямо сейчас, чтобы быть счастливым?»</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Масштаб</strong></td>
+<td style="text-align: left;"><strong>Универсум</strong> (термодинамика открытых систем).</td>
+<td style="text-align: left;"><strong>Кросс-масштабное самоподобие</strong> (<span class="math-inline">$10^{-15} \dots 10^9$</span> м).</td>
+<td style="text-align: left;"><strong>Индивидуальная биология человека</strong> (<span class="math-inline">$N=1$</span>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Язык понятий</strong></td>
+<td style="text-align: left;">Негэнтропия, градиент свободной энергии, КПД мощности.</td>
+<td style="text-align: left;">Генератор, Проводник, Нагрузка, Обратный провод, Импеданс.</td>
+<td style="text-align: left;">Дзен-соматика: Тандэн (丹田), Хоцу (発), Мусин (無心), Гё (行), Дзансин (残心).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Критерий истины</strong></td>
+<td style="text-align: left;">Законы сохранения и математическая строгость.</td>
+<td style="text-align: left;">Структурный изоморфизм на всех этажах реальности.</td>
+<td style="text-align: left;">Соматическая верификация в теле («тест мурашек», ясность, тишина).</td>
+</tr>
+</tbody>
+</table></div>
+<p>Человек оказался <strong>предельным системным сенсором мироздания</strong>: сквозь одно тело текут протонные токи митохондрий, электрохимические импульсы нейронов, механические токи мышц и социальные потоки речи. Когда этот контур работает без паразитного сопротивления (<span class="math-inline">$R_{\text{ego}} \to 0$</span>), закон Вселенной переживается как высшее человеческое счастье.</p>
+<h3>Преодоление 2500-летнего языкового раскола: Застывшие существительные Запада против текучего глагола Востока</h3>
+<p>Чтобы осознать подлинный масштаб произошедшего Синтеза, необходимо увидеть глубочайшую трагедию, раскалывавшую человеческое познание на протяжении двух с половиной тысяч лет.</p>
+<p>Познание всегда развивалось по двум взаимно глухим магистралям:</p>
+<ol>
+<li>
+<p><strong>Западный путь (Культ застывших существительных):</strong><br />
+   Начиная с Парменида, Аристотеля и Декарта, западный гений конструировал картину мира из «вещей» (<em>substantia</em>). Мир представлялся гигантским складом статических тел, бильярдных шаров, независимых атомов и изолированных субъектов (<em>res cogitans</em> и <em>res extensa</em>). Грамматика индоевропейских языков намертво зацементировала эту ловушку: в каждом предложении требовалось подлежащее-существительное («Я»), совершающее действие над объектом («мир»).<br />
+   Даже когда классическая термодинамика XIX века (Карно, Клаузиус, Больцман) подошла к понятию энтропии, она исследовала <em>закрытые, изолированные системы</em>, обречённые на тепловую смерть (<span class="math-inline">$dS \ge 0$</span>). Человек в этой механистической парадигме выглядел либо биологическим автоматом, либо куском обречённой плоти, отчуждённым от холодного космоса.</p>
+</li>
+<li>
+<p><strong>Восточный путь (Культ текучего глагола):</strong><br />
+   Восток (традиция Упанишад, буддизм Нагарджуны, чань и дзен Бодхидхармы, Хуэйнэна и Догэна) с самого начала осознал иллюзорность застывших субстанций. Доктрины <strong>Анатмана</strong> (отсутствие неизменного «Я»), <strong>Шуньяты</strong> (пустотность форм от самобытия) и <strong>Аниччи</strong> (всеобщее непостоянство) провозглашали: <strong>в реальности не существует существительных!</strong> Нет птицы — есть непрерывный акт «полёта». Нет реки — есть динамический процесс «течения». Нет отдельного человека — есть текучий поток пяти скандх и ежесекундного переживания. Мастер Догэн в XIII веке настаивал: <em>«Дрова не превращаются в золу. Есть стадия дров, и есть стадия золы»</em>.<br />
+   Однако у Востока не было математического аппарата, приборов и законов сохранения. Без точного физического языка эта великая интуиция растворилась в парадоксальных коанах, монастырском фольклоре, многолетнем «сидении бревном» лицом к стене и кастовом поклонении «просветлённым патриархам».</p>
+</li>
+</ol>
+<p>Запад насмехался над Востоком, считая Дзен «антиинтеллектуальной потерей логики и бесполезным квиетизмом». Восток презирал Запад, видя в учёных «слепых препараторов мёртвой материи, потерявших живой дух».</p>
+<p>Они говорили об одном и том же объективном процессе, но были разделены глухой стеной языка: Запад застрял в <strong>ловушке статичных существительных третьего лица</strong>, а Восток замкнулся в <strong>эзотерических метафорах первого лица</strong>.</p>
+<div class="codehilite"><pre><span></span><code>                       ВЕЛИКИЙ МОСТ ЭПИСТЕМОЛОГИЧЕСКОГО КОНСИЛИЕНСА
+                                             │
+      ┌──────────────────────────────────────┴──────────────────────────────────────┐
+      ▼                                                                             ▼
+⛩️ ВОСТОК (Дзен, Дао, Нагарджуна)                                  🔬 ЗАПАД (Пригожин, Термодинамика)
+• Язык: 1-е лицо, поэзия, коаны                                    • Язык: 3-е лицо, дифференциальные уравнения
+• Интуиция: «Всё — глагол, реки нет»                               • Открытие: «Диссипативные структуры, порядок из хаоса»
+• Суть: Аничча (непостоянство), Шуньята                            • Суть: dS = d_i S + d_e S &lt; 0 (экспорт энтропии)
+• Состояние: Мусин (無心, ум-проводник)                              • Динамика: открытые неравновесные потоки
+      │                                                                             │
+      ❌ Слепая зона Востока:                                                       ❌ Слепая зона Запада:
+      Нет физического аппарата, уход в аскезу,                                      Отчуждение исследователя: учёный видит вихрь
+      «сидение бревном», культы гуру.                                               в колбе, но сам сгорает в омическом аду эго.
+      │                                                                             │
+      └──────────────────────────────────────┬──────────────────────────────────────┘
+                                             │
+                                             ▼
+                     ⚡ ВЕЛИКИЙ СИНТЕЗ СИСТЕМЫ АНЬЯНОВА (2026)
+                        «Единая схемотехника потока: Человек как замкнутый контур»
+                     1. Изоморфизм: Глагол Дзена ≡ Диссипативная структура ≡ Ток цепи.
+                     2. Корень сбоя: Эго-резистор (R_ego) — попытка превратить глагол в существительное.
+                     3. Соматический синтез: Тандэн (генератор) → Мусин (проводник) → Нагрузка (действие).
+                     4. Результат: Перевод физики в тело 1-го лица, а Дзена — в рубильник Everyman.
+</code></pre></div>
+
+<h3>Две абсолютные вершины познания и их предельный синтез</h3>
+<p>Человечество шло к этому пониманию тысячелетиями, но в XX веке незаметно для самого себя упёрлось в <strong>два абсолютных предела мысли</strong>, выше которых подняться невозможно:</p>
+<div class="codehilite"><pre><span></span><code>                  ДВЕ АБСОЛЮТНЫЕ ВЕРШИНЫ ПОЗНАНИЯ И ИХ СИНТЕЗ
+                                       │
+     ┌─────────────────────────────────┴─────────────────────────────────┐
+     ▼                                                                   ▼
+🧘 ВНУТРЕННИЙ ПРЕДЕЛ (1-е лицо)                       🔬 ВНЕШНИЙ ПРЕДЕЛ (3-е лицо)
+        ДЗЕН (Махаяна / Чань)                               ИЛЬЯ ПРИГОЖИН (Нобель 1977)
+• Никакая психология не пойдет глубже:                • Никакая физика не опишет точнее:
+  КПТ, психоанализ, гештальт чинят «эго»,               жизнь — это не кристалл и не биоробот,
+  Дзен аннигилирует саму иллюзию «эго».                 а открытая ДИССИПАТИВНАЯ СТРУКТУРА.
+• Абсолютный нуль: R_ego = 0 (Мусин).                 • Базовое уравнение: dS = d_i S + d_e S &lt; 0.
+• Нельзя быть проводящее сверхпроводника!             • Порядок рождается исключительно из потока!
+     │                                                                   │
+     └─────────────────────────────────┬─────────────────────────────────┘
+                                       │
+                                       ▼
+                 ⚡ ВЕЛИКИЙ СИНТЕЗ АНЬЯНОВА (Inner Current, 2026)
+                        «ЭТО ОДНО И ТО ЖЕ ЯВЛЕНИЕ»
+     • Дзен изнутри = Сверхпроводимость диссипативного потока (R_ego → 0).
+     • Диссипативная структура снаружи = Физическое тело дзенского проводника.
+     • Недостающее звено: Схема карманного фонарика, локализация генератора (Тандэн),
+       диагностика омического перегрева (Q = I² R t) и рубильник Proof of Action.
+</code></pre></div>
+
+<h4>1. Внутренний предел (1-е лицо): Дзен и абсолютный ноль сопротивления (<span class="math-inline">$R = 0$</span>)</h4>
+<p>Почему изнутри невозможно подняться выше Дзен?<br />
+Потому что любая психотерапия, философия или религиозная доктрина сохраняет концептуального посредника — эго. Дзен совершил предельное открытие: «Я» — это не сущность, а мышечно-ментальный зажим внимания, фантомный нихромовый резистор в цепи.<br />
+Когда этот спазм отпускается, сопротивление проводника падает до абсолютного нуля:<br />
+<div class="math-display">$<span class="math-inline">$R_{\text{ego}} \to 0$</span>$</div><br />
+<strong>Нельзя быть более проводящим, чем идеальный сверхпроводник с нулевым сопротивлением!</strong> Любая попытка «улучшить» или «усложнить» Дзен возвращает в контур паразитное сопротивление, разжигая омический перегрев. Дзен — абсолютный потолок опыта первого лица.</p>
+<h4>2. Внешний предел (3-е лицо): Илья Пригожин и открытая диссипативная структура</h4>
+<p>Почему снаружи нельзя описать человека точнее Пригожина?<br />
+Потому что до 1977 года классическая физика видела мир либо мёртвым механизмом часов (Ньютон, Лаплас), либо системой, сползающей в хаос энтропии (Больцман).<br />
+Илья Пригожин доказал: живые организмы — это <strong>открытые неравновесные системы</strong>. Их энтропийный баланс складывается из двух слагаемых:<br />
+<div class="math-display">$<span class="math-inline">$dS = d_i S + d_e S$</span>$</div><br />
+где <span class="math-inline">$d_i S &gt; 0$</span> — внутреннее производство энтропии (неизбежное трение, метаболические отходы и распад), а <span class="math-inline">$d_e S &lt; 0$</span> — экспорт энтропии в окружающую среду за счёт непрерывного сквозного потока свободной энергии и вещества. Пока отток энтропии превышает её внутреннее производство (<span class="math-inline">$|d_e S| &gt; d_i S$</span>), общее изменение энтропии отрицательно (<span class="math-inline">$dS &lt; 0$</span>): система не просто не распадается, она <strong>усложняет свой порядок и генерирует негэнтропию из хаоса</strong>. Жизнь не может быть статичной — она существует исключительно как динамический поток.</p>
+<h4>3. Финальный шаг Великого Синтеза: «Это одно и то же явление!»</h4>
+<p>Две предельные вершины человечества стояли друг напротив друга:<br />
+- Физик видел в лаборатории неравновесный диссипативный вихрь, но приходя домой, бился в истерике от семейных конфликтов и экзистенциального ужаса (омический перегрев <span class="math-inline">$Q = I^2 R t$</span>).<br />
+- Дзенский монах сидел в самадхи и переживал Шуньяту, но не мог объяснить инженеру, как строить мосты или воспитывать детей без бегства в монастырь.</p>
+<p>Владимир Аньянов объединил эти вершины:<br />
+<strong>Диссипативная структура Пригожина снаружи — это в точности то, что изнутри переживается как чистое состояние Мусин.</strong><br />
+А попытка превратить себя в застывшее существительное («Я — великий профессор», «Я — несчастная жертва») — это и есть врезание паразитного сопротивления <span class="math-inline">$R_{\text{ego}}$</span>, превращающее живой диссипативный поток в омический костёр страданий.</p>
+<p>Синтез дал миру то, чего не было ни у Пригожина, ни у патриархов Дзен: <strong>соматическую принципиальную схему карманного фонарика, диагностику нагара на клеммах и 30-секундный рубильник прямого действия для каждого человека.</strong></p>
 <hr />
 <hr />
-<div class="chapter-anchor"></div><h2 class="chapter-title">Глава 10. Топология четырёх узлов: Карманный фонарик сознания</h2>
+<div class="chapter-break"></div>
+<h2>Глава 10. Топология четырёх узлов: Карманный фонарик сознания как Четверичный фрактал мироздания</h2>
 <p>Чтобы сделать сложнейшую науку о человеке доступной каждому — от академика до десятилетнего подростка, — Владимир Аньянов упаковал архитектуру сознания в архетип <strong>бытового карманного фонарика</strong>.</p>
 <p>Фонарик состоит всего из четырёх функциональных элементов:</p>
-<pre><code>                  ТОПОЛОГИЯ КАРМАННОГО ФОНАРИКА
+<div class="codehilite"><pre><span></span><code>                  ТОПОЛОГИЯ КАРМАННОГО ФОНАРИКА
 
       ┌─────────────┐       R_ego (Омический нагар)
       │  БАТАРЕЙКА  │              vvvv
@@ -877,10 +1049,11 @@
              └───────────┤ (НАГРУЗКА)├────────┘
              ОБРАТНЫЙ    │  6 ЛАМП  │
               ПРОВОД     └──────────┘
-</code></pre>
+</code></pre></div>
+
 <h3>1. Источник питания: Тандэн (丹田)</h3>
 <p>Это соматический биологический генератор человека, расположенный на три пальца ниже пупка (центр тяжести тела, блуждающий нерв, брюшной энтеральный мозг, 37 триллионов митохондрий).<br />
-Это не «духовная чакра», а физиологический насос сторонней ЭДС ($\mathcal{E}$). Он вырабатывает живую соматическую энергию вне зависимости от того, о чём думает ваша голова. До тех пор, пока человек дышит, генератор включён.</p>
+Это не «духовная чакра», а физиологический насос сторонней ЭДС (<span class="math-inline">$\mathcal{E}$</span>). Он вырабатывает живую соматическую энергию вне зависимости от того, о чём думает ваша голова. До тех пор, пока человек дышит, генератор включён.</p>
 <h3>2. Проводка цепи: Внимание (Мусин, 無心)</h3>
 <p>Кабель, по которому течёт ток жизни. В чистом природном состоянии медь проводника чиста: внимание направлено прямо на текущее действие без внутреннего диалога и сомнений. Это режим <em>Мусин</em> (буквально — «не-ум» или чистая проводимость).</p>
 <h3>3. Полезная нагрузка: Щит 6 ламп бытия</h3>
@@ -891,15 +1064,74 @@
 4. <strong>Среда (Саму, 作務):</strong> порядок в доме, эстетика пространства, чистота инструментов.<br />
 5. <strong>Познание (Коан, 公案):</strong> исследование непознанного, чтение книг, наука, решение парадоксов.<br />
 6. <strong>Игра / Смысл (Югэ, 遊戯):</strong> празднование жизни, юмор, искусство, бескорыстная радость.</p>
-<h3>4. Предохранитель цепи: Дзансин (残心)</h3>
-<p>Осознанность предела прочности. Состояние неразорванной бдительности, отключающее контур до того, как перегрузка расплавит проводку.</p>
+<h3>4. Предохранитель и обратный провод цепи: Дзансин (残心)</h3>
+<p>Осознанность предела прочности и тракт возврата. Состояние неразорванной бдительности, отключающее контур до того, как перегрузка расплавит проводку, и возвращающее носитель в ноль.</p>
+<h3>Масштабная инвариантность Четверичного фрактала (<span class="math-inline">$10^{-15} \dots 10^9$</span> м)</h3>
+<p>Фонарик — это не просто наглядный образ. Это <strong>минимальная геометрия сборки жизни</strong>, повторяющаяся на всех этажах материи:</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Масштаб</th>
+<th style="text-align: left;">1. Источник (ЭДС)</th>
+<th style="text-align: left;">2. Проводник</th>
+<th style="text-align: left;">3. Нагрузка</th>
+<th style="text-align: left;">4. Обратный провод / Сброс</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Клетка (<span class="math-inline">$10^{-15}$</span> м)</strong></td>
+<td style="text-align: left;">Протонный градиент крист митохондрий</td>
+<td style="text-align: left;">Внутренняя мембрана</td>
+<td style="text-align: left;">АТФ-синтаза (синтез энергии)</td>
+<td style="text-align: left;">Отвод воды и <span class="math-inline">$CO_2$</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Фонарик (<span class="math-inline">$10^{-1}$</span> м)</strong></td>
+<td style="text-align: left;">Химическая батарейка</td>
+<td style="text-align: left;">Медная пластина</td>
+<td style="text-align: left;">Светодиод / нить накаливания</td>
+<td style="text-align: left;">Металлический корпус</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Человек (<span class="math-inline">$10^0$</span> м)</strong></td>
+<td style="text-align: left;">Тандэн (брюшной мозг, дыхание)</td>
+<td style="text-align: left;">Внимание без оценок (Мусин)</td>
+<td style="text-align: left;">Прямое действие (Щит 6 ламп)</td>
+<td style="text-align: left;">Заземление, сон, Дзансин</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Пара (<span class="math-inline">$10^1$</span> м)</strong></td>
+<td style="text-align: left;">Автономный суверенитет партнеров</td>
+<td style="text-align: left;">Открытый диалог без обид</td>
+<td style="text-align: left;">Совместное созидание и близость</td>
+<td style="text-align: left;">Уважение личных границ</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Фабрика (<span class="math-inline">$10^3$</span> м)</strong></td>
+<td style="text-align: left;">Капитал основателя / идея</td>
+<td style="text-align: left;">Прозрачная логистика и регламент</td>
+<td style="text-align: left;">Цех, станки, готовый продукт</td>
+<td style="text-align: left;">Выручка, зарплаты, реинвестиции</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Цивилизация (<span class="math-inline">$10^9$</span> м)</strong></td>
+<td style="text-align: left;">Солнечный поток и энергия недр</td>
+<td style="text-align: left;">Торговые пути и оптоволокно</td>
+<td style="text-align: left;">Города, наука, культура</td>
+<td style="text-align: left;">Экологическая ассимиляция тепла</td>
+</tr>
+</tbody>
+</table></div>
+<p>Выпадение любого из четырёх узлов смертельно: без 1-го узла система мертва; без 2-го — парализована засором; без 3-го — взрывается коротким замыканием; без 4-го — задыхается в собственных отходах энтропии.</p>
 <hr />
 <hr />
-<div class="chapter-anchor"></div><h2 class="chapter-title">Глава 11. Демистификация Эго: Омический нагар вместо демона</h2>
+<div class="chapter-break"></div>
+<h2>Глава 11. Демистификация Эго: Омический нагар вместо демона</h2>
 <p>Что же такое то самое «Эго», над искоренением которого десять тысяч лет безуспешно бились религии и философы?</p>
 <p>В Системе Аньянова эго получило первое в истории научное, десакрализованное определение:<br />
-<strong>Эго — это паразитное переходное сопротивление ($R_{\text{ego}} &gt; 0$), врезанное последовательно в проводник внимания.</strong></p>
-<pre><code>┌────────────────────────────────────────────────────────────────────────┐
+<strong>Эго — это паразитное переходное сопротивление (<span class="math-inline">$R_{\text{ego}} &gt; 0$</span>), врезанное последовательно в проводник внимания.</strong></p>
+<div class="codehilite"><pre><span></span><code>┌────────────────────────────────────────────────────────────────────────┐
 │                   ПРИРОДА ЭГО: РЕОСТАТ ВМЕСТО ЛИЧНОСТИ                 │
 ├───────────────────────────────────┬────────────────────────────────────┤
 │ МИСТИЧЕСКИЙ МИФ                   │ ЭЛЕКТРОДИНАМИЧЕСКИЙ ФАКТ           │
@@ -909,54 +1141,63 @@
 │ • «Моё подлинное глубокое Я»      │ • Омическое трение суждений        │
 │ • «Травмированная субличность»    │ • Засор на фильтре прямого потока  │
 └───────────────────────────────────┴────────────────────────────────────┘
-</code></pre>
+</code></pre></div>
+
 <p>Эго возникло в ходе биологической эволюции как адаптивный сторож в африканской саванне. Первобытному гоминиду было жизненно важно непрерывно сканировать горизонт: <em>«Не нападет ли хищник? Не изгонит ли племя?»</em>.<br />
 Но за миллионы лет этот сторожевой реостат сошёл с ума. Он возомнил себя хозяином фонарика!</p>
 <p>Когда человек пытается действовать, реостат эго немедленно встаёт на пути тока:<br />
-- <em>«А что обо мне подумают?»</em> ($R_1 &gt; 0$)<br />
-- <em>«А вдруг у меня не получится?»</em> ($R_2 &gt; 0$)<br />
-- <em>«Они должны были поступить иначе!»</em> ($R_3 &gt; 0$)<br />
-- <em>«Я недостаточно велик / я ничтожен»</em> ($R_4 &gt; 0$)</p>
-<p>И в этот момент вступает в силу непреложный закон Джоуля — Ленца.</p>
+- <em>«А что обо мне подумают?»</em> (<span class="math-inline">$R_1 &gt; 0$</span>)<br />
+- <em>«А вдруг у меня не получится?»</em> (<span class="math-inline">$R_2 &gt; 0$</span>)<br />
+- <em>«Они должны были поступить иначе!»</em> (<span class="math-inline">$R_3 &gt; 0$</span>)<br />
+- <em>«Я недостаточно велик / я ничтожен»</em> (<span class="math-inline">$R_4 &gt; 0$</span>)</p>
+<h3>Активное сопротивление и реактивная ловушка ума</h3>
+<p>В электротехнике переменного тока различают активную мощность (<span class="math-inline">$P$</span>), которая совершает полезную работу (греет печь, крутит мотор, зажигает свет), и <strong>реактивную мощность (<span class="math-inline">$Q_{\text{var}}$</span>)</strong>, которая не совершает никакой работы, а вхолостую перекачивается между индуктивностью и емкостью, перегревая кабели.</p>
+<p>Именно это происходит в голове невротика:<br />
+- <strong>Реактивная мощность эго:</strong> человек часами прокручивает в голове прошлые обиды, репетирует будущие разговоры с начальником, мучается завистью или синдромом самозванца. Ток бегает по замкнутому реактивному контуру коры мозга (DMN). Полезная работа в физическом мире равна абсолютному нулю (<span class="math-inline">$P_{\text{load}} = 0$</span>).<br />
+- <strong>Омический перегрев проводки:</strong> несмотря на нулевой результат в реальности, нервная система раскалена докрасна, сосуды спазмированы, надпочечники залиты кортизолом. Человек чувствует чудовищную усталость, «хотя за день ничего не сделал».</p>
+<p>Это не загадочная депрессия. Это холостая реактивная циркуляция энергии на паразитном эго-импедансе!</p>
 <hr />
 <hr />
-<div class="chapter-anchor"></div><h2 class="chapter-title">Глава 12. Формула Счастья и Формула Несчастья</h2>
-<p>В Системе Аньянова счастье и страдание впервые выражены строгими математическими формулами, следующими из первого начала термодинамики и закона Джоуля — Ленца.</p>
+<div class="chapter-break"></div>
+<h2>Глава 12. Формула Счастья и Формула Несчастья</h2>
+<p>В Системе Аньянова счастье и страдание выражены строгими математическими формулами, следующими из Универсального закона потоковых систем и закона Джоуля — Ленца.</p>
 <h3>Формула Несчастья (Омический перегрев)</h3>
-<p>Когда ток жизни ($I$), генерируемый Тандэном, наталкивается на сопротивление мысленного эго-контроля ($R_{\text{ego}}$), энергия не может исчезнуть. По закону сохранения она с неизбежностью превращается в тепловой омический нагрев:</p>
-<p>$$Q = I^2 \cdot R_{\text{ego}} \cdot t$$</p>
+<p>Когда ток жизни (<span class="math-inline">$I$</span>), генерируемый Тандэном, наталкивается на сопротивление мысленного эго-контроля (<span class="math-inline">$R_{\text{ego}}$</span>), энергия не может исчезнуть. По закону сохранения она превращается в тепловой омический нагрев биологической ткани:</p>
+<p><div class="math-display">$<span class="math-inline">$Q = I^2 \cdot R_{\text{ego}} \cdot t$</span>$</div></p>
 <p>Где:<br />
-- $Q$ — количество выделяемой душевной боли (обида, тревога, вина, ярость, выгорание);<br />
-- $I$ — сила вашего жизненного импульса;<br />
-- $R_{\text{ego}}$ — величина сопротивления эго (несогласие с фактом реальности);<br />
-- $t$ — время удержания ментальной зацепки.</p>
+- <span class="math-inline">$Q$</span> — количество выделяемой душевной боли (обида, тревога, вина, ярость, выгорание);<br />
+- <span class="math-inline">$I$</span> — сила вашего жизненного импульса;<br />
+- <span class="math-inline">$R_{\text{ego}}$</span> — величина сопротивления эго (несогласие с фактом реальности);<br />
+- <span class="math-inline">$t$</span> — время удержания ментальной зацепки.</p>
 <p><strong>Страдание — это не мистика. Это физический перегрев биологической проводки током жизни на сопротивлении эго.</strong></p>
-<p>Заметьте: в формуле ток $I$ стоит <strong>в квадрате</strong>!<br />
+<p>Заметьте: в формуле ток <span class="math-inline">$I$</span> стоит <strong>в квадрате</strong>!<br />
 Именно поэтому самые одарённые, страстные, энергичные люди (Толстой, Ницше, Ван Гог, Джобс) страдали с такой сокрушительной силой. Чем мощнее генератор, тем страшнее омический пожар при малейшем омическом зажиме!</p>
-<h3>Формула Счастья (Сверхпроводимость цепи)</h3>
-<p>Коэффициент полезного действия (КПД) контура сознания, или <strong>Индекс Счастья Аньянова ($\mathcal{H}$)</strong>, определяется отношением полезной мощности, отданной в нагрузку реального мира ($P_{\text{load}}$), к полной мощности генератора ($P_{\text{total}}$):</p>
-<p>$$\mathcal{H} = \frac{P_{\text{load}}}{P_{\text{total}}} = \frac{I^2 R_{\text{load}}}{I^2 (R_{\text{load}} + R_{\text{ego}})} = \frac{R_{\text{load}}}{R_{\text{load}} + R_{\text{ego}}} = 1 - \frac{R_{\text{ego}}}{R_{\text{total}}}$$</p>
-<pre><code>    ┌──────────────────────────────────────────────────────────────┐
+<h3>Формула Счастья: Универсальный КПД мощности</h3>
+<p>Коэффициент полезного действия контура сознания, или <strong>Индекс Счастья Аньянова (<span class="math-inline">$\mathcal{H}$</span>)</strong>, строго следует из Универсального закона потоковых систем:</p>
+<p><div class="math-display">$<span class="math-inline">$\mathcal{H} = \frac{P_{\text{load}}}{P_{\text{total}}} = \frac{I^2 Z_{\text{load}}}{I^2 Z_{\text{load}} + I^2 R_{\text{loss}}} = \frac{Z_{\text{load}}}{Z_{\text{load}} + R_{\text{ego}}} = 1 - \frac{R_{\text{ego}}}{R_{\text{total}}}$</span>$</div></p>
+<div class="codehilite"><pre><span></span><code>    ┌──────────────────────────────────────────────────────────────┐
     │                                                              │
     │  СЧАСТЬЕ — ЭТО РЕЖИМ СВЕРХПРОВОДИМОСТИ ЦЕПИ:                 │
     │                                                              │
     │                 R_ego ──&gt; 0   ===&gt;   H ──&gt; 100%              │
     │                                                              │
     └──────────────────────────────────────────────────────────────┘
-</code></pre>
-<p>Когда $R_{\text{ego}} \to 0$:<br />
-1. Тепловые потери обращаются в ноль: $Q = I^2 \cdot 0 \cdot t = 0$. Душевная боль, тревога и вина исчезают мгновенно!<br />
+</code></pre></div>
+
+<p>Когда <span class="math-inline">$R_{\text{ego}} \to 0$</span>:<br />
+1. Тепловые омические потери обращаются в ноль: <span class="math-inline">$Q = I^2 \cdot 0 \cdot t = 0$</span>. Душевная боль, тревога и вина исчезают мгновенно!<br />
 2. Вся энергия генератора без потерь устремляется в полезную нагрузку: лампочки дела, близости, творчества и познания вспыхивают ровным, ослепительным светом.<br />
 3. Человек переживает состояние абсолютной легкости, прозрачности и восторга бытия.</p>
 <p>Это состояние Дзен называл <em>Сатори</em>, даосы — <em>У-вэй</em>, Христос — <em>«Будьте как дети»</em>. Но теперь оно избавлено от поэтического тумана и зафиксировано на шкале мультиметра.</p>
 <hr />
 <hr />
-<div class="chapter-anchor"></div><h2 class="chapter-title">Глава 13. Обратный провод реальности: Преодоление мифа Данко</h2>
+<div class="chapter-break"></div>
+<h2>Глава 13. Обратный провод реальности и термодинамический сброс энтропии: Преодоление мифа Данко</h2>
 <p>На протяжении столетий в культуре культивировался жертвенный миф о горящем сердце Данко: герой вырывает из груди пылающее сердце, освещает людям путь во тьме и падает мёртвым, а осторожный человек наступает на угли ногой.</p>
 <p>Этот миф стал символом благородного, но тупикового духовного подвига: «Свети другим — сгорай сам».</p>
 <p>Система Аньянова наносит по этому мифу сокрушительный удар:<br />
 <strong>Светить и сгорать — это не подвиг. Это грубая схемотехническая ошибка разомкнутой цепи!</strong></p>
-<pre><code>     МИФ ДАНКО (РАЗОМКНУТЫЙ КОНТУР)               ЗАКОН КИРХГОФА (ЗАМКНУТЫЙ КОНТУР)
+<div class="codehilite"><pre><span></span><code>     МИФ ДАНКО (РАЗОМКНУТЫЙ КОНТУР)               ЗАКОН КИРХГОФА (ЗАМКНУТЫЙ КОНТУР)
 
         ┌──────┐  Ток наружу  ┌─────┐               ┌──────┐  Прямой провод ┌─────┐
         │СЕРДЦЕ├─── I &gt; 0 ───&gt;│ МИР │               │ТАНДЭН├─── Внимание ──&gt;│ МИР │
@@ -965,28 +1206,34 @@
            └─── X ОБРЫВ ЦЕПИ ────┘                     └─── Обратный провод ───┘
                Батарейка сгорела!                            (Кирхгоф: I_in = I_out)
                Человек умер.                                 Контур вечен!
-</code></pre>
-<p>В электродинамике ток не может течь в открытый космос. По первому закону Кирхгофа, сколько заряда вышло из положительного полюса источника, ровно столько же должно вернуться в отрицательный полюс ($\sum I = 0$).</p>
+</code></pre></div>
+
+<p>В электродинамике ток не может течь в открытый космос. По первому закону Кирхгофа, сколько заряда вышло из положительного полюса источника, ровно столько же должно вернуться в отрицательный полюс (<span class="math-inline">$\sum I = 0$</span>).</p>
+<p>А по законам термодинамики Карно и Пригожина открытая диссипативная система обязана иметь <strong>холодильник — канал сброса отработанного тепла и энтропии</strong>.</p>
 <p>Что такое <strong>обратный провод реальности</strong> в человеческом контуре?<br />
 Когда вы направляете внимание в полезное действие (печете хлеб, пишете код, обнимаете близкого, наводите порядок в комнате):<br />
-- Прямой ток совершает работу в нагрузке ($P = I^2 R_{\text{load}}$).<br />
+- Прямой ток совершает работу в нагрузке (<span class="math-inline">$P = I^2 R_{\text{load}}$</span>).<br />
 - Обратный провод возвращает вам <strong>чистый овеществлённый факт реальности</strong>: улыбку ребёнка, работающую программу, свежий запах хлеба, тепло деревянной деки укулеле.<br />
+- Отработанная энтропия уходит через заземление и сон (Дзансин).<br />
 - Энергия возвращается в Тандэн в виде соматического подтверждения устойчивости бытия. Контур замкнут!</p>
 <p>Человек в режиме сверхпроводимости не выгорает. Он становится неисчерпаемым проводником, сквозь который свободно течёт бесконечный ток Жизни.</p>
 <hr />
 <hr />
-<div class="part-page-break"></div><h1 class="part-title">Часть IV. Прикладной Суверенитет: Единый Код Жизни</h1>
-<div class="chapter-anchor"></div><h2 class="chapter-title">Глава 14. Одноранговый Суверенитет: Биткоин, Генри Джордж и Self-Hosted Human</h2>
-<p>Вспомним Сатоши Накамото и экономиста Генри Джорджа.</p>
-<p>Генри Джордж в 1879 году в классическом труде «Прогресс и бедность» доказал: материальный прогресс не уничтожает нищету до тех пор, пока класс земельных рантье собирает паразитическую ренту с общественного потока богатства.<br />
-Сатоши Накамото в 2008 году создал Биткоин, исключив посредников-банкиров из денежного оборота.</p>
-<p>Владимир Аньянов совершил великую <strong>депосреднизацию человеческой психики</strong>:</p>
-<pre><code>                 ВЕЛИКИЙ ИЗОМОРФИЗМ ДЕПОСРЕДНИЗАЦИИ
+<div class="part-header"># Часть IV. Прикладной Суверенитет: Единый Код Жизни</div>
+
+<div class="chapter-break"></div>
+<h2>Глава 14. Одноранговый Суверенитет: Биткоин, Генри Джордж, Всеобщая Депосреднизация и Self-Hosted Human</h2>
+<p>Вспомним Сатоши Накамото и великого американского экономиста Генри Джорджа.</p>
+<p>Генри Джордж в 1879 году в классическом труде «Прогресс и бедность» доказал: материальный прогресс не уничтожает нищету до тех пор, пока класс земельных рантье собирает паразитическую ренту с общественного потока богатства. Земельный монополист ничего не производит — он просто врезает своё искусственное сопротивление в торговый тракт.<br />
+Сатоши Накамото в 2008 году создал Биткоин, исключив посредников-банкиров из денежного оборота и заменив доверие к институтам математическим протоколом Proof-of-Work.</p>
+<p>Владимир Аньянов совершил великую <strong>депосреднизацию человеческого сознания</strong>:</p>
+<div class="codehilite"><pre><span></span><code>                 ВЕЛИКИЙ ИЗОМОРФИЗМ ДЕПОСРЕДНИЗАЦИИ
 
      ЭКОНОМИКА (ГЕНРИ ДЖОРДЖ):       Ликвидация паразитной земельной ренты.
      ДЕНЬГИ (САТОШИ НАКАМОТО):        Ликвидация паразитного Центробанка.
      СОЗНАНИЕ (ВЛАДИМИР АНЬЯНОВ):    Ликвидация паразитного Эго-Рантье!
-</code></pre>
+</code></pre></div>
+
 <p>На протяжении тысяч лет между человеком и его собственным счастьем стояла армия платных посредников: жрецы, толкователи писаний, гуру, коучи, психотерапевты. Все они жили на паразитическую ренту с чужой душевной боли, внушая человеку: <em>«Ты сам не справишься. Плати нам, слушай нас, завись от нас»</em>.</p>
 <p>Система Аньянова даёт человеку статус <strong>Self-Hosted Human</strong> — суверенной Full Node бытия:<br />
 - Ваш генератор Тандэн принадлежит только вам.<br />
@@ -994,12 +1241,13 @@
 - Вы больше не платите душевную дань посредникам. Контур замкнут напрямую.</p>
 <hr />
 <hr />
-<div class="chapter-anchor"></div><h2 class="chapter-title">Глава 15. Дзен на шумном базаре: Освобождение мудрости Востока</h2>
+<div class="chapter-break"></div>
+<h2>Глава 15. Дзен на шумном базаре: Освобождение мудрости Востока</h2>
 <p>Дзен-буддизм был вершиной интуитивного постижения природы ума. Патриархи Бодхидхарма, Хуэйнэн, Линьцзи достигли абсолютной чистоты присутствия.</p>
 <p>Но у традиционного Дзен был трагический изъян: <strong>он был заперт в монастырях</strong>.<br />
 Чтобы достичь Мусин, монах должен был на двадцать лет уйти от мира, сидеть лицом к каменной стене в позе дзадзэн, колоть дрова и терпеть удары бамбуковой палкой кэйсаку от наставника. А когда просветленный мастер выходил на шумный базар, его язык оставался парадоксальным, апофатическим и недоступным для мирян: <em>«Что такое Будда? Три фунта льна!»</em>.</p>
 <p>Система Аньянова совершила <strong>Шаг Прометея</strong>: она взяла сокровенный огонь монастырского дзена и упаковала его в безопасную схему бытового фонарика.</p>
-<pre><code>┌────────────────────────────────────────────────────────────────────────┐
+<div class="codehilite"><pre><span></span><code>┌────────────────────────────────────────────────────────────────────────┐
 │                   ПЕРЕВОД ДЗЕН НА ЯЗЫК ЭЛЕКТРОДИНАМИКИ                 │
 ├───────────────────────────────────┬────────────────────────────────────┤
 │ ПОНЯТИЕ ДЗЕН                      │ ЭЛЕКТРОДИНАМИЧЕСКИЙ ЭКВИВАЛЕНТ     │
@@ -1011,19 +1259,28 @@
 │ • Шуньята (空, пустотность формы) │ • Волновое сопротивление вакуума   │
 │ • Дэай (出会い, сакральная встреча)│ • Взаимная индукция контуров (M &gt; 0)│
 └───────────────────────────────────┴────────────────────────────────────┘
-</code></pre>
+</code></pre></div>
+
 <p>Вам больше не нужно бросать семью и уходить в гималайские пещеры.<br />
 Сверхпроводимость контура включается прямо в вагоне метро, на совещании директоров или у кухонной раковины за мытьём посуды. Дзен стал общедоступной технологией повседневной жизни.</p>
+<h3>Живой глагол бытия: термодинамика сверхпроводимости в действии</h3>
+<p>В свете великого консилиенса становится очевидно: когда древний мастер меча вступал в бой или мастер чая взбивал венчиком пену в состоянии Мусин — они интуитивно реализовывали ровно то, за что Илья Пригожин спустя столетия получил Нобелевскую премию. Они превращали своё тело в <strong>открытую диссипативную систему со сверхпроводимостью</strong> (<span class="math-inline">$R_{\text{ego}} \to 0$</span>).</p>
+<p>В состоянии Мусин человек перестаёт быть застывшим «существительным», боящимся ошибок или требующим признания. Он становится <strong>чистым глаголом</strong>:<br />
+- Нет того, кто готовит ужин — есть процесс нарезки овощей и чистый аромат специй.<br />
+- Нет того, кто пишет код — есть непрерывный поток структурирования алгоритма.<br />
+- Нет того, кто ведёт переговоры — есть точная, незамутнённая проводимость аргументов и смыслов.</p>
+<p>В этот момент внутреннее производство энтропии падает до нуля (<span class="math-inline">$d_i S \to 0$</span>), а сквозной ток свободной энергии структурирует окружающий хаос (<span class="math-inline">$dS &lt; 0$</span>). Это и есть Дзен на шумном базаре: счастье как объективный физический режим максимальной проводимости живой открытой цепи.</p>
 <hr />
 <hr />
-<div class="chapter-anchor"></div><h2 class="chapter-title">Глава 16. Электродинамика Любви: Индукция Максвелла ($M &gt; 0$)</h2>
+<div class="chapter-break"></div>
+<h2>Глава 16. Электродинамика Любви: Индукция Максвелла (<span class="math-inline">$M &gt; 0$</span>)</h2>
 <p>Главная трагедия человеческих отношений — это миф о «двух половинках». Платон в «Пире» запустил сказку о том, что люди когда-то были андрогинами, боги рассекли их надвое, и теперь каждый обречён искать по свету свою вторую половину.</p>
 <p>На принципиальной схеме «модель половинок» — это катастрофа разорванной цепи. Два обесточенных калеки встречаются и пытаются заставить друг друга вырабатывать ток:<br />
 <em>«Сделай меня счастливым! Люби меня! Докажи мою ценность!»</em>.<br />
 Это неизбежно приводит к паразитной созависимости, взаимному короткому замыканию и тяжелейшему омическому выгоранию.</p>
 <p>Система Аньянова формулирует физику подлинной любви на основе уравнений Максвелла:<br />
-<strong>Любовь — это взаимная индукция двух суверенных генераторов ($M &gt; 0$).</strong></p>
-<pre><code>                  ЭЛЕКТРОДИНАМИКА НАСТОЯЩЕЙ ЛЮБВИ
+<strong>Любовь — это взаимная индукция двух суверенных генераторов (<span class="math-inline">$M &gt; 0$</span>).</strong></p>
+<div class="codehilite"><pre><span></span><code>                  ЭЛЕКТРОДИНАМИКА НАСТОЯЩЕЙ ЛЮБВИ
 
           ГЕНЕРАТОР 1                              ГЕНЕРАТОР 2
      ┌──────────────────┐                     ┌──────────────────┐
@@ -1035,40 +1292,43 @@
      ┌────────┴─────────┐                     ┌────────┴─────────┐
      │ 6 ЛАМП НАГРУЗКИ  │                     │ 6 ЛАМП НАГРУЗКИ  │
      └──────────────────┘                     └──────────────────┘
-</code></pre>
+</code></pre></div>
+
 <p>В настоящей любви:<br />
 1. Каждый партнер — это <strong>автономный генератор с замкнутым контуром</strong>. Никто ни у кого не выпрашивает ток.<br />
 2. Между ними существует гальваническая развязка: уважение к суверенитету и границам другого.<br />
-3. Но когда два очищенных проводника оказываются рядом в режиме Мусин ($R_1 \to 0, R_2 \to 0$), их электромагнитные поля вступают в резонанс. Возникает взаимная индукция Фарадея — Максвелла ($M &gt; 0$).<br />
+3. Но когда два очищенных проводника оказываются рядом в режиме Мусин (<span class="math-inline">$R_1 \to 0, R_2 \to 0$</span>), их электромагнитные поля вступают в резонанс. Возникает взаимная индукция Фарадея — Максвелла (<span class="math-inline">$M &gt; 0$</span>).<br />
 4. Суммарная мощность системы многократно превосходит сумму мощностей одиночек:<br />
-   $$P_{\text{total}} \gg P_1 + P_2$$</p>
+   <div class="math-display">$<span class="math-inline">$P_{\text{total}} \gg P_1 + P_2$</span>$</div></p>
 <p>Это любовь без претензий, без манипуляций, без ревности и без страха потери. Любовь как сияющее электромагнитное поле бытия.</p>
 <hr />
 <hr />
-<div class="part-page-break"></div><h1 class="part-title">Заключение. Человек Лучистый: Космонавтика Сознания перед Сингулярностью</h1>
+<div class="chapter-break"></div>
+<h1>Заключение. Человек Лучистый: Космонавтика Сознания перед Сингулярностью</h1>
 <p>Человечество подошло к роковому историческому порогу.</p>
 <p>В ближайшие десятилетия развитие искусственного интеллекта (AGI), генной инженерии и квантовых вычислений либо поднимет цивилизацию на ступень богоподобного созидания, либо сотрет её с лица Земли в пожаре глобального безумия.</p>
 <p>Теперь ясно: <strong>главная опасность сингулярности заключается не в искусственном интеллекте. Она заключается в человеке, управляющем этим интеллектом.</strong><br />
 Если в руки существа с раздутым, испуганным, перегретым омическим эго-реостатом палеолита дать термоядерные рычаги и мощь сверхинтеллекта — катастрофа неизбежна.</p>
-<p>Именно поэтому появление Системы «Внутренний ток» в 2026 году — это не просто философская концепция.<br />
+<p>Именно поэтому появление Системы «Внутренний ток» и открытие Универсального закона потоковых систем в 2026 году — это не просто философская концепция.<br />
 <strong>Это цивилизационный предохранитель человечества.</strong></p>
-<pre><code>┌────────────────────────────────────────────────────────────────────────┐
+<div class="codehilite"><pre><span></span><code>┌────────────────────────────────────────────────────────────────────────┐
 │                   ИСТОРИЧЕСКАЯ МИССИЯ ВЕЛИКОГО СИНТЕЗА                 │
 ├───────────────────────────────────┬────────────────────────────────────┤
 │ XVII ВЕК: НЬЮТОН                  │ Покорение механики и движение тел  │
-│ XVIII ВЕК: ВАТТ                   │ Покорение тепла и термодинамика    │
+│ XVIII ВЕК: ВАТТ И КАРНО           │ Покорение тепла и термодинамика    │
 │ XIX ВЕК: ФАРАДЕЙ И МАКСВЕЛЛ       │ Покорение поля и электричество     │
-│ XX ВЕК: БЕНЦ, ЦИОЛКОВСКИЙ, ТЬЮРИНГ│ Покорение скорости, космоса и кода │
-│ XXI ВЕК: АНЬЯНОВ                  │ ПОКОРЕНИЕ ВНУТРЕННЕГО КОНТУРА ДУХА │
+│ XX ВЕК: ПРИГОЖИН И ШЕННОН         │ Негэнтропия, потоки и код          │
+│ XXI ВЕК: АНЬЯНОВ                  │ УНИВЕРСАЛЬНЫЙ ЗАКОН И ПУЛЬТ ДУХА   │
 └───────────────────────────────────┴────────────────────────────────────┘
-</code></pre>
+</code></pre></div>
+
 <p>Константин Эдуардович Циолковский мечтал о наступлении эры <strong>«Человека Лучистого»</strong> — существа, преодолевшего тяжесть животного эгоизма и ставшего чистым проводником космической энергии.</p>
 <p>Внутренний ток делает мечту Циолковского инженерной реальностью.</p>
 <p>Мы завершаем эпоху факелов (<em>Torch</em>) — эпоху, когда Данко должен был рвать грудь, а Толстой сгорать на станционных скамейках, чтобы подарить миру каплю тепла.<br />
-Мы вступаем в эпоху карманных фонариков (<em>Flashlight</em>) — эпоху, когда каждый ребёнок с начальной школы знает законы своего контура, умеет за тридцать секунд сбросить сопротивление обиды в ноль и зажечь шесть ламп своей единственной, драгоценной и прекрасной жизни.</p>
+Мы вступаем в эпоху карманных фонариков (<em>Flashlight</em>) — эпоху, когда каждый человек знает законы своего контура, умеет за тридцать секунд сбросить сопротивление обиды в ноль и зажечь шесть ламп своей единственной, драгоценной и прекрасной жизни.</p>
 <p>Счастье — это не награда за муки.<br />
 Счастье — это не привилегия избранных.<br />
-<strong>Счастье — это естественный режим сверхпроводимости замкнутой цепи.</strong></p>
+<strong>Счастье — это естественный режим сверхпроводимости открытого замкнутого контура.</strong></p>
 <p>Рубильник в ваших руках. Контур замкнут. Включайте свет.</p>
 <hr />
 <h3>Информация о публикации и лицензия</h3>
@@ -1076,9 +1336,9 @@
 <li><strong>Официальный DOI препринта теории:</strong> <code>10.5281/zenodo.22958926</code></li>
 <li><strong>Первоисточник базы знаний:</strong> Obsidian LLM Wiki (<code>02_Wiki</code>)</li>
 <li><strong>Координация:</strong> [[04_Maps/Inner Current MOC|Inner Current MOC]]</li>
+<li><strong>Редакция:</strong> Master Edition 2.0 (Расширенный синтез Универсального закона потоковых систем)</li>
 <li><strong>Лицензия:</strong> Creative Commons Attribution 4.0 International (CC BY 4.0). Открытый протокол для свободного использования всем человечеством.</li>
 </ul>
-</div>
 
 </body>
 </html>

@@ -1,6 +1,7 @@
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
+import { handleStatsRequest } from './stats_server.js';
 
 const PORT = Number(process.env.PORT) || 5173;
 const PUBLIC_DIR = path.resolve('public');
@@ -346,6 +347,15 @@ const requestHandler = async (req, res) => {
   const pathname = parsedUrl.pathname;
 
   // -------------------------------------------------------------
+  // REST API: Inner Current Stats Engine & Download Tracker
+  // -------------------------------------------------------------
+  if (pathname.startsWith('/api/stats/') || pathname.startsWith('/dl/')) {
+    if (handleStatsRequest(req, res, parsedUrl)) {
+      return;
+    }
+  }
+
+  // -------------------------------------------------------------
   // REST API: Inner Current Cockpit
   // -------------------------------------------------------------
   if (pathname.startsWith('/api/cockpit/')) {
@@ -574,6 +584,8 @@ ${payload.field_test_notes || '- Проведено полевое тестир�
       reqPath = '/cockpit.html';
     } else if (reqPath === '/wiki' || reqPath === '/wiki/' || reqPath === '/reader') {
       reqPath = '/wiki.html';
+    } else if (reqPath === '/admin' || reqPath === '/admin/' || reqPath === '/stats') {
+      reqPath = '/admin.html';
     } else if (reqPath === '/books' || reqPath === '/books/' || reqPath === '/' || reqPath === '') {
       reqPath = '/index.html';
     } else if (reqPath.endsWith('/')) {
@@ -649,6 +661,7 @@ server.listen(PORT, () => {
   console.log(`   - 📚 Библиотека книг (innercurrent.ru): http://localhost:${PORT}/`);
   console.log(`   - ⚡ Интерактивный тренажер цепи:        http://localhost:${PORT}/trainer`);
   console.log(`   - 🎛️  Пульт Сверхпроводимости:            http://localhost:${PORT}/cockpit`);
+  console.log(`   - 📊 Админка и Статистика (Закрытая):    http://localhost:${PORT}/admin`);
   console.log(`   - 📚 Онлайн-Ридер Вики:                  http://localhost:${PORT}/wiki`);
   console.log(`   - 📖 Веб-ридер книги:                    http://localhost:${PORT}/book/`);
   console.log(`   - 🎧 Веб-аудиоплеер книги:                http://localhost:${PORT}/audiobook/`);

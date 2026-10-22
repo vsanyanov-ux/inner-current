@@ -1,7 +1,23 @@
 ---
 created: 2026-09-23
-source: [[Inner Current - MOC|Inner Current MOC]]
-tags: [inner-current, tolstoy, osho, comparative-analysis, zen-engineering, zorba-the-buddha, superconductivity, guilt, joy, thermodynamics]
+source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
+  - tolstoy
+  - osho
+  - comparative-analysis
+  - zen-engineering
+  - zorba-the-buddha
+  - superconductivity
+  - guilt
+  - joy
+  - thermodynamics
 type: chapter
 status: evergreen
 ---

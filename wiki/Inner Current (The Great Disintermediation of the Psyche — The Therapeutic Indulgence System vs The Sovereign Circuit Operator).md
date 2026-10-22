@@ -1,7 +1,25 @@
 ---
 created: 2026-09-25
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, psychology, psychotherapy, disintermediation, freud, cbt, self-hosted, sovereign-operator, circuit-telemetry, tanden, musin, indulgence-system]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - psychology
+  - psychotherapy
+  - disintermediation
+  - freud
+  - cbt
+  - self-hosted
+  - sovereign-operator
+  - circuit-telemetry
+  - tanden
+  - musin
+  - indulgence-system
 type: concept
 status: evergreen
 ---

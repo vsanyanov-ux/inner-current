@@ -1,7 +1,22 @@
 ---
 created: 2026-09-30
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, rosetta-stone, champollion, zen-decryption, otto-benz-metaphor, applied-tool, flashlight-model, mathematical-bijection, layer-3]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
+  - rosetta-stone
+  - champollion
+  - zen-decryption
+  - otto-benz-metaphor
+  - applied-tool
+  - flashlight-model
+  - mathematical-bijection
+  - layer-3
 aliases:
   - "156-champollion-of-consciousness-and-rosetta-stone-of-zen"
   - "Шампольон Сознания и Розеттский Камень Дзен"

@@ -9,6 +9,12 @@ aliases:
   - "КПД сверхпроводимости"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/epistemology
+  - state/overheating
   - anyanov-system
   - formula-of-happiness
   - thermodynamics

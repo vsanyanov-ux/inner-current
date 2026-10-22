@@ -1,7 +1,24 @@
 ---
 created: 2026-09-23
-source: [[Inner Current - MOC|Inner Current MOC]]
-tags: [inner-current, whitepaper, satoshi-nakamoto, bitcoin, electrodynamics, thermodynamics, sovereignty, proof-of-action, superconductivity, tanden, musin]
+source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - whitepaper
+  - satoshi-nakamoto
+  - bitcoin
+  - electrodynamics
+  - thermodynamics
+  - sovereignty
+  - proof-of-action
+  - superconductivity
+  - tanden
+  - musin
 type: whitepaper
 variant: 1-satoshi-canon
 status: evergreen
@@ -12,7 +29,7 @@ status: evergreen
 
 **Владимир Аньянов**  
 *Создатель Системы Аньянова и Архитектуры Внутреннего Тока*  
-`vladimir@anyanov.org` · `https://innercurrent.org`
+`v.s.anyanov@gmail.com` · `https://innercurrent.ru`
 
 ---
 
@@ -254,17 +271,17 @@ flowchart TD
 
 Мощность генератора $P_{\text{rated}}$ распределяется по параллельной схеме между **6 независимыми терминалами нагрузки (Щит 6 ламп)**:
 
-$$\mathbf{P}_{\text{load}} = \sum_{i=1}^{6} P_i = P_{\text{Тело}} + P_{\text{Дело}} + P_{\text{Семья}} + P_{\text{Творчество}} + P_{\text{Покой}} + P_{\text{Смысл}}$$
+$$\mathbf{P}_{\text{load}} = \sum_{i=1}^{6} P_i = P_{\text{Тело}} + P_{\text{Дело}} + P_{\text{Люди}} + P_{\text{Дом}} + P_{\text{Ум}} + P_{\text{Игра}}$$
 
 ```mermaid
 flowchart TD
     T["Генератор Тандэн"] --> Dist["Распределительный щит"]
     Dist --> L1["1. Тело (Здоровье, сон, физиология)"]
-    Dist --> L2["2. Дело (Мастерство, код, инженерия)"]
-    Dist --> L3["3. Семья (Близкий круг, резонанс)"]
-    Dist --> L4["4. Творчество (Чистое созидание)"]
-    Dist --> L5["5. Покой (Тишина, созерцание, Кансо)"]
-    Dist --> L6["6. Смысл (Служение целому, масштаб)"]
+    Dist --> L2["2. Дело (Мастерство, код, продукт)"]
+    Dist --> L3["3. Люди (Прямой контакт, резонанс без масок)"]
+    Dist --> L4["4. Дом (Пространство, порядок, канон Саму)"]
+    Dist --> L5["5. Ум (Познание, объективные законы, логика)"]
+    Dist --> L6["6. Игра (Спонтанность, чистое творчество, юмор)"]
 ```
 
 * **Правило параллельной безаварийности:** Ни одна лампа не должна забирать $100\%$ тока цепи. Монополия одной лампы (например, «Дело» при выключенном «Теле») приводит к расплавлению патрона и системному отключению всей подстанции.

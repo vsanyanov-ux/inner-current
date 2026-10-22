@@ -1,7 +1,24 @@
 ---
 created: 2026-09-30
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, tolstoy, steve-jobs, kanso, direct-flow, externalization-tragedy, single-tax, ego-rheostat, joule-lenz, inversion-of-circuit, layer-1]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
+  - tolstoy
+  - steve-jobs
+  - kanso
+  - direct-flow
+  - externalization-tragedy
+  - single-tax
+  - ego-rheostat
+  - joule-lenz
+  - inversion-of-circuit
+  - layer-1
 aliases:
   - "158-tolstoy-and-steve-jobs-two-titans-of-kanso"
   - "Лев Толстой и Стив Джобс: Два титана Кансо"

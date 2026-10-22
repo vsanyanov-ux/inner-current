@@ -4,7 +4,21 @@ source: [[index|Wiki Index]]
 author: Владимир Аньянов
 chapter: 56
 layer: "III. Дзен-онтология и синтез (Высший дух и физика)"
-tags: [inner-current, hedonistic-paradox, dopamine, reverse-polarity, superconductivity, byproduct, zen-engineering, electrodynamics]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/open-loop
+  - hedonistic-paradox
+  - dopamine
+  - reverse-polarity
+  - superconductivity
+  - byproduct
+  - zen-engineering
+  - electrodynamics
 ---
 
 # 56. Парадокс Гедонизма: Даунрегуляция дофаминовых рецепторов, авария переполюсовки и счастье как побочный продукт сверхпроводимости

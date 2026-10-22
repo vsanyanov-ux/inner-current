@@ -4,7 +4,23 @@ title: "Inner Current — 98. Эпистемологический триумф 
 created: 2026-09-26
 author: Vladimir Anyanov
 layer: III. Дзен-онтология и синтез
-tags: [inner-current, epistemology, consilience, scale-invariance, direct-flow, popper-falsifiability, kolmogorov-complexity, kanso, occam-razor, unified-field]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
+  - epistemology
+  - consilience
+  - scale-invariance
+  - direct-flow
+  - popper-falsifiability
+  - kolmogorov-complexity
+  - kanso
+  - occam-razor
+  - unified-field
 ---
 
 # 98. Эпистемологический триумф Системы Аньянова: Почему Архитектура Контура объясняет всё — Пять фундаментальных причин универсального превосходства прямого потока над частными теориями

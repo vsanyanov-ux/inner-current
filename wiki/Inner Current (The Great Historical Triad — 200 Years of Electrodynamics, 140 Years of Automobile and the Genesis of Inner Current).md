@@ -1,7 +1,25 @@
 ---
 created: 2026-10-02
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, electrodynamics, benz-motorwagen, ohm-law, ampere, automobile, singularity, consilience, tanden, kanso, mushin, zanshin]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/epistemology
+  - state/superconducting
+  - electrodynamics
+  - benz-motorwagen
+  - ohm-law
+  - ampere
+  - automobile
+  - singularity
+  - consilience
+  - tanden
+  - kanso
+  - mushin
+  - zanshin
 type: concept
 status: evergreen
 ---

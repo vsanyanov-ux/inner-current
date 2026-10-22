@@ -2,6 +2,12 @@
 title: "Inner Current: The Emergence of Life — Dissipative Structures, The Prigogine-Simmias Consilience and Circuit Superconductivity"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/superconducting
   - emergence
   - dissipative-structures
   - prigogine

@@ -6,6 +6,12 @@ category: "III. Дзен-онтология и синтез"
 chapter: 206
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/open-loop
   - hinduism
   - vedanta
   - mandukya-upanishad

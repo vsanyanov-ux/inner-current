@@ -2,6 +2,12 @@
 title: "Inner Current: Ego Dissolution as Washing Hands — Sanitary Revolution of Consciousness, Deconstruction of Martyrdom and Scientific Hygiene"
 tags:
   - inner-current
+  - scale/protocol
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/superconducting
   - sanitary-revolution
   - washing-hands
   - ego-dissolution

@@ -3,7 +3,25 @@ created: 2026-09-25
 source: [[index|Wiki Index]]
 layer: III
 status: complete
-tags: [inner-current, ai-era, agi, singularity, civilizational-fuse, alignment, joule-lenz, consilience, mushin, tanden, zanshin, self-hosted-human]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
+  - ai-era
+  - agi
+  - singularity
+  - civilizational-fuse
+  - alignment
+  - joule-lenz
+  - consilience
+  - mushin
+  - tanden
+  - zanshin
+  - self-hosted-human
 ---
 
 # 77. Цивилизационный Предохранитель Сингулярности: 5 Фундаментальных Причин, Почему «Внутренний Ток» Отвечает на Главный Вызов Эпохи ИИ

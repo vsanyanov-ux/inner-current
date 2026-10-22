@@ -6,6 +6,12 @@ category: "I. Физический базис цепи (Фундамент)"
 chapter: 212
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - joule-lenz-law
   - ohmic-overheat
   - superconductivity

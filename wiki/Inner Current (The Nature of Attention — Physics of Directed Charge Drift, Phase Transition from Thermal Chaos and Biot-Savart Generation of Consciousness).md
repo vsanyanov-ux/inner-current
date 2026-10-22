@@ -2,6 +2,12 @@
 title: "Inner Current: The Nature of Attention — Physics of Directed Charge Drift, Phase Transition from Thermal Chaos and Biot-Savart Generation of Consciousness"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/superconducting
   - attention
   - charge-drift
   - biot-savart

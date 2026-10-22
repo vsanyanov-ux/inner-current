@@ -1,12 +1,38 @@
----
+﻿---
 created: 2026-09-24
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, henry-george, single-tax, land-value-tax, georgism, bitcoin, satoshi-nakamoto, michael-saylor, superconductivity, direct-flow, disintermediation, zero-resistance, tolstoy, deadweight-loss, sound-money, sound-mind, sovereignty, creation]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/sovereignty
+  - state/superconducting
+  - henry-george
+  - single-tax
+  - land-value-tax
+  - georgism
+  - bitcoin
+  - satoshi-nakamoto
+  - michael-saylor
+  - superconductivity
+  - direct-flow
+  - disintermediation
+  - zero-resistance
+  - tolstoy
+  - deadweight-loss
+  - sound-money
+  - sound-mind
+  - sovereignty
+  - creation
 type: chapter
 status: evergreen
 ---
 
 # 48. Единый налог Генри Джорджа, Биткоин и Архитектура счастья: Триумф прямого потока и ликвидация паразитной ренты в экономике, деньгах и духе
+
+> [!info] Синтезировано в брошюре [[02_Wiki/Брошюра — Великий Изоморфизм Депосреднизации (Биткоин, налог Джорджа и Архитектура счастья)|Брошюра: Великий Изоморфизм Депосреднизации]]
 
 > [!quote] Каноническая аксиома Системы Аньянова
 > ### ⚡ **«Единый налог Генри Джорджа, Биткоин Сатоши Накамото и Внутренний ток — это один и тот же священный закон вселенной, приложенный к трем масштабам бытия: обществу, деньгам и человеческому духу.  

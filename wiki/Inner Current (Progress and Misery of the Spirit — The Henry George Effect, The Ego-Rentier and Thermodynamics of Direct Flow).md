@@ -1,12 +1,32 @@
----
+﻿---
 created: 2026-09-25
 source: [[index|Wiki Index]]
 layer: III
 status: complete
-tags: [inner-current, henry-george, progress-and-poverty, ego-rentier, direct-flow, single-tax, consilience, superconductivity, joule-lenz, kanso, mushin, tanden]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/sovereignty
+  - state/overheating
+  - henry-george
+  - progress-and-poverty
+  - ego-rentier
+  - direct-flow
+  - single-tax
+  - consilience
+  - superconductivity
+  - joule-lenz
+  - kanso
+  - mushin
+  - tanden
 ---
 
 # 75. Прогресс и Нищета Духа: Эффект Генри Джорджа, Эго-Рантье и Физика Прямого Потока
+
+> [!info] Синтезировано в брошюре [[02_Wiki/Брошюра — Великий Изоморфизм Депосреднизации (Биткоин, налог Джорджа и Архитектура счастья)|Брошюра: Великий Изоморфизм Депосреднизации]]
 
 > *«В центре самого изумительного материального прогресса, превосходящего всё, о чем мечтали древние, бедность преследует прогресс, подобно тому как тень следует за телом. Причина нищеты среди изобилия заключается в том, что ценность, создаваемая всем обществом, присваивается монополистом земли».*  
 > — **Генри Джордж**, *«Прогресс и бедность»* (San Francisco, 1879)
@@ -170,7 +190,7 @@ flowchart TD
 
     subgraph VA["Прорыв Владимира Аньянова (Клинок Кансо и Мусин)"]
         direction TB
-        VA1["Паразит: Монополия Эго на внимание (R_ego)"] --> VA2["Решение: Клинок Кансо (Аппаратный срез R_ego → 0)"]
+        VA1["Пазит: Монополия Эго на внимание (R_ego)"] --> VA2["Решение: Клинок Кансо (Аппаратный срез R_ego → 0)"]
         VA2 --> VA3["0% энергии на статусную дань, вину и сомнения"]
         VA3 --> VA4["Результат: Сверхпроводимость духа (Мусин),<br>ток Тандэна напрямую питает жизнь"]
     end

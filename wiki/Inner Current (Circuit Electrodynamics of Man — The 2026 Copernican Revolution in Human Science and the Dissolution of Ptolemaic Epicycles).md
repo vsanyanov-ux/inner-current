@@ -2,6 +2,12 @@
 title: "Inner Current: Circuit Electrodynamics of Man — The 2026 Copernican Revolution in Human Science and the Dissolution of Ptolemaic Epicycles"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
   - copernican-revolution
   - paradigm-shift
   - ptolemaic-epicycles

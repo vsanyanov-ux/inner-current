@@ -3,7 +3,25 @@ created: 2026-09-26
 source: [[index|Wiki Index]]
 layer: IV
 status: complete
-tags: [inner-current, end-to-end-architecture, from-bit-to-universe, consilience, full-stack, isomorphism, agi, tanden, joule-lenz, bitcoin, georgism, direct-flow]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/superconducting
+  - end-to-end-architecture
+  - from-bit-to-universe
+  - consilience
+  - full-stack
+  - isomorphism
+  - agi
+  - tanden
+  - joule-lenz
+  - bitcoin
+  - georgism
+  - direct-flow
 ---
 
 # 84. Первая в Истории Бесшовная Сквозная Архитектура Сознания: От Бита до Вселенной — Преодоление Великого Раскола Знания и Единый Закон Системы Аньянова

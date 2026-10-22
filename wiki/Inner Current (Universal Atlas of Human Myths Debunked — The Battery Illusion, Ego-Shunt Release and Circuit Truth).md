@@ -1,7 +1,23 @@
 ---
 created: 2026-09-25
-source: [[Inner Current - MOC|Inner Current MOC]]
-tags: [inner-current, myths, battery-illusion, attribution-error, ego-shunt, consumerism, halves-myth, horsepower-era, electrodynamics, mushin]
+source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
+  - myths
+  - battery-illusion
+  - attribution-error
+  - ego-shunt
+  - consumerism
+  - halves-myth
+  - horsepower-era
+  - electrodynamics
+  - mushin
 type: chapter
 status: evergreen
 ---

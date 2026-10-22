@@ -1,0 +1,21 @@
+[Unit]
+Description=Inner Current Telemetry & Download Stats Engine
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/innercurrent
+Environment=NODE_ENV=production
+Environment=STATS_PORT=8033
+Environment=STATS_DB_PATH=/var/www/innercurrent/data/stats.db
+Environment=IC_ADMIN_PASSWORD=innercurrent2026
+ExecStart=/usr/bin/node /var/www/innercurrent/stats_server.js
+Restart=always
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

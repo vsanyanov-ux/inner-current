@@ -1,8 +1,14 @@
----
+﻿---
 title: "Inner Current (The Dashboard of Consciousness — Seven Warning Lamps, Automotive OBD-II Protocol of the Soul and Instant DTC Clearing)"
 created: 2026-10-03
 tags:
   - inner-current
+  - scale/protocol
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/epistemology
+  - state/overheating
   - dashboard
   - automotive-analogy
   - obd2
@@ -18,6 +24,8 @@ source: "Vladimir Anyanov — Inner Current (Circuit Electrodynamics of Consciou
 ---
 
 # Приборная панель сознания: Семь аварийных ламп и протокол бортовой самодиагностики OBD-II
+
+> [!info] Синтезировано в брошюре [[02_Wiki/Брошюра — Автомобиль сознания (Протокол OBD-II и отмена морального кнута)|Брошюра: Автомобиль сознания]]
 ### Автомобильная схемотехника саморегуляции, соматические датчики тела и мгновенный сброс кодов неисправностей (DTC)
 
 > *«Когда на панели приборов автомобиля загорается индикатор перегрева или ручного тормоза, водитель не испытывает чувства вины, не бьет капот кнутом и не погружается в многолетнюю рефлексию о греховности мотора. Он просто считывает код ошибки, останавливает перегрев и опускает рычаг. Контурная электродинамика человека делает с психикой ровно то же самое: она превращает моральную трагедию в приборную панель с семью контрольными лампами».*  

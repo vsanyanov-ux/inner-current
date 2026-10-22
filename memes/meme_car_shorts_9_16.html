@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap');
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    width: 1080px;
+    height: 1920px;
+    background: #07090c;
+    color: #f1f5f9;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    position: relative;
+    /* Учет безопасных зон Shorts (120px сверху, 260px снизу) */
+    padding: 120px 48px 260px 48px;
+    gap: 22px;
+  }
+
+  /* Фоновые неоновые вспышки */
+  .glow-top {
+    position: absolute;
+    top: -150px;
+    left: 10%;
+    width: 800px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(239, 68, 68, 0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .glow-mid {
+    position: absolute;
+    top: 45%;
+    right: -100px;
+    width: 700px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .glow-bottom {
+    position: absolute;
+    bottom: -100px;
+    left: 20%;
+    width: 800px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(250, 204, 21, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Верхний бейдж и навигация */
+  .top-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+  }
+
+  .badge {
+    background: rgba(239, 68, 68, 0.22);
+    border: 1.5px solid rgba(239, 68, 68, 0.7);
+    color: #ff6b6b;
+    padding: 8px 24px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    box-shadow: 0 0 25px rgba(239, 68, 68, 0.3);
+  }
+
+  .brand-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    color: #94a3b8;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .brand-tag span {
+    color: #38bdf8;
+    font-weight: 800;
+  }
+
+  /* Главный хук */
+  .headline {
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1.18;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    z-index: 10;
+  }
+  .headline .highlight-gold {
+    color: #facc15;
+    text-shadow: 0 0 30px rgba(250, 204, 21, 0.4);
+  }
+  .headline .highlight-red {
+    color: #f87171;
+    text-shadow: 0 0 25px rgba(248, 113, 113, 0.4);
+  }
+
+  /* Визуальный контейнер */
+  .visual-container {
+    position: relative;
+    z-index: 10;
+  }
+
+  .image-wrapper {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+    background: #000;
+  }
+
+  .main-image {
+    width: 100%;
+    height: 550px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .telemetry-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(7, 9, 12, 0.95), rgba(7, 9, 12, 0.4), transparent);
+    padding: 24px 20px 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .status-pill {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .status-pill.left {
+    border: 1.5px solid rgba(34, 197, 94, 0.6);
+    color: #4ade80;
+  }
+  .status-pill.right {
+    border: 1.5px solid rgba(239, 68, 68, 0.7);
+    color: #f87171;
+  }
+
+  /* Нижняя аналитическая карточка */
+  .footer-card {
+    background: rgba(18, 23, 31, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 26px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 10;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .stat-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #94a3b8;
+    font-weight: 700;
+  }
+  .stat-value {
+    font-size: 19px;
+    font-weight: 800;
+    color: #f8fafc;
+  }
+  .stat-value.danger {
+    color: #f87171;
+  }
+
+  /* Схема цепи */
+  .circuit-diagram {
+    background: rgba(10, 15, 26, 0.8);
+    border: 1px dashed rgba(56, 189, 248, 0.35);
+    border-radius: 14px;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+  }
+
+  .punchline-block {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .punchline-icon {
+    width: 50px;
+    height: 50px;
+    background: #facc15;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    color: #000;
+    flex-shrink: 0;
+    box-shadow: 0 0 25px rgba(250, 204, 21, 0.45);
+  }
+
+  .punchline-text {
+    font-size: 17px;
+    line-height: 1.35;
+    font-weight: 700;
+    color: #e2e8f0;
+  }
+  .punchline-text strong {
+    color: #38bdf8;
+  }
+
+  /* Вирусный блок для комментариев */
+  .comment-hook-card {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(56, 189, 248, 0.1));
+    border: 1.5px solid rgba(250, 204, 21, 0.4);
+    border-radius: 20px;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+  }
+
+  .comment-hook-text {
+    font-size: 16px;
+    font-weight: 800;
+    color: #fef08a;
+    line-height: 1.3;
+  }
+  .comment-hook-badge {
+    background: #facc15;
+    color: #000;
+    font-weight: 900;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  .cta-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0f172a;
+    border: 1.5px solid rgba(56, 189, 248, 0.4);
+    border-radius: 14px;
+    padding: 12px 22px;
+    z-index: 10;
+  }
+
+  .cta-text {
+    font-size: 15px;
+    font-weight: 700;
+    color: #cbd5e1;
+  }
+  .cta-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 800;
+    font-size: 16px;
+    color: #38bdf8;
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="glow-top"></div>
+  <div class="glow-mid"></div>
+  <div class="glow-bottom"></div>
+
+  <!-- ВЕРХНИЙ БЕЙДЖ -->
+  <div class="top-meta">
+    <div class="badge">Взлом догмы #01</div>
+    <div class="brand-tag">⚡ <span>INNER CURRENT</span> // SHORTS</div>
+  </div>
+
+  <!-- ЗАГОЛОВОК / ХУК -->
+  <div class="headline">
+    Поздравляем: ты купил <span class="highlight-gold">2 тонны железа</span>,<br>
+    чтобы возить свой <span class="highlight-red">невроз со скоростью 12 км/ч</span>
+  </div>
+
+  <!-- ВИЗУАЛЬНЫЙ СПЛИТ БЕЗ ОБРЕЗКИ -->
+  <div class="visual-container">
+    <div class="image-wrapper">
+      <img src="meme_car_raw.jpg" class="main-image" alt="День 1 vs День 21">
+      <div class="telemetry-bar">
+        <div class="status-pill left">🔋 ЗАРЯД: 100% (Иллюзия)</div>
+        <div class="status-pill right">⚠️ УТЕЧКА ТОКА: 0% (РАЗРЯД)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ДЕКОНСТРУКЦИЯ И ПАНЧЛАЙН -->
+  <div class="footer-card">
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-label">Срок годности "счастья":</div>
+        <div class="stat-value">1 500 км (или 21 день)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Паразитная нагрузка:</div>
+        <div class="stat-value danger">КАСКО + Пробка + Тревога</div>
+      </div>
+    </div>
+
+    <!-- Инженерная схема цепи -->
+    <div class="circuit-diagram">
+      <span style="color: #4ade80; font-weight: 700;">[ТВОЙ ТАНДЭН]</span>
+      <span style="color: #64748b;">━ 220V ━▶</span>
+      <span style="color: #f87171; background: rgba(239, 68, 68, 0.18); padding: 2px 8px; border-radius: 6px; font-weight: 700;">[2.5 Т ЖЕЛЕЗА]</span>
+      <span style="color: #64748b;">━▶</span>
+      <span style="color: #ef4444; font-weight: 800;">💥 0V</span>
+    </div>
+
+    <div class="punchline-block">
+      <div class="punchline-icon">⚡</div>
+      <div class="punchline-text">
+        Внешний объект — <strong>не источник энергии</strong>. Это паразитная нагрузка, выжигающая твой аккумулятор.
+      </div>
+    </div>
+  </div>
+
+  <!-- ВИРУСНЫЙ ХУК ДЛЯ ВОВЛЕЧЕНИЯ В КОММЕНТАРИИ SHORTS -->
+  <div class="comment-hook-card">
+    <div class="comment-hook-text">
+      💬 На сколько дней тебе хватило кайфа от последней крупной покупки?
+    </div>
+    <div class="comment-hook-badge">Пиши в комменты ➔</div>
+  </div>
+
+  <!-- ССЫЛКА НА ПРОЕКТ -->
+  <div class="cta-bar">
+    <div class="cta-text">Хочешь вечный ток вместо кредитного дофамина?</div>
+    <div class="cta-link">@inner_current ➔</div>
+  </div>
+
+</body>
+</html>

@@ -1,7 +1,24 @@
 ---
 created: 2026-09-23
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, double-verification, tanden, generator, cross-calibration, zen, electrodynamics, consilience, epistemology, circuit-physics, soma]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
+  - double-verification
+  - tanden
+  - generator
+  - cross-calibration
+  - zen
+  - electrodynamics
+  - consilience
+  - epistemology
+  - circuit-physics
+  - soma
 type: chapter
 status: evergreen
 ---

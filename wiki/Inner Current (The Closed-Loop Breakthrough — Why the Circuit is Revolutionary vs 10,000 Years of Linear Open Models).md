@@ -1,7 +1,23 @@
 ---
 created: 2026-09-25
-source: [[Inner Current - MOC|Inner Current MOC]]
-tags: [inner-current, closed-circuit, closed-loop, feedback-wire, linear-models, paradigm-shift, love, addictions, myths, existential-questions]
+source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - closed-circuit
+  - closed-loop
+  - feedback-wire
+  - linear-models
+  - paradigm-shift
+  - love
+  - addictions
+  - myths
+  - existential-questions
 type: chapter
 status: evergreen
 ---

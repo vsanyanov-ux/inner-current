@@ -3,7 +3,22 @@ created: 2026-09-25
 source: [[index|Wiki Index]]
 layer: III
 status: complete
-tags: [inner-current, prometheus, ethics, creator, mahakaruna, tanden, flashlight, consilience, service]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
+  - prometheus
+  - ethics
+  - creator
+  - mahakaruna
+  - tanden
+  - flashlight
+  - consilience
+  - service
 ---
 
 # 81. Шаг Прометея: Огонь Внутреннего Тока — От Монастырского Олимпа до Карманного Фонарика Человечества

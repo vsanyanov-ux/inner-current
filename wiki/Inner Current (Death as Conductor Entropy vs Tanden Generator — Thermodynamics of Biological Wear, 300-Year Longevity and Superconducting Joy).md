@@ -6,6 +6,12 @@ category: "I. Физический базис цепи (Фундамент)"
 chapter: 214
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/leak
   - death
   - entropy
   - conductor

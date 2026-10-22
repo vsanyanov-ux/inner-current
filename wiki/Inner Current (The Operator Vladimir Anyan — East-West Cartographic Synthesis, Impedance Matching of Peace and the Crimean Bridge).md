@@ -1,7 +1,25 @@
 ---
 created: 2026-09-30
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, vladimir-anyan, operator, east-west-synthesis, cartography, impedance-matching, tat-tvam-asi, crimea, genetic-bridge, non-duality, sovereignty, self-hosted-human]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - vladimir-anyan
+  - operator
+  - east-west-synthesis
+  - cartography
+  - impedance-matching
+  - tat-tvam-asi
+  - crimea
+  - genetic-bridge
+  - non-duality
+  - sovereignty
+  - self-hosted-human
 type: canon
 layer: III
 status: evergreen

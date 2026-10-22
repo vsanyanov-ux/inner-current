@@ -6,6 +6,12 @@ category: "I. Физический базис цепи"
 chapter: 244
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/superconducting
   - circuit-taxonomy
   - three-elements
   - four-elements

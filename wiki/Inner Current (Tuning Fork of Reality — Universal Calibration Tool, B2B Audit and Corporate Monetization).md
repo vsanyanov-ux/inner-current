@@ -1,7 +1,23 @@
 ---
 created: 2026-09-24
-source: [[Inner Current - MOC|Inner Current MOC]]
-tags: [inner-current, b2b, consulting, executive-coaching, monetization, tuning-fork, reality-multimeter, corporate-audit, due-diligence, impedance-matching]
+source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - b2b
+  - consulting
+  - executive-coaching
+  - monetization
+  - tuning-fork
+  - reality-multimeter
+  - corporate-audit
+  - due-diligence
+  - impedance-matching
 type: chapter
 status: evergreen
 ---

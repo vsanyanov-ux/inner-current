@@ -4,7 +4,21 @@ source: [[index|Wiki Index]]
 author: Владимир Аньянов
 chapter: 52
 layer: "III. Дзен-онтология и синтез (Высший дух и физика)"
-tags: [inner-current, karma, cosmic-justice, thermodynamics, zen-engineering, tolstoy, osho, electrodynamics]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
+  - karma
+  - cosmic-justice
+  - thermodynamics
+  - zen-engineering
+  - tolstoy
+  - osho
+  - electrodynamics
 ---
 
 # 52. Карма и Космическая Справедливость: Мгновенная локальная термодинамика вместо отложенного загробного суда

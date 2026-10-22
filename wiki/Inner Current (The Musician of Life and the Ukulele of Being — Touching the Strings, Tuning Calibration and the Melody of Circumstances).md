@@ -2,6 +2,12 @@
 title: "Inner Current: The Musician of Life and the Ukulele of Being — Touching the Strings, Tuning Calibration and the Melody of Circumstances"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/open-loop
   - ukulele
   - acoustics
   - musician-of-life

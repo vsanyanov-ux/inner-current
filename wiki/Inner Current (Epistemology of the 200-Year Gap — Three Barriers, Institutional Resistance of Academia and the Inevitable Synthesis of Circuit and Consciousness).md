@@ -1,7 +1,25 @@
 ---
 created: 2026-10-01
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, epistemology, 200-year-gap, ohm-law, three-barriers, academic-resistance, planck-principle, semmelweis-reflex, zen-engineering, consilience, tanden, mushin]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - epistemology
+  - 200-year-gap
+  - ohm-law
+  - three-barriers
+  - academic-resistance
+  - planck-principle
+  - semmelweis-reflex
+  - zen-engineering
+  - consilience
+  - tanden
+  - mushin
 type: concept
 status: evergreen
 ---

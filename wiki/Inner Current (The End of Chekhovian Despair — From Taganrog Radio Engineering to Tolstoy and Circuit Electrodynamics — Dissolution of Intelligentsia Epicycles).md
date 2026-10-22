@@ -1,7 +1,23 @@
 ---
 created: 2026-10-02
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, chekhov, tolstoy, taganrog, radio-engineering, ptolemaic-epicycles, intelligentsia, existential-despair, superconductivity, history-of-ideas]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/epistemology
+  - state/overheating
+  - chekhov
+  - tolstoy
+  - taganrog
+  - radio-engineering
+  - ptolemaic-epicycles
+  - intelligentsia
+  - existential-despair
+  - superconductivity
+  - history-of-ideas
 type: concept
 status: evergreen
 ---

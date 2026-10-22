@@ -4,7 +4,25 @@ title: "Inner Current — 97. Коперниковский переворот в
 created: 2026-09-26
 author: Vladimir Anyanov
 layer: III. Дзен-онтология и синтез
-tags: [inner-current, ptolemaic-epicycles, copernican-revolution, i-see-you, transactional-analysis, ifs, subpersonalities, tanden, musin, circuit-engineering, kanso, occam-razor]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - ptolemaic-epicycles
+  - copernican-revolution
+  - i-see-you
+  - transactional-analysis
+  - ifs
+  - subpersonalities
+  - tanden
+  - musin
+  - circuit-engineering
+  - kanso
+  - occam-razor
 ---
 
 # 97. Коперниковский переворот в психологии: Архитектура Контура против модели «Я тебя вижу» и эпициклов субличностей — Почему простота цепи разрешает вековую схоластику психотерапии

@@ -238,7 +238,56 @@
     color: #f59e0b;
   }
 
-  /* SCHEMATIC STRIP */
+  /* SCHEMATIC STRIP & VECTOR BLUEPRINT */
+  .schematic-wrapper {
+    background: #090e1a;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 0.8vw 1.2vw;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    position: relative;
+  }
+
+  .card-compact {
+    background: rgba(17, 24, 39, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 0.8vw 1.1vw;
+    backdrop-filter: blur(10px);
+  }
+
+  .card-compact .card-title {
+    font-size: 0.95vw;
+    font-weight: 700;
+    margin-bottom: 0.3vw;
+  }
+
+  .card-compact .card-text {
+    font-size: 0.78vw;
+    line-height: 1.4;
+    color: #94a3b8;
+  }
+
+  @media print {
+    #slide-3 {
+      padding: 8mm 12mm !important;
+    }
+    .schematic-wrapper {
+      padding: 1.5mm 3mm !important;
+    }
+    .card-compact {
+      padding: 2.2mm 3mm !important;
+    }
+    .card-compact .card-title {
+      font-size: 8pt !important;
+      margin-bottom: 0.8mm !important;
+    }
+    .card-compact .card-text {
+      font-size: 6.8pt !important;
+      line-height: 1.25 !important;
+    }
+  }
+
   .schematic-bar {
     background: #0f172a;
     border: 1px solid #334155;
@@ -394,56 +443,204 @@
   </section>
 
 
-  <!-- ==================== СЛАЙД 3: АНАТОМИЯ ПРИБОРА ==================== -->
+  <!-- ==================== СЛАЙД 3: ПРИНЦИПИАЛЬНАЯ СХЕМА ФОНАРИКА ==================== -->
   <section class="slide" id="slide-3">
     <div class="glow glow-blue"></div>
+    <div class="glow glow-amber"></div>
+
     <div class="slide-header">
       <div>
-        <div class="badge-tag">Фундаментальная модель</div>
+        <div class="badge-tag">Фундаментальная модель · Принципиальная схема</div>
         <div class="slide-title">Человек — это <span>Карманный Фонарик</span></div>
-        <div class="slide-subtitle">Мы не ищем свет во тьме. Человек — это сам автономный генератор света</div>
+        <div class="slide-subtitle">Принципиальная схема счастья: как устроен наш внутренний контур и где бежит ток жизни</div>
       </div>
       <div class="slide-num">03 / 12</div>
     </div>
 
-    <div class="slide-body">
-      <div class="schematic-bar" style="margin-bottom: 2vw;">
-        <div class="schematic-node">
-          <div class="node-tag">Узел 1</div>
-          <div class="node-name" style="color: #f59e0b;">🔋 Батарейка</div>
-          <div class="node-desc"><strong>Тандэн</strong> (Живот, дыхание)<br>Заряжена с рождения всегда!</div>
-        </div>
-        <div class="node-arrow">→</div>
-        <div class="schematic-node">
-          <div class="node-tag">Узел 2</div>
-          <div class="node-name" style="color: #38bdf8;">🔘 Кнопка «Щёлк!»</div>
-          <div class="node-desc"><strong>Хоцу</strong> (Решение прямо сейчас)<br>Фокус: режим 0 или 1</div>
-        </div>
-        <div class="node-arrow">→</div>
-        <div class="schematic-node">
-          <div class="node-tag">Узел 3</div>
-          <div class="node-name" style="color: #a78bfa;">⚡ Ток в проводе</div>
-          <div class="node-desc"><strong>Мусин</strong> (Чистое внимание)<br>Без ржавчины и сомнений</div>
-        </div>
-        <div class="node-arrow">→</div>
-        <div class="schematic-node">
-          <div class="node-tag">Узел 4</div>
-          <div class="node-name" style="color: #34d399;">💡 Лампочка</div>
-          <div class="node-desc"><strong>Действие в реальности</strong><br>Луч, направленный в мир</div>
-        </div>
+    <div class="slide-body" style="margin: 0.8vw 0; gap: 0.9vw;">
+      <!-- SVG SCHEMATIC OF THE FLASHLIGHT -->
+      <div class="schematic-wrapper">
+        <svg viewBox="0 0 1440 430" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="display: block; max-height: 420px;">
+          <defs>
+            <linearGradient id="beamGrad" x1="0%" y1="50%" x2="100%" y2="50%">
+              <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.95"/>
+              <stop offset="25%" stop-color="#f59e0b" stop-opacity="0.55"/>
+              <stop offset="65%" stop-color="#f59e0b" stop-opacity="0.18"/>
+              <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.0"/>
+            </linearGradient>
+            <linearGradient id="tandenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#10b981"/>
+              <stop offset="60%" stop-color="#059669"/>
+              <stop offset="100%" stop-color="#047857"/>
+            </linearGradient>
+            <filter id="glowCyan" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="glowAmber" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="5" result="blur" />
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <!-- FLASHLIGHT CASING (DASHED CHASSIS) -->
+          <rect x="25" y="10" width="985" height="410" rx="20" fill="#0d1424" stroke="#253349" stroke-width="2" stroke-dasharray="6 6"/>
+          <text x="50" y="34" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#64748b" letter-spacing="1.5">МЕТАЛЛИЧЕСКИЙ КОРПУС ФОНАРИКА (СОМАТИЧЕСКАЯ АРХИТЕКТУРА ЧЕЛОВЕКА)</text>
+
+          <!-- LIGHT BEAM SPREADING OUT TO THE RIGHT -->
+          <polygon points="985,170 1425,25 1425,395 985,250" fill="url(#beamGrad)"/>
+          <line x1="985" y1="170" x2="1425" y2="25" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4 4" stroke-opacity="0.8"/>
+          <line x1="985" y1="250" x2="1425" y2="395" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4 4" stroke-opacity="0.8"/>
+
+          <!-- TEXT INSIDE LIGHT BEAM -->
+          <g transform="translate(1040, 145)">
+            <rect x="-10" y="-18" width="290" height="150" rx="12" fill="rgba(11, 17, 32, 0.9)" stroke="rgba(245, 158, 11, 0.45)" stroke-width="1.5"/>
+            <text x="0" y="8" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#fbbf24">🔦 СВЕТОВОЙ ЛУЧ</text>
+            <text x="0" y="32" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#ffffff">Направлен во внешний мир!</text>
+            <text x="0" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" fill="#94a3b8">Люди, дела, текст, чашка чая</text>
+            <line x1="0" y1="64" x2="265" y2="64" stroke="#334155" stroke-width="1"/>
+            <text x="0" y="84" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="600" fill="#38bdf8">Вещи холодные и тёмные.</text>
+            <text x="0" y="104" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" fill="#cbd5e1">Они лишь отражают ваш свет!</text>
+          </g>
+
+          <!-- ================= UZEL 1: BATTERY (TANDEN) ================= -->
+          <g transform="translate(65, 110)">
+            <rect x="0" y="0" width="130" height="225" rx="16" fill="#111827" stroke="#10b981" stroke-width="2.5"/>
+            <!-- Terminal cap -->
+            <rect x="35" y="-12" width="60" height="12" rx="4" fill="#10b981"/>
+            <!-- Battery level block -->
+            <rect x="15" y="15" width="100" height="130" rx="8" fill="url(#tandenGrad)" opacity="0.95"/>
+            <text x="65" y="62" text-anchor="middle" font-size="28">🔋</text>
+            <text x="65" y="96" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="800" fill="#ffffff">100%</text>
+            <text x="65" y="118" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700" fill="#d1fae5" letter-spacing="1">ЭДС ПОЛНА</text>
+            
+            <text x="65" y="172" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="800" fill="#10b981">ТАНДЭН (丹田)</text>
+            <text x="65" y="192" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#f1f5f9">Низ живота · Тело</text>
+            <text x="65" y="210" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#94a3b8">Заряжен каждое утро!</text>
+
+            <!-- Terminal Markers -->
+            <circle cx="65" cy="-4" r="8" fill="#f59e0b"/>
+            <text x="65" y="0" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="800" fill="#000">+</text>
+            <circle cx="65" cy="230" r="8" fill="#38bdf8"/>
+            <text x="65" y="234" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="800" fill="#000">−</text>
+          </g>
+
+          <!-- ================= UPPER WIRE: CURRENT FLOW (MUSHIN) ================= -->
+          <path d="M 130 98 L 130 65 L 340 65" fill="none" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" filter="url(#glowCyan)"/>
+          <!-- Arrowhead -->
+          <polygon points="215,60 230,65 215,70" fill="#38bdf8"/>
+          <polygon points="295,60 310,65 295,70" fill="#38bdf8"/>
+          <text x="155" y="52" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#38bdf8">ТОК ВНИМАНИЯ (I)</text>
+
+          <!-- ================= UZEL 2: SWITCH (HOTSU) ================= -->
+          <g transform="translate(340, 35)">
+            <rect x="0" y="0" width="160" height="60" rx="10" fill="#111827" stroke="#38bdf8" stroke-width="1.5"/>
+            <circle cx="25" cy="30" r="6" fill="#38bdf8"/>
+            <circle cx="135" cy="30" r="6" fill="#38bdf8"/>
+            <!-- Closed lever -->
+            <line x1="25" y1="30" x2="135" y2="30" stroke="#10b981" stroke-width="4" stroke-linecap="round"/>
+            <text x="80" y="22" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="800" fill="#10b981">ЗАМКНУТО [ 1 ]</text>
+            <text x="80" y="46" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="#ffffff">КНОПКА «ЩЁЛК!»</text>
+            <text x="80" y="76" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#94a3b8">Хоцу: решение прямо сейчас</text>
+          </g>
+
+          <!-- WIRE FROM SWITCH TO CONDUCTOR / EGO -->
+          <path d="M 500 65 L 575 65" fill="none" stroke="#38bdf8" stroke-width="4" stroke-linecap="round"/>
+          <polygon points="535,60 550,65 535,70" fill="#38bdf8"/>
+
+          <!-- ================= PARASITIC EGO RESISTOR (R_EGO) ================= -->
+          <g transform="translate(575, 25)">
+            <rect x="0" y="0" width="225" height="80" rx="10" fill="rgba(239, 68, 68, 0.08)" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <!-- Direct bypass superconducting line (Mushin) -->
+            <line x1="15" y1="35" x2="210" y2="35" stroke="#10b981" stroke-width="3.5" stroke-linecap="round"/>
+            <text x="112" y="24" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="800" fill="#10b981">МУСИН: R = 0 (ПОТОК)</text>
+            <!-- Ego Resistor Hazard below -->
+            <path d="M 40 52 L 55 62 L 70 45 L 85 62 L 100 45 L 115 62 L 130 45 L 145 62 L 160 52" fill="none" stroke="#ef4444" stroke-width="2"/>
+            <text x="112" y="73" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#f87171">Реостат Эго: сомнения и страх</text>
+            <text x="112" y="100" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#fca5a5">Омический перегрев Q = I²·R·t</text>
+          </g>
+
+          <!-- WIRE TO BULB -->
+          <path d="M 800 65 L 920 65 L 920 145" fill="none" stroke="#f59e0b" stroke-width="4" stroke-linecap="round" filter="url(#glowAmber)"/>
+          <polygon points="850,60 865,65 850,70" fill="#f59e0b"/>
+
+          <!-- ================= UZEL 3: BULB & REFLECTOR (GYO) ================= -->
+          <g transform="translate(860, 145)">
+            <!-- Parabolic Reflector -->
+            <path d="M 15 10 C 75 30, 75 110, 15 130 Z" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+            <!-- Lens -->
+            <line x1="75" y1="20" x2="75" y2="120" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+            <!-- Bulb Socket -->
+            <circle cx="50" cy="70" r="24" fill="#111827" stroke="#f59e0b" stroke-width="2"/>
+            <!-- Glowing Filament -->
+            <circle cx="50" cy="70" r="14" fill="#fbbf24" filter="url(#glowAmber)"/>
+            <text x="50" y="77" text-anchor="middle" font-size="18">💡</text>
+            
+            <text x="50" y="152" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13.5" font-weight="800" fill="#fbbf24">ЛАМПОЧКА (ГЁ)</text>
+            <text x="50" y="170" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#f1f5f9">Созидательное действие</text>
+            <text x="50" y="186" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#94a3b8">Руки, голос, внимание</text>
+          </g>
+
+          <!-- ================= UZEL 4: RETURN WIRE (KIRCHHOFF / ZANSHIN) ================= -->
+          <path d="M 920 335 L 920 375 L 130 375 L 130 340" fill="none" stroke="#38bdf8" stroke-width="4" stroke-linecap="round"/>
+          <!-- Return Arrows -->
+          <polygon points="760,380 745,375 760,370" fill="#38bdf8"/>
+          <polygon points="520,380 505,375 520,370" fill="#38bdf8"/>
+          <polygon points="280,380 265,375 280,370" fill="#38bdf8"/>
+          
+          <text x="510" y="365" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" fill="#38bdf8">🔄 ОБРАТНЫЙ ПРОВОД КИРХГОФА (ДЗАНСИН) · ЗАМЫКАНИЕ КОНТУРА</text>
+          <text x="510" y="398" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#94a3b8">Действие завершено в реальности ➜ Энергия возвращается в тело ➜ Покой, сытость, прохладный корпус</text>
+
+          <!-- ================= CENTRAL BLUEPRINT FORMULA CARD ================= -->
+          <g transform="translate(230, 150)">
+            <rect x="0" y="0" width="580" height="175" rx="14" fill="rgba(15, 23, 42, 0.96)" stroke="#f59e0b" stroke-width="1.5"/>
+            <text x="290" y="28" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" fill="#f59e0b" letter-spacing="1">⚡ СХЕМОТЕХНИКА СЧАСТЬЯ: ТОК В ЗАМКНУТОЙ СВЕРХПРОВОДЯЩЕЙ ЦЕПИ</text>
+            
+            <text x="290" y="54" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="700" fill="#ffffff">
+              I > 0  ·  R_ego = 0  ·  Кнопка [ 1 ]  ·  Контур замкнут наружу
+            </text>
+            
+            <line x1="25" y1="66" x2="555" y2="66" stroke="#334155" stroke-width="1"/>
+            
+            <!-- State 1: Green -->
+            <text x="35" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="#34d399">✔ НОРМА (Счастье):</text>
+            <text x="180" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" fill="#e2e8f0">Ток из живота без трения в руки ➜ луч в мир ➜ контур замкнут ➜ радость.</text>
+            
+            <!-- State 2: Red -->
+            <text x="35" y="120" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="#f87171">✖ СБОЙ 1 (Тревога):</text>
+            <text x="180" y="120" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" fill="#e2e8f0">Включён реостат сомнений (R_ego &gt; 0) ➜ корпус кипит, впереди тьма.</text>
+            
+            <!-- State 3: Amber -->
+            <text x="35" y="150" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="#fbbf24">✖ СБОЙ 2 (Истощение):</text>
+            <text x="180" y="150" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" fill="#e2e8f0">Обрыв обратного провода (думскроллинг) ➜ ток слит в экран без возврата.</text>
+          </g>
+        </svg>
       </div>
 
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-title">🔋 Почему батарейка не садится?</div>
+      <!-- 4 BOTTOM CARDS FOR SPEAKER TALKING POINTS -->
+      <div class="grid-4">
+        <div class="card-compact">
+          <div class="card-title" style="color: #10b981;">🔋 1. Батарейка (Тандэн)</div>
           <div class="card-text">
-            Энергия жизни вырабатывается телом непрерывно (дыхание, сердцебиение, митохондрии). Она не зависит от курса валют, мнения начальника или прогноза погоды.
+            Заряжена с рождения каждое утро (дыхание, тело). <strong>Энергия есть всегда</strong> — она не зависит от погоды или мнения начальника.
           </div>
         </div>
-        <div class="card">
-          <div class="card-title">🔘 В чём секрет кнопки?</div>
+        <div class="card-compact">
+          <div class="card-title" style="color: #38bdf8;">🔘 2. Кнопка «Щёлк!»</div>
           <div class="card-text">
-            Фонарик не бывает «на 15% включён». Ты либо находишься в спящем режиме мысленной жвачки, либо нажал «Щёлк!» и делаешь дело прямо сейчас.
+            Режим <strong>0 или 1</strong>. Фонарик не бывает «на 15% включён». Ты либо варишься в мыслях, либо нажал кнопку и делаешь дело.
+          </div>
+        </div>
+        <div class="card-compact">
+          <div class="card-title" style="color: #f87171;">⚠️ 3. Реостат Эго (R_ego)</div>
+          <div class="card-text">
+            Самоедство и страх оценки. При R &gt; 0 проводка плавится (Q = I²·R·t). <strong>Снимите оценку</strong> — включится сверхпроводимость.
+          </div>
+        </div>
+        <div class="card-compact">
+          <div class="card-title" style="color: #fbbf24;">💡 4. Луч и Замыкание</div>
+          <div class="card-text">
+            Светить <strong>только наружу</strong>! А реальное завершённое действие замыкает провод Кирхгофа: корпус остывает, в душе мир.
           </div>
         </div>
       </div>
@@ -451,7 +648,7 @@
 
     <div class="slide-footer">
       <div>Принципиальная схемотехника человека</div>
-      <div>4 неразделимых узла цепи</div>
+      <div class="speaker-brand">Система Аньянова · Лекция для взрослых</div>
     </div>
   </section>
 

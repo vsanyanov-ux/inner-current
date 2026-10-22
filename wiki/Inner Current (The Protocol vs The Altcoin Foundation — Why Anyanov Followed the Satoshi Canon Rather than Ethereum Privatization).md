@@ -1,7 +1,13 @@
----
+﻿---
 title: "Inner Current: The Protocol vs The Altcoin Foundation — Why Anyanov Followed the Satoshi Canon Rather than Ethereum Privatization"
 tags:
   - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/sovereignty
+  - state/superconducting
   - satoshi-canon
   - bitcoin-vs-ethereum
   - disintermediation
@@ -17,6 +23,8 @@ layer: III
 
 # Протокол против Альткоин-Фонда: Почему Аньянов последовал канону Сатоши, а не приватизации Эфириума
 ## Депосреднизация человеческого духа: почему подлинная наука о счастье обязана быть открытым протоколом без премайна, жрецов и закрытых фондов
+
+> [!info] Синтезировано в брошюре [[02_Wiki/Брошюра — Великий Изоморфизм Депосреднизации (Биткоин, налог Джорджа и Архитектура счастья)|Брошюра: Великий Изоморфизм Депосреднизации]]
 
 > *«То есть я, как Сатоши, создал протокол, отдал его людям и отошел в сторону, не стал его приватизировать, как, допустим, Эфириум или другие альткоины».*  
 > — **Владимир Аньянов (Канон Сатоши-Аньянова — Манифест Открытого Протокола)**

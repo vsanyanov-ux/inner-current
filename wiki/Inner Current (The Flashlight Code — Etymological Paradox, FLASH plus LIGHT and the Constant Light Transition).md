@@ -2,6 +2,12 @@
 title: "Inner Current: The Flashlight Code — Etymological Paradox, FLASH plus LIGHT and the Constant Light Transition"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
   - flashlight
   - etymology
   - david-misell

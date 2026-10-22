@@ -4,7 +4,22 @@ title: "Inner Current — 91. Архитектура Новой Науки: Ко
 created: 2026-09-26
 author: Vladimir Anyanov
 layer: III. Дзен-онтология и синтез
-tags: [inner-current, new-science, circuit-electrodynamics, epistemology, academic-canon, university-syllabus, metrology, self-hosted-human, paradigm-shift]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
+  - new-science
+  - circuit-electrodynamics
+  - epistemology
+  - academic-canon
+  - university-syllabus
+  - metrology
+  - self-hosted-human
+  - paradigm-shift
 ---
 
 # 91. Архитектура Новой Науки: Контурная Электродинамика Сознания — Каноническое имя, 5-уровневое здание дисциплины, университетский канон и поколение Self-Hosted Humans

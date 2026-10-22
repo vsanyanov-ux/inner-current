@@ -1,7 +1,23 @@
 ---
 created: 2026-10-02
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, russian-literature, chekhov, tolstoy, genesis, happiness-architecture, youth-search, superconductivity, ohmic-overheat, zen-engineering]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
+  - russian-literature
+  - chekhov
+  - tolstoy
+  - genesis
+  - happiness-architecture
+  - youth-search
+  - superconductivity
+  - ohmic-overheat
+  - zen-engineering
 type: concept
 status: evergreen
 ---
@@ -12,6 +28,8 @@ status: evergreen
 > [!quote] Главная формула генезиса теории
 > ### ⚡ **«Теория внутреннего тока была открыта в России неслучайно. В юности человеку не под силу пробиться сквозь схоластику науки, догматику религии или дебри психологии — это слишком сложно. Но русская классическая литература была под рукой со школьной скамьи. А никакая другая литература мира не ставила вопрос человеческого счастья с такой обнажённой, беспощадной остротой. Это посеяло мощные семена. Но внутри зрел абсолютный протест: нельзя, чтобы мыслящий человек был обречён либо на тихое отчаяние Чехова, либо на омический пожар вины Толстого. Контурная электродинамика стала инженерным ответом на великую русскую боль.»**  
 > — **Владимир Аньянов**
+
+> [!info] Синтезировано в брошюре [[02_Wiki/Брошюра — География контура (Почему Запад полирует резистор, Восток размыкает цепь, а Внутренний Ток родился в России)|Брошюра: География контура]]
 
 ---
 

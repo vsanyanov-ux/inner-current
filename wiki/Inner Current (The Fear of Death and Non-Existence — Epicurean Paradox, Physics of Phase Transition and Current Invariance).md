@@ -4,7 +4,21 @@ source: [[index|Wiki Index]]
 author: Владимир Аньянов
 chapter: 54
 layer: "III. Дзен-онтология и синтез (Высший дух и физика)"
-tags: [inner-current, death, epicurus, immortality, thermodynamics, zen-engineering, daishi, electrodynamics]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - death
+  - epicurus
+  - immortality
+  - thermodynamics
+  - zen-engineering
+  - daishi
+  - electrodynamics
 ---
 
 # 54. Страх Смерти и Небытия: Парадокс Эпикура, физика фазового перехода и инвариантность электрического поля

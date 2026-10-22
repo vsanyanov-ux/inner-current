@@ -6,6 +6,12 @@ category: "III. Дзен-онтология и синтез"
 chapter: 243
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - chakras
   - esoterics
   - demystification

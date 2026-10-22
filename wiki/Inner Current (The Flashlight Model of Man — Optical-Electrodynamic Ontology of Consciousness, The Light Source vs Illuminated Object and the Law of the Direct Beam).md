@@ -3,7 +3,16 @@ created: 2026-09-26
 source: [[index|Wiki Index]]
 layer: I
 status: complete
-tags: [inner-current, flashlight-model, ontology, optics-electrodynamics, tanden, attention, mushin, attribution-error, hyperreflection, direct-beam, kanso]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/open-loop
+  - flashlight-model
+  - kanso
 ---
 
 # 83. Модель Человека как Карманного Фонарика: Оптико-Электродинамическая Онтология Сознания, Ошибка Освещенного Предмета и Закон Прямого Луча

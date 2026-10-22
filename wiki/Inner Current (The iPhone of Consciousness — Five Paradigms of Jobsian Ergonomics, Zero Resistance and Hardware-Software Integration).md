@@ -1,7 +1,23 @@
 ---
 created: 2026-09-30
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, iphone-metaphor, steve-jobs, kanso, zero-resistance, superconductivity, plug-and-play, hardware-software-integration, silicon-inversion, layer-4]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
+  - iphone-metaphor
+  - steve-jobs
+  - kanso
+  - zero-resistance
+  - superconductivity
+  - plug-and-play
+  - hardware-software-integration
+  - silicon-inversion
+  - layer-4
 aliases:
   - "159-iphone-of-consciousness"
   - "iPhone для сознания"

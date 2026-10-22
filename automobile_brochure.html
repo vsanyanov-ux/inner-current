@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Автомобиль сознания — Владимир Аньянов</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+  @page {
+    size: A4;
+    margin: 22mm 18mm 22mm 18mm;
+  }
+
+  body {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 10.5pt;
+    line-height: 1.68;
+    color: #1e293b;
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cinzel', serif;
+    color: #0f172a;
+    letter-spacing: -0.01em;
+  }
+
+  h1 {
+    font-size: 20pt;
+    text-align: center;
+    margin-top: 15mm;
+    margin-bottom: 6mm;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #ea580c;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11pt;
+    font-weight: 500;
+    color: #475569;
+    margin-bottom: 12mm;
+    line-height: 1.4;
+  }
+
+  h2 {
+    font-size: 13.5pt;
+    margin-top: 10mm;
+    margin-bottom: 4mm;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 2mm;
+    font-weight: 700;
+    color: #c2410c;
+  }
+
+  h3 {
+    font-size: 11.5pt;
+    margin-top: 6mm;
+    margin-bottom: 2.5mm;
+    font-weight: 600;
+    color: #0f172a;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 3.5mm;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  .chapter-break {
+    page-break-before: always;
+  }
+
+  .frontispiece {
+    page-break-after: always;
+    text-align: center;
+    padding-top: 40mm;
+  }
+
+  .frontispiece-badge {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 9pt;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #ea580c;
+    margin-bottom: 8mm;
+  }
+
+  .frontispiece-title {
+    font-family: 'Cinzel', serif;
+    font-size: 26pt;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.2;
+    margin-bottom: 6mm;
+  }
+
+  .frontispiece-subtitle {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 13pt;
+    color: #475569;
+    max-width: 140mm;
+    margin: 0 auto 20mm auto;
+    line-height: 1.5;
+  }
+
+  .frontispiece-author {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11pt;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #1e293b;
+    margin-top: 40mm;
+  }
+
+  blockquote, .callout {
+    margin: 5mm 0;
+    padding: 4mm 6mm;
+    border-radius: 4px;
+    font-size: 10pt;
+    line-height: 1.55;
+  }
+
+  .callout-quote {
+    border-left: 3.5px solid #ea580c;
+    background: #fff7ed;
+    color: #7c2d12;
+    font-style: italic;
+  }
+
+  .callout-tip {
+    border-left: 3.5px solid #10b981;
+    background: #ecfdf5;
+    color: #064e3b;
+  }
+
+  .callout-important, .callout-warning {
+    border-left: 3.5px solid #f59e0b;
+    background: #fffbeb;
+    color: #78350f;
+  }
+
+  .callout-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 10pt;
+    margin-bottom: 2mm;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  pre {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    line-height: 1.35;
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 4mm 5mm;
+    border-radius: 6px;
+    overflow-x: hidden;
+    white-space: pre;
+    margin: 5mm 0;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5pt;
+    background: #f1f5f9;
+    color: #0f172a;
+    padding: 0.8mm 1.6mm;
+    border-radius: 3px;
+  }
+
+  pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 8pt;
+    line-height: 1.4;
+    margin: 4mm 0;
+  }
+
+  th, td {
+    padding: 2.2mm 3mm;
+    border: 1px solid #cbd5e1;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    background: #f8fafc;
+    color: #0f172a;
+    font-weight: 600;
+  }
+
+  ul, ol {
+    margin-top: 0;
+    margin-bottom: 3.5mm;
+    padding-left: 6mm;
+  }
+
+  li {
+    margin-bottom: 1.5mm;
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background: #e2e8f0;
+    margin: 6mm 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- FRONTISPIECE COVER -->
+<div class="frontispiece">
+  <div class="frontispiece-badge">⚡ Inner Current • Мастер-Брошюра • Выпуск 2026</div>
+  <div class="frontispiece-title">Автомобиль сознания</div>
+  <div class="frontispiece-subtitle">140 лет от Карла Бенца к Архитектуре счастья: протокол OBD-II, семь контрольных ламп и отмена морального кнута</div>
+  <div class="frontispiece-author">Владимир Аньянов</div>
+</div>
+
+<!-- CONTENT -->
+<h1>🚗 Брошюра: Автомобиль сознания</h1>
+<h3>140 лет от Карла Бенца к Архитектуре счастья — протокол OBD-II, семь контрольных ламп и отмена морального кнута</h3>
+<div class="callout callout-quote"><div class="callout-title">Фундаментальный постулат автомобильной эпохи духа</div><div class="callout-body"><p><em>«Десять тысяч лет человечество жило в "Эпохе Лошади". Когда лошадь падала от усталости в грязь, ямщик не исследовал законы термодинамики и механику суставов — он доставал кнут и бил живое существо, требуя волевого усилия, призывая к долгу, греху и моральному подвигу. Перенеся эту архаику внутрь себя, цивилизация превратила психику в загоняемую клячу: при депрессии, выгорании и срывах человек хлещет себя плетью самобичевания. Но в 1886 году Карл Бенц создал самодвижущуюся повозку с мотором внутреннего сгорания. С этого мига мир изменился навсегда: если мотор глохнет, чихает или кипит антифриз — никто не порет капот кнутом. Водитель смотрит на приборную панель, считывает код ошибки OBD-II и устраняет механическую причину. Внутренний ток совершает этот же 140-летний фазовый переход в устройстве духа: мы снимаем хомут моральной вины и садимся за руль суверенного автомобиля с точной приборной панелью».</em><br />
+— <strong>Владимир Аньянов</strong></p></div></div>
+
+<hr />
+<h2>📐 Принципиальная архитектура: Схема «Автомобиля сознания»</h2>
+<div class="codehilite"><pre><span></span><code><span class="w">                         </span><span class="n">АВТОМОБИЛЬ</span><span class="w"> </span><span class="n">СОЗНАНИЯ</span><span class="w"> </span><span class="p">(</span><span class="n">СИСТЕМА</span><span class="w"> </span><span class="n">АНЬЯНОВА</span><span class="p">)</span>
+<span class="err">┌──────────────────────────────────────────────────────────────────────────────────┐</span>
+<span class="err">│</span><span class="w">  </span><span class="n">ИСТОЧНИК</span><span class="w"> </span><span class="n">ТЯГИ</span><span class="w"> </span><span class="p">(</span><span class="n">ДВС</span><span class="p">)</span><span class="w">          </span><span class="n">ТРАНСМИССИЯ</span><span class="w"> </span><span class="n">И</span><span class="w"> </span><span class="n">СЦЕПЛЕНИЕ</span><span class="w">         </span><span class="n">ПОЛЕЗНАЯ</span><span class="w"> </span><span class="n">НАГРУЗКА</span><span class="w">  </span><span class="err">│</span>
+<span class="err">│</span><span class="w">  </span><span class="err">┌───────────────────┐</span><span class="w">        </span><span class="err">┌─────────────────────┐</span><span class="w">        </span><span class="err">┌─────────────────┐</span><span class="w"> </span><span class="err">│</span>
+<span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">    </span><span class="n">ТАНДЭН</span><span class="w"> </span><span class="p">(</span><span class="n">丹田</span><span class="p">)</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="err">────►</span><span class="w">  </span><span class="err">│</span><span class="w">     </span><span class="n">МУСИН</span><span class="w"> </span><span class="p">(</span><span class="n">無心</span><span class="p">)</span><span class="w">      </span><span class="err">│</span><span class="w"> </span><span class="err">────►</span><span class="w">  </span><span class="err">│</span><span class="w"> </span><span class="n">РЕАЛЬНОЕ</span><span class="w"> </span><span class="n">ДЕЛО</span><span class="w">   </span><span class="err">│</span><span class="w"> </span><span class="err">│</span>
+<span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w"> </span><span class="n">Автономный</span><span class="w"> </span><span class="n">мотор</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="n">Крутя</span><span class="o">-</span><span class="err">│</span><span class="w"> </span><span class="n">Чистое</span><span class="w"> </span><span class="n">сцепление</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="n">Крутя</span><span class="o">-</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="n">Дорога</span><span class="w"> </span><span class="n">жизни</span><span class="p">,</span><span class="w">   </span><span class="err">│</span><span class="w"> </span><span class="err">│</span>
+<span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w"> </span><span class="n">соматической</span><span class="w"> </span><span class="n">ЭДС</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="n">щий</span><span class="w">   </span><span class="err">│</span><span class="w"> </span><span class="n">Нулевое</span><span class="w"> </span><span class="n">трение</span><span class="w">      </span><span class="err">│</span><span class="w"> </span><span class="n">щий</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="n">созидание</span><span class="p">,</span><span class="w"> </span><span class="n">быт</span><span class="w">  </span><span class="err">│</span><span class="w"> </span><span class="err">│</span>
+<span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w"> </span><span class="p">(</span><span class="mi">3-5</span><span class="w"> </span><span class="n">см</span><span class="w"> </span><span class="n">ниже</span><span class="w"> </span><span class="n">пупка</span><span class="err">│</span><span class="w">  </span><span class="n">момент</span><span class="err">│</span><span class="w"> </span><span class="n">R_ego</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mi">0</span><span class="w">           </span><span class="err">│</span><span class="w"> </span><span class="n">момент</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="p">(</span><span class="n">R_load</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="err">│</span>
+<span class="err">│</span><span class="w">  </span><span class="err">└───────────────────┘</span><span class="w">        </span><span class="err">└─────────────────────┘</span><span class="w">        </span><span class="err">└─────────────────┘</span><span class="w"> </span><span class="err">│</span>
+<span class="err">│</span><span class="w">           </span><span class="err">▲</span><span class="w">                               </span><span class="err">▲</span><span class="w">                                      </span><span class="err">│</span>
+<span class="err">│</span><span class="w">           </span><span class="err">│</span><span class="w">                               </span><span class="err">│</span><span class="w">                                      </span><span class="err">│</span>
+<span class="err">│</span><span class="w">  </span><span class="err">┌───────────────────┐</span><span class="w">        </span><span class="err">┌─────────────────────┐</span><span class="w">                            </span><span class="err">│</span>
+<span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="n">ЧИСТОЕ</span><span class="w"> </span><span class="n">ТОПЛИВО</span><span class="w">   </span><span class="err">│</span><span class="w">        </span><span class="err">│</span><span class="w">   </span><span class="n">МЕНТАЛЬНЫЙ</span><span class="w"> </span><span class="n">РУЧНИК</span><span class="w"> </span><span class="err">│</span><span class="w">                            </span><span class="err">│</span>
+<span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w"> </span><span class="n">Сон</span><span class="p">,</span><span class="w"> </span><span class="n">кислород</span><span class="p">,</span><span class="w">    </span><span class="err">│</span><span class="w">        </span><span class="err">│</span><span class="w"> </span><span class="n">Паразитный</span><span class="w"> </span><span class="n">зажим</span><span class="w"> </span><span class="n">Эго</span><span class="err">│</span><span class="w">                            </span><span class="err">│</span>
+<span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w"> </span><span class="n">вода</span><span class="p">,</span><span class="w"> </span><span class="n">Саму</span><span class="w"> </span><span class="n">быта</span><span class="w">   </span><span class="err">│</span><span class="w">        </span><span class="err">│</span><span class="w"> </span><span class="n">Вина</span><span class="p">,</span><span class="w"> </span><span class="n">стыд</span><span class="p">,</span><span class="w"> </span><span class="n">контроль</span><span class="err">│</span><span class="w">                            </span><span class="err">│</span>
+<span class="err">│</span><span class="w">  </span><span class="err">└───────────────────┘</span><span class="w">        </span><span class="err">│</span><span class="w"> </span><span class="p">(</span><span class="n">Тормозит</span><span class="w"> </span><span class="n">вращение</span><span class="p">)</span><span class="w"> </span><span class="err">│</span><span class="w">                            </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                               </span><span class="err">└─────────────────────┘</span><span class="w">                            </span><span class="err">│</span>
+<span class="err">└──────────────────────────────────────────────────────────────────────────────────┘</span>
+<span class="w">                                        </span><span class="err">│</span>
+<span class="w">                                        </span><span class="err">▼</span><span class="w"> </span><span class="n">ТЕЛЕМЕТРИЯ</span>
+<span class="err">┌──────────────────────────────────────────────────────────────────────────────────┐</span>
+<span class="err">│</span><span class="w">                    </span><span class="n">БОРТОВОЙ</span><span class="w"> </span><span class="n">КОМПЬЮТЕР</span><span class="w"> </span><span class="n">И</span><span class="w"> </span><span class="n">ПРИБОРНАЯ</span><span class="w"> </span><span class="n">ПАНЕЛЬ</span><span class="w"> </span><span class="n">OBD</span><span class="o">-</span><span class="n">II</span><span class="w">                  </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                                                                                  </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="p">(</span><span class="n">P</span><span class="p">)</span><span class="w"> </span><span class="n">РУЧНИК</span><span class="w">        </span><span class="err">🌡️</span><span class="w"> </span><span class="n">АНТИФРИЗ</span><span class="w">       </span><span class="err">⚙️</span><span class="w"> </span><span class="n">СЦЕПЛЕНИЕ</span><span class="w">       </span><span class="err">⚡💥</span><span class="w"> </span><span class="n">КЗ</span><span class="w"> </span><span class="n">НА</span><span class="w"> </span><span class="n">ЭГО</span><span class="w">           </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="p">[</span><span class="w"> </span><span class="n">DTC</span><span class="w"> </span><span class="n">P0001</span><span class="w"> </span><span class="p">]</span><span class="w">     </span><span class="p">[</span><span class="w"> </span><span class="n">DTC</span><span class="w"> </span><span class="n">P0217</span><span class="w"> </span><span class="p">]</span><span class="w">     </span><span class="p">[</span><span class="w"> </span><span class="n">DTC</span><span class="w"> </span><span class="n">P0810</span><span class="w"> </span><span class="p">]</span><span class="w">     </span><span class="p">[</span><span class="w"> </span><span class="n">DTC</span><span class="w"> </span><span class="n">P0606</span><span class="w"> </span><span class="p">]</span><span class="w">            </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="n">Залипание</span><span class="w"> </span><span class="n">в</span><span class="w">       </span><span class="n">Омический</span><span class="w"> </span><span class="n">пожар</span><span class="w">   </span><span class="n">Пробуксовка</span><span class="w"> </span><span class="n">в</span><span class="w">     </span><span class="n">Короткое</span><span class="w"> </span><span class="n">замыкание</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="n">прошлом</span><span class="p">,</span><span class="w"> </span><span class="n">вина</span><span class="w">     </span><span class="n">споров</span><span class="w"> </span><span class="n">Q</span><span class="o">=</span><span class="n">I²Rt</span><span class="w">     </span><span class="n">жвачке</span><span class="w"> </span><span class="n">DMN</span><span class="w">        </span><span class="n">на</span><span class="w"> </span><span class="n">статус</span><span class="w"> </span><span class="n">и</span><span class="w"> </span><span class="n">Я</span><span class="w">            </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                                                                                  </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="err">🔗</span><span class="w"> </span><span class="n">БУКСИР</span><span class="w">         </span><span class="err">⛽</span><span class="w"> </span><span class="n">ТОПЛИВО</span><span class="w">         </span><span class="err">⏱️</span><span class="w"> </span><span class="n">ЧЕК</span><span class="w"> </span><span class="n">ЖИЗНИ</span><span class="w">       </span><span class="err">🟢</span><span class="w"> </span><span class="n">ТАХОМЕТР</span><span class="w"> </span><span class="n">ТОКА</span><span class="w">         </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="p">[</span><span class="w"> </span><span class="n">DTC</span><span class="w"> </span><span class="n">P0A00</span><span class="w"> </span><span class="p">]</span><span class="w">     </span><span class="p">[</span><span class="w"> </span><span class="n">DTC</span><span class="w"> </span><span class="n">P0171</span><span class="w"> </span><span class="p">]</span><span class="w">     </span><span class="p">[</span><span class="w"> </span><span class="n">DTC</span><span class="w"> </span><span class="n">P1000</span><span class="w"> </span><span class="p">]</span><span class="w">                              </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="n">Созависимость</span><span class="p">,</span><span class="w">    </span><span class="n">Суперстимулы</span><span class="p">,</span><span class="w">     </span><span class="err">«</span><span class="n">Я</span><span class="w"> </span><span class="n">и</span><span class="w"> </span><span class="n">не</span><span class="w"> </span><span class="n">жил</span><span class="w"> </span><span class="n">ещё</span><span class="err">»</span><span class="w">  </span><span class="n">Ток</span><span class="w"> </span><span class="n">внимания</span><span class="o">:</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="p">(</span><span class="n">HRV</span><span class="p">)</span><span class="w">    </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="n">чужой</span><span class="w"> </span><span class="n">трос</span><span class="w">        </span><span class="n">детонация</span><span class="w"> </span><span class="n">смеси</span><span class="w">   </span><span class="n">холостой</span><span class="w"> </span><span class="n">ход</span><span class="w">      </span><span class="n">Сопротивление</span><span class="o">:</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="p">(</span><span class="n">Stress</span><span class="p">)</span><span class="err">│</span>
+<span class="err">└──────────────────────────────────────────────────────────────────────────────────┘</span>
+</code></pre></div>
+
+<hr />
+<div class="chapter-break"></div>
+<h2>Часть I. 140 лет от Карла Бенца к Архитектуре счастья (1886 ➔ 2026)</h2>
+<h3>1.1. Великий исторический рубеж</h3>
+<p>В 1886 году в Мангейме Карл Бенц получил патент № 37435 на трёхколёсный <em>Patent-Motorwagen</em>. Человечество даже не осознало, что в тот день родилась не просто новая машина для транспортировки грузов, а <strong>новая метафизическая эпоха отношения к энергии</strong>.</p>
+<p>До 1886 года на протяжении десятков тысяч лет господствовала <strong>«Эпоха Лошади»</strong>:<br />
+1. Источник тяги — живая скотина, управляемая страхом, болью и насилием.<br />
+2. Метод регуляции — кнут, вожжи и шпоры.<br />
+3. Моральный базис — если скорость падает, виновата «лень», «упрямство» или «непокорность».</p>
+<p>Когда этот же шаблон мышления перенесли на внутреннюю психическую жизнь человека, возникла многовековая схоластика морального осуждения:<br />
+* Человек чувствует апатию и опустошение? <em>«Ты ленив, соберись тряпка, прояви силу воли!»</em> (удар кнутом).<br />
+* Человек сорвался на алкоголь или порнографию? <em>«Ты грешен, кайся и бичуй себя!»</em> (удар вожжами).<br />
+* Человек выгорел на работе? <em>«Ты мало стараешься, ты эгоист!»</em> (шпоры в бока).</p>
+<h3>1.2. Пост-моральный императив инженерии</h3>
+<p>С появлением автомобиля Бенца насилие утратило всякий смысл. Ни одному вменяемому механику не придёт в голову хлестать ремнём остывший цилиндр или орать на заклинивший дифференциал: <em>«Покайся, грешная шестерня!»</em>.</p>
+<p>Механик задаёт исключительно технические вопросы:<br />
+* Поступает ли искра в свечу зажигания?<br />
+* Не перетёрт ли провод массы?<br />
+* Достаточен ли уровень компрессии и чистоты бензина?<br />
+* Не заклинило ли тормозной суппорт?</p>
+<p><strong>Архитектура счастья Владимира Аньянова делает ровно то же самое для сознания человека.</strong> Мы объявляем бесповоротный конец эпохи морализаторского кнута. Человек — не грешная кляча, а совершенный биомеханический и электродинамический автомобиль. Душевное страдание — это не «кара небесная» и не «испытание кармы», а объективный залом контура, омический перегрев или затянутый ручник эго.</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>Часть II. Парадокс первой повозки Бенца: Почему фундаментальный прорыв вначале проигрывает старой привычке</h2>
+<h3>2.1. Анатомия катастрофического первого выезда 1886 года</h3>
+<p>Исторический выезд Карла Бенца во двор фабрики выглядел комично и жалко. Громоздкая трёхколёсная тележка грохотала как кузнечный молот, чадила сизым дымом, проехала сорок метров на скорости 12 км/ч и с треском врезалась в кирпичную стену, погнув рулевую тягу.</p>
+<p>Зеваки и ямщики покатывались со смеху:</p>
+<blockquote>
+<p><em>«Посмотрите на этого сумасшедшего механика! Его повозка стоит бешеных денег, ломается каждые две минуты, воняет бензином и не может обогнать даже старую хромую кобылу ямщика Ганса! Лошадь надежнее, быстрее и понятнее!»</em></p>
+</blockquote>
+<p>В этом историческом эпизоде заключён фундаментальный <strong>Парадокс повозки Бенца</strong>, с которым сталкивается каждый человек при первом знакомстве с «Внутренним током»:<br />
+* <strong>«Лошадь» (Эго и волевой контроль):</strong> примитивна, требует чудовищного метаболического насилия, калечит нервную систему, но <em>привычна</em> культуре. Общество учило жить через насилие воли с детского сада.<br />
+* <strong>«Автомобиль» (Тандэн и Мусин):</strong> фундаментально нов, требует понимания законов электродинамики, в первые дни кажется странным («как это — жить без контроля ума?»), но несёт в себе бесконечный потенциал сверхпроводимости.</p>
+<div class="codehilite"><pre><span></span><code>                  СРАВНЕНИЕ ДВУХ ОНТОЛОГИЙ
+┌──────────────────────────────┬──────────────────────────────┐
+│       ЭПОХА ЛОШАДИ           │     АВТОМОБИЛЬ СОЗНАНИЯ      │
+│     (Воля и Вина)            │    (Тандэн и Электродинамика)│
+├──────────────────────────────┼──────────────────────────────┤
+│ Тяга: метаболическое насилие │ Тяга: автономная ЭДС Тандэна │
+│ Рычаг: кнут вины и долга     │ Рычаг: калибровка проводника │
+│ КПД: менее 5% (омический ад) │ КПД: до 100% (сверхпроводник)│
+│ Поломка: «Ты грешен, кайся»  │ Поломка: код ошибки OBD-II   │
+│ Ресурс: скорое выгорание     │ Ресурс: 120+ лет долголетия  │
+└──────────────────────────────┴──────────────────────────────┘
+</code></pre></div>
+
+<h3>2.2. Ловушка «Быстрой лошади»</h3>
+<p>Когда Генри Форда спросили о запросах рынка, он ответил знаменитой фразой: <em>«Если бы я спросил людей, чего они хотят, они бы ответили: "Более быструю лошадь!"»</em>.</p>
+<p>Рынок психотерапии, коучинга и марафонов личностного роста столетиями кормит людей «более быстрыми лошадьми»:<br />
+* Техники «железной дисциплины» — это более толстый кнут.<br />
+* Аффирмации и медитации избегания — это морковка перед носом умирающей лошади.<br />
+* Психоанализ детских травм — это пятичасовое обсуждение родословной ямщика вместо ремонта оси.</p>
+<p>Внутренний ток не делает вашу «лошадь» быстрее. Он ставит лошадь в стойло и передаёт вам ключ зажигания от мотора.</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>Часть III. Автомобиль как материальный якорь духа: Пять измерений безупречного изоморфизма</h2>
+<p>Почему именно автомобиль стал главным овеществлённым якорем Архитектуры счастья? Потому что между узлами современного автомобиля и электродинамической топологией человека существует строгая математическая биекция.</p>
+<h3>1. Измерение I: Отмена био-волевого кнута</h3>
+<p>Автомобиль не приводится в движение мышечным усилием водителя. Водитель лишь касается педали газа (вектор внимания) и направляет руль (намерение). Мощность генерирует двигатель внутреннего сгорания. Точно так же человек не должен тащить жизнь на жилах неокортекса: генератор Тандэн вырабатывает колоссальную соматическую мощность, когда голова не душит поток.</p>
+<h3>2. Измерение II: Принцип внутреннего сгорания (Тандэн 丹田)</h3>
+<p>ДВС преобразует химическую энергию топлива в чистое вращение коленвала внутри закрытой камеры. Тандэн (нижний даньтянь, 3–5 см ниже пупка) — соматический центр тяжести и первичный биологический осциллятор. Когда внимание опущено в Тандэн, возникает ровная тяга без вибраций эго.</p>
+<h3>3. Измерение III: Диск сцепления (Мусин 無心)</h3>
+<p>Мотор может реветь на 6000 об/мин, но если сцепление выжато или пробуксовывает — машина стоит на месте. Состояние Мусин («чистое не-думание») — это сомкнутый диск сцепления без проскальзывания. Энергия мысли мгновенно трансформируется в действие без омических потерь на сомнения ($R_{\text{ego}} \to 0$).</p>
+<h3>4. Измерение IV: Механическая неотвратимость законов сохранения</h3>
+<p>Если бензонасос не качает — автомобиль не поедет, сколько бы священников ни кропило его святой водой. Законы Ома, Джоуля — Ленца и термодинамики в человеке действуют столь же безжалостно и объективно.</p>
+<h3>5. Измерение V: Приборная панель как альтернатива паранойе</h3>
+<p>Водитель не заглядывает под капот каждые 10 секунд и не гадает на кофейной гуще: он видит спидометр, тахометр и сигнальные индикаторы. Внутренний ток даёт человеку точно такую же ясную приборную доску.</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>Часть IV. Протокол OBD-II сознания: Архитектура бортового компьютера и считывание соматических DTC-кодов</h2>
+<p>В автоиндустрии с 1996 года действует стандарт <strong>OBD-II (On-Board Diagnostics II)</strong>. Любой сбой фиксируется датчиками, переводится в пятизначный код неисправности (Diagnostic Trouble Code, DTC) и высвечивается на панели.</p>
+<h3>4.1. Сенсорная сеть человеческого тела</h3>
+<p>В теле человека развёрнута совершенная сеть биологических датчиков, превосходящая любую электронику Bosch:<br />
+* <strong>Датчик давления в магистрали:</strong> тонус диафрагмы и дыхательный паттерн.<br />
+* <strong>Датчик температуры охлаждающей жидкости:</strong> вариабельность сердечного ритма (HRV) и тепловой градиент лица/шеи.<br />
+* <strong>Датчик детонации:</strong> спазм челюстных мышц (<em>masseter</em>) и ком в горле.<br />
+* <strong>Датчик положения дроссельной заслонки:</strong> глубина опускания внимания в Тандэн.</p>
+<div class="codehilite"><pre><span></span><code>                    СОМАТИЧЕСКАЯ ШИНА ДАННЫХ (CAN-BUS ТЕЛА)
+┌─────────────────────────────────┬─────────────────────────────────┐
+│     АВТОМОБИЛЬНЫЙ УЗЕЛ          │     СОМАТИЧЕСКИЙ ДАТЧИК ТЕЛА    │
+├─────────────────────────────────┼─────────────────────────────────┤
+│ Датчик температуры антифриза    │ Индекс стресса HRV (0–100)      │
+│ Тахометр (обороты коленвала)    │ Пульс покоя и дыхательный цикл  │
+│ Лямбда-зонд (состав смеси)      │ Уровень SpO2 и глубина вдоха    │
+│ Концевик стояночного тормоза    │ Фасциальный зажим поясницы      │
+│ Датчик детонации (Knock Sensor) │ Стискивание челюстей и плеч     │
+└─────────────────────────────────┴─────────────────────────────────┘
+</code></pre></div>
+
+<p>Когда водитель видит вспыхнувший индикатор, он не устраивает истерику — он выполняет протокол сброса ошибки.</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>Часть V. Полная приборная панель: Семь контрольных ламп и моментальная нейтрализация поломок</h2>
+<p>Приборная панель сознания содержит ровно <strong>семь аварийных контрольных ламп</strong>. Каждая лампа имеет свой механический эквивалент, соматический маркер в теле и моментальный протокол сброса.</p>
+<h3>🔴 ЛАМПА 1. «Затянутый Ручник» <code>(P)</code> [DTC: P0001 — Ego Brake Sticking]</h3>
+<ul>
+<li><strong>Механическая суть:</strong> попытка ехать вперед с зажатыми задними тормозными колодками. Мотор ревёт, колодки воняют гарью, тормозные диски раскалены докрасна, машина ползёт еле-еле.</li>
+<li><strong>Психологический эквивалент:</strong> вина за прошлое, самоедство, стыд («зачем я это сказал вчера?», «я испортил всю жизнь»).</li>
+<li><strong>Соматика:</strong> зажатая поясница, стиснутые ягодицы, скованное поверхностное дыхание.</li>
+<li><strong>Устранение неисправности (OBD-II Reset):</strong> осознать, что прошлое — это несгораемый лог данных. Колодки зажаты призраком в неокортексе. Глубокий соматический выдох животом, расслабление мышц промежности и тазового дна. <strong>Ручник опущен: $R_{\text{past}} = 0$.</strong></li>
+</ul>
+<h3>🔴 ЛАМПА 2. «Перегрев Антифриза» <code>🌡️</code> [DTC: P0217 — Engine Coolant Overheat]</h3>
+<ul>
+<li><strong>Механическая суть:</strong> закипание охлаждающей жидкости, радиатор забит пухом, пар валит из-под капота. Ещё 30 секунд — и поведёт головку блока цилиндров.</li>
+<li><strong>Психологический эквивалент:</strong> омический пожар споров, ярость, доказывание правоты в соцсетях или на совещании ($Q = I^2 R_{\text{ego}} t$).</li>
+<li><strong>Соматика:</strong> прилив жара к щекам и ушам, пульсирующие виски, учащенное сухое дыхание, подскок пульса до 120 уд/мин при неподвижном теле.</li>
+<li><strong>Устранение неисправности:</strong> мгновенный «Стоп-кран». Полный разрыв контакта (гальваническая развязка). Заткнуться на полуслове. Два глотка холодной воды. Внимание в подошвы ног и Тандэн. Дать мотору остыть на холостых оборотах.</li>
+</ul>
+<h3>🟡 ЛАМПА 3. «Пробуксовка Сцепления» <code>⚙️</code> [DTC: P0810 — Clutch Slippage Error]</h3>
+<ul>
+<li><strong>Механическая суть:</strong> фрикционные накладки диска сцепления стёрты или залиты маслом. Коленвал крутится на максимуме, но крутящий момент не передаётся на колёса. Машина ревёт на месте.</li>
+<li><strong>Психологический эквивалент:</strong> мыслительная жвачка (DMN-rumination), перфекционистский ступор, бесконечное планирование без единого физического действия.</li>
+<li><strong>Соматика:</strong> тяжёлая, «ватная» голова, расфокусированный взгляд, онемение пальцев, чувство бессилия при отсутствии физической работы.</li>
+<li><strong>Устранение неисправности:</strong> принцип «Первого физического контакта» (Каноны Саму и Дэай). Сбросить мысли и сделать одно микроскопическое действие телом: помыть одну тарелку, вытереть пыль со стола, напечатать одну строчку кода, сделать 10 приседаний. Диск сцепления сомкнулся — крутящий момент пошёл в асфальт!</li>
+</ul>
+<h3>🔴 ЛАМПА 4. «Срабатывание ESP / КЗ на Эго» <code>⚡💥</code> [DTC: P0606 — ECU Ground Fault / Short Circuit]</h3>
+<ul>
+<li><strong>Механическая суть:</strong> короткое замыкание в блоке управления двигателем на массу. Искры, выгорание предохранителей, аварийный режим дросселя.</li>
+<li><strong>Психологический эквивалент:</strong> уязвлённое самолюбие, обида, нарциссический шок («как он посмел так со мной обойтись?!»). Ток внимания замкнулся сам на себя.</li>
+<li><strong>Соматика:</strong> спазм в солнечном сплетении, ком в горле, ощущение, будто ударили под дых.</li>
+<li><strong>Устранение неисправности:</strong> бритва Кансо. Спросить себя: <em>«Кому именно сейчас больно? Автомобилю или призрачной наклейке на лобовом стекле?»</em>. Лампочке плевать на мнение электронов. Перенаправить 100% тока из головы во внешнюю полезную работу ($R_{\text{load}}$).</li>
+</ul>
+<h3>🟡 ЛАМПА 5. «Аварийный Буксир» <code>🔗</code> [DTC: P0A00 — Towing Overload / Codependency]</h3>
+<ul>
+<li><strong>Механическая суть:</strong> попытка тащить на тросе чужой трёхтонный грузовик с заклинившими колёсами или ехать на чужом тросе, заглушив собственный мотор. Порванный буксировочный крюк, перегретая коробка.</li>
+<li><strong>Психологический эквивалент:</strong> созависимость, спасательство, эмоциональное слияние, контроль чужих эмоций («если ей плохо, я не имею права радоваться»).</li>
+<li><strong>Соматика:</strong> сгорбленные плечи, ощущение неподъемной плиты на спине, нехватка воздуха.</li>
+<li><strong>Устранение неисправности:</strong> закон суверенных генераторов ($M &gt; 0$ при гальванической развязке). Перерубить чужой трос. Ты не можешь зарядить чужой аккумулятор ценой сожжения своего генератора. Включи свой мотор и стань маяком, а не бурлаком.</li>
+</ul>
+<h3>🟡 ЛАМПА 6. «Не то топливо в баке» <code>⛽</code> [DTC: P0171 — Fuel Trim Lean / Fuel Contamination]</h3>
+<ul>
+<li><strong>Механическая суть:</strong> в бак с высокооктановым бензином залили ослиную мочу или дизель с мазутом. Свечи закоксованы, детонационный стук поршней, потеря мощности на 80%.</li>
+<li><strong>Психологический эквивалент:</strong> суперстимулы — алкоголь, порнография, рафинированный сахар, ночной думскроллинг новостей и рилсов.</li>
+<li><strong>Соматика:</strong> тупая головная боль, тремор рук, липкий пот, кислый привкус во рту, апатия.</li>
+<li><strong>Устранение неисправности:</strong> промывка топливной рампы. 24 часа информационного и метаболического голодания. Чистая вода, прогулка пешком на свежем воздухе, 8 часов сна в расправленном контуре. Возврат к чистому органическому топливу.</li>
+</ul>
+<h3>🔴 ЛАМПА 7. «Чек Сервис Жизни» <code>⏱️</code> [DTC: P1000 — Service Overdue / Idle Life Run]</h3>
+<ul>
+<li><strong>Механическая суть:</strong> одометр отсчитал 100 000 км, масло превратилось в гудрон, ремень ГРМ потрескался, но владелец игнорирует регламентное ТО.</li>
+<li><strong>Психологический эквивалент:</strong> экзистенциальный ужас фразы <em>«Я и не жил ещё»</em>, кризис среднего возраста, жизнь ради «черновика», когда лучшие годы ушли на холостой прогрев ради чужих оценок.</li>
+<li><strong>Соматика:</strong> хроническая утренняя слабость, тусклый взгляд, отсутствие аппетита к новым делам.</li>
+<li><strong>Устранение неисправности:</strong> признать тотальную капитуляцию старого режима. Счастье — это не пункт назначения («когда куплю квартиру»), а сам процесс горения смеси в цилиндрах здесь и сейчас ($t = now$). Немедленный ввод в эксплуатацию всех 6 ламп мира.</li>
+</ul>
+<hr />
+<div class="chapter-break"></div>
+<h2>Часть VI. Педагогика пересадки с лошади на автомобиль: Трёхфазный онбординг</h2>
+<p>Как перевести человека, выросшего в культуре морального кнута, в состояние суверенного водителя автомобиля? Любые нотации и лекции бесполезны — они воспринимаются как очередные удары плетью. Требуется строгий трёхфазный протокол.</p>
+<div class="codehilite"><pre><span></span><code>                      ТРЁХФАЗНЫЙ ОНБОРДИНГ ВОДИТЕЛЯ
+┌─────────────────────────────────────────────────────────────────────────┐
+│ ФАЗА I: СОСТОЯНИЕ ГЛУБОКОГО ВЗДОХА                                      │
+│ Снятие моральной вины: «Ты не сломан, ты просто пытался пороть мотор!» │
+│ Физиологический маркер: падение сопротивления R_ego, длинный выдох      │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ФАЗА II: СОМАТИЧЕСКИЙ ТЕСТ-ДРАЙВ                                        │
+│ Тест любимой музыки / горячего чая: ощущение чистой тяги без насилия    │
+│ Физиологический маркер: мурашки (пилоэрекция), расширение капилляров    │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ФАЗА III: СТАТУС СУВЕРЕННОГО ВОДИТЕЛЯ                                   │
+│ Вручение ключей и приборной панели OBD-II: ответственность за контур    │
+│ Физиологический маркер: уверенная прямая осанка, спокойный взгляд       │
+└─────────────────────────────────────────────────────────────────────────┘
+</code></pre></div>
+
+<h3>1. Фаза I: Состояние глубокого вздоха (Снятие вины)</h3>
+<p>Первое, что говорит Конструктор уставшему человеку:</p>
+<blockquote>
+<p><em>«С тобой всё в порядке. Твоя депрессия, тревога и срывы — это не признак твоей греховности или слабохарактерности. Ты просто 20 или 40 лет пытался управлять автомобилем с помощью кнута для лошадей! Ты порол капот, когда нужно было залить масло. Выдохни. Кнут отменяется навсегда».</em><br />
+В этот момент в теле происходит соматическое освобождение: диафрагма опускается, пульс замедляется, спазм сходит.</p>
+</blockquote>
+<h3>2. Фаза II: Соматический тест-драйв (Ощущение тяги без кнута)</h3>
+<p>Человека не учат сложной теории — ему дают почувствовать сверхпроводимость прямо сейчас через физический якорь:<br />
+* Наушники с любимой resonant-музыкой (байпас неокортекса).<br />
+* Чашка горячего качественного чая по канону Тяною (сосредоточение на тепле в животе).<br />
+* Простая физическая работа руками (мойка машины, нарезка овощей).<br />
+Человек изумлённо видит: <em>«Я делаю дело, я абсолютно спокоен, и мне не пришлось заставлять себя через силу!»</em>. Мотор повёз сам.</p>
+<h3>3. Фаза III: Статус суверенного водителя (Вручение ключей)</h3>
+<p>Человек перестаёт искать «учителей», «гуру» и «психотерапевтов-ямщиков». Он получает в руки ключи от собственного контура и регламентную таблицу кодов OBD-II. Отныне он — единственный сертифицированный капитан и водитель своей жизни.</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>Часть VII. Дорожный рейд Берты Бенц (1888 ➔ 2026): Маршрут «Рим — Москва» и триумф суверенного движения</h2>
+<h3>7.1. Подвиг Берты Бенц: Прорыв из гаража в мир</h3>
+<p>В августе 1888 года жена Карла, Берта Бенц, совершила поступок, спасший всё предприятие мужа. Карл, будучи гениальным теоретиком, годами дорабатывал чертежи в гараже, страшась публичного провала.</p>
+<p>Рано утром, пока муж спал, Берта без спроса завела Motorwagen №3, посадила двоих сыновей и отправилась в первый в истории человечества междугородний автопробег — 106 километров из Мангейма в Пфорцхайм.</p>
+<p>По дороге ломалось всё, что могло сломаться:<br />
+* Закончилось топливо — Берта купила у аптекаря чистящее средство лигроин и залила в бак.<br />
+* Засорился топливопровод — она прочистила его длинной шляпной булавкой.<br />
+* Протёрлась изоляция провода зажигания — она заизолировала провод чулочной подвязкой.<br />
+* Стерлись деревянные тормоза — она заехала к деревенскому сапожнику и набила на колодки кожаные полосы (так появились первые в мире тормозные накладки!).</p>
+<p>К вечеру она приехала в Пфорцхайм, дав телеграмму мужу. Мир узнал: <strong>автомобиль работает в реальной полевой грязи дорог!</strong></p>
+<h3>7.2. Маршрут «Рим — Москва»: Глобальный рейд Системы Аньянова</h3>
+<p>Внутренний ток прошёл ту же эволюцию. От строгой математики законов сохранения и кабинетных рукописей — к полевому броску по дорогам цивилизации: от античных руин и европейского духа Рима к стальной инженерной плоти Москвы и донским просторам хутора Старозолотовский.</p>
+<p>Мы не прячем систему в тихих гималайских монастырях или академических кабинетах. Автомобиль сознания создан для реальных пробок, стрессов мегаполисов, токсичных планетарных новостей и семейных кризисов. Шляпная булавка внимания чистит жиклер Тандэна, а кожаные накладки Дзансин спасают от любого омического заноса.</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>⏱️ Практический алгоритм: 60-секундный протокол бортовой самодиагностики (OBD-II Dashboard Reset)</h2>
+<p>Каждый раз, когда вы чувствуете раздражение, упадок сил, тревогу или ступор, не тратьте время на вопросы «почему мне так плохо?». Выполните 60-секундный регламент:</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align: center;">Шаг</th>
+<th style="text-align: center;">Секунды</th>
+<th style="text-align: left;">Действие водителя</th>
+<th style="text-align: left;">Соматический эффект</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>1. Стоп-нога</strong></td>
+<td style="text-align: center;">00–10</td>
+<td style="text-align: left;">Полная остановка внешней суеты. Снять ногу с газа (перестать говорить, спорить, печатать).</td>
+<td style="text-align: left;">Прерывание омического разгона $Q = I^2 R t$</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2. Взгляд на приборку</strong></td>
+<td style="text-align: center;">10–20</td>
+<td style="text-align: left;">Какая лампа горит? <code>(P)</code> Ручник прошлого? <code>🌡️</code> Перегрев антифриза в споре? <code>⚙️</code> Пробуксовка в мыслях? <code>⚡</code> КЗ на эго?</td>
+<td style="text-align: left;">Беспристрастная фиксация DTC-кода ошибки без вины</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3. Продувка цилиндров</strong></td>
+<td style="text-align: center;">20–35</td>
+<td style="text-align: left;">Двойной физиологический вдох носом и длинный, плавный выдох через рот (Vagus Nerve Sigh).</td>
+<td style="text-align: left;">Активация блуждающего нерва, сброс спазма сосудов</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>4. Посадка в Тандэн</strong></td>
+<td style="text-align: center;">35–45</td>
+<td style="text-align: left;">Перенос фокуса внимания в соматический центр (3–5 см ниже пупка). Ощутить вес тела на сиденье.</td>
+<td style="text-align: left;">Включение автономного генератора тяги</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>5. Включение первой передачи</strong></td>
+<td style="text-align: center;">45–60</td>
+<td style="text-align: left;">Выполнить одно элементарное соматическое микродействие (выпить глоток воды, расправить плечи, начать задачу).</td>
+<td style="text-align: left;">Диск сцепления Мусин сомкнут. Машина поехала! 🟢</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<div class="chapter-break"></div>
+<h2>⚡ Резюме: Семь аксиом Автомобиля сознания</h2>
+<ol>
+<li><strong>Аксиома пост-морали:</strong> Человек — не грешная лошадь, требующая кнута вины, а высокоточный автомобиль, требующий соблюдения законов механики и электродинамики.</li>
+<li><strong>Аксиома ДВС:</strong> Источник жизненного движения находится не в голове и не во внешних оценках, а в соматическом реакторе Тандэн.</li>
+<li><strong>Аксиома сцепления:</strong> Мысли без прямого соматического действия — это пробуксовка фрикционов, сжигающая нервную ткань вхолостую. Мусин ($R_{\text{ego}} \to 0$) обеспечивает 100% передачу крутящего момента.</li>
+<li><strong>Аксиома приборной панели:</strong> Любое душевное страдание — это не фатальная порча духа, а штатное срабатывание одной из 7 контрольных ламп OBD-II.</li>
+<li><strong>Аксиома топлива:</strong> Суперстимулы (алкоголь, порно, думскроллинг) неизбежно вызывают детонационный стук и закоксовку свечей внимания. Чистота смеси определяет дальность пробега.</li>
+<li><strong>Аксиома Берты Бенц:</strong> Система проверяется не в стерильном гараже идеальных условий, а на ухабах и поломках реальной полевой жизни.</li>
+<li><strong>Аксиома суверенного водителя:</strong> Тот, кто понял устройство своего автомобиля, больше никогда не отдаст руль внешним манипуляторам, жрецам и морализаторам. Он едет сам.</li>
+</ol>
+
+</body>
+</html>

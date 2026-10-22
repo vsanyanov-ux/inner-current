@@ -2,6 +2,12 @@
 title: "Inner Current: Evolution of Consciousness — Cambrian Explosion of Sentience vs Panpsychism, Proto-Experience and the Emergence of the Closed Loop"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/open-loop
   - evolution-of-consciousness
   - cambrian-explosion
   - sentience

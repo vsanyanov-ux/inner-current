@@ -1,7 +1,24 @@
 ---
 created: 2026-09-30
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, english-bus, citizen-of-the-world, any-anov, anatta, everyman, invariance, 8-billion, self-hosted-human, language-impedance, open-protocol]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
+  - english-bus
+  - citizen-of-the-world
+  - any-anov
+  - anatta
+  - everyman
+  - invariance
+  - 8-billion
+  - self-hosted-human
+  - language-impedance
+  - open-protocol
 type: canon
 layer: III
 status: evergreen

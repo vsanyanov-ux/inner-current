@@ -4,7 +4,25 @@ source: [[Inner Current MOC]]
 author: Владимир Аньянов
 chapter: 110
 layer: "II. Практика и защита контура (Прикладная калибровка)"
-tags: [inner-current, case-study, sport, tennis, mushin, ego, external-judge, subpersonality, ifs, flow, tournament, applied-calibration]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - case-study
+  - sport
+  - tennis
+  - mushin
+  - ego
+  - external-judge
+  - subpersonality
+  - ifs
+  - flow
+  - tournament
+  - applied-calibration
 type: case-study
 status: evergreen
 ---

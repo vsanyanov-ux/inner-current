@@ -1,7 +1,25 @@
 ---
 created: 2026-10-05
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, ego-dissolution, starozolotovka, happiness-laboratory, resentment-case, bathhouse-case, tanden, mushin, vegetable-myth, scale-calibration, don-steppes, kanso]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - ego-dissolution
+  - starozolotovka
+  - happiness-laboratory
+  - resentment-case
+  - bathhouse-case
+  - tanden
+  - mushin
+  - vegetable-myth
+  - scale-calibration
+  - don-steppes
+  - kanso
 type: wiki-article
 status: evergreen
 article_number: 242

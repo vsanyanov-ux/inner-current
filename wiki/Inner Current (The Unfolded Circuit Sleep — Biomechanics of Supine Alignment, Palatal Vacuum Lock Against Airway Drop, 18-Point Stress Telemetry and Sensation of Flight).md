@@ -1,13 +1,33 @@
 ---
 created: 2026-10-04
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, sleep, supine, circuit-alignment, biomechanics, vagus, hrv, telemetry, xiaomi-band, tongue-lock, mushin, kanso]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/superconducting
+  - sleep
+  - supine
+  - circuit-alignment
+  - biomechanics
+  - vagus
+  - hrv
+  - telemetry
+  - xiaomi-band
+  - tongue-lock
+  - mushin
+  - kanso
 type: wiki-article
 status: evergreen
 article_number: 240
 ---
 
 # 240. Сон в расправленном контуре: Биомеханика супинации, победа над западанием языка через вакуумный замок нёба, телеметрия стресса в 18 пунктов и феномен полёта после 6.5 часов сна
+
+> [!info] Синтезировано в брошюре [[02_Wiki/Брошюра — Биометрическая электродинамика (Тело как живой проводник, объективная телеметрия Smart Band и ночной расправленный контур)|Брошюра: Биометрическая электродинамика]]
 
 > [!quote] Инженерный канон ночной регенерации
 > ### ⚡ **«Сон — это не потеря времени и не выключение проводника. Сон — это регулярное снятие механических и омических заломов цепи. Когда контур расправлен, сопротивление падает к нулю, и даже шесть с половиной часов дают абсолютную сверхпроводимость и ощущение невесомого полета.»**  

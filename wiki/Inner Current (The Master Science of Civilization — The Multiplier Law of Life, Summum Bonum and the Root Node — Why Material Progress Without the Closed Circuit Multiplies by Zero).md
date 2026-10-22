@@ -4,7 +4,22 @@ title: "Inner Current — 93. Архитектура Счастья как Гл�
 created: 2026-09-26
 author: Vladimir Anyanov
 layer: III. Дзен-онтология и синтез
-tags: [inner-current, master-science, summum-bonum, multiplier-law, epistemology, root-node, axiology, material-progress, superconductivity]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/ego-resistor
+  - node/return-wire
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
+  - master-science
+  - summum-bonum
+  - multiplier-law
+  - epistemology
+  - root-node
+  - axiology
+  - material-progress
+  - superconductivity
 ---
 
 # 93. Архитектура Счастья как Главная Наука Человечества: Закон Мультипликатора Жизни, Summum Bonum и Корневой Узел Цивилизации — Почему материальный прогресс без замкнутого контура умножает на ноль

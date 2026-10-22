@@ -9,6 +9,12 @@ aliases:
   - "Сверхпроводимость вместо выгорания"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - anyanov-system
   - ohmic-fire
   - ego-resistance

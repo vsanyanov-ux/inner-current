@@ -6,6 +6,12 @@ category: "III. Дзен-онтология и синтез"
 chapter: 208
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/superconducting
   - consciousness-boundaries
   - anesthesia
   - coma

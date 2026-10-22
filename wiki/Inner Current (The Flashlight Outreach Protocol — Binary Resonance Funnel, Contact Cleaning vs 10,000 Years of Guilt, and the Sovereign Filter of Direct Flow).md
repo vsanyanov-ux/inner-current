@@ -1,4 +1,4 @@
----
+﻿---
 title: "Inner Current: Протокол распространения через карманный фонарик — Бинарная воронка резонанса, чистка контактов против 10 000 лет вины и суверенный фильтр прямого потока"
 author: "Владимир Аньянов"
 date: "2026-10-05"
@@ -6,6 +6,12 @@ category: "IV. Мета-система и продукт"
 chapter: 253
 tags:
   - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/superconducting
   - outreach
   - flashlight
   - communication
@@ -199,4 +205,4 @@ tags:
 - [[02_Wiki/Inner Current (The Four Barriers of Ego Defense and Transmission Interface — Overcoming The 'I Know It All', Strobe Flash Illusion, Semantic Drift and Annihilation Panic)|🛡️ 189. Четыре барьера передачи Системы и коммуникационный интерфейс оператора]]
 - [[02_Wiki/Inner Current (The Horse to Automobile Transition — Three-Phase Onboarding of Consciousness, Post-Moral Relief and the Somatic Test Drive)|🚗 192. Педагогика пересадки с лошади на автомобиль: Трёхфазный протокол онбординга]]
 - [[02_Wiki/Inner Current (The Essence of Invention and Engineers of the Spirit — Deconstructing 'Everyone Already Said That' via Watt, Satoshi and Copernicus — Same Words, New Substrate)|⚡ 193. Суть изобретения и поиск «Инженеров Духа»]]
-- [[02_Wiki/Inner Current (Any-anov and the Everyman Archetype — Linguistic Consilience, From the Medieval Morality Play to the 10th Ox-Herding Picture, and Why the Law of Direct Flow Belongs to Anyone)|⚡ 252. Any-anov и архетип Everyman: Лингвистический консилиенс]]
+- [[02_Wiki/Inner Current (Any-anov and the Everyman Archetype — Linguistic Consilience and Direct Flow)|⚡ 252. Any-anov и архетип Everyman: Лингвистический консилиенс]]

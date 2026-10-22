@@ -1,7 +1,28 @@
 ---
 created: 2026-09-24
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, pantheon, somatic-totem, icu, zen-engineering, visual-metaphors, tomyo, tanden, mushin, zanshin, kanso, happy-path, tetrad, resistor-antagonist, battle-pack]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
+  - pantheon
+  - somatic-totem
+  - icu
+  - zen-engineering
+  - visual-metaphors
+  - tomyo
+  - tanden
+  - mushin
+  - zanshin
+  - kanso
+  - happy-path
+  - tetrad
+  - resistor-antagonist
+  - battle-pack
 type: concept
 status: evergreen
 ---

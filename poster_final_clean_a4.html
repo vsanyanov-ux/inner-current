@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Афиша А4 — Счастье — это карманный фонарик (Мастер-версия)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      background-color: #07090e;
+      color: #f1f5f9;
+      font-family: 'Manrope', -apple-system, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* Холст А4: строго 210mm x 297mm */
+    .poster-canvas {
+      width: 210mm;
+      height: 297mm;
+      position: relative;
+      background: #090c12;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
+    }
+
+    /* Фоновый арт: человек сидит в антикафе, фонарик над головой, лица не видно, в руках фонарика нет */
+    .art-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      z-index: 1;
+    }
+
+    /* Тонкая золотая рамка вокруг афиши */
+    .golden-frame {
+      position: absolute;
+      inset: 6mm;
+      border: 1px solid rgba(245, 182, 67, 0.32);
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    /* Мягкий градиент в нижней трети, чтобы адрес и спикер читались со 100% контрастом */
+    .bottom-gradient-shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        transparent 0%,
+        transparent 64%,
+        rgba(7, 9, 14, 0.55) 75%,
+        rgba(7, 9, 14, 0.94) 89%,
+        #07090e 100%
+      );
+      z-index: 2;
+    }
+
+    /* Контент поверх арта */
+    .content-layer {
+      position: relative;
+      z-index: 10;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 12mm 14mm 12mm 14mm;
+    }
+
+    /* Информационный подвал: Спикер + Локация + Тариф */
+    .info-footer-container {
+      display: flex;
+      flex-direction: column;
+      gap: 3.5mm;
+    }
+
+    /* Карточка спикера */
+    .speaker-card {
+      display: flex;
+      align-items: center;
+      gap: 4.5mm;
+      background: rgba(14, 19, 29, 0.82);
+      border: 1px solid rgba(245, 182, 67, 0.38);
+      backdrop-filter: blur(14px);
+      padding: 3mm 4.5mm;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+    }
+
+    .speaker-avatar-wrap {
+      width: 19mm;
+      height: 19mm;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #f5b643;
+      flex-shrink: 0;
+      box-shadow: 0 0 12px rgba(245, 182, 67, 0.35);
+    }
+
+    .speaker-avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+    }
+
+    .speaker-text {
+      flex: 1;
+    }
+
+    .speaker-title-name {
+      font-size: 13pt;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+    }
+
+    .speaker-bio {
+      font-size: 8.8pt;
+      color: #cbd5e1;
+      margin-top: 0.8mm;
+      line-height: 1.35;
+    }
+
+    .speaker-bio span {
+      color: #f6c05d;
+      font-weight: 600;
+    }
+
+    /* Плашка с датой, местом и кнопкой тарифа */
+    .footer-bar {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 5mm;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(245, 182, 67, 0.18) 0%, rgba(15, 23, 42, 0.95) 100%);
+      border: 1px solid rgba(245, 182, 67, 0.45);
+      border-radius: 12px;
+      padding: 4mm 6mm;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Дата */
+    .date-column {
+      display: flex;
+      align-items: center;
+      gap: 3.5mm;
+      padding-right: 5mm;
+      border-right: 1px solid rgba(245, 182, 67, 0.3);
+    }
+
+    .date-num {
+      font-family: 'Cinzel', serif;
+      font-size: 30pt;
+      font-weight: 700;
+      color: #f5b643;
+      line-height: 0.85;
+    }
+
+    .date-words {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .date-month-text {
+      font-size: 12pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #ffffff;
+      letter-spacing: 0.04em;
+    }
+
+    .date-time-text {
+      font-size: 11pt;
+      font-weight: 700;
+      color: #f6c05d;
+      margin-top: 1px;
+    }
+
+    /* Локация */
+    .location-column {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .venue-title {
+      font-size: 12.5pt;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.01em;
+    }
+
+    .venue-address-line {
+      font-size: 9.8pt;
+      color: #fcd34d;
+      font-weight: 600;
+      margin-top: 1mm;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .venue-sub-note {
+      font-size: 8.2pt;
+      color: #94a3b8;
+      margin-top: 0.6mm;
+    }
+
+    /* Тариф */
+    .action-column {
+      text-align: right;
+    }
+
+    .tariff-pill-btn {
+      background: #f5b643;
+      color: #07090e;
+      font-size: 9.5pt;
+      font-weight: 800;
+      padding: 7px 15px;
+      border-radius: 7px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: inline-block;
+      box-shadow: 0 4px 16px rgba(245, 182, 67, 0.35);
+    }
+
+    .tariff-caption {
+      font-size: 7.5pt;
+      color: #94a3b8;
+      margin-top: 1.2mm;
+    }
+
+    /* Кнопка предпросмотра/печати (скрыта на бумаге) */
+    .screen-controls {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
+
+    .print-button {
+      background: #f5b643;
+      color: #07090e;
+      border: none;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: 800;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .print-button:hover {
+      background: #ffc966;
+      transform: translateY(-2px);
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: none;
+      }
+      .poster-canvas {
+        box-shadow: none;
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+      }
+      .screen-controls {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Кнопка печати на экране -->
+  <div class="screen-controls">
+    <button class="print-button" onclick="window.print()">🖨️ Печать / Сохранить в PDF (A4)</button>
+  </div>
+
+  <div class="poster-canvas">
+    <!-- Фоновое изображение: человек в антикафе, фонарик над головой, лица не видно, в руках фонарика нет -->
+    <img class="art-background" src="afisha_master.jpg" alt="Счастье — это карманный фонарик">
+
+    <!-- Затемняющий градиент только снизу под карточки -->
+    <div class="bottom-gradient-shade"></div>
+
+    <!-- Декоративная рамка -->
+    <div class="golden-frame"></div>
+
+    <!-- Контент -->
+    <div class="content-layer">
+      <div class="info-footer-container">
+        <!-- Карточка спикера с фотографией -->
+        <div class="speaker-card">
+          <div class="speaker-avatar-wrap">
+            <img src="C:/Users/vanya/.gemini/antigravity/brain/595d7ab7-6eb8-4a63-a314-66f392e88f80/.user_uploaded/media_1791828744136_3f4d95f3.jpg" alt="Владимир Аньянов">
+          </div>
+          <div class="speaker-text">
+            <div class="speaker-title-name">Владимир Аньянов</div>
+            <div class="speaker-bio">Исследователь внимания и состояний сознания · Автор концепции <span>«Внутренний ток»</span></div>
+          </div>
+        </div>
+
+        <!-- Нижний блок: Дата, Место, Тариф -->
+        <div class="footer-bar">
+          <!-- Дата и время -->
+          <div class="date-column">
+            <div class="date-num">18</div>
+            <div class="date-words">
+              <div class="date-month-text">Октября</div>
+              <div class="date-time-text">18:00 (Сб)</div>
+            </div>
+          </div>
+
+          <!-- Адрес -->
+          <div class="location-column">
+            <div class="venue-title">Антикафе «Точка»</div>
+            <div class="venue-address-line">📍 ТРЦ, ул. Весенняя, 56</div>
+            <div class="venue-sub-note">Чай, кофе, уютная атмосфера и живой честный диалог</div>
+          </div>
+
+          <!-- Тариф -->
+          <div class="action-column">
+            <div class="tariff-pill-btn">Вход по тарифу</div>
+            <div class="tariff-caption">*по тарифу антикафе</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

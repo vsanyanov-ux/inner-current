@@ -1,7 +1,23 @@
 ---
 created: 2026-09-24
-source: [[Inner Current - MOC|Inner Current MOC]]
-tags: [inner-current, pascals-wager, game-theory, decision-theory, electrodynamics, invariance, voltaire, nietzsche, tanden, mushin]
+source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/epistemology
+  - state/leak
+  - pascals-wager
+  - game-theory
+  - decision-theory
+  - electrodynamics
+  - invariance
+  - voltaire
+  - nietzsche
+  - tanden
+  - mushin
 type: concept
 status: evergreen
 ---
@@ -153,10 +169,10 @@ $$\forall S: \quad \arg\max \mathbf{Flourishing} \equiv \{ R_{\text{ego}} = 0, \
 ---
 
 ## 🔗 Связи и консилиенс
-- [[01-core-topology|01. Базовая топология цепи и закон полярности]]
-- [[02-superconductivity-and-presence|02. Физика присутствия: состояние сверхпроводимости]]
-- [[26-engineering-proof-of-no-meaning-of-life|26. Инженерное доказательство отсутствия смысла жизни]]
-- [[Inner Current (Tolstoy Existential Crisis vs Happiness Architecture)|27. Духовный кризис Льва Толстого vs Архитектура счастья]]
-- [[Inner Current (The Question of God — Electrodynamic Invariance and Dissolution of Theological Resistance)|40. Вопрос о существовании Бога в Архитектуре счастья]]
-- [[Inner Current (Copernican Revolution in Ontology — Bottom-Up Circuit Dissolution of Metaphysics and Human-AI Zanshin)|41. Коперниканский переворот в онтологии]]
-- [[Inner Current (Anatomy of the Paradigm Shift — Ptolemaic Epicycles vs Kanso Simplicity and Falling of False Questions)|43. Анатомия сдвига парадигмы: Эпициклы Птолемея vs Простота Кансо]]
+- [[02_Wiki/Inner Current (Core Topology and Polarity Law)|01. Базовая топология цепи и закон полярности]]
+- [[02_Wiki/Inner Current (Physics of Presence and Superconductivity)|02. Физика присутствия: состояние сверхпроводимости]]
+- [[02_Wiki/Inner Current (Engineering Proof of No Meaning of Life and the Birth of Happiness Architecture)|26. Инженерное доказательство отсутствия смысла жизни]]
+- [[02_Wiki/Inner Current (Tolstoy Existential Crisis vs Happiness Architecture)|27. Духовный кризис Льва Толстого vs Архитектура счастья]]
+- [[02_Wiki/Inner Current (The Question of God — Electrodynamic Invariance and Dissolution of Theological Resistance)|40. Вопрос о существовании Бога в Архитектуре счастья]]
+- [[02_Wiki/Inner Current (Copernican Revolution in Ontology — Bottom-Up Circuit Dissolution of Metaphysics and Human-AI Zanshin)|41. Коперниканский переворот в онтологии]]
+- [[02_Wiki/Inner Current (Anatomy of the Paradigm Shift — Ptolemaic Epicycles vs Kanso Simplicity and Falling of False Questions)|43. Анатомия сдвига парадигмы: Эпициклы Птолемея vs Простота Кансо]]

@@ -1,7 +1,22 @@
 ---
 created: 2026-09-30
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, rosetta-stone, champollion, zen-engineering, electrodynamics, tanden, mushin, nirodha, consilience]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
+  - rosetta-stone
+  - champollion
+  - zen-engineering
+  - electrodynamics
+  - tanden
+  - mushin
+  - nirodha
+  - consilience
 type: concept
 status: evergreen
 ---

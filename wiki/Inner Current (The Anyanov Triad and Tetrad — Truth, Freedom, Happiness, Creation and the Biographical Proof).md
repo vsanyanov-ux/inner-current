@@ -1,7 +1,26 @@
 ---
 created: 2026-09-24
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, anyanov-triad, tetrad, truth, freedom, happiness, creation, sat-chit-ananda, tolstoy, osho, menyachikhin, free-will, causality]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/epistemology
+  - state/overheating
+  - anyanov-triad
+  - tetrad
+  - truth
+  - freedom
+  - happiness
+  - creation
+  - sat-chit-ananda
+  - tolstoy
+  - osho
+  - menyachikhin
+  - free-will
+  - causality
 type: concept
 status: evergreen
 ---

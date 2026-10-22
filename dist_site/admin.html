@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Пульт Телеметрии — Inner Current (Админка)</title>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%22><text y=%2222%22 font-size=%2220%22>⚡</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            circuit: {
+              950: '#07090e',
+              900: '#0b111b',
+              800: '#141d2c',
+              700: '#1e2c42',
+              gold: '#f59e0b',
+              amber: '#d97706',
+              cyan: '#06b6d4',
+              emerald: '#10b981',
+            }
+          },
+          fontFamily: {
+            mono: ['JetBrains Mono', 'Menlo', 'monospace'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    body { background-color: #07090e; color: #e2e8f0; font-family: 'Inter', sans-serif; }
+    .gold-glow { box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.25); }
+    .cyan-glow { box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.25); }
+    .custom-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scroll::-webkit-scrollbar-track { background: #0b111b; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #1e2c42; border-radius: 3px; }
+    .custom-scroll::-webkit-scrollbar-thumb:hover { background: #d97706; }
+  </style>
+</head>
+<body class="min-h-screen bg-circuit-950 text-slate-200 antialiased selection:bg-amber-500/30 selection:text-amber-200">
+
+  <!-- ======================================================== -->
+  <!-- 1. ЭКРАН АВТОРИЗАЦИИ (Если сессия не активна) -->
+  <!-- ======================================================== -->
+  <div id="authScreen" class="flex min-h-screen items-center justify-center p-4">
+    <div class="w-full max-w-md rounded-2xl border border-slate-800 bg-circuit-900/90 p-8 shadow-2xl backdrop-blur-xl gold-glow">
+      <div class="text-center">
+        <div class="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-500/10 border border-amber-500/30 text-3xl text-amber-400 mb-4 shadow-inner">
+          ⚡
+        </div>
+        <h1 class="text-2xl font-bold tracking-tight text-white">Пульт Телеметрии</h1>
+        <p class="mt-1 text-sm text-slate-400">Закрытая админка портала <span class="text-amber-400 font-medium">innercurrent.ru</span></p>
+      </div>
+
+      <form id="loginForm" class="mt-8 space-y-4" onsubmit="handleLogin(event)">
+        <div>
+          <label for="passwordInput" class="block text-xs font-semibold uppercase tracking-wider text-slate-400">Мастер-пароль цепи</label>
+          <div class="relative mt-2">
+            <input type="password" id="passwordInput" required autocomplete="current-password" autofocus
+              placeholder="••••••••••••"
+              class="w-full rounded-xl border border-slate-700 bg-circuit-950/80 px-4 py-3 text-sm text-white placeholder-slate-600 outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 font-mono">
+            <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-0 flex items-center pr-3 text-slate-500 hover:text-slate-300">
+              <span id="eyeIcon">👁️</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="authError" class="hidden rounded-xl border border-rose-500/30 bg-rose-500/10 p-3 text-xs text-rose-300"></div>
+
+        <button type="submit" id="loginBtn"
+          class="w-full rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-amber-500/20 transition hover:from-amber-400 hover:to-amber-500 active:scale-[0.98] flex items-center justify-center gap-2">
+          <span>Войти в Пульт</span>
+          <span>→</span>
+        </button>
+
+        <p class="text-center text-[11px] text-slate-500 mt-4">
+          Доступ строго для оператора контура • Приватная аналитика
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- 2. ГЛАВНАЯ ПАНЕЛЬ ТЕЛЕМЕТРИИ (АДМИНКА) -->
+  <!-- ======================================================== -->
+  <div id="dashboardScreen" class="hidden min-h-screen flex flex-col">
+    
+    <!-- Верхняя панель навигации -->
+    <header class="sticky top-0 z-50 border-b border-slate-800/80 bg-circuit-950/90 backdrop-blur-md">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+        
+        <!-- Логотип и статус -->
+        <div class="flex items-center gap-3">
+          <a href="/" target="_blank" title="Перейти на сайт" class="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xl font-bold hover:bg-amber-500/20 transition">
+            ⚡
+          </a>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-bold text-white text-base tracking-tight">Inner Current</span>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 font-medium">Админка</span>
+            </div>
+            <div class="flex items-center gap-1.5 text-[11px] text-emerald-400">
+              <span class="inline-block h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Контур онлайн • Сверхпроводимость</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Управление периодом и действия -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- Период -->
+          <div class="hidden sm:flex rounded-xl bg-circuit-900 border border-slate-800 p-1 text-xs font-medium">
+            <button onclick="setPeriod('today')" id="period-today" class="period-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition">Сегодня</button>
+            <button onclick="setPeriod('7d')" id="period-7d" class="period-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition">7 дней</button>
+            <button onclick="setPeriod('30d')" id="period-30d" class="period-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition">30 дней</button>
+            <button onclick="setPeriod('all')" id="period-all" class="period-btn px-3 py-1.5 rounded-lg bg-amber-500 text-slate-950 font-bold transition">Все время</button>
+          </div>
+
+          <!-- Кнопка обновить -->
+          <button onclick="loadDashboardData()" title="Обновить данные"
+            class="h-9 px-3 rounded-xl border border-slate-700 bg-circuit-900 text-slate-300 hover:bg-slate-800 hover:text-white text-xs font-medium transition flex items-center gap-1.5">
+            <span id="refreshIcon" class="inline-block">🔄</span>
+            <span class="hidden md:inline">Обновить</span>
+          </button>
+
+          <!-- Меню экспорта -->
+          <div class="relative">
+            <button onclick="toggleExportMenu()"
+              class="h-9 px-3 rounded-xl border border-slate-700 bg-circuit-900 text-slate-300 hover:bg-slate-800 hover:text-white text-xs font-medium transition flex items-center gap-1">
+              <span>📥</span>
+              <span class="hidden md:inline">Экспорт</span>
+            </button>
+            <div id="exportMenu" class="hidden absolute right-0 mt-2 w-36 rounded-xl border border-slate-700 bg-circuit-900 p-1 shadow-xl z-50 text-xs">
+              <a href="#" onclick="downloadExport('json')" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-amber-300">В формате JSON</a>
+              <a href="#" onclick="downloadExport('csv')" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-amber-300">В формате CSV</a>
+            </div>
+          </div>
+
+          <!-- Выход -->
+          <button onclick="handleLogout()" title="Выйти из админки"
+            class="h-9 px-3 rounded-xl border border-rose-500/30 bg-rose-500/10 text-rose-300 hover:bg-rose-500/20 text-xs font-semibold transition">
+            Выйти
+          </button>
+        </div>
+      </div>
+
+      <!-- Мобильный селектор периодов -->
+      <div class="sm:hidden px-4 py-2 border-t border-slate-800 flex justify-between bg-circuit-900/50 text-xs">
+        <button onclick="setPeriod('today')" id="m-period-today" class="px-2 py-1 rounded text-slate-400">Сегодня</button>
+        <button onclick="setPeriod('7d')" id="m-period-7d" class="px-2 py-1 rounded text-slate-400">7 дней</button>
+        <button onclick="setPeriod('30d')" id="m-period-30d" class="px-2 py-1 rounded text-slate-400">30 дней</button>
+        <button onclick="setPeriod('all')" id="m-period-all" class="px-2 py-1 rounded bg-amber-500 text-slate-950 font-bold">Все время</button>
+      </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="flex-1 mx-auto max-w-7xl w-full px-4 py-6 sm:px-6 lg:px-8 space-y-6">
+
+      <!-- ======================================================== -->
+      <!-- 2.1 СЕТКА КЛЮЧЕВЫХ KPI -->
+      <!-- ======================================================== -->
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        
+        <!-- Карточка 1: Просмотры страниц -->
+        <div class="rounded-2xl border border-slate-800 bg-circuit-900/60 p-5 shadow-lg backdrop-blur-sm relative overflow-hidden group hover:border-slate-700 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Просмотры страниц</span>
+            <span class="text-xl">👁️</span>
+          </div>
+          <div class="mt-3 flex items-baseline gap-2">
+            <span id="kpiTotalViews" class="text-3xl font-extrabold text-white font-mono tracking-tight">0</span>
+            <span id="kpiTodayViews" class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">+0 сегодня</span>
+          </div>
+          <p class="mt-2 text-xs text-slate-400">Без учета поисковых роботов</p>
+          <div class="absolute -right-4 -bottom-4 h-16 w-16 rounded-full bg-amber-500/5 blur-xl group-hover:bg-amber-500/10 transition"></div>
+        </div>
+
+        <!-- Карточка 2: Уникальные читатели -->
+        <div class="rounded-2xl border border-slate-800 bg-circuit-900/60 p-5 shadow-lg backdrop-blur-sm relative overflow-hidden group hover:border-slate-700 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Уникальные читатели</span>
+            <span class="text-xl">👤</span>
+          </div>
+          <div class="mt-3 flex items-baseline gap-2">
+            <span id="kpiUniqueVisitors" class="text-3xl font-extrabold text-white font-mono tracking-tight">0</span>
+            <span id="kpiTodayUniques" class="text-xs font-semibold text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded-full border border-cyan-500/20">+0 сегодня</span>
+          </div>
+          <p class="mt-2 text-xs text-slate-400">Приватный хэш посетителя</p>
+          <div class="absolute -right-4 -bottom-4 h-16 w-16 rounded-full bg-cyan-500/5 blur-xl group-hover:bg-cyan-500/10 transition"></div>
+        </div>
+
+        <!-- Карточка 3: Скачиваний PDF книг -->
+        <div class="rounded-2xl border border-amber-500/30 bg-circuit-900/80 p-5 shadow-lg backdrop-blur-sm relative overflow-hidden group hover:border-amber-500/50 transition gold-glow">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold uppercase tracking-wider text-amber-300">Скачиваний PDF книг</span>
+            <span class="text-xl text-amber-400">📥</span>
+          </div>
+          <div class="mt-3 flex items-baseline gap-2">
+            <span id="kpiTotalDownloads" class="text-3xl font-extrabold text-amber-400 font-mono tracking-tight">0</span>
+            <span id="kpiTodayDownloads" class="text-xs font-semibold text-amber-300 bg-amber-500/20 px-2 py-0.5 rounded-full border border-amber-500/30">+0 сегодня</span>
+          </div>
+          <p class="mt-2 text-xs text-slate-300 flex items-center gap-1">
+            <span>Читателей:</span>
+            <strong id="kpiUniqueReaders" class="text-white font-mono">0</strong>
+          </p>
+          <div class="absolute -right-4 -bottom-4 h-16 w-16 rounded-full bg-amber-500/10 blur-xl"></div>
+        </div>
+
+        <!-- Карточка 4: Конверсия в скачивание -->
+        <div class="rounded-2xl border border-slate-800 bg-circuit-900/60 p-5 shadow-lg backdrop-blur-sm relative overflow-hidden group hover:border-slate-700 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Конверсия в PDF</span>
+            <span class="text-xl">⚡</span>
+          </div>
+          <div class="mt-3 flex items-baseline gap-2">
+            <span id="kpiConversion" class="text-3xl font-extrabold text-emerald-400 font-mono tracking-tight">0.0%</span>
+            <span class="text-xs text-slate-400">скачали книгу</span>
+          </div>
+          <p class="mt-2 text-xs text-slate-400 truncate">
+            Топ: <strong id="kpiTopBookName" class="text-amber-300 font-medium">—</strong>
+          </p>
+          <div class="absolute -right-4 -bottom-4 h-16 w-16 rounded-full bg-emerald-500/5 blur-xl group-hover:bg-emerald-500/10 transition"></div>
+        </div>
+
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- 2.2 ГРАФИК ДИНАМИКИ ВИЗИТОВ И СКАЧИВАНИЙ -->
+      <!-- ======================================================== -->
+      <div class="rounded-2xl border border-slate-800 bg-circuit-900/70 p-6 shadow-xl backdrop-blur-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+          <div>
+            <h2 class="text-base font-bold text-white flex items-center gap-2">
+              <span>📈</span>
+              <span>Динамика активности по дням</span>
+            </h2>
+            <p class="text-xs text-slate-400 mt-0.5">Соотношение просмотров страниц и скачиваний книг</p>
+          </div>
+          <div class="flex items-center gap-4 text-xs font-medium">
+            <div class="flex items-center gap-1.5">
+              <span class="inline-block h-3 w-3 rounded-full bg-amber-400"></span>
+              <span class="text-slate-300">Просмотры</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="inline-block h-3 w-3 rounded-full bg-cyan-400"></span>
+              <span class="text-slate-300">Уникальные</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="inline-block h-3 w-3 rounded-md bg-emerald-400"></span>
+              <span class="text-slate-300">Скачивания PDF</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Контейнер SVG графика -->
+        <div class="relative w-full overflow-x-auto custom-scroll pt-4 pb-2">
+          <div id="chartContainer" class="min-w-[600px] h-64 flex items-end">
+            <!-- Динамически рендерится SVG через renderChart() -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- 2.3 СКАЧИВАНИЯ ПО КАЖДОЙ КНИГЕ (ЗОЛОТАЯ СЕМЕРКА И БРОШЮРЫ) -->
+      <!-- ======================================================== -->
+      <div class="rounded-2xl border border-slate-800 bg-circuit-900/70 p-6 shadow-xl backdrop-blur-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
+          <div>
+            <h2 class="text-base font-bold text-white flex items-center gap-2">
+              <span>📚</span>
+              <span>Статистика скачиваний книг в PDF</span>
+            </h2>
+            <p class="text-xs text-slate-400 mt-0.5">Точный учет каждого экземпляра Золотой Семерки, Манифеста и Брошюр</p>
+          </div>
+          <div class="text-xs text-amber-300 font-mono bg-amber-500/10 px-3 py-1 rounded-xl border border-amber-500/20 flex items-center gap-1">
+            <span>Всего файлов в базе:</span>
+            <strong id="booksTableCount" class="font-bold">0</strong>
+          </div>
+        </div>
+
+        <!-- Таблица книг -->
+        <div class="overflow-x-auto custom-scroll">
+          <table class="w-full text-left text-xs">
+            <thead class="border-b border-slate-800 text-slate-400 uppercase font-mono tracking-wider">
+              <tr>
+                <th class="py-3 px-4 font-semibold">Книга / Название</th>
+                <th class="py-3 px-4 font-semibold">Файл PDF</th>
+                <th class="py-3 px-4 font-semibold text-center">Скачиваний</th>
+                <th class="py-3 px-4 font-semibold text-center">Читателей</th>
+                <th class="py-3 px-4 font-semibold">Доля</th>
+                <th class="py-3 px-4 font-semibold text-right">Действие</th>
+              </tr>
+            </thead>
+            <tbody id="booksTableBody" class="divide-y divide-slate-800/60 font-sans">
+              <!-- Заполняется динамически -->
+              <tr>
+                <td colspan="6" class="py-8 text-center text-slate-500">Загрузка данных телеметрии...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- 2.4 ДВУХКОЛОНОЧНЫЙ БЛОК: СТРАНИЦЫ, ИСТОЧНИКИ, УСТРОЙСТВА -->
+      <!-- ======================================================== -->
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        
+        <!-- Колонка 1: Популярные страницы -->
+        <div class="rounded-2xl border border-slate-800 bg-circuit-900/70 p-6 shadow-xl backdrop-blur-sm">
+          <h2 class="text-base font-bold text-white flex items-center gap-2 mb-1">
+            <span>📄</span>
+            <span>Популярные страницы</span>
+          </h2>
+          <p class="text-xs text-slate-400 mb-4">Какие разделы сайта привлекают больше внимания</p>
+
+          <div id="pagesList" class="space-y-3">
+            <!-- Заполняется динамически -->
+          </div>
+        </div>
+
+        <!-- Колонка 2: Источники трафика и Устройства -->
+        <div class="space-y-6">
+          <!-- Источники (Рефереры) -->
+          <div class="rounded-2xl border border-slate-800 bg-circuit-900/70 p-6 shadow-xl backdrop-blur-sm">
+            <h2 class="text-base font-bold text-white flex items-center gap-2 mb-1">
+              <span>🌐</span>
+              <span>Источники трафика (Referrers)</span>
+            </h2>
+            <p class="text-xs text-slate-400 mb-4">Откуда приходят читатели: прямые, Telegram, поисковики</p>
+
+            <div id="referrersList" class="space-y-2.5">
+              <!-- Заполняется динамически -->
+            </div>
+          </div>
+
+          <!-- Устройства -->
+          <div class="rounded-2xl border border-slate-800 bg-circuit-900/70 p-6 shadow-xl backdrop-blur-sm">
+            <h2 class="text-base font-bold text-white flex items-center gap-2 mb-1">
+              <span>📱</span>
+              <span>Устройства читателей</span>
+            </h2>
+            <div id="devicesContainer" class="grid grid-cols-3 gap-3 mt-4 text-center">
+              <!-- Заполняется динамически -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- 2.5 ЖИВАЯ ЛЕНТА ПОСЛЕДНИХ СОБЫТИЙ -->
+      <!-- ======================================================== -->
+      <div class="rounded-2xl border border-slate-800 bg-circuit-900/70 p-6 shadow-xl backdrop-blur-sm">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <h2 class="text-base font-bold text-white flex items-center gap-2">
+              <span>⚡</span>
+              <span>Живой лог событий (Real-time Feed)</span>
+            </h2>
+            <p class="text-xs text-slate-400 mt-0.5">Последние визиты и факты скачивания книг в реальном времени</p>
+          </div>
+          <button onclick="loadRecentEvents()" class="text-xs text-amber-400 hover:text-amber-300 font-medium">Обновить лог</button>
+        </div>
+
+        <div class="overflow-x-auto custom-scroll max-h-96">
+          <table class="w-full text-left text-xs">
+            <thead class="sticky top-0 bg-circuit-900 border-b border-slate-800 text-slate-400 font-mono uppercase tracking-wider">
+              <tr>
+                <th class="py-2.5 px-3">Тип</th>
+                <th class="py-2.5 px-3">Время</th>
+                <th class="py-2.5 px-3">Объект / Книга / Страница</th>
+                <th class="py-2.5 px-3">Устройство</th>
+                <th class="py-2.5 px-3">Источник</th>
+              </tr>
+            </thead>
+            <tbody id="recentFeedBody" class="divide-y divide-slate-800/40 font-mono text-[11px]">
+              <!-- Заполняется динамически -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- 2.6 ПОДВАЛ И СЕРВИСНОЕ ОБСЛУЖИВАНИЕ -->
+      <!-- ======================================================== -->
+      <footer class="border-t border-slate-800/80 pt-6 pb-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div>
+          <span>Inner Current Autonomous Analytics • База SQLite (WAL mode)</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <button onclick="confirmResetStats()" class="text-slate-500 hover:text-rose-400 transition">
+            Сбросить статистику
+          </button>
+          <span>•</span>
+          <a href="/" target="_blank" class="hover:text-amber-400 transition">Перейти на сайт</a>
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- СВЕРХЛЕГКИЙ КЛИЕНТСКИЙ СКРИПТ АДМИНКИ -->
+  <!-- ======================================================== -->
+  <script>
+    let currentPeriod = 'all';
+    let currentSummaryData = null;
+
+    // Проверка наличия токена при загрузке
+    document.addEventListener('DOMContentLoaded', () => {
+      const token = localStorage.getItem('ic_admin_token');
+      if (token) {
+        showDashboard();
+      } else {
+        showAuth();
+      }
+    });
+
+    function togglePasswordVisibility() {
+      const input = document.getElementById('passwordInput');
+      const icon = document.getElementById('eyeIcon');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.innerText = '🙈';
+      } else {
+        input.type = 'password';
+        icon.innerText = '👁️';
+      }
+    }
+
+    function showAuth() {
+      document.getElementById('authScreen').classList.remove('hidden');
+      document.getElementById('dashboardScreen').classList.add('hidden');
+      setTimeout(() => document.getElementById('passwordInput').focus(), 100);
+    }
+
+    function showDashboard() {
+      document.getElementById('authScreen').classList.add('hidden');
+      document.getElementById('dashboardScreen').classList.remove('hidden');
+      loadDashboardData();
+      loadRecentEvents();
+    }
+
+    async function handleLogin(e) {
+      e.preventDefault();
+      const password = document.getElementById('passwordInput').value.trim();
+      const errorDiv = document.getElementById('authError');
+      const btn = document.getElementById('loginBtn');
+
+      errorDiv.classList.add('hidden');
+      btn.disabled = true;
+      btn.innerHTML = '<span>Проверка цепи...</span>';
+
+      try {
+        const res = await fetch('/api/stats/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password })
+        });
+        const data = await res.json();
+
+        if (res.ok && data.success && data.token) {
+          localStorage.setItem('ic_admin_token', data.token);
+          showDashboard();
+        } else {
+          errorDiv.textContent = data.error || 'Неверный мастер-пароль';
+          errorDiv.classList.remove('hidden');
+        }
+      } catch (err) {
+        errorDiv.textContent = 'Ошибка сети: ' + err.message;
+        errorDiv.classList.remove('hidden');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<span>Войти в Пульт</span><span>→</span>';
+      }
+    }
+
+    async function handleLogout() {
+      const token = localStorage.getItem('ic_admin_token');
+      if (token) {
+        fetch('/api/stats/logout', {
+          method: 'POST',
+          headers: { 'Authorization': 'Bearer ' + token }
+        }).catch(() => {});
+      }
+      localStorage.removeItem('ic_admin_token');
+      showAuth();
+    }
+
+    function setPeriod(p) {
+      currentPeriod = p;
+      ['today', '7d', '30d', 'all'].forEach(id => {
+        const btn = document.getElementById(`period-${id}`);
+        const mBtn = document.getElementById(`m-period-${id}`);
+        if (id === p) {
+          if (btn) btn.className = 'period-btn px-3 py-1.5 rounded-lg bg-amber-500 text-slate-950 font-bold transition';
+          if (mBtn) mBtn.className = 'px-2 py-1 rounded bg-amber-500 text-slate-950 font-bold';
+        } else {
+          if (btn) btn.className = 'period-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition';
+          if (mBtn) mBtn.className = 'px-2 py-1 rounded text-slate-400';
+        }
+      });
+      loadDashboardData();
+    }
+
+    async function loadDashboardData() {
+      const token = localStorage.getItem('ic_admin_token');
+      if (!token) return showAuth();
+
+      const refreshIcon = document.getElementById('refreshIcon');
+      if (refreshIcon) refreshIcon.classList.add('animate-spin');
+
+      try {
+        const res = await fetch(`/api/stats/summary?period=${currentPeriod}`, {
+          headers: { 'Authorization': 'Bearer ' + token }
+        });
+
+        if (res.status === 401) {
+          handleLogout();
+          return;
+        }
+
+        const data = await res.json();
+        currentSummaryData = data;
+        renderDashboard(data);
+      } catch (err) {
+        console.error('Ошибка загрузки данных аналитики:', err);
+      } finally {
+        if (refreshIcon) {
+          setTimeout(() => refreshIcon.classList.remove('animate-spin'), 300);
+        }
+      }
+    }
+
+    function renderDashboard(data) {
+      if (!data || !data.kpi) return;
+
+      // KPI карточки
+      document.getElementById('kpiTotalViews').innerText = Number(data.kpi.total_views || 0).toLocaleString();
+      document.getElementById('kpiTodayViews').innerText = `+${Number(data.kpi.today_views || 0).toLocaleString()} сегодня`;
+      
+      document.getElementById('kpiUniqueVisitors').innerText = Number(data.kpi.unique_visitors || 0).toLocaleString();
+      document.getElementById('kpiTodayUniques').innerText = `+${Number(data.kpi.today_uniques || 0).toLocaleString()} сегодня`;
+
+      document.getElementById('kpiTotalDownloads').innerText = Number(data.kpi.total_downloads || 0).toLocaleString();
+      document.getElementById('kpiTodayDownloads').innerText = `+${Number(data.kpi.today_downloads || 0).toLocaleString()} сегодня`;
+      document.getElementById('kpiUniqueReaders').innerText = Number(data.kpi.unique_readers || 0).toLocaleString();
+
+      document.getElementById('kpiConversion').innerText = data.kpi.conversion_rate || '0.0%';
+
+      // Топ книга
+      const topBook = (data.books && data.books.length > 0) ? data.books[0] : null;
+      document.getElementById('kpiTopBookName').innerText = topBook ? `${topBook.book_title} (${topBook.downloads_count})` : 'Нет скачиваний';
+
+      // Рендер таблицы книг
+      renderBooksTable(data.books || []);
+
+      // Рендер графика
+      renderChart(data.timeline || []);
+
+      // Рендер страниц
+      renderPagesList(data.top_pages || []);
+
+      // Рендер источников и устройств
+      renderReferrersList(data.top_referrers || []);
+      renderDevices(data.devices || []);
+    }
+
+    function renderBooksTable(books) {
+      const tbody = document.getElementById('booksTableBody');
+      const countEl = document.getElementById('booksTableCount');
+      countEl.innerText = books.length;
+
+      if (!books.length) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="py-8 text-center text-slate-500">
+              📥 Пока нет скачиваний за выбранный период. Как только читатели нажмут «Скачать PDF», статистика мгновенно отобразится здесь.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      let html = '';
+      books.forEach((b, index) => {
+        const isTop = index === 0 && b.downloads_count > 0;
+        const lastDate = b.last_download ? new Date(b.last_download).toLocaleString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : '—';
+        html += `
+          <tr class="hover:bg-circuit-800/40 transition">
+            <td class="py-3 px-4">
+              <div class="flex items-center gap-2">
+                <span class="inline-flex h-6 w-6 items-center justify-center rounded-lg ${isTop ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40' : 'bg-slate-800 text-slate-400'} text-xs font-mono font-bold">
+                  ${index + 1}
+                </span>
+                <div>
+                  <span class="font-semibold text-white">${escapeHtml(b.book_title)}</span>
+                  ${isTop ? '<span class="ml-1.5 text-[10px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">Топ №1</span>' : ''}
+                  <div class="text-[11px] text-slate-400 font-mono mt-0.5">Посл. скачивание: ${lastDate}</div>
+                </div>
+              </div>
+            </td>
+            <td class="py-3 px-4 font-mono text-slate-400 truncate max-w-[180px]" title="${escapeHtml(b.file_name)}">
+              ${escapeHtml(b.file_name)}
+            </td>
+            <td class="py-3 px-4 text-center font-mono font-bold text-amber-400 text-sm">
+              ${b.downloads_count}
+            </td>
+            <td class="py-3 px-4 text-center font-mono text-slate-300">
+              ${b.unique_users}
+            </td>
+            <td class="py-3 px-4 w-48">
+              <div class="flex items-center gap-2">
+                <div class="flex-1 h-2 rounded-full bg-slate-800 overflow-hidden">
+                  <div class="h-full rounded-full bg-gradient-to-r from-amber-500 to-amber-300" style="width: ${b.percent}%;"></div>
+                </div>
+                <span class="font-mono text-xs text-slate-400 w-8 text-right">${b.percent}%</span>
+              </div>
+            </td>
+            <td class="py-3 px-4 text-right">
+              <a href="/books/${encodeURIComponent(b.file_name)}" download class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-circuit-800 hover:bg-circuit-700 text-slate-300 hover:text-white transition text-xs font-medium border border-slate-700">
+                <span>Проверить</span>
+                <span>↗</span>
+              </a>
+            </td>
+          </tr>
+        `;
+      });
+
+      tbody.innerHTML = html;
+    }
+
+    function renderChart(timeline) {
+      const container = document.getElementById('chartContainer');
+      if (!timeline || !timeline.length) {
+        container.innerHTML = '<div class="w-full text-center text-slate-500 py-12">Нет данных для построения графика за этот период</div>';
+        return;
+      }
+
+      const maxViews = Math.max(...timeline.map(d => d.views), 10);
+      const maxDownloads = Math.max(...timeline.map(d => d.downloads), 5);
+      const overallMax = Math.max(maxViews, maxDownloads);
+
+      const width = Math.max(container.clientWidth || 600, timeline.length * 28);
+      const height = 240;
+      const padding = { top: 20, right: 20, bottom: 40, left: 40 };
+      const chartWidth = width - padding.left - padding.right;
+      const chartHeight = height - padding.top - padding.bottom;
+
+      const stepX = chartWidth / Math.max(timeline.length - 1, 1);
+
+      // Генерация точек для полилинии просмотров
+      const viewsPoints = timeline.map((d, i) => {
+        const x = padding.left + i * stepX;
+        const y = padding.top + chartHeight - (d.views / overallMax) * chartHeight;
+        return `${x},${y}`;
+      }).join(' ');
+
+      // Генерация точек для уникальных
+      const uniquesPoints = timeline.map((d, i) => {
+        const x = padding.left + i * stepX;
+        const y = padding.top + chartHeight - (d.uniques / overallMax) * chartHeight;
+        return `${x},${y}`;
+      }).join(' ');
+
+      // Столбики для скачиваний
+      let barsSvg = '';
+      const barWidth = Math.max(stepX * 0.4, 6);
+
+      timeline.forEach((d, i) => {
+        const x = padding.left + i * stepX - barWidth / 2;
+        const barHeight = (d.downloads / overallMax) * chartHeight;
+        const y = padding.top + chartHeight - barHeight;
+        const labelDate = d.date.slice(5); // MM-DD
+
+        barsSvg += `
+          <rect x="${x}" y="${y}" width="${barWidth}" height="${barHeight}" rx="2" fill="#10b981" opacity="0.8">
+            <title>${d.date}: Скачиваний PDF — ${d.downloads}</title>
+          </rect>
+          <text x="${padding.left + i * stepX}" y="${height - 12}" fill="#64748b" font-size="9" text-anchor="middle" font-family="JetBrains Mono">${labelDate}</text>
+        `;
+      });
+
+      const svg = `
+        <svg viewBox="0 0 ${width} ${height}" class="w-full h-full select-none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Сетка -->
+          <line x1="${padding.left}" y1="${padding.top}" x2="${width - padding.right}" y2="${padding.top}" stroke="#1e2c42" stroke-dasharray="3 3"/>
+          <line x1="${padding.left}" y1="${padding.top + chartHeight / 2}" x2="${width - padding.right}" y2="${padding.top + chartHeight / 2}" stroke="#1e2c42" stroke-dasharray="3 3"/>
+          <line x1="${padding.left}" y1="${padding.top + chartHeight}" x2="${width - padding.right}" y2="${padding.top + chartHeight}" stroke="#334155"/>
+          
+          <!-- Метки по оси Y -->
+          <text x="${padding.left - 8}" y="${padding.top + 4}" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono">${overallMax}</text>
+          <text x="${padding.left - 8}" y="${padding.top + chartHeight / 2 + 4}" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono">${Math.round(overallMax / 2)}</text>
+          <text x="${padding.left - 8}" y="${padding.top + chartHeight + 4}" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono">0</text>
+
+          <!-- Столбики скачиваний -->
+          ${barsSvg}
+
+          <!-- Линия уникальных посетителей -->
+          <polyline fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="${uniquesPoints}"/>
+
+          <!-- Линия просмотров страниц -->
+          <polyline fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" points="${viewsPoints}"/>
+        </svg>
+      `;
+
+      container.innerHTML = svg;
+    }
+
+    function renderPagesList(pages) {
+      const container = document.getElementById('pagesList');
+      if (!pages.length) {
+        container.innerHTML = '<p class="text-slate-500 text-xs py-4">Нет данных по страницам</p>';
+        return;
+      }
+
+      let html = '';
+      pages.forEach(p => {
+        html += `
+          <div class="flex items-center justify-between text-xs p-2.5 rounded-xl bg-circuit-800/40 hover:bg-circuit-800/80 transition">
+            <div class="flex items-center gap-2 truncate pr-2">
+              <span class="text-amber-400 font-mono">/</span>
+              <span class="text-slate-200 font-mono truncate" title="${escapeHtml(p.path)}">${escapeHtml(p.path)}</span>
+            </div>
+            <div class="flex items-center gap-3 font-mono shrink-0">
+              <span class="text-white font-bold">${p.views}</span>
+              <span class="text-slate-400 text-[10px]">(${p.uniques} уник.)</span>
+            </div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    }
+
+    function renderReferrersList(refs) {
+      const container = document.getElementById('referrersList');
+      if (!refs.length) {
+        container.innerHTML = '<p class="text-slate-500 text-xs py-2">Нет данных по источникам</p>';
+        return;
+      }
+
+      let html = '';
+      refs.forEach(r => {
+        let label = r.ref_host;
+        let icon = '🔗';
+        if (label === 'direct') { label = 'Прямые переходы (Direct / Закладки)'; icon = '⚡'; }
+        else if (label.includes('t.me') || label.includes('telegram')) { label = 'Telegram'; icon = '✈️'; }
+        else if (label.includes('yandex')) { label = 'Яндекс Поиск'; icon = '🔍'; }
+        else if (label.includes('google')) { label = 'Google Search'; icon = '🔎'; }
+        else if (label.includes('utm:')) { label = label.replace('utm:', 'Кампания: '); icon = '🎯'; }
+
+        html += `
+          <div class="flex items-center justify-between text-xs p-2 rounded-lg bg-circuit-800/30">
+            <div class="flex items-center gap-2 truncate">
+              <span>${icon}</span>
+              <span class="text-slate-300 truncate" title="${escapeHtml(r.ref_host)}">${escapeHtml(label)}</span>
+            </div>
+            <span class="font-mono text-amber-300 font-bold shrink-0">${r.visits}</span>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    }
+
+    function renderDevices(devices) {
+      const container = document.getElementById('devicesContainer');
+      const devMap = { desktop: 0, mobile: 0, tablet: 0 };
+      let total = 0;
+      devices.forEach(d => {
+        if (devMap[d.device] !== undefined) {
+          devMap[d.device] = d.count;
+        } else {
+          devMap.desktop += d.count;
+        }
+        total += d.count;
+      });
+
+      const pct = (val) => total > 0 ? Math.round((val / total) * 100) : 0;
+
+      container.innerHTML = `
+        <div class="p-3 rounded-xl bg-circuit-800/40 border border-slate-800">
+          <div class="text-lg">💻</div>
+          <div class="text-[11px] text-slate-400 mt-1">Десктоп</div>
+          <div class="text-base font-bold text-white font-mono mt-0.5">${pct(devMap.desktop)}%</div>
+          <div class="text-[10px] text-slate-500 font-mono">${devMap.desktop} виз.</div>
+        </div>
+        <div class="p-3 rounded-xl bg-circuit-800/40 border border-slate-800">
+          <div class="text-lg">📱</div>
+          <div class="text-[11px] text-slate-400 mt-1">Смартфон</div>
+          <div class="text-base font-bold text-white font-mono mt-0.5">${pct(devMap.mobile)}%</div>
+          <div class="text-[10px] text-slate-500 font-mono">${devMap.mobile} виз.</div>
+        </div>
+        <div class="p-3 rounded-xl bg-circuit-800/40 border border-slate-800">
+          <div class="text-lg">📟</div>
+          <div class="text-[11px] text-slate-400 mt-1">Планшет</div>
+          <div class="text-base font-bold text-white font-mono mt-0.5">${pct(devMap.tablet)}%</div>
+          <div class="text-[10px] text-slate-500 font-mono">${devMap.tablet} виз.</div>
+        </div>
+      `;
+    }
+
+    async function loadRecentEvents() {
+      const token = localStorage.getItem('ic_admin_token');
+      if (!token) return;
+
+      try {
+        const res = await fetch('/api/stats/recent?limit=40', {
+          headers: { 'Authorization': 'Bearer ' + token }
+        });
+        if (!res.ok) return;
+
+        const events = await res.json();
+        const tbody = document.getElementById('recentFeedBody');
+
+        if (!events.length) {
+          tbody.innerHTML = '<tr><td colspan="5" class="py-4 text-center text-slate-500">Событий пока нет</td></tr>';
+          return;
+        }
+
+        let html = '';
+        events.forEach(e => {
+          const isDownload = e.event_type === 'download';
+          const time = new Date(e.created_at).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+          const date = e.created_at.slice(5, 10);
+
+          html += `
+            <tr class="hover:bg-circuit-800/30 transition">
+              <td class="py-2 px-3">
+                ${isDownload 
+                  ? '<span class="inline-flex items-center gap-1 text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">📥 Скачивание</span>' 
+                  : '<span class="inline-flex items-center gap-1 text-slate-400 bg-slate-800 px-2 py-0.5 rounded-full">👁️ Визит</span>'}
+              </td>
+              <td class="py-2 px-3 text-slate-400">${date} ${time}</td>
+              <td class="py-2 px-3 ${isDownload ? 'text-amber-300 font-bold' : 'text-slate-200'} truncate max-w-xs">
+                ${escapeHtml(e.target || '-')}
+              </td>
+              <td class="py-2 px-3 text-slate-400 capitalize">${escapeHtml(e.device || 'desktop')}</td>
+              <td class="py-2 px-3 text-slate-500 truncate max-w-[160px]" title="${escapeHtml(e.referrer || 'direct')}">
+                ${escapeHtml(e.referrer || 'direct')}
+              </td>
+            </tr>
+          `;
+        });
+        tbody.innerHTML = html;
+      } catch (err) {
+        console.error('Ошибка загрузки ленты событий:', err);
+      }
+    }
+
+    function toggleExportMenu() {
+      const menu = document.getElementById('exportMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('exportMenu');
+      if (menu && !e.target.closest('.relative')) {
+        menu.classList.add('hidden');
+      }
+    });
+
+    function downloadExport(format) {
+      const token = localStorage.getItem('ic_admin_token');
+      if (!token) return;
+      window.location.href = `/api/stats/export?format=${format}&token=${token}`;
+    }
+
+    async function confirmResetStats() {
+      const promptVal = prompt('⚠️ ВНИМАНИЕ: Вы собираетесь стереть всю статистику просмотров и скачиваний!\n\nДля подтверждения введите в точности:\nRESET_INNER_CURRENT_STATS');
+      if (promptVal !== 'RESET_INNER_CURRENT_STATS') {
+        if (promptVal !== null) alert('Сброс отменен: неверная фраза подтверждения');
+        return;
+      }
+
+      const token = localStorage.getItem('ic_admin_token');
+      try {
+        const res = await fetch('/api/stats/reset', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+          },
+          body: JSON.stringify({ confirm: promptVal })
+        });
+        const data = await res.json();
+        if (data.success) {
+          alert('✅ Статистика успешно сброшена!');
+          loadDashboardData();
+          loadRecentEvents();
+        } else {
+          alert('Ошибка сброса: ' + data.error);
+        }
+      } catch (err) {
+        alert('Ошибка сети: ' + err.message);
+      }
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+  </script>
+</body>
+</html>

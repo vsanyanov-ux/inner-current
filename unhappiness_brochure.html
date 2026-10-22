@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Почему мы несчастны — Владимир Аньянов</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+  @page {
+    size: A4;
+    margin: 22mm 18mm 22mm 18mm;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 10.5pt;
+    line-height: 1.65;
+    color: #1e293b;
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* COVER STYLING */
+  .cover-page {
+    page-break-after: always;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25mm 15mm 20mm 15mm;
+    border: 1px solid #e2e8f0;
+    background: linear-gradient(145deg, #f8fafc 0%, #f1f5f9 100%);
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .cover-series {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 8.5pt;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #0284c7;
+    border-bottom: 2px solid #0284c7;
+    padding-bottom: 3mm;
+    display: inline-block;
+  }
+
+  .cover-hero {
+    margin: auto 0;
+  }
+
+  .cover-emblem {
+    width: 22mm;
+    height: 22mm;
+    color: #0369a1;
+    margin-bottom: 8mm;
+  }
+
+  .cover-author {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12pt;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #475569;
+    margin-bottom: 5mm;
+  }
+
+  .cover-title {
+    font-family: 'Cinzel', serif;
+    font-size: 28pt;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #0f172a;
+    letter-spacing: -0.01em;
+    margin-bottom: 6mm;
+  }
+
+  .cover-subtitle {
+    font-family: 'Lora', serif;
+    font-size: 12pt;
+    font-style: italic;
+    line-height: 1.5;
+    color: #334155;
+    max-width: 90%;
+    border-left: 3px solid #0284c7;
+    padding-left: 5mm;
+  }
+
+  .cover-footer {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 8pt;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #64748b;
+    border-top: 1px solid #cbd5e1;
+    padding-top: 4mm;
+  }
+
+  /* FRONTISPIECE */
+  .frontispiece {
+    page-break-after: always;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10mm;
+    text-align: center;
+  }
+
+  .frontispiece-quote {
+    font-family: 'Lora', serif;
+    font-size: 13pt;
+    font-style: italic;
+    line-height: 1.8;
+    color: #1e293b;
+    margin-bottom: 8mm;
+  }
+
+  .frontispiece-author {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10pt;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #0369a1;
+  }
+
+  /* HEADINGS */
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 20pt;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #0f172a;
+    margin-top: 0;
+    margin-bottom: 3mm;
+    text-align: center;
+    page-break-after: avoid;
+  }
+
+  h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13pt;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #0f172a;
+    margin-top: 8mm;
+    margin-bottom: 3mm;
+    border-bottom: 1.5px solid #e2e8f0;
+    padding-bottom: 2mm;
+    page-break-after: avoid;
+  }
+
+  h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11pt;
+    font-weight: 600;
+    color: #1e293b;
+    margin-top: 5mm;
+    margin-bottom: 2mm;
+    page-break-after: avoid;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 3.5mm;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  /* ASCII SCHEMATICS & CODE */
+  pre {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.8pt;
+    line-height: 1.35;
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 4mm 5mm;
+    border-radius: 2mm;
+    margin: 4mm 0;
+    white-space: pre;
+    overflow-x: auto;
+    page-break-inside: avoid;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5pt;
+    background: #f1f5f9;
+    color: #0f172a;
+    padding: 0.5mm 1.5mm;
+    border-radius: 1mm;
+  }
+
+  pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+
+  /* TABLES */
+  .table-wrapper {
+    margin: 5mm 0;
+    page-break-inside: avoid;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  th, td {
+    padding: 2.5mm 3.5mm;
+    border: 1px solid #cbd5e1;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    background: #f8fafc;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  /* CALLOUTS */
+  .callout {
+    margin: 5mm 0;
+    padding: 4mm 5mm;
+    border-radius: 2mm;
+    border-left: 4px solid #0284c7;
+    background: #f0f9ff;
+    page-break-inside: avoid;
+  }
+
+  .callout-quote {
+    border-left-color: #0284c7;
+    background: #f8fafc;
+    font-style: italic;
+  }
+
+  .callout-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 8.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #0369a1;
+    margin-bottom: 2mm;
+  }
+
+  .callout-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* CHAPTER BREAK */
+  .chapter-break {
+    page-break-before: always;
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background: #e2e8f0;
+    margin: 6mm 0;
+  }
+
+  ul, ol {
+    margin-top: 0;
+    margin-bottom: 4mm;
+    padding-left: 6mm;
+  }
+
+  li {
+    margin-bottom: 1.5mm;
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover-page">
+  <div class="cover-series">Манифест Контурной Электродинамики • Библиотека Inner Current</div>
+  <div class="cover-hero">
+    <svg class="cover-emblem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="12" y1="2" x2="12" y2="6"></line>
+      <line x1="12" y1="18" x2="12" y2="22"></line>
+      <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
+      <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+      <line x1="2" y1="12" x2="6" y2="12"></line>
+      <line x1="18" y1="12" x2="22" y2="12"></line>
+      <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
+      <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
+    </svg>
+    <div class="cover-author">Владимир Аньянов</div>
+    <div class="cover-title">ПОЧЕМУ МЫ<br>НЕСЧАСТНЫ</div>
+    <div class="cover-subtitle">Деконструкция дофаминового тупика, ошибка фонарика и возврат к замкнутому контуру: семь схемотехнических капканов человека и физика сверхпроводимости</div>
+  </div>
+  <div class="cover-footer">
+    <span>Архитектура Счастья • Дзен-Инженерия</span>
+    <span>Ростов-на-Дону • 2026</span>
+  </div>
+</div>
+
+<!-- FRONTISPIECE -->
+<div class="frontispiece">
+  <div class="frontispiece-quote">
+    «Несчастье современного человека — это не трагедия рока, не греховность природы и не неизлечимая душевная травма. Это элементарная безграмотность пользователя при эксплуатации бортового оборудования. Человек считает собой раскалённый балластный резистор эго, счастьем называет аварийные искры дофаминового пробоя, а свой внутренний фонарик выворачивает внутрь, слепя собственные глаза опережающим судом. Стоит начертить принципиальную схему контура и восстановить законы электродинамики, как страдание прекращается: счастье — это не внешний трофей, а естественный режим сверхпроводимости замкнутой цепи.»
+  </div>
+  <div class="frontispiece-author">Владимир Аньянов</div>
+</div>
+
+<!-- CONTENT -->
+<h1>ПОЧЕМУ МЫ НЕСЧАСТНЫ: ДЕКОНСТРУКЦИЯ ДОФАМИНОВОГО ТУПИКА, ОШИБКА ФОНАРИКА И ВОЗВРАТ К ЗАМКНУТОМУ КОНТУРУ</h1>
+<h2>Инженерный манифест человеческого благополучия: Семь схемотехнических капканов цивилизации, анатомия омического ада и физика сверхпроводимости бытия</h2>
+<div class="callout callout-quote"><div class="callout-title">Генеральная аксиома контурной онтологии</div><div class="callout-body"><h3>⚡ <strong>«Несчастье современного человека — это не трагедия рока, не греховность природы и не неизлечимая душевная травма. Это элементарная безграмотность пользователя при эксплуатации бортового оборудования. Человек считает собой раскалённый балластный резистор эго, счастьем называет аварийные искры дофаминового пробоя, а свой внутренний фонарик выворачивает внутрь, слепя собственные глаза опережающим судом. Стоит начертить принципиальную схему контура и восстановить законы электродинамики, как страдание прекращается: счастье — это не внешний трофей, а естественный режим сверхпроводимости замкнутой цепи.»</strong></h3>
+<p>— <strong>Владимир Аньянов</strong></p></div></div>
+
+<hr />
+<h2>🧭 Принципиальная схема: Авария цивилизации vs Сверхпроводимость</h2>
+<div class="codehilite"><pre><span></span><code><span class="o">========================================================================================</span>
+<span class="mf">1.</span><span class="w"> </span><span class="err">АВАРИЙНЫЙ</span><span class="w"> </span><span class="err">РЕЖИМ</span><span class="w"> </span><span class="err">СОВРЕМЕННОГО</span><span class="w"> </span><span class="err">ЧЕЛОВЕКА</span><span class="p">:</span><span class="w"> </span><span class="err">«ОМИЧЕСКИЙ</span><span class="w"> </span><span class="err">АД</span><span class="w"> </span><span class="err">И</span><span class="w"> </span><span class="err">ДОФАМИНОВЫЙ</span><span class="w"> </span><span class="err">ТУПИК»</span>
+<span class="o">========================================================================================</span>
+<span class="w">           </span><span class="p">[</span><span class="err">ГЕНЕРАТОР</span><span class="w"> </span><span class="err">ТАНДЭН</span><span class="p">]</span>
+<span class="w">            </span><span class="p">(</span><span class="err">Забытый</span><span class="w"> </span><span class="err">источник</span><span class="p">)</span>
+<span class="w">                   </span><span class="err">│</span>
+<span class="w">                   </span><span class="err">▼</span><span class="w"> </span><span class="err">Ток</span><span class="w"> </span><span class="err">внимания</span><span class="w"> </span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+<span class="w">  </span><span class="err">═════════════════╧═════════════════</span>
+<span class="w">  </span><span class="err">ШИНА</span><span class="w"> </span><span class="err">ВНИМАНИЯ</span><span class="p">:</span><span class="w"> </span><span class="err">ИЗОГНУТА</span><span class="w"> </span><span class="err">И</span><span class="w"> </span><span class="err">РАЗОРВАНА</span>
+<span class="w">  </span><span class="p">[</span><span class="n">L_past</span><span class="p">:</span><span class="w"> </span><span class="err">Вина</span><span class="p">]</span><span class="w"> </span><span class="err">──</span><span class="w"> </span><span class="p">[</span><span class="n">C_future</span><span class="p">:</span><span class="w"> </span><span class="err">Тревога</span><span class="p">]</span><span class="w"> </span><span class="err">──</span><span class="w"> </span><span class="p">[</span><span class="n">H_judge</span><span class="p">:</span><span class="w"> </span><span class="err">Чужой</span><span class="w"> </span><span class="err">суд</span><span class="p">]</span>
+<span class="w">                   </span><span class="err">│</span>
+<span class="w">                   </span><span class="err">▼</span>
+<span class="w">       </span><span class="p">[</span><span class="err">БАЛЛАСТНЫЙ</span><span class="w"> </span><span class="err">РЕЗИСТОР</span><span class="w"> </span><span class="err">ЭГО</span><span class="p">:</span><span class="w"> </span><span class="n">R_ego</span><span class="w"> </span><span class="err">≫</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span><span class="w">  </span><span class="err">◄───</span><span class="w"> </span><span class="err">«ЭТО</span><span class="w"> </span><span class="err">ЖЕ</span><span class="w"> </span><span class="err">Я</span><span class="o">!</span><span class="err">»</span><span class="w"> </span><span class="err">❌</span><span class="w"> </span><span class="p">(</span><span class="err">Ошибка</span><span class="w"> </span><span class="err">№</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">                   </span><span class="err">│</span>
+<span class="w">         </span><span class="err">┌─────────┴─────────┐</span>
+<span class="w">         </span><span class="err">▼</span><span class="w">                   </span><span class="err">▼</span>
+<span class="w">   </span><span class="err">ОМИЧЕСКИЙ</span><span class="w"> </span><span class="err">ПОЖАР</span><span class="w">      </span><span class="err">ДОФАМИНОВЫЙ</span><span class="w"> </span><span class="err">ПРОБОЙ</span>
+<span class="w">  </span><span class="n">Q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">I²</span><span class="w"> </span><span class="err">·</span><span class="w"> </span><span class="n">R_ego</span><span class="w"> </span><span class="err">·</span><span class="w"> </span><span class="n">t</span><span class="w">     </span><span class="p">(</span><span class="err">Искровой</span><span class="w"> </span><span class="err">спайк</span><span class="p">:</span><span class="w"> </span><span class="err">рилсы</span><span class="p">,</span><span class="w"> </span><span class="err">сахар</span><span class="p">,</span><span class="w"> </span><span class="err">покупки</span><span class="p">)</span>
+<span class="w"> </span><span class="p">(</span><span class="err">Тревога</span><span class="p">,</span><span class="w"> </span><span class="err">бессонница</span><span class="p">,</span><span class="w">         </span><span class="err">│</span>
+<span class="w">   </span><span class="err">невроз</span><span class="p">,</span><span class="w"> </span><span class="err">выгорание</span><span class="p">)</span><span class="w">          </span><span class="err">▼</span>
+<span class="w">                        </span><span class="err">ОТКАТ</span><span class="w"> </span><span class="err">И</span><span class="w"> </span><span class="err">ПУСТОТА</span>
+<span class="w">                   </span><span class="p">(</span><span class="err">Даунрегуляция</span><span class="w"> </span><span class="err">рецепторов</span><span class="p">)</span>
+<span class="w">                   </span><span class="err">│</span>
+<span class="w">                   </span><span class="err">▼</span>
+<span class="w">     </span><span class="p">[</span><span class="err">ЛУЧ</span><span class="w"> </span><span class="err">ФОНАРИКА</span><span class="w"> </span><span class="err">ВЫВЕРНУТ</span><span class="w"> </span><span class="err">В</span><span class="w"> </span><span class="err">ГЛАЗ</span><span class="p">]</span><span class="w"> </span><span class="err">◄────────────</span><span class="w"> </span><span class="err">Ошибка</span><span class="w"> </span><span class="err">№</span><span class="mi">2</span><span class="w"> </span><span class="p">(</span><span class="err">Самосуд</span><span class="w"> </span><span class="n">DMN</span><span class="p">)</span>
+<span class="w">                   </span><span class="err">│</span>
+<span class="w">                   </span><span class="err">▼</span><span class="w"> </span>
+<span class="w">           </span><span class="err">РАЗОМКНУТАЯ</span><span class="w"> </span><span class="err">ЦЕПЬ</span>
+<span class="w">        </span><span class="p">(</span><span class="err">Цифровой</span><span class="w"> </span><span class="err">аутизм</span><span class="p">,</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="err">◄───────────────</span><span class="w"> </span><span class="err">Ошибка</span><span class="w"> </span><span class="err">№</span><span class="mi">3</span><span class="w"> </span><span class="p">(</span><span class="err">Нет</span><span class="w"> </span><span class="err">контакта</span><span class="w"> </span><span class="err">с</span><span class="w"> </span><span class="err">миром</span><span class="p">)</span>
+
+
+<span class="o">========================================================================================</span>
+<span class="mf">2.</span><span class="w"> </span><span class="err">ШТАТНЫЙ</span><span class="w"> </span><span class="err">РЕЖИМ</span><span class="w"> </span><span class="err">СВЕРХПРОВОДИМОСТИ</span><span class="p">:</span><span class="w"> </span><span class="err">«СИСТЕМА</span><span class="w"> </span><span class="err">ВНУТРЕННЕГО</span><span class="w"> </span><span class="err">ТОКА»</span>
+<span class="o">========================================================================================</span>
+<span class="w">           </span><span class="p">[</span><span class="err">ГЕНЕРАТОР</span><span class="w"> </span><span class="err">ТАНДЭН</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="err">丹田</span><span class="p">)</span>
+<span class="w">           </span><span class="p">(</span><span class="err">Биологический</span><span class="w"> </span><span class="err">реактор</span><span class="p">,</span><span class="w"> </span><span class="err">ℰ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">const</span><span class="p">)</span>
+<span class="w">                   </span><span class="err">│</span>
+<span class="w">                   </span><span class="err">▼</span><span class="w"> </span><span class="err">Чистый</span><span class="w"> </span><span class="err">ламинарный</span><span class="w"> </span><span class="err">ток</span>
+<span class="w">  </span><span class="err">═════════════════╧═════════════════</span>
+<span class="w">  </span><span class="err">ШИНА</span><span class="w"> </span><span class="err">ВНИМАНИЯ</span><span class="w"> </span><span class="err">В</span><span class="w"> </span><span class="err">РЕЖИМЕ</span><span class="w"> </span><span class="err">МУСИН</span><span class="w"> </span><span class="p">(</span><span class="err">無心</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="n">R</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">паразиты</span><span class="w"> </span><span class="err">отключены</span><span class="p">,</span><span class="w"> </span><span class="err">чистый</span><span class="w"> </span><span class="err">срез</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">now</span><span class="p">)</span>
+<span class="w">                   </span><span class="err">│</span>
+<span class="w">                   </span><span class="err">├──────────────────────────────┐</span>
+<span class="w">                   </span><span class="err">│</span><span class="w">                              </span><span class="err">│</span>
+<span class="w">                   </span><span class="err">▼</span><span class="w">                              </span><span class="err">▼</span>
+<span class="w">      </span><span class="p">[</span><span class="err">БАЛЛАСТ</span><span class="w"> </span><span class="n">R_ego</span><span class="w"> </span><span class="err">ШУНТИРОВАН</span><span class="p">]</span><span class="w">        </span><span class="p">[</span><span class="err">ПРЯМОЙ</span><span class="w"> </span><span class="err">ЛУЧ</span><span class="w"> </span><span class="err">ФОНАРИКА</span><span class="p">]</span>
+<span class="w">       </span><span class="p">(</span><span class="err">Клинок</span><span class="w"> </span><span class="err">Кансо</span><span class="p">:</span><span class="w"> </span><span class="n">R_ego</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">         </span><span class="p">(</span><span class="err">Освещает</span><span class="w"> </span><span class="err">дело</span><span class="p">,</span><span class="w"> </span><span class="err">а</span><span class="w"> </span><span class="err">не</span><span class="w"> </span><span class="err">судит</span><span class="w"> </span><span class="err">себя</span><span class="p">)</span>
+<span class="w">        </span><span class="err">потери</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">КПД</span><span class="w"> </span><span class="err">η</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="o">%</span><span class="p">)</span><span class="w">               </span><span class="err">│</span>
+<span class="w">                   </span><span class="err">│</span><span class="w">                              </span><span class="err">▼</span>
+<span class="w">                   </span><span class="err">│</span><span class="w">                   </span><span class="p">[</span><span class="err">ШЕСТЬ</span><span class="w"> </span><span class="err">ЛАМП</span><span class="w"> </span><span class="err">НАГРУЗКИ</span><span class="p">]</span>
+<span class="w">                   </span><span class="err">│</span><span class="w">                   </span><span class="p">(</span><span class="err">Труд</span><span class="p">,</span><span class="w"> </span><span class="err">Творчество</span><span class="p">,</span><span class="w"> </span><span class="err">Близкие</span><span class="p">,</span><span class="w"> </span><span class="err">Быт</span><span class="p">)</span>
+<span class="w">                   </span><span class="err">│</span><span class="w">                              </span><span class="err">│</span>
+<span class="w">                   </span><span class="err">└──────────────┬───────────────┘</span>
+<span class="w">                                  </span><span class="err">│</span>
+<span class="w">                                  </span><span class="err">▼</span>
+<span class="w">                  </span><span class="err">ОБРАТНЫЙ</span><span class="w"> </span><span class="err">ПРОВОД</span><span class="w"> </span><span class="err">РЕАЛЬНОСТИ</span><span class="w"> </span><span class="p">(</span><span class="err">ДЭАЙ</span><span class="p">,</span><span class="w"> </span><span class="err">出会い</span><span class="p">)</span>
+<span class="w">                   </span><span class="p">(</span><span class="err">Замкнутый</span><span class="w"> </span><span class="err">контур</span><span class="w"> </span><span class="err">Кирхгофа</span><span class="p">:</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">Ток</span><span class="w"> </span><span class="err">течёт</span><span class="o">!</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<div class="chapter-break"></div>
+<h2>Часть I. Великий цивилизационный парадокс: Сытый век и омический ад души</h2>
+<p>XXI век решил практически все материальные проблемы, терзавшие человечество на протяжении сотен поколений. Человек спит в тёплом жилье, не умирает от холеры, заказывает еду нажатием кнопки смартфона и перемещается по воздуху быстрее звука. Казалось бы, наступила эпоха абсолютного триумфа и безмятежности.</p>
+<p>Однако статистика фиксирует небывалую катастрофу:<br />
+- Взрывной рост депрессивных расстройств и панических атак;<br />
+- Хроническая фоновая тревожность у 80% городского населения;<br />
+- Эпидемия скрытого выгорания, ангедонии и чувства экзистенциальной пустоты;<br />
+- Миллиарды людей, просыпающихся утром с глухим нежеланием жить этот день.</p>
+<p><strong>Почему сытый, защищённый и вооружённый технологиями человек глубинно несчастлив?</strong></p>
+<p>Гуманитарная культура и коммерческая психология дают на этот вопрос тысячи уклончивых ответов: они винят «детские травмы», «недостаток осознанности», «токсичное окружение» или «нехватку ресурсов». Но это лишь птолемеевы эпициклы — попытки объяснить системный сбой нагромождением туманных слов.</p>
+<p>В Архитектуре Внутреннего Тока действует <strong>Закон Мультипликатора Жизни</strong>:<br />
+$$\text{Качество Бытия} = \text{Материальный Комфорт} \times \mathcal{H}_{\text{контура}}$$</p>
+<p>Где $\mathcal{H}_{\text{контура}}$ — коэффициент полезного действия внутреннего проводника ($0 \le \mathcal{H} \le 1$). Если внутренний контур человека сломан, перегрет и закорочен на эго, его КПД стремится к нулю ($\mathcal{H} \to 0$). Умножение комфортных апартаментов, спортивного автомобиля и высокого дохода на ноль неизбежно даёт <strong>ноль</strong>.</p>
+<p>Несчастье — это не моральный дефект и не злой рок. Это <strong>точный схемотехнический сбой</strong>, возникший из-за того, что человек допустил критические ошибки в управлении собственной бортовой цепью.</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>Часть II. Фатальная ошибка №1: Отождествление с паразитным резистором $R_{\text{ego}}$</h2>
+<p>Центральная трагедия человеческого сознания коренится в фатальной ошибке самоидентификации: <strong>человек считает собой то, что в действительности является лишь сопротивлением в цепи.</strong></p>
+<p>В электродинамике закон Джоуля — Ленца неумолим:<br />
+$$Q = I^2 \cdot R \cdot t$$<br />
+Количество паразитного тепла $Q$, выделяющегося в цепи, пропорционально квадрату силы тока $I$, величине сопротивления $R$ и времени $t$.</p>
+<p>Когда ток внимания натыкается на искусственный ментальный конструкт — образ «Я» (мысли о собственной важности, уязвлённую гордость, обиду, зависть, страх выглядеть нелепо) — в цепь врезается паразитное сопротивление: <strong>резистор эго ($R_{\text{ego}}$)</strong>. </p>
+<h3>Анатомия соматического обмана</h3>
+<p>Ток пытается пройти, проводник нагревается. В теле этот нагрев проявляется физически:<br />
+- Спазм в солнечном сплетении и ком в горле;<br />
+- Дрожь в руках и ожёг уязвлённого самолюбия;<br />
+- Бешеный хоровод мыслей в дефолт-системе мозга (DMN);<br />
+- Хроническое мышечное напряжение челюстей и плеч.</p>
+<p>И в этот момент мозг первобытного человека совершает роковой эволюционный вывод:</p>
+<blockquote>
+<p><em>«Там, где сильнее всего горит, пульсирует и болит — там и есть центр моего существования. Раз эта штука так громко вопит о себе — значит, это и есть Я!»</em></p>
+</blockquote>
+<p>Это чудовищная ошибка категории. Считать себя своим эго — всё равно что радиоинженеру перепутать всю схему радиоприёмника с нагревшимся и дымящимся резистором балласта. </p>
+<p>Вся индустрия популярной психотерапии веками паразитирует на этой ошибке: вместо того чтобы разомкнуть цепь или шунтировать сопротивление, человеку предлагают годами «исследовать» свой греющийся резистор, гладить его, оправдывать детскими травмами и подбирать под него вентиляторы. Но пока $R_{\text{ego}} &gt; 0$, любая попытка жить неизбежно превращается в омический пожар.</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>Часть III. Дофаминовый искровой тупик: Подмена счастья удовольствием</h2>
+<p>Вторая фатальная ловушка современного мира — катастрофическая подмена категорий, при которой кратковременный биохимический импульс выдаётся за счастье.</p>
+<p>Когда обывателя спрашивают: <em>«Что такое счастье?»</em>, он почти всегда отвечает культурным штампом: <em>«У каждого своё: кто-то любит рыбалку, а кто-то есть жареные орехи»</em>. В этой реплике обнажается полная капитуляция мысли. Человек путает <strong>сенсорный раздражитель рецепторов</strong> с <strong>режимом проводимости проводника</strong>.</p>
+<h3>Размежевание: Дофаминовый спайк vs Сверхпроводимость контура</h3>
+<div class="codehilite"><pre><span></span><code>                        [ДОФАМИНОВЫЙ ТУПИК: HEDONIA]
+       Стимул           Искровой пробой             Откат ниже нуля
+    (Рилс / Сахар / ───►  (Дофаминовый   ───► (Ангедония, голод, пустота,
+      Шопинг)                спайк)              «Хочу ещё больше!»)
+        │                      │                         │
+   БРАТЬ / ЖРАТЬ        ДИСКРЕТНЫЙ РАЗРЯД       СЕНСОРНАЯ ИГЛА И ИЗНОС
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                     [ВНУТРЕННИЙ ТОК: EUDAIMONIA]
+     Генератор Тандэн       Шина Мусин (R → 0)       Полезная нагрузка
+    (Автономная ЭДС)  ───► (Сверхпроводимость) ───► (Свет шести ламп)
+        │                      │                         │
+      БЫТЬ / СОЗИДАТЬ        ЛАМИНАРНЫЙ ПОТОК        ВНУТРЕННИЙ СУВЕРЕНИТЕТ
+</code></pre></div>
+
+<ol>
+<li><strong>Биохимическая природа:</strong></li>
+<li><em>Удовольствие (Pleasure)</em> работает на <strong>дофамине</strong> — молекуле поиска, вожделения и ненасытности. Дофамин эволюционно не предназначен для покоя; его задача — заставить особь бежать за стимулом. После каждого спайка уровень дофамина падает <em>ниже</em> исходной базовой линии.</li>
+<li><em>Счастье (Superconductivity)</em> обеспечивается стабильным серотониново-окситоциновым фоном и нормализацией тонуса блуждающего нерва (Vagus nerve). Это состояние ровного, чистого присутствия, свободного от жажды.</li>
+<li><strong>Вектор энергии:</strong></li>
+<li>Удовольствие — это вектор <strong>«внутрь»</strong> (потребить, поглотить, захватить). Это психология черной дыры.</li>
+<li>Счастье — это вектор <strong>«наружу»</strong> (провести ток из Тандэна через руки, глаза и внимание в полезную работу и любовь).</li>
+<li><strong>Ловушка толерантности:</strong></li>
+<li>К удовольствиям неизбежно нарастает рецепторная толерантность: двадцать пятый орех не приносит радости, а сотый рилс вызывает лишь отупение и тошноту.</li>
+<li>Сверхпроводимостью невозможно пресытиться. Нельзя устать от ясного ума, глубокого дыхания и чистого вкуса родниковой воды.</li>
+</ol>
+<p>Современный человек несчастлив, потому что живет на дофаминовой помойке: он пытается склеить разрушенное здание счастья из миллиона искровых микропробоев, сжигая свою нервную систему и удивляясь, почему внутри разрастается ледяная пустота.</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>Часть IV. Онтология карманного фонарика: Батарейная слепота и вывернутый луч</h2>
+<p>Чтобы понять архитектонику человека, Владимир Аньянов сформулировал строгую <strong>модель карманного фонарика</strong>.</p>
+<p>Фонарик состоит из пяти фундаментальных элементов:<br />
+1. <strong>Батарейка</strong> — внутренний генератор соматической ЭДС (Тандэн);<br />
+2. <strong>Проводка</strong> — шина внимания без сопротивления (Мусин);<br />
+3. <strong>Выключатель / Рубильник</strong> — разотождествление с эго;<br />
+4. <strong>Лампочка</strong> — точки соприкосновения с реальностью (Шесть ламп нагрузки);<br />
+5. <strong>Луч света</strong> — направленный вектор внимания и действия.</p>
+<p>В этой оптике вскрываются две сокрушительные иллюзии, разрушающие жизнь людей:</p>
+<h3>1. Ошибка освещённого предмета («Батарейная слепота»)</h3>
+<p>Человек направляет луч фонарика в тёмной комнате на антикварную фарфоровую вазу. Ваза озаряется золотистым сиянием. Человек замирает в восторге и падает на колени: <em>«О, священная ваза! Ты источник неземного света! Если ты разобьёшься, я умру во тьме!»</em>.</p>
+<p>Он совершает безумную ошибку атрибуции: приписывает освещённому объекту свойство самого источника света. В реальной жизни люди проделывают это непрерывно:<br />
+- Влюбляются и верят, что «партнёр излучает счастье» (хотя свет излучал их собственный открытый контур);<br />
+- Покупают статусную вещь и верят, что «часы или машина дарят уверенность»;<br />
+- Занимают кресло начальника и верят, что «должность даёт силу бытия».</p>
+<p>Когда внешний предмет ломается, уходит или тускнеет, человек впадает в отчаяние. Он тратит десятилетия на погоню за чужими поверхностями, слепой к тому, что <strong>генератор света находится внутри его собственного корпуса</strong>.</p>
+<h3>2. Катастрофа вывернутого луча (Самоедство и суд DMN)</h3>
+<p>Но ещё страшнее вторая оптическая ошибка: когда человек разворачивает рефлектор фонарика <strong>внутрь самого себя</strong>.</p>
+<p>Вместо того чтобы освещать дорогу перед собой, класть кирпичи, писать код, обнимать детей или готовить ужин, человек направляет весь мегаваттный луч внимания на внутреннюю механику:<br />
+- <em>«А достаточно ли я хорош?»</em><br />
+- <em>«А что обо мне подумали?»</em><br />
+- <em>«А правильную ли позу я сейчас занимаю?»</em><br />
+- <em>«А счастлив ли я прямо сейчас?»</em></p>
+<p>В электродинамике этот режим называется <strong>ослеплением опережающим судом эго</strong>. Фокусировка луча внутрь раскаляет элементы цепи, превращая внимание в паяльную лампу, выжигающую собственное нутро. Человек слепнет от собственного света и спотыкается на ровном месте.</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>Часть V. Квадратичная ловушка воли и триада заломов проводки</h2>
+<p>Когда человек чувствует, что несчастлив, слаб или дело разваливается, массовая культура предлагает ему универсальный рецепт: <strong>«Прояви железную волю! Соберись! Жми сильнее!»</strong>.</p>
+<p>Это самый опасный совет, который только можно дать существу с неуравновешенным контуром.</p>
+<h3>Почему воля сжигает проводку?</h3>
+<p>Вернёмся к формуле Джоуля — Ленца: $Q = I^2 \cdot R \cdot t$.<br />
+Обратите внимание на показатель степени: <strong>ток внимания возведён в квадрат ($I^2$)!</strong></p>
+<p>Если сопротивление эго не снято ($R &gt; 0$ — внутри сидят страх, перфекционизм, обида или сомнение), то увеличение волевого усилия (рост силы тока $I$) даёт <strong>квадратичный взрыв омического перегрева</strong>:<br />
+- Увеличили волю в 2 раза — нагрев проводки вырос в <strong>4 раза</strong>;<br />
+- Увеличили волю в 3 раза — нагрев подскочил в <strong>9 раз</strong>;<br />
+- Нажали «на пределе сил» в 5 раз — омический пожар взлетел в <strong>25 раз</strong>!</p>
+<p>Именно поэтому волевые, дисциплинированные лидеры, бизнесмены и перфекционисты выгорают до состояния пепла. Они пытались пробить стену напором тока при закрытом заломе шланга. Они сгорели не от слабости, а от незнания законов электродинамики.</p>
+<h3>Триада паразитных заломов проводки</h3>
+<p>Что именно создаёт сопротивление $R_{\text{ego}}$? Триада хронических реактивных заломов внимания:</p>
+<ol>
+<li><strong>Индуктивность прошлого ($L_{\text{past}}$) — Вина и Обида:</strong><br />
+   Внимание застряло в событиях, которых физически больше не существует. Ум бесконечно прокручивает диалоги пятилетней давности, переваривает несправедливость и корит себя за ошибки. Энергия уходит в тепловой шум памяти.</li>
+<li><strong>Ёмкость будущего ($C_{\text{future}}$) — Контроль и Тревога:</strong><br />
+   Паническая попытка контролировать неопределённость завтрашнего дня. Расчёты катастрофических сценариев, напряжённое ожидание проверок, страх бедности и старости. Контур накапливает паразитный статический заряд, блокирующий действие.</li>
+<li><strong>Поперечная утечка ($H_{\text{judge}}$) — Жажда одобрения и страх суда:</strong><br />
+   Внимание ориентировано на то, «что скажут люди». В цепь врезан параллельный шунт, сбрасывающий потенциал души в чужие мнения. Человек живёт чужой жизнью, превращаясь в раба социального эхо.</li>
+</ol>
+<p>В результате в единственной точке, где существует реальность и возможно действие — <strong>в точке «Здесь и сейчас» ($t = \text{now}$)</strong> — полезный ток падает до нуля ($I_{\text{useful}} \approx 0$).</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>Часть VI. Разомкнутая цепь: Цифровой аутизм против обратного провода реальности (Дэай)</h2>
+<p>Фундаментальный физический закон гласит: <strong>ток может течь только в замкнутом контуре.</strong> В разомкнутой цепи, какова бы ни была электродвижущая сила генератора, ток равен нулю:<br />
+$$I = 0$$</p>
+<p>Величайший прорыв Системы Аньянова заключается в обнаружении <strong>обратного провода реальности — принципа Дэай (出会い)</strong>.</p>
+<p>Тысячелетиями линейные философские модели учили человека «отдавать себя без остатка» (жертвенный миф Данко, выжигающий сердце) либо «накапливать благодать внутри» (монашеский эскапизм). Обе модели ошибочны:<br />
+- Первая ведёт к перегоранию генератора;<br />
+- Вторая — к застою и саморазряду.</p>
+<div class="codehilite"><pre><span></span><code>       [ЛИНЕЙНАЯ МОДЕЛЬ ВЫГОРАНИЯ]                [ЗАМКНУТЫЙ КОНТУР АНЬЯНОВА]
+           (Иллюзия Данко ❌)                       (Сверхпроводимость ⚡)
+
+      Генератор ───► Отдача в никуда             Генератор ───► Нагрузка (Шесть ламп)
+   (Сгорает дотла, обратки нет)                     ▲                     │
+                                                    │   ОБРАТНЫЙ ПРОВОД   │
+                                                    └─── РЕАЛЬНОСТИ (ДЭАЙ) ◄┘
+                                                       (Подпитка и баланс)
+</code></pre></div>
+
+<h3>Трагедия разомкнутого контура в эпоху гаджетов</h3>
+<p>Современный человек часами сидит в смартфоне. На что уходит его внимание? На виртуальные фантомы: споры в комментариях, просмотр чужих жизней, чтение чужих новостей. </p>
+<p>В этом процессе отсутствует <strong>обратный соматический провод реальности</strong>:<br />
+- Палец скользит по гладкому холодному стеклу;<br />
+- Мышцы тела неподвижны;<br />
+- Физического преобразования материи не происходит;<br />
+- Обратной связи от живого мира нет.</p>
+<p>Цепь размыкается. Мощный заряд энергии, рождённый биологическим реактором Тандэн, оказывается заперт в черепной коробке. Энергии некуда течь. Не находя выхода в материальное действие, она начинает пожирать саму нервную систему: наступает фаза соматического застоя — ступор, апатия, утренняя разбитость и хроническая прокрастинация.</p>
+<p>Ток оживает только тогда, когда контур <strong>замыкается через прямой материальный контакт (Дэай)</strong>: удар молотка по гвоздю, замешивание теста, мытьё машины на автомойке, шаг по мокрой траве, честный взгляд в глаза собеседнику. Реальность замыкает цепь — и ток начинает течь без потерь!</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>Часть VII. Апофатический прорыв Кансо: Счастье как режим, а не трофей</h2>
+<p>Из всего сказанного с неумолимой математической строгостью вытекает главный вывод новой науки о человеке:</p>
+<blockquote>
+<p><strong>Счастья нельзя достичь. Счастье нельзя заработать. Счастье нельзя заслужить подвигами, купить за деньги или вымолить у небес.</strong></p>
+</blockquote>
+<p>Почему? Потому что счастье — это не внешний предмет, не трофей и не награда за праведность. <strong>Счастье — это естественное базовое состояние исправной цепи при нулевом сопротивлении ($R \to 0$).</strong></p>
+<p>Это древний принцип <strong>Кансо (簡素)</strong> — радикального очищения, и апофатический метод <strong>Via Negativa (Neti Neti)</strong>:<br />
+- Мы не создаём проводимость меди искусственно — мы лишь убираем оксидную плёнку с контактов;<br />
+- Мы не изобретаем свет заново — мы лишь снимаем непроницаемую заслонку с лампы;<br />
+- Мы не «ищем счастье» — мы перестаём пережигать цепь бессмысленным омическим трением эго.</p>
+<h3>Формула КПД счастья Аньянова</h3>
+<p>КПД человеческого контура рассчитывается однозначно:<br />
+$$\mathcal{H} = \frac{P_{\text{load}}}{P_{\text{total}}} = \frac{I^2 R_{\text{load}}}{I^2 R_{\text{load}} + I^2 R_{\text{ego}}} = \frac{R_{\text{load}}}{R_{\text{load}} + R_{\text{ego}}}$$</p>
+<p>Если паразитное сопротивление эго сведено к нулю ($R_{\text{ego}} \to 0$):<br />
+$$\mathcal{H} \to \frac{R_{\text{load}}}{R_{\text{load}}} = 1 \quad (100\%)$$</p>
+<p>Вся энергия генератора без единого ватта потерь идёт на полезную работу: на радость восприятия, на искренность отношений, на мастерство в ремесле, на здоровье биологического тела. Человек входит в режим <strong>сверхпроводимости (Мусин, 無心)</strong>. В этом режиме нет вопроса «в чём смысл жизни?», как у чистой реки нет вопроса «в чём смысл течения?». Река просто течёт.</p>
+<hr />
+<div class="chapter-break"></div>
+<h2>⏱️ Практический алгоритм оператора: Экспресс-протокол «Тандэн — Ноль — Поток» (30–60 секунд)</h2>
+<p>Когда вы чувствуете, что вас накрывает волна несчастья, тревоги, обиды или выгорания, не вступайте в полемику с мыслями. Примените строгий инженерный протокол калибровки контура:</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">[</span><span class="nx">ШАГ</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="nx">ТЕЛЕМЕТРИЯ</span><span class="w"> </span><span class="nx">ТЕЛА</span><span class="cp">]</span><span class="w"> </span><span class="o">(</span><span class="nt">5</span><span class="w"> </span><span class="nt">сек</span><span class="o">)</span>
+<span class="nt">Зафиксируйте</span><span class="w"> </span><span class="nt">омический</span><span class="w"> </span><span class="nt">нагрев</span><span class="o">:</span><span class="w"> </span><span class="nt">где</span><span class="w"> </span><span class="nt">жмёт</span><span class="o">?</span><span class="w"> </span><span class="nt">Ком</span><span class="w"> </span><span class="nt">в</span><span class="w"> </span><span class="nt">горле</span><span class="o">?</span><span class="w"> </span><span class="nt">Спазм</span><span class="w"> </span><span class="nt">челюсти</span><span class="o">?</span>
+<span class="nt">Осознайте</span><span class="w"> </span><span class="nt">формулу</span><span class="o">:</span><span class="w"> </span><span class="err">«</span><span class="nt">Это</span><span class="w"> </span><span class="nt">не</span><span class="w"> </span><span class="nt">Я</span><span class="o">.</span><span class="w"> </span><span class="nt">Это</span><span class="w"> </span><span class="nt">горит</span><span class="w"> </span><span class="nt">паразитный</span><span class="w"> </span><span class="nt">резистор</span><span class="w"> </span><span class="nt">R_ego</span><span class="err">»</span><span class="o">.</span>
+
+<span class="w">                  </span><span class="err">▼</span>
+<span class="cp">[</span><span class="nx">ШАГ</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="nx">СОМАТИЧЕСКИЙ</span><span class="w"> </span><span class="nx">СБРОС</span><span class="w"> </span><span class="nx">В</span><span class="w"> </span><span class="nx">ТАНДЭН</span><span class="cp">]</span><span class="w"> </span><span class="o">(</span><span class="nt">15</span><span class="w"> </span><span class="nt">сек</span><span class="o">)</span>
+<span class="nt">Перенесите</span><span class="w"> </span><span class="nt">всё</span><span class="w"> </span><span class="nt">внимание</span><span class="w"> </span><span class="nt">из</span><span class="w"> </span><span class="nt">головы</span><span class="w"> </span><span class="nt">в</span><span class="w"> </span><span class="nt">точку</span><span class="w"> </span><span class="nt">на</span><span class="w"> </span><span class="nt">3-4</span><span class="w"> </span><span class="nt">см</span><span class="w"> </span><span class="nt">ниже</span><span class="w"> </span><span class="nt">пупка</span><span class="w"> </span><span class="o">(</span><span class="nt">Тандэн</span><span class="o">).</span>
+<span class="nt">Сделайте</span><span class="w"> </span><span class="nt">глубокий</span><span class="w"> </span><span class="nt">диафрагмальный</span><span class="w"> </span><span class="nt">вдох</span><span class="w"> </span><span class="nt">животом</span><span class="o">.</span><span class="w"> </span><span class="nt">Расправьте</span><span class="w"> </span><span class="nt">плечи</span><span class="o">.</span>
+<span class="nt">Отпустите</span><span class="w"> </span><span class="nt">челюсть</span><span class="o">.</span><span class="w"> </span><span class="nt">Генератор</span><span class="w"> </span><span class="nt">вернулся</span><span class="w"> </span><span class="nt">в</span><span class="w"> </span><span class="nt">центр</span><span class="w"> </span><span class="nt">масс</span><span class="o">.</span>
+
+<span class="w">                  </span><span class="err">▼</span>
+<span class="cp">[</span><span class="nx">ШАГ</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="nx">ШУНТИРОВАНИЕ</span><span class="w"> </span><span class="nx">БАЛЛАСТА</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="nx">КЛИНОК</span><span class="w"> </span><span class="nx">КАНСО</span><span class="cp">]</span><span class="w"> </span><span class="o">(</span><span class="nt">10</span><span class="w"> </span><span class="nt">сек</span><span class="o">)</span>
+<span class="nt">Отключите</span><span class="w"> </span><span class="nt">триаду</span><span class="w"> </span><span class="nt">заломов</span><span class="o">:</span>
+<span class="nt">-</span><span class="w"> </span><span class="nt">Прошлое</span><span class="w"> </span><span class="nt">не</span><span class="w"> </span><span class="nt">вернуть</span><span class="w"> </span><span class="o">(</span><span class="nt">L_past</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nt">0</span><span class="o">);</span>
+<span class="nt">-</span><span class="w"> </span><span class="nt">Будущее</span><span class="w"> </span><span class="nt">ещё</span><span class="w"> </span><span class="nt">не</span><span class="w"> </span><span class="nt">наступило</span><span class="w"> </span><span class="o">(</span><span class="nt">C_future</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nt">0</span><span class="o">);</span>
+<span class="nt">-</span><span class="w"> </span><span class="nt">Суд</span><span class="w"> </span><span class="nt">чужих</span><span class="w"> </span><span class="nt">людей</span><span class="w"> </span><span class="nt">не</span><span class="w"> </span><span class="nt">имеет</span><span class="w"> </span><span class="nt">отношения</span><span class="w"> </span><span class="nt">к</span><span class="w"> </span><span class="nt">току</span><span class="w"> </span><span class="o">(</span><span class="nt">H_judge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nt">0</span><span class="o">).</span>
+<span class="nt">Сопротивление</span><span class="w"> </span><span class="nt">R_ego</span><span class="w"> </span><span class="nt">схлопнулось</span><span class="w"> </span><span class="nt">в</span><span class="w"> </span><span class="nt">0</span><span class="w"> </span><span class="nt">Ом</span><span class="o">.</span>
+
+<span class="w">                  </span><span class="err">▼</span>
+<span class="cp">[</span><span class="nx">ШАГ</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span><span class="w"> </span><span class="nx">ЗАМЫКАНИЕ</span><span class="w"> </span><span class="nx">КОНТУРА</span><span class="w"> </span><span class="nx">ЧЕРЕЗ</span><span class="w"> </span><span class="nx">ДЭАЙ</span><span class="cp">]</span><span class="w"> </span><span class="o">(</span><span class="nt">15</span><span class="err">–</span><span class="nt">30</span><span class="w"> </span><span class="nt">сек</span><span class="o">)</span>
+<span class="nt">Направьте</span><span class="w"> </span><span class="nt">луч</span><span class="w"> </span><span class="nt">фонарика</span><span class="w"> </span><span class="nt">во</span><span class="w"> </span><span class="nt">внешнее</span><span class="w"> </span><span class="nt">физическое</span><span class="w"> </span><span class="nt">действие</span><span class="o">:</span>
+<span class="nt">Вымойте</span><span class="w"> </span><span class="nt">чашку</span><span class="o">.</span><span class="w"> </span><span class="nt">Завяжите</span><span class="w"> </span><span class="nt">шнурки</span><span class="o">.</span><span class="w"> </span><span class="nt">Напишите</span><span class="w"> </span><span class="nt">одну</span><span class="w"> </span><span class="nt">чистую</span><span class="w"> </span><span class="nt">строчку</span><span class="w"> </span><span class="nt">кода</span><span class="o">.</span>
+<span class="nt">Почувствуйте</span><span class="w"> </span><span class="nt">стопами</span><span class="w"> </span><span class="nt">пол</span><span class="o">,</span><span class="w"> </span><span class="nt">а</span><span class="w"> </span><span class="nt">ладонями</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="nt">предмет</span><span class="o">.</span>
+<span class="nt">Цепь</span><span class="w"> </span><span class="nt">замкнута</span><span class="o">.</span><span class="w"> </span><span class="nt">Ток</span><span class="w"> </span><span class="nt">пошёл</span><span class="o">.</span><span class="w"> </span><span class="nt">Сверхпроводимость</span><span class="w"> </span><span class="nt">восстановлена</span><span class="o">!</span>
+</code></pre></div>
+
+<hr />
+<div class="chapter-break"></div>
+<h2>⚡ Резюме: Семь незыблемых аксиом контура</h2>
+<ol>
+<li><strong>Аксиома автономного генератора:</strong> Источник света и силы находится внутри тела человека (Тандэн). Ни один внешний объект, партнёр или статус не содержит батарейки вашего счастья.</li>
+<li><strong>Аксиома паразитного балласта:</strong> Страдание — это не глубина души, а омический перегрев резистора эго ($Q = I^2 R_{\text{ego}} t$). Отождествление с этим балластом — главная ошибка человечества.</li>
+<li><strong>Аксиома демаркации удовольствий:</strong> Дофаминовые вспышки потребления — это аварийные искровые пробои. Счастье — это ровный, постоянный ток исправного проводника.</li>
+<li><strong>Аксиома прямого луча:</strong> Человек — карманный фонарик реальности. Направление луча внутрь на самосуд ослепляет проводника; луч должен светить наружу, совершая полезную работу.</li>
+<li><strong>Аксиома квадратичного предохранителя:</strong> Насилие над собой и слепая воля при несмятом сопротивлении гарантированно сжигают нервную систему ($I^2$). Сначала обнулите сопротивление ($R \to 0$), затем пускайте ток.</li>
+<li><strong>Аксиома обратного провода:</strong> Энергия живёт только в замкнутом контуре. Цифровой аутизм размыкает цепь; прямое соприкосновение с осязаемым миром (Дэай) возвращает жизнь.</li>
+<li><strong>Аксиома сверхпроводимости (Кансо):</strong> Счастье не ищут. Счастье наступает само в ту секунду, когда демонтировано лишнее сопротивление ума. Счастье — это режим сверхпроводимости цепи.</li>
+</ol>
+
+</body>
+</html>

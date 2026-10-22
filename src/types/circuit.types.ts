@@ -313,4 +313,73 @@ export const ZenOntologyCanon = {
 } as const;
 export type ZenOntologyCanon = typeof ZenOntologyCanon[keyof typeof ZenOntologyCanon];
 
+/**
+ * Единая биометрическая сеть человека (Глава 254)
+ * От фрагментарной биометрии (Quantified Self) к единому проводящему субстрату счастья
+ */
+export interface BiometricNetworkTelemetry {
+  /**
+   * Продолжительность сна в часах (номинал 7.0 - 8.5 ч)
+   */
+  sleepHours: number;
+
+  /**
+   * Качество/глубина сна (0.0 - 1.0, глубокий сон + REM, по умолчанию 0.9)
+   */
+  sleepQuality?: number;
+
+  /**
+   * Насыщение крови кислородом (SpO2, 0 - 100%, номинал >= 98%)
+   */
+  spO2Percentage: number;
+
+  /**
+   * Пульс покоя / ЧСС (уд/мин, номинал 55 - 75)
+   */
+  heartRateBpm: number;
+
+  /**
+   * Уровень вегетативного стресса по вариабельности ритма HRV (0 - 100, барометр омического зажима R)
+   */
+  stressLevel: number;
+}
+
+export interface BiometricHappinessEvaluation {
+  /**
+   * Индекс биопроводимости счастья (H_bio, 0.0 - 1.0)
+   */
+  biocircuitHappinessIndex: number;
+  
+  /**
+   * Зона состояния цепи
+   */
+  zone: 'SUPERCONDUCTING' | 'NOMINAL' | 'OHMIC_OVERHEAT';
+
+  /**
+   * Коэффициент восстановления батареи сна (K_sleep, 0.0 - 1.0)
+   */
+  sleepBatteryCoefficient: number;
+
+  /**
+   * Фактор оксигенации митохондрий (0.0 - 1.0)
+   */
+  oxygenConductivityFactor: number;
+
+  /**
+   * Проводимость вагусного контура (1 - R_stress, 0.0 - 1.0)
+   */
+  vagusConductivity: number;
+
+  /**
+   * Кардиодинамическая эффективность (0.0 - 1.0)
+   */
+  cardioEfficiency: number;
+
+  /**
+   * Практическая инженерная подсказка оператору
+   */
+  operatorGuidance: string;
+}
+
+
 

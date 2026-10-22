@@ -1,5 +1,24 @@
 [
   {
+    "id": "quantum-muvh4kl5",
+    "title": "Фитнес и счастье",
+    "category": "Здоровье / Биофизика",
+    "stage": 1,
+    "r_ego": 3,
+    "somatic_symptom": "Не занимаешься спортом",
+    "circuit_law": "Не подключена нагрузка Тело",
+    "manual_title": "Фитнес и счастье",
+    "wiki_file": "",
+    "switch_formula": "",
+    "field_test_notes": "",
+    "media_format": "YouTube Shorts",
+    "media_hook": "",
+    "energy_return": "",
+    "created_at": "2026-10-05T16:38:18.425Z",
+    "updated_at": "2026-10-05T16:39:25.876Z",
+    "days_in_stage": 0
+  },
+  {
     "id": "quantum-mus7dpie",
     "title": "Сброс сервисного таймера: Мгновенное включение жизни в точке t = now",
     "category": "Продуктивность / Тандэн",

@@ -4,7 +4,30 @@ source: [[index|Wiki Index]]
 author: Владимир Аньянов
 chapter: 139
 layer: "III. Дзен-онтология и синтез (Высший дух и физика)"
-tags: [inner-current, demystification, religions-convergence, nirodha, nirvana, superconductivity, electrodynamics, joule-lenz, tanden, mushin, kanso, zanshin, tat-tvam-asi, circuits, linguistics, pali, sanskrit]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
+  - demystification
+  - religions-convergence
+  - nirodha
+  - nirvana
+  - superconductivity
+  - electrodynamics
+  - joule-lenz
+  - tanden
+  - mushin
+  - kanso
+  - zanshin
+  - tat-tvam-asi
+  - circuits
+  - linguistics
+  - pali
+  - sanskrit
 ---
 
 # 139. Универсальная демистификация религий и Шаг Прометея: Перевод мистических доктрин на электродинамику фонарика, лингвистический канон Ниродхи и принципиальная схема цепи

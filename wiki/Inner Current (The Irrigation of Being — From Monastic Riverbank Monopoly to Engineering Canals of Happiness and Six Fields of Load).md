@@ -1,7 +1,22 @@
 ---
 created: 2026-09-30
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, irrigation-metaphor, river-of-being, hydrodynamics, monastic-monopoly, six-fields-of-load, disintermediation, zero-resistance, layer-3]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - irrigation-metaphor
+  - river-of-being
+  - hydrodynamics
+  - monastic-monopoly
+  - six-fields-of-load
+  - disintermediation
+  - zero-resistance
+  - layer-3
 aliases:
   - "155-irrigation-of-being-and-canals-of-happiness"
   - "Ирригация Бытия"

@@ -2,6 +2,12 @@
 title: "Inner Current: The Kingdom of God Within, Tanden and Circuit Superconductivity — Feynman Demystification of Eastern Mysticism"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - kingdom-of-god
   - tanden
   - superconductivity

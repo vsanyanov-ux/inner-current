@@ -1,7 +1,23 @@
 ---
 created: 2026-09-27
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, newton, paradigm-shift, stone-age, esoterics, spirit, consilience, epistemology, disintermediation, civilization]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/sovereignty
+  - state/overheating
+  - newton
+  - paradigm-shift
+  - stone-age
+  - esoterics
+  - spirit
+  - consilience
+  - epistemology
+  - disintermediation
+  - civilization
 aliases:
   - "107-stone-age-of-the-spirit"
   - "Каменный век духа"

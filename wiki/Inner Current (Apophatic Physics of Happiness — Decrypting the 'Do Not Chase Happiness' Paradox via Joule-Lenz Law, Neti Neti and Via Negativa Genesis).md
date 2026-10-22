@@ -6,6 +6,12 @@ category: "I. Физический базис цепи (Фундамент)"
 chapter: 213
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/epistemology
+  - state/superconducting
   - apophatic-physics
   - neti-neti
   - via-negativa

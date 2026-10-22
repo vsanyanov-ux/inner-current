@@ -8,6 +8,12 @@ aliases:
   - "Машина Ньюкомена как метафора эго"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/superconducting
   - anyanov-system
   - newton
   - james-watt

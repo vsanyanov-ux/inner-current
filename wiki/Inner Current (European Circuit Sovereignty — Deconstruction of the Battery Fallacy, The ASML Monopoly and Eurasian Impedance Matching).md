@@ -4,7 +4,24 @@ source: [[index|Wiki Index]]
 author: Владимир Аньянов
 chapter: 178
 layer: "III. Дзен-онтология и синтез (Высший дух и физика)"
-tags: [inner-current, europe, civilizational-electrodynamics, battery-fallacy, asml, impedance-matching, eurasia, energy-sovereignty, sovereignty, multipolarity, layer-3]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
+  - europe
+  - civilizational-electrodynamics
+  - battery-fallacy
+  - asml
+  - impedance-matching
+  - eurasia
+  - energy-sovereignty
+  - sovereignty
+  - multipolarity
+  - layer-3
 ---
 
 # 178. Суверенитет Европейского контура: Деконструкция «Ошибки аккумулятора», технологический монопольный Тандэн и Евразийское согласование импедансов

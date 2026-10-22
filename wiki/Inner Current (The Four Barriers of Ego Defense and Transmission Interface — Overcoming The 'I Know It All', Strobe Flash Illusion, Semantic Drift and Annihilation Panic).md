@@ -9,6 +9,12 @@ aliases:
   - "Паника аннигиляции эго"
 tags:
   - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/epistemology
+  - state/overheating
   - anyanov-system
   - transmission-interface
   - ego-defense

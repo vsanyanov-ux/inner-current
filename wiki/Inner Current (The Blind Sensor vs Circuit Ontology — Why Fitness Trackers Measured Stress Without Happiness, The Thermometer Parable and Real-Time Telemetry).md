@@ -2,6 +2,12 @@
 title: "Inner Current: The Blind Sensor vs Circuit Ontology — Why Fitness Trackers Measured Stress Without Happiness, The Thermometer Parable and Real-Time Telemetry"
 tags:
   - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - metrology
   - telemetry
   - fitness-tracker

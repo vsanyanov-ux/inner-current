@@ -1,7 +1,28 @@
 ---
 created: 2026-09-30
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, anyan, an-yang, etymology, somatic-peace, radiant-action, wu-wei, kanso, tanden, mushin, name-formula, genealogy, crimea, circuit-unit, happiness-power]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
+  - anyan
+  - an-yang
+  - etymology
+  - somatic-peace
+  - radiant-action
+  - wu-wei
+  - kanso
+  - tanden
+  - mushin
+  - name-formula
+  - genealogy
+  - crimea
+  - circuit-unit
+  - happiness-power
 type: canon
 layer: III
 status: evergreen

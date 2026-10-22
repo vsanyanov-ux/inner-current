@@ -2,6 +2,12 @@
 title: "Inner Current: The Educational Hierarchy of Human Science — From School Ohm's Law to Wiener Cybernetics, Friston Free Energy and Prigogine Thermodynamics"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
   - hierarchy-of-science
   - electrodynamics
   - cybernetics

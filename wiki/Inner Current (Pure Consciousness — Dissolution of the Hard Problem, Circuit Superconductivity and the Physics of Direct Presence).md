@@ -2,6 +2,12 @@
 title: "Inner Current: Pure Consciousness — Dissolution of the Hard Problem, Circuit Superconductivity and the Physics of Direct Presence"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
   - pure-consciousness
   - hard-problem-of-consciousness
   - chalmers

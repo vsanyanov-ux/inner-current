@@ -2,6 +2,12 @@
 title: "Inner Current: Evolutionary Morphogenesis of the Circuit — Abiogenesis, Bipedalism and the Hardware Assembly of the Flashlight"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/superconducting
   - abiogenesis
   - evolution
   - bipedalism

@@ -6,6 +6,12 @@ category: "II. Практика и защита контура"
 chapter: 226
 tags:
   - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - circuit-os
   - life-operating-system
   - seven-catastrophes

@@ -4,7 +4,25 @@ source: [[index|Wiki Index]]
 author: Владимир Аньянов
 chapter: 176
 layer: "III. Дзен-онтология и синтез (Высший дух и физика)"
-tags: [inner-current, ego-illusion, circuit-diagram, tanden, parasitic-resistance, load-fallacy, lightbulb, electrodynamics, zen-engineering, copernican-shift, dmn, somatic-presence]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
+  - ego-illusion
+  - circuit-diagram
+  - tanden
+  - parasitic-resistance
+  - load-fallacy
+  - lightbulb
+  - electrodynamics
+  - zen-engineering
+  - copernican-shift
+  - dmn
+  - somatic-presence
 ---
 
 # 176. Электротехника иллюзии эго: Паразитное сопротивление, фетиш лампочки и восстановление истинного Центра

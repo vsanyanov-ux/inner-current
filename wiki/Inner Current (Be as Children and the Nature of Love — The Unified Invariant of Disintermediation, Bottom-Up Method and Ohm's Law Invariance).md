@@ -1,7 +1,23 @@
 ---
 created: 2026-09-30
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, be-as-children, nature-of-love, bottom-up-method, ohms-law-invariance, disintermediation, zero-resistance, christianity-demystification, zen-engineering, layer-3]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
+  - be-as-children
+  - nature-of-love
+  - bottom-up-method
+  - ohms-law-invariance
+  - disintermediation
+  - zero-resistance
+  - christianity-demystification
+  - zen-engineering
+  - layer-3
 aliases:
   - "152-be-as-children-and-nature-of-love"
   - "Будьте как дети и природа любви"

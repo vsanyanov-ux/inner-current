@@ -2,6 +2,12 @@
 title: "Inner Current: The Ukulele and the Rattling Fret — Acoustic Anatomy of Ego, Parasitic Buzz vs Pure Melody and the Fear of Resonator Emptiness"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
   - ego
   - ukulele
   - acoustics

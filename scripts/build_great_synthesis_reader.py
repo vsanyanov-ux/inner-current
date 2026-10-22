@@ -43,6 +43,23 @@ def replace_mermaid(match):
     diagram = match.group(1).strip()
     return f'<div class="mermaid-wrap"><pre class="mermaid">\n{diagram}\n</pre></div>'
 
+# Protect math blocks and inline formulas before markdown parsing
+math_blocks = []
+def save_block(m):
+    idx = len(math_blocks)
+    math_blocks.append(m.group(1))
+    return f"@@MATH_BLOCK_{idx}@@"
+
+processed_md = re.sub(r"\$\$(.*?)\$\$", save_block, processed_md, flags=re.DOTALL)
+
+math_inlines = []
+def save_inline(m):
+    idx = len(math_inlines)
+    math_inlines.append(m.group(1))
+    return f"@@MATH_INLINE_{idx}@@"
+
+processed_md = re.sub(r"\$([^\$\n]+)\$", save_inline, processed_md)
+
 processed_md = re.sub(r"```mermaid([\s\S]*?)```", replace_mermaid, processed_md)
 
 # Convert Markdown to HTML
@@ -53,9 +70,13 @@ html_body = markdown.markdown(processed_md, extensions=md_extensions)
 html_body = html_body.replace("<table>", '<div class="table-wrapper"><table>')
 html_body = html_body.replace("</table>", '</table></div>')
 
-# Beautify math inline and display
-html_body = re.sub(r"\$\$(.*?)\$\$", r'<div class="math-display">\[\1\]</div>', html_body, flags=re.DOTALL)
-html_body = re.sub(r"\$([^\$\n]+)\$", r'<span class="math-inline">\(\1\)</span>', html_body)
+# Restore math blocks and inlines
+for idx, b in enumerate(math_blocks):
+    html_body = html_body.replace(f"@@MATH_BLOCK_{idx}@@", f'<div class="math-display">\[{b.strip()}\]</div>')
+    html_body = re.sub(rf'<p>\s*(<div class="math-display">.*?</div>)\s*</p>', r'\1', html_body, flags=re.DOTALL)
+
+for idx, i in enumerate(math_inlines):
+    html_body = html_body.replace(f"@@MATH_INLINE_{idx}@@", f'<span class="math-inline">\({i}\)</span>')
 
 FULL_HTML = f"""<!DOCTYPE html>
 <html lang="ru">
@@ -65,7 +86,27 @@ FULL_HTML = f"""<!DOCTYPE html>
 <title>Великий Синтез: Революции Материи, Трагедия Духа и Электродинамика Человека — Владимир Аньянов</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {{
+    function initKaTeX() {{
+      if (typeof renderMathInElement === 'function') {{
+        renderMathInElement(document.body, {{
+          delimiters: [
+            {{left: '$$', right: '$$', display: true}},
+            {{left: '\\[', right: '\\]', display: true}},
+            {{left: '\\(', right: '\\)', display: false}},
+            {{left: '$', right: '$', display: false}}
+          ],
+          throwOnError: false
+        }});
+      }} else {{
+        setTimeout(initKaTeX, 50);
+      }}
+    }}
+    initKaTeX();
+  }});
+</script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>
   mermaid.initialize({{ startOnLoad: true, theme: 'dark' }});

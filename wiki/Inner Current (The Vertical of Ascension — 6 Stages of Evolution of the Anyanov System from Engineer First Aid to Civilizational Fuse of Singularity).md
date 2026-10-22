@@ -3,7 +3,22 @@ created: 2026-09-25
 source: [[index|Wiki Index]]
 moc: [[04_Maps/Inner Current MOC|Inner Current MOC]]
 book_moc: [[04_Maps/Inner Current Book MOC|Inner Current Book MOC]]
-tags: [inner-current, epistemology, evolution, meta-system, singularity, zen, ai-alignment, tsiolkovsky, consilience]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/ego-resistor
+  - node/load
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - epistemology
+  - evolution
+  - meta-system
+  - singularity
+  - zen
+  - ai-alignment
+  - tsiolkovsky
+  - consilience
 canonical_number: 78
 type: meta-synthesis
 ---
@@ -130,7 +145,7 @@ graph BT
 
 ## 🔗 Связанные Каноны в Базе Знаний
 - [[02_Wiki/Inner Current (Diagnostic Machine and System Specification)|06. Машина для диагностики счастья]]
-- [[02_Wiki/Inner Current (Automobile of Consciousness — 140 Years from Benz to Anyanov, Post-Moral Imperative and Cybernetics of Addictions)|66. Автомобиль сознания: 140 лет от Бенца до Аньянова]]
+- [[02_Wiki/Inner Current (The Automobile of Consciousness — 140 Years from Benz to Anyanov, Post-Moral Imperative and Cybernetics of Addictions)|66. Автомобиль сознания: 140 лет от Бенца до Аньянова]]
 - [[02_Wiki/Inner Current (The Grand Quadrivium — Circuitry of Man, Tuning Fork of Reality, Circuit of Happiness and Automobile of Consciousness)|67. Великий Квадривиум Аньянова]]
 - [[02_Wiki/Inner Current (The Great Asymmetry of Civilization — How Circuit Architecture Closes the 10,000-Year Chasm Between Nuclear Technology and the Stone Age Psyche)|72. Великая Асимметрия Цивилизации]]
 - [[02_Wiki/Inner Current (Astronautics of Consciousness — The Tsiolkovsky Effect, Escape Velocity of the Spirit and the Rocket of Superconductivity)|73. Космонавтика Сознания: Эффект Циолковского]]

@@ -1,7 +1,24 @@
 ---
 created: 2026-09-27
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, disintermediation, esoterics, psychotherapy, sovereignty, priesthood, pain, direct-flow, self-hosted-human, newton, consilience]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/ego-resistor
+  - node/load
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
+  - disintermediation
+  - esoterics
+  - psychotherapy
+  - sovereignty
+  - priesthood
+  - pain
+  - direct-flow
+  - self-hosted-human
+  - newton
+  - consilience
 aliases:
   - "106-unified-taxonomy-of-intermediaries"
   - "Единая таксономия посредников боли"

@@ -1,7 +1,22 @@
 ---
 created: 2026-09-24
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, zen, ten-bulls, operator-evolution, electrodynamics, superconductivity, tanden, mushin, mastery]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
+  - zen
+  - ten-bulls
+  - operator-evolution
+  - electrodynamics
+  - superconductivity
+  - tanden
+  - mushin
+  - mastery
 aliases:
   - "40-ten-bulls-of-zen-operator-evolution"
   - "Десять быков Дзен как этапы эволюции оператора цепи"

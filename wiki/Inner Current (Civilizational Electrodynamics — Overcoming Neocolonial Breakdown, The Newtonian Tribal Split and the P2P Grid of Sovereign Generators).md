@@ -4,7 +4,25 @@ source: [[index|Wiki Index]]
 author: Владимир Аньянов
 chapter: 177
 layer: "III. Дзен-онтология и синтез (Высший дух и физика)"
-tags: [inner-current, geopolitics, civilizational-electrodynamics, multipolarity, tat-tvam-asi, newtonian-split, p2p-grid, sovereign-generators, mutual-induction, neocolonialism, parasitic-rent, layer-3]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - geopolitics
+  - civilizational-electrodynamics
+  - multipolarity
+  - tat-tvam-asi
+  - newtonian-split
+  - p2p-grid
+  - sovereign-generators
+  - mutual-induction
+  - neocolonialism
+  - parasitic-rent
+  - layer-3
 ---
 
 # 177. Цивилизационная электродинамика: Преодоление неоколониального распада, ньютоновского раскола «Свой — Чужой» и переход к многофазной P2P-сети суверенных генераторов

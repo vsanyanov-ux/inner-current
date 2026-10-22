@@ -3,7 +3,25 @@ created: 2026-09-25
 source: [[index|Wiki Index]]
 layer: III
 status: complete
-tags: [inner-current, genesis, consilience, anyanov-system, zen, bitcoin, georgism, direct-flow, epistemology, thermodynamics, tanden, mushin]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
+  - genesis
+  - consilience
+  - anyanov-system
+  - zen
+  - bitcoin
+  - georgism
+  - direct-flow
+  - epistemology
+  - thermodynamics
+  - tanden
+  - mushin
 ---
 
 # 76. Генезис Системы Аньянова: Консилиенс Дзен, Биткоина и Георгизма как перенос системных законов на архитектуру души

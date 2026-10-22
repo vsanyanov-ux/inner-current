@@ -1,7 +1,18 @@
 ---
 created: 2026-09-22
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, superconductivity, presence, flow, mushin]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - superconductivity
+  - presence
+  - flow
+  - mushin
 ---
 
 # Inner Current: Физика присутствия и состояние сверхпроводимости

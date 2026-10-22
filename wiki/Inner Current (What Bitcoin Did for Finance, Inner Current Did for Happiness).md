@@ -1,12 +1,34 @@
----
+﻿---
 created: 2026-09-23
-source: [[Inner Current - MOC|Inner Current MOC]]
-tags: [inner-current, bitcoin, michael-saylor, satoshi-nakamoto, sound-money, thermodynamics, proof-of-work, proof-of-action, superconductivity, tanden, fiat-psychology, sound-happiness, sovereignty, epistemics]
+source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
+tags:
+  - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - bitcoin
+  - michael-saylor
+  - satoshi-nakamoto
+  - sound-money
+  - thermodynamics
+  - proof-of-work
+  - proof-of-action
+  - superconductivity
+  - tanden
+  - fiat-psychology
+  - sound-happiness
+  - sovereignty
+  - epistemics
 type: chapter
 status: evergreen
 ---
 
 # 38. Что Биткоин сделал для финансов, Внутренний ток сделал для счастья: Термодинамический суверенитет, Proof-of-Action и дефиатизация бытия
+
+> [!info] Синтезировано в брошюрах [[02_Wiki/Брошюра — Великий Изоморфизм Депосреднизации (Биткоин, налог Джорджа и Архитектура счастья)|Брошюра: Великий Изоморфизм Депосреднизации]] и [[02_Wiki/Брошюра — Протокол сознания (Биткоин человеческой энергии, Proof of Action и суверенная сверхпроводимость духа)|Брошюра: Протокол сознания]]
 
 > [!quote] Каноническая аксиома Системы Аньянова
 > ### ⚡ **«Что Биткоин сделал для финансов, Внутренний ток сделал для счастья: он навсегда отнял монополию у внешних эмитентов иллюзий и заземлил человеческий суверенитет на строгие законы термодинамики и чистой энергии.»**  

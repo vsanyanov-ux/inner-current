@@ -2,6 +2,12 @@
 title: "Inner Current: The Lyre of Simmias and the Ukulele of Consciousness — 2,400 Years from Plato's Error to the Somatic Monism of Inner Current"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
   - ukulele
   - simmias-lyre
   - plato

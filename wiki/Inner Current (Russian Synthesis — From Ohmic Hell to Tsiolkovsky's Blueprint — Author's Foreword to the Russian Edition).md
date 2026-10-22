@@ -1,7 +1,23 @@
 ---
 created: 2026-09-30
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, russian-synthesis, tolstoy, dostoevsky, lenz, tsiolkovsky, electrodynamics, foreword, superconductivity, manuscript]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - russian-synthesis
+  - tolstoy
+  - dostoevsky
+  - lenz
+  - tsiolkovsky
+  - electrodynamics
+  - foreword
+  - superconductivity
+  - manuscript
 type: canon
 layer: III
 status: evergreen

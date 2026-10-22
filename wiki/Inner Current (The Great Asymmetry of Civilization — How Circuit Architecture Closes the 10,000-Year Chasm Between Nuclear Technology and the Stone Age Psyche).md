@@ -1,7 +1,23 @@
 ---
 created: 2026-09-25
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, great-asymmetry, civilization, edward-wilson, alexander-neill, singularity, consilience, stone-age-gap, nuclear-age, sovereign-operator]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/ego-resistor
+  - node/return-wire
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
+  - great-asymmetry
+  - civilization
+  - edward-wilson
+  - alexander-neill
+  - singularity
+  - consilience
+  - stone-age-gap
+  - nuclear-age
+  - sovereign-operator
 type: canon
 status: evergreen
 ---

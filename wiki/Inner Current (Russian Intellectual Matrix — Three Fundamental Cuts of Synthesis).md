@@ -1,7 +1,25 @@
 ---
 created: 2026-09-30
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, russian-matrix, russian-synthesis, joule-lenz, tolstoy, dostoevsky, tsiolkovsky, electrodynamics, circuit-physics, consilience, non-duality, manuscript]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - russian-matrix
+  - russian-synthesis
+  - joule-lenz
+  - tolstoy
+  - dostoevsky
+  - tsiolkovsky
+  - electrodynamics
+  - circuit-physics
+  - consilience
+  - non-duality
+  - manuscript
 type: canon
 layer: III
 status: evergreen

@@ -1,7 +1,22 @@
 ---
 created: 2026-09-30
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, zen, flashlight-model, load, action, gyo, deai, circuit-alignment, electrodynamics]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
+  - zen
+  - flashlight-model
+  - load
+  - action
+  - gyo
+  - deai
+  - circuit-alignment
+  - electrodynamics
 aliases:
   - "146-flashlight-circuit-alignment-gyo"
   - "Схемотехника фонарика и триада Дело-Action-Гё"

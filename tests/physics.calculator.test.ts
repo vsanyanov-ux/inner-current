@@ -8,7 +8,8 @@ import {
   calculateSuperconductivityIndex,
   calculateEgoShortCircuit,
   calculateAvailablePower,
-  analyzeEgoResistanceTriad
+  analyzeEgoResistanceTriad,
+  evaluateBiometricNetwork
 } from '../src/core/physics.calculator.ts';
 import {
   sanitizeNumber,
@@ -125,6 +126,46 @@ describe('Inner Current Core Physics & Domain Test Suite', () => {
       const zeroTriad = analyzeEgoResistanceTriad(zeroBus);
       assert.equal(zeroTriad.totalEgoResistance, 0);
       assert.equal(zeroTriad.dominantVector, null);
+    });
+
+    it('evaluates Biometric Living Network and computes H_bio happiness index (Chapter 254)', () => {
+      // 1. Superconducting Biocircuit (Good sleep 8h, SpO2 99%, Low stress 15, Resting pulse 60)
+      const optimalBio = {
+        sleepHours: 8,
+        sleepQuality: 0.95,
+        spO2Percentage: 99,
+        heartRateBpm: 60,
+        stressLevel: 15
+      };
+      const optimalResult = evaluateBiometricNetwork(optimalBio);
+      assert.equal(optimalResult.zone, 'SUPERCONDUCTING');
+      assert.ok(optimalResult.biocircuitHappinessIndex >= 0.75);
+      assert.ok(optimalResult.operatorGuidance.includes('сверхпроводимости'));
+
+      // 2. Sleep Deprived / Undervoltage circuit (Sleep 4h, High stress 70)
+      const tiredBio = {
+        sleepHours: 4,
+        sleepQuality: 0.7,
+        spO2Percentage: 97,
+        heartRateBpm: 85,
+        stressLevel: 70
+      };
+      const tiredResult = evaluateBiometricNetwork(tiredBio);
+      assert.equal(tiredResult.zone, 'OHMIC_OVERHEAT');
+      assert.ok(tiredResult.biocircuitHappinessIndex < 0.40);
+      assert.ok(tiredResult.sleepBatteryCoefficient < 0.6);
+
+      // 3. Hypoxia and extreme stress (SpO2 90%, stress 85)
+      const panicBio = {
+        sleepHours: 6,
+        spO2Percentage: 90,
+        heartRateBpm: 110,
+        stressLevel: 85
+      };
+      const panicResult = evaluateBiometricNetwork(panicBio);
+      assert.equal(panicResult.zone, 'OHMIC_OVERHEAT');
+      assert.ok(panicResult.oxygenConductivityFactor < 0.8);
+      assert.ok(panicResult.vagusConductivity <= 0.2);
     });
   });
 

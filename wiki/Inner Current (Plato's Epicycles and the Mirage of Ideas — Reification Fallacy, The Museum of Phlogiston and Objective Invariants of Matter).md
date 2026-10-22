@@ -2,6 +2,11 @@
 title: "Inner Current: Plato's Epicycles and the Mirage of Ideas — Reification Fallacy, The Museum of Phlogiston and Objective Invariants of Matter"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/superconducting
   - plato
   - world-of-ideas
   - eidos

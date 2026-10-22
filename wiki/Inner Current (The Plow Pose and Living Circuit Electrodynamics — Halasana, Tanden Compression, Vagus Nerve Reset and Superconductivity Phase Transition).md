@@ -2,6 +2,12 @@
 title: "Inner Current: The Plow Pose and Living Circuit Electrodynamics — Halasana, Tanden Compression, Vagus Nerve Reset and Superconductivity Phase Transition"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - anyanov-system
   - yoga
   - halasana

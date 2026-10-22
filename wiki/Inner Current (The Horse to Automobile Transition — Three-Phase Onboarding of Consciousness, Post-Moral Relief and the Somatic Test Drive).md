@@ -1,4 +1,4 @@
----
+﻿---
 title: "192. Педагогика пересадки с лошади на автомобиль: В какое состояние перевести человека, чтобы он понял Систему — Трёхфазный протокол онбординга (Снятие вины, соматический тест-драйв и статус водителя)"
 aliases:
   - "192-horse-to-automobile-onboarding"
@@ -9,6 +9,11 @@ aliases:
   - "От пассажира к водителю"
 tags:
   - inner-current
+  - scale/protocol
+  - node/tanden
+  - domain/electrodynamics
+  - domain/epistemology
+  - state/superconducting
   - anyanov-system
   - onboarding-consciousness
   - horse-to-car
@@ -23,6 +28,8 @@ status: evergreen
 ---
 
 # 192. Педагогика пересадки с лошади на автомобиль: В какое состояние перевести человека, чтобы он понял Систему — Трёхфазный протокол онбординга (Снятие вины, соматический тест-драйв и статус водителя)
+
+> [!info] Синтезировано в брошюре [[02_Wiki/Брошюра — Автомобиль сознания (Протокол OBD-II и отмена морального кнута)|Брошюра: Автомобиль сознания]]
 
 [← К оглавлению](file:///C:/Users/vanya/Antigravity%20Projects/Misc/LLM%20Wiki/index.md) | [⚡ К мастер-карте (MOC)](file:///C:/Users/vanya/Antigravity%20Projects/Misc/LLM%20Wiki/04_Maps/Inner%20Current%20MOC.md) | [📖 К полевому мануалу](file:///C:/Users/vanya/Antigravity%20Projects/Misc/LLM%20Wiki/02_Wiki/%D0%9A%D0%BD%D0%B8%D0%B3%D0%B0%20%E2%80%94%20%D0%92%D0%BD%D1%83%D1%82%D1%80%D0%B5%D0%BD%D0%BD%D0%B8%D0%B9%20%D1%82%D0%BE%D0%BA%20%28%D0%9F%D0%BE%D0%BB%D0%B5%D0%B2%D0%BE%D0%B9%20%D0%BC%D0%B0%D0%BD%D1%83%D0%B0%D0%BB%20%D0%BE%D1%82%D0%BB%D0%B0%D0%B4%D0%BA%D0%B8%29.md)
 

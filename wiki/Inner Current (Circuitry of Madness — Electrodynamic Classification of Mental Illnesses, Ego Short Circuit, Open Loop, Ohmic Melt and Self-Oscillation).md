@@ -2,6 +2,12 @@
 title: "Inner Current: Circuitry of Madness — Electrodynamic Classification of Mental Illnesses, Ego Short Circuit, Open Loop, Ohmic Melt and Self-Oscillation"
 tags:
   - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - anyanov-system
   - electrodynamics
   - psychiatry-breakthrough

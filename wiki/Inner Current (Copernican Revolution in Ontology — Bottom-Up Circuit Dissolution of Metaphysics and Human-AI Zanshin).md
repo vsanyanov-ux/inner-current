@@ -1,7 +1,22 @@
 ---
 created: 2026-09-24
-source: [[Inner Current - MOC|Inner Current MOC]]
-tags: [inner-current, copernican-revolution, ontology, bottom-up, metaphysics, zanshin, human-ai, mushin, consilience]
+source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - copernican-revolution
+  - ontology
+  - bottom-up
+  - metaphysics
+  - zanshin
+  - human-ai
+  - mushin
+  - consilience
 type: concept
 status: evergreen
 ---
@@ -129,12 +144,12 @@ flowchart LR
 ---
 
 ## 🔗 Связи и консилиенс
-- [[01-core-topology|01. Базовая топология цепи и закон полярности]]
-- [[04-safety-and-antifragility|04. Предохранители цепи, ваби-саби и антихрупкость]]
-- [[12-zen-as-happiness-architecture-foundation|12. Дзен как фундамент Архитектуры счастья]]
-- [[13-complete-zen-electrodynamic-ontological-atlas|13. Полный онтологический атлас: Изоморфизм Дзен и цепи]]
-- [[14-east-west-synthesis-demystification|14. Великий синтез Запада и Востока]]
-- [[26-engineering-proof-of-no-meaning-of-life|26. Инженерное доказательство отсутствия смысла жизни]]
-- [[Inner Current (Tolstoy Existential Crisis vs Happiness Architecture)|27. Духовный кризис Льва Толстого vs Архитектура счастья]]
-- [[Inner Current (Double Verification Principle — Zen-Electrodynamics Cross-Validation and Tanden Generator)|39. Принцип двойной проверки]]
-- [[Inner Current (The Question of God — Electrodynamic Invariance and Dissolution of Theological Resistance)|40. Вопрос о существовании Бога в Архитектуре счастья]]
+- [[02_Wiki/Inner Current (Core Topology and Polarity Law)|01. Базовая топология цепи и закон полярности]]
+- [[02_Wiki/Inner Current (Safety, Antifragility and Zanshin)|04. Предохранители цепи, ваби-саби и антихрупкость]]
+- [[02_Wiki/Inner Current (Zen as Happiness Architecture Foundation)|12. Дзен как фундамент Архитектуры счастья]]
+- [[02_Wiki/Inner Current (Complete Zen-Electrodynamic Ontological Atlas)|13. Полный онтологический атлас: Изоморфизм Дзен и цепи]]
+- [[02_Wiki/Inner Current (East-West Synthesis and Demystification)|14. Великий синтез Запада и Востока]]
+- [[02_Wiki/Inner Current (Engineering Proof of No Meaning of Life and the Birth of Happiness Architecture)|26. Инженерное доказательство отсутствия смысла жизни]]
+- [[02_Wiki/Inner Current (Tolstoy Existential Crisis vs Happiness Architecture)|27. Духовный кризис Льва Толстого vs Архитектура счастья]]
+- [[02_Wiki/Inner Current (Double Verification Principle — Zen-Electrodynamics Cross-Validation and Tanden Generator)|39. Принцип двойной проверки]]
+- [[02_Wiki/Inner Current (The Question of God — Electrodynamic Invariance and Dissolution of Theological Resistance)|40. Вопрос о существовании Бога в Архитектуре счастья]]

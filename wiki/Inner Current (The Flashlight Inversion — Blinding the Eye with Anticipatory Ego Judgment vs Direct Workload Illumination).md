@@ -3,7 +3,23 @@ created: 2026-10-03
 source: [[index|Wiki Index]]
 layer: II
 status: evergreen
-tags: [inner-current, flashlight-inversion, attention-optics, ego-judgment, anticipatory-thought, workload, mushin, tanden, joule-lenz, circuit-calibration]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/overheating
+  - flashlight-inversion
+  - attention-optics
+  - ego-judgment
+  - anticipatory-thought
+  - workload
+  - mushin
+  - tanden
+  - joule-lenz
+  - circuit-calibration
 ---
 
 # 228. Инверсия фонарика: Свет в глаз против полезной нагрузки — Ослепление опережающим судом эго, паразитная рекурсия и физика прямого луча действия

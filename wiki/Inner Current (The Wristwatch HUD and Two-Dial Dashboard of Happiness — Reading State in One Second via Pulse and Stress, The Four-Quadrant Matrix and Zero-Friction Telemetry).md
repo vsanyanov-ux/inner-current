@@ -2,6 +2,12 @@
 title: "Inner Current: The Wristwatch HUD and Two-Dial Dashboard of Happiness — Reading State in One Second via Pulse and Stress, The Four-Quadrant Matrix and Zero-Friction Telemetry"
 tags:
   - inner-current
+  - scale/protocol
+  - node/conductor
+  - node/ego-resistor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - metrology
   - telemetry
   - wrist-hud
@@ -20,6 +26,8 @@ layer: "IV. Мета-система и продукт (Инструменты, �
 ---
 
 # 234. Наручный HUD и двухстрелочный дашборд счастья: Чтение состояния цепи за 1 секунду по связке «Пульс ($I$) + Стресс ($R$)» — Штатный циферблат Xiaomi Smart Band 7, матрица четырёх состояний контура и ликвидация омического пожара без входа в меню
+
+> [!info] Синтезировано в брошюре [[02_Wiki/Брошюра — Биометрическая электродинамика (Тело как живой проводник, объективная телеметрия Smart Band и ночной расправленный контур)|Брошюра: Биометрическая электродинамика]]
 ## Инженерная эргономика нулевого трения: как вывод сердечного ритма и индекса стресса на главный экран превращает потребительский браслет в бортовой прибор оператора, квадрантная топология душевных состояний и объективная фиксация счастья в моменте
 
 > [!quote] Каноническая аксиома цепи

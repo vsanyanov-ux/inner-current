@@ -2,6 +2,12 @@
 title: "Inner Current: Samu of the Household Circuit — Car Wash, Cleaning and Laundry as Kyudo of Superconductivity and the 100x Ego Paradox of High-Stakes Projects"
 tags:
   - inner-current
+  - scale/protocol
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/overheating
   - anyanov-system
   - samu
   - zen-engineering

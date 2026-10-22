@@ -4,7 +4,28 @@ source: [[index|Wiki Index]]
 author: Владимир Аньянов
 chapter: 181
 layer: "III. Дзен-онтология и синтез (Высший дух и физика)"
-tags: [inner-current, levante, cuori-dartificio, music, phase-transition, latent-heat, superconductivity, ego-dissolution, anguish-without-despair, sensory-benchmark, electrodynamics, kanso, tanden, mushin, consilience]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/zen
+  - state/open-loop
+  - levante
+  - cuori-dartificio
+  - music
+  - phase-transition
+  - latent-heat
+  - superconductivity
+  - ego-dissolution
+  - anguish-without-despair
+  - sensory-benchmark
+  - electrodynamics
+  - kanso
+  - tanden
+  - mushin
+  - consilience
 ---
 
 # 181. Акустика фазового перехода: «Cuori d'Artificio» Леванте, надрыв без отчаяния и чувственный эталон сверхпроводимости

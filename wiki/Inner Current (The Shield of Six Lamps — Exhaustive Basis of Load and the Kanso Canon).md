@@ -1,7 +1,21 @@
 ---
 created: 2026-09-30
 source: [[04_Maps/Inner Current MOC|Inner Current MOC]]
-tags: [inner-current, zen, load, lamps-of-being, shield-of-6-lamps, kanso, occams-razor, ontology]
+tags:
+  - inner-current
+  - scale/deep-dive
+  - node/tanden
+  - node/conductor
+  - domain/electrodynamics
+  - domain/neurobiology
+  - state/superconducting
+  - zen
+  - load
+  - lamps-of-being
+  - shield-of-6-lamps
+  - kanso
+  - occams-razor
+  - ontology
 aliases:
   - "144-shield-of-six-lamps-kanso"
   - "Щит из шести ламп бытия: Исчерпывающий базис нагрузки"
