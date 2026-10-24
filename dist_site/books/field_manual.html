@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Внутренний ток: Полевой мануал отладки — Владимир Аньянов</title>
+<title>Полевой мануал оператора — Владимир Аньянов</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
@@ -14,8 +14,8 @@
         renderMathInElement(document.body, {
           delimiters: [
             {left: '$$', right: '$$', display: true},
-            {left: '\[', right: '\]', display: true},
-            {left: '\(', right: '\)', display: false},
+            {left: '\\[', right: '\\]', display: true},
+            {left: '\\(', right: '\\)', display: false},
             {left: '$', right: '$', display: false}
           ],
           throwOnError: false
@@ -27,41 +27,43 @@
     initKaTeX();
   });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+</script>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
   :root {
-    --bg-page: #030712;
-    --bg-card: #0f172a;
+    --bg-page: #020617;
+    --bg-card: #0b1329;
     --text-main: #f1f5f9;
     --text-muted: #94a3b8;
     --accent: #f59e0b;
-    --accent-light: #fbbf24;
+    --accent-light: #fcd34d;
+    --sky: #38bdf8;
     --border: #1e293b;
   }
 
-  * {
-    box-sizing: border-box;
-  }
+  * { box-sizing: border-box; }
 
   body {
     background: var(--bg-page);
     color: var(--text-main);
-    font-family: 'Lora', serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 17px;
-    line-height: 1.8;
+    line-height: 1.85;
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Top sticky action bar */
   .top-bar {
     position: sticky;
     top: 0;
     z-index: 50;
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(12px);
+    background: rgba(11, 19, 41, 0.92);
+    backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
     padding: 12px 24px;
     display: flex;
@@ -80,23 +82,23 @@
     text-decoration: none;
   }
 
-  .top-actions {
-    display: flex;
-    gap: 12px;
-  }
+  .top-actions { display: flex; gap: 10px; align-items: center; }
 
   .btn-action {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 600;
-    padding: 8px 16px;
-    border-radius: 10px;
+    padding: 7px 14px;
+    border-radius: 9px;
     border: 1px solid var(--border);
     background: #1e293b;
     color: #e2e8f0;
     cursor: pointer;
     text-decoration: none;
     transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
 
   .btn-action:hover {
@@ -106,252 +108,277 @@
 
   .btn-accent {
     background: var(--accent);
-    color: #030712;
+    color: #020617;
     border: none;
+    font-weight: 700;
   }
 
-  .btn-accent:hover {
-    background: var(--accent-light);
+  .btn-accent:hover { background: var(--accent-light); }
+
+  #read-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f59e0b, #38bdf8);
+    width: 0%;
+    z-index: 100;
+    transition: width 0.1s;
   }
 
-  /* Main Reader Layout */
   .container {
-    max-width: 820px;
-    margin: 40px auto 80px auto;
-    padding: 0 24px;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px 100px;
   }
 
-  /* Cover Header */
   .book-cover {
-    background: linear-gradient(180deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
-    border: 1px solid #334155;
-    border-radius: 24px;
-    padding: 60px 40px;
+    background: linear-gradient(180deg, rgba(245, 158, 11, 0.08) 0%, rgba(11, 19, 41, 0.6) 100%);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    border-radius: 20px;
+    padding: 48px 36px;
+    margin-bottom: 50px;
     text-align: center;
-    margin-bottom: 60px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .book-cover::before {
-    content: '';
-    position: absolute;
-    top: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
-    pointer-events: none;
+    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
   }
 
   .cover-badge {
     display: inline-block;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    color: var(--accent);
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--accent);
-    background: rgba(245, 158, 11, 0.1);
-    border: 1px solid rgba(245, 158, 11, 0.3);
-    padding: 6px 14px;
-    border-radius: 9999px;
-    margin-bottom: 24px;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
   }
 
   .cover-title {
     font-family: 'Cinzel', serif;
-    font-size: 38px;
+    font-size: 34px;
     font-weight: 800;
-    line-height: 1.2;
-    margin: 0 0 16px 0;
-    background: linear-gradient(135deg, #fef3c7 0%, #f59e0b 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #ffffff;
+    line-height: 1.25;
+    margin: 0 0 14px;
+    text-shadow: 0 2px 20px rgba(245, 158, 11, 0.2);
   }
 
   .cover-sub {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Lora', serif;
     font-size: 18px;
     color: #cbd5e1;
-    max-width: 600px;
-    margin: 0 auto 24px auto;
-    line-height: 1.5;
+    font-style: italic;
+    max-width: 700px;
+    margin: 0 auto 20px;
+    line-height: 1.6;
   }
 
   .cover-meta {
-    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 13px;
     color: var(--text-muted);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 18px;
+    max-width: 500px;
+    margin: 0 auto;
   }
 
-  /* Typography */
-  h1, h2, h3, h4 {
+  article {
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    color: #e2e8f0;
+    line-height: 1.95;
+  }
+
+  article h1, article h2, article h3, article h4 {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    color: #f8fafc;
-    line-height: 1.3;
+    color: #ffffff;
+    font-weight: 700;
+    margin-top: 2.2em;
+    margin-bottom: 0.8em;
+    line-height: 1.35;
   }
 
-  h1 {
+  article h1 {
     font-size: 28px;
-    margin-top: 48px;
     border-bottom: 1px solid var(--border);
     padding-bottom: 12px;
-  }
-
-  h2 {
-    font-size: 24px;
-    margin-top: 44px;
     color: var(--accent-light);
   }
 
-  h3 {
-    font-size: 20px;
-    margin-top: 36px;
-    color: #e2e8f0;
+  article h2 {
+    font-size: 23px;
+    color: #f8fafc;
   }
 
-  p {
-    margin: 1.4em 0;
+  article h3 {
+    font-size: 19px;
+    color: #38bdf8;
   }
 
-  strong {
-    color: #fff;
+  article p {
+    margin: 1.2em 0;
+  }
+
+  article strong {
+    color: #ffffff;
     font-weight: 600;
   }
 
-  em {
-    color: #cbd5e1;
+  article a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
-  ul, ol {
-    padding-left: 28px;
-    margin: 1.4em 0;
+  article hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
   }
 
-  li {
-    margin-bottom: 0.6em;
-  }
-
-  /* Callouts */
-  .callout {
-    margin: 28px 0;
-    padding: 20px 24px;
-    border-radius: 16px;
-    background: #0f172a;
-    border-left: 4px solid var(--accent);
-    border: 1px solid #1e293b;
-    border-left-width: 5px;
-    border-left-color: var(--accent);
-  }
-
-  .callout-important {
-    border-left-color: #ef4444;
-    background: rgba(239, 68, 68, 0.05);
-  }
-
-  .callout-quote {
-    border-left-color: #f59e0b;
+  article blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 12px 20px;
+    margin: 24px 0;
     background: rgba(245, 158, 11, 0.05);
+    border-radius: 0 10px 10px 0;
+    color: #cbd5e1;
     font-style: italic;
   }
 
-  /* Math */
-  .math-display {
-    background: #090d16;
-    border: 1px solid #1e293b;
-    padding: 16px;
+  .callout {
+    margin: 24px 0;
+    padding: 18px 22px;
     border-radius: 12px;
-    margin: 20px 0;
-    text-align: center;
-    font-family: 'JetBrains Mono', monospace;
-    color: #38bdf8;
-    overflow-x: auto;
+    border: 1px solid var(--border);
+    background: rgba(15, 23, 42, 0.8);
   }
 
-  .math-inline {
-    font-family: 'JetBrains Mono', monospace;
-    background: rgba(56, 189, 248, 0.1);
-    color: #38bdf8;
-    padding: 2px 6px;
-    border-radius: 6px;
-    font-size: 0.9em;
+  .callout-quote {
+    border-color: rgba(56, 189, 248, 0.4);
+    background: rgba(56, 189, 248, 0.05);
   }
 
-  /* Table */
+  .callout-important, .callout-warning {
+    border-color: rgba(244, 63, 94, 0.4);
+    background: rgba(244, 63, 94, 0.05);
+  }
+
+  .callout-tip {
+    border-color: rgba(16, 185, 129, 0.4);
+    background: rgba(16, 185, 129, 0.05);
+  }
+
+  .callout-body p { margin: 0.6em 0; font-size: 16px; }
+
   .table-wrapper {
     overflow-x: auto;
     margin: 24px 0;
+    border-radius: 10px;
+    border: 1px solid var(--border);
   }
 
   table {
     width: 100%;
     border-collapse: collapse;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 14px;
+    font-size: 15px;
   }
 
   th, td {
     padding: 12px 16px;
-    border: 1px solid #1e293b;
+    border-bottom: 1px solid var(--border);
     text-align: left;
   }
 
   th {
-    background: #1e293b;
-    color: #f1f5f9;
-    font-weight: 600;
+    background: #0f172a;
+    color: var(--accent);
+    font-weight: 700;
   }
 
-  hr {
-    border: 0;
-    height: 1px;
+  td { background: #070d1d; }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14.5px;
+    padding: 2px 6px;
     background: #1e293b;
-    margin: 48px 0;
+    border-radius: 5px;
+    color: #fcd34d;
   }
 
-  /* Footer */
-  footer {
+  pre {
+    background: #090e1a;
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+  }
+
+  pre code {
+    background: transparent;
+    padding: 0;
+    color: #e2e8f0;
+  }
+
+  .math-display {
+    overflow-x: auto;
+    padding: 12px 0;
     text-align: center;
-    padding: 40px 0;
-    border-top: 1px solid var(--border);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 13px;
-    color: var(--text-muted);
+  }
+
+  .mermaid-wrap {
+    margin: 24px 0;
+    padding: 20px;
+    background: #070d1d;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-align: center;
   }
 </style>
 </head>
 <body>
 
-<div class="top-bar">
-  <a href="../index.html" class="top-brand">
+<div id="read-progress"></div>
+
+<header class="top-bar">
+  <a href="/" class="top-brand">
     <span>⚡</span>
-    <span>Inner Current • Библиотека</span>
+    <span>Внутренний ток • Ридер</span>
   </a>
   <div class="top-actions">
-    <button onclick="window.print()" class="btn-action">🖨️ Печать</button>
-    <a href="../index.html" class="btn-action btn-accent">Вернуться на сайт ➔</a>
+    <a href="/" class="btn-action">
+      <span>🔙</span> В библиотеку
+    </a>
+    <a href="05_field_manual.pdf" download class="btn-action btn-accent">
+      <span>📥</span> Скачать PDF
+    </a>
   </div>
-</div>
+</header>
 
-<div class="container">
+<main class="container">
+
   <div class="book-cover">
-    <div class="cover-badge">Полевой гид • Аптечка скорой помощи</div>
-    <h1 class="cover-title">Внутренний ток:<br>Полевой мануал отладки</h1>
-    <div class="cover-sub">Практическая инженерия человека: как починить себя, когда горит проводка</div>
-    <div class="cover-meta">Автор: Владимир Аньянов • Серия «Внутренний ток» • 2026</div>
+    <div class="cover-badge">Библиотека «Внутренний ток» • Золотая Семёрка 2.0 • Книга 5 (Аптечка 30 сек)</div>
+    <h1 class="cover-title">Полевой мануал оператора</h1>
+    <div class="cover-sub">Карманная аптечка первой помощи — 30-секундный протокол соматической отладки</div>
+    <div class="cover-meta">
+      <strong>Владимир Аньянов</strong> • Каноническая мастер-рукопись • 2026
+    </div>
   </div>
 
-  <div class="book-content">
-    <h1>Внутренний ток: Полевой мануал отладки</h1>
+  <article id="book-content">
+<h1>Внутренний ток: Полевой мануал отладки</h1>
 <h2>Практическая инженерия человека: как починить себя, когда горит проводка</h2>
 <p><strong>Автор:</strong> Владимир Аньянов<br />
 <strong>Серия:</strong> Библиотека «Внутренний ток»<br />
 <strong>Статус:</strong> Полная практическая мастер-рукопись книги  </p>
 <hr />
-<div class="callout callout-quote"><div class="callout-title" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 8.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #b45309; margin-bottom: 3mm;">Главная аксиома практической инженерии</div><div class="callout-body"><p>«Когда в щитке выбило пробки или плавится изоляция, никто не читает трактаты об истории электричества от Фалеса до Максвелла. Ты берёшь тестер, находишь короткое замыкание, отключаешь аварийный прибор и меняешь предохранитель. С человеком всё точно так же: душевная боль, выгорание, паника и вина — это не загадочная драма судьбы, а омический перегрев цепи. Сбрось сопротивление, распрями шланг внимания — и ток вернётся сам.»  </p>
+<div class="callout callout-quote"><div class="callout-title" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #38bdf8; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;"><span>📜</span> <span>Главная аксиома практической инженерии</span></div><div class="callout-body"><p>«Когда в щитке выбило пробки или плавится изоляция, никто не читает трактаты об истории электричества от Фалеса до Максвелла. Ты берёшь тестер, находишь короткое замыкание, отключаешь аварийный прибор и меняешь предохранитель. С человеком всё точно так же: душевная боль, выгорание, паника и вина — это не загадочная драма судьбы, а омический перегрев цепи. Сбрось сопротивление, распрями шланг внимания — и ток вернётся сам.»  </p>
 <p>— <strong>Владимир Аньянов</strong></p></div></div>
 
 <hr />
@@ -382,6 +409,7 @@
 <li><em>Глава 14.</em> Утренний пуск генератора (3 минуты перед подъёмом с постели)</li>
 <li><em>Глава 15.</em> Рабочий ритм: Пульсация «Ток — Разгрузка» без накопления омического шлака</li>
 <li><em>Глава 16.</em> Вечерняя продувка контура и возврат к абсолютному нулю (<span class="math-inline">\(R \to 0\)</span>)</li>
+<li><em>Глава 17.</em> Мастер-протокол трёх тактов «Тело — Мысль — Дело»: Отключение «Психологического Демона Лапласа», переключение стрелы времени Пригожина и тест «Труба — Зажигалка — Фонарик» (30 секунд)</li>
 <li><strong>Заключение. Счастье как штатный режим работы цепи (Эмерджентный свет живого духа)</strong></li>
 </ul>
 <hr />
@@ -437,7 +465,7 @@
 <div class="math-display">\[Q = I^2 R t\]</div>
 <p>Если по проводу течёт ток (<span class="math-inline">\(I\)</span>), а проводник чистый и проводит ток без помех (сопротивление <span class="math-inline">\(R = 0\)</span>), провод остаётся холодным, вся энергия уходит в свет лампы, а КПД равен 100%.</p>
 <p>Но если на проводе возникает сопротивление (<span class="math-inline">\(R > 0\)</span>) — ржавчина, окисление, спазм — ток не может свободно пройти в лампу. Энергия никуда не исчезает (закон сохранения!). Она начинает <strong>разогревать сам провод</strong>. Если сопротивление зажато долго (<span class="math-inline">\(t\)</span>) — изоляция плавится, появляется запах гари, проводка искрит и загорается.</p>
-<div class="callout callout-important"><div class="callout-title" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 8.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #b45309; margin-bottom: 3mm;">Физический перевод душевной боли</div><div class="callout-body"><p><strong>Твоя тревога, злость, обида и выгорание — это не «порча» и не «плохой характер». Это буквальное тепловыделение <span class="math-inline">\(Q\)</span> по закону Джоуля — Ленца.</strong><br />
+<div class="callout callout-important"><div class="callout-title" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #f43f5e; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;"><span>⚠️</span> <span>Физический перевод душевной боли</span></div><div class="callout-body"><p><strong>Твоя тревога, злость, обида и выгорание — это не «порча» и не «плохой характер». Это буквальное тепловыделение <span class="math-inline">\(Q\)</span> по закону Джоуля — Ленца.</strong><br />
 Ты зажал в голове сопротивление <span class="math-inline">\(R\)</span>, ток Тандэна не может выйти наружу в действие, и энергия батарейки начинает заживо плавить твою собственную нервную систему.</p></div></div>
 
 <h3>Метафора садового шланга: куда делся напор?</h3>
@@ -448,11 +476,9 @@
 <p>Достаточно наклониться, распрямить залом — и упругая вода с мощным свистом вырывается наружу.</p>
 <p>Вся эта книга — о том, как <strong>находить заломы на шланге твоего внимания и распрямлять их за 30 секунд</strong>.</p>
 <hr />
-<div class="part-header">## Часть I. Экспресс-диагностика: где искрит прямо сейчас?</div>
-
+<h2>Часть I. Экспресс-диагностика: где искрит прямо сейчас?</h2>
 <p>Когда тебе плохо, не задавай себе вопрос: <em>«За что мне это?»</em> или <em>«Кто виноват?»</em>. Задай себе инженерный вопрос: <strong>«Какая именно авария произошла в моей цепи?»</strong></p>
 <p>Существует всего 4 базовые аварии.</p>
-<div class="chapter-break"></div>
 <h3>Глава 1. Авария №1: Короткое замыкание на Эго («Что они обо мне подумают?»)</h3>
 <p>Это самая частая и разрушительная поломка у современного человека.</p>
 <p>В штатном режиме ток должен течь <strong>изнутри наружу</strong>:<br />
@@ -469,7 +495,6 @@
 - Симптомы: пересохло во рту, сердце колотится в горле, руки трясутся, слова забываются, наступает паралич.</p>
 <p><strong>Быстрый диагноз:</strong> Если в твоей голове крутится местоимение «Я» («Как <em>я</em> выгляжу», «Что <em>обо мне</em> скажут», «Какой <em>я</em> никчёмный») — у тебя прямо сейчас короткое замыкание на Эго.</p>
 <hr />
-<div class="chapter-break"></div>
 <h3>Глава 2. Авария №2: Омический перегрев будущего (Тревога и синдром самозванца)</h3>
 <p>Вторая типовая поломка — попытка запитать нагрузку, которой <strong>физически не существует в природе</strong>.</p>
 <p>Ты сидишь в тёплой комнате, пьёшь чай. Твоё тело находится в 19:45 вечера вторника. Но твоя голова находится в следующей пятнице:</p>
@@ -481,7 +506,6 @@
 Потому что ток твоего Тандэна ушёл в холостую симуляцию катастроф. Ты раскалил проводку мыслями о событиях, 95% из которых никогда не произойдут.</p>
 <p><strong>Быстрый диагноз:</strong> Если твоё тело сидит на стуле, а внимание пытается решить проблему, до которой ещё три дня или два месяца — у тебя омический перегрев будущего (<span class="math-inline">\(R_{future} \to \infty\)</span>).</p>
 <hr />
-<div class="chapter-break"></div>
 <h3>Глава 3. Авария №3: Залипание в прошлом (Вина, стыд и обида)</h3>
 <p>Эта поломка работает зеркально по отношению к будущему.</p>
 <p>Ты снова и снова прокручиваешь в голове разговор, который состоялся вчера, три месяца или десять лет назад:</p>
@@ -492,7 +516,6 @@
 <p>Каждая капля вины и самоедства — это чистый омический костёр. Ты сжигаешь сегодняшнее топливо на обогрев вчерашнего пепелища.</p>
 <p><strong>Быстрый диагноз:</strong> Если в мыслях звучит фраза «Надо было...» или «Зачем я тогда...» — твоя проводка прямо сейчас закорочена на мёртвый архив памяти.</p>
 <hr />
-<div class="chapter-break"></div>
 <h3>Глава 4. Авария №4: Батарейная слепота (Попытка зарядиться от внешних вещей)</h3>
 <p>Это фундаментальная иллюзия современного общества потребления.</p>
 <p>Человек чувствует опустошение, усталость, бессмысленность. И вместо того, чтобы посмотреть на свой генератор в животе, он решает:<br />
@@ -501,11 +524,9 @@
 <p>Люстра — это просто стекло и лампочки. У неё нет батарейки! Вещи, статусы, лайки в соцсетях и покупки — это <strong>нагрузка</strong>, а не генераторы. Когда ты покупаешь новую вещь, ты испытываешь облегчение ровно на пять минут только потому, что в момент покупки твоё Эго на секунду заткнулось и перестало сопротивляться. Но через три дня эйфория спадает, и «батарейка» снова на нуле.</p>
 <p><strong>Быстрый диагноз:</strong> Если ты думаешь, что твоё счастье лежит внутри какого-то внешнего предмета, человека или события — ты болен батарейной слепотой. Внешний мир не генерирует ток. Генератор стоит только у тебя внутри.</p>
 <hr />
-<div class="part-header">## Часть II. Полевые протоколы: отладка за 60 секунд</div>
-
+<h2>Часть II. Полевые протоколы: отладка за 60 секунд</h2>
 <p>Теперь отложим теорию. Переходим к конкретным рубильникам. Каждый протокол проверен сотни раз и работает независимо от твоего настроения, веры или интеллектуального уровня. Это чистая физиология и схемотехника.</p>
 <hr />
-<div class="chapter-break"></div>
 <h3>Глава 5. Протокол «Соматический сброс»: Перенос внимания из головы в Тандэн (30 секунд)</h3>
 <p>Этот протокол применяется при любых острых состояниях: внезапная паника, приступ ярости, ступор перед важным звонком, обида.</p>
 <h4>Физический смысл:</h4>
@@ -519,7 +540,6 @@
 </ol>
 <p>Всё. Через 30 секунд ты обнаружишь поразительную вещь: проблема, из-за которой ты только что сходил с ума, осталась задачей, но <strong>паника и омический перегрев исчезли</strong>. Ты вернулся в контакт с проводом.</p>
 <hr />
-<div class="chapter-break"></div>
 <h3>Глава 6. Протокол «Черный старт» (Black Start): Как подняться, когда всё рухнуло в ноль</h3>
 <p>В большой энергетике есть термин <em>«Black Start»</em> — это запуск энергосистемы страны после катастрофической аварии, когда погасли все электростанции, упали подстанции и нет внешнего питания. Ни одна турбина не крутится.</p>
 <p>Как поднимают сеть? Никто не пытается включить сразу весь завод или осветить город. Энергетики находят маленький автономный дизель-генератор в подвале. Заводят его ручным стартером. От него запитывают насос, насос подаёт солярку в турбину, турбина начинает крутиться и даёт первый ток — и шаг за шагом, через микронагрузки, поднимается вся энергосеть страны.</p>
@@ -540,7 +560,6 @@
 <li><strong>Зафиксируй щелчок реле.</strong> В тот момент, когда микродействие выполнено — замкнулся контакт. Ток потёк! Ты почувствуешь крошечный, еле заметный прилив тепла. Не форсируй. Добавь ещё одну микронагрузку через час. К вечеру генератор разгонится сам.</li>
 </ol>
 <hr />
-<div class="chapter-break"></div>
 <h3>Глава 7. Протокол «Микронагрузка»: Преодоление паралича воли (Закон одной спички и ключ Хоцу)</h3>
 <p>Ты сидишь перед ноутбуком. Надо делать проект, писать отчёт или готовиться к экзамену. Внутри нарастает липкое, мерзкое сопротивление. Ты открываешь YouTube, листаешь ленту, пьёшь пятый чай, ненавидишь себя за лень, но начать не можешь.</p>
 <p>Почему?<br />
@@ -555,7 +574,6 @@
 Главное трение в цепи — это <strong>трение покоя</strong>. Чтобы сдвинуть вагон с места, нужен мощный локомотив. Но когда колесо сделало хотя бы четверть оборота, вагон катится дальше сам с минимальным усилием.</p>
 <p>Этот импульс мгновенного замыкания называется <strong>ключом Хоцу (発 / Хочу!)</strong>. У него нулевой пинг (0 ms latency). Ты не проводишь ментальных дебатов: палец нажал на первую клавишу — ключ Хоцу замкнул цепь, и ток пошёл! Через две минуты ты обнаружишь, что увлечённо работаешь уже полчаса.</p>
 <hr />
-<div class="chapter-break"></div>
 <h3>Глава 8. Протокол «Сверхпроводник»: Как не сгореть на токсичном совещании (Режим Мусин, предохранитель Дзансин и заземление)</h3>
 <p>Ты сидишь на ковре у разъярённого начальника. Или твой партнёр дома с порога начинает орать, обвинять и срывать на тебя накопившуюся злость.</p>
 <p>Что делает обычный человек? Он выставляет встречное сопротивление: начинает оправдываться, огрызаться, сжимать кулаки или дуться.<br />
@@ -572,7 +590,6 @@
 <p>Через 60–90 секунд у кричащего человека закончится запал. Агрессия питается встречным сопротивлением. Если сопротивления нет — волна гаснет в пустоте. Собеседник внезапно сбавит тон, замолчит, растеряется и перейдёт к конструктиву.<br />
 А ты останешься абсолютно целым и прохладным.</p>
 <hr />
-<div class="chapter-break"></div>
 <h3>Глава 9. Протокол «Чистые клеммы»: Как уснуть за 3 минуты и выключить ночной холостой ход</h3>
 <p>Время — 02:30 ночи. Спать осталось четыре часа. Но в твоей голове разворачивается заседание совета директоров ООН вперемешку с судебным процессом:</p>
 <blockquote>
@@ -595,11 +612,9 @@
 </ol>
 <p>На третьем цикле блуждающий нерв выдавливает в кровь ацетилхолин, пульс замедляется, веки тяжелеют, и ты плавно проваливаешься в глубокий сон без сновидений.</p>
 <hr />
-<div class="part-header">## Часть III. Полевые кейсы: отладка типовых ситуаций</div>
-
+<h2>Часть III. Полевые кейсы: отладка типовых ситуаций</h2>
 <p>Давай разберём реальные жизненные ситуации, в которых обычный человек ежедневно сжигает тонны нервов, и посмотрим, как они решаются поворотом одного инженерного тумблера.</p>
 <hr />
-<div class="chapter-break"></div>
 <h3>Глава 10. Дедлайн и паника: Вход в режим Мусин прямо за рабочим столом</h3>
 <p><strong>Ситуация:</strong> До сдачи важнейшего проекта остаётся 4 часа. Ничего не готово. Таблицы разъезжаются, кофе не помогает, начальник пишет каждые десять минут: <em>«Ну что там?!»</em>. Внутри всё леденеет, пальцы путаются на клавиатуре, наступает состояние тупой, панической прострации.</p>
 <p><strong>Ошибка оператора:</strong> Оператор пытается бороться с паникой силой мысли: <em>«Соберись, тряпка! Ты должен успеть, иначе тебя уволят!»</em>. Это увеличивает напряжение цепи втрое. Напряжение растёт, ток блокируется спазмом, продуктивность падает до нуля.</p>
@@ -613,7 +628,6 @@
 <li><strong>Закон сверхпроводимости:</strong> Как только ты разрешил себе «провалиться» и отказался от страха последствий, сопротивление схлопывается в ноль (<span class="math-inline">\(R \to 0\)</span>). Происходит невероятное: пальцы начинают летать по клавишам с феноменальной скоростью, мозг выдаёт кристально точные решения, и работа, на которую требовалось шесть часов, выполняется за два с половиной. В тишине и без единой капли пота.</li>
 </ol>
 <hr />
-<div class="chapter-break"></div>
 <h3>Глава 11. Отношения: Почему доказательство правоты убивает любовь</h3>
 <p><strong>Ситуация:</strong> Семейный вечер. Банальный бытовой спор — кто забыл купить хлеб или куда поехать в отпуск. Через десять минут спор перерастает в ядерную войну: припоминаются обиды пятилетней давности, повышаются голоса, хлопают двери, оба сидят по углам в ледяной ненависти.</p>
 <p><strong>Где поломка?</strong><br />
@@ -633,7 +647,6 @@
 <em>«Слушай, мы сейчас оба горим. К чёрту этот спор. Мне гораздо важнее то, что мы вместе, чем то, кто из нас забыл этот проклятый хлеб. Прости меня за наезд. Давай я просто обниму тебя»</em>.</p>
 <p>В 99% случаев у второго человека на глазах наворачиваются слёзы, броня падает, и через минуту вы пьёте чай в абсолютной нежности. Ты не «прогнулся». Ты сработал как мудрый старший инженер, который вовремя выдернул штепсель из коротнувшей розетки.</p>
 <hr />
-<div class="chapter-break"></div>
 <h3>Глава 12. Потеря денег и кризис: Деньги — это вольтаж, а не сам ток</h3>
 <p><strong>Ситуация:</strong> Сорвалась крупная сделка, украли деньги, упал бизнес или неожиданно выкатили огромный штраф. В животе всё обрывается в ледяную пропасть: <em>«Всё пропало. Я банкрот. Жизнь кончена»</em>.</p>
 <p><strong>Разбор иллюзии:</strong><br />
@@ -651,7 +664,6 @@
 <li>Замкни цепь на действие. Деньги — это побочный результат чистого тока созидания. Ток пошёл — вольтаж восстановится автоматически.</li>
 </ol>
 <hr />
-<div class="chapter-break"></div>
 <h3>Глава 13. Зависть и сравнение: Как выключить чужие вольтметры</h3>
 <p><strong>Ситуация:</strong> Ты открываешь ленту соцсетей. Твой одноклассник купил виллу на Бали, знакомая выложила фото из бизнес-класса, а коллега получил повышение и хвастается новой машиной. Внутри мгновенно поднимается горькая, ядовитая волна: <em>«Я неудачник. Жизнь проходит мимо. Я топчусь на месте»</em>.</p>
 <p><strong>Диагностика:</strong><br />
@@ -665,12 +677,10 @@
 <li>Скажи про себя: <em>«Пусть их лампы горят ярко. А я возвращаюсь к настройке своего собственного фонарика»</em>.</li>
 </ol>
 <hr />
-<div class="part-header">## Часть IV. Ежедневный регламент ТО (Техническое обслуживание проводника)</div>
-
+<h2>Часть IV. Ежедневный регламент ТО (Техническое обслуживание проводника)</h2>
 <p>Любой хороший инженер знает: чтобы приборы не взрывались в аварийных ситуациях, нужно проводить регулярное профилактическое техническое обслуживание (ТО).</p>
 <p>Вот простейший распорядок дня для поддержания режима сверхпроводимости. Он занимает суммарно <strong>не более 10 минут в день</strong>.</p>
 <hr />
-<div class="chapter-break"></div>
 <h3>Глава 14. Утренний пуск генератора (3 минуты перед подъёмом)</h3>
 <p><strong>Главная ошибка утра:</strong> Проснуться по будильнику и первым же движением схватить смартфон.<br />
 В эту секунду в твой ещё не проснувшийся, чистый мозг врываются новости, чужие проблемы, рабочие чаты и тревоги. Ты вешаешь на холодный генератор сто тонн грязной нагрузки. Весь день пойдёт наперекосяк.</p>
@@ -685,7 +695,6 @@
 Твой генератор вышел на стабильные 50 Герц.</li>
 </ol>
 <hr />
-<div class="chapter-break"></div>
 <h3>Глава 15. Рабочий ритм: Пульсация «Ток — Разгрузка»</h3>
 <p>Человек не может и не должен светить непрерывно 8 часов подряд без остановки. Сердце работает по принципу «систола — диастола» (сокращение — расслабление). Электрический ток в розетке — переменный, он пульсирует.</p>
 <p>Если ты пытаешься жать педаль в пол четыре часа без перерыва, твоя нервная система переходит в режим аварийного выгорания.</p>
@@ -696,7 +705,6 @@
 </ul>
 <p>При таком режиме ты сделаешь за день в два раза больше и в 18:00 выйдешь с работы свежим, полным сил человеком, готовым к общению с семьёй и хобби.</p>
 <hr />
-<div class="chapter-break"></div>
 <h3>Глава 16. Вечерняя продувка контура и возврат к абсолютному нулю (<span class="math-inline">\(R \to 0\)</span>)</h3>
 <p>Перед сном с проводки нужно смыть омический нагар, скопившийся за день: мелкие раздражения, недосказанные слова, дорожные пробки, суету.</p>
 <h4>Процедура за 3 минуты:</h4>
@@ -706,6 +714,48 @@
 <li>Сидя на краю кровати, сделай короткую ревизию:<br />
 <em>«Всё, что было сделано сегодня — сделано. Всё, что не сделано — подождёт до завтра. Сегодняшний цикл завершён, нагрузка отключена, потенциал сброшен в ноль. Я отпускаю управление миром до утра»</em>.</li>
 <li>Ложись в кровать. Ты чист. Твой провод остыл. Ты готов к глубокой ночной регенерации.</li>
+</ol>
+<hr />
+<h3>Глава 17. Мастер-протокол трёх тактов «Тело — Мысль — Дело»: Отключение «Психологического Демона Лапласа», переключение стрелы времени Пригожина и тест «Труба — Зажигалка — Фонарик» (30 секунд)</h3>
+<p>Когда в разгар дня накрывает волна ступора, стыда за старую ошибку или тревоги, у тебя нет времени листать страницы. Тебе нужен <strong>один главный мастер-тумблер</strong>, который объединяет всю физику «Внутреннего тока» и неравновесную термодинамику Ильи Пригожина (1977, 1997) в три коротких удара пульса.</p>
+<h4>1. Экспресс-проверка «Труба — Зажигалка — Фонарик» и чистота стекла Личности</h4>
+<p>В любой непонятной ситуации проверь себя по трём бытовым предметам:<br />
+1. <strong>Водопроводная труба:</strong> где прямо сейчас пережат мой шланг внимания (<span class="math-inline">\(R_{\text{ego}} > 0\)</span>)? В челюстях? В плечах? В солнечном сплетении?<br />
+2. <strong>Газовая зажигалка (Контур I Пригожина — Тело):</strong> ровно ли горит мой биологический огонёк? Дышит ли низ живота (Тандэн)?<br />
+3. <strong>Карманный фонарик (Контур II Аньянова — Дух):</strong> проверь два участка — <strong>провод внутри</strong> и <strong>стекло линзы снаружи</strong>!<br />
+   - Не путай свою <strong>Личность</strong> со своим <strong>Эго</strong>: твоя Личность (характер, опыт, таланты, юмор) — это <strong>прозрачная хрустальная линза</strong> (<span class="math-inline">\(R_{\text{personality}} \to 0\)</span>). Она не ворует свет, а фокусирует твой уникальный луч!<br />
+   - А <strong>Эго</strong> (<span class="math-inline">\(R_{\text{ego}} \gg 0\)</span>) — это ржавый залом провода внутри (страх «а вдруг не выйдет?») и липкая грязь на стекле снаружи (обида, гордыня и желание казаться кем-то другим). Линзу бить не надо — просто сотри с неё грязь!</p>
+<h4>2. Отключение «Психологического Демона Лапласа» (Демона прошлых травм)</h4>
+<p>Самая частая авария сознания звучит так: <em>«У меня ничего не выйдет сегодня, потому что в прошлом я уже провалился / у меня тяжёлая детская травма / так сложилась судьба»</em>.<br />
+В своей книге <em>«Конец определённости» (1997)</em> нобелевский лауреат Илья Пригожин доказал: <strong>в точке бифуркации (выбора) прошлая траектория теряет всякую власть над системой!</strong><br />
+* В прошлом <strong>нет аккумулятора</strong> (<span class="math-inline">\(\mathcal{E}_{\text{past}} \equiv 0\)</span>). Вчерашний провал и детская обида десятилетней давности сами по себе мертвы и обесточены.<br />
+* Они жгут тебя сегодня только потому, что ты сам вставил штекер своего сегодняшнего внимания в розетку старой памяти (<span class="math-inline">\(I_{\text{past}} > 0\)</span>).<br />
+* Выдерни штекер (<span class="math-inline">\(I_{\text{past}} = 0\)</span>) и нажми кнопку <strong>Хоцу</strong>! В ту же секунду ты перескакиваешь на новую ветвь реальности, где прошлое бессильно.</p>
+<h4>3. Переключатель Стрелы Времени (<span class="math-inline">\(t\)</span> Клаузиуса <span class="math-inline">\(\longrightarrow\)</span> <span class="math-inline">\(t\)</span> Пригожина)</h4>
+<p>Посмотри на главное уравнение энергии твоего дня за время <span class="math-inline">\(t\)</span>:</p>
+<div class="math-display">\[E_{\text{total}} = \underbrace{I^2 R_{\text{ego}} \cdot t}_{\text{Время-Палач Клаузиуса}} + \underbrace{I^2 R_{\text{load}} \cdot t}_{\text{Время-Творец Пригожина}}\]</div>
+<ul>
+<li>Пока ты сидишь в зажиме эго (<span class="math-inline">\(R_{\text{ego}} > 0, R_{\text{load}} = 0\)</span>), каждая минута времени <span class="math-inline">\(t\)</span> работает как <strong>Время Клаузиуса (Время-Палач)</strong>: она линейно умножает твой омический ожог, выматывает и старит тебя.</li>
+<li>Как только ты сбросил сопротивление в ноль (<span class="math-inline">\(R_{\text{ego}} \to 0\)</span>) и включился в реальное дело (<span class="math-inline">\(R_{\text{load}} > 0\)</span>), то же самое время <span class="math-inline">\(t\)</span> мгновенно превращается во <strong>Время Пригожина (Время-Творец)</strong>: каждая минута строит твоё мастерство, укрепляет нервную систему и приносит радость!</li>
+</ul>
+<h4>4. Мастер-протокол трёх тактов: «ТЕЛО — МЫСЛЬ — ДЕЛО» (30 секунд)</h4>
+<p>Запомни эту последовательность из трёх слов (и никогда не начинай со слова «Мысль»!):</p>
+<div class="codehilite"><pre><span></span><code>┌─────────────────────────────────────────────────────────────────────────┐
+│             МАСТЕР-РУБИЛЬНИК: «ТЕЛО — МЫСЛЬ — ДЕЛО» (30 СЕК)            │
+├───────────────────────┬──────────────────────────┬──────────────────────┤
+│ 1. ТЕЛО (0–10 сек)    │ 2. МЫСЛЬ (10–15 сек)     │ 3. ДЕЛО (15–30 сек)  │
+├───────────────────────┼──────────────────────────┼──────────────────────┤
+│ • Разомкни зубы       │ • Выдерни штекер из      │ • ЩЁЛК! (Ключ Хоцу)  │
+│ • Сбрось плечи вниз   │   прошлого (I_past = 0)  │ • Коснись задачи     │
+│ • Выдохни в Тандэн    │ • Протри стекло линзы    │   руками прямо сейчас│
+│ • Стопы плотно в пол  │   (R_ego → 0, Мусин)     │ • Включи Время Творца│
+└───────────────────────┴──────────────────────────┴──────────────────────┘
+</code></pre></div>
+
+<ol>
+<li><strong>ТЕЛО (10 сек):</strong> Сначала вернись в физический корпус. Выдохни в низ живота, разомкни челюсти, опусти плечи.</li>
+<li><strong>МЫСЛЬ (5 сек):</strong> Скажи внутреннему спорщику: <em>«Прошлое обесточено. Стекло чистое»</em>.</li>
+<li><strong>ДЕЛО (15 сек):</strong> Щёлкни тумблером <strong>Хоцу</strong> и сделай одно простое физическое движение руками в реальном мире. Контур замкнут!</li>
 </ol>
 <hr />
 <h2>Заключение. Счастье как штатный режим работы цепи (Эмерджентный свет живого духа)</h2>
@@ -726,12 +776,18 @@
 <hr />
 <p><em>Владимир Аньянов</em><br />
 <em>2026</em></p>
-  </div>
+  </article>
 
-  <footer>
-    © 2026 Владимир Аньянов. Все права защищены. Библиотека «Внутренний ток».
-  </footer>
-</div>
+</main>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const winScroll = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById('read-progress').style.width = scrolled + '%';
+  });
+</script>
 
   <script src="/assets/tracker.js" defer></script>
 </body>

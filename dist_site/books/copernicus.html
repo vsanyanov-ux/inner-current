@@ -6,7 +6,27 @@
 <title>Коперник Сознания: Анатомия эго и физика внутренней свободы — Владимир Аньянов</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    function initKaTeX() {
+      if (typeof renderMathInElement === 'function') {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '\[', right: '\]', display: true},
+            {left: '\(', right: '\)', display: false},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false
+        });
+      } else {
+        setTimeout(initKaTeX, 50);
+      }
+    }
+    initKaTeX();
+  });
+</script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>
   mermaid.initialize({ startOnLoad: true, theme: 'dark' });
@@ -374,9 +394,9 @@
 <div id="read-progress"></div>
 
 <header class="top-bar">
-  <a href="../index.html?tab=book" class="top-brand">
+  <a href="../index.html" class="top-brand">
     <span style="font-size: 18px;">⚡</span>
-    <span>Inner Current • Библиотека</span>
+    <span>Inner Current • Золотой Сикстет</span>
   </a>
   <div class="top-actions">
     <a href="../index.html" class="btn-action">
@@ -639,7 +659,7 @@ flowchart LR
 <hr />
 <h2>Глава 6. Закон проводимости: почему река не может быть плотиной</h2>
 <p>Зафиксируйте эту мысль так, чтобы её невозможно было выбить никакими сомнениями:</p>
-<p><div class="math-display">\[\mathbf{I_{\text{life}} \neq R_{\text{ego}}}\]</div></p>
+<div class="math-display">\[\mathbf{I_{\text{life}} \neq R_{\text{ego}}}\]</div>
 <p><strong>Ток Жизни принципиально не равен Сопротивлению.</strong></p>
 <p>Задайте себе несколько предельно наглядных детских вопросов:<br />
 * Может ли бурный горный поток быть бетонной дамбой, которая его перекрывает?<br />
@@ -873,7 +893,7 @@ flowchart LR
 <p>По дзенскому канону <strong>Кансо (簡素 — священная простота и бритва Оккама)</strong> базис полезной нагрузки строго минимален и исчерпывающе достаточен:</p>
 <ul>
 <li><strong>Деньги — это не лампа.</strong> В физике цепей деньги — это разность потенциалов (<span class="math-inline">\(U\)</span>) или мера потока, следствие правильной работы ламп Дела и Дома. Попытка назначить деньги самостоятельной лампой приводит к короткому замыканию внимания на абстрактные цифры и ожогу проводки.</li>
-<li><strong>Духовность (Бог / Присутствие) — это не лампа на полке.</strong> Выделение духовности в отдельный сектор — главная ошибка средневековой схоластики. Духовность — это <strong>сам режим сверхпроводимости всего контура (<span class="math-inline">\(R_{\text{ego}} \to 0, I &gt; 0\)</span>)</strong> при протекании соматического тока сквозь <strong>любую</strong> из шести ламп. Подметание пола в тишине присутствия (лампа «Дом») или написание кода (лампа «Дело») абсолютно духовно, если сопротивление эго снято с линии.</li>
+<li><strong>Духовность (Бог / Присутствие) — это не лампа на полке.</strong> Выделение духовности в отдельный сектор — главная ошибка средневековой схоластики. Духовность — это <strong>сам режим сверхпроводимости всего контура (<span class="math-inline">\(R_{\text{ego}} \to 0, I > 0\)</span>)</strong> при протекании соматического тока сквозь <strong>любую</strong> из шести ламп. Подметание пола в тишине присутствия (лампа «Дом») или написание кода (лампа «Дело») абсолютно духовно, если сопротивление эго снято с линии.</li>
 </ul>
 <hr />
 <h2>Глава 14. Карманный калибратор: протокол мгновенного распознавания паразитного шума</h2>

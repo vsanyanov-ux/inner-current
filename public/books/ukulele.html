@@ -2,416 +2,383 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Укулеле Бытия — Владимир Аньянов</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    function initKaTeX() {
+      if (typeof renderMathInElement === 'function') {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '\\[', right: '\\]', display: true},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false
+        });
+      } else {
+        setTimeout(initKaTeX, 50);
+      }
+    }
+    initKaTeX();
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+</script>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
-  @page {
-    size: A4;
-    margin: 22mm 18mm 22mm 18mm;
+  :root {
+    --bg-page: #020617;
+    --bg-card: #0b1329;
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --accent: #f59e0b;
+    --accent-light: #fcd34d;
+    --sky: #38bdf8;
+    --border: #1e293b;
   }
 
-  * {
-    box-sizing: border-box;
-  }
+  * { box-sizing: border-box; }
 
   body {
-    font-family: 'Lora', 'Georgia', serif;
-    font-size: 11pt;
-    line-height: 1.68;
-    color: #24292f;
-    background-color: #ffffff;
+    background: var(--bg-page);
+    color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.85;
     margin: 0;
     padding: 0;
-    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
 
-  /* COVER PAGE */
-  .cover-page {
-    page-break-after: always;
-    height: 100vh;
-    min-height: 250mm;
+  .top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(11, 19, 41, 0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    text-align: center;
-    padding: 30mm 15mm 20mm 15mm;
-    background: radial-gradient(circle at 50% 30%, #ffffff 0%, #faf8f5 100%);
-    border: 1px solid #eae5df;
-    position: relative;
   }
 
-  .cover-series {
+  .top-brand {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 8.5pt;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: #8c8275;
-    font-weight: 600;
-  }
-
-  .cover-hero {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin-top: 15mm;
+    gap: 8px;
+    text-decoration: none;
   }
 
-  .cover-emblem {
-    width: 68px;
-    height: 68px;
-    margin-bottom: 8mm;
-    color: #bfa15f;
-  }
+  .top-actions { display: flex; gap: 10px; align-items: center; }
 
-  .cover-author {
+  .btn-action {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 13pt;
-    letter-spacing: 0.18em;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    background: #1e293b;
+    color: #e2e8f0;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .btn-action:hover {
+    background: #334155;
+    border-color: var(--accent);
+  }
+
+  .btn-accent {
+    background: var(--accent);
+    color: #020617;
+    border: none;
+    font-weight: 700;
+  }
+
+  .btn-accent:hover { background: var(--accent-light); }
+
+  #read-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f59e0b, #38bdf8);
+    width: 0%;
+    z-index: 100;
+    transition: width 0.1s;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px 100px;
+  }
+
+  .book-cover {
+    background: linear-gradient(180deg, rgba(245, 158, 11, 0.08) 0%, rgba(11, 19, 41, 0.6) 100%);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    border-radius: 20px;
+    padding: 48px 36px;
+    margin-bottom: 50px;
+    text-align: center;
+    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+  }
+
+  .cover-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
     text-transform: uppercase;
-    color: #4a453e;
-    font-weight: 500;
-    margin-bottom: 6mm;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
   }
 
   .cover-title {
-    font-family: 'Cinzel', 'Lora', serif;
-    font-size: 32pt;
-    font-weight: 700;
-    line-height: 1.15;
-    color: #1a1816;
-    letter-spacing: 0.04em;
-    margin: 0 0 5mm 0;
-  }
-
-  .cover-divider {
-    width: 60px;
-    height: 2px;
-    background: #bfa15f;
-    margin: 4mm 0 6mm 0;
-  }
-
-  .cover-subtitle {
-    font-family: 'Lora', serif;
-    font-size: 14pt;
-    font-style: italic;
-    color: #615a51;
-    max-width: 480px;
-    margin: 0 auto 8mm auto;
-    line-height: 1.45;
-  }
-
-  .cover-tagline {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 9.5pt;
-    color: #7d756a;
-    max-width: 440px;
-    line-height: 1.55;
-    font-weight: 400;
-  }
-
-  .cover-footer {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 8.5pt;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #999083;
-  }
-
-  /* EPIGRAPH / FRONTISPIECE */
-  .frontispiece {
-    page-break-after: always;
-    min-height: 240mm;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 40mm 15mm;
-  }
-
-  .frontispiece-quote {
-    max-width: 520px;
-    font-size: 13pt;
-    font-style: italic;
-    line-height: 1.75;
-    color: #3d3730;
-    text-align: center;
-    position: relative;
-    padding: 0 10mm;
-  }
-
-  .frontispiece-quote::before {
-    content: "“";
     font-family: 'Cinzel', serif;
-    font-size: 50pt;
-    position: absolute;
-    top: -25px;
-    left: -10px;
-    color: #dfd7cc;
-    line-height: 1;
+    font-size: 34px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.25;
+    margin: 0 0 14px;
+    text-shadow: 0 2px 20px rgba(245, 158, 11, 0.2);
   }
 
-  .frontispiece-author {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 10pt;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: #8c8275;
-    font-weight: 600;
-    margin-top: 8mm;
-  }
-
-  /* HEADINGS */
-  h1, h2, h3, h4 {
-    color: #1a1816;
+  .cover-sub {
     font-family: 'Lora', serif;
-    font-weight: 600;
-  }
-
-  .part-header {
-    page-break-before: always;
-    padding-top: 25mm;
-    margin-bottom: 12mm;
-    border-bottom: 2px solid #bfa15f;
-    padding-bottom: 6mm;
-  }
-
-  .part-header h1 {
-    font-family: 'Cinzel', serif;
-    font-size: 20pt;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: #1a1816;
-    margin: 0;
-  }
-
-  .chapter-break {
-    page-break-before: always;
-    height: 1px;
-  }
-
-  h2 {
-    font-size: 15pt;
-    margin-top: 10mm;
-    margin-bottom: 4mm;
-    color: #1e1b18;
-    border-bottom: 1px solid #eee9e0;
-    padding-bottom: 2mm;
-  }
-
-  h3 {
-    font-size: 12.5pt;
-    margin-top: 6mm;
-    margin-bottom: 2.5mm;
-    color: #332d26;
-  }
-
-  h4 {
-    font-size: 11pt;
-    margin-top: 4mm;
-    margin-bottom: 2mm;
-    color: #554d42;
-  }
-
-  p {
-    margin: 0 0 3.5mm 0;
-    text-align: justify;
-    hyphens: auto;
-  }
-
-  strong {
-    font-weight: 600;
-    color: #111;
-  }
-
-  em {
+    font-size: 18px;
+    color: #cbd5e1;
     font-style: italic;
-  }
-
-  /* CALLOUTS */
-  .callout {
-    margin: 5mm 0;
-    padding: 4mm 5mm;
-    border-radius: 4px;
-    background: #faf7f2;
-    border: 1px solid #ebd9b5;
-    border-left: 4px solid #bfa15f;
-    break-inside: avoid;
-    font-size: 10.5pt;
+    max-width: 700px;
+    margin: 0 auto 20px;
     line-height: 1.6;
   }
 
-  .callout p:last-child {
-    margin-bottom: 0;
+  .cover-meta {
+    font-size: 13px;
+    color: var(--text-muted);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 18px;
+    max-width: 500px;
+    margin: 0 auto;
   }
 
-  /* DIAGRAMS / PRE / CODE */
-  pre {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 8.5pt;
-    line-height: 1.45;
-    background-color: #f7f6f3;
-    border: 1px solid #e2ddd5;
-    border-radius: 4px;
-    padding: 4mm 5mm;
-    margin: 5mm 0;
-    overflow-x: hidden;
-    white-space: pre;
-    break-inside: avoid;
-    color: #2b2723;
+  article {
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    color: #e2e8f0;
+    line-height: 1.95;
   }
 
-  code {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9pt;
-    background-color: #f2efe9;
-    padding: 1px 4px;
-    border-radius: 3px;
-    color: #5a2e16;
+  article h1, article h2, article h3, article h4 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #ffffff;
+    font-weight: 700;
+    margin-top: 2.2em;
+    margin-bottom: 0.8em;
+    line-height: 1.35;
   }
 
-  pre code {
-    background: transparent;
-    padding: 0;
-    color: inherit;
+  article h1 {
+    font-size: 28px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+    color: var(--accent-light);
   }
 
-  /* TABLES */
+  article h2 {
+    font-size: 23px;
+    color: #f8fafc;
+  }
+
+  article h3 {
+    font-size: 19px;
+    color: #38bdf8;
+  }
+
+  article p {
+    margin: 1.2em 0;
+  }
+
+  article strong {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  article a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  article hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  article blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 12px 20px;
+    margin: 24px 0;
+    background: rgba(245, 158, 11, 0.05);
+    border-radius: 0 10px 10px 0;
+    color: #cbd5e1;
+    font-style: italic;
+  }
+
+  .callout {
+    margin: 24px 0;
+    padding: 18px 22px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(15, 23, 42, 0.8);
+  }
+
+  .callout-quote {
+    border-color: rgba(56, 189, 248, 0.4);
+    background: rgba(56, 189, 248, 0.05);
+  }
+
+  .callout-important, .callout-warning {
+    border-color: rgba(244, 63, 94, 0.4);
+    background: rgba(244, 63, 94, 0.05);
+  }
+
+  .callout-tip {
+    border-color: rgba(16, 185, 129, 0.4);
+    background: rgba(16, 185, 129, 0.05);
+  }
+
+  .callout-body p { margin: 0.6em 0; font-size: 16px; }
+
   .table-wrapper {
-    margin: 5mm 0;
-    break-inside: avoid;
+    overflow-x: auto;
+    margin: 24px 0;
+    border-radius: 10px;
+    border: 1px solid var(--border);
   }
 
   table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 9.5pt;
-    line-height: 1.5;
-    margin: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
   }
 
   th, td {
-    padding: 2.5mm 3.5mm;
-    border: 1px solid #ded8ce;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
     text-align: left;
-    vertical-align: top;
   }
 
   th {
-    background-color: #f5f1eb;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 600;
-    color: #332d26;
+    background: #0f172a;
+    color: var(--accent);
+    font-weight: 700;
   }
 
-  tr:nth-child(even) td {
-    background-color: #fbf9f6;
+  td { background: #070d1d; }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14.5px;
+    padding: 2px 6px;
+    background: #1e293b;
+    border-radius: 5px;
+    color: #fcd34d;
   }
 
-  /* BLOCKQUOTES */
-  blockquote {
-    margin: 4mm 0 4mm 5mm;
-    padding-left: 4mm;
-    border-left: 3px solid #bfa15f;
-    color: #4a453e;
-    font-style: italic;
-    break-inside: avoid;
+  pre {
+    background: #090e1a;
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    border-radius: 10px;
+    overflow-x: auto;
   }
 
-  /* MATH STYLING */
+  pre code {
+    background: transparent;
+    padding: 0;
+    color: #e2e8f0;
+  }
+
   .math-display {
-    font-family: 'Lora', serif;
-    font-style: italic;
+    overflow-x: auto;
+    padding: 12px 0;
     text-align: center;
-    margin: 3.5mm 0;
-    padding: 2mm;
-    background: #fbf9f5;
-    border-radius: 4px;
-    color: #2b2723;
-    break-inside: avoid;
   }
 
-  .math-inline {
-    font-family: 'Lora', serif;
-    font-style: italic;
-    color: #2b2723;
-  }
-
-  /* HR / DIVIDERS */
-  hr {
-    border: 0;
-    height: 1px;
-    background: #e2ddd5;
-    margin: 8mm 0;
-  }
-
-  /* LISTS */
-  ul, ol {
-    margin: 2mm 0 4mm 0;
-    padding-left: 6mm;
-  }
-
-  li {
-    margin-bottom: 1.8mm;
-    text-align: justify;
-  }
-
-  /* TOC STYLING */
-  h2#_1, h2:first-of-type {
-    /* Table of contents header */
-    font-family: 'Cinzel', serif;
-    letter-spacing: 0.05em;
+  .mermaid-wrap {
+    margin: 24px 0;
+    padding: 20px;
+    background: #070d1d;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-align: center;
   }
 </style>
 </head>
 <body>
 
-<!-- COVER PAGE -->
-<div class="cover-page">
-  <div class="cover-series">Серия «Внутренний ток» • Канон Кансо</div>
-  
-  <div class="cover-hero">
-    <svg class="cover-emblem" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8">
-      <circle cx="50" cy="50" r="45" stroke-dasharray="3 3"/>
-      <!-- Ukulele stylized silhouette -->
-      <path d="M 50 15 L 50 42 M 45 42 Q 35 48 35 58 Q 35 68 45 74 Q 32 82 32 90 Q 32 98 50 98 Q 68 98 68 90 Q 68 82 55 74 Q 65 68 65 58 Q 65 48 55 42 Z" stroke="currentColor" stroke-width="1.8" fill="none"/>
-      <circle cx="50" cy="62" r="6" fill="#bfa15f" stroke="none"/>
-      <line x1="48" y1="20" x2="48" y2="88" stroke="#bfa15f" stroke-width="0.8"/>
-      <line x1="49.5" y1="20" x2="49.5" y2="88" stroke="#bfa15f" stroke-width="1.2"/>
-      <line x1="50.5" y1="20" x2="50.5" y2="88" stroke="#bfa15f" stroke-width="0.9"/>
-      <line x1="52" y1="20" x2="52" y2="88" stroke="#bfa15f" stroke-width="0.7"/>
-    </svg>
-    <div class="cover-author">Владимир Аньянов</div>
-    <h1 class="cover-title">УКУЛЕЛЕ БЫТИЯ</h1>
-    <div class="cover-divider"></div>
-    <div class="cover-subtitle">Простая акустика счастливой жизни</div>
-    <div class="cover-tagline">
-      Как 400 граммов дерева, четыре струны и пустота внутри корпуса объясняют гармонию человека, природу эго и искусство жить без фальши
+<div id="read-progress"></div>
+
+<header class="top-bar">
+  <a href="/" class="top-brand">
+    <span>⚡</span>
+    <span>Внутренний ток • Ридер</span>
+  </a>
+  <div class="top-actions">
+    <a href="/" class="btn-action">
+      <span>🔙</span> В библиотеку
+    </a>
+    <a href="06_ukulele.pdf" download class="btn-action btn-accent">
+      <span>📥</span> Скачать PDF
+    </a>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="book-cover">
+    <div class="cover-badge">Библиотека «Внутренний ток» • Золотая Семёрка 2.0 • Книга 6 (Акустический монизм)</div>
+    <h1 class="cover-title">Укулеле Бытия</h1>
+    <div class="cover-sub">Акустическая физика счастливой жизни — материя, звук и резонанс Мусин</div>
+    <div class="cover-meta">
+      <strong>Владимир Аньянов</strong> • Каноническая мастер-рукопись • 2026
     </div>
   </div>
 
-  <div class="cover-footer">
-    Волгодонск 2026
-  </div>
-</div>
-
-<!-- FRONTISPIECE EPIGRAPH -->
-<div class="frontispiece">
-  <div class="frontispiece-quote">
-    «Человек устроен не как сложная неприступная крепость и не как жертвенный механизм. Человек устроен как укулеле: четыреста граммов дерева, четыре струны и чистая пустота внутри корпуса. Когда струна живота настроена точно, а пальцы ума не сжимают гриф мёртвой хваткой контроля, радость рождается сама собой от малейшего прикосновения жизни. Счастье — это не консерваторский диплом. Счастье — это чистый строй твоего инструмента прямо здесь и сейчас.»
-  </div>
-  <div class="frontispiece-author">Владимир Аньянов</div>
-</div>
-
-<!-- BOOK CONTENT -->
-
+  <article id="book-content">
+<h1>Укулеле Бытия: Простая акустика счастливой жизни</h1>
+<h2>Архитектура сознания, дзенская простота Кансо и искусство жить без фальши</h2>
 <p><strong>Автор:</strong> Владимир Аньянов<br />
 <strong>Серия:</strong> Библиотека «Внутренний ток»<br />
 <strong>Статус:</strong> Каноническая мастер-рукопись книги  </p>
 <hr />
-<div class="callout callout-quote"><div class="callout-title" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 8.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #8c8275; margin-bottom: 3mm;">Главная аксиома книги</div><div class="callout-body"><p>«Человек устроен не как сложная неприступная крепость и не как жертвенный механизм. Человек устроен как укулеле: четыреста граммов дерева, четыре струны и чистая пустота внутри корпуса. Когда струна живота настроена точно, а пальцы ума не сжимают гриф мёртвой хваткой контроля, радость рождается сама собой от малейшего прикосновения жизни. Счастье — это не консерваторский диплом. Счастье — это чистый строй твоего инструмента прямо здесь и сейчас.»  </p>
+<div class="callout callout-quote"><div class="callout-title" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #38bdf8; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;"><span>📜</span> <span>Главная аксиома книги</span></div><div class="callout-body"><p>«Человек устроен не как сложная неприступная крепость и не как жертвенный механизм. Человек устроен как укулеле: четыреста граммов дерева, четыре струны и чистая пустота внутри корпуса. Когда струна живота настроена точно, а пальцы ума не сжимают гриф мёртвой хваткой контроля, радость рождается сама собой от малейшего прикосновения жизни. Счастье — это не консерваторский диплом. Счастье — это чистый строй твоего инструмента прямо здесь и сейчас.»  </p>
 <p>— <strong>Владимир Аньянов</strong></p></div></div>
 
 <hr />
@@ -444,6 +411,7 @@
 <li><em>Глава 18.</em> Две укулеле на столе: Почему любовь — это акустический резонанс, а не давление.</li>
 <li><em>Глава 19.</em> Ярмарка расстроенных инструментов: Как сохранить чистый строй в шумящем мире.</li>
 <li><em>Глава 20.</em> Созвучие без конкуренции: Играть в ансамбле, не ломая чужих грифов.</li>
+<li><em>Глава 21.</em> Акустический триптих «Дух — Личность — Эго», Резонанс Пуанкаре (<span class="math-inline">\(\omega_1 = \omega_2\)</span>) и Время Пригожина в музыке жизни.</li>
 <li><strong>Заключение.</strong> Аккорд в один палец: Счастье как естественное состояние чистого инструмента.</li>
 </ul>
 <hr />
@@ -468,9 +436,7 @@
 <p>Эта книга написана для того, чтобы вернуть вам ваш собственный инструмент. Без зауми, без вины и без многолетних хождений по посредникам. </p>
 <p>Давайте положим укулеле на колени, проведём пальцем по струнам и послушаем, как звучит наша жизнь.</p>
 <hr />
-<div class="part-header"># Часть I. Кто ты на самом деле? (Анатомия инструмента)</div>
-
-<div class="chapter-break"></div>
+<h1>Часть I. Кто ты на самом деле? (Анатомия инструмента)</h1>
 <h2>Глава 1. 400 граммов дерева и 0 граммов музыки: Монизм тела и духа</h2>
 <p>Две с половиной тысячи лет западная цивилизация страдает от глубочайшего внутреннего раскола, известного как психофизический дуализм:<br />
 * <em>«Что первично — материя или дух?»</em><br />
@@ -499,7 +465,6 @@
 Когда же вы зажаты, перекошены тревогой и обидами, материя вибрирует с надрывом, издавая глухой стук или сухой скрежет. </p>
 <p>Душа не оторвана от тела. Душа — это <strong>песня вашего тела</strong>. Заботиться о теле — значит настраивать инструмент, чтобы песня лилась чисто.</p>
 <hr />
-<div class="chapter-break"></div>
 <h2>Глава 2. Тайна резонатора: Почему звучит только пустота (Шуньята)</h2>
 <p>Посмотрите на корпус укулеле. Возьмите в руки цельный кусок сосновой доски тех же размеров, натяните на него такие же струны и ударьте по ним со всей силы. Что вы услышите?<br />
 Жалкий, сухой, еле слышный щелчок: <em>«пцык...»</em>. Струна колеблется, но звука нет.</p>
@@ -521,7 +486,6 @@
 <p>Большинство людей страдают не оттого, что у них «плохая жизнь». Они страдают оттого, что <strong>их резонатор забит под завязку чужим мусором</strong>. Внутри них просто нет пространства, чтобы отозваться на радость.</p>
 <p>Чтобы инструмент снова запел, не нужно покупать новые струны. Нужно просто перевернуть укулеле резонаторным отверстием вниз и хорошенько вытряхнуть из неё весь накопленный сор. Вернуть себе роскошь внутренней тишины.</p>
 <hr />
-<div class="chapter-break"></div>
 <h2>Глава 3. Спор Лиры Симмия и страх Платона: 2400 лет бегства от очевидного</h2>
 <p>Вы можете спросить: неужели за всю историю человечества никто из великих мыслителей не заметил этой кристальной аналогии?</p>
 <p>Заметили. И более того — именно с этой аналогии начался величайший раскол западной культуры.</p>
@@ -545,7 +509,6 @@
 <p><strong>Песня прекрасна не потому, что она длится вечно. Песня прекрасна именно потому, что она звучит прямо сейчас. Когда концерт окончен — инструмент замолкает, возвращаясь в чистый покой. И в этом покое нет ни капли трагедии. Трагедия — это прожить жизнь с расстроенным инструментом, так ни разу и не сыграв своей песни.</strong></p>
 </blockquote>
 <hr />
-<div class="chapter-break"></div>
 <h2>Глава 4. Триумф Кансо: Почему Укулеле, а не Скрипка?</h2>
 <p>На протяжении веков редкие философы, вспоминавшие о музыке, почти всегда выбирали для сравнения аристократические инструменты: <strong>скрипку Страдивари</strong>, <strong>концертный рояль</strong> или <strong>величественный соборный орган</strong>.</p>
 <p>Но вглядитесь в образ скрипки:<br />
@@ -570,9 +533,7 @@
 <p><strong>Счастье создано не для консерваторий. Жизнь не требует от вас исполнения сложнейших скрипичных каприсов Паганини. Жизнь вручила вам лёгкую гавайскую гитару и попросила: звучи искренне, звучи просто, будь созвучен моменту.</strong></p>
 </blockquote>
 <hr />
-<div class="part-header"># Часть II. «Струны души»: Физика натяжения и настройка строя</div>
-
-<div class="chapter-break"></div>
+<h1>Часть II. «Струны души»: Физика натяжения и настройка строя</h1>
 <h2>Глава 5. Четыре струны твоего существа (G - C - E - A): от Тандэна к Мусин</h2>
 <p>У классической укулеле всего <strong>четыре струны</strong>. Ни больше, ни меньше. <br />
 В стандартном строе они звучат как <strong>Соль — До — Ми — Ля</strong> (G — C — E — A).</p>
@@ -603,7 +564,6 @@
 - <em>Если эта струна расстроена:</em> воля парализована сомнениями: <em>«А стоит ли? А что скажут? А вдруг не получится?»</em>. Энергия застревает в голове, так и не дойдя до пальцев.</p>
 <p>Когда все четыре струны настроены в гармоничный аккорд, любое действие человека — от заваривания чая до управления корпорацией — становится естественным, точным и красивым.</p>
 <hr />
-<div class="chapter-break"></div>
 <h2>Глава 6. Диалектика натяжения: Ловушка апатии против спазма гиперконтроля</h2>
 <p>В акустике существует строгий физический закон: частота колебания струны напрямую зависит от силы её натяжения: чем сильнее натянута струна, тем выше частота звука, а при ослаблении струна провисает и звук угасает.</p>
 <p>Струна не может звучать, если она просто болтается. Но струна не может петь и тогда, когда натянута сверх меры. Здесь раскрывается великий закон баланса жизни:</p>
@@ -632,7 +592,6 @@
 <p><strong>Духовная зрелость — это не расхлябанность и не железная броня. Духовная зрелость — это безупречная калибровка натяжения: быть достаточно натянутым, чтобы звучать, и достаточно свободным, чтобы не лопнуть.</strong></p>
 </blockquote>
 <hr />
-<div class="chapter-break"></div>
 <h2>Глава 7. Мёртвая хватка за гриф: Соматика тревоги и почему от сжатых кулаков гаснет любой аккорд</h2>
 <p>Понаблюдайте за человеком, который впервые взял в руки укулеле и очень боится сыграть неправильно.<br />
 Вы увидите характерную картину:<br />
@@ -661,9 +620,7 @@
 - Вы выбиваетесь из сил за полчаса и падаете без ресурса.</p>
 <p>Ослабьте хватку. Разожмите тиски. Перестаньте душить гриф своей судьбы. Жизнь зазвучит только тогда, когда ваши пальцы станут лёгкими.</p>
 <hr />
-<div class="part-header"># Часть III. Что такое Эго? Загадка дребезжащего лада</div>
-
-<div class="chapter-break"></div>
+<h1>Часть III. Что такое Эго? Загадка дребезжащего лада</h1>
 <h2>Глава 8. Если бы укулеле сошла с ума: Как расшатанный винтик колка объявил себя «личностью»</h2>
 <p>Представьте себе сказочный, но пугающе точный мысленный эксперимент.</p>
 <p>Маленькая четырёхструнная укулеле лежит на столе в уютной комнате. Мастер подходит, бережно берёт её в руки и проводит пальцем по струнам. Рождается кристально прозрачный, тёплый аккорд До-мажор. Звук взлетает к потолку, заполняя комнату покоем и красотой.</p>
@@ -704,7 +661,6 @@
 <p><strong>Эго — это всего лишь механический дребезг расшатанной детали в твоём мыслительном аппарате. Это паразитный треск тревоги, который ты по ошибке принял за свою бессмертную душу.</strong></p>
 </blockquote>
 <hr />
-<div class="chapter-break"></div>
 <h2>Глава 9. Четыре капкана шума: Почему человек путает паразитный треск со своей сутью</h2>
 <p>Ни один скрипичный мастер не спутает дефект инструмента с музыкой. Услышав дребезжание, он берёт инструмент и аккуратно устраняет люфт.<br />
 Почему же разумный человек на протяжении тысяч лет держится за свой внутренний скрежет и готов воевать с любым, кто предложит ему тишину?</p>
@@ -735,7 +691,6 @@
 - <em>«А мой дребезг освящён традициями предков: так скрипел мой дед, так скрипел мой отец!»</em></p>
 <p>Когда миллионы людей вокруг соревнуются в громкости треска, у отдельного человека не остаётся шанса догадаться, что инструмент создан для чистой, прозрачной песни.</p>
 <hr />
-<div class="chapter-break"></div>
 <h2>Глава 10. Липкая жвачка на деке: Как прошлые обиды и вина глушат живой объём</h2>
 <p>Возьмите лучшую в мире укулеле, сделанную из столетнего гавайского коа. Она звучит как хрустальный колокол.<br />
 А теперь возьмите кусок липкой жевательной резинки или кусок сырой глины и залепите им верхнюю деревянную деку прямо возле подставки струн.</p>
@@ -763,7 +718,6 @@
 <p>Инструмент не поёт не потому, что вы бесталанны. Инструмент не поёт потому, что <strong>вы несёте на себе тонны чужого окаменевшего хлама</strong>.</p>
 <p>Возьмите нож правды и аккуратно соскребите жвачку. Дайте дереву снова свободно дышать.</p>
 <hr />
-<div class="chapter-break"></div>
 <h2>Глава 11. Отвёртка Кансо: 30-секундный протокол разотождествления с дребезгом</h2>
 <p>Что делать, когда вы посреди рабочего дня, спора или одинокого вечера вдруг поймали себя на том, что внутри всё скрипит, горит тревогой, а в голове крутится изматывающая шарманка самобичевания?</p>
 <p>Не нужно устраивать многочасовой психоаналитический консилиум. Не нужно искать корни проблемы в раннем детстве.<br />
@@ -796,9 +750,7 @@
 <p>Из этого состояния тишины сделайте одно простое физическое действие: сделайте глоток чистой воды, поправьте чашку на столе, взгляните в окно на облака.<br />
 Первая чистая нота прозвучала в пространстве. Дребезг исчез. Инструмент снова в строю.</p>
 <hr />
-<div class="part-header"># Часть IV. В руках Музыканта: Жизнь играет, ты звучишь</div>
-
-<div class="chapter-break"></div>
+<h1>Часть IV. В руках Музыканта: Жизнь играет, ты звучишь</h1>
 <h2>Глава 12. Кто прикасается к струнам? Жизнь как непрерывный джем-сейшн</h2>
 <p>Когда мы говорим: «Человек — это укулеле», неизбежно возникает фундаментальный вопрос:<br />
 <em>«А кто же тогда Музыкант? Чьи пальцы бьют по моим струнам?»</em>.</p>
@@ -818,7 +770,6 @@
 <p>И наивнейшая ошибка человека — требовать от Музыканта, чтобы он перестал играть или играл исключительно тихие, слащавые, колыбельные песенки. Жизнь будет играть сложнейшие полифонические полотна: в них будут и гремящие крещендо побед, и щемящие минорные ноты утрат, и неожиданные смены ритма.</p>
 <p>Инструмент не командует руками Музыканта. Но инструмент рождён для того, чтобы звучать в этих руках.</p>
 <hr />
-<div class="chapter-break"></div>
 <h2>Глава 13. Разделение ответственности: Ты не выбираешь пьесу, но отвечаешь за строй</h2>
 <p>Здесь мы подходим к главному водоразделу между инфантильным неврозом и подлинной зрелостью духа.</p>
 <p>В античной философии стоицизма (Эпиктет, Марк Аврелий, Сенека) существовал великий принцип: <strong>дихотомия контроля</strong>. Разделяй то, что зависит от тебя, и то, что от тебя не зависит.</p>
@@ -845,7 +796,6 @@
 <p>Прекратите воевать с Музыкантом.<br />
 Каждое утро проверяйте строй своих четырёх струн. Держите деку в чистоте. И тогда любая пьеса — даже самая драматичная — прозвучит сквозь вас как глубокая, благородная и величественная музыка.</p>
 <hr />
-<div class="chapter-break"></div>
 <h2>Глава 14. Сила пауз: Почему музыка невозможна без молчания и почему эго боится тишины</h2>
 <p>Спросите любого великого композитора: из чего состоит музыка?<br />
 Дилетант ответит: <em>«Из звуков!»</em>.<br />
@@ -871,9 +821,7 @@
 Когда разговор окончен — помолчите вместе.<br />
 Тишина — это не пустота утраты. Тишина — это плодородная почва, из которой произрастает любая настоящая музыка.</p>
 <hr />
-<div class="part-header"># Часть V. Нет фальшивых нот: Дзен Майлза Дэвиса</div>
-
-<div class="chapter-break"></div>
+<h1>Часть V. Нет фальшивых нот: Дзен Майлза Дэвиса</h1>
 <h2>Глава 15. Струна не знает песню «Yesterday»: В природе нет ошибок, есть только колебания</h2>
 <p>Возьмите укулеле и попробуйте сыграть знаменитую мелодию Пола Маккартни <em>«Yesterday»</em>.<br />
 Вы ставите пальцы на лады: Фа-мажор, Ми-минор, Ля-септаккорд...<br />
@@ -900,7 +848,6 @@
 <p>Но диссонанс в физике — это не грех! Это не ошибка! Это просто <strong>натяжение звукового поля, ищущее своего разрешения</strong>.<br />
 Все частоты священны. Все ноты имеют равное право на существование в мироздании.</p>
 <hr />
-<div class="chapter-break"></div>
 <h2>Глава 16. Анатомия фальши: Спазм сличения с воображаемой партитурой</h2>
 <p>Откуда же тогда берётся это жгучее, ядовитое чувство вины и стыда, когда мы говорим: <em>«Я совершил ошибку, я сфальшивил»</em>?</p>
 <p>«Фальшь» — это исключительно искусственный конструкт человеческого рассудка. Она рождается в момент трагического столкновения двух несовпадающих слоёв:<br />
@@ -915,7 +862,6 @@
 Музыкант бросает играть потому, что <strong>его внимание намертво застряло в осуждении прошлого звука вместо того, чтобы жить в звуке настоящем</strong>.</p>
 <p>Большинство человеческих депрессий и неврозов — это многолетнее пережёвывание одной-единственной «фальшивой ноты», взятой двадцать лет назад. Человек всю жизнь смотрит назад, в разорванную партитуру, пока его укулеле покрывается толстым слоем пыли.</p>
 <hr />
-<div class="chapter-break"></div>
 <h2>Глава 17. Алхимия следующей ноты: Как превратить любой жизненный диссонанс в шедевр</h2>
 <p>Величайший джазовый трубач XX века <strong>Майлз Дэвис</strong> сформулировал высший закон жизни, который должен быть выбит золотыми буквами на стенах каждого дома:</p>
 <blockquote>
@@ -958,9 +904,7 @@
 Но вы обладаете абсолютной царственной свободой выбрать: <strong>какую ноту извлечь прямо сейчас</strong>.</p>
 <p>Не прячьте глаза, если ваш палец соскочил. Улыбнитесь залу. И с невозмутимым спокойствием дзенского мастера сыграйте следующую ноту.</p>
 <hr />
-<div class="part-header"># Часть VI. Акустика отношений: Оркестр и Бесконтактный Резонанс</div>
-
-<div class="chapter-break"></div>
+<h1>Часть VI. Акустика отношений: Оркестр и Бесконтактный Резонанс</h1>
 <h2>Глава 18. Две укулеле на столе: Почему любовь — это акустический резонанс, а не давление</h2>
 <p>Поставьте на деревянный стол две одинаковые укулеле на расстоянии метра друг от друга.<br />
 Убедитесь, что обе они настроены чисто и в один строй.<br />
@@ -994,7 +938,6 @@
 А те, чей инструмент безнадёжно расстроен или забит камнями, просто пройдут мимо, не задев твоего покоя.</p>
 <p>Любовь — это не захват заложников. Любовь — это резонанс двух свободных инструментов, стоящих на одном столе бытия.</p>
 <hr />
-<div class="chapter-break"></div>
 <h2>Глава 19. Ярмарка расстроенных инструментов: Как сохранить чистый строй в шумящем мире</h2>
 <p>Каждый день, выходя из дома или открывая ленту социальных сетей, вы попадаете на гигантскую, многомиллионную <strong>Ярмарку Расстроенных Инструментов</strong>.</p>
 <p>Вокруг вас тысячи людей:<br />
@@ -1020,7 +963,6 @@
    В акустике низкие, плотные частоты обладают колоссальной устойчивостью — их невозможно сбить высоким писклявым шумом. Когда вокруг начинается паника, истерика или агрессия: опустите всё внимание в самый низ живота, в дыхание, в спокойную гравитацию земли. Станьте тяжёлым басовым контрапунктом. И вы увидите чудо: через несколько минут окружающий истеричный шум начнёт стихать, невольно подстраиваясь под ваш несокрушимый, спокойный ритм.</li>
 </ol>
 <hr />
-<div class="chapter-break"></div>
 <h2>Глава 20. Созвучие без конкуренции: Играть в ансамбле, не ломая чужих грифов</h2>
 <p>Человеческое общество часто уподобляют безжалостной борьбе за выживание: <em>«Человек человеку волк»</em>, <em>«Побеждает сильнейший»</em>, <em>«Столкни конкурента с пьедестала»</em>.</p>
 <p>Но взгляните на музыкальный квартет или джаз-бэнд.<br />
@@ -1047,7 +989,49 @@
 - Если рядом с вами кто-то звучит ярко — не завидуйте и не пытайтесь перепилить его гриф. Подержите для него ритм. Порадуйтесь его высоте.<br />
 - А когда наступит ваш такт — сыграйте свою тему чисто, искренне, во весь голос, зная, что вся Вселенная держит для вас эту паузу.</p>
 <hr />
-<div class="chapter-break"></div>
+<h2>Глава 21. Акустический триптих «Дух — Личность — Эго», Резонанс Пуанкаре (<span class="math-inline">\(\omega_1 = \omega_2\)</span>) и Время Пригожина в музыке жизни</h2>
+<p>В завершающей главе нашей акустической онтологии соединим деревянную деку укулеле с великими законами неравновесной физики Ильи Пригожина (1977, 1997) и оптикой карманного фонарика.</p>
+<h3>1. Разгадка вековой путаницы: Звук (Дух), Тембр деки (Личность) и Дребезг лада (Эго)</h3>
+<p>На протяжении тысячелетий духовные учения пугали человека: <em>«Чтобы прийти к гармонии, ты должен стереть свою индивидуальность, убить в себе личность и стать безликим!»</em>.<br />
+Акустика укулеле мгновенно показывает, насколько нелепо это требование.</p>
+<p>Возьмите три разные укулеле: одна сделана из гавайской акации коа, вторая — из тёмного ореха, третья — из звонкой альпийской ели. Сыграйте на каждой из них один и тот же чистый аккорд До-мажор (C):</p>
+<div class="codehilite"><pre><span></span><code>┌────────────────────────────────────────────────────────────────────────────┐
+│             АКУСТИЧЕСКИЙ И ОПТИЧЕСКИЙ ИЗОМОРФИЗМ ЧЕЛОВЕКА                  │
+├────────────────────────┬───────────────────────────┬───────────────────────┤
+│ КАТЕГОРИЯ БЫТИЯ        │ В УКУЛЕЛЕ БЫТИЯ           │ В КАРМАННОМ ФОНАРИКЕ  │
+├────────────────────────┼───────────────────────────┼───────────────────────┤
+│ 1. ДУХ                 │ Чистая ЗВУКОВАЯ ВОЛНА     │ Поток ТОКА и СВЕТА    │
+│    (Первичный поток)   │ (Колебание воздуха)       │ (Луч фотонов в мир)   │
+├────────────────────────┼───────────────────────────┼───────────────────────┤
+│ 2. ЛИЧНОСТЬ (R → 0)    │ Уникальный ТЕМБР ДЕКИ     │ Прозрачная ЛИНЗА      │
+│    (Красота формы)     │ (Бархат коа, звон ели)    │ (Фокусировка луча)    │
+├────────────────────────┼───────────────────────────┼───────────────────────┤
+│ 3. ЭГО (R ≫ 0)         │ Паразитный ДРЕБЕЗГ ЛАДА   │ Залом провода и грязь │
+│    (Омическая помеха)  │ и мёртвый зажим грифа     │ на стекле фонарика    │
+└────────────────────────┴───────────────────────────┴───────────────────────┘
+</code></pre></div>
+
+<ul>
+<li><strong>Дух</strong> — это сама живая звуковая волна, летящая сквозь комнату.</li>
+<li><strong>Личность</strong> — это <strong>благородный тембр деревянной деки</strong> (<span class="math-inline">\(R_{\text{personality}} \to 0\)</span>). Дерево деки не ворует энергию у струны и не мешает песне — наоборот, оно дарит звуку неповторимую теплоту, обертоны и узнаваемый голос! Ваш характер, ваше чувство юмора, ваш тембр голоса и уникальный жизненный опыт — это драгоценная порода дерева вашей деки.</li>
+<li><strong>Эго</strong> — это <strong>паразитный дребезг плохо зажатого лада</strong> и судорога пальцев (<span class="math-inline">\(R_{\text{ego}} \gg 0\)</span>), когда музыкант боится ошибиться или пытается покрасоваться перед залом.</li>
+</ul>
+<p>Когда дребезг эго убран (<span class="math-inline">\(R_{\text{ego}} \to 0\)</span>), даже грусть в вашей жизни перестаёт быть удушливым омическим пожаром жалости к себе: она превращается в <strong>хрустальную печаль Ваби-саби</strong> — чистый, прозрачный минорный аккорд (<em>Am</em>), от красоты которого светлеет на душе.</p>
+<h3>2. Резонанс Пуанкаре (<span class="math-inline">\(\omega_{\text{tanden}} = \omega_{\text{ukulele}}\)</span>): Почему в настоящей музыке исчезает «исполнитель»</h3>
+<p>В своей книге <em>«Конец определённости» (1997)</em> нобелевский лауреат Илья Пригожин математически доказал: мир состоит не из изолированных «бильярдных шаров», летящих по мёртвым рельсам, а из взаимодействующих волновых потоков. Когда частоты двух систем совпадают (<span class="math-inline">\(\omega_1 = \omega_2\)</span>), возникает <strong>резонанс Пуанкаре</strong>:</p>
+<div class="math-display">\[\lim_{\omega_{\text{tanden}} \to \omega_{\text{ukulele}}} \frac{1}{\omega_{\text{tanden}} - \omega_{\text{ukulele}}} \longrightarrow \infty \quad (R_{\text{ego}} \to 0)\]</div>
+<p>Посмотрите, что это означает, когда вы берёте укулеле в руки:<br />
+* Пока ваше эго зажато (<span class="math-inline">\(R_{\text{ego}} > 0\)</span>), в комнате сидят два отдельных, чужих друг другу предмета: «напряжённый человек» и «кусок дерева со струнами».<br />
+* Но стоит вам пройти по универсальному протоколу трёх тактов <strong>«Тело — Мысль — Дело»</strong>:<br />
+  1. <strong>ТЕЛО:</strong> опустить дыхание в тёплый бас живота (Тандэн) и расслабить плечи;<br />
+  2. <strong>МЫСЛЬ:</strong> отпустить страх прошлых фальшивых нот (<span class="math-inline">\(I_{\text{past}} = 0\)</span>, крушение «Психологического Демона Лапласа»);<br />
+  3. <strong>ДЕЛО:</strong> мягко коснуться струн пальцами в режиме <strong>Хоцу</strong>,<br />
+* — как частота вашего внутреннего присутствия совпадает с частотой струны (<span class="math-inline">\(\omega_{\text{tanden}} = \omega_{\text{ukulele}}\)</span>)! Вспыхивает <strong>акустический резонанс Пуанкаре (Дэай)</strong>. Знаменатель обособленности обращается в ноль. Стена между вами и инструментом растворяется: больше нет «меня, который старается играть», — есть единый поющий поток бытия и волна мурашек (<em>Frisson</em>) от макушки до кончиков пальцев!</p>
+<h3>3. Время Пригожина: Как годы делают дерево вашей деки благороднее</h3>
+<p>В запертом эго-контуре время работает как безжалостный палач Клаузиуса (<span class="math-inline">\(Q = I^2 R_{\text{ego}} t\)</span>), изнашивая и сжигая человека.<br />
+Но любой скрипичный и гитарный мастер знает: если на деревянном инструменте каждый день играют чистую музыку без грубых ударов и сырости, с годами его звук не стареет — <strong>дерево «разыгрывается»</strong>, смолы кристаллизуются, и через двадцать лет укулеле поёт в десять раз глубже, богаче и нежнее, чем в день покупки!</p>
+<p>Это и есть <strong>Время Пригожина (<span class="math-inline">\(W = I^2 R_{\text{load}} t\)</span>)</strong> — время созидания, время золотых швов <em>Кинцуги</em>. Каждая минута, прожитая вами в чистом строе без дребезга эго, делает акустику вашей души глубже, чище и прекраснее.</p>
+<hr />
 <h1>Заключение. Аккорд в один палец: Счастье как естественное состояние чистого инструмента</h1>
 <p>Жизнь — это не тяжёлый чугунный контрабас, который нужно надрываясь и матерясь тащить на двенадцатый этаж по узкой лестнице без лифта.</p>
 <p>Всю эту неподъёмную тяжесть мы придумали сами. Мы сами нагрузили себя тоннами чужих ожиданий, нелепых догм, старых обид и воображаемых партитур. Мы сами вцепились мёртвой хваткой в свои деревянные грифы и объявили непрерывный скрежет тревоги своим единственным достоянием.</p>
@@ -1073,6 +1057,18 @@
 Жизнь начинается прямо сейчас.</p>
 <hr />
 <p><em>Created: 2026-09-30 | Canonical Book Manuscript | Inner Current Series | Author: Vladimir Anyanov</em></p>
+  </article>
+
+</main>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const winScroll = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById('read-progress').style.width = scrolled + '%';
+  });
+</script>
 
   <script src="/assets/tracker.js" defer></script>
 </body>

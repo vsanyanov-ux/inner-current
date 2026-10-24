@@ -29,6 +29,8 @@ with open(SRC_MD, "r", encoding="utf-8") as f:
 
 # Strip frontmatter
 raw_md = re.sub(r"^---[\s\S]*?---\n", "", raw_md)
+# Strip Obsidian WikiLinks
+raw_md = re.sub(r"\[\[(?:[^|\]]*\\?\|)?([^\]]+)\]\]", r"\1", raw_md)
 
 def replace_callout(match):
     ctype = match.group(1).lower()
@@ -92,11 +94,11 @@ html_body = html_body.replace("</table>", '</table></div>')
 
 # Restore math blocks and inlines
 for idx, b in enumerate(math_blocks):
-    html_body = html_body.replace(f"@@MATH_BLOCK_{idx}@@", f'<div class="math-display">\[{b.strip()}\]</div>')
+    html_body = html_body.replace(f"@@MATH_BLOCK_{idx}@@", f'<div class="math-display">\\[{b.strip()}\\]</div>')
     html_body = re.sub(rf'<p>\s*(<div class="math-display">.*?</div>)\s*</p>', r'\1', html_body, flags=re.DOTALL)
 
 for idx, i in enumerate(math_inlines):
-    html_body = html_body.replace(f"@@MATH_INLINE_{idx}@@", f'<span class="math-inline">\({i}\)</span>')
+    html_body = html_body.replace(f"@@MATH_INLINE_{idx}@@", f'<span class="math-inline">\\({i}\\)</span>')
 
 # Generate Table of Contents from headings
 headings = re.findall(r'<h([23])(?:\s+id="([^"]*)")?>(.*?)</h\1>', html_body)
@@ -138,8 +140,8 @@ html_content = f"""<!DOCTYPE html>
         renderMathInElement(document.body, {{
           delimiters: [
             {{left: '$$', right: '$$', display: true}},
-            {{left: '\\[', right: '\\]', display: true}},
-            {{left: '\\(', right: '\\)', display: false}},
+            {{left: '\\\\[', right: '\\\\]', display: true}},
+            {{left: '\\\\(', right: '\\\\)', display: false}},
             {{left: '$', right: '$', display: false}}
           ],
           throwOnError: false
@@ -526,7 +528,7 @@ html_content = f"""<!DOCTYPE html>
   <div class="top-actions">
     <a href="../index.html" class="btn-action">← Портал</a>
     <a href="../trainer.html" class="btn-action">🎛️ Тренажер</a>
-    <a href="books/01_inner_current.pdf" download class="btn-action btn-accent">📥 PDF</a>
+    <a href="/books/01_inner_current.pdf" download class="btn-action btn-accent">📥 PDF</a>
   </div>
 </header>
 
@@ -534,9 +536,9 @@ html_content = f"""<!DOCTYPE html>
   <div class="book-cover">
     <div class="cover-badge">Библиотека «Золотая Семёрка 2.0» • Книга 1 (Фундамент N=1)</div>
     <h1 class="cover-title">Внутренний ток: Архитектура Человека</h1>
-    <p class="cover-sub">Канон Сверхпроводимости 3.0: Прикладная соматическая электродинамика, схемотехника карманного фонарика и протокол суверенного сознания ($NN=1)</p>
+    <p class="cover-sub">Канон Сверхпроводимости 3.1: Прикладная соматическая электродинамика, схемотехника карманного фонарика и полный потенциал открытия И. Пригожина (N=1)</p>
     <div class="cover-meta">
-      <strong>Автор:</strong> Владимир Аньянов • <strong>Редакция:</strong> 3.0 (Синтез на базе 400+ исследований)
+      <strong>Автор:</strong> Владимир Аньянов • <strong>Редакция:</strong> 3.1 (Синтез на базе 535+ исследований)
     </div>
   </div>
 
@@ -599,10 +601,10 @@ def update_index(index_path):
     new_card_h3 = '<h3 class="text-lg font-bold text-slate-100 group-hover:text-amber-300 transition">\n              Внутренний ток: Архитектура Человека (Канон 3.0)\n            </h3>'
     
     old_card_sub = '<p class="text-xs text-amber-400/90 font-medium mt-1">\n              Схемотехника карманного фонарика и соматическая сверхпроводимость\n            </p>'
-    new_card_sub = '<p class="text-xs text-amber-400 font-medium mt-1">\n              Канон Сверхпроводимости: соматика $NN=1, Русский синтез и протокол Self-Hosted Human\n            </p>'
+    new_card_sub = '<p class="text-xs text-amber-400 font-medium mt-1">\n              Канон Сверхпроводимости: соматика N=1, полный потенциал Пригожина и протокол Self-Hosted Human\n            </p>'
     
     old_card_desc_pattern = r'<p class="text-xs text-slate-300 leading-relaxed font-serif">\s*Фундаментальный труд соматической физики[\s\S]*?</p>'
-    new_card_desc = '<p class="text-xs text-slate-300 leading-relaxed font-serif">\n            Новейший канон на базе 400+ исследований: Русский синтез (Толстой, Достоевский, Ленц $QQ = I²·R·t), Акустический монизм (Укулеле Бытия), деконструкция 4 эпидемий цивилизации, бортовое табло OBD-II и соматический суверенитет человека перед лицом AGI.\n          </p>'
+    new_card_desc = '<p class="text-xs text-slate-300 leading-relaxed font-serif">\n            Новейший канон на базе 535+ исследований: Русский синтез (Толстой, Достоевский, закон Джоуля — Ленца Q = I²·R·t), 100% раскрытие потенциала И. Пригожина (1977 и 1997), триада «Труба, Зажигалка, Фонарик», онтология «Дух — Личность — Эго» и мастер-протокол «Тело — Мысль — Дело».\n          </p>'
 
     if old_card_h3 in idx:
         idx = idx.replace(old_card_h3, new_card_h3, 1)

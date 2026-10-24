@@ -50,6 +50,8 @@ def render_book_reader(md_filename, out_html_name, book_title, book_sub, badge_t
 
     # Strip YAML frontmatter
     raw_md = re.sub(r"^---[\s\S]*?---\n", "", raw_md)
+    # Strip Obsidian WikiLinks
+    raw_md = re.sub(r"\[\[(?:[^|\]]*\\?\|)?([^\]]+)\]\]", r"\1", raw_md)
 
     # Protect math blocks and inline formulas before markdown parsing
     math_blocks = []
@@ -507,4 +509,45 @@ render_book_reader(
     book_sub="Термодинамика негэнтропии, открытые системы и КПД бытия",
     badge_text="Библиотека «Внутренний ток» • Золотая Семёрка 2.0 • Книга 3 (Крыша)",
     pdf_name="03_universal_law.pdf"
+)
+
+# 3. Book 04: Тайна карманного фонарика (Детский праймер)
+for primer_html in ["primer_flashlight.html", "primer.html"]:
+    render_book_reader(
+        md_filename="04 — Владимир Аньянов — Тайна карманного фонарика (Внутренний ток для детей и подростков — как устроена твоя суперсила).md",
+        out_html_name=primer_html,
+        book_title="Тайна карманного фонарика",
+        book_sub="Внутренний ток для детей и подростков — как устроена твоя суперсила",
+        badge_text="Библиотека «Внутренний ток» • Золотая Семёрка 2.0 • Книга 4 (Детский праймер)",
+        pdf_name="04_flashlight_primer.pdf"
+    )
+
+# 4. Book 05: Полевой мануал оператора
+render_book_reader(
+    md_filename="05 — Владимир Аньянов — Полевой мануал оператора (Карманная аптечка первой помощи — 30-секундный протокол соматической отладки).md",
+    out_html_name="field_manual.html",
+    book_title="Полевой мануал оператора",
+    book_sub="Карманная аптечка первой помощи — 30-секундный протокол соматической отладки",
+    badge_text="Библиотека «Внутренний ток» • Золотая Семёрка 2.0 • Книга 5 (Аптечка 30 сек)",
+    pdf_name="05_field_manual.pdf"
+)
+
+# 5. Book 06: Укулеле Бытия
+render_book_reader(
+    md_filename="06 — Владимир Аньянов — Укулеле Бытия (Акустическая физика счастливой жизни — материя, звук и резонанс Мусин).md",
+    out_html_name="ukulele.html",
+    book_title="Укулеле Бытия",
+    book_sub="Акустическая физика счастливой жизни — материя, звук и резонанс Мусин",
+    badge_text="Библиотека «Внутренний ток» • Золотая Семёрка 2.0 • Книга 6 (Акустический монизм)",
+    pdf_name="06_ukulele.pdf"
+)
+
+# 6. Book 07: Великий Синтез
+render_book_reader(
+    md_filename="07 — Владимир Аньянов — Великий Синтез (Революции материи, трагедия духа и электродинамика человека).md",
+    out_html_name="great_synthesis.html",
+    book_title="Великий Синтез",
+    book_sub="Революции материи, трагедия духа и электродинамика человека",
+    badge_text="Библиотека «Внутренний ток» • Золотая Семёрка 2.0 • Книга 7 (Макроистория • Master Edition 2.0)",
+    pdf_name="07_great_synthesis.pdf"
 )
