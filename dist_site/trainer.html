@@ -324,14 +324,14 @@
                   <text x="150" y="70" fill="#fde68a" font-size="7" font-family="sans-serif" font-weight="semibold" text-anchor="middle">🟡 НАПОР</text>
                   <text x="238" y="112" fill="#fca5a5" font-size="8" font-family="sans-serif" font-weight="bold" text-anchor="end">🔴 ОВЕРРЕВ</text>
 
-                  <!-- Dynamic Tachometer Needle (CLEAN - NO CIRCLE AT TIP) -->
+                  <!-- Dynamic Tachometer Needle (CLEAN - NO CIRCLE AT TIP, DEFAULT I=75) -->
                   <g id="tach-needle-group">
-                    <polygon id="tach-needle-counter" points="146.5,140 153.5,140 150,154" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" opacity="0.85"/>
-                    <polygon id="tach-needle-beam" points="146.5,140 153.5,140 151,22 149,22" fill="url(#tach-needle-gradient)" filter="url(#tach-needle-glow)"/>
-                    <line id="tach-needle-spine" x1="150" y1="140" x2="150" y2="22" stroke="#ffffff" stroke-width="0.8" opacity="0.9"/>
+                    <polygon id="tach-needle-counter" points="147.5,137.5 152.5,142.5 140.1,149.9" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" opacity="0.85"/>
+                    <polygon id="tach-needle-beam" points="147.5,137.5 152.5,142.5 234.1,57.3 232.7,55.9" fill="url(#tach-needle-gradient)" filter="url(#tach-needle-glow)"/>
+                    <line id="tach-needle-spine" x1="150" y1="140" x2="233.4" y2="56.6" stroke="#ffffff" stroke-width="0.8" opacity="0.9"/>
                     
-                    <circle id="tach-needle-tip-glow" cx="150" cy="22" r="3" fill="#38bdf8" filter="url(#tach-needle-glow)"/>
-                    <circle id="tach-needle-tip-core" cx="150" cy="22" r="1.2" fill="#ffffff"/>
+                    <circle id="tach-needle-tip-glow" cx="233.4" cy="56.6" r="3" fill="#38bdf8" filter="url(#tach-needle-glow)"/>
+                    <circle id="tach-needle-tip-core" cx="233.4" cy="56.6" r="1.2" fill="#ffffff"/>
 
                     <circle cx="150" cy="140" r="12" fill="#0b1329" stroke="#38bdf8" stroke-width="2.5" filter="url(#tach-needle-glow)"/>
                     <circle cx="150" cy="140" r="5.5" fill="#38bdf8"/>
@@ -1734,6 +1734,13 @@
     window.tach_onSliderChange = tach_onSliderChange;
     window.tach_render = tach_render;
 
+    // Immediate script-load Tachometer positioning (I = 75, angle = 45 deg)
+    try {
+      updateTachNeedleGeometry(45);
+      if (typeof updateCoupledVerdict === 'function') updateCoupledVerdict();
+    } catch (e) {}
+
+
     
     function updateRadarPosition() {
       const ciEl = document.getElementById('gauge-ci-val');
@@ -2293,6 +2300,11 @@
 
       switchTab(initialTab);
       gauge_render();
+      if (typeof tach_render === 'function') {
+        const sliderTach = document.getElementById('slider-tach-i');
+        const initialI = sliderTach ? parseInt(sliderTach.value, 10) || 75 : 75;
+        tach_render(initialI);
+      }
     });
   </script>
 
