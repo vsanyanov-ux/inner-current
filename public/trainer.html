@@ -911,7 +911,8 @@
                 </div>
                 <div class="text-[11px] font-mono text-slate-300 space-y-1">
                   <div>CI = 0.20 × (S₁ + S₂ + S₃ + S₄ + S₅)</div>
-                  <div>КПД H = (CI + 100) / 2 = <span class="text-amber-300 font-bold" id="gauge-formula-h">92%</span></div>
+                  <div>Стресс R = (100 - CI) / 2 = <span class="text-cyan-300 font-bold" id="gauge-formula-r">42 Ω</span></div>
+                  <div>КПД H = (CI + 100) / 2 = <span class="text-emerald-300 font-bold" id="gauge-formula-h">58%</span></div>
                   <div>Потери Q = I² · R_ego · t</div>
                 </div>
               </div>
@@ -1941,6 +1942,8 @@
       if (hVal) hVal.textContent = h + '%';
       const formulaH = document.getElementById('gauge-formula-h');
       if (formulaH) formulaH.textContent = h + '%';
+      const formulaR = document.getElementById('gauge-formula-r');
+      if (formulaR) formulaR.textContent = stressR + ' Ω (стресс ' + stressR + ')';
 
       // Update HUD metrics
       const regoEl = document.getElementById('live-rego-val');
