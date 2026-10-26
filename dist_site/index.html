@@ -1574,6 +1574,9 @@
           <span class="uppercase tracking-wider font-semibold text-slate-300">Калибровка контура:</span>
         </div>
         <div class="flex flex-wrap items-center gap-2">
+          <button onclick="setCircuitConsolePreset(60, 42)" class="cc-preset-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-950/90 text-cyan-200 border border-cyan-500/80 hover:bg-cyan-900 transition flex items-center gap-1.5 cursor-pointer shadow-md ring-1 ring-cyan-400">
+            <span>⌚ С браслета (ЧСС 76, Стресс 42)</span>
+          </button>
           <button onclick="setCircuitConsolePreset(85, 8)" class="cc-preset-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-cyan-950/60 text-cyan-300 border border-cyan-800/60 hover:bg-cyan-900/80 hover:text-white transition cursor-pointer flex items-center gap-1.5 shadow-sm">
             <span>⚡ Мусин (Поток)</span>
           </button>
@@ -1659,7 +1662,7 @@
               <span>Штиль (0)</span>
               <span>Газ в пол (100)</span>
             </div>
-            <input type="range" id="cc-slider-i" min="0" max="100" value="75"
+            <input type="range" id="cc-slider-i" min="0" max="100" value="60"
               class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400 transition" />
             <div class="text-[10px] text-slate-400 text-center font-mono">
               Обороты Тандэна & сила внимания ($I$)
@@ -1814,7 +1817,7 @@
               <span>Мусин (0)</span>
               <span>Глухой клин (100)</span>
             </div>
-            <input type="range" id="cc-slider-r" min="0" max="100" value="15"
+            <input type="range" id="cc-slider-r" min="0" max="100" value="42"
               class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-400 transition" />
             <div class="text-[10px] text-slate-400 text-center font-mono">
               Внутреннее эго-сопротивление ($R$)
@@ -2502,8 +2505,8 @@
     // =========================================================================
     // CIRCUIT CONSOLE INTERACTIVE CONTROLLER (I vs R)
     // =========================================================================
-    let ccCurrentI = 75;
-    let ccCurrentR = 15;
+    let ccCurrentI = 60;
+    let ccCurrentR = 42;
 
     function updateCircuitConsole() {
       const sliderI = document.getElementById('cc-slider-i');
@@ -2511,32 +2514,34 @@
       if (sliderI) ccCurrentI = parseInt(sliderI.value, 10);
       if (sliderR) ccCurrentR = parseInt(sliderR.value, 10);
 
+      const restingHR = 55 + Math.round(ccCurrentI * 0.35);
+
       // Digital values
       const elIDisplay = document.getElementById('cc-i-display');
       const elIBadge = document.getElementById('cc-i-badge');
       const elIDesc = document.getElementById('cc-i-desc');
       if (elIDisplay) elIDisplay.textContent = ccCurrentI;
-      if (elIBadge) elIBadge.textContent = ccCurrentI + ' Ав';
+      if (elIBadge) elIBadge.textContent = restingHR + ' уд/мин • ' + ccCurrentI + ' Ав';
 
       const elRDisplay = document.getElementById('cc-r-display');
       const elRBadge = document.getElementById('cc-r-badge');
       const elRDesc = document.getElementById('cc-r-desc');
       if (elRDisplay) elRDisplay.textContent = ccCurrentR;
-      if (elRBadge) elRBadge.textContent = ccCurrentR + ' Ω';
+      if (elRBadge) elRBadge.textContent = ccCurrentR + ' Ω • Стресс ' + ccCurrentR;
 
       // Update I Description
       if (elIDesc) {
-        if (ccCurrentI < 25) elIDesc.textContent = 'Холостой ход / Покой';
-        else if (ccCurrentI < 65) elIDesc.textContent = 'Умеренный рабочий ток';
-        else if (ccCurrentI < 85) elIDesc.textContent = 'Высокий рабочий напор';
-        else elIDesc.textContent = 'Красная зона (Предельный напор)';
+        if (ccCurrentI < 25) elIDesc.textContent = 'Холостой ход (ЧСС ' + restingHR + ' уд/мин)';
+        else if (ccCurrentI < 65) elIDesc.textContent = 'Рабочий поток (ЧСС ' + restingHR + ' уд/мин)';
+        else if (ccCurrentI < 85) elIDesc.textContent = 'Высокий напор (ЧСС ' + restingHR + ' уд/мин)';
+        else elIDesc.textContent = 'Красная зона (ЧСС ' + restingHR + ' уд/мин)';
       }
 
       // Update R Description
       if (elRDesc) {
-        if (ccCurrentR <= 20) elRDesc.textContent = 'Сверхпроводимость (Мусин)';
-        else if (ccCurrentR <= 50) elRDesc.textContent = 'Штатная нагрузка дела';
-        else if (ccCurrentR <= 75) elRDesc.textContent = 'Паразитное трение / Залом';
+        if (ccCurrentR <= 25) elRDesc.textContent = 'Сверхпроводимость (Мусин: R → 0)';
+        else if (ccCurrentR <= 50) elRDesc.textContent = 'Рабочий поток (Свободный ход)';
+        else if (ccCurrentR <= 75) elRDesc.textContent = 'Стресс / Паразитный залом';
         else elRDesc.textContent = 'Омический клин / Авария';
       }
 

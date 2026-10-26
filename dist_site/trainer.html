@@ -236,20 +236,23 @@
           <!-- Quick Scenario Presets -->
           <div class="flex flex-wrap items-center gap-2 relative z-10">
             <span class="text-xs uppercase tracking-wider text-slate-400 font-mono">Пресеты:</span>
+            <button onclick="gauge_applyPreset('bracelet')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-950/90 border border-cyan-500/80 text-cyan-200 hover:bg-cyan-900 transition flex items-center gap-1.5 cursor-pointer shadow-md ring-1 ring-cyan-400">
+              <span>⌚</span> С браслета (ЧСС 76, Стресс 42)
+            </button>
             <button onclick="gauge_applyPreset('mushin')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-950/80 border border-emerald-700/60 text-emerald-300 hover:bg-emerald-900 transition flex items-center gap-1.5 cursor-pointer shadow-md">
-              <span>🍵</span> Мусин (+95)
+              <span>🍵</span> Мусин (Стресс 8)
             </button>
             <button onclick="gauge_applyPreset('flow')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-950/80 border border-cyan-700/60 text-cyan-300 hover:bg-cyan-900 transition flex items-center gap-1.5 cursor-pointer">
-              <span>💻</span> Flow (+75)
+              <span>💻</span> Flow (Стресс 25)
             </button>
             <button onclick="gauge_applyPreset('npc')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700 transition flex items-center gap-1.5 cursor-pointer">
-              <span>🥱</span> Дрейф (0)
+              <span>🥱</span> Дрейф (Стресс 50)
             </button>
             <button onclick="gauge_applyPreset('rumination')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-950/80 border border-amber-700/60 text-amber-300 hover:bg-amber-900 transition flex items-center gap-1.5 cursor-pointer">
-              <span>🧠</span> DMN тревога (-55)
+              <span>🧠</span> DMN тревога (Стресс 75)
             </button>
             <button onclick="gauge_applyPreset('panic')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-rose-950/80 border border-rose-700/60 text-rose-300 hover:bg-rose-900 transition flex items-center gap-1.5 cursor-pointer">
-              <span>🔥</span> Дистресс (-90)
+              <span>🔥</span> Дистресс (Стресс 95)
             </button>
           </div>
         </header>
@@ -261,15 +264,15 @@
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
             
             <!-- Left: Speedometer Dial (SVG) -->
-                        <!-- LEFT: TACHOMETER DIAL (SVG) - НАПОР ВНИМАНИЯ (I) -->
+                                    <!-- LEFT: TACHOMETER DIAL (SVG) - НАПОР ВНИМАНИЯ (I) & ЧСС ПОКОЯ -->
             <div class="lg:col-span-6 flex flex-col items-center justify-between p-6 rounded-2xl bg-slate-950/85 border border-slate-800 text-center shadow-xl relative overflow-hidden">
               <div class="w-full flex items-center justify-between text-[11px] font-mono uppercase tracking-widest text-slate-400 font-bold mb-1">
                 <span class="flex items-center gap-1.5 text-cyan-400">
                   <span id="tach-status-emoji" class="text-lg">⚡</span>
-                  <span>ТАХОМЕТР ПОТОКА (I)</span>
+                  <span>ТАХОМЕТР ПОТОКА (I & ЧСС)</span>
                 </span>
                 <span id="tach-rpm-badge" class="px-2 py-0.5 rounded bg-cyan-950 border border-cyan-800 text-cyan-300 text-[10px] font-bold">
-                  75 Ав
+                  76 уд/мин • 60 Ав
                 </span>
               </div>
 
@@ -296,42 +299,42 @@
                   <path d="M 50 140 A 100 100 0 0 1 250 140" fill="none" stroke="#1e293b" stroke-width="16" stroke-linecap="round"/>
 
                   <!-- Colored Arcs -->
-                  <!-- Blue / Cyan Zone (0 to 60) -->
+                  <!-- Blue / Cyan Zone (0 to 60 I, 55 to 76 bpm) -->
                   <path d="M 50 140 A 100 100 0 0 1 180.9 44.9" fill="none" stroke="#38bdf8" stroke-width="14" stroke-linecap="round" opacity="0.95"/>
-                  <!-- Yellow Zone (60 to 85) -->
+                  <!-- Yellow Zone (60 to 85 I, 76 to 85 bpm) -->
                   <path d="M 180.9 44.9 A 100 100 0 0 1 239.1 94.6" fill="none" stroke="#f59e0b" stroke-width="14" stroke-linecap="butt" opacity="0.95"/>
-                  <!-- Red Overrev Zone (85 to 100) -->
+                  <!-- Red Overrev Zone (85 to 100 I, 85 to 90+ bpm) -->
                   <path d="M 239.1 94.6 A 100 100 0 0 1 250 140" fill="none" stroke="#ef4444" stroke-width="14" stroke-linecap="round" opacity="0.95"/>
 
-                  <!-- Ticks and Scale Marks -->
+                  <!-- Ticks and Scale Marks (Resting Heart Rate in bpm) -->
                   <line x1="50" y1="140" x2="38" y2="140" stroke="#38bdf8" stroke-width="2"/>
-                  <text x="32" y="144" fill="#38bdf8" font-size="10" font-family="monospace" text-anchor="end" font-weight="bold">0</text>
+                  <text x="32" y="144" fill="#38bdf8" font-size="10" font-family="monospace" text-anchor="end" font-weight="bold">55</text>
 
                   <line x1="79.3" y1="69.3" x2="71" y2="61" stroke="#38bdf8" stroke-width="2"/>
-                  <text x="65" y="58" fill="#38bdf8" font-size="9" font-family="monospace" text-anchor="end">25</text>
+                  <text x="65" y="58" fill="#38bdf8" font-size="9" font-family="monospace" text-anchor="end">64</text>
 
                   <line x1="150" y1="40" x2="150" y2="28" stroke="#38bdf8" stroke-width="2"/>
-                  <text x="150" y="24" fill="#38bdf8" font-size="11" font-family="monospace" text-anchor="middle" font-weight="bold">50</text>
+                  <text x="150" y="24" fill="#38bdf8" font-size="11" font-family="monospace" text-anchor="middle" font-weight="bold">72</text>
 
                   <line x1="220.7" y1="69.3" x2="229" y2="61" stroke="#f59e0b" stroke-width="2"/>
-                  <text x="235" y="58" fill="#fbbf24" font-size="9" font-family="monospace" text-anchor="start">75</text>
+                  <text x="235" y="58" fill="#fbbf24" font-size="9" font-family="monospace" text-anchor="start">81</text>
 
                   <line x1="250" y1="140" x2="262" y2="140" stroke="#ef4444" stroke-width="2"/>
-                  <text x="268" y="144" fill="#ef4444" font-size="10" font-family="monospace" text-anchor="start" font-weight="bold">100</text>
+                  <text x="268" y="144" fill="#ef4444" font-size="10" font-family="monospace" text-anchor="start" font-weight="bold">90+</text>
 
-                  <!-- Labels: ПОКОЙ / НАПОР / ОВЕРРЕВ -->
+                  <!-- Labels: ПОКОЙ / ПОТОК / ОВЕРРЕВ -->
                   <text x="62" y="112" fill="#7dd3fc" font-size="8" font-family="sans-serif" font-weight="bold">🔵 ПОКОЙ</text>
-                  <text x="150" y="70" fill="#fde68a" font-size="7" font-family="sans-serif" font-weight="semibold" text-anchor="middle">🟡 НАПОР</text>
+                  <text x="150" y="70" fill="#fde68a" font-size="7" font-family="sans-serif" font-weight="semibold" text-anchor="middle">⚡ ПОТОК</text>
                   <text x="238" y="112" fill="#fca5a5" font-size="8" font-family="sans-serif" font-weight="bold" text-anchor="end">🔴 ОВЕРРЕВ</text>
 
-                  <!-- Dynamic Tachometer Needle (CLEAN - NO CIRCLE AT TIP, DEFAULT I=75) -->
+                  <!-- Dynamic Tachometer Needle (Clean tip, default I=60 / HR=76, angle = +18 deg) -->
                   <g id="tach-needle-group">
-                    <polygon id="tach-needle-counter" points="147.5,137.5 152.5,142.5 140.1,149.9" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" opacity="0.85"/>
-                    <polygon id="tach-needle-beam" points="147.5,137.5 152.5,142.5 234.1,57.3 232.7,55.9" fill="url(#tach-needle-gradient)" filter="url(#tach-needle-glow)"/>
-                    <line id="tach-needle-spine" x1="150" y1="140" x2="233.4" y2="56.6" stroke="#ffffff" stroke-width="0.8" opacity="0.9"/>
+                    <polygon id="tach-needle-counter" points="146.7,135.7 153.3,144.3 145.7,153.3" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" opacity="0.85"/>
+                    <polygon id="tach-needle-beam" points="146.7,135.7 153.3,144.3 187.4,26.7 185.5,26.1" fill="url(#tach-needle-gradient)" filter="url(#tach-needle-glow)"/>
+                    <line id="tach-needle-spine" x1="150" y1="140" x2="186.5" y2="27.8" stroke="#ffffff" stroke-width="0.8" opacity="0.9"/>
                     
-                    <circle id="tach-needle-tip-glow" cx="233.4" cy="56.6" r="3" fill="#38bdf8" filter="url(#tach-needle-glow)"/>
-                    <circle id="tach-needle-tip-core" cx="233.4" cy="56.6" r="1.2" fill="#ffffff"/>
+                    <circle id="tach-needle-tip-glow" cx="186.5" cy="27.8" r="3" fill="#38bdf8" filter="url(#tach-needle-glow)"/>
+                    <circle id="tach-needle-tip-core" cx="186.5" cy="27.8" r="1.2" fill="#ffffff"/>
 
                     <circle cx="150" cy="140" r="12" fill="#0b1329" stroke="#38bdf8" stroke-width="2.5" filter="url(#tach-needle-glow)"/>
                     <circle cx="150" cy="140" r="5.5" fill="#38bdf8"/>
@@ -343,37 +346,43 @@
               <!-- Main Numeric Readout -->
               <div class="my-1">
                 <span id="tach-i-val" class="text-6xl md:text-7xl font-black font-mono tracking-tight bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-400 bg-clip-text text-transparent">
-                  75
+                  76
                 </span>
+                <span class="text-lg md:text-xl font-bold font-mono text-cyan-300 ml-1">уд/мин</span>
               </div>
 
               <div id="tach-state-label" class="text-sm font-bold font-mono text-cyan-300 uppercase tracking-wide">
-                ⚡ ВЫСОКИЙ НАПОР ВНИМАНИЯ
+                ⚡ КРЕЙСЕРСКИЙ РАБОЧИЙ ПОТОК
               </div>
               <div class="text-xs text-slate-300 font-mono mt-0.5">
-                Обороты ядра Тандэна: <span id="tach-i-sub" class="text-amber-300 font-bold">75 Ав</span> • Частота процессора
+                Ток внимания ядра Тандэна: <span id="tach-i-sub" class="text-amber-300 font-bold">60 Ав</span> • ЧСС покоя
               </div>
 
               <!-- Slider for Current (I) -->
               <div class="w-full mt-4 pt-3 border-t border-slate-800/80">
                 <div class="flex justify-between text-[10px] font-mono text-slate-400 mb-1">
-                  <span>Штиль (0)</span>
-                  <span>Газ в пол (100)</span>
+                  <span>Штиль 55 bpm (0 Ав)</span>
+                  <span>Газ в пол 90+ bpm (100 Ав)</span>
                 </div>
-                <input type="range" id="slider-tach-i" min="0" max="100" value="75" oninput="tach_onSliderChange(this.value)"
+                <input type="range" id="slider-tach-i" min="0" max="100" value="60" oninput="tach_onSliderChange(this.value)"
                   class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400 transition" />
               </div>
             </div>
 
 
-            <!-- RIGHT: SPEEDOMETER DIAL (SVG) - ИНДЕКС ПРОВОДИМОСТИ (CI) -->
+            <!-- RIGHT: SPEEDOMETER DIAL (SVG) - СТРЕСС И СОПРОТИВЛЕНИЕ (0..100 R) -->
             <div class="lg:col-span-6 flex flex-col items-center justify-between p-6 rounded-2xl bg-slate-950/85 border border-slate-800 text-center shadow-xl relative overflow-hidden">
-              <div class="text-[11px] font-mono uppercase tracking-widest text-slate-400 font-bold mb-1 flex items-center gap-2">
-                <span id="gauge-status-emoji" class="text-lg">🎯</span>
-                <span>Индекс Проводимости (CI)</span>
+              <div class="w-full flex items-center justify-between text-[11px] font-mono uppercase tracking-widest text-slate-400 font-bold mb-1">
+                <span class="flex items-center gap-1.5 text-emerald-400">
+                  <span id="gauge-status-emoji" class="text-lg">🎯</span>
+                  <span>СПИДОМЕТР СТРЕССА & ЭГО-СОПРОТИВЛЕНИЯ (R)</span>
+                </span>
+                <span id="gauge-ci-badge" class="px-2 py-0.5 rounded bg-emerald-950 border border-emerald-800 text-emerald-300 text-[10px] font-bold">
+                  R: 42 Ω • CI: +16
+                </span>
               </div>
 
-              <!-- SVG SPEEDOMETER DIAL -->
+              <!-- SVG SPEEDOMETER DIAL (0 to 100 Scale) -->
               <div class="w-full max-w-[290px] my-2 relative">
                 <svg viewBox="0 0 300 170" class="w-full overflow-visible select-none drop-shadow-lg">
                   <defs>
@@ -395,43 +404,45 @@
                   <!-- Background Arc Track -->
                   <path d="M 50 140 A 100 100 0 0 1 250 140" fill="none" stroke="#1e293b" stroke-width="16" stroke-linecap="round"/>
 
-                  <!-- Colored Arcs -->
-                  <!-- Red Zone (-100 to -30) -->
-                  <path d="M 50 140 A 100 100 0 0 1 100 53.4" fill="none" stroke="#ef4444" stroke-width="14" stroke-linecap="round" opacity="0.95"/>
-                  <!-- Yellow Zone (-30 to +20) -->
-                  <path d="M 100 53.4 A 100 100 0 0 1 184.2 46.0" fill="none" stroke="#f59e0b" stroke-width="14" stroke-linecap="butt" opacity="0.95"/>
-                  <!-- Green Zone (+20 to +100) -->
-                  <path d="M 184.2 46.0 A 100 100 0 0 1 250 140" fill="none" stroke="#10b981" stroke-width="14" stroke-linecap="round" opacity="0.95"/>
+                  <!-- Colored Arcs: 0 to 100 Resistance / Stress -->
+                  <!-- Green Zone (0 to 25 R: Релакс / Сверхпроводимость) -->
+                  <path d="M 50 140 A 100 100 0 0 1 79.3 69.3" fill="none" stroke="#10b981" stroke-width="14" stroke-linecap="round" opacity="0.95"/>
+                  <!-- Cyan Zone (25 to 50 R: Рабочий поток) -->
+                  <path d="M 79.3 69.3 A 100 100 0 0 1 150 40" fill="none" stroke="#06b6d4" stroke-width="14" stroke-linecap="butt" opacity="0.95"/>
+                  <!-- Yellow Zone (50 to 75 R: Стресс / Дрейф) -->
+                  <path d="M 150 40 A 100 100 0 0 1 220.7 69.3" fill="none" stroke="#f59e0b" stroke-width="14" stroke-linecap="butt" opacity="0.95"/>
+                  <!-- Red Zone (75 to 100 R: Омический клин / Авария) -->
+                  <path d="M 220.7 69.3 A 100 100 0 0 1 250 140" fill="none" stroke="#ef4444" stroke-width="14" stroke-linecap="round" opacity="0.95"/>
 
-                  <!-- Ticks and Scale Marks -->
-                  <line x1="50" y1="140" x2="38" y2="140" stroke="#ef4444" stroke-width="2"/>
-                  <text x="32" y="144" fill="#f87171" font-size="10" font-family="monospace" text-anchor="end" font-weight="bold">-100</text>
+                  <!-- Ticks and Scale Marks (0 to 100) -->
+                  <line x1="50" y1="140" x2="38" y2="140" stroke="#10b981" stroke-width="2"/>
+                  <text x="32" y="144" fill="#34d399" font-size="10" font-family="monospace" text-anchor="end" font-weight="bold">0</text>
 
-                  <line x1="79.3" y1="69.3" x2="71" y2="61" stroke="#ef4444" stroke-width="2"/>
-                  <text x="65" y="58" fill="#f87171" font-size="9" font-family="monospace" text-anchor="end">-50</text>
+                  <line x1="79.3" y1="69.3" x2="71" y2="61" stroke="#06b6d4" stroke-width="2"/>
+                  <text x="65" y="58" fill="#22d3ee" font-size="9" font-family="monospace" text-anchor="end">25</text>
 
                   <line x1="150" y1="40" x2="150" y2="28" stroke="#f59e0b" stroke-width="2"/>
-                  <text x="150" y="24" fill="#fbbf24" font-size="11" font-family="monospace" text-anchor="middle" font-weight="bold">0</text>
+                  <text x="150" y="24" fill="#fbbf24" font-size="11" font-family="monospace" text-anchor="middle" font-weight="bold">50</text>
 
-                  <line x1="220.7" y1="69.3" x2="229" y2="61" stroke="#10b981" stroke-width="2"/>
-                  <text x="235" y="58" fill="#34d399" font-size="9" font-family="monospace" text-anchor="start">+50</text>
+                  <line x1="220.7" y1="69.3" x2="229" y2="61" stroke="#f59e0b" stroke-width="2"/>
+                  <text x="235" y="58" fill="#fbbf24" font-size="9" font-family="monospace" text-anchor="start">75</text>
 
-                  <line x1="250" y1="140" x2="262" y2="140" stroke="#10b981" stroke-width="2"/>
-                  <text x="268" y="144" fill="#34d399" font-size="10" font-family="monospace" text-anchor="start" font-weight="bold">+100</text>
+                  <line x1="250" y1="140" x2="262" y2="140" stroke="#ef4444" stroke-width="2"/>
+                  <text x="268" y="144" fill="#ef4444" font-size="10" font-family="monospace" text-anchor="start" font-weight="bold">100</text>
 
-                  <!-- Labels: СТРЕСС / ДРЕЙФ / СЧАСТЬЕ -->
-                  <text x="62" y="112" fill="#fca5a5" font-size="8" font-family="sans-serif" font-weight="bold">🔴 СТРЕСС</text>
-                  <text x="150" y="70" fill="#fde68a" font-size="7" font-family="sans-serif" font-weight="semibold" text-anchor="middle">🟡 ДРЕЙФ</text>
-                  <text x="238" y="112" fill="#6ee7b7" font-size="8" font-family="sans-serif" font-weight="bold" text-anchor="end">🟢 СЧАСТЬЕ</text>
+                  <!-- Labels: РЕЛАКС / ПОТОК / КЛИН -->
+                  <text x="62" y="112" fill="#6ee7b7" font-size="8" font-family="sans-serif" font-weight="bold">🟢 РЕЛАКС</text>
+                  <text x="150" y="70" fill="#67e8f9" font-size="7" font-family="sans-serif" font-weight="semibold" text-anchor="middle">🔵 ПОТОК</text>
+                  <text x="238" y="112" fill="#fca5a5" font-size="8" font-family="sans-serif" font-weight="bold" text-anchor="end">🔴 КЛИН</text>
 
-                  <!-- Dynamic Speedometer Needle -->
+                  <!-- Dynamic Speedometer Needle (Default R=42, angle = -14.4 deg) -->
                   <g id="gauge-needle-group">
                     <polygon id="gauge-needle-counter" points="146.5,140 153.5,140 150,154" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" opacity="0.85"/>
-                    <polygon id="gauge-needle-beam" points="146.5,140 153.5,140 151,22 149,22" fill="url(#needle-gradient)" filter="url(#needle-glow)"/>
-                    <line id="gauge-needle-spine" x1="150" y1="140" x2="150" y2="22" stroke="#ffffff" stroke-width="0.8" opacity="0.9"/>
+                    <polygon id="gauge-needle-beam" points="146.5,140 153.5,140 121.7,26.1 119.8,26.7" fill="url(#needle-gradient)" filter="url(#needle-glow)"/>
+                    <line id="gauge-needle-spine" x1="150" y1="140" x2="120.6" y2="27.8" stroke="#ffffff" stroke-width="0.8" opacity="0.9"/>
                     
-                    <circle id="gauge-needle-tip-glow" cx="150" cy="22" r="3" fill="#38bdf8" filter="url(#needle-glow)"/>
-                    <circle id="gauge-needle-tip-core" cx="150" cy="22" r="1.2" fill="#ffffff"/>
+                    <circle id="gauge-needle-tip-glow" cx="120.6" cy="27.8" r="3" fill="#38bdf8" filter="url(#needle-glow)"/>
+                    <circle id="gauge-needle-tip-core" cx="120.6" cy="27.8" r="1.2" fill="#ffffff"/>
 
                     <circle cx="150" cy="140" r="12" fill="#0b1329" stroke="#38bdf8" stroke-width="2.5" filter="url(#needle-glow)"/>
                     <circle cx="150" cy="140" r="5.5" fill="#38bdf8"/>
@@ -442,16 +453,17 @@
 
               <!-- Main Numeric Readout -->
               <div class="my-1">
-                <span id="gauge-ci-val" class="text-6xl md:text-7xl font-black font-mono tracking-tight bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-300 bg-clip-text text-transparent">
-                  +84
+                <span id="gauge-ci-val" class="text-6xl md:text-7xl font-black font-mono tracking-tight bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400 bg-clip-text text-transparent">
+                  42
                 </span>
+                <span class="text-lg md:text-xl font-bold font-mono text-cyan-300 ml-1">стресс / Ω</span>
               </div>
 
-              <div id="gauge-state-label" class="text-sm font-bold font-mono text-emerald-300 uppercase tracking-wide">
-                🟢 СВЕРХПРОВОДИМОСТЬ (МУСИН)
+              <div id="gauge-state-label" class="text-sm font-bold font-mono text-cyan-300 uppercase tracking-wide">
+                🔵 РАБОЧИЙ ПОТОК (СВОБОДНЫЙ ХОД)
               </div>
               <div id="gauge-h-sub" class="text-xs text-slate-300 font-mono mt-0.5">
-                КПД Бытия: <span id="gauge-h-val" class="text-amber-300 font-bold">92%</span> • Ток без потерь
+                Проводимость: <span id="gauge-ci-sub" class="text-cyan-300 font-bold">CI: +16</span> • КПД Бытия: <span id="gauge-h-val" class="text-emerald-300 font-bold">58%</span>
               </div>
             </div>
 
@@ -757,7 +769,7 @@
                     <span class="text-rose-400">Симпатика (-100)</span>
                     <span class="text-emerald-400">Вагус (+100)</span>
                   </div>
-                  <input id="slider-gauge-ans" type="range" min="-100" max="100" value="85" oninput="gauge_updateSystem('ans', this.value)" class="w-full accent-emerald-500 cursor-pointer">
+                  <input id="slider-gauge-ans" type="range" min="-100" max="100" value="20" oninput="gauge_updateSystem('ans', this.value)" class="w-full accent-emerald-500 cursor-pointer">
                 </div>
               </div>
 
@@ -788,7 +800,7 @@
                     <span class="text-rose-400">Кортизол (-100)</span>
                     <span class="text-emerald-400">Окситоцин (+100)</span>
                   </div>
-                  <input id="slider-gauge-endo" type="range" min="-100" max="100" value="80" oninput="gauge_updateSystem('endo', this.value)" class="w-full accent-emerald-500 cursor-pointer">
+                  <input id="slider-gauge-endo" type="range" min="-100" max="100" value="15" oninput="gauge_updateSystem('endo', this.value)" class="w-full accent-emerald-500 cursor-pointer">
                 </div>
               </div>
 
@@ -819,7 +831,7 @@
                     <span class="text-rose-400">DMN Руминация (-100)</span>
                     <span class="text-emerald-400">TPN Поток (+100)</span>
                   </div>
-                  <input id="slider-gauge-brain" type="range" min="-100" max="100" value="80" oninput="gauge_updateSystem('brain', this.value)" class="w-full accent-emerald-500 cursor-pointer">
+                  <input id="slider-gauge-brain" type="range" min="-100" max="100" value="20" oninput="gauge_updateSystem('brain', this.value)" class="w-full accent-emerald-500 cursor-pointer">
                 </div>
               </div>
 
@@ -850,7 +862,7 @@
                     <span class="text-rose-400">Спазм ритма (-100)</span>
                     <span class="text-emerald-400">Когерентность (+100)</span>
                   </div>
-                  <input id="slider-gauge-cardio" type="range" min="-100" max="100" value="85" oninput="gauge_updateSystem('cardio', this.value)" class="w-full accent-emerald-500 cursor-pointer">
+                  <input id="slider-gauge-cardio" type="range" min="-100" max="100" value="15" oninput="gauge_updateSystem('cardio', this.value)" class="w-full accent-emerald-500 cursor-pointer">
                 </div>
               </div>
 
@@ -881,7 +893,7 @@
                     <span class="text-rose-400">Спазм мышц (-100)</span>
                     <span class="text-emerald-400">Тандэн (+100)</span>
                   </div>
-                  <input id="slider-gauge-soma" type="range" min="-100" max="100" value="90" oninput="gauge_updateSystem('soma', this.value)" class="w-full accent-emerald-500 cursor-pointer">
+                  <input id="slider-gauge-soma" type="range" min="-100" max="100" value="10" oninput="gauge_updateSystem('soma', this.value)" class="w-full accent-emerald-500 cursor-pointer">
                 </div>
               </div>
 
@@ -1422,11 +1434,11 @@
     // Speedometer & 5 Biological Systems Engine
     // -------------------------------------------------------------
     const gaugeState = {
-      ans: 85,
-      endo: 80,
-      brain: 80,
-      cardio: 85,
-      soma: 90
+      ans: 20,
+      endo: 15,
+      brain: 20,
+      cardio: 15,
+      soma: 10
     };
 
     function gauge_updateSystem(sys, val) {
@@ -1444,7 +1456,9 @@
     }
 
     function gauge_applyPreset(presetName) {
-      if (presetName === 'mushin') {
+      if (presetName === 'bracelet') {
+        gaugeState.ans = 20; gaugeState.endo = 15; gaugeState.brain = 20; gaugeState.cardio = 15; gaugeState.soma = 10;
+      } else if (presetName === 'mushin') {
         gaugeState.ans = 95; gaugeState.endo = 90; gaugeState.brain = 95; gaugeState.cardio = 95; gaugeState.soma = 100;
       } else if (presetName === 'flow') {
         gaugeState.ans = 75; gaugeState.endo = 70; gaugeState.brain = 85; gaugeState.cardio = 75; gaugeState.soma = 75;
@@ -1462,8 +1476,9 @@
       });
 
       if (typeof tach_render === 'function') {
-        let presetI = 75;
-        if (presetName === 'mushin') presetI = 85;
+        let presetI = 60;
+        if (presetName === 'bracelet') presetI = 60;
+        else if (presetName === 'mushin') presetI = 85;
         else if (presetName === 'flow') presetI = 75;
         else if (presetName === 'npc') presetI = 20;
         else if (presetName === 'rumination') presetI = 70;
@@ -1613,8 +1628,8 @@
     // =========================================================================
     // TACHOMETER (I) CONTROLLER & DUAL COUPLING ENGINE
     // =========================================================================
-    let tachCurrentI = 75;
-    let tachCurrentAngle = 45; // angle for I=75: (75-50)*1.8 = 45 deg
+    let tachCurrentI = 60;
+    let tachCurrentAngle = 18; // angle for I=60: (60-50)*1.8 = +18 deg
     let tachAnimFrame = null;
 
     function updateTachNeedleGeometry(angleDeg) {
@@ -1666,6 +1681,7 @@
       tachCurrentI = Math.max(0, Math.min(100, parseInt(val, 10) || 0));
       // targetAngle: 0 -> -90 deg, 50 -> 0 deg, 100 -> +90 deg
       const targetAngle = (tachCurrentI - 50) * 1.8;
+      const restingHR = 55 + Math.round(tachCurrentI * 0.35);
 
       if (tachAnimFrame) cancelAnimationFrame(tachAnimFrame);
       const startAngle = tachCurrentAngle !== null ? tachCurrentAngle : targetAngle;
@@ -1695,32 +1711,32 @@
       const iLabel = document.getElementById('tach-state-label');
       const iEmoji = document.getElementById('tach-status-emoji');
 
-      if (iVal) iVal.textContent = tachCurrentI;
+      if (iVal) iVal.textContent = restingHR;
       if (iSub) iSub.textContent = tachCurrentI + ' Ав';
-      if (iBadge) iBadge.textContent = tachCurrentI + ' Ав';
+      if (iBadge) iBadge.textContent = restingHR + ' уд/мин • ' + tachCurrentI + ' Ав';
 
       if (tachCurrentI >= 85) {
         if (iEmoji) iEmoji.textContent = '🔥';
         if (iLabel) {
-          iLabel.textContent = '🔴 ОВЕРРЕВ (КРАСНАЯ ЗОНА)';
+          iLabel.textContent = '🔴 ОВЕРРЕВ (КРАСНАЯ ЗОНА: ' + restingHR + ' уд/мин)';
           iLabel.className = 'text-sm font-bold font-mono text-rose-400 uppercase tracking-wide';
         }
       } else if (tachCurrentI >= 55) {
         if (iEmoji) iEmoji.textContent = '⚡';
         if (iLabel) {
-          iLabel.textContent = '⚡ ВЫСОКИЙ НАПОР ВНИМАНИЯ';
+          iLabel.textContent = '⚡ КРЕЙСЕРСКИЙ РАБОЧИЙ ПОТОК (' + restingHR + ' уд/мин)';
           iLabel.className = 'text-sm font-bold font-mono text-cyan-300 uppercase tracking-wide';
         }
       } else if (tachCurrentI >= 25) {
         if (iEmoji) iEmoji.textContent = '🟡';
         if (iLabel) {
-          iLabel.textContent = '🟡 УМЕРЕННЫЙ ФОКУС';
+          iLabel.textContent = '🟡 УМЕРЕННЫЙ ФОКУС (' + restingHR + ' уд/мин)';
           iLabel.className = 'text-sm font-bold font-mono text-amber-300 uppercase tracking-wide';
         }
       } else {
         if (iEmoji) iEmoji.textContent = '🔵';
         if (iLabel) {
-          iLabel.textContent = '🔵 ХОЛОСТОЙ ХОД / ПОКОЙ';
+          iLabel.textContent = '🔵 ХОЛОСТОЙ ХОД / ПОКОЙ (' + restingHR + ' уд/мин)';
           iLabel.className = 'text-sm font-bold font-mono text-sky-400 uppercase tracking-wide';
         }
       }
@@ -1736,16 +1752,16 @@
 
     // Immediate script-load Tachometer positioning (I = 75, angle = 45 deg)
     try {
-      updateTachNeedleGeometry(45);
+      updateTachNeedleGeometry(18);
       if (typeof updateCoupledVerdict === 'function') updateCoupledVerdict();
     } catch (e) {}
 
 
     
     function updateRadarPosition() {
-      const ciEl = document.getElementById('gauge-ci-val');
-      if (!ciEl) return;
-      const ci = parseInt(ciEl.textContent, 10) || 0;
+      const ci = Math.round(0.20 * (gaugeState.ans + gaugeState.endo + gaugeState.brain + gaugeState.cardio + gaugeState.soma));
+      const stressR = Math.max(0, Math.min(100, Math.round((100 - ci) / 2)));
+      const restingHR = 55 + Math.round(tachCurrentI * 0.35);
       const I = tachCurrentI;
 
       const blip = document.getElementById('trainer-radar-blip');
@@ -1760,7 +1776,7 @@
 
       const coordsEl = document.getElementById('trainer-quad-coords');
       if (coordsEl) {
-        coordsEl.textContent = `I: ${I} Ав | CI: ${(ci > 0 ? '+' : '')}${ci}`;
+        coordsEl.textContent = `ЧСС ${restingHR} уд/мин (${I} Ав) | Стресс ${stressR} (CI: ${(ci > 0 ? '+' : '')}${ci})`;
       }
 
       // Highlight active quadrant tile
@@ -1816,9 +1832,9 @@
 
 
     function updateCoupledVerdict() {
-      const ciEl = document.getElementById('gauge-ci-val');
-      if (!ciEl) return;
-      const ci = parseInt(ciEl.textContent, 10) || 0;
+      const ci = Math.round(0.20 * (gaugeState.ans + gaugeState.endo + gaugeState.brain + gaugeState.cardio + gaugeState.soma));
+      const stressR = Math.max(0, Math.min(100, Math.round((100 - ci) / 2)));
+      const restingHR = 55 + Math.round(tachCurrentI * 0.35);
       const I = tachCurrentI;
 
       const stateTitle = document.getElementById('gauge-state-title');
@@ -1859,10 +1875,11 @@
 
     function gauge_render() {
       const ci = Math.round(0.20 * (gaugeState.ans + gaugeState.endo + gaugeState.brain + gaugeState.cardio + gaugeState.soma));
+      const stressR = Math.max(0, Math.min(100, Math.round((100 - ci) / 2)));
       const h = Math.round((ci + 100) / 2);
 
-      // Angle: -100 -> -90 deg, 0 -> 0 deg, +100 -> +90 deg
-      const targetAngle = (ci / 100) * 90;
+      // Angle for Speedometer 0..100 R: 0 -> -90 deg, 50 -> 0 deg, 100 -> +90 deg
+      const targetAngle = (stressR - 50) * 1.8;
 
       if (currentGaugeAngle === null) {
         currentGaugeAngle = targetAngle;
@@ -1901,18 +1918,24 @@
         heat_q = parseFloat((15.0 + (160.0 - 15.0) * Math.pow(Math.abs(ci) / 100, 1.5)).toFixed(1));
       }
 
-      // Update CI readouts
+      // Update Speedometer readouts (0..100 Stress / Resistance R)
       const ciEl = document.getElementById('gauge-ci-val');
+      const ciBadge = document.getElementById('gauge-ci-badge');
+      const ciSub = document.getElementById('gauge-ci-sub');
       if (ciEl) {
-        ciEl.textContent = (ci > 0 ? '+' : '') + ci;
-        if (ci >= 20) {
+        ciEl.textContent = stressR;
+        if (stressR <= 25) {
           ciEl.className = 'text-6xl md:text-7xl font-black font-mono tracking-tight bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-300 bg-clip-text text-transparent';
-        } else if (ci >= -30) {
+        } else if (stressR <= 50) {
+          ciEl.className = 'text-6xl md:text-7xl font-black font-mono tracking-tight bg-gradient-to-r from-cyan-400 via-sky-300 to-teal-300 bg-clip-text text-transparent';
+        } else if (stressR <= 75) {
           ciEl.className = 'text-6xl md:text-7xl font-black font-mono tracking-tight bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent';
         } else {
           ciEl.className = 'text-6xl md:text-7xl font-black font-mono tracking-tight bg-gradient-to-r from-rose-500 to-red-400 bg-clip-text text-transparent';
         }
       }
+      if (ciBadge) ciBadge.textContent = 'R: ' + stressR + ' Ω • CI: ' + (ci > 0 ? '+' : '') + ci;
+      if (ciSub) ciSub.textContent = 'CI: ' + (ci > 0 ? '+' : '') + ci;
 
       const hVal = document.getElementById('gauge-h-val');
       if (hVal) hVal.textContent = h + '%';
@@ -1950,12 +1973,33 @@
       const emoji = document.getElementById('gauge-status-emoji');
       updateCoupledVerdict();
 
-      if (ci >= 20) {
+      if (stressR <= 25) {
         if (emoji) emoji.textContent = '🟢';
         if (stateLabel) {
-          stateLabel.textContent = '🟢 СВЕРХПРОВОДИМОСТЬ (МУСИН)';
+          stateLabel.textContent = '🟢 СВЕРХПРОВОДИМОСТЬ (МУСИН: R = ' + stressR + ')';
           stateLabel.className = 'text-sm font-bold font-mono text-emerald-300 uppercase tracking-wide';
         }
+      } else if (stressR <= 50) {
+        if (emoji) emoji.textContent = '🔵';
+        if (stateLabel) {
+          stateLabel.textContent = '🔵 РАБОЧИЙ ПОТОК (FLOW: R = ' + stressR + ', CI = +' + ci + ')';
+          stateLabel.className = 'text-sm font-bold font-mono text-cyan-300 uppercase tracking-wide';
+        }
+      } else if (stressR <= 75) {
+        if (emoji) emoji.textContent = '🟡';
+        if (stateLabel) {
+          stateLabel.textContent = '🟡 СТРЕСС / ДРЕЙФ (R = ' + stressR + ')';
+          stateLabel.className = 'text-sm font-bold font-mono text-amber-300 uppercase tracking-wide';
+        }
+      } else {
+        if (emoji) emoji.textContent = '🔴';
+        if (stateLabel) {
+          stateLabel.textContent = '🔴 ОМИЧЕСКИЙ КЛИН (ДИСТРЕСС: R = ' + stressR + ')';
+          stateLabel.className = 'text-sm font-bold font-mono text-rose-400 uppercase tracking-wide';
+        }
+      }
+
+      if (ci >= 20) {
         if (stateTitle) {
           stateTitle.textContent = 'СТАТУС: КОНТУР В РЕЖИМЕ СВЕРХПРОВОДИМОСТИ';
           stateTitle.className = 'font-bold text-emerald-300';
@@ -2302,7 +2346,7 @@
       gauge_render();
       if (typeof tach_render === 'function') {
         const sliderTach = document.getElementById('slider-tach-i');
-        const initialI = sliderTach ? parseInt(sliderTach.value, 10) || 75 : 75;
+        const initialI = sliderTach ? parseInt(sliderTach.value, 10) || 60 : 60;
         tach_render(initialI);
       }
     });
