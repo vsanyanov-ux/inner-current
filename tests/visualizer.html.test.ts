@@ -57,19 +57,20 @@ describe('Visualizer public/index.html Integrity & Script Syntax Test Suite', ()
   const trainerHtmlPath = path.resolve('public/trainer.html');
   const trainerHtml = fs.existsSync(trainerHtmlPath) ? fs.readFileSync(trainerHtmlPath, 'utf8') : html;
 
-  it('3. Happiness Dashboard DOM elements exist and are accessible', () => {
+  it('3. Trainer 2.0 Speedometer & 5 Biological Systems DOM elements exist and are accessible', () => {
     const requiredIds = [
-      'view-happiness-dashboard',
-      'dash-score-value',
-      'dash-state-label',
-      'dash-r-value',
-      'dash-i-value',
-      'dash-q-value',
-      'dash-breaker-value',
-      'dash-btn-calibrate',
-      'hbtn-focus-now',
-      'hbtn-motive-creation',
-      'hbtn-body-ok'
+      'view-speedometer',
+      'gauge-ci-val',
+      'gauge-state-label',
+      'gauge-h-val',
+      'live-rego-val',
+      'live-heat-val',
+      'live-eff-val',
+      'slider-gauge-ans',
+      'slider-gauge-endo',
+      'slider-gauge-brain',
+      'slider-gauge-cardio',
+      'slider-gauge-soma'
     ];
 
     for (const id of requiredIds) {
@@ -77,72 +78,76 @@ describe('Visualizer public/index.html Integrity & Script Syntax Test Suite', ()
     }
   });
 
-  it('4. Ten Bulls of Zen Operator Evolution UI elements exist and are accessible', () => {
-    const bullIds = [
-      'sidebar-bull-stage',
-      'sidebar-bull-title',
-      'sidebar-bull-kanji',
-      'sidebar-bull-bar',
-      'sidebar-bull-desc',
-      'dash-bull-stage-badge',
-      'dash-bull-title',
-      'dash-bull-kanji',
-      'dash-bull-romaji',
-      'dash-bull-circuit',
-      'dash-bull-guidance',
-      'dash-bull-step-1',
-      'dash-bull-step-10',
-      'sc_bull_stage_badge',
-      'sc_bull_stage_desc'
+  it('4. Pain-First Emergency Navigator DOM elements exist and are accessible', () => {
+    const painIds = [
+      'view-pains',
+      'card-pain-01',
+      'card-pain-02',
+      'card-pain-03',
+      'card-pain-04',
+      'card-pain-05',
+      'liveHealingBanner'
     ];
 
-    for (const id of bullIds) {
-      assert.ok(trainerHtml.includes(`id="${id}"`), `Ten Bulls element with id "${id}" should exist in trainer.html`);
+    for (const id of painIds) {
+      assert.ok(trainerHtml.includes(`id="${id}"`), `Pain-First element with id "${id}" should exist in trainer.html`);
     }
   });
 
-  it('5. Anyanov Triad & Tetrad sidebar mini-HUD elements exist and are accessible', () => {
-    const triadIds = [
-      'side-triad-card',
-      'side-flow-indicator',
-      'side-flow-text',
-      'side-gauge-u',
-      'side-u-status',
-      'side-u-val',
-      'side-u-sub',
-      'side-gauge-r',
-      'side-r-status',
-      'side-r-val',
-      'side-r-sub',
-      'side-gauge-q',
-      'side-q-status',
-      'side-q-val',
-      'side-q-sub',
-      'side-gauge-p',
-      'side-p-status',
-      'side-p-val',
-      'side-p-sub'
+  it('5. Laboratory & Living Circuit SVG elements exist and are accessible', () => {
+    const labIds = [
+      'view-lab',
+      'liveCircuitSvg',
+      'svg-resistor-box',
+      'svg-resistor-val',
+      'svg-light-beam',
+      'svg-lamp-glow'
     ];
 
-    for (const id of triadIds) {
-      assert.ok(trainerHtml.includes(`id="${id}"`), `Triad element with id "${id}" should exist in trainer.html`);
+    for (const id of labIds) {
+      assert.ok(trainerHtml.includes(`id="${id}"`), `Circuit / Lab element with id "${id}" should exist in trainer.html`);
     }
   });
 
-  it('6. Triad of Ego Resistance (Chapter 246) UI elements exist in trainer.html', () => {
-    const triad246Ids = [
-      'sc_sliderApproval',
-      'sc_labelApproval',
-      'triad_status_badge',
-      'btn_triad_guilt',
-      'btn_triad_control',
-      'btn_triad_approval',
-      'btn_triad_reset'
-    ];
+  it('6. Trainer 2.0 embedded scripts and onclick handlers are valid', () => {
+    const scriptMatches = [...trainerHtml.matchAll(/<script[\s\S]*?>([\s\S]*?)<\/script>/gi)];
+    assert.ok(scriptMatches.length > 0, 'Should find at least one <script> tag in trainer.html');
 
-    for (const id of triad246Ids) {
-      assert.ok(trainerHtml.includes(`id="${id}"`), `Chapter 246 element with id "${id}" should exist in trainer.html`);
+    scriptMatches.forEach((m, idx) => {
+      const scriptCode = m[1].trim();
+      if (!scriptCode) return;
+      try {
+        new Function(scriptCode);
+      } catch (err: any) {
+        assert.fail(`Trainer script #${idx} failed to parse: ${err.message}`);
+      }
+    });
+
+    const onclickMatches = [...trainerHtml.matchAll(/onclick="([^"]+)"/g)];
+    const fnCalls = new Set<string>();
+    const ignored = new Set(['typeof', 'if', 'setTimeout']);
+
+    onclickMatches.forEach(m => {
+      const clickCode = m[1];
+      const matches = [...clickCode.matchAll(/([a-zA-Z0-9_$]+)\s*\(/g)];
+      matches.forEach(call => {
+        const fn = call[1];
+        if (!ignored.has(fn)) {
+          fnCalls.add(fn);
+        }
+      });
+    });
+
+    const fullJs = scriptMatches.map(m => m[1]).join('\n');
+    const missingFns: string[] = [];
+    for (const fn of fnCalls) {
+      const regex = new RegExp(`(?:function\\s+${fn}\\b|${fn}\\s*=|window\\.${fn}\\b)`);
+      if (!regex.test(fullJs)) {
+        missingFns.push(fn);
+      }
     }
+
+    assert.deepEqual(missingFns, [], `Found missing onclick functions in trainer.html: ${missingFns.join(', ')}`);
   });
 
   it('7. Manifesto public/manifesto.html Integrity: exists and renders correctly', () => {
@@ -212,5 +217,30 @@ describe('Visualizer public/index.html Integrity & Script Syntax Test Suite', ()
     }
 
     assert.deepEqual(missingFns, [], `Found missing onclick functions in cockpit.html: ${missingFns.join(', ')}`);
+  });
+it('8. Circuit Console (I vs R HUD) DOM elements exist and are accessible in index.html', () => {
+    const consoleIds = [
+      'circuit-console',
+      'circuit-console-nav',
+      'cc-slider-i',
+      'cc-slider-r',
+      'cc-i-display',
+      'cc-r-display',
+      'cc-i-needle',
+      'cc-r-needle',
+      'cc-i-arc',
+      'cc-r-arc',
+      'cc-mode-pill',
+      'cc-radar-blip',
+      'cc-coords-badge',
+      'cc-metric-p',
+      'cc-metric-q',
+      'cc-metric-eta',
+      'cc-verdict-box'
+    ];
+
+    for (const id of consoleIds) {
+      assert.ok(html.includes(`id="${id}"`), `Circuit Console element with id "${id}" should exist in index.html`);
+    }
   });
 });
