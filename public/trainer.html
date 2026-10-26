@@ -2577,31 +2577,29 @@
                   <text x="150" y="70" fill="#fde68a" font-size="7" font-family="sans-serif" font-weight="semibold" text-anchor="middle">🟡 ДРЕЙФ</text>
                   <text x="238" y="112" fill="#6ee7b7" font-size="8" font-family="sans-serif" font-weight="bold" text-anchor="end">🟢 СЧАСТЬЕ</text>
 
-                  <!-- Dynamic Rotating Needle (Pivot at 150, 140) -->
-                  <g transform="translate(150, 140)">
-                    <g id="gauge-needle" transform="rotate(75.6)">
-                      <!-- Counterweight below pivot -->
-                      <polygon points="-3,0 3,0 1.5,16 -1.5,16" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" opacity="0.85"/>
-                      
-                      <!-- Glowing Needle Beam -->
-                      <polygon points="-2.5,0 2.5,0 0.8,-120 -0.8,-120" fill="url(#needle-gradient)" filter="url(#needle-glow)"/>
-                      <line x1="0" y1="0" x2="0" y2="-120" stroke="#ffffff" stroke-width="0.8" opacity="0.9"/>
-                      
-                      <!-- Needle Tip Dot (extends past arc) -->
-                      <circle cx="0" cy="-120" r="3" fill="#38bdf8" filter="url(#needle-glow)"/>
-                      <circle cx="0" cy="-120" r="1.2" fill="#ffffff"/>
+                  <!-- Dynamic Speedometer Needle (Direct Trigonometric Coordinates - Zero Transform Offset) -->
+                  <g id="gauge-needle-group">
+                    <!-- Counterweight below pivot -->
+                    <polygon id="gauge-needle-counter" points="146.5,140 153.5,140 150,154" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" opacity="0.85"/>
+                    
+                    <!-- Glowing Tapered Needle Beam -->
+                    <polygon id="gauge-needle-beam" points="146.5,140 153.5,140 151,22 149,22" fill="url(#needle-gradient)" filter="url(#needle-glow)"/>
+                    <line id="gauge-needle-spine" x1="150" y1="140" x2="150" y2="22" stroke="#ffffff" stroke-width="0.8" opacity="0.9"/>
+                    
+                    <!-- Needle Tip Dot (extends past arc) -->
+                    <circle id="gauge-needle-tip-glow" cx="150" cy="22" r="3" fill="#38bdf8" filter="url(#needle-glow)"/>
+                    <circle id="gauge-needle-tip-core" cx="150" cy="22" r="1.2" fill="#ffffff"/>
 
-                      <!-- Track Viewfinder Lens / Target Indicator ◎ (rides along R=100 scale track) -->
-                      <circle cx="0" cy="-100" r="10" fill="#090d16" stroke="#38bdf8" stroke-width="2.5" filter="url(#needle-glow)"/>
-                      <circle cx="0" cy="-100" r="5.5" fill="none" stroke="#7dd3fc" stroke-width="1.2" stroke-dasharray="2 1.5"/>
-                      <circle cx="0" cy="-100" r="2.5" fill="#38bdf8"/>
-                      <circle cx="0" cy="-100" r="1" fill="#ffffff"/>
+                    <!-- Track Viewfinder Lens / Target Indicator ◎ (rides along R=100 scale track) -->
+                    <circle id="gauge-needle-lens-outer" cx="150" cy="40" r="10" fill="#090d16" stroke="#38bdf8" stroke-width="2.5" filter="url(#needle-glow)"/>
+                    <circle id="gauge-needle-lens-ring" cx="150" cy="40" r="5.5" fill="none" stroke="#7dd3fc" stroke-width="1.2" stroke-dasharray="2 1.5"/>
+                    <circle id="gauge-needle-lens-dot" cx="150" cy="40" r="2.5" fill="#38bdf8"/>
+                    <circle id="gauge-needle-lens-glint" cx="150" cy="40" r="1" fill="#ffffff"/>
 
-                      <!-- Center Pivot Hub Cap -->
-                      <circle cx="0" cy="0" r="12" fill="#0b1329" stroke="#38bdf8" stroke-width="2.5" filter="url(#needle-glow)"/>
-                      <circle cx="0" cy="0" r="5.5" fill="#38bdf8"/>
-                      <circle cx="0" cy="0" r="2" fill="#ffffff"/>
-                    </g>
+                    <!-- Center Pivot Hub Cap (Permanently anchored at 150, 140) -->
+                    <circle cx="150" cy="140" r="12" fill="#0b1329" stroke="#38bdf8" stroke-width="2.5" filter="url(#needle-glow)"/>
+                    <circle cx="150" cy="140" r="5.5" fill="#38bdf8"/>
+                    <circle cx="150" cy="140" r="2" fill="#ffffff"/>
                   </g>
                 </svg>
               </div>
@@ -4762,43 +4760,97 @@
     let currentGaugeAngle = null;
     let gaugeAnimFrame = null;
 
+    function updateNeedleGeometry(angleDeg) {
+      const rad = (angleDeg * Math.PI) / 180;
+      const s = Math.sin(rad);
+      const c = Math.cos(rad);
+      const cx = 150;
+      const cy = 140;
+
+      const arcX = cx + 100 * s;
+      const arcY = cy - 100 * c;
+
+      const tipX = cx + 118 * s;
+      const tipY = cy - 118 * c;
+
+      const b1X = cx - 3.5 * c;
+      const b1Y = cy - 3.5 * s;
+      const b2X = cx + 3.5 * c;
+      const b2Y = cy + 3.5 * s;
+
+      const t1X = tipX - 1 * c;
+      const t1Y = tipY - 1 * s;
+      const t2X = tipX + 1 * c;
+      const t2Y = tipY + 1 * s;
+
+      const countX = cx - 14 * s;
+      const countY = cy + 14 * c;
+
+      // Update beam & counterweight
+      const beam = document.getElementById('gauge-needle-beam');
+      if (beam) {
+        beam.setAttribute('points', b1X.toFixed(1) + ',' + b1Y.toFixed(1) + ' ' + b2X.toFixed(1) + ',' + b2Y.toFixed(1) + ' ' + t2X.toFixed(1) + ',' + t2Y.toFixed(1) + ' ' + t1X.toFixed(1) + ',' + t1Y.toFixed(1));
+      }
+      const spine = document.getElementById('gauge-needle-spine');
+      if (spine) {
+        spine.setAttribute('x1', cx);
+        spine.setAttribute('y1', cy);
+        spine.setAttribute('x2', tipX.toFixed(1));
+        spine.setAttribute('y2', tipY.toFixed(1));
+      }
+      const counter = document.getElementById('gauge-needle-counter');
+      if (counter) {
+        counter.setAttribute('points', b1X.toFixed(1) + ',' + b1Y.toFixed(1) + ' ' + b2X.toFixed(1) + ',' + b2Y.toFixed(1) + ' ' + countX.toFixed(1) + ',' + countY.toFixed(1));
+      }
+
+      // Update tip dot
+      const tipGlow = document.getElementById('gauge-needle-tip-glow');
+      const tipCore = document.getElementById('gauge-needle-tip-core');
+      if (tipGlow) { tipGlow.setAttribute('cx', tipX.toFixed(1)); tipGlow.setAttribute('cy', tipY.toFixed(1)); }
+      if (tipCore) { tipCore.setAttribute('cx', tipX.toFixed(1)); tipCore.setAttribute('cy', tipY.toFixed(1)); }
+
+      // Update viewfinder lens
+      const lensOuter = document.getElementById('gauge-needle-lens-outer');
+      const lensRing = document.getElementById('gauge-needle-lens-ring');
+      const lensDot = document.getElementById('gauge-needle-lens-dot');
+      const lensGlint = document.getElementById('gauge-needle-lens-glint');
+      if (lensOuter) { lensOuter.setAttribute('cx', arcX.toFixed(1)); lensOuter.setAttribute('cy', arcY.toFixed(1)); }
+      if (lensRing) { lensRing.setAttribute('cx', arcX.toFixed(1)); lensRing.setAttribute('cy', arcY.toFixed(1)); }
+      if (lensDot) { lensDot.setAttribute('cx', arcX.toFixed(1)); lensDot.setAttribute('cy', arcY.toFixed(1)); }
+      if (lensGlint) { lensGlint.setAttribute('cx', arcX.toFixed(1)); lensGlint.setAttribute('cy', arcY.toFixed(1)); }
+    }
+
     function gauge_render() {
       const ci = Math.round(0.20 * (gaugeState.ans + gaugeState.endo + gaugeState.brain + gaugeState.cardio + gaugeState.soma));
       const h = Math.round((ci + 100) / 2);
 
       // Angle: -100 maps to -90 deg, 0 maps to 0 deg, +100 maps to +90 deg
       const targetAngle = (ci / 100) * 90;
-      const needle = document.getElementById('gauge-needle');
-      if (needle) {
-        if (currentGaugeAngle === null) {
-          currentGaugeAngle = targetAngle;
-          needle.setAttribute('transform', 'rotate(' + targetAngle.toFixed(2) + ')');
-        } else {
-          if (gaugeAnimFrame) cancelAnimationFrame(gaugeAnimFrame);
-          const startAngle = currentGaugeAngle;
-          const startTime = performance.now();
-          const duration = 350;
 
-          function animStep(now) {
-            const elapsed = now - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const ease = 1 - Math.pow(1 - progress, 3);
-            const current = startAngle + (targetAngle - startAngle) * ease;
-            currentGaugeAngle = current;
-            if (needle) {
-              needle.setAttribute('transform', 'rotate(' + current.toFixed(2) + ')');
-            }
-            if (progress < 1) {
-              gaugeAnimFrame = requestAnimationFrame(animStep);
-            } else {
-              currentGaugeAngle = targetAngle;
-              if (needle) {
-                needle.setAttribute('transform', 'rotate(' + targetAngle.toFixed(2) + ')');
-              }
-            }
+      if (currentGaugeAngle === null) {
+        currentGaugeAngle = targetAngle;
+        updateNeedleGeometry(targetAngle);
+      } else {
+        if (gaugeAnimFrame) cancelAnimationFrame(gaugeAnimFrame);
+        const startAngle = currentGaugeAngle;
+        const startTime = performance.now();
+        const duration = 280;
+
+        function animStep(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const ease = 1 - Math.pow(1 - progress, 3);
+          const current = startAngle + (targetAngle - startAngle) * ease;
+          currentGaugeAngle = current;
+          updateNeedleGeometry(current);
+          if (progress < 1) {
+            gaugeAnimFrame = requestAnimationFrame(animStep);
+          } else {
+            currentGaugeAngle = targetAngle;
+            updateNeedleGeometry(targetAngle);
           }
-          gaugeAnimFrame = requestAnimationFrame(animStep);
         }
+        gaugeAnimFrame = requestAnimationFrame(animStep);
       }
 
       const ciEl = document.getElementById('gauge-ci-val');
