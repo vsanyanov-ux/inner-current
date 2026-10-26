@@ -261,7 +261,113 @@
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
             
             <!-- Left: Speedometer Dial (SVG) -->
-            <div class="lg:col-span-5 flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-950/85 border border-slate-800 text-center shadow-xl relative overflow-hidden">
+                        <!-- LEFT: TACHOMETER DIAL (SVG) - НАПОР ВНИМАНИЯ (I) -->
+            <div class="lg:col-span-6 flex flex-col items-center justify-between p-6 rounded-2xl bg-slate-950/85 border border-slate-800 text-center shadow-xl relative overflow-hidden">
+              <div class="w-full flex items-center justify-between text-[11px] font-mono uppercase tracking-widest text-slate-400 font-bold mb-1">
+                <span class="flex items-center gap-1.5 text-cyan-400">
+                  <span id="tach-status-emoji" class="text-lg">⚡</span>
+                  <span>ТАХОМЕТР ПОТОКА (I)</span>
+                </span>
+                <span id="tach-rpm-badge" class="px-2 py-0.5 rounded bg-cyan-950 border border-cyan-800 text-cyan-300 text-[10px] font-bold">
+                  75 Ав
+                </span>
+              </div>
+
+              <!-- SVG TACHOMETER DIAL -->
+              <div class="w-full max-w-[290px] my-2 relative">
+                <svg viewBox="0 0 300 170" class="w-full overflow-visible select-none drop-shadow-lg">
+                  <defs>
+                    <linearGradient id="tach-needle-gradient" x1="0%" y1="100%" x2="0%" y2="0%">
+                      <stop offset="0%" stop-color="#0284c7"/>
+                      <stop offset="35%" stop-color="#38bdf8"/>
+                      <stop offset="85%" stop-color="#7dd3fc"/>
+                      <stop offset="100%" stop-color="#ffffff"/>
+                    </linearGradient>
+                    <filter id="tach-needle-glow" x="-50%" y="-50%" width="200%" height="200%">
+                      <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur"/>
+                      <feMerge>
+                        <feMergeNode in="blur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                      </feMerge>
+                    </filter>
+                  </defs>
+
+                  <!-- Background Arc Track -->
+                  <path d="M 50 140 A 100 100 0 0 1 250 140" fill="none" stroke="#1e293b" stroke-width="16" stroke-linecap="round"/>
+
+                  <!-- Colored Arcs -->
+                  <!-- Blue / Cyan Zone (0 to 60) -->
+                  <path d="M 50 140 A 100 100 0 0 1 180.9 44.9" fill="none" stroke="#38bdf8" stroke-width="14" stroke-linecap="round" opacity="0.95"/>
+                  <!-- Yellow Zone (60 to 85) -->
+                  <path d="M 180.9 44.9 A 100 100 0 0 1 239.1 94.6" fill="none" stroke="#f59e0b" stroke-width="14" stroke-linecap="butt" opacity="0.95"/>
+                  <!-- Red Overrev Zone (85 to 100) -->
+                  <path d="M 239.1 94.6 A 100 100 0 0 1 250 140" fill="none" stroke="#ef4444" stroke-width="14" stroke-linecap="round" opacity="0.95"/>
+
+                  <!-- Ticks and Scale Marks -->
+                  <line x1="50" y1="140" x2="38" y2="140" stroke="#38bdf8" stroke-width="2"/>
+                  <text x="32" y="144" fill="#38bdf8" font-size="10" font-family="monospace" text-anchor="end" font-weight="bold">0</text>
+
+                  <line x1="79.3" y1="69.3" x2="71" y2="61" stroke="#38bdf8" stroke-width="2"/>
+                  <text x="65" y="58" fill="#38bdf8" font-size="9" font-family="monospace" text-anchor="end">25</text>
+
+                  <line x1="150" y1="40" x2="150" y2="28" stroke="#38bdf8" stroke-width="2"/>
+                  <text x="150" y="24" fill="#38bdf8" font-size="11" font-family="monospace" text-anchor="middle" font-weight="bold">50</text>
+
+                  <line x1="220.7" y1="69.3" x2="229" y2="61" stroke="#f59e0b" stroke-width="2"/>
+                  <text x="235" y="58" fill="#fbbf24" font-size="9" font-family="monospace" text-anchor="start">75</text>
+
+                  <line x1="250" y1="140" x2="262" y2="140" stroke="#ef4444" stroke-width="2"/>
+                  <text x="268" y="144" fill="#ef4444" font-size="10" font-family="monospace" text-anchor="start" font-weight="bold">100</text>
+
+                  <!-- Labels: ПОКОЙ / НАПОР / ОВЕРРЕВ -->
+                  <text x="62" y="112" fill="#7dd3fc" font-size="8" font-family="sans-serif" font-weight="bold">🔵 ПОКОЙ</text>
+                  <text x="150" y="70" fill="#fde68a" font-size="7" font-family="sans-serif" font-weight="semibold" text-anchor="middle">🟡 НАПОР</text>
+                  <text x="238" y="112" fill="#fca5a5" font-size="8" font-family="sans-serif" font-weight="bold" text-anchor="end">🔴 ОВЕРРЕВ</text>
+
+                  <!-- Dynamic Tachometer Needle (CLEAN - NO CIRCLE AT TIP) -->
+                  <g id="tach-needle-group">
+                    <polygon id="tach-needle-counter" points="146.5,140 153.5,140 150,154" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" opacity="0.85"/>
+                    <polygon id="tach-needle-beam" points="146.5,140 153.5,140 151,22 149,22" fill="url(#tach-needle-gradient)" filter="url(#tach-needle-glow)"/>
+                    <line id="tach-needle-spine" x1="150" y1="140" x2="150" y2="22" stroke="#ffffff" stroke-width="0.8" opacity="0.9"/>
+                    
+                    <circle id="tach-needle-tip-glow" cx="150" cy="22" r="3" fill="#38bdf8" filter="url(#tach-needle-glow)"/>
+                    <circle id="tach-needle-tip-core" cx="150" cy="22" r="1.2" fill="#ffffff"/>
+
+                    <circle cx="150" cy="140" r="12" fill="#0b1329" stroke="#38bdf8" stroke-width="2.5" filter="url(#tach-needle-glow)"/>
+                    <circle cx="150" cy="140" r="5.5" fill="#38bdf8"/>
+                    <circle cx="150" cy="140" r="2" fill="#ffffff"/>
+                  </g>
+                </svg>
+              </div>
+
+              <!-- Main Numeric Readout -->
+              <div class="my-1">
+                <span id="tach-i-val" class="text-6xl md:text-7xl font-black font-mono tracking-tight bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-400 bg-clip-text text-transparent">
+                  75
+                </span>
+              </div>
+
+              <div id="tach-state-label" class="text-sm font-bold font-mono text-cyan-300 uppercase tracking-wide">
+                ⚡ ВЫСОКИЙ НАПОР ВНИМАНИЯ
+              </div>
+              <div class="text-xs text-slate-300 font-mono mt-0.5">
+                Обороты ядра Тандэна: <span id="tach-i-sub" class="text-amber-300 font-bold">75 Ав</span> • Частота процессора
+              </div>
+
+              <!-- Slider for Current (I) -->
+              <div class="w-full mt-4 pt-3 border-t border-slate-800/80">
+                <div class="flex justify-between text-[10px] font-mono text-slate-400 mb-1">
+                  <span>Штиль (0)</span>
+                  <span>Газ в пол (100)</span>
+                </div>
+                <input type="range" id="slider-tach-i" min="0" max="100" value="75" oninput="tach_onSliderChange(this.value)"
+                  class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400 transition" />
+              </div>
+            </div>
+
+
+            <!-- RIGHT: SPEEDOMETER DIAL (SVG) - ИНДЕКС ПРОВОДИМОСТИ (CI) -->
+            <div class="lg:col-span-6 flex flex-col items-center justify-between p-6 rounded-2xl bg-slate-950/85 border border-slate-800 text-center shadow-xl relative overflow-hidden">
               <div class="text-[11px] font-mono uppercase tracking-widest text-slate-400 font-bold mb-1 flex items-center gap-2">
                 <span id="gauge-status-emoji" class="text-lg">🎯</span>
                 <span>Индекс Проводимости (CI)</span>
@@ -320,14 +426,13 @@
 
                   <!-- Dynamic Speedometer Needle -->
                   <g id="gauge-needle-group">
-                    <!-- Counterweight below pivot -->
                     <polygon id="gauge-needle-counter" points="146.5,140 153.5,140 150,154" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" opacity="0.85"/>
-                    
-                    <!-- Glowing Tapered Razor Needle Beam -->
-                    <polygon id="gauge-needle-beam" points="146.5,140 153.5,140 150.6,22 149.4,22" fill="url(#needle-gradient)" filter="url(#needle-glow)"/>
+                    <polygon id="gauge-needle-beam" points="146.5,140 153.5,140 151,22 149,22" fill="url(#needle-gradient)" filter="url(#needle-glow)"/>
                     <line id="gauge-needle-spine" x1="150" y1="140" x2="150" y2="22" stroke="#ffffff" stroke-width="0.8" opacity="0.9"/>
+                    
+                    <circle id="gauge-needle-tip-glow" cx="150" cy="22" r="3" fill="#38bdf8" filter="url(#needle-glow)"/>
+                    <circle id="gauge-needle-tip-core" cx="150" cy="22" r="1.2" fill="#ffffff"/>
 
-                    <!-- Center Pivot Hub Cap (Anchored at 150, 140) -->
                     <circle cx="150" cy="140" r="12" fill="#0b1329" stroke="#38bdf8" stroke-width="2.5" filter="url(#needle-glow)"/>
                     <circle cx="150" cy="140" r="5.5" fill="#38bdf8"/>
                     <circle cx="150" cy="140" r="2" fill="#ffffff"/>
@@ -351,7 +456,7 @@
             </div>
 
             <!-- Right: State Diagnosis, Automotive Metaphor & 30s Reset -->
-            <div class="lg:col-span-7 space-y-4">
+            <div class="lg:col-span-12 space-y-4 mt-2">
               
               <!-- Metaphor Banner -->
               <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
@@ -1348,10 +1453,10 @@
       const b2X = cx + 3.5 * c;
       const b2Y = cy + 3.5 * s;
 
-      const t1X = tipX - 0.7 * c;
-      const t1Y = tipY - 0.7 * s;
-      const t2X = tipX + 0.7 * c;
-      const t2Y = tipY + 0.7 * s;
+      const t1X = tipX - 1 * c;
+      const t1Y = tipY - 1 * s;
+      const t2X = tipX + 1 * c;
+      const t2Y = tipY + 1 * s;
 
       const countX = cx - 14 * s;
       const countY = cy + 14 * c;
@@ -1371,7 +1476,11 @@
       if (counter) {
         counter.setAttribute('points', b1X.toFixed(1) + ',' + b1Y.toFixed(1) + ' ' + b2X.toFixed(1) + ',' + b2Y.toFixed(1) + ' ' + countX.toFixed(1) + ',' + countY.toFixed(1));
       }
-    }
+
+      const tipGlow = document.getElementById('gauge-needle-tip-glow');
+      const tipCore = document.getElementById('gauge-needle-tip-core');
+      if (tipGlow) { tipGlow.setAttribute('cx', tipX.toFixed(1)); tipGlow.setAttribute('cy', tipY.toFixed(1)); }
+      if (tipCore) { tipCore.setAttribute('cx', tipX.toFixed(1)); tipCore.setAttribute('cy', tipY.toFixed(1)); }}
 
     function gauge_render() {
       const ci = Math.round(0.20 * (gaugeState.ans + gaugeState.endo + gaugeState.brain + gaugeState.cardio + gaugeState.soma));
@@ -1464,6 +1573,7 @@
       const stateDesc = document.getElementById('gauge-state-desc');
       const stateBox = document.getElementById('gauge-state-box');
       const emoji = document.getElementById('gauge-status-emoji');
+      updateCoupledVerdict();
 
       if (ci >= 20) {
         if (emoji) emoji.textContent = '🟢';
