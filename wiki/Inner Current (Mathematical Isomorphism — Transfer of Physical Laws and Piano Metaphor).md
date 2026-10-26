@@ -262,5 +262,5 @@ $$dS = d_i S + d_e S$$
 - [[02_Wiki/Inner Current (Bénard Cells, Rayleigh Instability and Epistemology of Flow)|⚡ 416. Ячейки Бенара, неустойчивость Рэлея и эпистемология потока: Почему формула лишь описывает, а контур объясняет]]
 - [[02_Wiki/Inner Current (The Two Ultimate Peaks — Zen First Person and Prigogine Third Person Synthesis)|⚡ 433. Две абсолютные вершины познания: Дзен 1-го лица и Пригожин 3-го лица]]
 - [[02_Wiki/Inner Current (Prigogine Bifurcations and Irreversibility of Time — The Somatic Attractor)|⚡ 437. Бифуркация Пригожина и необратимость времени: Соматический аттрактор сознания]]
-- [[02_Wiki/Inner Current (The Epistemological Paradigm Shift and Flow Systems Law)|⚡ 424. Смена парадигмы познания и универсальный закон потоковых систем]]
+- [[02_Wiki/Inner Current (The Epistemological Paradigm Shift and Flow Systems Law)|⚡ 424. Смена парадигмы познания и всемирный закон проводимости]]
 - [[04_Maps/Inner Current MOC|🗺️ Inner Current MOC — Карта Архитектуры Цепи]]

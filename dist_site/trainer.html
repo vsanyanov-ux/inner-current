@@ -198,13 +198,27 @@
             </div>
           </button>
 
-          <!-- Tab 3: Ideal State & Happiness (Superconductivity R -> 0) -->
+          <!-- Tab 3: Speedometer of Stress and Happiness (5 Systems Gauge) -->
+          <button id="nav-tab-speedometer" onclick="switchTab('speedometer')" class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden bg-slate-950/40 border-slate-800 hover:border-slate-700 cursor-pointer">
+            <span class="text-xl shrink-0" id="nav-icon-speedometer">🎯</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between gap-1">
+                <span class="text-xs font-bold text-slate-200 group-hover:text-emerald-300 transition truncate" id="nav-title-speedometer">
+                  3. Спидометр стресса и счастья
+                </span>
+                <span id="nav-gauge-score-pill" class="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Gauge</span>
+              </div>
+              <p class="text-[10px] text-slate-400 truncate mt-0.5">Зонтик 5 систем • Шкала -100..+100</p>
+            </div>
+          </button>
+
+          <!-- Tab 4: Ideal State & Happiness (Superconductivity R -> 0) -->
           <button id="nav-tab-ideal" onclick="switchTab('ideal')" class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden bg-slate-950/40 border-slate-800 hover:border-slate-700 cursor-pointer">
             <span class="text-xl shrink-0" id="nav-icon-ideal">✨</span>
             <div class="flex-1 min-w-0">
               <div class="flex items-center justify-between gap-1">
                 <span class="text-xs font-bold text-slate-200 group-hover:text-cyan-300 transition truncate" id="nav-title-ideal">
-                  3. Атлас счастья
+                  4. Атлас счастья
                 </span>
                 <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">Идеал</span>
               </div>
@@ -218,7 +232,7 @@
             <div class="flex-1 min-w-0">
               <div class="flex items-center justify-between gap-1">
                 <span class="text-xs font-bold text-slate-200 group-hover:text-amber-300 transition truncate" id="nav-title-single">
-                  4. Контур ядра
+                  5. Контур ядра
                 </span>
                 <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">v1.0</span>
               </div>
@@ -232,7 +246,7 @@
             <div class="flex-1 min-w-0">
               <div class="flex items-center justify-between gap-1">
                 <span class="text-xs font-bold text-slate-200 group-hover:text-cyan-300 transition truncate" id="nav-title-multi">
-                  5. Щит 6 ламп
+                  6. Щит 6 ламп
                 </span>
                 <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">v1.1</span>
               </div>
@@ -246,7 +260,7 @@
             <div class="flex-1 min-w-0">
               <div class="flex items-center justify-between gap-1">
                 <span class="text-xs font-bold text-slate-200 group-hover:text-amber-300 transition truncate" id="nav-title-book">
-                  6. Золотая семёрка
+                  7. Золотая семёрка
                 </span>
                 <span class="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">7 книг</span>
               </div>
@@ -260,7 +274,7 @@
             <div class="flex-1 min-w-0">
               <div class="flex items-center justify-between gap-1">
                 <span class="text-xs font-bold text-slate-200 group-hover:text-cyan-300 transition truncate" id="nav-title-audiobook">
-                  7. Аудиокнига
+                  8. Аудиокнига
                 </span>
                 <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">1 час</span>
               </div>
@@ -2451,6 +2465,468 @@
 
       </div>
 
+      <!-- ==================== VIEW 3: SPEEDOMETER (5 SYSTEMS GAUGE) ==================== -->
+      <div id="view-speedometer" class="space-y-6 hidden">
+        
+        <!-- Top Header & Scenarios -->
+        <header class="bg-slate-900/90 border border-emerald-500/30 rounded-2xl p-6 backdrop-blur-md shadow-2xl flex flex-col lg:flex-row justify-between items-start lg:items-center gap-5 relative overflow-hidden">
+          <div class="absolute -right-10 -top-10 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="space-y-1 relative z-10">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl p-2.5 rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/40 text-emerald-300 shadow-lg shadow-emerald-500/10">🎯</span>
+              <div>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h1 class="text-2xl md:text-3xl font-bold tracking-tight bg-gradient-to-r from-emerald-300 via-teal-200 to-cyan-300 bg-clip-text text-transparent">
+                    Спидометр стресса и счастья
+                  </h1>
+                  <span class="text-xs uppercase tracking-widest px-2.5 py-0.5 bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 rounded-full font-mono font-bold">
+                    Circuit Gauge • 5 систем
+                  </span>
+                </div>
+                <p class="text-slate-400 text-xs md:text-sm mt-1">
+                  Единый зонтик Закона Всемирной Проводимости: сведение вегетатики, гормонов, DMN, HRV и соматики к одной стрелке от -100 до +100.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Scenario Presets -->
+          <div class="flex flex-wrap items-center gap-2 relative z-10">
+            <span class="text-xs uppercase tracking-wider text-slate-500 font-mono">Пресеты:</span>
+            <button onclick="gauge_applyPreset('mushin')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-950/80 border border-emerald-700/60 text-emerald-300 hover:bg-emerald-900 transition flex items-center gap-1.5 cursor-pointer">
+              <span>🍵</span> Мусин (+95)
+            </button>
+            <button onclick="gauge_applyPreset('flow')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-950/80 border border-cyan-700/60 text-cyan-300 hover:bg-cyan-900 transition flex items-center gap-1.5 cursor-pointer">
+              <span>💻</span> Flow (+75)
+            </button>
+            <button onclick="gauge_applyPreset('npc')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700 transition flex items-center gap-1.5 cursor-pointer">
+              <span>🥱</span> Холостой (0)
+            </button>
+            <button onclick="gauge_applyPreset('rumination')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-950/80 border border-amber-700/60 text-amber-300 hover:bg-amber-900 transition flex items-center gap-1.5 cursor-pointer">
+              <span>🧠</span> DMN тревога (-55)
+            </button>
+            <button onclick="gauge_applyPreset('panic')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-rose-950/80 border border-rose-700/60 text-rose-300 hover:bg-rose-900 transition flex items-center gap-1.5 cursor-pointer">
+              <span>🔥</span> Дистресс (-90)
+            </button>
+          </div>
+        </header>
+
+        <!-- Master Instrument: Physical Speedometer Gauge Card -->
+        <div class="bg-gradient-to-b from-slate-900/90 via-slate-900/70 to-slate-950/90 border border-slate-800 rounded-2xl p-6 md:p-8 backdrop-blur-md shadow-2xl relative overflow-hidden">
+          
+          <div id="gauge-ambient-glow" class="absolute -right-16 -top-16 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none transition-all duration-700"></div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+            
+            <!-- Left: The Visual Speedometer (SVG Dial) -->
+            <div class="lg:col-span-5 flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-950/85 border border-slate-800 text-center shadow-xl relative overflow-hidden">
+              
+              <div class="text-[11px] font-mono uppercase tracking-widest text-slate-400 font-bold mb-1 flex items-center gap-2">
+                <span id="gauge-status-emoji" class="text-lg">🎯</span>
+                <span>Индекс Проводимости (CI)</span>
+              </div>
+
+              <!-- SVG SPEEDOMETER DIAL -->
+              <div class="w-full max-w-[280px] my-2 relative">
+                <svg viewBox="0 0 300 170" class="w-full overflow-visible select-none drop-shadow-lg">
+                  <defs>
+                    <linearGradient id="needle-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#38bdf8"/>
+                      <stop offset="100%" stop-color="#f8fafc"/>
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Background Arc Track -->
+                  <path d="M 50 140 A 100 100 0 0 1 250 140" fill="none" stroke="#1e293b" stroke-width="16" stroke-linecap="round"/>
+
+                  <!-- Colored Arcs -->
+                  <!-- Red Zone (-100 to -30) -->
+                  <path d="M 50 140 A 100 100 0 0 1 100 53.4" fill="none" stroke="#ef4444" stroke-width="14" stroke-linecap="round" opacity="0.95"/>
+                  <!-- Yellow Zone (-30 to +20) -->
+                  <path d="M 100 53.4 A 100 100 0 0 1 184.2 46.0" fill="none" stroke="#f59e0b" stroke-width="14" stroke-linecap="butt" opacity="0.95"/>
+                  <!-- Green Zone (+20 to +100) -->
+                  <path d="M 184.2 46.0 A 100 100 0 0 1 250 140" fill="none" stroke="#10b981" stroke-width="14" stroke-linecap="round" opacity="0.95"/>
+
+                  <!-- Ticks and Scale Marks -->
+                  <line x1="50" y1="140" x2="38" y2="140" stroke="#ef4444" stroke-width="2"/>
+                  <text x="32" y="144" fill="#f87171" font-size="10" font-family="monospace" text-anchor="end" font-weight="bold">-100</text>
+
+                  <line x1="79.3" y1="69.3" x2="71" y2="61" stroke="#ef4444" stroke-width="2"/>
+                  <text x="65" y="58" fill="#f87171" font-size="9" font-family="monospace" text-anchor="end">-50</text>
+
+                  <line x1="150" y1="40" x2="150" y2="28" stroke="#f59e0b" stroke-width="2"/>
+                  <text x="150" y="24" fill="#fbbf24" font-size="11" font-family="monospace" text-anchor="middle" font-weight="bold">0</text>
+
+                  <line x1="220.7" y1="69.3" x2="229" y2="61" stroke="#10b981" stroke-width="2"/>
+                  <text x="235" y="58" fill="#34d399" font-size="9" font-family="monospace" text-anchor="start">+50</text>
+
+                  <line x1="250" y1="140" x2="262" y2="140" stroke="#10b981" stroke-width="2"/>
+                  <text x="268" y="144" fill="#34d399" font-size="10" font-family="monospace" text-anchor="start" font-weight="bold">+100</text>
+
+                  <!-- Labels: СТРЕСС / ХОЛОСТОЙ / СЧАСТЬЕ -->
+                  <text x="62" y="112" fill="#fca5a5" font-size="8" font-family="sans-serif" font-weight="bold">🔴 СТРЕСС</text>
+                  <text x="150" y="70" fill="#fde68a" font-size="7" font-family="sans-serif" font-weight="semibold" text-anchor="middle">🟡 ДРЕЙФ</text>
+                  <text x="238" y="112" fill="#6ee7b7" font-size="8" font-family="sans-serif" font-weight="bold" text-anchor="end">🟢 СЧАСТЬЕ</text>
+
+                  <!-- Dynamic Rotating Needle -->
+                  <g id="gauge-needle" style="transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1); transform-origin: 150px 140px;" transform="rotate(76 150 140)">
+                    <polygon points="146,140 154,140 151,35 149,35" fill="url(#needle-gradient)"/>
+                    <circle cx="150" cy="35" r="2.5" fill="#38bdf8"/>
+                    <circle cx="150" cy="140" r="13" fill="#0f172a" stroke="#38bdf8" stroke-width="2.5"/>
+                    <circle cx="150" cy="140" r="6" fill="#38bdf8"/>
+                  </g>
+                </svg>
+              </div>
+
+              <!-- Main Numeric Readout -->
+              <div class="my-1">
+                <span id="gauge-ci-val" class="text-6xl md:text-7xl font-black font-mono tracking-tight bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-300 bg-clip-text text-transparent">
+                  +84
+                </span>
+              </div>
+
+              <div id="gauge-state-label" class="text-sm font-bold font-mono text-emerald-300 uppercase tracking-wide">
+                🟢 СВЕРХПРОВОДИМОСТЬ (МУСИН)
+              </div>
+              <div id="gauge-h-sub" class="text-xs text-slate-400 font-mono mt-0.5">
+                КПД Бытия: <span id="gauge-h-val" class="text-amber-300 font-bold">92%</span> • Ток без потерь
+              </div>
+
+            </div>
+
+            <!-- Middle & Right: The Speedometer Analogy & Live State Description -->
+            <div class="lg:col-span-7 space-y-5">
+              
+              <!-- Automotive Analogy Callout -->
+              <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
+                <div class="flex items-center gap-2 text-xs font-mono font-bold text-slate-300">
+                  <span class="text-base">🚗</span>
+                  <span class="uppercase tracking-widest text-slate-400">Принцип автомобильного спидометра:</span>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  Водителю вредно видеть 50 графиков давления в топливной рампе и температуры катализатора — ему нужен <strong>один спидометр</strong>. Все 5 физиологических датчиков ниже измеряют <strong>одно и то же паразитное эго-сопротивление ($R_{\text{loss}}$)</strong>. Если стрелка в красной зоне — контур горит по закону Джоуля — Ленца ($P = I^2 R$). Если в зелёной — ток свободно совершает полезную работу в мире.
+                </p>
+              </div>
+
+              <!-- Dynamic Physical Verdict Box -->
+              <div id="gauge-state-box" class="p-4 rounded-xl border bg-emerald-950/40 border-emerald-500/40 text-emerald-200 text-xs md:text-sm font-mono space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-emerald-300" id="gauge-state-title">СТАТУС: КОНТУР В РЕЖИМЕ СВЕРХПРОВОДИМОСТИ</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">H &gt; 60%</span>
+                </div>
+                <div class="text-slate-300 text-xs leading-relaxed" id="gauge-state-desc">
+                  Внутреннее сопротивление сведено к минимуму ($R_{\text{loss}} \to 0$). Вентральный блуждающий нерв синхронизирует дыхание и сердце, DMN молчит, префронтальная кора работает в режиме TPN (поток). Энергия течёт сквозь проводник без омического трения. Вы переживаете счастье как физическую проводимость жизни!
+                </div>
+              </div>
+
+              <!-- Action Calibration Button -->
+              <div class="flex flex-wrap items-center gap-3 pt-1">
+                <button onclick="gauge_calibrateMushin()" class="py-3 px-6 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-400 hover:opacity-95 text-slate-950 font-bold text-sm shadow-xl shadow-emerald-500/20 transition flex items-center gap-2 cursor-pointer active:scale-98">
+                  <span>⚡</span>
+                  <span>Калибровка: Вернуть стрелку в Зеленую зону (R → 0)</span>
+                </button>
+                <button onclick="switchTab('dashboard')" class="py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs transition border border-slate-700 flex items-center gap-1.5 cursor-pointer">
+                  <span>📊</span>
+                  <span>Открыть полный Live HUD</span>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Section 2: The 5 Biological Systems (Interactive Sliders & Explanations) -->
+        <div class="space-y-4">
+          
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2 px-1">
+            <div>
+              <h2 class="text-lg md:text-xl font-bold tracking-tight text-slate-100 flex items-center gap-2">
+                <span>🎛️</span>
+                <span>5 физиологических систем под зонтиком Закона Проводимости</span>
+              </h2>
+              <p class="text-xs text-slate-400 mt-0.5">
+                Перемещайте ползунки, чтобы смоделировать влияние каждой системы на общую стрелку спидометра:
+              </p>
+            </div>
+            <span class="text-[11px] font-mono text-slate-400 bg-slate-900 px-3 py-1 rounded-lg border border-slate-800">
+              Каждая система вносит 20% веса
+            </span>
+          </div>
+
+          <!-- Cards Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            
+            <!-- 1. Вегетативная нервная система (ВНС) -->
+            <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-slate-700 transition flex flex-col justify-between space-y-4 shadow-xl">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <div class="flex items-center gap-2">
+                    <span class="text-xl">🫀</span>
+                    <h3 class="text-xs font-bold text-slate-200">1. Вегетативная система</h3>
+                  </div>
+                  <span id="badge-gauge-ans" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                    +85 • Вагус
+                  </span>
+                </div>
+                <p class="text-[11px] text-slate-400 mb-3">
+                  <strong>Манометр давления:</strong> симпатический овердрайв (давление перед затором) vs вентральный вагус (свободный проток).
+                </p>
+
+                <!-- Slider -->
+                <div class="space-y-1">
+                  <div class="flex justify-between text-[10px] font-mono text-slate-400">
+                    <span class="text-rose-400">Симпатика (-100)</span>
+                    <span class="text-emerald-400">Вагус (+100)</span>
+                  </div>
+                  <input id="slider-gauge-ans" type="range" min="-100" max="100" value="85" oninput="gauge_updateSystem('ans', this.value)" class="w-full accent-emerald-500 cursor-pointer">
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800/80 text-[10px] font-mono text-slate-300 leading-relaxed" id="desc-gauge-ans">
+                Вентральный блуждающий нерв активен. Сосуды расширены, пальцы рук и стопы тёплые, сердечный ритм когерентен дыханию.
+              </div>
+            </div>
+
+            <!-- 2. Эндокринный каскад (Гормоны) -->
+            <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-slate-700 transition flex flex-col justify-between space-y-4 shadow-xl">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <div class="flex items-center gap-2">
+                    <span class="text-xl">🧪</span>
+                    <h3 class="text-xs font-bold text-slate-200">2. Эндокринный каскад</h3>
+                  </div>
+                  <span id="badge-gauge-endo" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                    +80 • Анаболизм
+                  </span>
+                </div>
+                <p class="text-[11px] text-slate-400 mb-3">
+                  <strong>Химический охладитель:</strong> кортизоловый чад пожаротушения перегрева vs окситоцин и анаболическое восстановление.
+                </p>
+
+                <!-- Slider -->
+                <div class="space-y-1">
+                  <div class="flex justify-between text-[10px] font-mono text-slate-400">
+                    <span class="text-rose-400">Кортизол (-100)</span>
+                    <span class="text-emerald-400">Окситоцин (+100)</span>
+                  </div>
+                  <input id="slider-gauge-endo" type="range" min="-100" max="100" value="80" oninput="gauge_updateSystem('endo', this.value)" class="w-full accent-emerald-500 cursor-pointer">
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800/80 text-[10px] font-mono text-slate-300 leading-relaxed" id="desc-gauge-endo">
+                Ось HPA спокойна. Кортизол на базовом уровне. Высокий анаболизм, синтез нейротрофина BDNF и регенерация тканей.
+              </div>
+            </div>
+
+            <!-- 3. Нейросети мозга (фМРТ) -->
+            <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-slate-700 transition flex flex-col justify-between space-y-4 shadow-xl">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <div class="flex items-center gap-2">
+                    <span class="text-xl">🧠</span>
+                    <h3 class="text-xs font-bold text-slate-200">3. Нейросети мозга</h3>
+                  </div>
+                  <span id="badge-gauge-brain" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                    +80 • TPN Поток
+                  </span>
+                </div>
+                <p class="text-[11px] text-slate-400 mb-3">
+                  <strong>Вихрь холостого хода:</strong> руминация DMN (самоедство в голове) vs TPN (растворение в реальной задаче).
+                </p>
+
+                <!-- Slider -->
+                <div class="space-y-1">
+                  <div class="flex justify-between text-[10px] font-mono text-slate-400">
+                    <span class="text-rose-400">DMN Руминация (-100)</span>
+                    <span class="text-emerald-400">TPN Поток (+100)</span>
+                  </div>
+                  <input id="slider-gauge-brain" type="range" min="-100" max="100" value="80" oninput="gauge_updateSystem('brain', this.value)" class="w-full accent-emerald-500 cursor-pointer">
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800/80 text-[10px] font-mono text-slate-300 leading-relaxed" id="desc-gauge-brain">
+                DMN спит. Внутренний критик и страх оценки отключены. Префронтальная кора соединена с созидательным действием.
+              </div>
+            </div>
+
+            <!-- 4. Сердечно-сосудистая система (Кардио / HRV) -->
+            <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-slate-700 transition flex flex-col justify-between space-y-4 shadow-xl">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <div class="flex items-center gap-2">
+                    <span class="text-xl">💓</span>
+                    <h3 class="text-xs font-bold text-slate-200">4. Кардио & HRV</h3>
+                  </div>
+                  <span id="badge-gauge-cardio" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                    +85 • Когерентность
+                  </span>
+                </div>
+                <p class="text-[11px] text-slate-400 mb-3">
+                  <strong>Эластичность проводника:</strong> спазм сосудов и жесткий пульс (низкий HRV) vs брадикардия покоя и высокий HRV.
+                </p>
+
+                <!-- Slider -->
+                <div class="space-y-1">
+                  <div class="flex justify-between text-[10px] font-mono text-slate-400">
+                    <span class="text-rose-400">Низкий HRV (-100)</span>
+                    <span class="text-emerald-400">Высокий HRV (+100)</span>
+                  </div>
+                  <input id="slider-gauge-cardio" type="range" min="-100" max="100" value="85" oninput="gauge_updateSystem('cardio', this.value)" class="w-full accent-emerald-500 cursor-pointer">
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800/80 text-[10px] font-mono text-slate-300 leading-relaxed" id="desc-gauge-cardio">
+                Высокая вариабельность ритма (RMSSD &gt; 65 мс). Сердце упруго и гибко подстраивается под микроволны дыхания.
+              </div>
+            </div>
+
+            <!-- 5. Соматика и дыхание (Биомеханика / Фасции) -->
+            <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-slate-700 transition flex flex-col justify-between space-y-4 shadow-xl md:col-span-2 lg:col-span-1">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <div class="flex items-center gap-2">
+                    <span class="text-xl">🌬️</span>
+                    <h3 class="text-xs font-bold text-slate-200">5. Соматика & Дыхание</h3>
+                  </div>
+                  <span id="badge-gauge-soma" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                    +90 • Тандэн
+                  </span>
+                </div>
+                <p class="text-[11px] text-slate-400 mb-3">
+                  <strong>Механический зажим кабеля:</strong> мышечный панцирь (челюсти, шея, диафрагма) vs брюшное дыхание Тандэном.
+                </p>
+
+                <!-- Slider -->
+                <div class="space-y-1">
+                  <div class="flex justify-between text-[10px] font-mono text-slate-400">
+                    <span class="text-rose-400">Спазм мышц (-100)</span>
+                    <span class="text-emerald-400">Тандэн (+100)</span>
+                  </div>
+                  <input id="slider-gauge-soma" type="range" min="-100" max="100" value="90" oninput="gauge_updateSystem('soma', this.value)" class="w-full accent-emerald-500 cursor-pointer">
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800/80 text-[10px] font-mono text-slate-300 leading-relaxed" id="desc-gauge-soma">
+                Челюсти разомкнуты, плечи опущены, дыхание идёт нижним резервуаром живота. Мышечный панцирь полностью разомкнут.
+              </div>
+            </div>
+
+            <!-- Mini Summary & Formula Card -->
+            <div class="p-5 rounded-2xl bg-gradient-to-br from-slate-950 to-slate-900 border border-emerald-500/20 flex flex-col justify-between space-y-3 shadow-xl md:col-span-2 lg:col-span-1">
+              <div class="space-y-2">
+                <div class="text-[11px] font-mono uppercase tracking-widest text-emerald-400 font-bold flex items-center gap-1.5">
+                  <span>📐</span>
+                  <span>Математический зонтик</span>
+                </div>
+                <div class="text-[11px] font-mono text-slate-300 space-y-1">
+                  <div>CI = 0.20 × (S₁ + S₂ + S₃ + S₄ + S₅)</div>
+                  <div>КПД H = (CI + 100) / 2 = <span class="text-amber-300 font-bold" id="gauge-formula-h">92%</span></div>
+                  <div>Потери Q = I² · R_loss</div>
+                </div>
+              </div>
+              <p class="text-[10px] text-slate-400 leading-relaxed">
+                Счастье — это не мораль, а режим открытого контура с КПД &gt; 60%. Устраняя затор в любой из 5 систем, вы возвращаете стрелку в плюс.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Section 3: Detailed Educational Table (From the uploaded image) -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 backdrop-blur-md shadow-xl space-y-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <h3 class="text-sm font-bold text-slate-200 flex items-center gap-2">
+              <span>📋</span>
+              <span>Сравнительная матрица: Человек в стрессе против Человека в сверхпроводимости</span>
+            </h3>
+            <span class="text-[10px] font-mono text-slate-400 bg-slate-950 px-2.5 py-1 rounded border border-slate-800">
+              Статья Wiki ⚡ 564 &amp; ⚡ 565
+            </span>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs font-mono border-collapse">
+              <thead>
+                <tr class="border-b border-slate-800 text-slate-400">
+                  <th class="py-2.5 px-3 font-semibold">Параметр / Система</th>
+                  <th class="py-2.5 px-3 font-semibold text-rose-400">Человек в стрессе (Красная зона, CI &lt; -30)</th>
+                  <th class="py-2.5 px-3 font-semibold text-emerald-400">Человек в счастье (Зелёная зона, CI &gt; +20)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800/60 text-slate-300">
+                <tr class="hover:bg-slate-800/30 transition">
+                  <td class="py-3 px-3 font-bold text-slate-200">1. Вегетативная нервная система</td>
+                  <td class="py-3 px-3 text-rose-300">Симпатический овердрайв (fight-or-flight), выброс адреналина и норадреналина.</td>
+                  <td class="py-3 px-3 text-emerald-300">Активация парасимпатики (вентральный блуждающий нерв / Vagus nerve).</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition">
+                  <td class="py-3 px-3 font-bold text-slate-200">2. Эндокринный каскад</td>
+                  <td class="py-3 px-3 text-rose-300">Активация оси HPA (гипоталамус–гипофиз–надпочечники), избыток кортизола, катаболизм.</td>
+                  <td class="py-3 px-3 text-emerald-300">Снижение кортизола, выброс окситоцина, анаболический режим восстановления тканей.</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition">
+                  <td class="py-3 px-3 font-bold text-slate-200">3. Нейросети мозга (фМРТ)</td>
+                  <td class="py-3 px-3 text-rose-300">Гиперактивность DMN (Default Mode Network — руминация, самоедство, страх оценки) + захват амигдалой.</td>
+                  <td class="py-3 px-3 text-emerald-300">Затихание DMN, доминирование TPN (Task-Positive Network / состояние потока), когерентность префронтальной коры.</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition">
+                  <td class="py-3 px-3 font-bold text-slate-200">4. Сердечно-сосудистая система</td>
+                  <td class="py-3 px-3 text-rose-300">Тахикардия, вазоконстрикция (сужение сосудов, холодные конечности), низкая вариабельность ритма (HRV).</td>
+                  <td class="py-3 px-3 text-emerald-300">Брадикардия покоя, вазодилатация (тёплые ладони и стопы), высокая вариабельность ритма (HRV).</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition">
+                  <td class="py-3 px-3 font-bold text-slate-200">5. Соматика и дыхание</td>
+                  <td class="py-3 px-3 text-rose-300">Мышечные спазмы (челюсти, плечи, диафрагма — мышечный панцирь Райха), грудное дыхание, гипервентиляция.</td>
+                  <td class="py-3 px-3 text-emerald-300">Глубокое брюшное (диафрагмальное) дыхание Тандэном, миорелаксация, снятие «мышечного панциря».</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Section 4: 30-Second Recovery Protocol -->
+        <div class="bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-900 border border-emerald-500/30 rounded-2xl p-6 shadow-xl space-y-4">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl p-2 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">🛠️</span>
+            <div>
+              <h3 class="text-base font-bold text-slate-100">30-секундный протокол оператора: Как вернуть стрелку в Зеленую зону</h3>
+              <p class="text-xs text-slate-400">Детерминированная процедура сброса омического перегрева цепи</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-xs font-mono">
+            <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+              <span class="text-emerald-400 font-bold block">ШАГ 1: ТАНДЭН</span>
+              <p class="text-slate-300 text-[11px] leading-relaxed">
+                Сбросить внимание из головы в точку на 3 пальца ниже пупка. Сделать медленный удлинённый выдох (вагусный тормоз).
+              </p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+              <span class="text-emerald-400 font-bold block">ШАГ 2: МУСИН</span>
+              <p class="text-slate-300 text-[11px] leading-relaxed">
+                Разомкнуть зубы, отпустить нижнюю челюсть, сбросить плечи и освободить диафрагму. Мышечный нихром отключается.
+              </p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+              <span class="text-emerald-400 font-bold block">ШАГ 3: НАГРУЗКА</span>
+              <p class="text-slate-300 text-[11px] leading-relaxed">
+                Сделать одно физическое действие руками в реальности: написать строку, налить воды, сделать шаг. Ток выходит в дело.
+              </p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+              <span class="text-emerald-400 font-bold block">ШАГ 4: ДЗАНСИН</span>
+              <p class="text-slate-300 text-[11px] leading-relaxed">
+                Ощутить физический контакт со средой стопами и ладонями. Контур замкнут. Стрелка переходит в +85.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
       <!-- ==================== VIEW 4: IDEAL STATE & HAPPINESS (ATLAS OF HAPPINESS) ==================== -->
       <div id="view-ideal" class="space-y-6 hidden">
         
@@ -3138,7 +3614,7 @@
                 </p>
               </div>
               <p class="text-xs text-slate-400 leading-relaxed">
-                Master Edition 2.0: 7 фундаментальных частей, 30 глав. Универсальный закон потоковых систем, фрактал 4 узлов цепи, демонтаж 4 эпидемий цивилизации, снятие раскола Декарта, Вертикаль восхождения Self-Hosted Humans и объективная телеметрия.
+                Master Edition 2.0: 7 фундаментальных частей, 30 глав. Всемирный закон проводимости, фрактал 4 узлов цепи, демонтаж 4 эпидемий цивилизации, снятие раскола Декарта, Вертикаль восхождения Self-Hosted Humans и объективная телеметрия.
               </p>
             </div>
             <div class="pt-4 mt-2 border-t border-slate-800/80 flex items-center gap-2">
@@ -3298,11 +3774,11 @@
                   Великий Синтез: Революции Материи, Трагедия Духа и Электродинамика Человека
                 </h3>
                 <p class="text-xs md:text-sm text-amber-400/90 font-medium mt-0.5">
-                  Master Edition 2.0: Универсальный закон потоковых систем, Онтологическая триада и схождение физики, техники, религии и эпохи ИИ
+                  Master Edition 2.0: Всемирный закон проводимости, Онтологическая триада и схождение физики, техники, религии и эпохи ИИ
                 </p>
               </div>
               <p class="text-xs md:text-sm text-slate-300 leading-relaxed">
-                Универсальный закон потоковых систем ($\mathcal{H} = P_{\text{load}} / P_{\text{total}}$), Онтологическая триада, родословная законов сохранения (Карно, Ом, Больцман, Шрёдингер, Пригожин, Бежан), почему 10 000 лет исканий духа (Будда, Христос, Толстой, Ницше, психоанализ) потерпели крах из-за морального кнута ($Q = I^2 R t$), Четверичный фрактал цепи ($10^{-15} \dots 10^9$ м) и соматическая сверхпроводимость ($R_{\text{ego}} \to 0$).
+                Всемирный закон проводимости ($\mathcal{H} = P_{\text{load}} / P_{\text{total}}$), Онтологическая триада, родословная законов сохранения (Карно, Ом, Больцман, Шрёдингер, Пригожин, Бежан), почему 10 000 лет исканий духа (Будда, Христос, Толстой, Ницше, психоанализ) потерпели крах из-за морального кнута ($Q = I^2 R t$), Четверичный фрактал цепи ($10^{-15} \dots 10^9$ м) и соматическая сверхпроводимость ($R_{\text{ego}} \to 0$).
               </p>
             </div>
             <div class="pt-5 mt-3 border-t border-slate-800/80 flex flex-wrap items-center gap-3">
@@ -3513,6 +3989,7 @@
     function switchTab(tabId) {
       const viewPains = document.getElementById('view-pains');
       const viewDash = document.getElementById('view-happiness-dashboard');
+      const viewSpeedometer = document.getElementById('view-speedometer');
       const viewIdeal = document.getElementById('view-ideal');
       const viewSingle = document.getElementById('view-single-circuit');
       const viewMulti = document.getElementById('view-multi-circuit');
@@ -3521,6 +3998,7 @@
 
       const navPains = document.getElementById('nav-tab-pains');
       const navDash = document.getElementById('nav-tab-dashboard');
+      const navSpeedometer = document.getElementById('nav-tab-speedometer');
       const navIdeal = document.getElementById('nav-tab-ideal');
       const navSingle = document.getElementById('nav-tab-single');
       const navMulti = document.getElementById('nav-tab-multi');
@@ -3534,11 +4012,13 @@
       const activeClassGold = 'bg-gradient-to-r from-amber-500/20 via-slate-900 to-slate-900 border-amber-400/60 shadow-lg shadow-amber-500/10';
       const activeClassAmber = 'bg-gradient-to-r from-amber-500/15 via-slate-900 to-slate-900 border-amber-500/60 shadow-lg shadow-amber-500/10';
       const activeClassCyan = 'bg-gradient-to-r from-cyan-500/15 via-slate-900 to-slate-900 border-cyan-500/60 shadow-lg shadow-cyan-500/10';
+      const activeClassEmerald = 'bg-gradient-to-r from-emerald-500/15 via-slate-900 to-slate-900 border-emerald-500/60 shadow-lg shadow-emerald-500/10';
       const inactiveClass = 'bg-slate-950/40 border-slate-800 hover:border-slate-700';
 
       // Hide all views first
       if (viewPains) viewPains.classList.add('hidden');
       if (viewDash) viewDash.classList.add('hidden');
+      if (viewSpeedometer) viewSpeedometer.classList.add('hidden');
       if (viewIdeal) viewIdeal.classList.add('hidden');
       if (viewSingle) viewSingle.classList.add('hidden');
       if (viewMulti) viewMulti.classList.add('hidden');
@@ -3548,6 +4028,7 @@
       // Reset all nav buttons
       if (navPains) navPains.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
       if (navDash) navDash.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
+      if (navSpeedometer) navSpeedometer.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
       if (navIdeal) navIdeal.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
       if (navSingle) navSingle.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
       if (navMulti) navMulti.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + inactiveClass;
@@ -3571,6 +4052,17 @@
 
         if (typeof updateHappinessHUD === 'function') {
           updateHappinessHUD();
+        }
+      } else if (tabId === 'speedometer' || tabId === 'gauge' || tabId === 'stress') {
+        if (viewSpeedometer) viewSpeedometer.classList.remove('hidden');
+        if (navSpeedometer) navSpeedometer.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden cursor-pointer ' + activeClassEmerald;
+
+        activeBadge.textContent = 'СПИДОМЕТР СТРЕССА И СЧАСТЬЯ';
+        activeBadge.className = 'text-emerald-400 font-bold';
+        modeDesc.textContent = 'Единый приборный индикатор Закона Всемирной Проводимости: сведение 5 систем организма (ВНС, гормоны, DMN, HRV, соматика) к одной стрелке от -100 до +100.';
+
+        if (typeof gauge_init === 'function') {
+          gauge_init();
         }
       } else if (tabId === 'ideal') {
         if (viewIdeal) viewIdeal.classList.remove('hidden');
@@ -4087,7 +4579,7 @@
       }, 100);
     }
 
-    // Keyboard Shortcuts: 1 (Pains), 2 (Dashboard), 3 (Ideal), 4 (Single), 5 (Multi)
+    // Keyboard Shortcuts: 1 (Pains), 2 (Dashboard), 3 (Speedometer), 4 (Ideal), 5 (Single), 6 (Multi), 7 (Book), 8 (Audio)
     window.addEventListener('keydown', (e) => {
       if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
       if (e.key === '1') {
@@ -4095,15 +4587,244 @@
       } else if (e.key === '2') {
         switchTab('dashboard');
       } else if (e.key === '3') {
-        switchTab('ideal');
+        switchTab('speedometer');
       } else if (e.key === '4') {
-        switchTab('single');
+        switchTab('ideal');
       } else if (e.key === '5') {
-        switchTab('multi');
+        switchTab('single');
       } else if (e.key === '6') {
+        switchTab('multi');
+      } else if (e.key === '7') {
         switchTab('book');
+      } else if (e.key === '8') {
+        switchTab('audiobook');
       }
     });
+  </script>
+
+<!-- ============================================================== -->
+  <!-- 🎯 5 SYSTEMS SPEEDOMETER & CIRCUIT GAUGE ENGINE SCRIPT         -->
+  <!-- ============================================================== -->
+  <script>
+    const gaugeState = {
+      ans: 85,
+      endo: 80,
+      brain: 80,
+      cardio: 85,
+      soma: 90
+    };
+
+    function gauge_updateSystem(sys, val) {
+      gaugeState[sys] = parseInt(val, 10);
+      gauge_render();
+    }
+
+    function gauge_applyPreset(presetName) {
+      if (presetName === 'mushin') {
+        gaugeState.ans = 95; gaugeState.endo = 90; gaugeState.brain = 95; gaugeState.cardio = 95; gaugeState.soma = 100;
+      } else if (presetName === 'flow') {
+        gaugeState.ans = 75; gaugeState.endo = 70; gaugeState.brain = 85; gaugeState.cardio = 75; gaugeState.soma = 75;
+      } else if (presetName === 'npc') {
+        gaugeState.ans = 0; gaugeState.endo = 0; gaugeState.brain = -10; gaugeState.cardio = 5; gaugeState.soma = 0;
+      } else if (presetName === 'rumination') {
+        gaugeState.ans = -40; gaugeState.endo = -50; gaugeState.brain = -90; gaugeState.cardio = -45; gaugeState.soma = -30;
+      } else if (presetName === 'panic') {
+        gaugeState.ans = -95; gaugeState.endo = -90; gaugeState.brain = -85; gaugeState.cardio = -95; gaugeState.soma = -90;
+      }
+
+      const sAns = document.getElementById('slider-gauge-ans');
+      const sEndo = document.getElementById('slider-gauge-endo');
+      const sBrain = document.getElementById('slider-gauge-brain');
+      const sCardio = document.getElementById('slider-gauge-cardio');
+      const sSoma = document.getElementById('slider-gauge-soma');
+
+      if (sAns) sAns.value = gaugeState.ans;
+      if (sEndo) sEndo.value = gaugeState.endo;
+      if (sBrain) sBrain.value = gaugeState.brain;
+      if (sCardio) sCardio.value = gaugeState.cardio;
+      if (sSoma) sSoma.value = gaugeState.soma;
+
+      gauge_render();
+    }
+
+    function gauge_calibrateMushin() {
+      gauge_applyPreset('mushin');
+    }
+
+    function gauge_renderSystemBadgeAndDesc(sys, val) {
+      const badge = document.getElementById('badge-gauge-' + sys);
+      const desc = document.getElementById('desc-gauge-' + sys);
+      if (!badge || !desc) return;
+
+      const sign = val > 0 ? '+' : '';
+      let colorClass = '';
+      let text = '';
+      let descText = '';
+
+      if (val >= 20) {
+        colorClass = 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
+      } else if (val >= -30) {
+        colorClass = 'bg-amber-500/20 text-amber-300 border-amber-500/30';
+      } else {
+        colorClass = 'bg-rose-500/20 text-rose-300 border-rose-500/30';
+      }
+
+      if (sys === 'ans') {
+        if (val >= 20) {
+          text = sign + val + ' • Вагус';
+          descText = 'Вентральный блуждающий нерв активен. Сосуды расширены, пальцы рук и стопы тёплые, сердечный ритм когерентен дыханию.';
+        } else if (val >= -30) {
+          text = sign + val + ' • Баланс';
+          descText = 'Промежуточный тонус ВНС. Симпатика и парасимпатика в нейтральном равновесии без выраженной когерентности.';
+        } else {
+          text = val + ' • Симпатика';
+          descText = 'Симпатический овердрайв (fight-or-flight). Выброс адреналина и норадреналина, спазм периферических сосудов, холодные конечности.';
+        }
+      } else if (sys === 'endo') {
+        if (val >= 20) {
+          text = sign + val + ' • Анаболизм';
+          descText = 'Ось HPA спокойна. Кортизол на базовом уровне. Высокий анаболизм, синтез нейротрофина BDNF и регенерация тканей.';
+        } else if (val >= -30) {
+          text = sign + val + ' • Фон';
+          descText = 'Умеренный гормональный фон. Кортизол компенсируется базовым метаболизмом, но клеточный ресурс не восстанавливается.';
+        } else {
+          text = val + ' • Кортизол';
+          descText = 'Активация оси HPA (гипоталамус–гипофиз–надпочечники). Острый избыток кортизола, катаболизм, окислительное выгорание клеток.';
+        }
+      } else if (sys === 'brain') {
+        if (val >= 20) {
+          text = sign + val + ' • TPN Поток';
+          descText = 'DMN спит. Внутренний критик и страх оценки отключены. Префронтальная кора соединена с созидательным действием.';
+        } else if (val >= -30) {
+          text = sign + val + ' • Дрейф';
+          descText = 'Переменная активность DMN и TPN. Внимание блуждает между текущей задачей и случайными бытовыми мыслями.';
+        } else {
+          text = val + ' • DMN Руминация';
+          descText = 'Гиперактивность дефолт-системы мозга (DMN). Захват амигдалой, бесконечная руминация, самоедство, страх оценки и ошибки.';
+        }
+      } else if (sys === 'cardio') {
+        if (val >= 20) {
+          text = sign + val + ' • Высокий HRV';
+          descText = 'Высокая вариабельность ритма (RMSSD > 65 мс). Сердце упруго и гибко подстраивается под микроволны дыхания.';
+        } else if (val >= -30) {
+          text = sign + val + ' • Норма HRV';
+          descText = 'Средняя вариабельность ритма (RMSSD 30–50 мс). Сердце справляется с базовой нагрузкой, резерв адаптации средний.';
+        } else {
+          text = val + ' • Низкий HRV';
+          descText = 'Тахикардия, вазоконстрикция, спазм микроциркуляции. Низкая вариабельность ритма (RMSSD < 20 мс), контур жесткий и уязвимый.';
+        }
+      } else if (sys === 'soma') {
+        if (val >= 20) {
+          text = sign + val + ' • Тандэн';
+          descText = 'Челюсти разомкнуты, плечи опущены, дыхание идёт нижним резервуаром живота. Мышечный панцирь полностью разомкнут.';
+        } else if (val >= -30) {
+          text = sign + val + ' • Норма';
+          descText = 'Дыхание смешанное, легкое поверхностное напряжение в трапециях и шее, преодолеваемое привычкой.';
+        } else {
+          text = val + ' • Спазм мышц';
+          descText = 'Хронический мышечный спазм (челюсти, шея, грудобрюшная диафрагма — мышечный панцирь по Райху). Грудное дыхание, гипервентиляция.';
+        }
+      }
+
+      badge.textContent = text;
+      badge.className = 'px-2 py-0.5 rounded text-[10px] font-mono font-bold border ' + colorClass;
+      desc.textContent = descText;
+    }
+
+    function gauge_render() {
+      const ci = Math.round(0.20 * (gaugeState.ans + gaugeState.endo + gaugeState.brain + gaugeState.cardio + gaugeState.soma));
+      const h = Math.round((ci + 100) / 2);
+
+      // Angle: -100 maps to -90 deg, 0 maps to 0 deg, +100 maps to +90 deg
+      const angle = (ci / 100) * 90;
+      const needle = document.getElementById('gauge-needle');
+      if (needle) {
+        needle.setAttribute('transform', 'rotate(' + angle + ' 150 140)');
+      }
+
+      const ciEl = document.getElementById('gauge-ci-val');
+      if (ciEl) {
+        ciEl.textContent = (ci > 0 ? '+' : '') + ci;
+        if (ci >= 20) {
+          ciEl.className = 'text-6xl md:text-7xl font-black font-mono tracking-tight bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-300 bg-clip-text text-transparent';
+        } else if (ci >= -30) {
+          ciEl.className = 'text-6xl md:text-7xl font-black font-mono tracking-tight bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent';
+        } else {
+          ciEl.className = 'text-6xl md:text-7xl font-black font-mono tracking-tight bg-gradient-to-r from-rose-500 to-red-400 bg-clip-text text-transparent';
+        }
+      }
+
+      const hVal = document.getElementById('gauge-h-val');
+      if (hVal) hVal.textContent = h + '%';
+      const formulaH = document.getElementById('gauge-formula-h');
+      if (formulaH) formulaH.textContent = h + '%';
+
+      const stateLabel = document.getElementById('gauge-state-label');
+      const stateTitle = document.getElementById('gauge-state-title');
+      const stateDesc = document.getElementById('gauge-state-desc');
+      const stateBox = document.getElementById('gauge-state-box');
+      const emoji = document.getElementById('gauge-status-emoji');
+
+      if (ci >= 20) {
+        if (emoji) emoji.textContent = '🟢';
+        if (stateLabel) {
+          stateLabel.textContent = '🟢 СВЕРХПРОВОДИМОСТЬ (МУСИН)';
+          stateLabel.className = 'text-sm font-bold font-mono text-emerald-300 uppercase tracking-wide';
+        }
+        if (stateTitle) {
+          stateTitle.textContent = 'СТАТУС: КОНТУР В РЕЖИМЕ СВЕРХПРОВОДИМОСТИ';
+          stateTitle.className = 'font-bold text-emerald-300';
+        }
+        if (stateDesc) {
+          stateDesc.textContent = 'Внутреннее сопротивление сведено к минимуму (R_loss → 0). Вентральный блуждающий нерв синхронизирует дыхание и сердце, DMN молчит, префронтальная кора работает в режиме TPN (поток). Энергия течёт сквозь проводник без омического трения. Вы переживаете счастье как физическую проводимость жизни!';
+        }
+        if (stateBox) {
+          stateBox.className = 'p-4 rounded-xl border bg-emerald-950/40 border-emerald-500/40 text-emerald-200 text-xs md:text-sm font-mono space-y-2';
+        }
+      } else if (ci >= -30) {
+        if (emoji) emoji.textContent = '🟡';
+        if (stateLabel) {
+          stateLabel.textContent = '🟡 ХОЛОСТОЙ ХОД (ДРЕЙФ / NPC)';
+          stateLabel.className = 'text-sm font-bold font-mono text-amber-300 uppercase tracking-wide';
+        }
+        if (stateTitle) {
+          stateTitle.textContent = 'СТАТУС: КОНТУР В РЕЖИМЕ ХОЛОСТОГО ХОДА';
+          stateTitle.className = 'font-bold text-amber-300';
+        }
+        if (stateDesc) {
+          stateDesc.textContent = 'Частичное сопротивление цепи. Человек функционирует как биоробот в режиме привычных скриптов (NPC). Ток течёт слабо, нагрев умеренный, свет лампы тусклый. Истинного потока и радости нет.';
+        }
+        if (stateBox) {
+          stateBox.className = 'p-4 rounded-xl border bg-amber-950/40 border-amber-500/40 text-amber-200 text-xs md:text-sm font-mono space-y-2';
+        }
+      } else {
+        if (emoji) emoji.textContent = '🔴';
+        if (stateLabel) {
+          stateLabel.textContent = '🔴 ОМИЧЕСКИЙ ПЕРЕГРЕВ (ДИСТРЕСС)';
+          stateLabel.className = 'text-sm font-bold font-mono text-rose-400 uppercase tracking-wide';
+        }
+        if (stateTitle) {
+          stateTitle.textContent = 'СТАТУС: АВАРИЙНЫЙ ОМИЧЕСКИЙ ПЕРЕГРЕВ ЦЕПИ';
+          stateTitle.className = 'font-bold text-rose-400';
+        }
+        if (stateDesc) {
+          stateDesc.textContent = 'Контур заперт эго-резистором (R_loss ≫ 0) при обрыве нагрузки. Вся мощность генератора превращается в тепловой ожог по закону Джоуля — Ленца: симпатический овердрайв, кортизол, DMN-руминация, спазм челюстей и диафрагмы. Вы чувствуете стресс!';
+        }
+        if (stateBox) {
+          stateBox.className = 'p-4 rounded-xl border bg-rose-950/40 border-rose-500/40 text-rose-200 text-xs md:text-sm font-mono space-y-2';
+        }
+      }
+
+      gauge_renderSystemBadgeAndDesc('ans', gaugeState.ans);
+      gauge_renderSystemBadgeAndDesc('endo', gaugeState.endo);
+      gauge_renderSystemBadgeAndDesc('brain', gaugeState.brain);
+      gauge_renderSystemBadgeAndDesc('cardio', gaugeState.cardio);
+      gauge_renderSystemBadgeAndDesc('soma', gaugeState.soma);
+    }
+
+    function gauge_init() {
+      gauge_render();
+    }
   </script>
 
   <!-- Ideal Circuit & Happiness Engine Script -->
@@ -6154,13 +6875,13 @@
     window.addEventListener('DOMContentLoaded', () => {
       let initialTab = 'pains';
       const hash = window.location.hash.replace('#', '');
-      const validTabs = ['pains', 'dashboard', 'ideal', 'happiness', 'single', 'multi', 'errors', 'book', 'reader', 'audiobook', 'audio'];
+      const validTabs = ['pains', 'dashboard', 'speedometer', 'gauge', 'stress', 'ideal', 'happiness', 'single', 'multi', 'errors', 'book', 'reader', 'audiobook', 'audio'];
       if (validTabs.includes(hash)) {
-        initialTab = (hash === 'errors') ? 'pains' : ((hash === 'happiness' || hash === 'dashboard') ? 'dashboard' : ((hash === 'reader') ? 'book' : ((hash === 'audio') ? 'audiobook' : hash)));
+        initialTab = (hash === 'errors') ? 'pains' : ((hash === 'happiness' || hash === 'dashboard') ? 'dashboard' : ((hash === 'gauge' || hash === 'stress') ? 'speedometer' : ((hash === 'reader') ? 'book' : ((hash === 'audio') ? 'audiobook' : hash))));
       } else {
         const saved = localStorage.getItem('inner_current_active_tab');
         if (saved && validTabs.includes(saved)) {
-          initialTab = (saved === 'errors') ? 'pains' : ((saved === 'happiness' || saved === 'dashboard') ? 'dashboard' : ((saved === 'reader') ? 'book' : ((saved === 'audio') ? 'audiobook' : saved)));
+          initialTab = (saved === 'errors') ? 'pains' : ((saved === 'happiness' || saved === 'dashboard') ? 'dashboard' : ((saved === 'gauge' || saved === 'stress') ? 'speedometer' : ((saved === 'reader') ? 'book' : ((saved === 'audio') ? 'audiobook' : saved))));
         }
       }
       switchTab(initialTab);

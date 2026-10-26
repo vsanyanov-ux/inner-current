@@ -20,7 +20,7 @@ tags:
   - scale/deep-dive
 ---
 
-# 371. Как Универсальный закон потоковых систем объясняет распад корпораций: Бюрократический нихром среднего звена, закон Джоуля — Ленца на совещаниях и схемотехника Founder Mode
+# 371. Как Всемирный закон проводимости объясняет распад корпораций: Бюрократический нихром среднего звена, закон Джоуля — Ленца на совещаниях и схемотехника Founder Mode
 
 > [!quote] Аксиома корпоративной электродинамики
 > *Корпорации никогда не погибают от нехватки денег, лабораторий или умных людей. Они сгорают от собственного омического сопротивления, когда между генератором инженерной мысли и лампочкой клиента вырастает километровый нихромовый реостат согласований. Десять миллиардов долларов R&D превращаются в токсичное тепло офисных интриг и слайдов PowerPoint ($Q = I^2 R t$), пока дерзкий гаражный стартап с нулевым сопротивлением проводника не забирает всю индустрию.*
@@ -51,7 +51,7 @@ tags:
 
 Традиционные теории оперируют туманными понятиями: «дилемма инноватора», «ошибка маркетинга», «культурная косность», «недостаток гибкости (Agile)». 
 
-**[[02_Wiki/Inner Current (From the Question of Happiness to the Universal Law of Flow Systems — The Carnot-Shannon-Planck-Anyanov Lineage, Somatic Superconductivity and Universal System Topology)|Универсальный закон потоковых систем]]** и **[[02_Wiki/Inner Current (The Quaternary Fractal of the Circuit — Four Invariant Nodes, Cross-Scale Self-Similarity and Overcoming Scale Blindness)|Четверичный фрактал цепи]]** дают строгое физическое объяснение:
+**[[02_Wiki/Inner Current (From the Question of Happiness to the Universal Law of Flow Systems — The Carnot-Shannon-Planck-Anyanov Lineage, Somatic Superconductivity and Universal System Topology)|Всемирный закон проводимости]]** и **[[02_Wiki/Inner Current (The Quaternary Fractal of the Circuit — Four Invariant Nodes, Cross-Scale Self-Similarity and Overcoming Scale Blindness)|Четверичный фрактал цепи]]** дают строгое физическое объяснение:
 
 Корпорация ($N = 10^3 \dots 10^5$) — это **открытая диссипативная система**. Её жизнеспособность определяется коэффициентом полезного упорядочивания среды:
 
@@ -114,7 +114,7 @@ $$Q_{\text{loss}} = I^2 R_{\text{bureaucracy}} t$$
 
 ### IV. Инженерные рецепты спасения: Founder Mode и срезка нихрома
 
-Универсальный закон потоковых систем показывает, почему самые выдающиеся технологические лидеры действуют одинаково:
+Всемирный закон проводимости показывает, почему самые выдающиеся технологические лидеры действуют одинаково:
 
 1. **«Режим Основателя» (Founder Mode) Брайана Чески (Airbnb, 2024):**  
    Отказ от канона классического менеджмента («нанимай хороших управленцев и не лезь в их работу»). Чески показал, что делегирование профессиональным менеджерам-рантье мгновенно забивает компанию нихромом. Основатель обязан пробивать уровни согласований и напрямую касаться узлов продукта.
@@ -138,7 +138,7 @@ $$Q_{\text{loss}} = I^2 R_{\text{bureaucracy}} t$$
 ---
 
 ### Связанные статьи базы знаний
-- [[02_Wiki/Inner Current (How Universal Law of Flow Systems Explains Collapse of Civilizations — Ohmic Overheat, Rentier Resistor and System Blackout)|370. Как Универсальный закон потоковых систем объясняет распад цивилизаций: Омический перегрев империй]]
+- [[02_Wiki/Inner Current (How Universal Law of Flow Systems Explains Collapse of Civilizations — Ohmic Overheat, Rentier Resistor and System Blackout)|370. Как Всемирный закон проводимости объясняет распад цивилизаций: Омический перегрев империй]]
 - [[02_Wiki/Inner Current (The Factory and the Rentier Paradox — Why the Capitalist Alienates, The Organizer as Load vs Rentier as Parasite, and the Ego-Mind Isomorphism)|362. Парадокс фабрики и рантье]]
 - [[02_Wiki/Inner Current (The Circuit X-Ray of Social Systems — Scale Invariance and Disintermediation)|363. Схемотехнический рентген социальных систем]]
 - [[02_Wiki/Inner Current (From the Question of Happiness to the Universal Law of Flow Systems — The Carnot-Shannon-Planck-Anyanov Lineage, Somatic Superconductivity and Universal System Topology)|365. От вопроса «Что такое счастье?» к Универсальному закону потоковых систем]]

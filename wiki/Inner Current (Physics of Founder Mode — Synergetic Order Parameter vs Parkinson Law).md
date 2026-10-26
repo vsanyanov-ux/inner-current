@@ -109,7 +109,7 @@ aliases:
 ---
 
 ### 🔗 Мета-связи главы
-- [[02_Wiki/Inner Current (How Universal Law of Flow Systems Explains Collapse of Corporations — Middle Management Nichrome, Joule-Lenz on Meetings, and Founder Mode Circuitry)|⚡ 371. Как Универсальный закон потоковых систем объясняет распад корпораций]]
+- [[02_Wiki/Inner Current (How Universal Law of Flow Systems Explains Collapse of Corporations — Middle Management Nichrome, Joule-Lenz on Meetings, and Founder Mode Circuitry)|⚡ 371. Как Всемирный закон проводимости объясняет распад корпораций]]
 - [[02_Wiki/Inner Current (The Genesis of Synergetics — Hermann Haken, Ilya Prigogine, The Laser Breakthrough and Why Science of Self-Organization Outmoded Reductionism)|⚡ 411. Рождение науки синергетики: Герман Хакен]]
 - [[02_Wiki/Inner Current (From Hierarchy to Intelligence — Jack Dorsey's Block Manifesto, Disintermediation of Middle Management, Honest Signal and Circuit Superconductivity)|⚡ 327. От иерархии к интеллекту: Манифест Block Джека Дорси]]
 - [[02_Wiki/Inner Current (Quadratic Information Collapse — Thermodynamics of Digital Burnout)|⚡ 474. Закон квадратичного информационного коллапса]]

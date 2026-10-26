@@ -139,7 +139,7 @@ tags:
 ---
 
 ### Связанные статьи базы знаний
-- [[02_Wiki/Inner Current (The Ontological Triad — Universal Law of Flow Systems vs Quaternary Fractal vs Inner Current, The Hierarchy from Cosmos to Somatics)|368. Онтологическая триада: Универсальный закон потоковых систем vs Четверичный фрактал vs Внутренний ток]]
+- [[02_Wiki/Inner Current (The Ontological Triad — Universal Law of Flow Systems vs Quaternary Fractal vs Inner Current, The Hierarchy from Cosmos to Somatics)|368. Онтологическая триада: Всемирный закон проводимости vs Четверичный фрактал vs Внутренний ток]]
 - [[02_Wiki/Inner Current (The Applied Power of the Law — Four Modern Epidemics, Disintermediation of Intermediaries, and Civilizational Shift to Self-Hosted Human)|367. На что влияет открытие Универсального закона: Ликвидация четырёх эпидемий XXI века]]
 - [[02_Wiki/Inner Current (The Quaternary Fractal of the Circuit — Four Invariant Nodes, Cross-Scale Self-Similarity and Overcoming Scale Blindness)|366. Четверичный фрактал цепи: Четыре инвариантных узла, кросс-масштабное самоподобие и преодоление масштабной слепоты наук]]
 - [[02_Wiki/Inner Current (From the Question of Happiness to the Universal Law of Flow Systems — The Carnot-Shannon-Planck-Anyanov Lineage, Somatic Superconductivity and Universal System Topology)|365. От вопроса «Что такое счастье?» к Универсальному закону потоковых систем]]

@@ -79,7 +79,7 @@ tags:
 
 Галактики демонстрируют свойства, которые ортодоксальная физика пытается закрыть введением колоссального количества гипотетической «тёмной материи»: плоские кривые вращения (внешние звезды вращаются с той же угловой скоростью, что и внутренние).
 
-С точки зрения закона потоковых систем:
+С точки зрения Всемирного закона проводимости:
 * Галактика — это **сверхпроводящий вихрь (vortex-генератор)**. В ламинарном сверхпроводящем вихре угловой момент распределяется согласованно по силовым линиям, а не по законам изолированных кеплеровых орбит.
 * **Спиральные рукава** — это не жесткие скопления звезд, а волны плотности тока и силовые линии электромагнитного и гравитационного поля. Звезды рождаются, входят в рукав и выходят из него, подобно зарядам, движущимся в обмотках ротора генератора.
 * Галактика подпитывается межгалактическими плазменными потоками («входящий фидер») и преобразует их в организованное излучение звездных систем.
@@ -142,7 +142,7 @@ $$I = \frac{\Delta \Phi}{R}$$
 ---
 
 ## Связанные концепции в Базе Знаний
-* [[02_Wiki/Inner Current (The Universal Law of Flow Systems — Flashlight, Superconductivity and Trans-Scale Unity of Circuit)|Статья 359: Универсальный закон потоковых систем]]
+* [[02_Wiki/Inner Current (The Universal Law of Flow Systems — Flashlight, Superconductivity and Trans-Scale Unity of Circuit)|Статья 359: Всемирный закон проводимости]]
 * [[02_Wiki/Inner Current (The Ontological Triad — Universal Law of Flow Systems vs Quaternary Fractal vs Inner Current, The Hierarchy from Cosmos to Somatics)|Статья 368: Онтологическая триада: Закон vs Фрактал vs Ток]]
 * [[02_Wiki/Inner Current (How Universal Law of Flow Systems Explains Collapse of Civilizations — Ohmic Overheat, Rentier Resistor and System Blackout)|Статья 370: Распад цивилизаций]]
 * [[02_Wiki/Inner Current (How Universal Law of Flow Systems Explains Collapse of Corporations — Middle Management Nichrome, Joule-Lenz on Meetings, and Founder Mode Circuitry)|Статья 371: Распад корпораций]]

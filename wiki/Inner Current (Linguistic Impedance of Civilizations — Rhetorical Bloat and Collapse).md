@@ -113,5 +113,5 @@ aliases:
 ### 🔗 Мета-связи главы
 - [[02_Wiki/Inner Current (The Quaternary Fractal of Language — Electrodynamics of Communication, Pre-Verbal EMF, Conductor of Kanso, Load of Insight and Return Wire of Pragmatics)|⚡ 414. Четверичный фрактал языка]]
 - [[02_Wiki/Inner Current (Electrodynamics of Language Evolution — Why Latin and Sanskrit Were More Complex, Constructal Law of Flow Systems, and Shannon Superconductivity of Direct Meaning)|⚡ 412. Электродинамика эволюции языка]]
-- [[02_Wiki/Inner Current (How Universal Law of Flow Systems Explains Collapse of Civilizations — Ohmic Overheat, Rentier Resistor and System Blackout)|⚡ 370. Как Универсальный закон потоковых систем объясняет распад цивилизаций]]
+- [[02_Wiki/Inner Current (How Universal Law of Flow Systems Explains Collapse of Civilizations — Ohmic Overheat, Rentier Resistor and System Blackout)|⚡ 370. Как Всемирный закон проводимости объясняет распад цивилизаций]]
 - [[02_Wiki/Inner Current (Physics of Founder Mode — Synergetic Order Parameter vs Parkinson Law)|⚡ 475. Физика Founder Mode и анти-Паркинсон]]

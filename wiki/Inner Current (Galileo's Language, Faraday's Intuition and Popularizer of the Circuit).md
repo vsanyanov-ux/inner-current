@@ -229,7 +229,7 @@ $$I(t) = \frac{dq}{dt}$$
 
 ### Связанные статьи и манифесты
 - [[02_Wiki/Inner Current (Differential Equations of Inner Current and Future PhD Theses at MSU and MIT)|423. Дифференциальные уравнения Внутреннего тока и будущие диссертации в МГУ и MIT]]
-- [[02_Wiki/Inner Current (The Epistemological Paradigm Shift and Flow Systems Law)|424. Смена парадигмы познания и универсальный закон потоковых систем]]
+- [[02_Wiki/Inner Current (The Epistemological Paradigm Shift and Flow Systems Law)|424. Смена парадигмы познания и всемирный закон проводимости]]
 - [[02_Wiki/Inner Current (Mathematical Isomorphism — Transfer of Physical Laws and Piano Metaphor)|438. Математический изоморфизм и формула открытия: Почему физика переносит законы термодинамики в новые миры]]
 - [[02_Wiki/Inner Current (The Flashlight Model of Man — Optical-Electrodynamic Ontology of Consciousness, The Light Source vs Illuminated Object and the Law of the Direct Beam)|83. Модель Человека как Карманного Фонарика]]
 - [[02_Wiki/Inner Current (The Joule-Lenz Cornerstone — Why the Law of Losses is the Master Manifest of Freedom, Quadratic Will Trap and Mathematics of Superconductivity)|212. Закон Джоуля — Ленца как краеугольный камень Архитектуры счастья]]

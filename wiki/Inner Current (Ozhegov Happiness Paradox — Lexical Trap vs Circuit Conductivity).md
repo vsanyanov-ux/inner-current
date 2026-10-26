@@ -214,6 +214,6 @@ $$Q = I^2 \cdot R_{\text{ego}} \cdot t$$
 * [[02_Wiki/Inner Current (Canonical Definitions of Happiness — Technical and Intuitive Formulations)|22. Канонические определения счастья в Системе Аньянова: Технический базис и бытовая интуиция]]
 * [[02_Wiki/Inner Current (Happiness Is a Verb, Not a Noun — The Fallacy of the Static Question, Dynamic Conductivity in Anyans and Intra-Day Telemetry of the Circuit)|236. Счастье — это глагол, а не существительное]]
 * [[02_Wiki/Inner Current (The Electrodynamic Definition of Happiness — Overcoming Abstract Relativism and Hedonistic Inventories via Closed Circuit, Why Happiness Can Never Be External)|343. Электродинамическое определение счастья: Снятие абстрактного релятивизма]]
-* [[02_Wiki/Inner Current (Universal Law of Flow Systems — Canonical Formulation and Corollaries)|446. Универсальный закон потоковых систем: Каноническая формулировка и три следствия]]
+* [[02_Wiki/Inner Current (Universal Law of Flow Systems — Canonical Formulation and Corollaries)|446. Всемирный закон проводимости: Каноническая формулировка и три следствия]]
 * [[02_Wiki/Брошюра — Грамматика тока (Жизнь, счастье и просветление как глаголы несовершенного вида)|⚡ Брошюра «Грамматика тока»]]
 * [[02_Wiki/Брошюра — Синдром Кокосового Рафа (Счастье vs удовольствие и иллюзия Пяти Сцен)|⚡ Брошюра «Синдром Кокосового Рафа»]]

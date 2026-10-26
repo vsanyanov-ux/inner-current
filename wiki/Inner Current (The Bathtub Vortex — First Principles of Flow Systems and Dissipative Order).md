@@ -224,7 +224,7 @@ $$P_{\text{loss}} = I^2 \cdot R_{\text{ego}}$$
 
 ### Связанные статьи и материалы
 
-* [[02_Wiki/Inner Current (Universal Law of Flow Systems — Canonical Formulation and Corollaries)|446. Универсальный закон потоковых систем: Каноническая формулировка, три фундаментальных следствия и пятиэтажная матрица масштабов]]
+* [[02_Wiki/Inner Current (Universal Law of Flow Systems — Canonical Formulation and Corollaries)|446. Всемирный закон проводимости: Каноническая формулировка, три фундаментальных следствия и пятиэтажная матрица масштабов]]
 * [[02_Wiki/Inner Current (Prigogine Dissipative Structures vs Universal Law of Flow Systems)|445. Знал ли Пригожин об Универсальном законе потоковых систем?]]
 * [[02_Wiki/Inner Current (How Man Becomes a Bénard Cell — Four Rayleigh Conditions of Self-Organization, Crisis as High Gradient and Overcoming Ohmic Chaos of Will)|417. Как человеку стать ячейкой Бенара]]
 * [[02_Wiki/Inner Current (Bénard Cells, Rayleigh Instability and Epistemology of Flow)|416. Ячейки Бенара, неустойчивость Рэлея и эпистемология потока]]
