@@ -338,8 +338,11 @@ def build_static_wiki():
         # Also create static API fallback at target/api/wiki/articles
         api_dir = os.path.join(target, 'api', 'wiki')
         os.makedirs(api_dir, exist_ok=True)
-        with open(os.path.join(api_dir, 'articles'), 'w', encoding='utf-8') as f:
-            json.dump(catalog, f, ensure_ascii=False)
+        try:
+            with open(os.path.join(api_dir, 'articles'), 'w', encoding='utf-8') as f:
+                json.dump(catalog, f, ensure_ascii=False)
+        except Exception:
+            pass
 
     print(f"✅ Generated static wiki data: {total_articles} articles across {len(layers)} layers")
     for l in layers:

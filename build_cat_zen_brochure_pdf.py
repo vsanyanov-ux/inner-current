@@ -71,6 +71,10 @@ def build_pdf():
   <style>
     @page {{
       size: A4;
+      margin: 22mm 18mm 22mm 18mm;
+    }}
+    @page full-bleed {{
+      size: A4;
       margin: 0;
     }}
     *, *::before, *::after {{
@@ -87,6 +91,7 @@ def build_pdf():
       -webkit-font-smoothing: antialiased;
     }}
     .cover-page {{
+      page: full-bleed;
       width: 210mm;
       height: 297mm;
       page-break-after: always;
@@ -172,6 +177,7 @@ def build_pdf():
       letter-spacing: 0.05em;
     }}
     .frontispiece {{
+      page: full-bleed;
       width: 210mm;
       height: 297mm;
       page-break-after: always;
@@ -202,7 +208,7 @@ def build_pdf():
       color: #0f172a;
     }}
     .main-content {{
-      padding: 22mm 20mm;
+      /* Page margin handled by @page */
     }}
     h1 {{
       font-family: 'Cinzel', serif;
@@ -223,6 +229,8 @@ def build_pdf():
       margin-top: 8mm;
       margin-bottom: 4mm;
       letter-spacing: -0.01em;
+      break-after: avoid;
+      page-break-after: avoid;
     }}
     h3 {{
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -231,11 +239,15 @@ def build_pdf():
       color: #1e293b;
       margin-top: 6mm;
       margin-bottom: 2.5mm;
+      break-after: avoid;
+      page-break-after: avoid;
     }}
     p {{
       margin-top: 0;
       margin-bottom: 3.5mm;
       text-align: justify;
+      orphans: 2;
+      widows: 2;
     }}
     pre {{
       font-family: 'JetBrains Mono', monospace;
@@ -248,6 +260,8 @@ def build_pdf():
       overflow-x: auto;
       margin: 5mm 0;
       border: 1px solid #334155;
+      break-inside: avoid;
+      page-break-inside: avoid;
     }}
     code {{
       font-family: 'JetBrains Mono', monospace;
@@ -268,6 +282,8 @@ def build_pdf():
       padding: 4mm 5mm;
       border-radius: 0 3mm 3mm 0;
       margin: 5mm 0;
+      break-inside: avoid;
+      page-break-inside: avoid;
     }}
     .callout-quote {{
       border-left-color: #f59e0b;
@@ -300,6 +316,7 @@ def build_pdf():
       margin-bottom: 2mm;
     }}
     .chapter-break {{
+      break-before: page;
       page-break-before: always;
     }}
     hr {{
@@ -381,13 +398,21 @@ def build_pdf():
             display_header_footer=True,
             header_template=header_template,
             footer_template=footer_template,
-            margin={"top": "20mm", "bottom": "20mm", "left": "18mm", "right": "18mm"}
+            margin={"top": "22mm", "bottom": "22mm", "left": "18mm", "right": "18mm"}
         )
         page.close()
         browser.close()
 
     # Copy to Obsidian Vault for immediate access
     shutil.copy2(b_info["output_pdf"], b_info["vault_pdf"])
+
+    # Sync to dist_site and public books
+    for alias_path in [
+        r"c:\Users\vanya\Antigravity Projects\Apps\Inner Current\dist_site\books\cat_zen.pdf",
+        r"c:\Users\vanya\Antigravity Projects\Apps\Inner Current\public\books\cat_zen.pdf",
+    ]:
+        os.makedirs(os.path.dirname(alias_path), exist_ok=True)
+        shutil.copy2(b_info["output_pdf"], alias_path)
 
     reader = pypdf.PdfReader(b_info["output_pdf"])
     print(f"SUCCESS: Generated PDF {b_info['output_pdf']}! Total Pages: {len(reader.pages)}, Size: {os.path.getsize(b_info['output_pdf']) / 1024:.1f} KB")

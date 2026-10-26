@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Инструкция к человеку: Техпаспорт сверхпроводника и 25 побед цепи — Владимир Аньянов</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    function initKaTeX() {
+      if (typeof renderMathInElement === 'function') {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '\[', right: '\]', display: true},
+            {left: '\(', right: '\)', display: false},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false
+        });
+      } else {
+        setTimeout(initKaTeX, 50);
+      }
+    }
+    initKaTeX();
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+  :root {
+    --bg-page: #020617;
+    --bg-card: #0b1329;
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --accent: #38bdf8;
+    --accent-light: #7dd3fc;
+    --gold: #f59e0b;
+    --border: #1e293b;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg-page);
+    color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.85;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Top Navigation Bar */
+  .top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(11, 19, 41, 0.9);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .top-brand {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .top-actions { display: flex; gap: 10px; align-items: center; }
+
+  .btn-action {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    background: #1e293b;
+    color: #e2e8f0;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .btn-action:hover {
+    background: #334155;
+    border-color: var(--accent);
+  }
+
+  .btn-accent {
+    background: var(--accent);
+    color: #020617;
+    border: none;
+    font-weight: 700;
+  }
+
+  .btn-accent:hover { background: var(--accent-light); }
+
+  /* Progress bar */
+  #read-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #38bdf8, #f59e0b);
+    z-index: 100;
+    width: 0%;
+    transition: width 0.1s;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 40px auto 100px auto;
+    padding: 0 24px;
+  }
+
+  /* Book Cover Card */
+  .book-cover {
+    background: linear-gradient(180deg, rgba(14, 30, 56, 0.85) 0%, rgba(11, 19, 41, 0.98) 100%);
+    border: 1px solid #1e3a5f;
+    border-radius: 24px;
+    padding: 60px 40px;
+    text-align: center;
+    margin-bottom: 60px;
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .book-cover::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(56, 189, 248, 0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    padding: 6px 16px;
+    border-radius: 9999px;
+    margin-bottom: 24px;
+  }
+
+  .cover-title {
+    font-family: 'Cinzel', serif;
+    font-size: 38px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin: 0 0 16px 0;
+    background: linear-gradient(135deg, #e0f2fe 0%, #38bdf8 60%, #f59e0b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .cover-sub {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    color: #cbd5e1;
+    max-width: 680px;
+    margin: 0 auto 24px auto;
+    line-height: 1.55;
+  }
+
+  .cover-meta {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13.5px;
+    color: var(--text-muted);
+  }
+
+  /* Typography */
+  h1, h2, h3, h4 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #f8fafc;
+    line-height: 1.35;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-top: 56px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(90deg, #f8fafc, #cbd5e1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 40px;
+    color: #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 28px;
+    color: var(--accent-light);
+  }
+
+  p {
+    margin: 18px 0;
+    color: #cbd5e1;
+  }
+
+  strong {
+    color: #f8fafc;
+    font-weight: 700;
+  }
+
+  em {
+    color: #e2e8f0;
+    font-style: italic;
+  }
+
+  ul, ol {
+    margin: 16px 0;
+    padding-left: 28px;
+    color: #cbd5e1;
+  }
+
+  li {
+    margin: 8px 0;
+  }
+
+  blockquote {
+    border-left: 4px solid var(--accent);
+    background: rgba(56, 189, 248, 0.05);
+    margin: 24px 0;
+    padding: 16px 20px;
+    border-radius: 0 12px 12px 0;
+    color: #f1f5f9;
+    font-style: italic;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 48px 0;
+  }
+
+  /* Tables */
+  .table-wrapper {
+    overflow-x: auto;
+    margin: 28px 0;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14.5px;
+    background: var(--bg-card);
+  }
+
+  th {
+    background: #1e293b;
+    color: var(--accent-light);
+    font-weight: 700;
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 2px solid #334155;
+  }
+
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #1e293b;
+    color: #cbd5e1;
+  }
+
+  tr:hover td {
+    background: rgba(56, 189, 248, 0.03);
+  }
+
+  /* Code */
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13.5px;
+    background: #1e293b;
+    color: #38bdf8;
+    padding: 2px 6px;
+    border-radius: 6px;
+  }
+
+  pre {
+    background: #090d16;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    overflow-x: auto;
+  }
+
+  pre code {
+    background: transparent;
+    padding: 0;
+    color: #e2e8f0;
+  }
+
+  /* Callouts */
+  .callout {
+    margin: 24px 0;
+    padding: 18px 20px;
+    border-radius: 12px;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid var(--border);
+  }
+
+  .callout-quote {
+    border-left: 4px solid var(--accent);
+    background: rgba(56, 189, 248, 0.06);
+  }
+
+  .callout-important, .callout-warning {
+    border-left: 4px solid #f43f5e;
+    background: rgba(244, 63, 94, 0.06);
+  }
+
+  .callout-tip {
+    border-left: 4px solid #10b981;
+    background: rgba(16, 185, 129, 0.06);
+  }
+
+  /* Math display */
+  .math-display {
+    margin: 24px 0;
+    text-align: center;
+    overflow-x: auto;
+    font-size: 18px;
+    color: #fef08a;
+  }
+
+  .mermaid-wrap {
+    margin: 28px 0;
+    padding: 20px;
+    background: #090d16;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow-x: auto;
+    text-align: center;
+  }
+
+  @media print {
+    @page {
+      size: A4;
+      margin: 20mm 18mm 20mm 18mm;
+    }
+    body {
+      background: #ffffff !important;
+      color: #1e293b !important;
+      font-size: 10pt !important;
+      line-height: 1.6 !important;
+    }
+    .top-bar, #read-progress {
+      display: none !important;
+    }
+    .container {
+      max-width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .book-cover {
+      background: #0f172a !important;
+      color: #ffffff !important;
+      border: 1px solid #334155 !important;
+      page-break-after: always;
+      break-after: page;
+    }
+    h1, h2, h3, h4 {
+      color: #0f172a !important;
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+    p, li {
+      color: #1e293b !important;
+    }
+    p {
+      orphans: 2;
+      widows: 2;
+    }
+    pre, table, .callout, blockquote {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div id="read-progress"></div>
+
+<header class="top-bar">
+  <a href="../index.html?tab=book" class="top-brand">
+    <span>⚡</span>
+    <span>Inner Current • Золотая Семёрка</span>
+  </a>
+  <div class="top-actions">
+    <a href="../index.html?tab=book" class="btn-action">
+      <span>🔙</span> В библиотеку
+    </a>
+    <a href="06_human_instruction.pdf" download class="btn-action btn-accent">
+      <span>📥</span> Скачать PDF
+    </a>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="book-cover">
+    <div class="cover-badge">Библиотека «Внутренний ток» • Золотая Семёрка • Книга 6</div>
+    <h1 class="cover-title">Инструкция к человеку</h1>
+    <div class="cover-sub">Технический паспорт открытого сверхпроводника: 25 побед Внутреннего тока над вековыми заблуждениями, трёхэтажная схема свободы воли и прикладная электродинамика счастливой жизни</div>
+    <div class="cover-meta">
+      <strong>Владимир Аньянов</strong> • Технический паспорт (Master Edition) • 2026
+    </div>
+  </div>
+
+  <article id="book-content">
+<h1>Брошюра: Инструкция к человеку</h1>
+<h3>Технический паспорт открытого сверхпроводника: 25 побед Внутреннего тока над вековыми заблуждениями, паспортные лимиты изделия и прикладной регламент эксплуатации счастливой жизни (v2.0 Industrial Edition)</h3>
+<div class="callout callout-quote"><div class="callout-title" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #38bdf8; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;"><span>📜</span> <span>Каноническая аксиома контура</span></div><div class="callout-body"><p><em>«Пять тысяч лет человеческая культура страдала от колоссальной асимметрии: к простейшему бытовому тостеру прилагается заводская инструкция, схемы предохранителей и условия эксплуатации, но сложнейшая квантово-диссипативная структура мироздания — живой человек — выбрасывалась в бытие без единого листа технического описания. И главное заблуждение веков заключалось в том, что человек отождествлял себя со своим эго — с мыслями, обидами, страхами и программами выживания, добровольно низводя себя до уровня страдающего биоробота. Но человек — это НЕ эго! Эго — всего лишь паразитный резистор R_ego и левополушарный интерпретатор, шепчущий сказки постфактум. Подлинный Человек — это целостный био-электродинамический прибор, открытый сверхпроводник Живой Вселенной. Данная инструкция не навязывает заповедей: она описывает физику контактов, паспортные номиналы, суточные регламенты пуска и останова, технологию разотождествления с автоматом и алгоритмы поддержания чистого созидательного тока»</em>.<br />
+— <strong>Владимир Аньянов</strong> (2026)</p></div></div>
+
+<hr />
+<h2>Принципиальная архитектура: Схема «Карманного фонарика» против «Десяти заповедей Моисея»</h2>
+<div class="callout callout-important"><div class="callout-title" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #f43f5e; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;"><span>⚠️</span> <span>Почему это физическая схема, а не морализаторские заповеди</span></div><div class="callout-body"><p>Вся мировая культура веками пыталась регулировать жизнь человека через морализаторство — создавая религиозные кодексы и «десять заповедей Моисея». Все они говорили на языке насилия над собой: <em>«Ты должен, ты обязан, обуздай свои страсти силой воли, бойся кары за грех»</em>.<br />
+Но любая заповедь неизбежно обращается к <strong>эго (к Второму этажу)</strong>. Она сажает внутрь черепа надзирателя-контролёра, который пытается волевым усилием продавить биологическую тягу. В электродинамике это означает: <strong>подать ток высокого напряжения на наглухо зажатый реостат</strong>. Результат такого подхода физически предопределён: катастрофический омический перегрев проводки (Q = I²·R·t), неврозы, выгорание, тайные срывы и фарисейство.  </p>
+<p><strong>Схема карманного фонарика устроена принципиально иначе:</strong><br />
+Фонарик не читает моралей и не знает понятия «греха». Фонарику плевать на силу воли, вину, благочестивые мысли и покаяние. В фонарике работают исключительно законы электродинамики:<br />
+1. Если батарейка заряжена, проводник цел, паразитный реостат эго выведен в ноль (R_ego → 0), а лампочка замкнута на внешнее дело — <strong>свет загорается сам собой</strong>.<br />
+2. Если цепь оборвана или реостат зажат — <strong>фонарик гаснет и раскаляется до дыма</strong>.  </p>
+<p>Вся последующая Инструкция — это <strong>не сборник этических заповедей, а инженерный регламент технического обслуживания этой 4-узловой цепи фонарика</strong>.</p></div></div>
+
+<div class="codehilite"><pre><span></span><code><span class="w">                       </span><span class="err">СХЕМА</span><span class="w"> </span><span class="err">«ДЗЕН</span><span class="o">-</span><span class="err">ФОНАРИКА»</span><span class="w"> </span><span class="p">(</span><span class="err">СИСТЕМА</span><span class="w"> </span><span class="err">АНЬЯНОВА</span><span class="p">)</span>
+<span class="err">┌────────────────────────────────────────────────────────────────────────────────────────┐</span>
+<span class="err">│</span><span class="w">                                                                                        </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                     </span><span class="p">[</span><span class="w"> </span><span class="err">ПРОВОДНИК</span><span class="p">:</span><span class="w"> </span><span class="err">ЛУЧ</span><span class="w"> </span><span class="err">НАПРАВЛЕННОГО</span><span class="w"> </span><span class="err">ВНИМАНИЯ</span><span class="w"> </span><span class="p">]</span><span class="w">                          </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                 </span><span class="err">─────────────────────────────────────────────────►</span><span class="w">                     </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                </span><span class="err">│</span><span class="w">                                                 </span><span class="err">│</span><span class="w">                     </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                </span><span class="err">│</span><span class="w">            </span><span class="err">┌────────────────────────┐</span><span class="w">           </span><span class="err">▼</span><span class="w">                     </span><span class="err">│</span>
+<span class="err">│</span><span class="w">     </span><span class="err">┌─────────────────────┐</span><span class="w"> </span><span class="err">│</span><span class="w">  </span><span class="err">РЕОСТАТ</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="err">ЭГО</span><span class="o">-</span><span class="err">РЕЗИСТОР│</span><span class="w"> </span><span class="err">┌─────────────────────┐</span><span class="w">         </span><span class="err">│</span>
+<span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">   </span><span class="err">ИСТОЧНИК</span><span class="w"> </span><span class="p">(</span><span class="err">ЭДС</span><span class="p">)</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">        </span><span class="n">R_ego</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w">       </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">НАГРУЗКА</span><span class="w"> </span><span class="p">(</span><span class="err">ЛАМПОЧКА</span><span class="p">)</span><span class="w"> </span><span class="err">│</span><span class="w">         </span><span class="err">│</span>
+<span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">    </span><span class="err">ТАНДЭН</span><span class="w"> </span><span class="p">(</span><span class="err">丹田</span><span class="p">)</span><span class="w">     </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">  </span><span class="err">Страх</span><span class="p">,</span><span class="w"> </span><span class="err">вина</span><span class="p">,</span><span class="w"> </span><span class="err">статус</span><span class="p">,</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">  </span><span class="err">РЕАЛЬНОЕ</span><span class="w"> </span><span class="err">ДЕЙСТВИЕ</span><span class="w">  </span><span class="err">│</span><span class="w">         </span><span class="err">│</span>
+<span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">  </span><span class="err">Живой</span><span class="w"> </span><span class="err">соматический</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">  </span><span class="err">самокопание</span><span class="p">,</span><span class="w"> </span><span class="n">DMN</span><span class="o">-</span><span class="err">шум</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">  </span><span class="err">Дело</span><span class="p">,</span><span class="w"> </span><span class="err">созидание</span><span class="p">,</span><span class="w">   </span><span class="err">│</span><span class="w">         </span><span class="err">│</span>
+<span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">  </span><span class="err">реактор</span><span class="p">,</span><span class="w"> </span><span class="err">либидо</span><span class="p">,</span><span class="w">   </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">                        </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">  </span><span class="err">продукт</span><span class="p">,</span><span class="w"> </span><span class="err">контакт</span><span class="w">   </span><span class="err">│</span><span class="w">         </span><span class="err">│</span>
+<span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">  </span><span class="err">дыхание</span><span class="p">,</span><span class="w"> </span><span class="err">витальность│</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">Омический</span><span class="w"> </span><span class="err">перегрев</span><span class="w"> </span><span class="n">Q</span><span class="w">   </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">  </span><span class="err">В</span><span class="w"> </span><span class="err">САМОЙ</span><span class="w"> </span><span class="err">ЛАМПЕ</span><span class="w"> </span><span class="err">НЕТ</span><span class="w">  </span><span class="err">│</span><span class="w">         </span><span class="err">│</span>
+<span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">  </span><span class="p">(</span><span class="err">Автономный</span><span class="w"> </span><span class="err">исток</span><span class="p">)</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">Ток</span><span class="w"> </span><span class="err">падает</span><span class="p">,</span><span class="w"> </span><span class="err">мозг</span><span class="w"> </span><span class="err">горит</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">БАТАРЕЙКИ</span><span class="o">!</span><span class="w"> </span><span class="p">(</span><span class="n">E_load</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="err">│</span><span class="w">        </span><span class="err">│</span>
+<span class="err">│</span><span class="w">     </span><span class="err">└─────────────────────┘</span><span class="w"> </span><span class="err">└────────────────────────┘</span><span class="w"> </span><span class="err">└─────────────────────┘</span><span class="w">         </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                </span><span class="err">▲</span><span class="w">                         </span><span class="err">▲</span><span class="w">                        </span><span class="err">│</span><span class="w">                    </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                </span><span class="err">│</span><span class="w">                         </span><span class="err">│</span><span class="w">                        </span><span class="err">│</span><span class="w">                    </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                </span><span class="err">│</span><span class="w">            </span><span class="p">[</span><span class="w"> </span><span class="err">КОРОТКОЕ</span><span class="w"> </span><span class="err">ЗАМЫКАНИЕ</span><span class="w"> </span><span class="err">НА</span><span class="w"> </span><span class="err">СЕБЯ</span><span class="w"> </span><span class="p">]</span><span class="w">        </span><span class="err">│</span><span class="w">                    </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                </span><span class="err">│</span><span class="w">            </span><span class="p">(</span><span class="err">Апатия</span><span class="p">,</span><span class="w"> </span><span class="err">стыд</span><span class="p">,</span><span class="w"> </span><span class="err">социофобия</span><span class="p">)</span><span class="w">           </span><span class="err">│</span><span class="w">                    </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                </span><span class="err">│</span><span class="w">                                                  </span><span class="err">│</span><span class="w">                    </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                </span><span class="err">└──────────────────────────────────────────────────┘</span><span class="w">                    </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                      </span><span class="p">[</span><span class="w"> </span><span class="err">ОБРАТНЫЙ</span><span class="w"> </span><span class="err">ПРОВОД</span><span class="p">:</span><span class="w"> </span><span class="err">РЕАЛЬНЫЙ</span><span class="w"> </span><span class="err">СЛЕД</span><span class="w"> </span><span class="err">В</span><span class="w"> </span><span class="err">МИРЕ</span><span class="w"> </span><span class="p">]</span><span class="w">                         </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                      </span><span class="err">Заземление</span><span class="w"> </span><span class="err">стоп</span><span class="p">,</span><span class="w"> </span><span class="err">Дзансин</span><span class="p">,</span><span class="w"> </span><span class="err">завершение</span><span class="w"> </span><span class="err">цикла</span><span class="w">                        </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                                                                                        </span><span class="err">│</span>
+<span class="err">└────────────────────────────────────────────────────────────────────────────────────────┘</span>
+</code></pre></div>
+
+<h3>Изоморфизм цепи: Карманный фонарик ↔ Живой человек</h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align: center;">Узел схемы фонарика</th>
+<th style="text-align: left;">В карманном фонарике</th>
+<th style="text-align: left;">В живом человеке (<em>Homo Conductor</em>)</th>
+<th style="text-align: left;">Физическая функция в контуре</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Узел 1: Источник (ЭДС)</strong></td>
+<td style="text-align: left;">Химическая батарейка / аккумулятор</td>
+<td style="text-align: left;">Соматический реактор <strong>Тандэн</strong> (низ живота)</td>
+<td style="text-align: left;">Непрерывная выработка первичной энергии жизни (E_тандэн = dΦ/dt)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Узел 2: Проводник</strong></td>
+<td style="text-align: left;">Медный провод / шина питания</td>
+<td style="text-align: left;">Фасции, нервы, <strong>луч внимания</strong></td>
+<td style="text-align: left;">Перенос заряда, возбуждение вихревого поля сознания (B ~ I = dq/dt)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Паразитный реостат</strong></td>
+<td style="text-align: left;">Окисленный контакт / сопротивление</td>
+<td style="text-align: left;"><strong>Эго-автомат</strong> (R_ego: страх, вина, статус)</td>
+<td style="text-align: left;">Превращает свободную созидательную энергию в омический ожог тревоги (Q = I²·R·t)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Узел 3: Нагрузка</strong></td>
+<td style="text-align: left;">Лампочка накаливания / светодиод</td>
+<td style="text-align: left;"><strong>Внешний мир:</strong> дело, контакт, созидание (Z_нагрузки)</td>
+<td style="text-align: left;">Преобразование тока внимания в видимый свет, полезную работу и счастье</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Узел 4: Обратный провод</strong></td>
+<td style="text-align: left;">Металлический корпус / минусовая клемма</td>
+<td style="text-align: left;"><strong>Дзансин / Заземление:</strong> стопы, покой без жажды плодов</td>
+<td style="text-align: left;">Замыкание цепи в кольцо; рассеивание избытка, защита от самовозбуждения</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>Архитектура изделия: Схема соматического сверхпроводника</h2>
+<div class="codehilite"><pre><span></span><code><span class="w">               </span><span class="err">ТЕХНИЧЕСКИЙ</span><span class="w"> </span><span class="err">ЧЕРТЁЖ</span><span class="w"> </span><span class="err">КОНТУРА</span><span class="w"> </span><span class="err">ЧЕЛОВЕКА</span><span class="w"> </span><span class="p">(</span><span class="n">HOMO</span><span class="w"> </span><span class="n">CONDUCTOR</span><span class="p">)</span>
+<span class="err">┌──────────────────────────────────────────────────────────────────────────────────┐</span>
+<span class="err">│</span><span class="w">  </span><span class="err">ВНЕШНЯЯ</span><span class="w"> </span><span class="err">СРЕДА</span><span class="p">:</span><span class="w"> </span><span class="err">НЕРАВНОВЕСНЫЙ</span><span class="w"> </span><span class="err">КОСМОС</span><span class="w"> </span><span class="p">(</span><span class="err">ЖИВАЯ</span><span class="w"> </span><span class="err">ВСЕЛЕННАЯ</span><span class="p">,</span><span class="w"> </span><span class="err">НЕГЭНТРОПИЙНЫЙ</span><span class="w"> </span><span class="err">ПОТОК</span><span class="p">)</span><span class="w">   </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                                                                                  </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">┌───────────────────────────────────────────────────────────────────┐</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">                  </span><span class="err">ВНУТРЕННИЙ</span><span class="w"> </span><span class="err">БИО</span><span class="o">-</span><span class="err">КОНТУР</span><span class="w"> </span><span class="err">ОПЕРАТОРА</span><span class="w">                  </span><span class="err">│</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">                                                                   </span><span class="err">│</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">   </span><span class="p">[</span><span class="w"> </span><span class="err">УЗЕЛ</span><span class="w"> </span><span class="mf">1.</span><span class="w"> </span><span class="err">РЕАКТОР</span><span class="w"> </span><span class="err">ТАНДЭН</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="err">Низ</span><span class="w"> </span><span class="err">живота</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">-</span><span class="mi">5</span><span class="w"> </span><span class="err">см</span><span class="w"> </span><span class="err">ниже</span><span class="w"> </span><span class="err">пупка</span><span class="p">)</span><span class="w">      </span><span class="err">│</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">   </span><span class="err">Спонтанная</span><span class="w"> </span><span class="err">ЭДС</span><span class="w"> </span><span class="err">Жизни</span><span class="p">:</span><span class="w"> </span><span class="n">E_тандэн</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dPhi</span><span class="o">/</span><span class="n">dt</span><span class="w"> </span><span class="p">(</span><span class="err">Автономная</span><span class="w"> </span><span class="err">генерация</span><span class="p">)</span><span class="w"> </span><span class="err">│</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">                                 </span><span class="err">│</span><span class="w">                                 </span><span class="err">│</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">                                 </span><span class="err">▼</span><span class="w">                                 </span><span class="err">│</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">   </span><span class="p">[</span><span class="w"> </span><span class="err">УЗЕЛ</span><span class="w"> </span><span class="mf">2.</span><span class="w"> </span><span class="err">ПРОВОДНИК</span><span class="w"> </span><span class="err">И</span><span class="w"> </span><span class="err">ПОЛЕ</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="err">Фасции</span><span class="p">,</span><span class="w"> </span><span class="err">нервы</span><span class="p">,</span><span class="w"> </span><span class="err">внимание</span><span class="p">)</span><span class="w">          </span><span class="err">│</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">   </span><span class="err">Ток</span><span class="w"> </span><span class="err">свободной</span><span class="w"> </span><span class="err">энергии</span><span class="p">:</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dq</span><span class="o">/</span><span class="n">dt</span><span class="w">                                </span><span class="err">│</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">   </span><span class="err">Поле</span><span class="w"> </span><span class="err">внимания</span><span class="p">:</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="p">(</span><span class="err">Вихревое</span><span class="w"> </span><span class="err">магнитное</span><span class="w"> </span><span class="err">поле</span><span class="w"> </span><span class="err">сознания</span><span class="p">)</span><span class="w">         </span><span class="err">│</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">                                 </span><span class="err">│</span><span class="w">                                 </span><span class="err">│</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">                    </span><span class="err">ТОЧКА</span><span class="w"> </span><span class="err">БИФУРКАЦИИ</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="err">ВЫБОРА</span><span class="w">                      </span><span class="err">│</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">                                 </span><span class="err">│</span><span class="w">                                 </span><span class="err">│</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">        </span><span class="err">┌────────────────────────┴─────────────────────────┐</span><span class="w">       </span><span class="err">│</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">        </span><span class="err">▼</span><span class="w">                                                  </span><span class="err">▼</span><span class="w">       </span><span class="err">│</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">  </span><span class="p">[</span><span class="w"> </span><span class="err">АВАРИЙНЫЙ</span><span class="w"> </span><span class="err">РЕЖИМ</span><span class="p">:</span><span class="w"> </span><span class="err">ЭГО</span><span class="w"> </span><span class="p">]</span><span class="w">                       </span><span class="p">[</span><span class="w"> </span><span class="err">РЕЖИМ</span><span class="w"> </span><span class="err">МУСИН</span><span class="p">:</span><span class="w"> </span><span class="err">ЧЕЛОВЕК</span><span class="w"> </span><span class="p">]</span><span class="w">  </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">  </span><span class="err">Отождествление</span><span class="w"> </span><span class="err">с</span><span class="w"> </span><span class="err">автоматом</span><span class="w">                     </span><span class="err">Разотождествление</span><span class="w"> </span><span class="err">с</span><span class="w"> </span><span class="err">эго</span><span class="w">   </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">  </span><span class="err">Эго</span><span class="o">-</span><span class="err">резистор</span><span class="w"> </span><span class="n">R_ego</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w">                        </span><span class="n">R_ego</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w">                </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">  </span><span class="p">(</span><span class="err">Мысли</span><span class="p">,</span><span class="w"> </span><span class="err">вина</span><span class="p">,</span><span class="w"> </span><span class="err">стыд</span><span class="p">,</span><span class="w"> </span><span class="err">страх</span><span class="p">)</span><span class="w">                     </span><span class="p">(</span><span class="err">Сверхпроводимость</span><span class="p">,</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">  </span><span class="n">Q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">I</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w">                                 </span><span class="err">Флуктуация</span><span class="w"> </span><span class="err">У</span><span class="o">-</span><span class="err">вэй</span><span class="p">,</span><span class="w">        </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">  </span><span class="err">Омический</span><span class="w"> </span><span class="err">пожар</span><span class="w"> </span><span class="err">биоробота</span><span class="w">                      </span><span class="err">Ток</span><span class="w"> </span><span class="err">течет</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">дело</span><span class="p">)</span><span class="w">         </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">        </span><span class="err">│</span><span class="w">                                                  </span><span class="err">│</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">        </span><span class="err">▼</span><span class="w">                                                  </span><span class="err">▼</span><span class="w">       </span><span class="err">│</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">  </span><span class="err">Закоротка</span><span class="w"> </span><span class="err">на</span><span class="w"> </span><span class="err">себя</span><span class="w">                              </span><span class="p">[</span><span class="w"> </span><span class="err">УЗЕЛ</span><span class="w"> </span><span class="mf">3.</span><span class="w"> </span><span class="err">НАГРУЗКА</span><span class="w"> </span><span class="p">]</span><span class="w">     </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">  </span><span class="p">(</span><span class="err">Апатия</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="err">выгорание</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="err">тление</span><span class="p">)</span><span class="w">                  </span><span class="n">Z_load</span><span class="w"> </span><span class="p">(</span><span class="err">Мир</span><span class="p">,</span><span class="w"> </span><span class="err">созидание</span><span class="p">,</span><span class="w">  </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">                                                 </span><span class="err">любовь</span><span class="p">,</span><span class="w"> </span><span class="err">результат</span><span class="p">)</span><span class="err">│</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">                                                           </span><span class="err">│</span><span class="w">       </span><span class="err">│</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">                                                           </span><span class="err">▼</span><span class="w">       </span><span class="err">│</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">   </span><span class="p">[</span><span class="w"> </span><span class="err">УЗЕЛ</span><span class="w"> </span><span class="mf">4.</span><span class="w"> </span><span class="err">ОБРАТНЫЙ</span><span class="w"> </span><span class="err">ПРОВОД</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="err">◄───────────────────────────┘</span><span class="w">       </span><span class="err">│</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">   </span><span class="err">Заземление</span><span class="p">,</span><span class="w"> </span><span class="err">Дзансин</span><span class="p">,</span><span class="w"> </span><span class="err">завершение</span><span class="w"> </span><span class="err">цикла</span><span class="w"> </span><span class="err">без</span><span class="w"> </span><span class="err">привязки</span><span class="w"> </span><span class="err">к</span><span class="w"> </span><span class="err">плодам</span><span class="w">     </span><span class="err">│</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w">      </span><span class="err">└───────────────────────────────────────────────────────────────────┘</span><span class="w">       </span><span class="err">│</span>
+<span class="err">└──────────────────────────────────────────────────────────────────────────────────┘</span>
+</code></pre></div>
+
+<hr />
+<h2>Часть I. Экзистенциальный скандал: Человек без техпаспорта</h2>
+<p>Если инженер включает мощную электростанцию без заземления, с перепутанными фазами и окислившимися контактами — она взрывается или сгорает от короткого замыкания. Никому не придёт в голову обвинять турбину в «первородном грехе» или водить её на исповедь. Инженер просто открывает технический мануал, устраняет паразитное сопротивление и восстанавливает цепь.</p>
+<p>Однако на протяжении 5000 лет цивилизация подходила к человеку прямо противоположным образом:<br />
+1. <strong>Религиозное суеверие:</strong> Страдания человека объявлялись карой разгневанного божества. Человека заставляли молить о милости, стоя на коленях, хотя карманному фонарику не нужны поклоны — ему нужен замкнутый контакт и исправная батарейка.<br />
+2. <strong>Ньютоновско-клаузиусовский морг:</strong> В XVII–XIX веках наука объявила Вселенную остывающим механическим трупом, катящимся в «тепловую смерть», а человека — случайным биороботом в равнодушной пустоте. Это породило цивилизационную депрессию и синдром космического сиротства.<br />
+3. <strong>Психотерапевтическая схоластика:</strong> В XX веке возникла иллюзия, будто бесконечное копание в детских травмах и интерпретация мыслей могут починить душевный разлад. Но 130 лет психотерапии породили лишь рекордную эпидемию депрессии, тревожности и выгорания, потому что лечили мысли мыслями, игнорируя схемотехнику соматического тока.</p>
+<p>Проект <strong>«Внутренний ток»</strong> и открытие <strong>Универсального закона потоковых систем</strong> подвели черту под этой эпохой невежества. <strong>25 фундаментальных побед контура</strong> дают человеку то, чего у него никогда не было: <strong>объективный, математически строгий и соматически проверяемый Паспорт Устройства</strong>.</p>
+<hr />
+<h2>Часть II. Паспорт изделия: Физический базис, триада бытия и спецификация (Победы 1, 2, 4, 5, 11)</h2>
+<h3>1. Среда обитания: Живая Вселенная (Победа №1)</h3>
+<p>Человек не заброшен во враждебный холодный космос. Согласно неравновесной термодинамике Ильи Пригожина, Вселенная пронизана мощнейшим градиентом свободной энергии. Материя вдали от равновесия <strong>самоорганизуется</strong>. Жизнь и человеческое сознание — это не случайная флуктуация, а закономерные высокоорганизованные диссипативные структуры, созданные Космосом для ускоренного экспорта энтропии и генерации красоты и порядка.</p>
+<h3>2. Автономия источника питания (Победа №2)</h3>
+<p>В центре человеческого существа — в соматическом узле <strong>Тандэн (3–5 см ниже пупка)</strong> — бьётся спонтанный генератор жизненной электродвижущей силы (E_тандэн). На принципиальной схеме контура <strong>нет внешнего Хозяина или небесного посредника</strong>. Источник питания заложен в саму биологию эволюцией. Попытка вымаливать энергию извне — это ошибка разомкнутой клеммы.</p>
+<h3>3. Природа сознания: Вихревое поле внимания (Победа №4)</h3>
+<p>Разрешена вековая «трудная проблема сознания» Чалмерса: сознание — это не мистический призрак и не секреция нейронов. Сознание есть <strong>вихревое электромагнитное поле внимания (B)</strong>, порождаемое током жизни (I = dq/dt), текущим от соматического реактора через проводники тела. Мозг — не генератор, а понижающий трансформатор и коммутатор задач.</p>
+<h3>4. Триада бытия: Дух, Душа и Сознание (Победы №5 и №11)</h3>
+<p>Снят декартовский дуализм души и тела:<br />
+* <strong>Дух:</strong> Сквозной поток свободной энергии (I), идущий через систему.<br />
+* <strong>Душа:</strong> Геометрия проводников, фасциальный каркас и акустический строй контура.<br />
+* <strong>Сознание:</strong> Вихревое поле внимания (B), освещающее реальность.<br />
+Человек целостен. Нет разделения на «низменное тело» и «возвышенный дух» — есть единая высокочастотная цепь.</p>
+<h3>5. Спецификация изделия: Datasheet и предельно допустимые режимы (Absolute Maximum Ratings)</h3>
+<p>Как и любой прецизионный квантово-диссипативный прибор, человеческий контур обладает точными физическими параметрами и жесткими эксплуатационными лимитами:</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Параметр контура</th>
+<th style="text-align: center;">Обозначение</th>
+<th style="text-align: center;">Номинальный рабочий режим (Normal)</th>
+<th style="text-align: center;">Аварийный порог (Critical Limit)</th>
+<th style="text-align: left;">Физические последствия превышения</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>ЭДС Тандэна (Заряд аккумулятора)</strong></td>
+<td style="text-align: center;">E_тандэн</td>
+<td style="text-align: center;">60% – 100% соматической емкости</td>
+<td style="text-align: center;">&lt; 20% (Глубокий разряд)</td>
+<td style="text-align: left;">Коллапс поля B, отказ внимания, ступор, депрессивный ступор.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Паразитное сопротивление эго</strong></td>
+<td style="text-align: center;">R_ego</td>
+<td style="text-align: center;">R_ego → 0 Ом (Мусин)</td>
+<td style="text-align: center;">R_ego &gt; 100 Ом (Зажим)</td>
+<td style="text-align: left;">Лавинообразный рост Q = I²·R·t, ожог ЦНС, паническая атака.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Зазор осознанности (Дзансин)</strong></td>
+<td style="text-align: center;">Δt</td>
+<td style="text-align: center;">≥ 250–350 мс</td>
+<td style="text-align: center;">Δt = 0 мс (Схлопывание)</td>
+<td style="text-align: left;">Полный перехват управления животным автоматом Газзаниги.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Предельное время перегрева</strong></td>
+<td style="text-align: center;">t_overheat</td>
+<td style="text-align: center;">0 мин (Штатный ход)</td>
+<td style="text-align: center;"><strong>90 минут непрерывно</strong></td>
+<td style="text-align: left;"><strong>Кортизоловый ожог гиппокампа</strong>, цитокиновый шторм, спазм миофасций.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Рабочий цикл созидания (Duty Cycle)</strong></td>
+<td style="text-align: center;">DC</td>
+<td style="text-align: center;">50 мин ток / 10 мин заземление</td>
+<td style="text-align: center;">&gt; 180 мин без заземления</td>
+<td style="text-align: left;">Утечка заряда через паразитные емкости, стоячая волна переутомления.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Импеданс внешней нагрузки</strong></td>
+<td style="text-align: center;">Z_load</td>
+<td style="text-align: center;">Z_load ≈ R_внутр</td>
+<td style="text-align: center;">Z_load → ∞ или Z → 0</td>
+<td style="text-align: left;">∞: холостой ход (апатия); 0: короткое замыкание на себя.</td>
+</tr>
+</tbody>
+</table></div>
+<div class="callout callout-danger"><div class="callout-title" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #f59e0b; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;"><span>⚡</span> <span>Правило 90 минут (Защита от омического расплавления)</span></div><div class="callout-body"><p>Ни один биологический проводник не способен выдерживать омический перегрев (ERR-02) дольше <strong>90 минут подряд</strong>. Если оператор зажимает зубы и находится в тревоге или самобичевании более полутора часов, биохимический предохранитель контура перегорает: наступает резкий иммунный спад, падение выработки АТФ и вегетативный криз. Сброс реостата в Тандэн через протокол калибровки обязателен до истечения этого таймера!</p></div></div>
+
+<hr />
+<h2>Часть III. Система управления: Трёхэтажная физика выбора и Великое Растождествление (Победы 3, 7, 8, 10, 13, 25)</h2>
+<p>Главный вопрос бытия — «Как я выбираю свою жизнь?» — веками разбивался о ложную дилемму между тюрьмой детерминизма и слепым волюнтаризмом. Технический паспорт человека устанавливает строгую трёхэтажную вертикаль:</p>
+<div class="codehilite"><pre><span></span><code><span class="w">               </span><span class="err">ВЕРТИКАЛЬ</span><span class="w"> </span><span class="err">УПРАВЛЕНИЯ</span><span class="w"> </span><span class="err">ЧЕЛОВЕЧЕСКИМ</span><span class="w"> </span><span class="err">ПРИБОРОМ</span>
+<span class="err">┌─────────────────────────────────────────────────────────────────────────────┐</span>
+<span class="err">│</span><span class="w"> </span><span class="err">ЭТАЖ</span><span class="w"> </span><span class="mf">3.</span><span class="w"> </span><span class="err">РЕЖИМ</span><span class="w"> </span><span class="err">МУСИН</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="err">У</span><span class="o">-</span><span class="err">ВЭЙ</span><span class="w"> </span><span class="p">(</span><span class="err">СВЕРХПРОВОДНИК</span><span class="w"> </span><span class="err">БИФУРКАЦИИ</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="err">ЧЕЛОВЕК</span><span class="p">)</span><span class="o">:</span><span class="w">          </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="n">R_ego</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.</span><span class="w"> </span><span class="err">Нет</span><span class="w"> </span><span class="err">обособленного</span><span class="w"> </span><span class="err">эго</span><span class="o">-</span><span class="err">кукловода</span><span class="p">.</span><span class="w"> </span><span class="err">Выбор</span><span class="w"> </span><span class="err">совершается</span><span class="w"> </span><span class="err">всем</span><span class="w">      </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="err">открытым</span><span class="w"> </span><span class="err">Универсумом</span><span class="w"> </span><span class="p">(</span><span class="err">«всё</span><span class="w"> </span><span class="err">влияет</span><span class="w"> </span><span class="err">на</span><span class="w"> </span><span class="err">всё»</span><span class="w"> </span><span class="err">через</span><span class="w"> </span><span class="err">Резонансы</span><span class="w"> </span><span class="err">Пуанкаре</span><span class="p">).</span><span class="w">      </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="err">Невесомый</span><span class="w"> </span><span class="err">взмах</span><span class="w"> </span><span class="err">крыла</span><span class="w"> </span><span class="err">бабочки</span><span class="w"> </span><span class="err">направляет</span><span class="w"> </span><span class="err">макросистему</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">созидание</span><span class="p">.</span><span class="w">       </span><span class="err">│</span>
+<span class="err">├─────────────────────────────────────────────────────────────────────────────┤</span>
+<span class="err">│</span><span class="w"> </span><span class="err">ЭТАЖ</span><span class="w"> </span><span class="mf">2.</span><span class="w"> </span><span class="err">УРОВЕНЬ</span><span class="w"> </span><span class="err">ЭГО</span><span class="o">-</span><span class="err">РЕЗИСТОРА</span><span class="w"> </span><span class="p">(</span><span class="err">СПЯЩИЙ</span><span class="w"> </span><span class="err">БИОМЕХАНИЧЕСКИЙ</span><span class="w"> </span><span class="err">АВТОМАТ</span><span class="p">)</span><span class="o">:</span><span class="w">             </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="err">Перетягивание</span><span class="w"> </span><span class="err">каната</span><span class="w"> </span><span class="err">между</span><span class="w"> </span><span class="err">дофаминовой</span><span class="w"> </span><span class="err">тягой</span><span class="w"> </span><span class="err">и</span><span class="w"> </span><span class="err">страхом</span><span class="w"> </span><span class="err">коры</span><span class="p">.</span><span class="w">              </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="err">Выбора</span><span class="w"> </span><span class="err">нет</span><span class="o">:</span><span class="w"> </span><span class="err">побеждает</span><span class="w"> </span><span class="err">сильнейший</span><span class="w"> </span><span class="err">импульс</span><span class="p">.</span><span class="w"> </span><span class="err">Иллюзия</span><span class="w"> </span><span class="err">«силы</span><span class="w"> </span><span class="err">воли»</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="err">это</span><span class="w">      </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="err">паразитный</span><span class="w"> </span><span class="err">ярлык</span><span class="w"> </span><span class="err">ума</span><span class="p">,</span><span class="w"> </span><span class="err">сжигающий</span><span class="w"> </span><span class="err">энергию</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">омический</span><span class="w"> </span><span class="err">стыд</span><span class="w"> </span><span class="err">и</span><span class="w"> </span><span class="err">вину</span><span class="p">.</span><span class="w">         </span><span class="err">│</span>
+<span class="err">├─────────────────────────────────────────────────────────────────────────────┤</span>
+<span class="err">│</span><span class="w"> </span><span class="err">ЭТАЖ</span><span class="w"> </span><span class="mf">1.</span><span class="w"> </span><span class="err">УРОВЕНЬ</span><span class="w"> </span><span class="err">БИОЛОГИЧЕСКОГО</span><span class="w"> </span><span class="err">РЕАКТОРА</span><span class="w"> </span><span class="p">(</span><span class="err">СПЕРХМОЩНАЯ</span><span class="w"> </span><span class="err">ЭДС</span><span class="w"> </span><span class="err">ЭВОЛЮЦИИ</span><span class="p">)</span><span class="o">:</span><span class="w">         </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="w"> </span><span class="err">млрд</span><span class="w"> </span><span class="err">лет</span><span class="w"> </span><span class="err">генетического</span><span class="w"> </span><span class="err">кода</span><span class="p">.</span><span class="w"> </span><span class="err">Первичные</span><span class="w"> </span><span class="err">влечения</span><span class="p">,</span><span class="w"> </span><span class="err">голод</span><span class="p">,</span><span class="w"> </span><span class="err">либидо</span><span class="p">,</span><span class="w"> </span><span class="err">страх</span><span class="p">.</span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="err">Выбора</span><span class="w"> </span><span class="err">нет</span><span class="w"> </span><span class="err">ни</span><span class="w"> </span><span class="err">у</span><span class="w"> </span><span class="err">кого</span><span class="o">:</span><span class="w"> </span><span class="err">ЭДС</span><span class="w"> </span><span class="err">рождается</span><span class="w"> </span><span class="err">спонтанно</span><span class="w"> </span><span class="err">как</span><span class="w"> </span><span class="err">факт</span><span class="w"> </span><span class="err">законов</span><span class="w"> </span><span class="err">физики</span><span class="p">.</span><span class="w">    </span><span class="err">│</span>
+<span class="err">└─────────────────────────────────────────────────────────────────────────────┘</span>
+</code></pre></div>
+
+<h3>1. Победа №25: Человек — это НЕ Эго (Освобождение из животного автомата)</h3>
+<p>Величайший триумф проекта «Свобода воли» — вскрытие фундаментальной ошибки самоидентификации:<br />
+* <strong>Кто такой эгоист?</strong> Человек, живущий из эго, функционально <strong>строго эквивалентен животному-автомату</strong>. Внешний стимул запускает аффект, а аффект по заученным эволюционным рельсам активирует поведение.<br />
+* <strong>Иллюзия авторства Газзаниги:</strong> Левополушарный «интерпретатор» мозга постфактум придумывает красивую сказку: <em>«Это Я так решил!»</em>. Но никакого выбора на уровне эго не было.<br />
+* <strong>Почему эгоист несвободнее зверя:</strong> Дикое животное после опасности вздрагивает, сбрасывает напряжение и возвращается в покой (R = 0). Эгоистичный человек замыкает ток в виртуальные петли дефолт-системы мозга (DMN), годами сгорая от обиды, зависти и жажды статуса (Q = I²·R·t).<br />
+* <strong>Освобождение Человека:</strong> <strong>ЧЕЛОВЕК — ЭТО НЕ ЭГО!</strong> Эго — это не сущность, а служебная переменная <code>self</code>, временный программный интерфейс и паразитное сопротивление (R_ego). Подлинный Человек начинается там, где возникает <strong>зазор осознанности Δt &gt; 0 (Дзансин)</strong>, обесточивающий автомат и возвращающий санкцию внимания живому проводнику цепи.</p>
+<h3>2. Эксплуатационные правила управления:</h3>
+<ol>
+<li><strong>Биологическая невиновность:</strong> Запрещено испытывать вину за возникновение первичных импульсов, влечений и страхов. Это чистая ЭДС природы (Этаж 1).</li>
+<li><strong>Отказ от культа «силы воли» (Победа №13):</strong> Попытка преодолеть искушение натужным сжатием зубов — это подача сверхтока на зажатый резистор. Итог — омический взрыв. Побеждает не напряжение, а <strong>смена проводимости</strong>.</li>
+<li><strong>Выбор в точке бифуркации (Победа №3):</strong> Настоящий выбор происходит, когда внимание сбрасывается в Тандэн (R_ego → 0). В этом безмолвии выбор совершается легко, кристально чисто и точно. Человек становится не шестерёнкой, а соавтором открытого будущего.</li>
+<li><strong>Устранение страха смерти и иллюзии эго (Победы №7 и №10):</strong> Страх смерти — это баг овеществления указателя (<code>Null Pointer Exception</code>). Умирает лишь временная ментальная метка <code>self</code>. Инвариантный ток бытия неуничтожим.</li>
+</ol>
+<hr />
+<h2>Часть IV. Эксплуатационные режимы, соматическая метрология и суточные SOP (Победы 12, 14, 15, 20)</h2>
+<h3>1. Что такое счастье? (Победа №12)</h3>
+<p>Счастье — это не статичная награда, не философская абстракция и не эмоция.</p>
+<blockquote>
+<p><strong>Счастье — это телеметрия соматической сверхпроводимости.</strong><br />
+Это физическое ощущение тока высокой мощности (I &gt; 0), свободно протекающего через организм во внешний мир при околонулевом сопротивлении эго (R_ego → 0).</p>
+</blockquote>
+<p>Парадокс Джона Стюарта Милля разрешён: счастье нельзя поймать как цель, потому что оно — <strong>показатель исправности цепи во время созидательного действия</strong>.</p>
+<h3>2. Синдром Кокосового Рафа: Дофамин vs Ток (Победа №14)</h3>
+<p>Величайшая ошибка потребительской цивилизации — путать дофаминовый укол удовольствия с током счастья:<br />
+* <strong>Дофаминовый всплеск:</strong> Локальный химический суррогат. Работает как короткое замыкание батарейки накоротко. Даёт 3 минуты эйфории, за которыми следует омическое выгорание рецепторов и депрессивный откат.<br />
+* <strong>Внутренний ток:</strong> Непрерывный ровный поток энергии через замкнутую нагрузку полезного дела. Не имеет отката, не вызывает абстиненции, оставляет контур холодным и наполненным.</p>
+<h3>3. Природа зависимостей и «греха» (Победа №15)</h3>
+<p>Алкоголизм, компульсивное переедание, порнография и наркомания — это не моральное падение, а <strong>отчаянная попытка закороченного контура сбросить избыточный потенциал</strong>. Когда человек заблокировал ток творчества и контакта с миром (Z_нагрузки = ∞), запертое напряжение разрывает его изнутри. Зависимость — это аварийный клапан сброса пара. Лечение заключается не в кодировании страхом, а в <strong>восстановлении проводки к реальной внешней нагрузке</strong>.</p>
+<h3>4. Акустика души: Укулеле Бытия (Победа №20)</h3>
+<p>Контур человека подобен струне инструмента:<br />
+* Если струна не натянута (нет вызова, нет цели) — ток не идёт, наступает болотная апатия.<br />
+* Если струна пережата гиперконтролем эго — она звенит о лады, порождая фоновую тревожность и панику.<br />
+* Счастье — это идеальный строй: плотный упругий Тандэн внизу и абсолютно расслабленные, холодные плечи и шея вверху.</p>
+<h3>5. Соматическая метрология: Приборная панель оператора (Четыре датчика телеметрии)</h3>
+<p>Оператор сверхпроводника не нуждается в лабораторных приборах — тело оснащено высокоточными аналоговыми индикаторами:</p>
+<div class="codehilite"><pre><span></span><code><span class="w">                  </span><span class="err">ПРИБОРНАЯ</span><span class="w"> </span><span class="err">ПАНЕЛЬ</span><span class="w"> </span><span class="err">ТЕЛЕМЕТРИИ</span><span class="w"> </span><span class="err">ОПЕРАТОРА</span>
+<span class="err">┌─────────────────────────────────┐</span><span class="w">     </span><span class="err">┌─────────────────────────────────┐</span>
+<span class="err">│</span><span class="w">     </span><span class="err">ВОЛЬТМЕТР</span><span class="w"> </span><span class="err">ТАНДЭНА</span><span class="w"> </span><span class="p">(</span><span class="n">U_бат</span><span class="p">)</span><span class="w">   </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">      </span><span class="err">ОММЕТР</span><span class="w"> </span><span class="err">ЭГО</span><span class="w"> </span><span class="p">(</span><span class="n">R_ego</span><span class="p">)</span><span class="w">         </span><span class="err">│</span>
+<span class="err">│</span><span class="w">         </span><span class="p">[</span><span class="w">  </span><span class="o">||||||||||</span><span class="w">  </span><span class="p">]</span><span class="w">        </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">         </span><span class="p">[</span><span class="w">  </span><span class="o">..</span><span class="w">        </span><span class="p">]</span><span class="w">          </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="err">Низ</span><span class="w"> </span><span class="err">живота</span><span class="p">:</span><span class="w"> </span><span class="err">плотный</span><span class="p">,</span><span class="w"> </span><span class="err">теплый</span><span class="w">   </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">   </span><span class="err">Челюсть</span><span class="w"> </span><span class="err">отвисла</span><span class="p">,</span><span class="w"> </span><span class="err">шея</span><span class="w"> </span><span class="err">свободна</span><span class="w"> </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="err">Дыхание</span><span class="p">:</span><span class="w"> </span><span class="err">глубокое</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">таз</span><span class="w">       </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">   </span><span class="err">Язык</span><span class="w"> </span><span class="err">расслаблен</span><span class="w"> </span><span class="p">(</span><span class="n">R</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">      </span><span class="err">│</span>
+<span class="err">└─────────────────────────────────┘</span><span class="w">     </span><span class="err">└─────────────────────────────────┘</span>
+<span class="w">                 </span><span class="err">▲</span><span class="w">                                       </span><span class="err">▲</span>
+<span class="w">                 </span><span class="err">│</span><span class="w">                                       </span><span class="err">│</span>
+<span class="err">┌─────────────────────────────────┐</span><span class="w">     </span><span class="err">┌─────────────────────────────────┐</span>
+<span class="err">│</span><span class="w">     </span><span class="err">АМПЕРМЕТР</span><span class="w"> </span><span class="err">ВНИМАНИЯ</span><span class="w"> </span><span class="p">(</span><span class="n">I_attn</span><span class="p">)</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">     </span><span class="err">ВАТТМЕТР</span><span class="w"> </span><span class="err">НАГРУЗКИ</span><span class="w"> </span><span class="p">(</span><span class="n">P_load</span><span class="p">)</span><span class="w">  </span><span class="err">│</span>
+<span class="err">│</span><span class="w">         </span><span class="p">[</span><span class="w">  </span><span class="o">||||||||..</span><span class="w">  </span><span class="p">]</span><span class="w">        </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">         </span><span class="p">[</span><span class="w">  </span><span class="o">||||||||||</span><span class="w">  </span><span class="p">]</span><span class="w">        </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="err">Луч</span><span class="w"> </span><span class="err">сфокусирован</span><span class="w"> </span><span class="err">на</span><span class="w"> </span><span class="err">объекте</span><span class="w">   </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">   </span><span class="err">Реальный</span><span class="w"> </span><span class="err">след</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">физическом</span><span class="w">    </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="err">Нет</span><span class="w"> </span><span class="err">соскальзывания</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">рефлексию│</span><span class="w">     </span><span class="err">│</span><span class="w">   </span><span class="err">мире</span><span class="p">:</span><span class="w"> </span><span class="err">код</span><span class="p">,</span><span class="w"> </span><span class="err">текст</span><span class="p">,</span><span class="w"> </span><span class="err">деталь</span><span class="p">,</span><span class="w"> </span><span class="err">дело│</span>
+<span class="err">└─────────────────────────────────┘</span><span class="w">     </span><span class="err">└─────────────────────────────────┘</span>
+</code></pre></div>
+
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align: center;">Прибор</th>
+<th style="text-align: left;">Соматический датчик</th>
+<th style="text-align: left;">Показания в норме (Сверхпроводимость)</th>
+<th style="text-align: left;">Показания при сбое (Авария)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>1. Вольтметр Тандэна (U_бат)</strong></td>
+<td style="text-align: left;">Тонус брюшной стенки (3–5 см ниже пупка) и экскурсия диафрагмы.</td>
+<td style="text-align: left;">Плотный, пружинящий низ живота, ощущение «свинцового шара», свободный длинный выдох.</td>
+<td style="text-align: left;">Втянутый или обвисший живот, дыхание поднято в ключицы, ком в горле, ощущение пустоты в тазу.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2. Омметр эго (R_ego)</strong></td>
+<td style="text-align: left;">Височно-нижнечелюстной сустав, корень языка, воротниковая зона.</td>
+<td style="text-align: left;">Нижняя челюсть расслаблена (зубы разомкнуты), язык лежит на дне рта, плечи опущены, взгляд панорамный.</td>
+<td style="text-align: left;">Сжатые челюсти, язык прижат к верхнему нёбу, трапеции подтянуты к ушам, туннельный жесткий взгляд.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3. Амперметр внимания (I_attn)</strong></td>
+<td style="text-align: left;">Вектор фиксации поля сознания (B).</td>
+<td style="text-align: left;">100% луча направлено на физический объект работы во внешнем мире. Субъект забыт.</td>
+<td style="text-align: left;">Луч развернут внутрь черепа: бесконечная самооценка («Как я выгляжу?», «Что обо мне подумают?»).</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>4. Ваттметр полезной работы (P_load)</strong></td>
+<td style="text-align: left;">Энтропийный след в материальной среде.</td>
+<td style="text-align: left;">Овеществленный результат: написанная страница, забитый гвоздь, решенный тикет, сваренный суп.</td>
+<td style="text-align: left;">Имитация бурной деятельности: 8 часов скроллинга, миллион мыслей в голове, ноль физического следа в мире.</td>
+</tr>
+</tbody>
+</table></div>
+<h3>6. Эксплуатационные регламенты суточного цикла (Standard Operating Procedures — SOP)</h3>
+<p>Для предотвращения аварий оператор придерживается трех суточных регламентов техобслуживания:</p>
+<h4>SOP-01: «Холодный пуск» (Cold Boot — Утренний пусковой протокол, 5–7 минут)</h4>
+<ol>
+<li><strong>Тест заземления (60 сек):</strong> До подъема с кровати ощутить контакт тела с матрасом, затем поставить босые стопы на пол. Осознать гравитацию: «Я в материальном мире, виртуальный сон завершен».</li>
+<li><strong>Закачка ЭДС в Тандэн (3 мин):</strong> 10 циклов диафрагмального дыхания 4–8 (вдох носом на 4 счета, выдох через расслабленный рот на 8 счетов с направлением внимания на 4 см ниже пупка).</li>
+<li><strong>Промывка электролитов (1 мин):</strong> Выпить 300–500 мл чистой теплой воды для восстановления электропроводности фасциальной сети.</li>
+<li><strong>Информационный экран (45–60 мин):</strong> Полный запрет на включение внешних индуктивных полей (смартфон, мессенджеры, соцсети) до замыкания первого созидательного контура дня.</li>
+</ol>
+<h4>SOP-02: «Штатное созидание» (Steady State — Рабочий цикл 50/10)</h4>
+<ol>
+<li><strong>Выбор нагрузки:</strong> Зафиксировать одну дискретную задачу (Z_load). Многозадачность физически невозможна: попытка подключить 5 ламп параллельно на одну батарейку просаживает напряжение контура до нуля.</li>
+<li><strong>Калибровка нуля (R_ego → 0):</strong> Перед стартом сбросить челюсть, сделать длинный выдох в Тандэн. Сказать себе: «Я не оцениваю результат, я просто провожу ток».</li>
+<li><strong>Потоковый импульс (50 мин):</strong> Непрерывная отдача внимания в дело без оглядки на себя.</li>
+<li><strong>Такт Дзансин (10 мин):</strong> Размыкание цепи. Встать, физически посмотреть вдаль в окно (панорамный расфокус), встряхнуть руки, сделать 3 глубоких вдоха в живот. Рассеять остаточный потенциал.</li>
+</ol>
+<h4>SOP-03: «Штатный останов и регенерация» (Shutdown &amp; Cool-Down — Вечерний протокол, 15 минут)</h4>
+<ol>
+<li><strong>Сброс открытых петель (Open Loops):</strong> За 60 минут до сна выписать на бумагу все незавершенные задачи завтрашнего дня. Пока задача в голове — дефолт-система мозга (DMN) держит реостат под напряжением. Бумага обесточивает контур.</li>
+<li><strong>Световая гальваноразвязка:</strong> Исключение синего спектра экранов, приглушенный теплый свет.</li>
+<li><strong>Гашение реостата:</strong> Лежа в постели, положить ладонь на Тандэн, перевести все внимание в тепло под ладонью и отпустить контроль: «Я передаю прибор во власть восстановительного тока Живой Вселенной».</li>
+</ol>
+<hr />
+<h2>Часть V. Полевой ремонт и диагностика: 4 аварии цепи, 11 иллюзий и дерево решений (Победы 14–19, 23)</h2>
+<div class="callout callout-important"><div class="callout-title" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #f43f5e; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;"><span>⚠️</span> <span>Принцип позитивного мануала: Зачем нужен раздел Troubleshooting</span></div><div class="callout-body"><p>Инженерный паспорт человека пишется для <strong>СВЕТА, А НЕ ДЛЯ ВОЙНЫ С ТЕМНОТОЙ</strong>. Человек не должен тратить жизнь на бесконечную борьбу с грехами или копание в травмах. 70% этой Инструкции — это позитивная схемотехника: устройство Тандэна, проводимость внимания и правила созидания.<br />
+Однако, когда на приборной панели оператора вспыхивает красный индикатор (тревога, апатия, ревность или стыд), необходим чёткий <strong>справочник кодов ошибок (Troubleshooting Guide)</strong>.</p></div></div>
+
+<h3>1. Сводная диагностическая матрица кодов неисправностей</h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align: center;">Код сбоя</th>
+<th style="text-align: left;">Базовая авария цепи</th>
+<th style="text-align: left;">В какие из 11 иллюзий «Эпохи Лошади» попадает ум</th>
+<th style="text-align: left;">Симптом и омическая цена</th>
+<th style="text-align: left;">Протокол полевого ремонта</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>ERR-01</strong></td>
+<td style="text-align: left;"><strong>Обрыв цепи</strong> <em>(Батарейная слепота, апатия)</em></td>
+<td style="text-align: left;"><strong>Иллюзия №3:</strong> «Счастье в будущем» (симуляция завтрашнего дня).<br><strong>Иллюзия №5:</strong> «Внешний смысл жизни» (поиск чужой розетки).</td>
+<td style="text-align: left;">Клемма Тандэна разомкнута; ток I = 0. Утрата сил, прокрастинация, депрессия.</td>
+<td style="text-align: left;">Заземление стоп в пол, холодная вода, физическое включение тела за 60 секунд.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>ERR-02</strong></td>
+<td style="text-align: left;"><strong>Омический перегрев</strong> <em>(Зажатый реостат, тревога)</em></td>
+<td style="text-align: left;"><strong>Иллюзия №4:</strong> «Сила воли и самобичевание» (хлестание мотора).<br><strong>Иллюзия №7:</strong> «Одобрение и статус» (социальный реостат).<br><strong>Иллюзия №11:</strong> «Многолетняя психотерапия» (навоз памяти).</td>
+<td style="text-align: left;">Ток пошёл, но упёрся в эго-резистор контроля (R_ego ≫ 0). Пожар проводки Q = I²·R·t, бессонница, паника.</td>
+<td style="text-align: left;">Выдох в Тандэн 4–8, расслабление челюсти и плеч: отказ от гарантий «Будь что будет».</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>ERR-03</strong></td>
+<td style="text-align: left;"><strong>Пробой изоляции</strong> <em>(Фальшивая лампа, достигаторство)</em></td>
+<td style="text-align: left;"><strong>Иллюзия №1:</strong> «Вещи приносят счастье» (BMW, шопоголизм).<br><strong>Иллюзия №6:</strong> «Гуру и авторитеты» (духовный феодализм).<br><strong>Иллюзия №10:</strong> «Деньги = Счастье» (путаница U и проводимости).</td>
+<td style="text-align: left;">Попытка найти батарейку внутри пассивной лампочки. Форсирование тока волей (I ↑↑), синдром Хартманна.</td>
+<td style="text-align: left;">Осознание: лампа пуста (Суньята). Батарейка только в Тандэне. Переход в Мусин.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>ERR-04</strong></td>
+<td style="text-align: left;"><strong>Паразитный шунт</strong> <em>(Короткое замыкание на себя)</em></td>
+<td style="text-align: left;"><strong>Иллюзия №2:</strong> «Миф о половинках» (вампиризм двух ламп).<br><strong>Иллюзия №8:</strong> «Алкоголь» (химический лом в защите).<br><strong>Иллюзия №9:</strong> «Суррогатное порно» (слив ядерного топлива).</td>
+<td style="text-align: left;">Ток внимания закольцован внутри головы (R_шунта ≪ Z_нагрузки). Выгорание рецепторов, социофобия, стыд.</td>
+<td style="text-align: left;">Размыкание шунта: перенос 100% внимания на внешний объект; взаимная индукция Фарадея (M &gt; 0).</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2. Алгоритмическое дерево принятия решений оператора (Fault-Tree Flowchart)</h3>
+<p>Когда сознание затуманено стрессом, оператор не должен философствовать. Он запускает детерминированное дерево проверки:</p>
+<div class="codehilite"><pre><span></span><code>                      АЛГОРИТМИЧЕСКОЕ ДЕРЕВО ПРИНЯТИЯ РЕШЕНИЙ
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│                   [ СИГНАЛ: ДУШЕВНЫЙ ДИСКОМФОРТ, СТРЕСС ИЛИ СТУПОР ]                    │
+└───────────────────────────────────────────┬────────────────────────────────────────────┘
+                                            │
+                                            ▼
+                  ┌──────────────────────────────────────────────────┐
+                  │ ПРОВЕРКА 1: Есть ли физические силы действовать? │
+                  └─────────────────────────┬────────────────────────┘
+                               /                         \
+                           (НЕТ)                         (ДА)
+                             │                             │
+                             ▼                             ▼
+              ┌───────────────────────────┐  ┌────────────────────────────────────────┐
+              │     КОД СБОЯ: ERR-01      │  │ ПРОВЕРКА 2: Колотит сердце, тревога,   │
+              │       ОБРЫВ ПИТАНИЯ       │  │             мысли крутятся в петле?    │
+              │ (Батарейная слепота, ток) │  └───────────────────┬────────────────────┘
+              │                           │            /                   \
+              │   РЕМОНТ ЗА 60 СЕКУНД:    │        (ДА)                    (НЕТ)
+              │ • Стопы в пол (земля)     │          │                       │
+              │ • 3 глотка воды           │          ▼                       ▼
+              │ • 10 выдохов в Тандэн     │ ┌─────────────────┐ ┌─────────────────────────┐
+              │ • 1 микродействие руками  │ │ КОД СБОЯ: ERR-02│ │ПРОВЕРКА 3: Ждешь счастья│
+              └───────────────────────────┘ │ОМИЧЕСКИЙ ПЕРЕГРЕВ│ │от вещи, статуса, гуру?│
+                                            │(Зажат эго-реостат)└────────────┬────────────┘
+                                            │                 │        /           \
+                                            │РЕМОНТ ЗА 45 СЕК:│    (ДА)            (НЕТ)
+                                            │• Отвислая челюсть      │               │
+                                            │• Длинный выдох в таз   ▼               ▼
+                                            │• Опустить плечи ┌──────────────┐ ┌──────────────┐
+                                            │• «Будь что будет│КОД СБОЯ ERR-03│КОД СБОЯ ERR-04│
+                                            └─────────────────│ ПРОБОЙ ЛАМПЫ │ПАРАЗИТНЫЙ ШУНТ│
+                                                              │(Лампа пуста!)│(Петля в голове)│
+                                                              │              │                │
+                                                              │РЕМОНТ 30 СЕК:│РЕМОНТ 60 СЕК:  │
+                                                              │Батарейка лишь│Отбросить экран,│
+                                                              │в моем Тандэне│100% фокуса в   │
+                                                              │Светить в мир!│реальный мир!   │
+                                                              └──────────────┘└───────────────┘
+</code></pre></div>
+
+<hr />
+<h2>Часть VI. Сетевая топология, помехозащита и согласование импедансов (Победы 6, 21, 22, 23, 24)</h2>
+<p>Человек не существует в вакууме. Он — элемент планетарной распределённой сети сверхпроводников.</p>
+<h3>1. Эгоизм vs Альтруизм: Закон сквозного канала (Победа №21)</h3>
+<ul>
+<li><strong>Эгоист</strong> замыкает ток на себя → система заиливается, превращаясь в вонючее болото застоя.</li>
+<li><strong>Жертвенный альтруист</strong> пытается питать других при севшей собственной батарейке → выгорание и омическая смерть.</li>
+<li><strong>Сверхпроводник:</strong> Черпает из бесконечной ЭДС Жизни и пропускает через себя в мир без остатка (I_вх = I_вых). Чем больше отдаёшь в дело — тем больше вливается через тебя.</li>
+</ul>
+<h3>2. Парадокс Любви: Взаимная индукция Фарадея (Победа №22)</h3>
+<p>Любовь — это не вампирское слияние половин и не взаимный контроль.<br />
+Любовь есть <strong>бесконтактная взаимная индукция двух суверенных генераторов (M &gt; 0)</strong>. Две целостные, заряженные системы сближаются, и переменный ток созидания одного партнёра индуцирует мощнейший творческий ток в другом без трения и взаимного удушения.</p>
+<h3>3. Закон P2P-депосреднизации (Победы №23 и №24)</h3>
+<p>Любой паразит в социуме — монополист-рантье, финансовый паразит или жрец — функционирует как паразитное сопротивление (R_посредника), берущее дань за прохождение сигнала. Будущее цивилизации (Биткоин, P2P, децентрализация) — это неизбежное вымывание посредников. Точно так же многополярный мир строится по <strong>трёхфазной симметрии Николы Теслы (Σ I_k = 0)</strong>: баланс суверенных цивилизаций без гегемонии одной фазы.</p>
+<h3>4. Протоколы электромагнитной совместимости (EMC Shielding) и согласования импедансов</h3>
+<p>В агрессивной социальной среде оператор обязан применять два ключевых электродинамических правила защиты:</p>
+<h4>А. Гальваническая развязка внимания (Защита от токсичных индуктивных наводок)</h4>
+<p>Когда рядом находится человек в состоянии тяжелого омического пожара (гнев, истерика, обвинения) или паникующая толпа:<br />
+* <strong>Фатальная ошибка:</strong> Вступить в омический контакт (начать защищаться, спорить, оправдываться). Это означает спаять свой проводник с чужим коротким замыканием.<br />
+* <strong>Инженерный протокол (Гальваническая развязка):</strong><br />
+  1. Опустить внимание глубоко в Тандэн. Сказать про себя: «Это не мой ток. Это чужой омический пожар».<br />
+  2. Включить режим идеального изолятора: слушать слова как шум ветра или гудение трансформатора, не давая наведенной ЭДС проникнуть в собственные эмоции.<br />
+  3. Сохранять вежливый контакт без замыкания цепи.</p>
+<h4>Б. Согласование импедансов (Z_внутр = Z_нагрузки)</h4>
+<p>Согласно теореме о передаче максимальной мощности, полезная работа максимальна, когда сопротивление нагрузки согласовано с внутренним сопротивлением источника:<br />
+* <strong>Если задача слишком масштабна (Z_load → ∞):</strong> Попытка решить глобальную проблему в один присест вызывает эффект стоячей волны. Ток отражается обратно в оператора, вызывая паралич воли и страх.<br />
+<em>Решение:</em> <strong>Понижающий трансформатор</strong>. Разбить мега-задачу на микро-кванты действия (Z_микро), посильные прямо сейчас.<br />
+* <strong>Если задача слишком примитивна (Z_load → 0):</strong> Хроническое отсутствие вызова ведет к деградации проводника и застою.<br />
+<em>Решение:</em> <strong>Повышение нагрузки</strong>. Подключить более сложный контур созидания.</p>
+<hr />
+<h2>Практический дашборд оператора цепи (30–60 секунд)</h2>
+<p>Когда ты чувствуешь стресс, паралич выбора, обиду или выгорание — не читай лекций и не копайся в мыслях. Выполни <strong>4 такта аппаратной калибровки</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="err">┌────────────────────────────────────────────────────────────────────────┐</span>
+<span class="w">  </span><span class="err">│</span><span class="w">              </span><span class="err">АППАРАТНЫЙ</span><span class="w"> </span><span class="err">ПРОТОКОЛ</span><span class="w"> </span><span class="err">СВЕРХПРОВОДИМОСТИ</span><span class="w"> </span><span class="p">(</span><span class="mi">45</span><span class="w"> </span><span class="err">СЕК</span><span class="p">)</span><span class="w">            </span><span class="err">│</span>
+<span class="w">  </span><span class="err">│</span><span class="w">                                                                        </span><span class="err">│</span>
+<span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">ТАКТ</span><span class="w"> </span><span class="mf">1.</span><span class="w"> </span><span class="err">ЗАЗЕМЛЕНИЕ</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="err">–</span><span class="mi">10</span><span class="w"> </span><span class="err">сек</span><span class="p">):</span><span class="w">                                        </span><span class="err">│</span>
+<span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">Почувствуй</span><span class="w"> </span><span class="err">физический</span><span class="w"> </span><span class="err">контакт</span><span class="w"> </span><span class="err">стоп</span><span class="w"> </span><span class="err">с</span><span class="w"> </span><span class="err">полом</span><span class="o">.</span><span class="w"> </span><span class="err">Ощути</span><span class="w"> </span><span class="err">вес</span><span class="w"> </span><span class="err">своего</span><span class="w"> </span><span class="err">тела</span><span class="o">.</span><span class="w">    </span><span class="err">│</span>
+<span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">«Я</span><span class="w"> </span><span class="err">здесь</span><span class="o">.</span><span class="w"> </span><span class="err">Я</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">материальной</span><span class="w"> </span><span class="err">реальности</span><span class="o">.</span><span class="w"> </span><span class="err">Виртуальный</span><span class="w"> </span><span class="err">сон</span><span class="w"> </span><span class="err">прерван»</span><span class="o">.</span><span class="w">      </span><span class="err">│</span>
+<span class="w">  </span><span class="err">│</span><span class="w">                                                                        </span><span class="err">│</span>
+<span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">ТАКТ</span><span class="w"> </span><span class="mf">2.</span><span class="w"> </span><span class="err">СБРОС</span><span class="w"> </span><span class="err">В</span><span class="w"> </span><span class="err">ТАНДЭН</span><span class="w"> </span><span class="p">(</span><span class="mi">10</span><span class="err">–</span><span class="mi">25</span><span class="w"> </span><span class="err">сек</span><span class="p">):</span><span class="w">                                   </span><span class="err">│</span>
+<span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">Медленный</span><span class="p">,</span><span class="w"> </span><span class="err">глубокий</span><span class="w"> </span><span class="err">выдох</span><span class="w"> </span><span class="err">носом</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">область</span><span class="w"> </span><span class="err">на</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="err">см</span><span class="w"> </span><span class="err">ниже</span><span class="w"> </span><span class="err">пупка</span><span class="o">.</span><span class="w">         </span><span class="err">│</span>
+<span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">Опусти</span><span class="w"> </span><span class="err">плечи</span><span class="p">,</span><span class="w"> </span><span class="err">расслабь</span><span class="w"> </span><span class="err">челюсть</span><span class="w"> </span><span class="err">и</span><span class="w"> </span><span class="err">язык</span><span class="o">.</span><span class="w">                                </span><span class="err">│</span>
+<span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">Сопротивление</span><span class="w"> </span><span class="err">ума</span><span class="w"> </span><span class="err">падает</span><span class="p">:</span><span class="w"> </span><span class="n">R_ego</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.</span><span class="w">                                 </span><span class="err">│</span>
+<span class="w">  </span><span class="err">│</span><span class="w">                                                                        </span><span class="err">│</span>
+<span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">ТАКТ</span><span class="w"> </span><span class="mf">3.</span><span class="w"> </span><span class="err">СНЯТИЕ</span><span class="w"> </span><span class="err">АВТОМАТА</span><span class="w"> </span><span class="err">И</span><span class="w"> </span><span class="err">ДЕЯТЕЛЯ</span><span class="w"> </span><span class="p">(</span><span class="mi">25</span><span class="err">–</span><span class="mi">35</span><span class="w"> </span><span class="err">сек</span><span class="p">):</span><span class="w">                        </span><span class="err">│</span>
+<span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">Задай</span><span class="w"> </span><span class="err">себе</span><span class="w"> </span><span class="err">вопрос</span><span class="p">:</span><span class="w"> </span><span class="err">«Кто</span><span class="w"> </span><span class="err">сейчас</span><span class="w"> </span><span class="err">напрягается</span><span class="w"> </span><span class="err">и</span><span class="w"> </span><span class="err">защищается?»</span><span class="w">             </span><span class="err">│</span>
+<span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">Заметь</span><span class="p">:</span><span class="w"> </span><span class="err">голос</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">голове</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="err">это</span><span class="w"> </span><span class="err">автомат</span><span class="w"> </span><span class="err">Газзаниги</span><span class="p">,</span><span class="w"> </span><span class="err">я</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="err">НЕ</span><span class="w"> </span><span class="err">это</span><span class="w"> </span><span class="err">эго</span><span class="o">.</span><span class="w">       </span><span class="err">│</span>
+<span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">Деятеля</span><span class="w"> </span><span class="err">нет</span><span class="o">.</span><span class="w"> </span><span class="err">Есть</span><span class="w"> </span><span class="err">только</span><span class="w"> </span><span class="err">чистое</span><span class="w"> </span><span class="err">живое</span><span class="w"> </span><span class="err">поле</span><span class="w"> </span><span class="err">внимания</span><span class="w"> </span><span class="n">B</span><span class="o">.</span><span class="w">                </span><span class="err">│</span>
+<span class="w">  </span><span class="err">│</span><span class="w">                                                                        </span><span class="err">│</span>
+<span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">ТАКТ</span><span class="w"> </span><span class="mf">4.</span><span class="w"> </span><span class="err">ЗАМЫКАНИЕ</span><span class="w"> </span><span class="err">НА</span><span class="w"> </span><span class="err">ДЕЛО</span><span class="w"> </span><span class="p">(</span><span class="mi">35</span><span class="err">–</span><span class="mi">45</span><span class="w"> </span><span class="err">сек</span><span class="p">):</span><span class="w">                                </span><span class="err">│</span>
+<span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">Сделай</span><span class="w"> </span><span class="err">одно</span><span class="w"> </span><span class="err">простое</span><span class="p">,</span><span class="w"> </span><span class="err">физическое</span><span class="w"> </span><span class="err">микродействие</span><span class="w"> </span><span class="err">руками</span><span class="w"> </span><span class="err">или</span><span class="w"> </span><span class="err">ногами</span><span class="o">.</span><span class="w">      </span><span class="err">│</span>
+<span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">Ток</span><span class="w"> </span><span class="err">пошел</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">полезную</span><span class="w"> </span><span class="err">нагрузку</span><span class="w"> </span><span class="n">Z_load</span><span class="o">.</span><span class="w"> </span><span class="err">Лампочка</span><span class="w"> </span><span class="err">горит</span><span class="o">.</span><span class="w"> </span><span class="err">Ты</span><span class="w"> </span><span class="err">счастлив</span><span class="o">.</span><span class="w">    </span><span class="err">│</span>
+<span class="w">  </span><span class="err">└────────────────────────────────────────────────────────────────────────┘</span>
+</code></pre></div>
+
+<hr />
+<h2>Резюме: Семь аксиом человека-сверхпроводника</h2>
+<ol>
+<li><strong>Аксиома живой основы:</strong> Ты — диссипативная вершина Живой Вселенной; всё сущее стремится помочь твоему созидательному току.</li>
+<li><strong>Аксиома автономного реактора:</strong> Твой Тандэн генерирует чистую ЭДС без посредников, идолов и небесных начальников; спасение — это исправность контакта.</li>
+<li><strong>Аксиома великого растождествления:</strong> Человек — это НЕ эго; эгоцентричная жизнь есть автоматизм биоробота, а подлинный Человек рождается в зазоре осознанности Δt &gt; 0 через разотождествление с ментальным комментатором.</li>
+<li><strong>Аксиома трёх этажей:</strong> Биология невинна, эго механистично, а подлинный выбор вершится Универсумом через открытого проводника в режиме Мусин.</li>
+<li><strong>Аксиома сверхпроводимости счастья:</strong> Счастье не покупается и не вымаливается; оно возникает автоматически при нулевом сопротивлении эго во время действия.</li>
+<li><strong>Аксиома сквозного канала:</strong> Ты живёшь настолько, насколько отдаёшь ток миру; удерживать энергию в себе — значит гнить, проводить её — значит цвести.</li>
+<li><strong>Аксиома вечного тока:</strong> Формы приходят и уходят, ментальные маски растворяются, но чистый ток Бытия не имеет ни начала, ни конца. Ты — проводник Вечности.</li>
+</ol>
+  </article>
+
+</main>
+
+<script>
+  // Scroll reading progress indicator
+  window.addEventListener('scroll', () => {
+    const winScroll = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById('read-progress').style.width = scrolled + '%';
+  });
+</script>
+
+  <script src="/assets/tracker.js" defer></script>
+</body>
+</html>

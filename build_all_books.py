@@ -47,6 +47,19 @@ KATEX_SCRIPTS = r"""
 # Book definitions
 BOOKS = [
     {
+        "id": "01_canon",
+        "title": "Внутренний ток: Архитектура Человека",
+        "subtitle": "Канон Сверхпроводимости 3.1: Прикладная соматическая электродинамика, схемотехника карманного фонарика и полный потенциал открытия И. Пригожина",
+        "series": "Библиотека «Золотая Семёрка 2.0» — Книга 1 (Канон 3.1)",
+        "author": "Владимир Аньянов",
+        "edition": "Master Edition 3.1 (Superconductivity Canon)",
+        "md_source": os.path.join(LIB2_DIR, "01 — Владимир Аньянов — Внутренний ток (Архитектура Человека — Канон Сверхпроводимости).md"),
+        "pdf_name_lib": "01 — Владимир Аньянов — Внутренний ток (Архитектура Человека — Канон Сверхпроводимости).pdf",
+        "pdf_name_vault": "Книга — Внутренний ток (Архитектура Человека — Канон Сверхпроводимости).pdf",
+        "site_slugs": ["01_canon_superconductivity.pdf"],
+        "emblem": """<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M50 10 L50 90 M25 35 L75 35 M35 65 L65 65"/><circle cx="50" cy="50" r="35"/></svg>"""
+    },
+    {
         "id": "01",
         "title": "Внутренний ток",
         "subtitle": "Архитектура человека — схемотехника фонарика и соматическая сверхпроводимость",
@@ -191,13 +204,15 @@ def build_pdf_for_book(book, browser):
     
     # Strip frontmatter
     raw_md = re.sub(r"^---.*?---\s*", "", raw_md, flags=re.DOTALL)
+    # Strip Obsidian WikiLinks [[target|label]] or [[target\|label]] -> label
+    raw_md = re.sub(r"\[\[(?:[^|\]]*\\?\|)?([^\]]+)\]\]", r"\1", raw_md)
     
     # 0. Protect math blocks from Markdown corruption (underscores -> <em>, asterisks, etc.)
     math_stash = []
     def stash_display(m):
         idx = len(math_stash)
         math_stash.append(('display', m.group(1).strip()))
-        return f"\n\nKATEXDISPLAYMATHPLACEHOLDER{idx}KATEX\n\n"
+        return f"KATEXDISPLAYMATHPLACEHOLDER{idx}KATEX"
 
     def stash_inline(m):
         idx = len(math_stash)
