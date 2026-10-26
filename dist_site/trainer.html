@@ -2630,7 +2630,7 @@
                   <span class="uppercase tracking-widest text-slate-400">Принцип автомобильного спидометра:</span>
                 </div>
                 <p class="text-xs text-slate-300 leading-relaxed">
-                  Водителю вредно видеть 50 графиков давления в топливной рампе и температуры катализатора — ему нужен <strong>один спидометр</strong>. Все 5 физиологических датчиков ниже измеряют <strong>одно и то же паразитное эго-сопротивление (R_loss)</strong>. Если стрелка в красной зоне — контур горит по закону Джоуля — Ленца (P = I² · R). Если в зелёной — ток свободно совершает полезную работу в мире.
+                  Водителю вредно видеть 50 графиков давления в топливной рампе и температуры катализатора — ему нужен <strong>один спидометр</strong>. Все 5 физиологических датчиков ниже измеряют <strong>одно и то же паразитное эго-сопротивление ($R_{\text{loss}}$)</strong>. Если стрелка в красной зоне — контур горит по закону Джоуля — Ленца ($P = I^2 R$). Если в зелёной — ток свободно совершает полезную работу в мире.
                 </p>
               </div>
 
@@ -2641,7 +2641,7 @@
                   <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">H &gt; 60%</span>
                 </div>
                 <div class="text-slate-300 text-xs leading-relaxed" id="gauge-state-desc">
-                  Внутреннее сопротивление сведено к минимуму (R_loss → 0). Вентральный блуждающий нерв синхронизирует дыхание и сердце, DMN молчит, префронтальная кора работает в режиме TPN (поток). Энергия течёт сквозь проводник без омического трения. Вы переживаете счастье как физическую проводимость жизни!
+                  Внутреннее сопротивление сведено к минимуму ($R_{\text{loss}} \to 0$). Вентральный блуждающий нерв синхронизирует дыхание и сердце, DMN молчит, префронтальная кора работает в режиме TPN (поток). Энергия течёт сквозь проводник без омического трения. Вы переживаете счастье как физическую проводимость жизни!
                 </div>
               </div>
 
@@ -4787,37 +4787,37 @@
       const countY = cy + 14 * c;
 
       // Update beam & counterweight
-      const beam = document.getElementById('gauge-needle-beam');
+      const beam = document.getElementById("gauge-needle-beam");
       if (beam) {
-        beam.setAttribute('points', b1X.toFixed(1) + ',' + b1Y.toFixed(1) + ' ' + b2X.toFixed(1) + ',' + b2Y.toFixed(1) + ' ' + t2X.toFixed(1) + ',' + t2Y.toFixed(1) + ' ' + t1X.toFixed(1) + ',' + t1Y.toFixed(1));
+        beam.setAttribute("points", b1X.toFixed(1) + "," + b1Y.toFixed(1) + " " + b2X.toFixed(1) + "," + b2Y.toFixed(1) + " " + t2X.toFixed(1) + "," + t2Y.toFixed(1) + " " + t1X.toFixed(1) + "," + t1Y.toFixed(1));
       }
-      const spine = document.getElementById('gauge-needle-spine');
+      const spine = document.getElementById("gauge-needle-spine");
       if (spine) {
-        spine.setAttribute('x1', cx);
-        spine.setAttribute('y1', cy);
-        spine.setAttribute('x2', tipX.toFixed(1));
-        spine.setAttribute('y2', tipY.toFixed(1));
+        spine.setAttribute("x1", cx);
+        spine.setAttribute("y1", cy);
+        spine.setAttribute("x2", tipX.toFixed(1));
+        spine.setAttribute("y2", tipY.toFixed(1));
       }
-      const counter = document.getElementById('gauge-needle-counter');
+      const counter = document.getElementById("gauge-needle-counter");
       if (counter) {
-        counter.setAttribute('points', b1X.toFixed(1) + ',' + b1Y.toFixed(1) + ' ' + b2X.toFixed(1) + ',' + b2Y.toFixed(1) + ' ' + countX.toFixed(1) + ',' + countY.toFixed(1));
+        counter.setAttribute("points", b1X.toFixed(1) + "," + b1Y.toFixed(1) + " " + b2X.toFixed(1) + "," + b2Y.toFixed(1) + " " + countX.toFixed(1) + "," + countY.toFixed(1));
       }
 
       // Update tip dot
-      const tipGlow = document.getElementById('gauge-needle-tip-glow');
-      const tipCore = document.getElementById('gauge-needle-tip-core');
-      if (tipGlow) { tipGlow.setAttribute('cx', tipX.toFixed(1)); tipGlow.setAttribute('cy', tipY.toFixed(1)); }
-      if (tipCore) { tipCore.setAttribute('cx', tipX.toFixed(1)); tipCore.setAttribute('cy', tipY.toFixed(1)); }
+      const tipGlow = document.getElementById("gauge-needle-tip-glow");
+      const tipCore = document.getElementById("gauge-needle-tip-core");
+      if (tipGlow) { tipGlow.setAttribute("cx", tipX.toFixed(1)); tipGlow.setAttribute("cy", tipY.toFixed(1)); }
+      if (tipCore) { tipCore.setAttribute("cx", tipX.toFixed(1)); tipCore.setAttribute("cy", tipY.toFixed(1)); }
 
       // Update viewfinder lens
-      const lensOuter = document.getElementById('gauge-needle-lens-outer');
-      const lensRing = document.getElementById('gauge-needle-lens-ring');
-      const lensDot = document.getElementById('gauge-needle-lens-dot');
-      const lensGlint = document.getElementById('gauge-needle-lens-glint');
-      if (lensOuter) { lensOuter.setAttribute('cx', arcX.toFixed(1)); lensOuter.setAttribute('cy', arcY.toFixed(1)); }
-      if (lensRing) { lensRing.setAttribute('cx', arcX.toFixed(1)); lensRing.setAttribute('cy', arcY.toFixed(1)); }
-      if (lensDot) { lensDot.setAttribute('cx', arcX.toFixed(1)); lensDot.setAttribute('cy', arcY.toFixed(1)); }
-      if (lensGlint) { lensGlint.setAttribute('cx', arcX.toFixed(1)); lensGlint.setAttribute('cy', arcY.toFixed(1)); }
+      const lensOuter = document.getElementById("gauge-needle-lens-outer");
+      const lensRing = document.getElementById("gauge-needle-lens-ring");
+      const lensDot = document.getElementById("gauge-needle-lens-dot");
+      const lensGlint = document.getElementById("gauge-needle-lens-glint");
+      if (lensOuter) { lensOuter.setAttribute("cx", arcX.toFixed(1)); lensOuter.setAttribute("cy", arcY.toFixed(1)); }
+      if (lensRing) { lensRing.setAttribute("cx", arcX.toFixed(1)); lensRing.setAttribute("cy", arcY.toFixed(1)); }
+      if (lensDot) { lensDot.setAttribute("cx", arcX.toFixed(1)); lensDot.setAttribute("cy", arcY.toFixed(1)); }
+      if (lensGlint) { lensGlint.setAttribute("cx", arcX.toFixed(1)); lensGlint.setAttribute("cy", arcY.toFixed(1)); }
     }
 
     function gauge_render() {
@@ -4936,8 +4936,8 @@
     function gauge_init() {
       gauge_render();
     }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => gauge_render());
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", () => gauge_render());
     } else {
       setTimeout(() => gauge_render(), 50);
     }
