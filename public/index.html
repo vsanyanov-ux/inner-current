@@ -1595,65 +1595,14 @@
         </div>
       </div>
 
-      <!-- AUTOMOTIVE BINNACLE CLUSTER: 4 GAUGES IN LINE -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-5 items-stretch">
+            <!-- AUTOMOTIVE BINNACLE CLUSTER: TACHOMETER & SPEEDOMETER (CENTER) + TEMP & FUEL (STACKED RIGHT) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-5 items-stretch">
         
-        <!-- 1. AUX GAUGE LEFT: FUEL LEVEL (TANDEN U) [col-span-2] -->
-        <div class="lg:col-span-2 bg-slate-950/90 border border-slate-800/90 rounded-2xl p-4 flex flex-col items-center justify-between shadow-inner relative group">
-          <div class="w-full flex items-center justify-between text-[11px] font-mono">
-            <span class="text-amber-400 font-bold uppercase tracking-wider flex items-center gap-1">
-              <span>⛽</span> ТОПЛИВО (<span class="font-bold">U</span>)
-            </span>
-            <span id="cc-fuel-lamp" class="w-2.5 h-2.5 rounded-full bg-slate-800 transition-all duration-300" title="Контрольная лампа резерва"></span>
-          </div>
-
-          <!-- SVG Fuel Gauge -->
-          <div class="relative w-36 h-28 flex items-center justify-center my-1">
-            <svg viewBox="0 0 140 110" class="w-full h-full overflow-visible">
-              <defs>
-                <linearGradient id="ccGradFuel" x1="0%" y1="100%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#ef4444" />
-                  <stop offset="35%" stop-color="#f59e0b" />
-                  <stop offset="100%" stop-color="#10b981" />
-                </linearGradient>
-              </defs>
-              <!-- Track -->
-              <circle cx="70" cy="70" r="45" fill="none" stroke="#1e293b" stroke-width="8"
-                stroke-dasharray="94.25 282.74" transform="rotate(210, 70, 70)" stroke-linecap="round" />
-              <!-- Active Arc -->
-              <circle id="cc-fuel-arc" cx="70" cy="70" r="45" fill="none" stroke="url(#ccGradFuel)" stroke-width="8"
-                stroke-dasharray="94.25 282.74" transform="rotate(210, 70, 70)" stroke-linecap="round"
-                style="transition: stroke-dasharray 0.35s cubic-bezier(0.4, 0, 0.2, 1);" />
-              <!-- Scale Ticks -->
-              <text x="32" y="102" fill="#ef4444" font-size="10" font-family="monospace" text-anchor="middle" font-weight="bold">E</text>
-              <text x="70" y="20" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">½</text>
-              <text x="108" y="102" fill="#10b981" font-size="10" font-family="monospace" text-anchor="middle" font-weight="bold">F</text>
-              <!-- Needle -->
-              <g id="cc-fuel-needle" transform="rotate(60, 70, 70)" style="transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);">
-                <line x1="70" y1="70" x2="70" y2="30" stroke="#f8fafc" stroke-width="2.5" stroke-linecap="round" />
-                <line x1="70" y1="70" x2="70" y2="35" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" />
-                <circle cx="70" cy="70" r="5" fill="#0f172a" stroke="#f59e0b" stroke-width="2" />
-              </g>
-            </svg>
-          </div>
-
-          <!-- Digital readout & Slider -->
-          <div class="text-center w-full">
-            <div class="text-xl font-mono font-black text-amber-300 tracking-tight" id="cc-u-display">1.50 В</div>
-            <div class="text-[10px] font-mono text-slate-400 mt-0.5" id="cc-u-desc">Полный бак (сон OK)</div>
-            <div class="w-full pt-2 mt-2 border-t border-slate-800/80">
-              <input type="range" id="cc-slider-u" min="0" max="150" value="150" oninput="updateCircuitConsole()"
-                class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-400 transition" />
-              <div class="text-[9px] text-slate-400 text-center font-mono mt-0.5">Батарея Тандэна ($U$)</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2. MAIN GAUGE LEFT: TACHOMETER (CURRENT I) [col-span-4] -->
-        <div class="lg:col-span-4 bg-slate-950/95 border-2 border-slate-800/90 hover:border-cyan-500/50 rounded-2xl p-5 flex flex-col items-center justify-between shadow-2xl relative">
+        <!-- 1. MAIN GAUGE LEFT: TACHOMETER (ТОК ВНИМАНИЯ I) [col-span-5] -->
+        <div class="lg:col-span-5 bg-slate-950/95 border-2 border-slate-800/90 hover:border-cyan-500/50 rounded-2xl p-5 flex flex-col items-center justify-between shadow-2xl relative">
           <div class="w-full flex items-center justify-between mb-2 text-xs font-mono">
             <span class="text-cyan-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
-              <span>⚡</span> ТАХОМЕТР (<span class="font-bold">I</span>)
+              <span>⚡</span> ТАХОМЕТР • ТОК ВНИМАНИЯ (<span class="font-bold">I</span>)
             </span>
             <span class="px-2 py-0.5 rounded bg-cyan-950/80 border border-cyan-800/50 text-cyan-300 text-[11px] font-bold" id="cc-i-badge">
               6000 RPM • 75 Ав
@@ -1661,7 +1610,7 @@
           </div>
 
           <!-- Big Tachometer SVG -->
-          <div class="relative w-56 h-40 flex items-center justify-center my-1">
+          <div class="relative w-60 h-44 flex items-center justify-center my-1">
             <svg viewBox="0 0 220 160" class="w-full h-full overflow-visible">
               <defs>
                 <linearGradient id="ccGradTach" x1="0%" y1="100%" x2="100%" y2="0%">
@@ -1698,7 +1647,7 @@
           <!-- Digital Readout & Throttle Pedal -->
           <div class="text-center w-full">
             <div class="text-3xl font-mono font-black text-cyan-300 tracking-tight" id="cc-i-display">6000 RPM</div>
-            <div class="text-[11px] font-mono text-cyan-400/90 mt-0.5" id="cc-i-desc">Подача газа внимания ($I$)</div>
+            <div class="text-[11px] font-mono text-cyan-400/90 mt-0.5" id="cc-i-desc">Подача газа / Обороты внимания ($I$)</div>
             <div class="w-full pt-2 mt-2 border-t border-slate-800/80">
               <div class="flex justify-between text-[9px] font-mono text-slate-400 mb-0.5">
                 <span>Холостой ход</span>
@@ -1711,11 +1660,11 @@
           </div>
         </div>
 
-        <!-- 3. MAIN GAUGE RIGHT: SPEEDOMETER (POWER P) [col-span-4] -->
-        <div class="lg:col-span-4 bg-slate-950/95 border-2 border-slate-800/90 hover:border-emerald-500/50 rounded-2xl p-5 flex flex-col items-center justify-between shadow-2xl relative">
+        <!-- 2. MAIN GAUGE CENTER: SPEEDOMETER (СКОРОСТЬ СОЗИДАНИЯ / ПОЛЕЗНАЯ НАГРУЗКА P) [col-span-5] -->
+        <div class="lg:col-span-5 bg-slate-950/95 border-2 border-slate-800/90 hover:border-emerald-500/50 rounded-2xl p-5 flex flex-col items-center justify-between shadow-2xl relative">
           <div class="w-full flex items-center justify-between mb-2 text-xs font-mono">
             <span class="text-emerald-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
-              <span>🏎️</span> СПИДОМЕТР (<span class="font-bold">P</span>)
+              <span>🏎️</span> СПИДОМЕТР • СКОРОСТЬ СОЗИДАНИЯ (<span class="font-bold">P</span>)
             </span>
             <span class="px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-800/50 text-emerald-300 text-[11px] font-bold" id="cc-speed-badge">
               182 км/ч • 76 Ан
@@ -1723,7 +1672,7 @@
           </div>
 
           <!-- Big Speedometer SVG -->
-          <div class="relative w-56 h-40 flex items-center justify-center my-1">
+          <div class="relative w-60 h-44 flex items-center justify-center my-1">
             <svg viewBox="0 0 220 160" class="w-full h-full overflow-visible">
               <defs>
                 <linearGradient id="ccGradSpeed" x1="0%" y1="100%" x2="100%" y2="0%">
@@ -1763,7 +1712,7 @@
           <!-- Digital Readout & Brake / Ego Slider -->
           <div class="text-center w-full">
             <div class="text-3xl font-mono font-black text-emerald-300 tracking-tight" id="cc-speed-display">182 КМ/Ч</div>
-            <div class="text-[11px] font-mono text-emerald-400/90 mt-0.5" id="cc-speed-desc">Полезная мощность дела (<span id="cc-metric-p">76.4 Ан</span>)</div>
+            <div class="text-[11px] font-mono text-emerald-400/90 mt-0.5" id="cc-speed-desc">Полезная нагрузка дела (<span id="cc-metric-p">76.4 Ан</span>)</div>
             <div class="w-full pt-2 mt-2 border-t border-slate-800/80">
               <div class="flex justify-between text-[9px] font-mono text-slate-400 mb-0.5">
                 <span>Свободный ход (0 Ω)</span>
@@ -1777,57 +1726,115 @@
           </div>
         </div>
 
-        <!-- 4. AUX GAUGE RIGHT: ENGINE TEMP (HEAT Q) [col-span-2] -->
-        <div class="lg:col-span-2 bg-slate-950/90 border border-slate-800/90 rounded-2xl p-4 flex flex-col items-center justify-between shadow-inner relative group">
-          <div class="w-full flex items-center justify-between text-[11px] font-mono">
-            <span class="text-rose-400 font-bold uppercase tracking-wider flex items-center gap-1">
-              <span>🌡️</span> ТЕМПЕРАТУРА
-            </span>
-            <span id="cc-temp-lamp" class="w-2.5 h-2.5 rounded-full bg-slate-800 transition-all duration-300" title="Контрольная лампа перегрева"></span>
-          </div>
+        <!-- 3. RIGHT STACK: TEMPERATURE (UPPER) & FUEL (LOWER) [col-span-2] -->
+        <div class="lg:col-span-2 flex flex-col gap-4 justify-between">
+          
+          <!-- AUX GAUGE TOP: ENGINE TEMP / СОПРОТИВЛЕНИЕ ЭГО (R) -->
+          <div class="bg-slate-950/90 border border-slate-800/90 rounded-2xl p-3.5 flex flex-col items-center justify-between shadow-inner relative group flex-1">
+            <div class="w-full flex items-center justify-between text-[10px] font-mono">
+              <span class="text-rose-400 font-bold uppercase tracking-wider flex items-center gap-1">
+                <span>🌡️</span> ТЕМПЕРАТУРА • ЭГО (<span class="font-bold">R</span>)
+              </span>
+              <span id="cc-temp-lamp" class="w-2.5 h-2.5 rounded-full bg-slate-800 transition-all duration-300" title="Контрольная лампа перегрева"></span>
+            </div>
 
-          <!-- SVG Temperature Gauge -->
-          <div class="relative w-36 h-28 flex items-center justify-center my-1">
-            <svg viewBox="0 0 140 110" class="w-full h-full overflow-visible">
-              <defs>
-                <linearGradient id="ccGradTemp" x1="0%" y1="100%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#38bdf8" />
-                  <stop offset="50%" stop-color="#10b981" />
-                  <stop offset="75%" stop-color="#f59e0b" />
-                  <stop offset="100%" stop-color="#ef4444" />
-                </linearGradient>
-              </defs>
-              <!-- Track -->
-              <circle cx="70" cy="70" r="45" fill="none" stroke="#1e293b" stroke-width="8"
-                stroke-dasharray="94.25 282.74" transform="rotate(210, 70, 70)" stroke-linecap="round" />
-              <!-- Active Arc -->
-              <circle id="cc-temp-arc" cx="70" cy="70" r="45" fill="none" stroke="url(#ccGradTemp)" stroke-width="8"
-                stroke-dasharray="47.1 282.74" transform="rotate(210, 70, 70)" stroke-linecap="round"
-                style="transition: stroke-dasharray 0.35s cubic-bezier(0.4, 0, 0.2, 1);" />
-              <!-- Scale Ticks -->
-              <text x="30" y="102" fill="#38bdf8" font-size="9" font-family="monospace" text-anchor="middle">50°</text>
-              <text x="70" y="20" fill="#10b981" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">90°</text>
-              <text x="110" y="102" fill="#ef4444" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">130°</text>
-              <!-- Needle -->
-              <g id="cc-temp-needle" transform="rotate(0, 70, 70)" style="transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);">
-                <line x1="70" y1="70" x2="70" y2="30" stroke="#f8fafc" stroke-width="2.5" stroke-linecap="round" />
-                <line x1="70" y1="70" x2="70" y2="35" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round" />
-                <circle cx="70" cy="70" r="5" fill="#0f172a" stroke="#ef4444" stroke-width="2" />
-              </g>
-            </svg>
-          </div>
+            <!-- SVG Temperature Gauge -->
+            <div class="relative w-32 h-24 flex items-center justify-center my-0.5">
+              <svg viewBox="0 0 140 110" class="w-full h-full overflow-visible">
+                <defs>
+                  <linearGradient id="ccGradTemp" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#38bdf8" />
+                    <stop offset="50%" stop-color="#10b981" />
+                    <stop offset="75%" stop-color="#f59e0b" />
+                    <stop offset="100%" stop-color="#ef4444" />
+                  </linearGradient>
+                </defs>
+                <!-- Track -->
+                <circle cx="70" cy="70" r="45" fill="none" stroke="#1e293b" stroke-width="7"
+                  stroke-dasharray="94.25 282.74" transform="rotate(210, 70, 70)" stroke-linecap="round" />
+                <!-- Active Arc -->
+                <circle id="cc-temp-arc" cx="70" cy="70" r="45" fill="none" stroke="url(#ccGradTemp)" stroke-width="7"
+                  stroke-dasharray="47.1 282.74" transform="rotate(210, 70, 70)" stroke-linecap="round"
+                  style="transition: stroke-dasharray 0.35s cubic-bezier(0.4, 0, 0.2, 1);" />
+                <!-- Scale Ticks -->
+                <text x="32" y="102" fill="#38bdf8" font-size="8.5" font-family="monospace" text-anchor="middle">50°</text>
+                <text x="70" y="20" fill="#10b981" font-size="8.5" font-family="monospace" text-anchor="middle" font-weight="bold">90°</text>
+                <text x="108" y="102" fill="#ef4444" font-size="8.5" font-family="monospace" text-anchor="middle" font-weight="bold">130°</text>
+                <!-- Needle -->
+                <g id="cc-temp-needle" transform="rotate(0, 70, 70)" style="transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);">
+                  <line x1="70" y1="70" x2="70" y2="30" stroke="#f8fafc" stroke-width="2.5" stroke-linecap="round" />
+                  <line x1="70" y1="70" x2="70" y2="35" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round" />
+                  <circle cx="70" cy="70" r="5" fill="#0f172a" stroke="#ef4444" stroke-width="2" />
+                </g>
+              </svg>
+            </div>
 
-          <!-- Digital readout -->
-          <div class="text-center w-full">
-            <div class="text-xl font-mono font-black text-rose-300 tracking-tight" id="cc-temp-display">90°C</div>
-            <div class="text-[10px] font-mono text-slate-400 mt-0.5" id="cc-temp-desc">Норма Мусин (Q=0)</div>
-            <div class="w-full pt-2 mt-2 border-t border-slate-800/80 text-[10px] text-slate-400 font-mono text-center">
-              Ожог Джоуля — Ленца: <span id="cc-metric-q" class="text-red-400 font-bold">8.4 Бн</span>
+            <!-- Digital readout -->
+            <div class="text-center w-full">
+              <div class="text-lg font-mono font-black text-rose-300 tracking-tight" id="cc-temp-display">90°C</div>
+              <div class="text-[9px] font-mono text-slate-400" id="cc-temp-desc">Оптимум Мусин (Q=0)</div>
+              <div class="text-[9px] text-slate-400 font-mono text-center mt-0.5">
+                Ожог трения: <span id="cc-metric-q" class="text-red-400 font-bold">8.4 Бн</span>
+              </div>
             </div>
           </div>
+
+          <!-- AUX GAUGE BOTTOM: FUEL LEVEL / ЗАПАС ЭНЕРГИИ (U) [UNDER TEMP] -->
+          <div class="bg-slate-950/90 border border-slate-800/90 rounded-2xl p-3.5 flex flex-col items-center justify-between shadow-inner relative group flex-1">
+            <div class="w-full flex items-center justify-between text-[10px] font-mono">
+              <span class="text-amber-400 font-bold uppercase tracking-wider flex items-center gap-1">
+                <span>⛽</span> ТОПЛИВО • ЭНЕРГИЯ (<span class="font-bold">U</span>)
+              </span>
+              <span id="cc-fuel-lamp" class="w-2.5 h-2.5 rounded-full bg-slate-800 transition-all duration-300" title="Контрольная лампа резерва"></span>
+            </div>
+
+            <!-- SVG Fuel Gauge -->
+            <div class="relative w-32 h-24 flex items-center justify-center my-0.5">
+              <svg viewBox="0 0 140 110" class="w-full h-full overflow-visible">
+                <defs>
+                  <linearGradient id="ccGradFuel" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#ef4444" />
+                    <stop offset="35%" stop-color="#f59e0b" />
+                    <stop offset="100%" stop-color="#10b981" />
+                  </linearGradient>
+                </defs>
+                <!-- Track -->
+                <circle cx="70" cy="70" r="45" fill="none" stroke="#1e293b" stroke-width="7"
+                  stroke-dasharray="94.25 282.74" transform="rotate(210, 70, 70)" stroke-linecap="round" />
+                <!-- Active Arc -->
+                <circle id="cc-fuel-arc" cx="70" cy="70" r="45" fill="none" stroke="url(#ccGradFuel)" stroke-width="7"
+                  stroke-dasharray="94.25 282.74" transform="rotate(210, 70, 70)" stroke-linecap="round"
+                  style="transition: stroke-dasharray 0.35s cubic-bezier(0.4, 0, 0.2, 1);" />
+                <!-- Scale Ticks -->
+                <text x="32" y="102" fill="#ef4444" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">E</text>
+                <text x="70" y="20" fill="#64748b" font-size="8.5" font-family="monospace" text-anchor="middle">½</text>
+                <text x="108" y="102" fill="#10b981" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">F</text>
+                <!-- Needle -->
+                <g id="cc-fuel-needle" transform="rotate(60, 70, 70)" style="transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);">
+                  <line x1="70" y1="70" x2="70" y2="30" stroke="#f8fafc" stroke-width="2.5" stroke-linecap="round" />
+                  <line x1="70" y1="70" x2="70" y2="35" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" />
+                  <circle cx="70" cy="70" r="5" fill="#0f172a" stroke="#f59e0b" stroke-width="2" />
+                </g>
+              </svg>
+            </div>
+
+            <!-- Digital readout & Slider -->
+            <div class="text-center w-full">
+              <div class="text-lg font-mono font-black text-amber-300 tracking-tight" id="cc-u-display">1.50 В</div>
+              <div class="text-[9px] font-mono text-slate-400" id="cc-u-desc">Бак полон (сон OK)</div>
+              <div class="w-full pt-1.5 mt-1 border-t border-slate-800/80">
+                <input type="range" id="cc-slider-u" min="0" max="150" value="150" oninput="updateCircuitConsole()"
+                  class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-400 transition" />
+                <div class="text-[8.5px] text-slate-400 text-center font-mono mt-0.5">Запас Тандэна ($U$)</div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>
+
+
 
       <!-- TRIP COMPUTER & SOMATIC COCKPIT HUD -->
       <div class="mt-8 pt-6 border-t border-slate-800/80 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
