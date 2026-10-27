@@ -1842,20 +1842,8 @@
     }
 
     function tach_applyQuadrant(targetI, targetCI) {
-      // 1. Set Tachometer
-      const sliderTach = document.getElementById('slider-tach-i');
-      if (sliderTach) sliderTach.value = targetI;
-      tach_render(targetI);
-
-      // 2. Set Biological Systems to approximate targetCI
-      ['ans', 'endo', 'brain', 'cardio', 'soma'].forEach(sys => {
-        gaugeState[sys] = targetCI;
-        const slider = document.getElementById('slider-gauge-' + sys);
-        if (slider) slider.value = targetCI;
-      });
-
-      gauge_render();
-      playZenChime(targetCI > 0 ? 640 : 380);
+      const r = Math.max(0, Math.min(100, Math.round((100 - targetCI) / 2)));
+      setCircuitConsolePreset(targetI, r, 1.50);
     }
     window.tach_applyQuadrant = tach_applyQuadrant;
     window.updateRadarPosition = updateRadarPosition;
@@ -1875,33 +1863,62 @@
       updateRadarPosition();
       if (!stateTitle || !stateDesc) return;
 
-      if (I >= 60 && ci < -30) {
+      // 1. QUADRANT IV: Ohmic Overheat (High Current I >= 45, High Ego Resistance ci < 0 or stressR >= 50)
+      if (I >= 45 && (ci < 0 || stressR >= 50)) {
         stateTitle.textContent = '🔥 ОМИЧЕСКИЙ ПОЖАР: ТАХОМЕТР В КРАСНОЙ ЗОНЕ ПРИ ЗАЖАТОМ ТОРМОЗЕ!';
         stateTitle.className = 'font-bold text-rose-300 animate-pulse';
-        stateDesc.innerHTML = '<strong>Аварийная пара:</strong> Обороты мотора I = ' + I + ' Ав зашкаливают, а спидометр в глубоком минусе (CI = ' + ci + '). Вы жмёте на газ, но внутренний залом держит контур намертво. Энергия обращается в омический ожог проводки (Q = I²·R·t). <span class="text-white">Соматика:</span> Снимите ногу с педали газа, разожмите челюсть, выдохните через рот и отпустите внутреннее сопротивление.';
-        if (stateBadge) { stateBadge.textContent = 'ОЖОГ ПРОВОДКИ'; stateBadge.className = 'text-[10px] px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30'; }
+        stateDesc.innerHTML = '<strong>Аварийная пара (Квадрант IV):</strong> Обороты мотора I = ' + I + ' Ав зашкаливают, а ручник эго затянут (R = ' + stressR + ' Ω, CI = ' + ci + '). Энергия обращается в омический ожог проводки (Q = I²·R·t). <span class="text-white">Соматика:</span> Снимите ногу с педали газа, разожмите челюсть, выдохните через рот и сбросьте внутреннее сопротивление.';
+        if (stateBadge) {
+          stateBadge.textContent = 'ОЖОГ ПРОВОДКИ (Q = I²·R)';
+          stateBadge.className = 'text-[10px] px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold';
+        }
         if (stateBox) stateBox.className = 'p-4 rounded-xl border bg-rose-950/50 border-rose-500/60 text-rose-200 text-xs md:text-sm font-mono space-y-2';
-      } else if (I >= 55 && ci >= 20) {
-        stateTitle.textContent = '⚡ СВЕРХПРОВОДИМОСТЬ (МУСИН): ЧИСТЫЙ ХОД И КРЕЙСЕРСКАЯ СКОРОСТЬ';
-        stateTitle.className = 'font-bold text-emerald-300';
-        stateDesc.innerHTML = '<strong>Идеальная пара:</strong> Высокие обороты ядра (I = ' + I + ' Ав) при свободном сцеплении проводника (CI = +' + ci + '). Вся кинетическая мощность без трения материализуется в созидательный плод. Проводка ледяная, потерь ноль!';
-        if (stateBadge) { stateBadge.textContent = 'КРЕЙСЕРСКИЙ ХОД'; stateBadge.className = 'text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'; }
-        if (stateBox) stateBox.className = 'p-4 rounded-xl border bg-emerald-950/40 border-emerald-500/40 text-emerald-200 text-xs md:text-sm font-mono space-y-2';
-      } else if (I < 35 && ci < -30) {
-        stateTitle.textContent = '🧊 ВЯЗКИЙ КЛИН: МОТОР ЗАГЛУШЕН, ТОРМОЗ ЗАКЛИНИЛ';
+      }
+      // 2. QUADRANT III: Viscous Clinch / Stupor / Drift (Low Current I < 45, High Ego Resistance ci <= 10 or stressR >= 45)
+      else if (I < 45 && (ci <= 10 || stressR >= 45)) {
+        stateTitle.textContent = '🧊 ВЯЗКИЙ КЛИН (ДРЕЙФ / СТУПОР): МОТОР НА НЕЙТРАЛИ';
         stateTitle.className = 'font-bold text-amber-300';
-        stateDesc.innerHTML = '<strong>Пара ступора:</strong> Напор низкий (I = ' + I + ' Ав), а сопротивление максимально (CI = ' + ci + '). Бесполезно подстёгивать себя кофеином (поднимать I) — сначала нужно разблокировать тормоз через физическое движение или 15 минут тишины.';
-        if (stateBadge) { stateBadge.textContent = 'СТУПОР КОНТУРА'; stateBadge.className = 'text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30'; }
+        stateDesc.innerHTML = '<strong>Пара затора (Квадрант III):</strong> Напор внимания слабый (I = ' + I + ' Ав), а внутренний тормоз зажат (R = ' + stressR + ' Ω, CI = ' + ci + '). Дрейф мыслей, спазм действия и прокрастинация. Бесполезно подстёгивать себя стимуляторами — сначала разомкните челюсти, выдохните в Тандэн и сделайте 1 простое микродействие в t = now.';
+        if (stateBadge) {
+          stateBadge.textContent = 'СТУПОР / ДРЕЙФ (КЛИН)';
+          stateBadge.className = 'text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 font-bold';
+        }
         if (stateBox) stateBox.className = 'p-4 rounded-xl border bg-amber-950/40 border-amber-500/40 text-amber-200 text-xs md:text-sm font-mono space-y-2';
-      } else if (I < 35 && ci >= 20) {
+      }
+      // 3. QUADRANT II: Cold Rest / Zanshin (Low Current I < 40, Free Conductor ci > 10, stressR < 45)
+      else if (I < 40 && ci > 10) {
         stateTitle.textContent = '🌌 ХОЛОДНЫЙ ПОКОЙ (ДЗАНСИН): ТИШИНА И РЕГЕНЕРАЦИЯ ЯДРА';
         stateTitle.className = 'font-bold text-sky-300';
-        stateDesc.innerHTML = '<strong>Пара покоя:</strong> Минимальные обороты (I = ' + I + ' Ав) при расправленном чистом контуре (CI = +' + ci + '). Потерь нет, аккумулятор Тандэна восстанавливает заряд. Идеально для созерцания или глубокого сна.';
-        if (stateBadge) { stateBadge.textContent = 'РЕГЕНЕРАЦИЯ'; stateBadge.className = 'text-[10px] px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30'; }
+        stateDesc.innerHTML = '<strong>Пара покоя (Квадрант II):</strong> Минимальные обороты (I = ' + I + ' Ав) при свободном проводнике (R = ' + stressR + ' Ω, CI = +' + ci + '). Потерь нет, аккумулятор Тандэна восстанавливает заряд. Идеально для созерцания, медитации или глубокого сна.';
+        if (stateBadge) {
+          stateBadge.textContent = 'РЕГЕНЕРАЦИЯ (ДЗАНСИН)';
+          stateBadge.className = 'text-[10px] px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30 font-bold';
+        }
         if (stateBox) stateBox.className = 'p-4 rounded-xl border bg-sky-950/40 border-sky-500/40 text-sky-200 text-xs md:text-sm font-mono space-y-2';
       }
+      // 4. Moderate Flow / Wristband telemetry (I between 40..65, stressR around 25..45)
+      else if (stressR > 25) {
+        stateTitle.textContent = '⌚ РАБОЧИЙ ХОД / ТЕЛЕМЕТРИЯ С БРАСЛЕТА (' + restingHR + ' BPM)';
+        stateTitle.className = 'font-bold text-cyan-300';
+        stateDesc.innerHTML = '<strong>Штатный баланс:</strong> Рабочий ток внимания (I = ' + I + ' Ав) при умеренном сопротивлении (R = ' + stressR + ' Ω, CI = ' + (ci > 0 ? '+' : '') + ci + '). Проводка справляется с нагрузкой, но есть резерв для дальнейшего расслабления челюстей и углубления потока.';
+        if (stateBadge) {
+          stateBadge.textContent = 'ШТАТНЫЙ РАБОЧИЙ ХОД';
+          stateBadge.className = 'text-[10px] px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-bold';
+        }
+        if (stateBox) stateBox.className = 'p-4 rounded-xl border bg-cyan-950/40 border-cyan-500/40 text-cyan-200 text-xs md:text-sm font-mono space-y-2';
+      }
+      // 5. QUADRANT I: Pure Superconductivity / Mushin (I >= 40, stressR <= 25)
+      else {
+        stateTitle.textContent = '⚡ СВЕРХПРОВОДИМОСТЬ (МУСИН): ЧИСТЫЙ ХОД И КРЕЙСЕРСКАЯ СКОРОСТЬ';
+        stateTitle.className = 'font-bold text-emerald-300';
+        stateDesc.innerHTML = '<strong>Идеальная пара (Квадрант I):</strong> Мощный напор ядра (I = ' + I + ' Ав) при свободном сцеплении проводника (R = ' + stressR + ' Ω, CI = +' + ci + '). Вся кинетическая мощность без омического трения материализуется в созидательное действие в t = now. Проводка ледяная, потерь ноль!';
+        if (stateBadge) {
+          stateBadge.textContent = 'КРЕЙСЕРСКИЙ ХОД (МУСИН)';
+          stateBadge.className = 'text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold';
+        }
+        if (stateBox) stateBox.className = 'p-4 rounded-xl border bg-emerald-950/40 border-emerald-500/40 text-emerald-200 text-xs md:text-sm font-mono space-y-2';
+      }
     }
-
 
     function gauge_render() {
       const ci = Math.round(0.20 * (gaugeState.ans + gaugeState.endo + gaugeState.brain + gaugeState.cardio + gaugeState.soma));
@@ -2032,51 +2049,6 @@
         if (stateLabel) {
           stateLabel.textContent = '🔴 ОМИЧЕСКИЙ КЛИН (ДИСТРЕСС: R = ' + stressR + ')';
           stateLabel.className = 'text-sm font-bold font-mono text-rose-400 uppercase tracking-wide';
-        }
-      }
-
-      if (ci >= 20) {
-        if (stateTitle) {
-          stateTitle.textContent = 'СТАТУС: КОНТУР В РЕЖИМЕ СВЕРХПРОВОДИМОСТИ';
-          stateTitle.className = 'font-bold text-emerald-300';
-        }
-        if (stateDesc) {
-          stateDesc.textContent = 'Внутреннее сопротивление сведено к минимуму (R_ego → 0). Вентральный блуждающий нерв синхронизирует дыхание и сердце, DMN молчит, префронтальная кора работает в режиме TPN (поток). Энергия течёт сквозь проводник без омического трения. Вы переживаете счастье как физическую проводимость жизни!';
-        }
-        if (stateBox) {
-          stateBox.className = 'p-4 rounded-xl border bg-emerald-950/40 border-emerald-500/40 text-emerald-200 text-xs md:text-sm font-mono space-y-2';
-        }
-      } else if (ci >= -30) {
-        if (emoji) emoji.textContent = '🟡';
-        if (stateLabel) {
-          stateLabel.textContent = '🟡 ХОЛОСТОЙ ХОД (ДРЕЙФ / NPC)';
-          stateLabel.className = 'text-sm font-bold font-mono text-amber-300 uppercase tracking-wide';
-        }
-        if (stateTitle) {
-          stateTitle.textContent = 'СТАТУС: КОНТУР В РЕЖИМЕ НЕЙТРАЛИ (ХОЛОСТОЙ ХОД)';
-          stateTitle.className = 'font-bold text-amber-300';
-        }
-        if (stateDesc) {
-          stateDesc.textContent = 'Внимание рассеяно. Двигатель работает на нейтральной передаче: резкого выгорания нет, но полезная работа не совершается. Сцепление с реальностью проскальзывает. Для перехода в сверхпроводимость выберите одну ясную задачу в t = now.';
-        }
-        if (stateBox) {
-          stateBox.className = 'p-4 rounded-xl border bg-amber-950/40 border-amber-500/40 text-amber-200 text-xs md:text-sm font-mono space-y-2';
-        }
-      } else {
-        if (emoji) emoji.textContent = '🔴';
-        if (stateLabel) {
-          stateLabel.textContent = '🔴 ОМИЧЕСКИЙ ПЕРЕГРЕВ (ДИСТРЕСС)';
-          stateLabel.className = 'text-sm font-bold font-mono text-rose-400 uppercase tracking-wide';
-        }
-        if (stateTitle) {
-          stateTitle.textContent = 'АВАРИЯ: ОМИЧЕСКИЙ ПЕРЕГРЕВ ПРОВОДКИ (Q = I² · R)';
-          stateTitle.className = 'font-bold text-rose-400';
-        }
-        if (stateDesc) {
-          stateDesc.textContent = 'Критический затор проводки! Симпатический овердрайв, выброс кортизола, DMN гиперактивна, дыхание зажато. Энергия преобразуется в разрушительное тепловое трение. Немедленно выполните 30-секундный протокол сброса или откройте Аптечку болей!';
-        }
-        if (stateBox) {
-          stateBox.className = 'p-4 rounded-xl border bg-rose-950/50 border-rose-500/50 text-rose-200 text-xs md:text-sm font-mono space-y-2';
         }
       }
 
@@ -2603,7 +2575,10 @@
       if (sliderU) sliderU.value = Math.round(u * 100);
       
       const rNum = parseInt(r, 10);
+      const iNum = parseInt(i, 10);
       const ci = Math.round(100 - rNum * 2);
+
+      // 1. Sync all 5 biological systems
       ['ans', 'endo', 'brain', 'cardio', 'soma'].forEach(sys => {
         gaugeState[sys] = ci;
         const slider = document.getElementById('slider-gauge-' + sys);
@@ -2613,10 +2588,27 @@
         }
       });
 
+      // 2. Render Tachometer state and needle
+      if (typeof tach_render === 'function') {
+        tach_render(iNum);
+      } else {
+        tachCurrentI = iNum;
+      }
+
+      // 3. Update Speedometer & Automotive Console
       updateCircuitConsole();
+
+      // 4. Update Gauge readouts, metrics and Coupled Verdict
+      gauge_render();
+
+      // 5. Update Phase Radar Position
       if (typeof updateRadarPosition === 'function') updateRadarPosition();
+
+      // 6. Update Living Circuit SVG
       if (typeof updateCircuitSvg === 'function') updateCircuitSvg(ci, rNum, 10);
-      playZenChime(640);
+
+      // 7. Zen Chime Feedback
+      playZenChime(ci >= 0 ? 640 : 380);
     }
     window.setCircuitConsolePreset = setCircuitConsolePreset;
     window.updateCircuitConsole = updateCircuitConsole;
