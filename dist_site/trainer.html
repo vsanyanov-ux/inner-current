@@ -257,215 +257,352 @@
           </div>
         </header>
 
-        <!-- Master Instrument: Speedometer Gauge + Live Status -->
-        <div class="bg-gradient-to-b from-slate-900/90 via-slate-900/70 to-slate-950/90 border border-slate-800 rounded-2xl p-6 md:p-8 backdrop-blur-md shadow-2xl relative overflow-hidden">
-          <div id="gauge-ambient-glow" class="absolute -right-16 -top-16 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none transition-all duration-700"></div>
+                <!-- AUTOMOTIVE BINNACLE CLUSTER: 4 GAUGES IN LINE (FUEL, TACHOMETER, SPEEDOMETER, TEMP) -->
+        <div class="bg-gradient-to-b from-slate-900/95 via-[#060b17] to-slate-950 border border-slate-800/90 hover:border-amber-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden transition-all duration-300">
+          <div id="gauge-ambient-glow" class="absolute -right-24 -top-24 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none transition-all duration-700"></div>
+          <div id="cc-ambient-glow-left" class="absolute -left-24 -bottom-24 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none transition-all duration-700"></div>
 
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+          <!-- Quick Cockpit Presets -->
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/80 pb-5 mb-8">
+            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+              <span class="text-amber-400 text-base">⚙️</span>
+              <span class="uppercase tracking-wider font-semibold text-slate-300">Режимы пилотажа:</span>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <button onclick="setCircuitConsolePreset(85, 5, 1.5)" class="cc-preset-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-950/80 text-emerald-200 border border-emerald-500/70 hover:bg-emerald-900 transition flex items-center gap-1.5 cursor-pointer shadow-sm">
+                <span>🏎️ Шоссе Мусин (Поток)</span>
+              </button>
+              <button onclick="setCircuitConsolePreset(92, 85, 1.5)" class="cc-preset-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-red-950/80 text-red-200 border border-red-500/70 hover:bg-red-900 transition flex items-center gap-1.5 cursor-pointer shadow-sm">
+                <span>🔥 Газ на ручнике (Перегрев)</span>
+              </button>
+              <button onclick="setCircuitConsolePreset(25, 45, 0.25)" class="cc-preset-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-amber-950/80 text-amber-200 border border-amber-500/70 hover:bg-amber-900 transition flex items-center gap-1.5 cursor-pointer shadow-sm">
+                <span>⛽ Резерв бака (Истощение)</span>
+              </button>
+              <button onclick="setCircuitConsolePreset(10, 0, 1.5)" class="cc-preset-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-indigo-950/80 text-indigo-200 border border-indigo-500/70 hover:bg-indigo-900 transition flex items-center gap-1.5 cursor-pointer shadow-sm">
+                <span>🧘 Светофор (Дзансин)</span>
+              </button>
+              <button onclick="setCircuitConsolePreset(20, 80, 1.5)" class="cc-preset-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-900 text-slate-300 border border-slate-700 hover:bg-slate-800 transition flex items-center gap-1.5 cursor-pointer shadow-sm">
+                <span>🧊 Вязкий клин</span>
+              </button>
+              <button onclick="setCircuitConsolePreset(60, 42, 1.35)" class="cc-preset-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-cyan-950/80 text-cyan-200 border border-cyan-500/70 hover:bg-cyan-900 transition flex items-center gap-1.5 cursor-pointer shadow-sm">
+                <span>⌚ С браслета (76 bpm)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- AUTOMOTIVE BINNACLE CLUSTER: 4 GAUGES IN LINE -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-5 items-stretch">
             
-            <!-- Left: Speedometer Dial (SVG) -->
-                                    <!-- LEFT: TACHOMETER DIAL (SVG) - НАПОР ВНИМАНИЯ (I) & ЧСС ПОКОЯ -->
-            <div class="lg:col-span-6 flex flex-col items-center justify-between p-6 rounded-2xl bg-slate-950/85 border border-slate-800 text-center shadow-xl relative overflow-hidden">
-              <div class="w-full flex items-center justify-between text-[11px] font-mono uppercase tracking-widest text-slate-400 font-bold mb-1">
-                <span class="flex items-center gap-1.5 text-cyan-400">
-                  <span id="tach-status-emoji" class="text-lg">⚡</span>
-                  <span>ТАХОМЕТР ПОТОКА (I & ЧСС)</span>
+            <!-- 1. AUX GAUGE LEFT: FUEL LEVEL (TANDEN U) [col-span-2] -->
+            <div class="lg:col-span-2 bg-slate-950/90 border border-slate-800/90 rounded-2xl p-4 flex flex-col items-center justify-between shadow-inner relative group">
+              <div class="w-full flex items-center justify-between text-[11px] font-mono">
+                <span class="text-amber-400 font-bold uppercase tracking-wider flex items-center gap-1">
+                  <span>⛽</span> ТОПЛИВО (<span class="font-bold">U</span>)
                 </span>
-                <span id="tach-rpm-badge" class="px-2 py-0.5 rounded bg-cyan-950 border border-cyan-800 text-cyan-300 text-[10px] font-bold">
-                  76 уд/мин • 60 Ав
-                </span>
+                <span id="cc-fuel-lamp" class="w-2.5 h-2.5 rounded-full bg-slate-800 transition-all duration-300" title="Контрольная лампа резерва"></span>
               </div>
 
-              <!-- SVG TACHOMETER DIAL -->
-              <div class="w-full max-w-[290px] my-2 relative">
-                <svg viewBox="0 0 300 170" class="w-full overflow-visible select-none drop-shadow-lg">
+              <!-- SVG Fuel Gauge -->
+              <div class="relative w-36 h-28 flex items-center justify-center my-1">
+                <svg viewBox="0 0 140 110" class="w-full h-full overflow-visible">
                   <defs>
-                    <linearGradient id="tach-needle-gradient" x1="0%" y1="100%" x2="0%" y2="0%">
-                      <stop offset="0%" stop-color="#0284c7"/>
-                      <stop offset="35%" stop-color="#38bdf8"/>
-                      <stop offset="85%" stop-color="#7dd3fc"/>
-                      <stop offset="100%" stop-color="#ffffff"/>
+                    <linearGradient id="trainerGradFuel" x1="0%" y1="100%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#ef4444" />
+                      <stop offset="35%" stop-color="#f59e0b" />
+                      <stop offset="100%" stop-color="#10b981" />
                     </linearGradient>
-                    <filter id="tach-needle-glow" x="-50%" y="-50%" width="200%" height="200%">
-                      <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur"/>
-                      <feMerge>
-                        <feMergeNode in="blur"/>
-                        <feMergeNode in="SourceGraphic"/>
-                      </feMerge>
-                    </filter>
                   </defs>
-
-                  <!-- Background Arc Track -->
-                  <path d="M 50 140 A 100 100 0 0 1 250 140" fill="none" stroke="#1e293b" stroke-width="16" stroke-linecap="round"/>
-
-                  <!-- Colored Arcs -->
-                  <!-- Blue / Cyan Zone (0 to 60 I, 55 to 76 bpm) -->
-                  <path d="M 50 140 A 100 100 0 0 1 180.9 44.9" fill="none" stroke="#38bdf8" stroke-width="14" stroke-linecap="round" opacity="0.95"/>
-                  <!-- Yellow Zone (60 to 85 I, 76 to 85 bpm) -->
-                  <path d="M 180.9 44.9 A 100 100 0 0 1 239.1 94.6" fill="none" stroke="#f59e0b" stroke-width="14" stroke-linecap="butt" opacity="0.95"/>
-                  <!-- Red Overrev Zone (85 to 100 I, 85 to 90+ bpm) -->
-                  <path d="M 239.1 94.6 A 100 100 0 0 1 250 140" fill="none" stroke="#ef4444" stroke-width="14" stroke-linecap="round" opacity="0.95"/>
-
-                  <!-- Ticks and Scale Marks (Resting Heart Rate in bpm) -->
-                  <line x1="50" y1="140" x2="38" y2="140" stroke="#38bdf8" stroke-width="2"/>
-                  <text x="32" y="144" fill="#38bdf8" font-size="10" font-family="monospace" text-anchor="end" font-weight="bold">55</text>
-
-                  <line x1="79.3" y1="69.3" x2="71" y2="61" stroke="#38bdf8" stroke-width="2"/>
-                  <text x="65" y="58" fill="#38bdf8" font-size="9" font-family="monospace" text-anchor="end">64</text>
-
-                  <line x1="150" y1="40" x2="150" y2="28" stroke="#38bdf8" stroke-width="2"/>
-                  <text x="150" y="24" fill="#38bdf8" font-size="11" font-family="monospace" text-anchor="middle" font-weight="bold">72</text>
-
-                  <line x1="220.7" y1="69.3" x2="229" y2="61" stroke="#f59e0b" stroke-width="2"/>
-                  <text x="235" y="58" fill="#fbbf24" font-size="9" font-family="monospace" text-anchor="start">81</text>
-
-                  <line x1="250" y1="140" x2="262" y2="140" stroke="#ef4444" stroke-width="2"/>
-                  <text x="268" y="144" fill="#ef4444" font-size="10" font-family="monospace" text-anchor="start" font-weight="bold">90+</text>
-
-                  <!-- Labels: ПОКОЙ / ПОТОК / ОВЕРРЕВ -->
-                  <text x="62" y="112" fill="#7dd3fc" font-size="8" font-family="sans-serif" font-weight="bold">🔵 ПОКОЙ</text>
-                  <text x="150" y="70" fill="#fde68a" font-size="7" font-family="sans-serif" font-weight="semibold" text-anchor="middle">⚡ ПОТОК</text>
-                  <text x="238" y="112" fill="#fca5a5" font-size="8" font-family="sans-serif" font-weight="bold" text-anchor="end">🔴 ОВЕРРЕВ</text>
-
-                  <!-- Dynamic Tachometer Needle (Clean tip, default I=60 / HR=76, angle = +18 deg) -->
-                  <g id="tach-needle-group">
-                    <polygon id="tach-needle-counter" points="146.7,135.7 153.3,144.3 145.7,153.3" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" opacity="0.85"/>
-                    <polygon id="tach-needle-beam" points="146.7,135.7 153.3,144.3 187.4,26.7 185.5,26.1" fill="url(#tach-needle-gradient)" filter="url(#tach-needle-glow)"/>
-                    <line id="tach-needle-spine" x1="150" y1="140" x2="186.5" y2="27.8" stroke="#ffffff" stroke-width="0.8" opacity="0.9"/>
-                    
-                    <circle id="tach-needle-tip-glow" cx="186.5" cy="27.8" r="3" fill="#38bdf8" filter="url(#tach-needle-glow)"/>
-                    <circle id="tach-needle-tip-core" cx="186.5" cy="27.8" r="1.2" fill="#ffffff"/>
-
-                    <circle cx="150" cy="140" r="12" fill="#0b1329" stroke="#38bdf8" stroke-width="2.5" filter="url(#tach-needle-glow)"/>
-                    <circle cx="150" cy="140" r="5.5" fill="#38bdf8"/>
-                    <circle cx="150" cy="140" r="2" fill="#ffffff"/>
+                  <!-- Track -->
+                  <circle cx="70" cy="70" r="45" fill="none" stroke="#1e293b" stroke-width="8"
+                    stroke-dasharray="94.25 282.74" transform="rotate(210, 70, 70)" stroke-linecap="round" />
+                  <!-- Active Arc -->
+                  <circle id="cc-fuel-arc" cx="70" cy="70" r="45" fill="none" stroke="url(#trainerGradFuel)" stroke-width="8"
+                    stroke-dasharray="94.25 282.74" transform="rotate(210, 70, 70)" stroke-linecap="round"
+                    style="transition: stroke-dasharray 0.35s cubic-bezier(0.4, 0, 0.2, 1);" />
+                  <!-- Scale Ticks -->
+                  <text x="32" y="102" fill="#ef4444" font-size="10" font-family="monospace" text-anchor="middle" font-weight="bold">E</text>
+                  <text x="70" y="20" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">½</text>
+                  <text x="108" y="102" fill="#10b981" font-size="10" font-family="monospace" text-anchor="middle" font-weight="bold">F</text>
+                  <!-- Needle -->
+                  <g id="cc-fuel-needle" transform="rotate(60, 70, 70)" style="transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);">
+                    <line x1="70" y1="70" x2="70" y2="30" stroke="#f8fafc" stroke-width="2.5" stroke-linecap="round" />
+                    <line x1="70" y1="70" x2="70" y2="35" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" />
+                    <circle cx="70" cy="70" r="5" fill="#0f172a" stroke="#f59e0b" stroke-width="2" />
                   </g>
                 </svg>
               </div>
 
-              <!-- Main Numeric Readout -->
-              <div class="my-1">
-                <span id="tach-i-val" class="text-6xl md:text-7xl font-black font-mono tracking-tight bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-400 bg-clip-text text-transparent">
-                  76
-                </span>
-                <span class="text-lg md:text-xl font-bold font-mono text-cyan-300 ml-1">уд/мин</span>
-              </div>
-
-              <div id="tach-state-label" class="text-sm font-bold font-mono text-cyan-300 uppercase tracking-wide">
-                ⚡ КРЕЙСЕРСКИЙ РАБОЧИЙ ПОТОК
-              </div>
-              <div class="text-xs text-slate-300 font-mono mt-0.5">
-                Ток внимания ядра Тандэна: <span id="tach-i-sub" class="text-amber-300 font-bold">60 Ав</span> • ЧСС покоя
-              </div>
-
-              <!-- Slider for Current (I) -->
-              <div class="w-full mt-4 pt-3 border-t border-slate-800/80">
-                <div class="flex justify-between text-[10px] font-mono text-slate-400 mb-1">
-                  <span>Штиль 55 bpm (0 Ав)</span>
-                  <span>Газ в пол 90+ bpm (100 Ав)</span>
+              <!-- Digital readout & Slider -->
+              <div class="text-center w-full">
+                <div class="text-xl font-mono font-black text-amber-300 tracking-tight" id="cc-u-display">1.50 В</div>
+                <div class="text-[10px] font-mono text-slate-400 mt-0.5" id="cc-u-desc">Полный бак (сон OK)</div>
+                <div class="w-full pt-2 mt-2 border-t border-slate-800/80">
+                  <input type="range" id="cc-slider-u" min="0" max="150" value="150" oninput="updateCircuitConsole()"
+                    class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-400 transition" />
+                  <div class="text-[9px] text-slate-400 text-center font-mono mt-0.5">Батарея Тандэна ($U$)</div>
                 </div>
-                <input type="range" id="slider-tach-i" min="0" max="100" value="60" oninput="tach_onSliderChange(this.value)"
-                  class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400 transition" />
               </div>
             </div>
 
-
-            <!-- RIGHT: SPEEDOMETER DIAL (SVG) - СТРЕСС И СОПРОТИВЛЕНИЕ (0..100 R) -->
-            <div class="lg:col-span-6 flex flex-col items-center justify-between p-6 rounded-2xl bg-slate-950/85 border border-slate-800 text-center shadow-xl relative overflow-hidden">
-              <div class="w-full flex items-center justify-between text-[11px] font-mono uppercase tracking-widest text-slate-400 font-bold mb-1">
-                <span class="flex items-center gap-1.5 text-emerald-400">
-                  <span id="gauge-status-emoji" class="text-lg">🎯</span>
-                  <span>СПИДОМЕТР СТРЕССА & ЭГО-СОПРОТИВЛЕНИЯ (R)</span>
+            <!-- 2. MAIN GAUGE LEFT: TACHOMETER (CURRENT I) [col-span-4] -->
+            <div class="lg:col-span-4 bg-slate-950/95 border-2 border-slate-800/90 hover:border-cyan-500/50 rounded-2xl p-5 flex flex-col items-center justify-between shadow-2xl relative">
+              <div class="w-full flex items-center justify-between mb-2 text-xs font-mono">
+                <span class="text-cyan-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                  <span id="tach-status-emoji">⚡</span> ТАХОМЕТР (<span class="font-bold">I</span>)
                 </span>
-                <span id="gauge-ci-badge" class="px-2 py-0.5 rounded bg-emerald-950 border border-emerald-800 text-emerald-300 text-[10px] font-bold">
-                  R: 42 Ω • CI: +16
+                <span class="px-2 py-0.5 rounded bg-cyan-950/80 border border-cyan-800/50 text-cyan-300 text-[11px] font-bold" id="tach-rpm-badge">
+                  6000 RPM • 75 Ав
                 </span>
               </div>
 
-              <!-- SVG SPEEDOMETER DIAL (0 to 100 Scale) -->
-              <div class="w-full max-w-[290px] my-2 relative">
-                <svg viewBox="0 0 300 170" class="w-full overflow-visible select-none drop-shadow-lg">
+              <!-- Big Tachometer SVG -->
+              <div class="relative w-56 h-40 flex items-center justify-center my-1">
+                <svg viewBox="0 0 220 160" class="w-full h-full overflow-visible">
                   <defs>
-                    <linearGradient id="needle-gradient" x1="0%" y1="100%" x2="0%" y2="0%">
-                      <stop offset="0%" stop-color="#0284c7"/>
-                      <stop offset="35%" stop-color="#38bdf8"/>
-                      <stop offset="85%" stop-color="#7dd3fc"/>
-                      <stop offset="100%" stop-color="#ffffff"/>
+                    <linearGradient id="trainerGradTach" x1="0%" y1="100%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#38bdf8" />
+                      <stop offset="60%" stop-color="#10b981" />
+                      <stop offset="78%" stop-color="#f59e0b" />
+                      <stop offset="100%" stop-color="#ef4444" />
                     </linearGradient>
-                    <filter id="needle-glow" x="-50%" y="-50%" width="200%" height="200%">
-                      <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur"/>
-                      <feMerge>
-                        <feMergeNode in="blur"/>
-                        <feMergeNode in="SourceGraphic"/>
-                      </feMerge>
-                    </filter>
                   </defs>
-
-                  <!-- Background Arc Track -->
-                  <path d="M 50 140 A 100 100 0 0 1 250 140" fill="none" stroke="#1e293b" stroke-width="16" stroke-linecap="round"/>
-
-                  <!-- Colored Arcs: 0 to 100 Resistance / Stress -->
-                  <!-- Green Zone (0 to 25 R: Релакс / Сверхпроводимость) -->
-                  <path d="M 50 140 A 100 100 0 0 1 79.3 69.3" fill="none" stroke="#10b981" stroke-width="14" stroke-linecap="round" opacity="0.95"/>
-                  <!-- Cyan Zone (25 to 50 R: Рабочий поток) -->
-                  <path d="M 79.3 69.3 A 100 100 0 0 1 150 40" fill="none" stroke="#06b6d4" stroke-width="14" stroke-linecap="butt" opacity="0.95"/>
-                  <!-- Yellow Zone (50 to 75 R: Стресс / Дрейф) -->
-                  <path d="M 150 40 A 100 100 0 0 1 220.7 69.3" fill="none" stroke="#f59e0b" stroke-width="14" stroke-linecap="butt" opacity="0.95"/>
-                  <!-- Red Zone (75 to 100 R: Омический клин / Авария) -->
-                  <path d="M 220.7 69.3 A 100 100 0 0 1 250 140" fill="none" stroke="#ef4444" stroke-width="14" stroke-linecap="round" opacity="0.95"/>
-
-                  <!-- Ticks and Scale Marks (0 to 100) -->
-                  <line x1="50" y1="140" x2="38" y2="140" stroke="#10b981" stroke-width="2"/>
-                  <text x="32" y="144" fill="#34d399" font-size="10" font-family="monospace" text-anchor="end" font-weight="bold">0</text>
-
-                  <line x1="79.3" y1="69.3" x2="71" y2="61" stroke="#06b6d4" stroke-width="2"/>
-                  <text x="65" y="58" fill="#22d3ee" font-size="9" font-family="monospace" text-anchor="end">25</text>
-
-                  <line x1="150" y1="40" x2="150" y2="28" stroke="#f59e0b" stroke-width="2"/>
-                  <text x="150" y="24" fill="#fbbf24" font-size="11" font-family="monospace" text-anchor="middle" font-weight="bold">50</text>
-
-                  <line x1="220.7" y1="69.3" x2="229" y2="61" stroke="#f59e0b" stroke-width="2"/>
-                  <text x="235" y="58" fill="#fbbf24" font-size="9" font-family="monospace" text-anchor="start">75</text>
-
-                  <line x1="250" y1="140" x2="262" y2="140" stroke="#ef4444" stroke-width="2"/>
-                  <text x="268" y="144" fill="#ef4444" font-size="10" font-family="monospace" text-anchor="start" font-weight="bold">100</text>
-
-                  <!-- Labels: РЕЛАКС / ПОТОК / КЛИН -->
-                  <text x="62" y="112" fill="#6ee7b7" font-size="8" font-family="sans-serif" font-weight="bold">🟢 РЕЛАКС</text>
-                  <text x="150" y="70" fill="#67e8f9" font-size="7" font-family="sans-serif" font-weight="semibold" text-anchor="middle">🔵 ПОТОК</text>
-                  <text x="238" y="112" fill="#fca5a5" font-size="8" font-family="sans-serif" font-weight="bold" text-anchor="end">🔴 КЛИН</text>
-
-                  <!-- Dynamic Speedometer Needle (Default R=42, angle = -14.4 deg) -->
-                  <g id="gauge-needle-group">
-                    <polygon id="gauge-needle-counter" points="146.5,140 153.5,140 150,154" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" opacity="0.85"/>
-                    <polygon id="gauge-needle-beam" points="146.5,140 153.5,140 121.7,26.1 119.8,26.7" fill="url(#needle-gradient)" filter="url(#needle-glow)"/>
-                    <line id="gauge-needle-spine" x1="150" y1="140" x2="120.6" y2="27.8" stroke="#ffffff" stroke-width="0.8" opacity="0.9"/>
-                    
-                    <circle id="gauge-needle-tip-glow" cx="120.6" cy="27.8" r="3" fill="#38bdf8" filter="url(#needle-glow)"/>
-                    <circle id="gauge-needle-tip-core" cx="120.6" cy="27.8" r="1.2" fill="#ffffff"/>
-
-                    <circle cx="150" cy="140" r="12" fill="#0b1329" stroke="#38bdf8" stroke-width="2.5" filter="url(#needle-glow)"/>
-                    <circle cx="150" cy="140" r="5.5" fill="#38bdf8"/>
-                    <circle cx="150" cy="140" r="2" fill="#ffffff"/>
+                  <!-- Arc Background -->
+                  <circle cx="110" cy="115" r="80" fill="none" stroke="#1e293b" stroke-width="14"
+                    stroke-dasharray="335.1 167.55" transform="rotate(150, 110, 115)" stroke-linecap="round" />
+                  <!-- Colored Track -->
+                  <circle id="cc-i-arc" cx="110" cy="115" r="80" fill="none" stroke="url(#trainerGradTach)" stroke-width="14"
+                    stroke-dasharray="251.3 502.65" transform="rotate(150, 110, 115)" stroke-linecap="round"
+                    style="transition: stroke-dasharray 0.35s cubic-bezier(0.4, 0, 0.2, 1);" />
+                  <!-- Scale Numbers (0 to 8 x 1000 RPM) -->
+                  <text x="25.1" y="164" fill="#64748b" font-size="11" font-family="monospace" text-anchor="middle" font-weight="bold">0</text>
+                  <text x="25.1" y="66" fill="#38bdf8" font-size="11" font-family="monospace" text-anchor="middle" font-weight="bold">2</text>
+                  <text x="110" y="24" fill="#10b981" font-size="11" font-family="monospace" text-anchor="middle" font-weight="bold">4</text>
+                  <text x="194.9" y="66" fill="#f59e0b" font-size="11" font-family="monospace" text-anchor="middle" font-weight="bold">6</text>
+                  <text x="194.9" y="164" fill="#ef4444" font-size="11" font-family="monospace" text-anchor="middle" font-weight="bold">8</text>
+                  <text x="110" y="85" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle" letter-spacing="1.5">RPM ×1000</text>
+                  <!-- Needle -->
+                  <g id="cc-i-needle" transform="rotate(60, 110, 115)" style="transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);">
+                    <line x1="110" y1="115" x2="110" y2="42" stroke="#f8fafc" stroke-width="3" stroke-linecap="round" />
+                    <line x1="110" y1="115" x2="110" y2="48" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" />
+                    <circle cx="110" cy="115" r="9" fill="#0f172a" stroke="#38bdf8" stroke-width="3" />
+                    <circle cx="110" cy="115" r="3" fill="#f8fafc" />
+                  </g>
+                  <!-- Legacy elements for test compatibility -->
+                  <g id="tach-needle-group" class="hidden">
+                    <line id="tach-needle-spine" x1="0" y1="0" x2="0" y2="0" />
+                    <polygon id="tach-needle-beam" points="0,0" />
+                    <polygon id="tach-needle-counter" points="0,0" />
+                    <circle id="tach-needle-tip-glow" cx="0" cy="0" r="0" />
+                    <circle id="tach-needle-tip-core" cx="0" cy="0" r="0" />
                   </g>
                 </svg>
               </div>
 
-              <!-- Main Numeric Readout -->
-              <div class="my-1">
-                <span id="gauge-ci-val" class="text-6xl md:text-7xl font-black font-mono tracking-tight bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400 bg-clip-text text-transparent">
-                  42
-                </span>
-                <span class="text-lg md:text-xl font-bold font-mono text-cyan-300 ml-1">стресс / Ω</span>
-              </div>
-
-              <div id="gauge-state-label" class="text-sm font-bold font-mono text-cyan-300 uppercase tracking-wide">
-                🔵 РАБОЧИЙ ПОТОК (СВОБОДНЫЙ ХОД)
-              </div>
-              <div id="gauge-h-sub" class="text-xs text-slate-300 font-mono mt-0.5">
-                Проводимость: <span id="gauge-ci-sub" class="text-cyan-300 font-bold">CI: +16</span> • КПД Бытия: <span id="gauge-h-val" class="text-emerald-300 font-bold">58%</span>
+              <!-- Digital Readout & Throttle Pedal -->
+              <div class="text-center w-full">
+                <div class="text-3xl font-mono font-black text-cyan-300 tracking-tight" id="cc-i-display">6000 RPM</div>
+                <div class="text-[11px] font-mono text-cyan-400/90 mt-0.5" id="tach-state-label">КРЕЙСЕРСКИЙ РАБОЧИЙ ПОТОК</div>
+                <div class="text-[10px] text-slate-300 font-mono mt-0.5">
+                  Ток внимания: <span id="tach-i-sub" class="text-amber-300 font-bold">75 Ав</span> (<span id="tach-i-val">76</span> уд/мин)
+                </div>
+                <div class="w-full pt-2 mt-2 border-t border-slate-800/80">
+                  <div class="flex justify-between text-[9px] font-mono text-slate-400 mb-0.5">
+                    <span>Холостой ход</span>
+                    <span>Педаль в пол</span>
+                  </div>
+                  <input type="range" id="slider-tach-i" min="0" max="100" value="75" oninput="tach_onSliderChange(this.value)"
+                    class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400 transition" />
+                  <input type="range" id="cc-slider-i" min="0" max="100" value="75" class="hidden" />
+                  <div class="text-[10px] text-slate-400 text-center font-mono mt-0.5">Педаль газа / Ток внимания ($I$)</div>
+                </div>
               </div>
             </div>
+
+            <!-- 3. MAIN GAUGE RIGHT: SPEEDOMETER (POWER P) [col-span-4] -->
+            <div class="lg:col-span-4 bg-slate-950/95 border-2 border-slate-800/90 hover:border-emerald-500/50 rounded-2xl p-5 flex flex-col items-center justify-between shadow-2xl relative">
+              <div class="w-full flex items-center justify-between mb-2 text-xs font-mono">
+                <span class="text-emerald-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                  <span id="gauge-status-emoji">🏎️</span> СПИДОМЕТР (<span class="font-bold">P</span>)
+                </span>
+                <span class="px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-800/50 text-emerald-300 text-[11px] font-bold" id="gauge-ci-badge">
+                  182 км/ч • 76 Ан
+                </span>
+              </div>
+
+              <!-- Big Speedometer SVG -->
+              <div class="relative w-56 h-40 flex items-center justify-center my-1">
+                <svg viewBox="0 0 220 160" class="w-full h-full overflow-visible">
+                  <defs>
+                    <linearGradient id="trainerGradSpeed" x1="0%" y1="100%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#38bdf8" />
+                      <stop offset="45%" stop-color="#10b981" />
+                      <stop offset="85%" stop-color="#f59e0b" />
+                      <stop offset="100%" stop-color="#eab308" />
+                    </linearGradient>
+                  </defs>
+                  <!-- Arc Background -->
+                  <circle cx="110" cy="115" r="80" fill="none" stroke="#1e293b" stroke-width="14"
+                    stroke-dasharray="335.1 167.55" transform="rotate(150, 110, 115)" stroke-linecap="round" />
+                  <!-- Colored Track -->
+                  <circle id="cc-speed-arc" cx="110" cy="115" r="80" fill="none" stroke="url(#trainerGradSpeed)" stroke-width="14"
+                    stroke-dasharray="251.3 502.65" transform="rotate(150, 110, 115)" stroke-linecap="round"
+                    style="transition: stroke-dasharray 0.35s cubic-bezier(0.4, 0, 0.2, 1);" />
+                  <!-- Scale Numbers (0 to 240 km/h) -->
+                  <text x="25.1" y="164" fill="#64748b" font-size="10" font-family="monospace" text-anchor="middle" font-weight="bold">0</text>
+                  <text x="25.1" y="66" fill="#38bdf8" font-size="10" font-family="monospace" text-anchor="middle" font-weight="bold">60</text>
+                  <text x="110" y="24" fill="#10b981" font-size="10" font-family="monospace" text-anchor="middle" font-weight="bold">120</text>
+                  <text x="194.9" y="66" fill="#f59e0b" font-size="10" font-family="monospace" text-anchor="middle" font-weight="bold">180</text>
+                  <text x="194.9" y="164" fill="#eab308" font-size="10" font-family="monospace" text-anchor="middle" font-weight="bold">240</text>
+                  <text x="110" y="85" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle" letter-spacing="1.5">КМ / Ч</text>
+                  <!-- Needle -->
+                  <g id="cc-speed-needle" transform="rotate(62, 110, 115)" style="transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);">
+                    <line x1="110" y1="115" x2="110" y2="42" stroke="#f8fafc" stroke-width="3" stroke-linecap="round" />
+                    <line x1="110" y1="115" x2="110" y2="48" stroke="#10b981" stroke-width="2" stroke-linecap="round" />
+                    <circle cx="110" cy="115" r="9" fill="#0f172a" stroke="#10b981" stroke-width="3" />
+                    <circle cx="110" cy="115" r="3" fill="#f8fafc" />
+                  </g>
+                  <!-- Legacy elements for test compatibility -->
+                  <g id="gauge-needle-group" class="hidden">
+                    <line id="gauge-needle-spine" x1="0" y1="0" x2="0" y2="0" />
+                    <polygon id="gauge-needle-beam" points="0,0" />
+                    <polygon id="gauge-needle-counter" points="0,0" />
+                    <circle id="gauge-needle-tip-glow" cx="0" cy="0" r="0" />
+                    <circle id="gauge-needle-tip-core" cx="0" cy="0" r="0" />
+                  </g>
+                </svg>
+              </div>
+
+              <!-- Digital Readout & Brake / Ego Slider -->
+              <div class="text-center w-full">
+                <div class="text-3xl font-mono font-black text-emerald-300 tracking-tight" id="cc-speed-display">182 КМ/Ч</div>
+                <div class="text-[11px] font-mono text-emerald-400/90 mt-0.5" id="gauge-state-label">СВЕРХПРОВОДЯЩИЙ ПОТОК (МУСИН)</div>
+                <div class="text-[10px] text-slate-300 font-mono mt-0.5">
+                  Тормоз эго: <strong id="gauge-ci-val" class="text-emerald-400">15</strong> Ω • <span id="gauge-ci-sub">CI: +85</span> • КПД: <span id="gauge-h-val" class="text-emerald-300 font-bold">85%</span>
+                </div>
+                <div class="w-full pt-2 mt-2 border-t border-slate-800/80">
+                  <div class="flex justify-between text-[9px] font-mono text-slate-400 mb-0.5">
+                    <span>Свободный ход (0 Ω)</span>
+                    <span>Тормоз эго ($R$)</span>
+                    <span>Глухой клин (100 Ω)</span>
+                  </div>
+                  <input type="range" id="cc-slider-r" min="0" max="100" value="15" oninput="trainer_onRChange(this.value)"
+                    class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-400 transition" />
+                  <div class="text-[10px] text-slate-400 text-center font-mono mt-0.5">Сцепление / Сопротивление эго ($R$)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. AUX GAUGE RIGHT: ENGINE TEMP (HEAT Q) [col-span-2] -->
+            <div class="lg:col-span-2 bg-slate-950/90 border border-slate-800/90 rounded-2xl p-4 flex flex-col items-center justify-between shadow-inner relative group">
+              <div class="w-full flex items-center justify-between text-[11px] font-mono">
+                <span class="text-rose-400 font-bold uppercase tracking-wider flex items-center gap-1">
+                  <span>🌡️</span> ТЕМПЕРАТУРА
+                </span>
+                <span id="cc-temp-lamp" class="w-2.5 h-2.5 rounded-full bg-slate-800 transition-all duration-300" title="Контрольная лампа перегрева"></span>
+              </div>
+
+              <!-- SVG Temperature Gauge -->
+              <div class="relative w-36 h-28 flex items-center justify-center my-1">
+                <svg viewBox="0 0 140 110" class="w-full h-full overflow-visible">
+                  <defs>
+                    <linearGradient id="trainerGradTemp" x1="0%" y1="100%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#38bdf8" />
+                      <stop offset="50%" stop-color="#10b981" />
+                      <stop offset="75%" stop-color="#f59e0b" />
+                      <stop offset="100%" stop-color="#ef4444" />
+                    </linearGradient>
+                  </defs>
+                  <!-- Track -->
+                  <circle cx="70" cy="70" r="45" fill="none" stroke="#1e293b" stroke-width="8"
+                    stroke-dasharray="94.25 282.74" transform="rotate(210, 70, 70)" stroke-linecap="round" />
+                  <!-- Active Arc -->
+                  <circle id="cc-temp-arc" cx="70" cy="70" r="45" fill="none" stroke="url(#trainerGradTemp)" stroke-width="8"
+                    stroke-dasharray="47.1 282.74" transform="rotate(210, 70, 70)" stroke-linecap="round"
+                    style="transition: stroke-dasharray 0.35s cubic-bezier(0.4, 0, 0.2, 1);" />
+                  <!-- Scale Ticks -->
+                  <text x="30" y="102" fill="#38bdf8" font-size="9" font-family="monospace" text-anchor="middle">50°</text>
+                  <text x="70" y="20" fill="#10b981" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">90°</text>
+                  <text x="110" y="102" fill="#ef4444" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">130°</text>
+                  <!-- Needle -->
+                  <g id="cc-temp-needle" transform="rotate(0, 70, 70)" style="transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);">
+                    <line x1="70" y1="70" x2="70" y2="30" stroke="#f8fafc" stroke-width="2.5" stroke-linecap="round" />
+                    <line x1="70" y1="70" x2="70" y2="35" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round" />
+                    <circle cx="70" cy="70" r="5" fill="#0f172a" stroke="#ef4444" stroke-width="2" />
+                  </g>
+                </svg>
+              </div>
+
+              <!-- Digital readout -->
+              <div class="text-center w-full">
+                <div class="text-xl font-mono font-black text-rose-300 tracking-tight" id="cc-temp-display">90°C</div>
+                <div class="text-[10px] font-mono text-slate-400 mt-0.5" id="cc-temp-desc">Норма Мусин (Q=0)</div>
+                <div class="w-full pt-2 mt-2 border-t border-slate-800/80 text-[10px] text-slate-400 font-mono text-center">
+                  Ожог Джоуля — Ленца: <span id="cc-heat-val" class="text-red-400 font-bold">8.4 Бн</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- TRIP COMPUTER & SOMATIC COCKPIT HUD -->
+          <div class="mt-8 pt-6 border-t border-slate-800/80 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            
+            <!-- Left: Diagnostic Lamp Matrix & Mode Badge -->
+            <div class="lg:col-span-5 flex flex-col space-y-3">
+              <div class="flex items-center gap-3">
+                <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800 text-[11px] font-mono">
+                  <span id="lamp-fuel-icon" class="text-slate-600 transition-colors">⛽</span>
+                  <span id="lamp-fuel-text" class="text-slate-400">БАК</span>
+                </div>
+                <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800 text-[11px] font-mono">
+                  <span id="lamp-brake-icon" class="text-slate-600 transition-colors">🛑</span>
+                  <span id="lamp-brake-text" class="text-slate-400">РУЧНИК</span>
+                </div>
+                <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800 text-[11px] font-mono">
+                  <span id="lamp-temp-icon" class="text-slate-600 transition-colors">🌡️</span>
+                  <span id="lamp-temp-text" class="text-slate-400">ПЕРЕГРЕВ</span>
+                </div>
+                <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800 text-[11px] font-mono">
+                  <span id="lamp-cruise-icon" class="text-cyan-400 transition-colors animate-pulse">⚡</span>
+                  <span id="lamp-cruise-text" class="text-cyan-300 font-bold">МУСИН</span>
+                </div>
+              </div>
+
+              <div id="cc-mode-pill" class="w-full py-2.5 px-4 rounded-xl font-bold font-mono text-xs sm:text-sm tracking-wide border shadow-lg transition-all duration-500 bg-cyan-950/80 border-cyan-500/70 text-cyan-200 text-center">
+                ⚡ СВЕРХПРОВОДИМОСТЬ (МУСИН)
+              </div>
+            </div>
+
+            <!-- Right: Somatic Driving Recommendation Verdict -->
+            <div class="lg:col-span-7">
+              <div id="cc-verdict-box" class="w-full p-4 rounded-2xl border border-cyan-500/40 bg-cyan-950/30 text-xs sm:text-sm text-slate-200 leading-relaxed font-sans transition-all duration-300">
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl shrink-0" id="cc-verdict-icon">🏎️</span>
+                  <div>
+                    <div class="font-bold text-cyan-300 mb-0.5" id="cc-verdict-title">Режим Мусин (Прямой Полет):</div>
+                    <div id="cc-verdict-text" class="text-slate-300 text-xs leading-relaxed">
+                      Тахометр и спидометр в полном согласии! Внутренний тормоз эго отпущен, температура охлаждающей жидкости строго 90°C. Вся энергия генератора Тандэн материализуется в продвижение по жизни.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Footer Telemetry Note -->
+          <div class="mt-6 pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] font-mono text-slate-400">
+            <div class="flex items-center gap-2">
+              <span class="text-amber-400">💡</span>
+              <span>Формула автомобиля: <strong class="text-slate-200">Скорость = Газ · (1 - Тормоз) · Топливо</strong> | Нагрев: <strong class="text-red-400">Q = I² · R</strong></span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-slate-400">Топливо Тандэна: <strong class="text-amber-300 font-mono">1.50 В</strong></span>
+            </div>
+          </div>
+
+        </div>
+
 
             <!-- Right: State Diagnosis, Automotive Metaphor & 30s Reset -->
             <div class="lg:col-span-12 space-y-4 mt-2">
@@ -1747,6 +1884,7 @@
 
     function tach_onSliderChange(val) {
       tach_render(val);
+      updateCircuitConsole();
     }
     window.tach_onSliderChange = tach_onSliderChange;
     window.tach_render = tach_render;
@@ -1920,6 +2058,10 @@
       }
 
       // Update Speedometer readouts (0..100 Stress / Resistance R)
+      const sliderR = document.getElementById('cc-slider-r');
+      if (sliderR) sliderR.value = stressR;
+      if (typeof updateCircuitConsole === 'function') updateCircuitConsole();
+
       const ciEl = document.getElementById('gauge-ci-val');
       const ciBadge = document.getElementById('gauge-ci-badge');
       const ciSub = document.getElementById('gauge-ci-sub');
@@ -2300,6 +2442,288 @@
     }
 
     // -------------------------------------------------------------
+    
+    // =========================================================================
+    // AUTOMOTIVE INSTRUMENT CLUSTER CONTROLLER (4 GAUGES: FUEL, TACH, SPEED, TEMP)
+    // =========================================================================
+    function updateCircuitConsole() {
+      const sliderI = document.getElementById('slider-tach-i') || document.getElementById('cc-slider-i');
+      const sliderR = document.getElementById('cc-slider-r');
+      const sliderU = document.getElementById('cc-slider-u');
+
+      const ccCurrentI = sliderI ? parseInt(sliderI.value, 10) : 75;
+      const ccCurrentR = sliderR ? parseInt(sliderR.value, 10) : 15;
+      const ccCurrentU = sliderU ? parseFloat((parseInt(sliderU.value, 10) / 100).toFixed(2)) : 1.50;
+
+      // Sync Tachometer state variable
+      if (typeof tachCurrentI !== 'undefined') {
+        tachCurrentI = ccCurrentI;
+      }
+
+      // Calculations
+      const rpm = Math.round(ccCurrentI * 80); // 0 to 8000 RPM
+      const restingHR = 55 + Math.round(ccCurrentI * 0.35); // 55 to 90 bpm
+      const fuelPercent = Math.max(0, Math.min(100, Math.round((ccCurrentU / 1.50) * 100)));
+      const fuelFactor = Math.max(0, Math.min(1.0, ccCurrentU / 1.50));
+
+      const conductFactor = Math.max(0, (100 - ccCurrentR) / 100.0);
+      const speedKmh = Math.max(0, Math.min(240, Math.round((ccCurrentI / 100.0) * conductFactor * fuelFactor * 240)));
+      const powerAn = (ccCurrentI * conductFactor * fuelFactor * 1.2).toFixed(1);
+      const heatLoss = ((Math.pow(ccCurrentI / 100.0, 2) * (ccCurrentR / 100.0) * 100) * 0.15).toFixed(1);
+
+      let calcTemp = 50 + (38.0 * (ccCurrentI / 100.0) * (1.0 - ccCurrentR / 100.0)) + (48.0 * Math.pow(ccCurrentI / 100.0, 2) * (ccCurrentR / 100.0) * 1.5);
+      if (fuelFactor < 0.2) calcTemp = Math.max(50, calcTemp * 0.7);
+      const coolantTemp = Math.max(50, Math.min(130, Math.round(calcTemp)));
+
+      // 1. UPDATE FUEL GAUGE
+      const elUDisplay = document.getElementById('cc-u-display');
+      const elUDesc = document.getElementById('cc-u-desc');
+      const needleFuel = document.getElementById('cc-fuel-needle');
+      const arcFuel = document.getElementById('cc-fuel-arc');
+      const lampFuel = document.getElementById('cc-fuel-lamp');
+      const lampFuelIcon = document.getElementById('lamp-fuel-icon');
+
+      if (elUDisplay) elUDisplay.textContent = ccCurrentU.toFixed(2) + ' В';
+      if (elUDesc) {
+        if (ccCurrentU >= 1.3) elUDesc.textContent = 'Бак полон (сон 8ч OK)';
+        else if (ccCurrentU >= 0.75) elUDesc.textContent = 'Средний уровень (½)';
+        else if (ccCurrentU >= 0.35) elUDesc.textContent = 'Малый запас (усталость)';
+        else elUDesc.textContent = 'КРИТИЧЕСКИЙ РЕЗЕРВ (ИСТОЩЕНИЕ)';
+      }
+      const angleFuel = -60 + (fuelPercent / 100.0) * 120;
+      if (needleFuel) needleFuel.setAttribute('transform', 'rotate(' + angleFuel.toFixed(1) + ', 70, 70)');
+      if (arcFuel) {
+        const arcFuelLen = (fuelPercent / 100.0) * 94.25;
+        arcFuel.setAttribute('stroke-dasharray', arcFuelLen.toFixed(1) + ' 282.74');
+      }
+      const isFuelLow = (ccCurrentU < 0.35);
+      if (lampFuel) {
+        lampFuel.className = isFuelLow 
+          ? 'w-2.5 h-2.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,1)] animate-ping'
+          : 'w-2.5 h-2.5 rounded-full bg-slate-800';
+      }
+      if (lampFuelIcon) {
+        lampFuelIcon.className = isFuelLow ? 'text-amber-400 animate-pulse font-bold' : 'text-slate-600';
+      }
+
+      // 2. UPDATE TACHOMETER (I)
+      const elIDisplay = document.getElementById('cc-i-display');
+      const elIBadge = document.getElementById('tach-rpm-badge');
+      const elIDesc = document.getElementById('tach-state-label');
+      const needleTach = document.getElementById('cc-i-needle');
+      const arcTach = document.getElementById('cc-i-arc');
+      const valTachSub = document.getElementById('tach-i-sub');
+      const valTachI = document.getElementById('tach-i-val');
+      const emojiTach = document.getElementById('tach-status-emoji');
+
+      if (elIDisplay) elIDisplay.textContent = rpm + ' RPM';
+      if (elIBadge) elIBadge.textContent = rpm + ' RPM • ' + ccCurrentI + ' Ав';
+      if (valTachSub) valTachSub.textContent = ccCurrentI + ' Ав';
+      if (valTachI) valTachI.textContent = restingHR;
+
+      if (elIDesc) {
+        if (ccCurrentI < 25) {
+          elIDesc.textContent = 'ХОЛОСТОЙ ХОД / ПОКОЙ (' + restingHR + ' bpm)';
+          elIDesc.className = 'text-[11px] font-mono text-sky-400 mt-0.5';
+          if (emojiTach) emojiTach.textContent = '🔵';
+        } else if (ccCurrentI < 65) {
+          elIDesc.textContent = 'КРЕЙСЕРСКИЙ РАБОЧИЙ ПОТОК (' + restingHR + ' bpm)';
+          elIDesc.className = 'text-[11px] font-mono text-cyan-300 mt-0.5';
+          if (emojiTach) emojiTach.textContent = '⚡';
+        } else if (ccCurrentI < 85) {
+          elIDesc.textContent = 'ВЫСОКИЕ ОБОРОТЫ ФОКУСА (' + restingHR + ' bpm)';
+          elIDesc.className = 'text-[11px] font-mono text-amber-300 mt-0.5';
+          if (emojiTach) emojiTach.textContent = '🟡';
+        } else {
+          elIDesc.textContent = 'КРАСНАЯ ЗОНА / ОТСЕЧКА (' + restingHR + ' bpm)';
+          elIDesc.className = 'text-[11px] font-mono text-rose-400 mt-0.5';
+          if (emojiTach) emojiTach.textContent = '🔥';
+        }
+      }
+      const angleTach = -120 + (ccCurrentI / 100.0) * 240;
+      if (needleTach) needleTach.setAttribute('transform', 'rotate(' + angleTach.toFixed(1) + ', 110, 115)');
+      if (arcTach) {
+        const arcTachLen = (ccCurrentI / 100.0) * 335.1;
+        arcTach.setAttribute('stroke-dasharray', arcTachLen.toFixed(1) + ' 502.65');
+      }
+
+      // 3. UPDATE SPEEDOMETER (P)
+      const elSpeedDisplay = document.getElementById('cc-speed-display');
+      const elSpeedBadge = document.getElementById('gauge-ci-badge');
+      const elSpeedDesc = document.getElementById('gauge-state-label');
+      const needleSpeed = document.getElementById('cc-speed-needle');
+      const arcSpeed = document.getElementById('cc-speed-arc');
+      const elCiVal = document.getElementById('gauge-ci-val');
+      const elCiSub = document.getElementById('gauge-ci-sub');
+      const elHVal = document.getElementById('gauge-h-val');
+      const emojiSpeed = document.getElementById('gauge-status-emoji');
+
+      const calcCi = Math.round(100 - ccCurrentR * 2);
+      const calcH = Math.max(0, Math.min(100, Math.round(100 - ccCurrentR)));
+
+      if (elSpeedDisplay) elSpeedDisplay.textContent = speedKmh + ' КМ/Ч';
+      if (elSpeedBadge) elSpeedBadge.textContent = speedKmh + ' км/ч • ' + powerAn + ' Ан';
+      if (elCiVal) elCiVal.textContent = ccCurrentR;
+      if (elCiSub) elCiSub.textContent = 'CI: ' + (calcCi > 0 ? '+' : '') + calcCi;
+      if (elHVal) elHVal.textContent = calcH + '%';
+
+      if (elSpeedDesc) {
+        if (speedKmh > 160) {
+          elSpeedDesc.textContent = 'СВЕРХПРОВОДЯЩИЙ ПОЛЕТ (МУСИН)';
+          elSpeedDesc.className = 'text-[11px] font-mono text-emerald-300 mt-0.5';
+          if (emojiSpeed) emojiSpeed.textContent = '🏎️';
+        } else if (speedKmh > 80) {
+          elSpeedDesc.textContent = 'УВЕРЕННОЕ КРЕЙСЕРСКОЕ ДВИЖЕНИЕ';
+          elSpeedDesc.className = 'text-[11px] font-mono text-cyan-300 mt-0.5';
+          if (emojiSpeed) emojiSpeed.textContent = '🚗';
+        } else if (speedKmh > 20) {
+          elSpeedDesc.textContent = 'ГОРОДСКОЙ ПЛОТНЫЙ ТРАФИК';
+          elSpeedDesc.className = 'text-[11px] font-mono text-amber-300 mt-0.5';
+          if (emojiSpeed) emojiSpeed.textContent = '🚙';
+        } else {
+          elSpeedDesc.textContent = 'МАШИНА СТОИТ / БУКСУЕТ В ГЛИНЕ';
+          elSpeedDesc.className = 'text-[11px] font-mono text-rose-400 mt-0.5';
+          if (emojiSpeed) emojiSpeed.textContent = '🛑';
+        }
+      }
+      const angleSpeed = -120 + (speedKmh / 240.0) * 240;
+      if (needleSpeed) needleSpeed.setAttribute('transform', 'rotate(' + angleSpeed.toFixed(1) + ', 110, 115)');
+      if (arcSpeed) {
+        const arcSpeedLen = (speedKmh / 240.0) * 335.1;
+        arcSpeed.setAttribute('stroke-dasharray', arcSpeedLen.toFixed(1) + ' 502.65');
+      }
+
+      // 4. UPDATE TEMPERATURE GAUGE (Q)
+      const elTempDisplay = document.getElementById('cc-temp-display');
+      const elTempDesc = document.getElementById('cc-temp-desc');
+      const elHeatVal = document.getElementById('cc-heat-val');
+      const needleTemp = document.getElementById('cc-temp-needle');
+      const arcTemp = document.getElementById('cc-temp-arc');
+      const lampTemp = document.getElementById('cc-temp-lamp');
+      const lampTempIcon = document.getElementById('lamp-temp-icon');
+
+      if (elTempDisplay) elTempDisplay.textContent = coolantTemp + '°C';
+      if (elHeatVal) elHeatVal.textContent = heatLoss + ' Бн';
+      if (elTempDesc) {
+        if (coolantTemp <= 65) elTempDesc.textContent = 'Холодный покой (Дзансин)';
+        else if (coolantTemp <= 95) elTempDesc.textContent = 'Оптимум 90°C (Мусин)';
+        else if (coolantTemp <= 110) elTempDesc.textContent = 'Повышенный нагрев';
+        else elTempDesc.textContent = 'АВАРИЙНЫЙ ПЕРЕГРЕВ (КИПЕНИЕ)';
+      }
+      const tempFraction = Math.max(0, Math.min(1.0, (coolantTemp - 50) / 80.0));
+      const angleTemp = -60 + tempFraction * 120;
+      if (needleTemp) needleTemp.setAttribute('transform', 'rotate(' + angleTemp.toFixed(1) + ', 70, 70)');
+      if (arcTemp) {
+        const arcTempLen = tempFraction * 94.25;
+        arcTemp.setAttribute('stroke-dasharray', arcTempLen.toFixed(1) + ' 282.74');
+      }
+      const isOverheated = (coolantTemp >= 105);
+      if (lampTemp) {
+        lampTemp.className = isOverheated
+          ? 'w-2.5 h-2.5 rounded-full bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,1)] animate-ping'
+          : 'w-2.5 h-2.5 rounded-full bg-slate-800';
+      }
+      if (lampTempIcon) {
+        lampTempIcon.className = isOverheated ? 'text-rose-400 animate-pulse font-bold' : 'text-slate-600';
+      }
+
+      // 5. UPDATE BRAKE & CRUISE LAMPS
+      const lampBrakeIcon = document.getElementById('lamp-brake-icon');
+      const lampCruiseIcon = document.getElementById('lamp-cruise-icon');
+      const isBrakeLocked = (ccCurrentR >= 60);
+      const isSuperconducting = (ccCurrentI >= 50 && ccCurrentR <= 25 && ccCurrentU >= 1.0);
+
+      if (lampBrakeIcon) {
+        lampBrakeIcon.className = isBrakeLocked ? 'text-rose-500 animate-pulse font-bold' : 'text-slate-600';
+      }
+      if (lampCruiseIcon) {
+        lampCruiseIcon.className = isSuperconducting ? 'text-cyan-400 animate-pulse font-bold' : 'text-slate-600';
+      }
+
+      // 6. UPDATE DRIVING VERDICT AND COCKPIT HUD
+      const modePill = document.getElementById('cc-mode-pill');
+      const verdictTitle = document.getElementById('cc-verdict-title');
+      const verdictText = document.getElementById('cc-verdict-text');
+      const verdictIcon = document.getElementById('cc-verdict-icon');
+      const verdictBox = document.getElementById('cc-verdict-box');
+
+      if (isFuelLow) {
+        if (modePill) {
+          modePill.className = 'w-full py-2.5 px-4 rounded-xl font-bold font-mono text-xs sm:text-sm tracking-wide border shadow-lg transition-all duration-500 bg-amber-950/80 border-amber-500/80 text-amber-200 text-center animate-pulse';
+          modePill.textContent = '⛽ РЕЗЕРВ ТОПЛИВА (ИСТОЩЕНИЕ ТАНДЭНА)';
+        }
+        if (verdictBox) verdictBox.className = 'w-full p-4 rounded-2xl border border-amber-500/50 bg-amber-950/30 text-xs text-slate-200 leading-relaxed font-sans transition-all duration-300';
+        if (verdictIcon) verdictIcon.textContent = '⛽';
+        if (verdictTitle) verdictTitle.textContent = 'Бак пуст! Мотор глохнет:';
+        if (verdictText) verdictText.innerHTML = 'Напряжение Тандэна упало до <strong>' + ccCurrentU.toFixed(2) + ' В</strong> (дефицит сна, переутомление). Бесполезно жать на газ — в топливной рампе пусто. Съезжайте на обочину: требуется глубокий восстановительный сон (8 часов) и дыхание в Тандэн.';
+      }
+      else if (isOverheated || (ccCurrentI >= 60 && ccCurrentR >= 50)) {
+        if (modePill) {
+          modePill.className = 'w-full py-2.5 px-4 rounded-xl font-bold font-mono text-xs sm:text-sm tracking-wide border shadow-lg transition-all duration-500 bg-rose-950/90 border-rose-500/80 text-rose-200 text-center animate-pulse';
+          modePill.textContent = '🔥 ОМИЧЕСКИЙ ПЕРЕГРЕВ: ГАЗ НА РУЧНИКЕ!';
+        }
+        if (verdictBox) verdictBox.className = 'w-full p-4 rounded-2xl border border-rose-500/50 bg-rose-950/40 text-xs text-slate-200 leading-relaxed font-sans transition-all duration-300';
+        if (verdictIcon) verdictIcon.textContent = '⚠️';
+        if (verdictTitle) verdictTitle.textContent = 'Тахометр ' + rpm + ' RPM при зажатом тормозе (' + coolantTemp + '°C)!';
+        if (verdictText) verdictText.innerHTML = 'Вы жмёте педаль газа в пол, но ручник эго затянут (R = ' + ccCurrentR + ' Ω). Скорость всего <strong>' + speedKmh + ' км/ч</strong>, а тосол закипает (' + coolantTemp + '°C). <strong>Действие водителя:</strong> Немедленно снимите ногу с газа, разожмите челюсть, выдохните через рот и отпустите внутреннее трение!';
+      }
+      else if (isSuperconducting) {
+        if (modePill) {
+          modePill.className = 'w-full py-2.5 px-4 rounded-xl font-bold font-mono text-xs sm:text-sm tracking-wide border shadow-lg transition-all duration-500 bg-cyan-950/90 border-cyan-500/70 text-cyan-200 text-center';
+          modePill.textContent = '⚡ СВЕРХПРОВОДИМОСТЬ (МУСИН: ' + speedKmh + ' КМ/Ч)';
+        }
+        if (verdictBox) verdictBox.className = 'w-full p-4 rounded-2xl border border-cyan-500/40 bg-cyan-950/30 text-xs text-slate-200 leading-relaxed font-sans transition-all duration-300';
+        if (verdictIcon) verdictIcon.textContent = '🏎️';
+        if (verdictTitle) verdictTitle.textContent = 'Полет по шоссе (' + speedKmh + ' км/ч, ' + rpm + ' RPM):';
+        if (verdictText) verdictText.innerHTML = 'Идеальная проводимость! Ручник эго полностью отпущен (R = ' + ccCurrentR + ' Ω), тосол на оптимуме ' + coolantTemp + '°C. Энергия внимания чисто трансформируется в полезное движение.';
+      }
+      else if (ccCurrentI < 25 && ccCurrentR <= 20) {
+        if (modePill) {
+          modePill.className = 'w-full py-2.5 px-4 rounded-xl font-bold font-mono text-xs sm:text-sm tracking-wide border shadow-lg transition-all duration-500 bg-indigo-950/80 border-indigo-500/70 text-indigo-200 text-center';
+          modePill.textContent = '🌌 СВЕТОФОР (ДЗАНСИН / ХОЛОСТОЙ ХОД)';
+        }
+        if (verdictBox) verdictBox.className = 'w-full p-4 rounded-2xl border border-indigo-500/40 bg-indigo-950/30 text-xs text-slate-200 leading-relaxed font-sans transition-all duration-300';
+        if (verdictIcon) verdictIcon.textContent = '🧘';
+        if (verdictTitle) verdictTitle.textContent = 'Холостой ход на нейтрали (' + rpm + ' RPM):';
+        if (verdictText) verdictText.innerHTML = 'Машина стоит на светофоре или катится накатом. Мотор шелестит, температура ' + coolantTemp + '°C (холодная проводка). Полная тишина и готовность трансмиссии к мгновенному старту без задержки.';
+      }
+      else {
+        if (modePill) {
+          modePill.className = 'w-full py-2.5 px-4 rounded-xl font-bold font-mono text-xs sm:text-sm tracking-wide border shadow-lg transition-all duration-500 bg-slate-900 border-slate-700 text-slate-200 text-center';
+          modePill.textContent = '⚖️ ШТАТНЫЙ РЕЖИМ ДВИЖЕНИЯ (' + speedKmh + ' КМ/Ч)';
+        }
+        if (verdictBox) verdictBox.className = 'w-full p-4 rounded-2xl border border-slate-700 bg-slate-900/40 text-xs text-slate-200 leading-relaxed font-sans transition-all duration-300';
+        if (verdictIcon) verdictIcon.textContent = '🚗';
+        if (verdictTitle) verdictTitle.textContent = 'Штатная езда (' + speedKmh + ' км/ч):';
+        if (verdictText) verdictText.innerHTML = 'Рабочий баланс между подачей газа и городским сопротивлением среды. Температура мотора ' + coolantTemp + '°C держится в допустимых пределах.';
+      }
+
+      if (typeof updateRadarPosition === 'function') {
+        updateRadarPosition();
+      }
+    }
+
+    function setCircuitConsolePreset(i, r, u = 1.50) {
+      const sliderI = document.getElementById('slider-tach-i');
+      const sliderR = document.getElementById('cc-slider-r');
+      const sliderU = document.getElementById('cc-slider-u');
+      if (sliderI) sliderI.value = i;
+      if (sliderR) sliderR.value = r;
+      if (sliderU) sliderU.value = Math.round(u * 100);
+      updateCircuitConsole();
+    }
+    window.setCircuitConsolePreset = setCircuitConsolePreset;
+    window.updateCircuitConsole = updateCircuitConsole;
+
+    function trainer_onRChange(val) {
+      updateCircuitConsole();
+      if (typeof updateCircuitSvg === 'function') {
+        const ci = Math.round(100 - parseInt(val, 10) * 2);
+        updateCircuitSvg(ci, parseInt(val, 10), 10);
+      }
+    }
+    window.trainer_onRChange = trainer_onRChange;
+
     // Zen Chime Audio Synthesis (Web Audio API)
     // -------------------------------------------------------------
     function playZenChime(freq = 528) {
@@ -2352,6 +2776,7 @@
         const initialI = sliderTach ? parseInt(sliderTach.value, 10) || 60 : 60;
         tach_render(initialI);
       }
+      if (typeof updateCircuitConsole === "function") updateCircuitConsole();
     });
   </script>
 
