@@ -209,12 +209,16 @@
       <!-- ============================================================== -->
       <!-- VIEW 1: SPEEDOMETER & LIVE CIRCUIT (HERO / DEFAULT)            -->
       <!-- ============================================================== -->
+            <!-- ============================================================== -->
+      <!-- VIEW 1: SPEEDOMETER & LIVE CIRCUIT (HERO / DEFAULT)            -->
+      <!-- ============================================================== -->
       <div id="view-speedometer" class="space-y-6">
         
-        <!-- Header & Quick Scenarios -->
-        <header class="bg-slate-900/90 border border-emerald-500/30 rounded-2xl p-6 backdrop-blur-md shadow-2xl flex flex-col lg:flex-row justify-between items-start lg:items-center gap-5 relative overflow-hidden">
+        <!-- Header & Unified Presets -->
+        <header class="bg-slate-900/90 border border-emerald-500/30 rounded-2xl p-5 md:p-6 backdrop-blur-md shadow-2xl relative overflow-hidden">
           <div class="absolute -right-10 -top-10 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
-          <div class="space-y-1 relative z-10">
+          
+          <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 relative z-10">
             <div class="flex items-center gap-3">
               <span class="text-3xl p-2.5 rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/40 text-emerald-300 shadow-lg shadow-emerald-500/10">🎯</span>
               <div>
@@ -227,104 +231,45 @@
                   </span>
                 </div>
                 <p class="text-slate-300 text-xs md:text-sm mt-1">
-                  Сведение 5 биологических систем к единому Закону Проводимости: Тандэн ⟶ Внимание ⟶ Действие.
+                  <strong>Принцип одного спидометра (Кансо):</strong> Напор внимания (<span class="font-bold text-cyan-300">I</span>) vs Тормоз эго (<span class="font-bold text-emerald-300">R</span>). Проводимость контура без омического трения.
                 </p>
               </div>
             </div>
-          </div>
 
-          <!-- Quick Scenario Presets -->
-          <div class="flex flex-wrap items-center gap-2 relative z-10">
-            <span class="text-xs uppercase tracking-wider text-slate-400 font-mono">Пресеты:</span>
-            <button onclick="gauge_applyPreset('bracelet')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-950/90 border border-cyan-500/80 text-cyan-200 hover:bg-cyan-900 transition flex items-center gap-1.5 cursor-pointer shadow-md ring-1 ring-cyan-400">
-              <span>⌚</span> С браслета (ЧСС 76, Стресс 42)
-            </button>
-            <button onclick="gauge_applyPreset('mushin')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-950/80 border border-emerald-700/60 text-emerald-300 hover:bg-emerald-900 transition flex items-center gap-1.5 cursor-pointer shadow-md">
-              <span>🍵</span> Мусин (Стресс 8)
-            </button>
-            <button onclick="gauge_applyPreset('flow')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-950/80 border border-cyan-700/60 text-cyan-300 hover:bg-cyan-900 transition flex items-center gap-1.5 cursor-pointer">
-              <span>💻</span> Flow (Стресс 25)
-            </button>
-            <button onclick="gauge_applyPreset('npc')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700 transition flex items-center gap-1.5 cursor-pointer">
-              <span>🥱</span> Дрейф (Стресс 50)
-            </button>
-            <button onclick="gauge_applyPreset('rumination')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-950/80 border border-amber-700/60 text-amber-300 hover:bg-amber-900 transition flex items-center gap-1.5 cursor-pointer">
-              <span>🧠</span> DMN тревога (Стресс 75)
-            </button>
-            <button onclick="gauge_applyPreset('panic')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-rose-950/80 border border-rose-700/60 text-rose-300 hover:bg-rose-900 transition flex items-center gap-1.5 cursor-pointer">
-              <span>🔥</span> Дистресс (Стресс 95)
-            </button>
+            <!-- Unified Cockpit Presets -->
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="text-xs uppercase tracking-wider text-slate-400 font-mono flex items-center gap-1">
+                <span>⚙️</span> Режимы:
+              </span>
+              <button onclick="setCircuitConsolePreset(85, 5, 1.5)" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-emerald-950/80 text-emerald-200 border border-emerald-500/70 hover:bg-emerald-900 transition flex items-center gap-1 cursor-pointer shadow-sm">
+                <span>🏎️</span> Поток (0 Ω)
+              </button>
+              <button onclick="setCircuitConsolePreset(75, 15, 1.5)" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-cyan-950/80 text-cyan-200 border border-cyan-500/70 hover:bg-cyan-900 transition flex items-center gap-1 cursor-pointer shadow-sm">
+                <span>⚡</span> Ход (15 Ω)
+              </button>
+              <button onclick="setCircuitConsolePreset(60, 42, 1.35)" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-sky-950/80 text-sky-200 border border-sky-500/70 hover:bg-sky-900 transition flex items-center gap-1 cursor-pointer shadow-sm">
+                <span>⌚</span> Браслет (76 bpm)
+              </button>
+              <button onclick="setCircuitConsolePreset(20, 50, 1.5)" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-amber-950/80 text-amber-200 border border-amber-500/70 hover:bg-amber-900 transition flex items-center gap-1 cursor-pointer shadow-sm">
+                <span>🥱</span> Дрейф (50 Ω)
+              </button>
+              <button onclick="setCircuitConsolePreset(92, 85, 1.5)" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-red-950/80 text-red-200 border border-red-500/70 hover:bg-red-900 transition flex items-center gap-1 cursor-pointer shadow-sm">
+                <span>🔥</span> Перегрев (85 Ω)
+              </button>
+              <button onclick="setCircuitConsolePreset(10, 0, 1.5)" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-indigo-950/80 text-indigo-200 border border-indigo-500/70 hover:bg-indigo-900 transition flex items-center gap-1 cursor-pointer shadow-sm">
+                <span>🧘</span> Дзансин
+              </button>
+            </div>
           </div>
         </header>
 
-                <!-- AUTOMOTIVE BINNACLE CLUSTER: 4 GAUGES IN LINE (FUEL, TACHOMETER, SPEEDOMETER, TEMP) -->
-        <div class="bg-gradient-to-b from-slate-900/95 via-[#060b17] to-slate-950 border border-slate-800/90 hover:border-amber-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden transition-all duration-300">
+        <!-- AUTOMOTIVE BINNACLE CLUSTER: 4 GAUGES IN LINE (TACH, SPEED, TEMP, FUEL) -->
+        <div class="bg-gradient-to-b from-slate-900/95 via-[#060b17] to-slate-950 border border-slate-800/90 hover:border-amber-500/40 rounded-3xl p-5 sm:p-7 shadow-2xl relative overflow-hidden transition-all duration-300">
           <div id="gauge-ambient-glow" class="absolute -right-24 -top-24 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none transition-all duration-700"></div>
           <div id="cc-ambient-glow-left" class="absolute -left-24 -bottom-24 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none transition-all duration-700"></div>
-
-          <!-- Quick Cockpit Presets -->
-          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/80 pb-5 mb-8">
-            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
-              <span class="text-amber-400 text-base">⚙️</span>
-              <span class="uppercase tracking-wider font-semibold text-slate-300">Режимы пилотажа:</span>
-            </div>
-            <div class="flex flex-wrap items-center gap-2">
-              <button onclick="setCircuitConsolePreset(85, 5, 1.5)" class="cc-preset-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-950/80 text-emerald-200 border border-emerald-500/70 hover:bg-emerald-900 transition flex items-center gap-1.5 cursor-pointer shadow-sm">
-                <span>🏎️ Шоссе Мусин (Поток)</span>
-              </button>
-              <button onclick="setCircuitConsolePreset(92, 85, 1.5)" class="cc-preset-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-red-950/80 text-red-200 border border-red-500/70 hover:bg-red-900 transition flex items-center gap-1.5 cursor-pointer shadow-sm">
-                <span>🔥 Газ на ручнике (Перегрев)</span>
-              </button>
-              <button onclick="setCircuitConsolePreset(25, 45, 0.25)" class="cc-preset-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-amber-950/80 text-amber-200 border border-amber-500/70 hover:bg-amber-900 transition flex items-center gap-1.5 cursor-pointer shadow-sm">
-                <span>⛽ Резерв бака (Истощение)</span>
-              </button>
-              <button onclick="setCircuitConsolePreset(10, 0, 1.5)" class="cc-preset-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-indigo-950/80 text-indigo-200 border border-indigo-500/70 hover:bg-indigo-900 transition flex items-center gap-1.5 cursor-pointer shadow-sm">
-                <span>🧘 Светофор (Дзансин)</span>
-              </button>
-              <button onclick="setCircuitConsolePreset(20, 80, 1.5)" class="cc-preset-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-900 text-slate-300 border border-slate-700 hover:bg-slate-800 transition flex items-center gap-1.5 cursor-pointer shadow-sm">
-                <span>🧊 Вязкий клин</span>
-              </button>
-              <button onclick="setCircuitConsolePreset(60, 42, 1.35)" class="cc-preset-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-cyan-950/80 text-cyan-200 border border-cyan-500/70 hover:bg-cyan-900 transition flex items-center gap-1.5 cursor-pointer shadow-sm">
-                <span>⌚ С браслета (76 bpm)</span>
-              </button>
-            </div>
-          </div>
-
-                  <!-- AUTOMOTIVE BINNACLE CLUSTER: TACHOMETER & SPEEDOMETER (CENTER) + TEMP & FUEL (STACKED RIGHT) -->
-        <div class="bg-gradient-to-b from-slate-900/95 via-[#060b17] to-slate-950 border border-slate-800/90 hover:border-amber-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden transition-all duration-300">
-          <div id="gauge-ambient-glow" class="absolute -right-24 -top-24 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none transition-all duration-700"></div>
-          <div id="cc-ambient-glow-left" class="absolute -left-24 -bottom-24 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none transition-all duration-700"></div>
-
-          <!-- Quick Cockpit Presets -->
-          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/80 pb-5 mb-8">
-            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
-              <span class="text-amber-400 text-base">⚙️</span>
-              <span class="uppercase tracking-wider font-semibold text-slate-300">Режимы пилотажа:</span>
-            </div>
-            <div class="flex flex-wrap items-center gap-2">
-              <button onclick="setCircuitConsolePreset(85, 5, 1.5)" class="cc-preset-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-950/80 text-emerald-200 border border-emerald-500/70 hover:bg-emerald-900 transition flex items-center gap-1.5 cursor-pointer shadow-sm">
-                <span>🏎️ Шоссе Мусин (Поток)</span>
-              </button>
-              <button onclick="setCircuitConsolePreset(92, 85, 1.5)" class="cc-preset-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-red-950/80 text-red-200 border border-red-500/70 hover:bg-red-900 transition flex items-center gap-1.5 cursor-pointer shadow-sm">
-                <span>🔥 Газ на ручнике (Перегрев)</span>
-              </button>
-              <button onclick="setCircuitConsolePreset(25, 45, 0.25)" class="cc-preset-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-amber-950/80 text-amber-200 border border-amber-500/70 hover:bg-amber-900 transition flex items-center gap-1.5 cursor-pointer shadow-sm">
-                <span>⛽ Резерв бака (Истощение)</span>
-              </button>
-              <button onclick="setCircuitConsolePreset(10, 0, 1.5)" class="cc-preset-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-indigo-950/80 text-indigo-200 border border-indigo-500/70 hover:bg-indigo-900 transition flex items-center gap-1.5 cursor-pointer shadow-sm">
-                <span>🧘 Светофор (Дзансин)</span>
-              </button>
-              <button onclick="setCircuitConsolePreset(20, 80, 1.5)" class="cc-preset-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-900 text-slate-300 border border-slate-700 hover:bg-slate-800 transition flex items-center gap-1.5 cursor-pointer shadow-sm">
-                <span>🧊 Вязкий клин</span>
-              </button>
-              <button onclick="setCircuitConsolePreset(60, 42, 1.35)" class="cc-preset-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-cyan-950/80 text-cyan-200 border border-cyan-500/70 hover:bg-cyan-900 transition flex items-center gap-1.5 cursor-pointer shadow-sm">
-                <span>⌚ С браслета (76 bpm)</span>
-              </button>
-            </div>
-          </div>
 
           <!-- AUTOMOTIVE BINNACLE CLUSTER: TACH & SPEED (CENTER) + TEMP & FUEL (STACKED RIGHT) -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-5 items-stretch">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-5 items-stretch relative z-10">
             
             <!-- 1. MAIN GAUGE LEFT: TACHOMETER (ТОК ВНИМАНИЯ I) [col-span-5] -->
             <div class="lg:col-span-5 bg-slate-950/95 border-2 border-slate-800/90 hover:border-cyan-500/50 rounded-2xl p-5 flex flex-col items-center justify-between shadow-2xl relative">
@@ -389,18 +334,18 @@
                 </div>
                 <div class="w-full pt-2 mt-2 border-t border-slate-800/80">
                   <div class="flex justify-between text-[9px] font-mono text-slate-400 mb-0.5">
-                    <span>Холостой ход</span>
-                    <span>Педаль в пол</span>
+                    <span>Холостой ход (0 Ав)</span>
+                    <span>Педаль газа ($I$)</span>
+                    <span>Отсечка (100 Ав)</span>
                   </div>
                   <input type="range" id="slider-tach-i" min="0" max="100" value="75" oninput="tach_onSliderChange(this.value)"
                     class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400 transition" />
                   <input type="range" id="cc-slider-i" min="0" max="100" value="75" class="hidden" />
-                  <div class="text-[10px] text-slate-400 text-center font-mono mt-0.5">Педаль газа / Ток внимания ($I$)</div>
                 </div>
               </div>
             </div>
 
-            <!-- 2. MAIN GAUGE CENTER: SPEEDOMETER (СКОРОСТЬ СОЗИДАНИЯ / ПОЛЕЗНАЯ НАГРУЗКА P) [col-span-5] -->
+            <!-- 2. MAIN GAUGE CENTER: SPEEDOMETER (СКОРОСТЬ СОЗИДАНИЯ / ТОРМОЗ ЭГО R) [col-span-5] -->
             <div class="lg:col-span-5 bg-slate-950/95 border-2 border-slate-800/90 hover:border-emerald-500/50 rounded-2xl p-5 flex flex-col items-center justify-between shadow-2xl relative">
               <div class="w-full flex items-center justify-between mb-2 text-xs font-mono">
                 <span class="text-emerald-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
@@ -469,25 +414,24 @@
                   </div>
                   <input type="range" id="cc-slider-r" min="0" max="100" value="15" oninput="trainer_onRChange(this.value)"
                     class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-400 transition" />
-                  <div class="text-[10px] text-slate-400 text-center font-mono mt-0.5">Сцепление / Сопротивление эго ($R$)</div>
                 </div>
               </div>
             </div>
 
-            <!-- 3. RIGHT STACK: TEMPERATURE (UPPER) & FUEL (LOWER) [col-span-2] -->
-            <div class="lg:col-span-2 flex flex-col gap-4 justify-between">
+            <!-- 3. RIGHT STACK: TEMPERATURE & FUEL [col-span-2] -->
+            <div class="lg:col-span-2 flex flex-col gap-3 justify-between">
               
-              <!-- AUX GAUGE TOP: ENGINE TEMP / СОПРОТИВЛЕНИЕ ЭГО (R) -->
-              <div class="bg-slate-950/90 border border-slate-800/90 rounded-2xl p-3.5 flex flex-col items-center justify-between shadow-inner relative group flex-1">
+              <!-- AUX GAUGE TOP: ENGINE TEMP / ОМИЧЕСКИЙ НАГРЕВ (Q) -->
+              <div class="bg-slate-950/90 border border-slate-800/90 rounded-2xl p-3 flex flex-col items-center justify-between shadow-inner relative group flex-1">
                 <div class="w-full flex items-center justify-between text-[10px] font-mono">
                   <span class="text-rose-400 font-bold uppercase tracking-wider flex items-center gap-1">
-                    <span>🌡️</span> ТЕМПЕРАТУРА • ЭГО (<span class="font-bold">R</span>)
+                    <span>🌡️</span> НАГРЕВ (<span class="font-bold">Q</span>)
                   </span>
                   <span id="cc-temp-lamp" class="w-2.5 h-2.5 rounded-full bg-slate-800 transition-all duration-300" title="Контрольная лампа перегрева"></span>
                 </div>
 
                 <!-- SVG Temperature Gauge -->
-                <div class="relative w-32 h-24 flex items-center justify-center my-0.5">
+                <div class="relative w-28 h-20 flex items-center justify-center my-0.5">
                   <svg viewBox="0 0 140 110" class="w-full h-full overflow-visible">
                     <defs>
                       <linearGradient id="trainerGradTemp" x1="0%" y1="100%" x2="100%" y2="0%">
@@ -519,25 +463,25 @@
 
                 <!-- Digital readout -->
                 <div class="text-center w-full">
-                  <div class="text-lg font-mono font-black text-rose-300 tracking-tight" id="cc-temp-display">90°C</div>
-                  <div class="text-[9px] font-mono text-slate-400" id="cc-temp-desc">Оптимум Мусин (Q=0)</div>
-                  <div class="text-[9px] text-slate-400 font-mono text-center mt-0.5">
-                    Ожог трения: <span id="cc-heat-val" class="text-red-400 font-bold">8.4 Бн</span>
+                  <div class="text-base font-mono font-black text-rose-300 tracking-tight" id="cc-temp-display">90°C</div>
+                  <div class="text-[9px] font-mono text-slate-400 truncate" id="cc-temp-desc">Оптимум Мусин</div>
+                  <div class="text-[9px] text-slate-400 font-mono text-center">
+                    Ожог: <span id="cc-heat-val" class="text-red-400 font-bold">8.4 Бн</span>
                   </div>
                 </div>
               </div>
 
-              <!-- AUX GAUGE BOTTOM: FUEL LEVEL / ЗАПАС ЭНЕРГИИ (U) [UNDER TEMP] -->
-              <div class="bg-slate-950/90 border border-slate-800/90 rounded-2xl p-3.5 flex flex-col items-center justify-between shadow-inner relative group flex-1">
+              <!-- AUX GAUGE BOTTOM: FUEL LEVEL / ЗАПАС ЭНЕРГИИ ТАНДЭНА (U) -->
+              <div class="bg-slate-950/90 border border-slate-800/90 rounded-2xl p-3 flex flex-col items-center justify-between shadow-inner relative group flex-1">
                 <div class="w-full flex items-center justify-between text-[10px] font-mono">
                   <span class="text-amber-400 font-bold uppercase tracking-wider flex items-center gap-1">
-                    <span>⛽</span> ТОПЛИВО • ЭНЕРГИЯ (<span class="font-bold">U</span>)
+                    <span>⛽</span> БАК (<span class="font-bold">U</span>)
                   </span>
                   <span id="cc-fuel-lamp" class="w-2.5 h-2.5 rounded-full bg-slate-800 transition-all duration-300" title="Контрольная лампа резерва"></span>
                 </div>
 
                 <!-- SVG Fuel Gauge -->
-                <div class="relative w-32 h-24 flex items-center justify-center my-0.5">
+                <div class="relative w-28 h-20 flex items-center justify-center my-0.5">
                   <svg viewBox="0 0 140 110" class="w-full h-full overflow-visible">
                     <defs>
                       <linearGradient id="trainerGradFuel" x1="0%" y1="100%" x2="100%" y2="0%">
@@ -568,12 +512,12 @@
 
                 <!-- Digital readout & Slider -->
                 <div class="text-center w-full">
-                  <div class="text-lg font-mono font-black text-amber-300 tracking-tight" id="cc-u-display">1.50 В</div>
-                  <div class="text-[9px] font-mono text-slate-400" id="cc-u-desc">Бак полон (сон OK)</div>
-                  <div class="w-full pt-1.5 mt-1 border-t border-slate-800/80">
+                  <div class="text-base font-mono font-black text-amber-300 tracking-tight" id="cc-u-display">1.50 В</div>
+                  <div class="text-[9px] font-mono text-slate-400 truncate" id="cc-u-desc">Бак полон</div>
+                  <div class="w-full pt-1 mt-1 border-t border-slate-800/80">
                     <input type="range" id="cc-slider-u" min="0" max="150" value="150" oninput="updateCircuitConsole()"
                       class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-400 transition" />
-                    <div class="text-[8.5px] text-slate-400 text-center font-mono mt-0.5">Запас Тандэна ($U$)</div>
+                    <div class="text-[8px] text-slate-400 text-center font-mono">Запас ($U$)</div>
                   </div>
                 </div>
               </div>
@@ -582,14 +526,12 @@
 
           </div>
 
-
-
           <!-- TRIP COMPUTER & SOMATIC COCKPIT HUD -->
-          <div class="mt-8 pt-6 border-t border-slate-800/80 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div class="mt-6 pt-5 border-t border-slate-800/80 grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
             
             <!-- Left: Diagnostic Lamp Matrix & Mode Badge -->
-            <div class="lg:col-span-5 flex flex-col space-y-3">
-              <div class="flex items-center gap-3">
+            <div class="lg:col-span-5 flex flex-col space-y-2.5">
+              <div class="flex items-center gap-2 flex-wrap">
                 <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800 text-[11px] font-mono">
                   <span id="lamp-fuel-icon" class="text-slate-600 transition-colors">⛽</span>
                   <span id="lamp-fuel-text" class="text-slate-400">БАК</span>
@@ -608,20 +550,20 @@
                 </div>
               </div>
 
-              <div id="cc-mode-pill" class="w-full py-2.5 px-4 rounded-xl font-bold font-mono text-xs sm:text-sm tracking-wide border shadow-lg transition-all duration-500 bg-cyan-950/80 border-cyan-500/70 text-cyan-200 text-center">
+              <div id="cc-mode-pill" class="w-full py-2 px-3 rounded-xl font-bold font-mono text-xs sm:text-sm tracking-wide border shadow-lg transition-all duration-500 bg-cyan-950/80 border-cyan-500/70 text-cyan-200 text-center">
                 ⚡ СВЕРХПРОВОДИМОСТЬ (МУСИН)
               </div>
             </div>
 
             <!-- Right: Somatic Driving Recommendation Verdict -->
             <div class="lg:col-span-7">
-              <div id="cc-verdict-box" class="w-full p-4 rounded-2xl border border-cyan-500/40 bg-cyan-950/30 text-xs sm:text-sm text-slate-200 leading-relaxed font-sans transition-all duration-300">
-                <div class="flex items-start gap-3">
+              <div id="cc-verdict-box" class="w-full p-3.5 rounded-2xl border border-cyan-500/40 bg-cyan-950/30 text-xs text-slate-200 leading-relaxed font-sans transition-all duration-300">
+                <div class="flex items-start gap-2.5">
                   <span class="text-2xl shrink-0" id="cc-verdict-icon">🏎️</span>
                   <div>
                     <div class="font-bold text-cyan-300 mb-0.5" id="cc-verdict-title">Режим Мусин (Прямой Полет):</div>
                     <div id="cc-verdict-text" class="text-slate-300 text-xs leading-relaxed">
-                      Тахометр и спидометр в полном согласии! Внутренний тормоз эго отпущен, температура охлаждающей жидкости строго 90°C. Вся энергия генератора Тандэн материализуется в продвижение по жизни.
+                      Тахометр и спидометр в полном согласии! Внутренний тормоз эго отпущен, температура охлаждающей жидкости строго 90°C. Вся энергия генератора Тандэн материализуется в созидательное продвижение.
                     </div>
                   </div>
                 </div>
@@ -631,509 +573,325 @@
           </div>
 
           <!-- Footer Telemetry Note -->
-          <div class="mt-6 pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] font-mono text-slate-400">
+          <div class="mt-4 pt-3 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-2 text-[10px] font-mono text-slate-400">
             <div class="flex items-center gap-2">
               <span class="text-amber-400">💡</span>
               <span>Формула автомобиля: <strong class="text-slate-200">Скорость = Газ · (1 - Тормоз) · Топливо</strong> | Нагрев: <strong class="text-red-400">Q = I² · R</strong></span>
             </div>
-            <div class="flex items-center gap-3">
-              <span class="text-slate-400">Топливо Тандэна: <strong class="text-amber-300 font-mono">1.50 В</strong></span>
+            <div>
+              <span>Запас Тандэна: <strong class="text-amber-300 font-mono">1.50 В</strong></span>
             </div>
           </div>
 
         </div>
 
+        <!-- TELEMETRY METRICS STRIP, DYNAMIC VERDICT & QUICK ACTIONS -->
+        <div class="space-y-4">
+          
+          <!-- 3 Key Metric Cards + Quick Actions -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-stretch">
+            
+            <!-- Metric 1: Resistance -->
+            <div class="md:col-span-3 p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between">
+              <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Сопротивление эго</span>
+              <div class="text-2xl font-black font-mono text-cyan-300 mt-1" id="live-rego-val">0.05 Ω</div>
+              <span class="text-[9px] text-slate-400 font-mono">Паразитный шунт цепи</span>
+            </div>
 
-            <!-- Right: State Diagnosis, Automotive Metaphor & 30s Reset -->
-            <div class="lg:col-span-12 space-y-4 mt-2">
-              
-                            <!-- ============================================================== -->
-              <!-- 4-QUADRANT PHASE RADAR (ТАКСОНОМИЯ СОСТОЯНИЙ КОНТУРА)          -->
-              <!-- ============================================================== -->
-              <div class="p-5 rounded-2xl bg-slate-950/90 border border-slate-800 shadow-xl space-y-3 relative overflow-hidden">
-                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
-                  <div class="flex items-center gap-2">
-                    <span class="text-base text-cyan-400">🧭</span>
-                    <span class="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">
-                      Матрица четырёх состояний (Фазовый 2D-радар)
-                    </span>
-                  </div>
-                  <div class="flex items-center gap-2 text-xs font-mono">
-                    <span class="text-slate-400 text-[10px]">ТОЧКА В ЦЕПИ:</span>
-                    <span id="trainer-quad-coords" class="px-2 py-0.5 rounded bg-slate-900 border border-slate-700 text-amber-300 font-bold text-[11px]">
-                      I: 75 Ав | CI: +84
-                    </span>
-                  </div>
-                </div>
+            <!-- Metric 2: Heat Dissipation -->
+            <div class="md:col-span-3 p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between">
+              <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Омический нагрев Q</span>
+              <div class="text-2xl font-black font-mono text-emerald-400 mt-1" id="live-heat-val">0.1 Вт</div>
+              <span class="text-[9px] text-slate-400 font-mono">Q = I² · R · t</span>
+            </div>
 
-                <!-- 2D Coordinate Grid with 4 Quadrants -->
-                <div class="relative w-full h-52 bg-[#040813] border border-slate-800 rounded-xl overflow-hidden p-2 select-none">
-                  
-                  <!-- Quadrant interactive tiles -->
-                  <div class="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1 p-1">
-                    
-                    <!-- QUADRANT IV: Top-Left (Ohmic Overheat) -->
-                    <div id="quad-tile-4" onclick="tach_applyQuadrant(85, -80)" class="cursor-pointer transition-all duration-300 rounded-lg p-2.5 flex flex-col justify-between border border-red-900/30 bg-red-950/20 hover:bg-red-950/40 group">
-                      <div class="flex items-center justify-between">
-                        <span class="text-[11px] font-mono font-bold text-red-400 flex items-center gap-1">
-                          <span>🔥</span> IV. ОМИЧЕСКИЙ ПОЖАР
-                        </span>
-                        <span class="text-[9px] font-mono text-red-400/80 group-hover:text-red-300">Газ в пол + Тормоз</span>
-                      </div>
-                      <p class="text-[10px] text-slate-400 leading-tight">
-                        Высокие обороты ($I \ge 50$) при зажатом заломе ($CI < 0$). Перегрев проводки, выгорание ($Q = I^2 R$).
-                      </p>
-                    </div>
+            <!-- Metric 3: Circuit Efficiency -->
+            <div class="md:col-span-3 p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between">
+              <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">КПД Контура (η)</span>
+              <div class="text-2xl font-black font-mono text-amber-300 mt-1" id="live-eff-val">92%</div>
+              <span class="text-[9px] text-slate-400 font-mono">Доля созидательной работы</span>
+            </div>
 
-                    <!-- QUADRANT I: Top-Right (Superconductivity / Mushin) -->
-                    <div id="quad-tile-1" onclick="tach_applyQuadrant(85, 80)" class="cursor-pointer transition-all duration-300 rounded-lg p-2.5 flex flex-col justify-between border border-cyan-500/40 bg-cyan-950/30 hover:bg-cyan-950/50 group shadow-md shadow-cyan-950/50">
-                      <div class="flex items-center justify-between">
-                        <span class="text-[11px] font-mono font-bold text-cyan-300 flex items-center gap-1">
-                          <span>⚡</span> I. СВЕРХПРОВОДИМОСТЬ (МУСИН)
-                        </span>
-                        <span class="text-[9px] font-mono text-cyan-300/80 group-hover:text-cyan-200">Чистый ход</span>
-                      </div>
-                      <p class="text-[10px] text-slate-400 leading-tight">
-                        Высокие обороты ($I \ge 50$) при чистом проводнике ($CI \ge 0$). Максимальная мощность ($P 	o \max$).
-                      </p>
-                    </div>
-
-                    <!-- QUADRANT III: Bottom-Left (Viscous Clinch / Stupor) -->
-                    <div id="quad-tile-3" onclick="tach_applyQuadrant(20, -70)" class="cursor-pointer transition-all duration-300 rounded-lg p-2.5 flex flex-col justify-between border border-amber-900/30 bg-amber-950/20 hover:bg-amber-950/40 group">
-                      <div class="flex items-center justify-between">
-                        <span class="text-[11px] font-mono font-bold text-amber-400 flex items-center gap-1">
-                          <span>🧊</span> III. ВЯЗКИЙ КЛИН (СТУПОР)
-                        </span>
-                        <span class="text-[9px] font-mono text-amber-400/80 group-hover:text-amber-300">Клин мотора</span>
-                      </div>
-                      <p class="text-[10px] text-slate-400 leading-tight">
-                        Низкие обороты ($I < 50$) при зажатом заломе ($CI < 0$). Апатия, прокрастинация, спазм действия.
-                      </p>
-                    </div>
-
-                    <!-- QUADRANT II: Bottom-Right (Cold Circuit / Zanshin) -->
-                    <div id="quad-tile-2" onclick="tach_applyQuadrant(15, 80)" class="cursor-pointer transition-all duration-300 rounded-lg p-2.5 flex flex-col justify-between border border-indigo-900/30 bg-indigo-950/20 hover:bg-indigo-950/40 group">
-                      <div class="flex items-center justify-between">
-                        <span class="text-[11px] font-mono font-bold text-indigo-300 flex items-center gap-1">
-                          <span>🌌</span> II. ХОЛОДНЫЙ ПОКОЙ (ДЗАНСИН)
-                        </span>
-                        <span class="text-[9px] font-mono text-indigo-300/80 group-hover:text-indigo-200">Регенерация</span>
-                      </div>
-                      <p class="text-[10px] text-slate-400 leading-tight">
-                        Низкие обороты ($I < 50$) при чистом проводнике ($CI \ge 0$). Накопление заряда, глубокий покой, сон.
-                      </p>
-                    </div>
-
-                  </div>
-
-                  <!-- Coordinate Crosshair Axes -->
-                  <div class="absolute left-1/2 top-0 bottom-0 w-[1px] bg-slate-600/70 pointer-events-none"></div>
-                  <div class="absolute top-1/2 left-0 right-0 h-[1px] bg-slate-600/70 pointer-events-none"></div>
-
-                  <!-- Axis Arrow Annotations -->
-                  <div class="absolute top-1.5 left-1/2 -translate-x-1/2 text-[8px] font-mono text-slate-500 pointer-events-none uppercase">
-                    ▲ Напор внимания (I)
-                  </div>
-                  <div class="absolute bottom-1.5 left-2 text-[8px] font-mono text-rose-500 pointer-events-none uppercase">
-                    ◄ Стресс (-100)
-                  </div>
-                  <div class="absolute bottom-1.5 right-2 text-[8px] font-mono text-emerald-500 pointer-events-none uppercase">
-                    Счастье (+100) ►
-                  </div>
-
-                  <!-- Real-time Position Blip -->
-                  <div id="trainer-radar-blip" class="absolute w-5 h-5 -ml-2.5 -mt-2.5 rounded-full border-2 border-white bg-cyan-400 shadow-[0_0_15px_rgba(56,189,248,1)] transition-all duration-200 pointer-events-none" style="left: 92%; bottom: 75%;">
-                    <div class="w-full h-full rounded-full bg-cyan-300 animate-ping opacity-75"></div>
-                  </div>
-                </div>
-
-                <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 pt-1">
-                  <span>💡 Кликните на любой квадрант, чтобы мгновенно перевести контур в это состояние</span>
-                  <span id="trainer-quad-active-name" class="font-bold text-cyan-300">Активен: Квадрант I</span>
-                </div>
+            <!-- Quick Calibration Actions -->
+            <div class="md:col-span-3 flex flex-col gap-2 justify-between">
+              <button onclick="gauge_calibrateMushin()" class="w-full py-2 px-3 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-400 hover:opacity-95 text-slate-950 font-bold text-xs shadow-md transition flex items-center justify-center gap-1.5 cursor-pointer active:scale-98">
+                <span>⚡</span>
+                <span>Сброс стрелки в Мусин</span>
+              </button>
+              <div class="grid grid-cols-2 gap-2">
+                <button onclick="switchTab('pains')" class="py-1.5 px-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-[11px] transition border border-slate-700 flex items-center justify-center gap-1 cursor-pointer">
+                  <span>🚨</span> Аптечка
+                </button>
+                <button onclick="switchTab('lab')" class="py-1.5 px-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-[11px] transition border border-slate-700 flex items-center justify-center gap-1 cursor-pointer">
+                  <span>🔬</span> Схема
+                </button>
               </div>
+            </div>
 
+          </div>
 
-              <!-- Metaphor Banner -->
-              <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2">
-                <div class="flex items-center gap-2 text-xs font-mono font-bold text-slate-200">
-                  <span class="text-base">🚗</span>
-                  <span class="uppercase tracking-widest text-slate-400">Принцип одного спидометра:</span>
+          <!-- Dynamic Diagnosis Box -->
+          <div id="gauge-state-box" class="p-4 rounded-2xl border bg-emerald-950/40 border-emerald-500/40 text-emerald-200 text-xs md:text-sm font-mono space-y-1.5">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-emerald-300" id="gauge-state-title">СТАТУС: КОНТУР В РЕЖИМЕ СВЕРХПРОВОДИМОСТИ</span>
+              <span id="gauge-state-badge" class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">H &gt; 60%</span>
+            </div>
+            <div class="text-slate-300 text-xs leading-relaxed" id="gauge-state-desc">
+              Внутреннее сопротивление сведено к минимуму (R_ego → 0). Вентральный блуждающий нерв синхронизирует дыхание и сердце, DMN молчит, префронтальная кора работает в режиме TPN (поток). Энергия течёт сквозь проводник без омического трения. Вы переживаете счастье как физическую проводимость жизни!
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 4-QUADRANT PHASE RADAR (ТАКСОНОМИЯ СОСТОЯНИЙ КОНТУРА) -->
+        <div class="p-5 rounded-2xl bg-slate-950/90 border border-slate-800 shadow-xl space-y-3 relative overflow-hidden">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-base text-cyan-400">🧭</span>
+              <span class="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">
+                Матрица четырёх состояний (Фазовый 2D-радар)
+              </span>
+            </div>
+            <div class="flex items-center gap-2 text-xs font-mono">
+              <span class="text-slate-400 text-[10px]">ТОЧКА В ЦЕПИ:</span>
+              <span id="trainer-quad-coords" class="px-2 py-0.5 rounded bg-slate-900 border border-slate-700 text-amber-300 font-bold text-[11px]">
+                I: 75 Ав | CI: +84
+              </span>
+            </div>
+          </div>
+
+          <!-- 2D Coordinate Grid with 4 Quadrants -->
+          <div class="relative w-full h-48 bg-[#040813] border border-slate-800 rounded-xl overflow-hidden p-2 select-none">
+            
+            <!-- Quadrant interactive tiles -->
+            <div class="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1 p-1">
+              
+              <!-- QUADRANT IV: Top-Left (Ohmic Overheat) -->
+              <div id="quad-tile-4" onclick="tach_applyQuadrant(85, -80)" class="cursor-pointer transition-all duration-300 rounded-lg p-2.5 flex flex-col justify-between border border-red-900/30 bg-red-950/20 hover:bg-red-950/40 group">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-mono font-bold text-red-400 flex items-center gap-1">
+                    <span>🔥</span> IV. ОМИЧЕСКИЙ ПОЖАР
+                  </span>
+                  <span class="text-[9px] font-mono text-red-400/80 group-hover:text-red-300">Газ + Тормоз</span>
                 </div>
-                <p class="text-xs text-slate-300 leading-relaxed">
-                  Водителю не нужны 50 графиков давления в топливной рампе — ему нужен <strong>один спидометр</strong>. Все 5 биологических датчиков ниже измеряют <strong>одно и то же паразитное сопротивление эго (R_ego)</strong>. В красной зоне цепь горит по закону Джоуля — Ленца (Q = I² · R · t). В зелёной зоне ток совершает созидательную работу в мире (R → 0).
+                <p class="text-[10px] text-slate-400 leading-tight">
+                  Высокие обороты ($I \ge 50$) при зажатом заломе ($CI < 0$). Перегрев проводки ($Q = I^2 R$).
                 </p>
               </div>
 
-              <!-- Dynamic Verdict Box -->
-              <div id="gauge-state-box" class="p-4 rounded-xl border bg-emerald-950/40 border-emerald-500/40 text-emerald-200 text-xs md:text-sm font-mono space-y-2">
+              <!-- QUADRANT I: Top-Right (Superconductivity / Mushin) -->
+              <div id="quad-tile-1" onclick="tach_applyQuadrant(85, 80)" class="cursor-pointer transition-all duration-300 rounded-lg p-2.5 flex flex-col justify-between border border-cyan-500/40 bg-cyan-950/30 hover:bg-cyan-950/50 group shadow-md shadow-cyan-950/50">
                 <div class="flex items-center justify-between">
-                  <span class="font-bold text-emerald-300" id="gauge-state-title">СТАТУС: КОНТУР В РЕЖИМЕ СВЕРХПРОВОДИМОСТИ</span>
-                  <span id="gauge-state-badge" class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">H &gt; 60%</span>
+                  <span class="text-[11px] font-mono font-bold text-cyan-300 flex items-center gap-1">
+                    <span>⚡</span> I. СВЕРХПРОВОДИМОСТЬ (МУСИН)
+                  </span>
+                  <span class="text-[9px] font-mono text-cyan-300/80 group-hover:text-cyan-200">Чистый ход</span>
                 </div>
-                <div class="text-slate-300 text-xs leading-relaxed" id="gauge-state-desc">
-                  Внутреннее сопротивление сведено к минимуму (R_ego → 0). Вентральный блуждающий нерв синхронизирует дыхание и сердце, DMN молчит, префронтальная кора работает в режиме TPN (поток). Энергия течёт сквозь проводник без омического трения. Вы переживаете счастье как физическую проводимость жизни!
-                </div>
+                <p class="text-[10px] text-slate-400 leading-tight">
+                  Высокие обороты ($I \ge 50$) при чистом проводнике ($CI \ge 0$). Максимальный КПД ($P \to \max$).
+                </p>
               </div>
 
-              <!-- Live Formula HUD -->
-              <div class="grid grid-cols-3 gap-2 text-center font-mono">
-                <div class="p-2.5 rounded-xl bg-slate-950/90 border border-slate-800">
-                  <div class="text-[10px] text-slate-400 uppercase">Сопротивление</div>
-                  <div class="text-base font-bold text-cyan-300" id="live-rego-val">0.05 Ω</div>
+              <!-- QUADRANT III: Bottom-Left (Viscous Clinch / Stupor) -->
+              <div id="quad-tile-3" onclick="tach_applyQuadrant(20, -70)" class="cursor-pointer transition-all duration-300 rounded-lg p-2.5 flex flex-col justify-between border border-amber-900/30 bg-amber-950/20 hover:bg-amber-950/40 group">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-mono font-bold text-amber-400 flex items-center gap-1">
+                    <span>🧊</span> III. ВЯЗКИЙ КЛИН (СТУПОР)
+                  </span>
+                  <span class="text-[9px] font-mono text-amber-400/80 group-hover:text-amber-300">Клин мотора</span>
                 </div>
-                <div class="p-2.5 rounded-xl bg-slate-950/90 border border-slate-800">
-                  <div class="text-[10px] text-slate-400 uppercase">Нагрев Q</div>
-                  <div class="text-base font-bold text-emerald-400" id="live-heat-val">0.1 Вт</div>
-                </div>
-                <div class="p-2.5 rounded-xl bg-slate-950/90 border border-slate-800">
-                  <div class="text-[10px] text-slate-400 uppercase">КПД Контура</div>
-                  <div class="text-base font-bold text-amber-300" id="live-eff-val">92%</div>
-                </div>
+                <p class="text-[10px] text-slate-400 leading-tight">
+                  Низкие обороты ($I < 50$) при зажатом заломе ($CI < 0$). Апатия, прокрастинация.
+                </p>
               </div>
 
-              <!-- Quick Action Calibration -->
-              <div class="flex flex-wrap items-center gap-3 pt-1">
-                <button onclick="gauge_calibrateMushin()" class="py-2.5 px-5 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-400 hover:opacity-95 text-slate-950 font-bold text-xs shadow-lg shadow-emerald-500/20 transition flex items-center gap-2 cursor-pointer active:scale-98">
-                  <span>⚡</span>
-                  <span>Калибровка: Вернуть стрелку в Зеленую зону (R → 0)</span>
-                </button>
-                <button onclick="switchTab('pains')" class="py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs transition border border-slate-700 flex items-center gap-1.5 cursor-pointer">
-                  <span>🚨</span>
-                  <span>Открыть Аптечку болей</span>
-                </button>
+              <!-- QUADRANT II: Bottom-Right (Cold Circuit / Zanshin) -->
+              <div id="quad-tile-2" onclick="tach_applyQuadrant(15, 80)" class="cursor-pointer transition-all duration-300 rounded-lg p-2.5 flex flex-col justify-between border border-indigo-900/30 bg-indigo-950/20 hover:bg-indigo-950/40 group">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-mono font-bold text-indigo-300 flex items-center gap-1">
+                    <span>🌌</span> II. ХОЛОДНЫЙ ПОКОЙ (ДЗАНСИН)
+                  </span>
+                  <span class="text-[9px] font-mono text-indigo-300/80 group-hover:text-indigo-200">Регенерация</span>
+                </div>
+                <p class="text-[10px] text-slate-400 leading-tight">
+                  Низкие обороты ($I < 50$) при чистом проводнике ($CI \ge 0$). Заряд Тандэна, покой, сон.
+                </p>
               </div>
 
             </div>
 
+            <!-- Coordinate Crosshair Axes -->
+            <div class="absolute left-1/2 top-0 bottom-0 w-[1px] bg-slate-600/70 pointer-events-none"></div>
+            <div class="absolute top-1/2 left-0 right-0 h-[1px] bg-slate-600/70 pointer-events-none"></div>
+
+            <!-- Axis Arrow Annotations -->
+            <div class="absolute top-1.5 left-1/2 -translate-x-1/2 text-[8px] font-mono text-slate-500 pointer-events-none uppercase">
+              ▲ Напор внимания (I)
+            </div>
+            <div class="absolute bottom-1.5 left-2 text-[8px] font-mono text-rose-500 pointer-events-none uppercase">
+              ◄ Стресс (-100)
+            </div>
+            <div class="absolute bottom-1.5 right-2 text-[8px] font-mono text-emerald-500 pointer-events-none uppercase">
+              Счастье (+100) ►
+            </div>
+
+            <!-- Real-time Position Blip -->
+            <div id="trainer-radar-blip" class="absolute w-5 h-5 -ml-2.5 -mt-2.5 rounded-full border-2 border-white bg-cyan-400 shadow-[0_0_15px_rgba(56,189,248,1)] transition-all duration-200 pointer-events-none" style="left: 92%; bottom: 75%;">
+              <div class="w-full h-full rounded-full bg-cyan-300 animate-ping opacity-75"></div>
+            </div>
           </div>
 
+          <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 pt-1">
+            <span>💡 Кликните на любой квадрант для мгновенной калибровки</span>
+            <span id="trainer-quad-active-name" class="font-bold text-cyan-300">Активен: Квадрант I</span>
+          </div>
         </div>
 
-        <!-- ==================== LIVE CIRCUIT SCHEMATIC (FLASHLIGHT MODEL) ==================== -->
-        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-2xl relative overflow-hidden space-y-4">
-          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+        <!-- 5 BIOLOGICAL SYSTEMS: SOMATIC CALIBRATION RACK -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-800/80 pb-3">
             <div>
-              <h2 class="text-sm font-semibold tracking-wider uppercase text-slate-400 flex items-center gap-2">
-                <span>📡</span> Принципиальная схема человеческого контура (Схема фонарика)
+              <h2 class="text-sm md:text-base font-bold tracking-tight text-slate-100 flex items-center gap-2">
+                <span>🎛️</span>
+                <span>Соматические каналы: 5 биологических датчиков R_ego</span>
               </h2>
               <p class="text-xs text-slate-400 mt-0.5">
-                Показывает физическое прохождение тока внимания через резистор эго в реальность в точке t = now.
+                Каждый канал вносит 20% веса в общее сопротивление цепи
               </p>
             </div>
-            <div id="circuitStatusTag" class="px-3 py-1 rounded-full text-xs font-mono font-semibold tracking-wide border bg-emerald-500/15 text-emerald-300 border-emerald-500/30">
-              СВЕРХПРОВОДИМОСТЬ • R → 0
+            <div class="text-[10px] font-mono text-slate-300 bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800">
+              CI = 0.20 × Σ(S₁) .. R = <span id="gauge-formula-r" class="text-cyan-300 font-bold">15 Ω</span> • КПД: <span id="gauge-formula-h" class="text-emerald-300 font-bold">85%</span>
             </div>
           </div>
 
-          <!-- SVG Visual Stage -->
-          <div class="w-full bg-slate-950/80 rounded-xl border border-slate-800/80 p-4 relative flex items-center justify-center overflow-x-auto">
-            <svg id="liveCircuitSvg" viewBox="0 0 940 230" class="w-full max-w-[940px] min-w-[680px] h-auto select-none">
-              <defs>
-                <radialGradient id="tanden-reactor-glow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="#fbbf24" stop-opacity="1"/>
-                  <stop offset="60%" stop-color="#f59e0b" stop-opacity="0.5"/>
-                  <stop offset="100%" stop-color="#d97706" stop-opacity="0"/>
-                </radialGradient>
-                <linearGradient id="wire-flow-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#38bdf8"/>
-                  <stop offset="100%" stop-color="#34d399"/>
-                </linearGradient>
-                <filter id="circuit-glow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="4" result="blur"/>
-                  <feMerge>
-                    <feMergeNode in="blur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-              </defs>
-
-              <!-- Return Wire (Bottom Bus) -->
-              <path d="M 760 165 L 140 165" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
-              <path id="svg-return-flow" d="M 760 165 L 140 165" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" class="flow-reverse opacity-70"/>
-              <text x="450" y="185" text-anchor="middle" fill="#64748b" font-size="10" font-family="monospace">ОБРАТНЫЙ ПРОВОД / ЗАЗЕМЛЕНИЕ В СТОПЫ</text>
-
-              <!-- Forward Wire (Attention Bus) -->
-              <path d="M 140 65 L 300 65" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
-              <path id="svg-wire-1" d="M 140 65 L 300 65" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" class="flow-line"/>
-
-              <path d="M 480 65 L 590 65" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
-              <path id="svg-wire-2" d="M 480 65 L 590 65" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" class="flow-line"/>
-
-              <path d="M 680 65 L 760 65" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
-              <path id="svg-wire-3" d="M 680 65 L 760 65" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" class="flow-line"/>
-
-              <!-- Vertical Wires -->
-              <path d="M 140 165 L 140 65" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
-              <path d="M 760 65 L 760 165" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
-
-              <!-- NODE 1: TANDEN REACTOR -->
-              <g transform="translate(140, 115)">
-                <circle r="36" fill="url(#tanden-reactor-glow)" id="svg-tanden-glow"/>
-                <circle r="22" fill="#0f172a" stroke="#f59e0b" stroke-width="3"/>
-                <text y="5" text-anchor="middle" fill="#fbbf24" font-size="14" font-weight="bold" font-family="monospace">丹田</text>
-                <text y="42" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace">ТАНДЭН (ЭДС)</text>
-              </g>
-
-              <!-- NODE 2: PARASITIC EGO RESISTOR -->
-              <g transform="translate(300, 38)" id="svg-resistor-group">
-                <rect x="0" y="0" width="180" height="54" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="2.5" id="svg-resistor-box"/>
-                <text x="90" y="22" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace" font-weight="bold">РЕЗИСТОР ЭГО (R_ego)</text>
-                <text x="90" y="42" text-anchor="middle" fill="#38bdf8" font-size="13" font-weight="bold" font-family="monospace" id="svg-resistor-val">0.05 Ω • МУСИН</text>
-              </g>
-
-              <!-- NODE 3: ZANSHIN CIRCUIT BREAKER (SWITCH) -->
-              <g transform="translate(590, 42)">
-                <rect x="0" y="0" width="90" height="46" rx="8" fill="#0f172a" stroke="#0ea5e9" stroke-width="2"/>
-                <line x1="16" y1="23" x2="74" y2="23" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" id="svg-switch-bar"/>
-                <circle cx="16" cy="23" r="4" fill="#38bdf8"/>
-                <circle cx="74" cy="23" r="4" fill="#38bdf8"/>
-                <text x="45" y="38" text-anchor="middle" fill="#7dd3fc" font-size="9" font-family="monospace">ДЗАНСИН</text>
-              </g>
-
-              <!-- NODE 4: LOAD / FLASHLIGHT BEAM INTO REALITY -->
-              <g transform="translate(760, 115)">
-                <!-- Emitted Light Cone -->
-                <polygon id="svg-light-beam" points="0,-18 140,-50 140,50 0,18" fill="rgba(251, 191, 36, 0.35)" filter="url(#circuit-glow)"/>
-                <circle r="30" fill="rgba(251, 191, 36, 0.4)" id="svg-lamp-glow" filter="url(#circuit-glow)"/>
-                <circle r="18" fill="#1e293b" stroke="#f59e0b" stroke-width="2.5" id="svg-lamp-circle"/>
-                <text y="5" text-anchor="middle" fill="#fbbf24" font-size="13">💡</text>
-                <text y="42" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace">ДЕЙСТВИЕ (t=now)</text>
-              </g>
-            </svg>
-          </div>
-        </div>
-
-        <!-- ==================== 5 BIOLOGICAL SYSTEMS SLIDERS ==================== -->
-        <div class="space-y-4">
-          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2 px-1">
-            <div>
-              <h2 class="text-lg md:text-xl font-bold tracking-tight text-slate-100 flex items-center gap-2">
-                <span>🎛️</span>
-                <span>5 систем человека под зонтиком Закона Проводимости</span>
-              </h2>
-              <p class="text-xs text-slate-300 mt-0.5">
-                Двигайте ползунки, чтобы откалибровать влияние каждой системы на общее сопротивление контура:
-              </p>
-            </div>
-            <span class="text-[11px] font-mono text-slate-300 bg-slate-900 px-3 py-1 rounded-lg border border-slate-800">
-              Каждая система вносит 20% веса
-            </span>
-          </div>
-
-          <!-- Cards Grid -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             
-            <!-- 1. Вегетативная нервная система (ВНС) -->
-            <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-slate-700 transition flex flex-col justify-between space-y-4 shadow-xl">
-              <div>
-                <div class="flex items-center justify-between mb-2">
-                  <div class="flex items-center gap-2">
-                    <span class="text-xl">🫀</span>
-                    <h3 class="text-xs font-bold text-slate-200">1. Вегетативная система</h3>
-                  </div>
-                  <span id="badge-gauge-ans" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                    +85 • Вагус
-                  </span>
-                </div>
-                <p class="text-[11px] text-slate-300 mb-3">
-                  <strong>Манометр давления:</strong> симпатический овердрайв (зажим сосудов) vs вентральный вагус (свободный проток).
-                </p>
-
-                <!-- Slider -->
-                <div class="space-y-1">
-                  <div class="flex justify-between text-[10px] font-mono text-slate-300">
-                    <span class="text-rose-400">Симпатика (-100)</span>
-                    <span class="text-emerald-400">Вагус (+100)</span>
-                  </div>
-                  <input id="slider-gauge-ans" type="range" min="-100" max="100" value="20" oninput="gauge_updateSystem('ans', this.value)" class="w-full accent-emerald-500 cursor-pointer">
-                </div>
+            <!-- 1. ANS (ВНС) -->
+            <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-200 flex items-center gap-1.5">
+                  <span>🫀</span> ВНС (Вагус)
+                </span>
+                <span id="badge-gauge-ans" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                  +85 • Вагус
+                </span>
               </div>
-
-              <div class="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800/80 text-[10px] font-mono text-slate-300 leading-relaxed" id="desc-gauge-ans">
-                Вентральный блуждающий нерв активен. Сосуды расширены, пальцы рук и стопы тёплые, сердечный ритм когерентен дыханию.
+              <input id="slider-gauge-ans" type="range" min="-100" max="100" value="20" oninput="gauge_updateSystem('ans', this.value)" class="w-full accent-emerald-500 cursor-pointer h-1.5 bg-slate-800 rounded">
+              <div class="text-[10px] font-mono text-slate-400 line-clamp-2" id="desc-gauge-ans">
+                Вентральный блуждающий нерв активен. Сосуды расширены, пальцы тёплые.
               </div>
             </div>
 
-            <!-- 2. Эндокринный каскад (Гормоны) -->
-            <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-slate-700 transition flex flex-col justify-between space-y-4 shadow-xl">
-              <div>
-                <div class="flex items-center justify-between mb-2">
-                  <div class="flex items-center gap-2">
-                    <span class="text-xl">🧪</span>
-                    <h3 class="text-xs font-bold text-slate-200">2. Эндокринный каскад</h3>
-                  </div>
-                  <span id="badge-gauge-endo" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                    +80 • Анаболизм
-                  </span>
-                </div>
-                <p class="text-[11px] text-slate-300 mb-3">
-                  <strong>Химический охладитель:</strong> кортизоловый чад перегрева vs окситоцин и анаболическое восстановление.
-                </p>
-
-                <!-- Slider -->
-                <div class="space-y-1">
-                  <div class="flex justify-between text-[10px] font-mono text-slate-300">
-                    <span class="text-rose-400">Кортизол (-100)</span>
-                    <span class="text-emerald-400">Окситоцин (+100)</span>
-                  </div>
-                  <input id="slider-gauge-endo" type="range" min="-100" max="100" value="15" oninput="gauge_updateSystem('endo', this.value)" class="w-full accent-emerald-500 cursor-pointer">
-                </div>
+            <!-- 2. Endo (Гормоны) -->
+            <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-200 flex items-center gap-1.5">
+                  <span>🧪</span> Эндокринный каскад
+                </span>
+                <span id="badge-gauge-endo" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                  +80 • Анаболизм
+                </span>
               </div>
-
-              <div class="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800/80 text-[10px] font-mono text-slate-300 leading-relaxed" id="desc-gauge-endo">
-                Ось HPA спокойна. Кортизол на базовом уровне. Высокий анаболизм, синтез нейротрофина BDNF и регенерация тканей.
+              <input id="slider-gauge-endo" type="range" min="-100" max="100" value="15" oninput="gauge_updateSystem('endo', this.value)" class="w-full accent-emerald-500 cursor-pointer h-1.5 bg-slate-800 rounded">
+              <div class="text-[10px] font-mono text-slate-400 line-clamp-2" id="desc-gauge-endo">
+                Ось HPA спокойна. Кортизол на базовом уровне. Синтез BDNF.
               </div>
             </div>
 
-            <!-- 3. Нейросети мозга (фМРТ) -->
-            <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-slate-700 transition flex flex-col justify-between space-y-4 shadow-xl">
-              <div>
-                <div class="flex items-center justify-between mb-2">
-                  <div class="flex items-center gap-2">
-                    <span class="text-xl">🧠</span>
-                    <h3 class="text-xs font-bold text-slate-200">3. Нейросети мозга</h3>
-                  </div>
-                  <span id="badge-gauge-brain" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                    +80 • TPN Поток
-                  </span>
-                </div>
-                <p class="text-[11px] text-slate-300 mb-3">
-                  <strong>Вихрь холостого хода:</strong> руминация DMN (самоедство) vs TPN (растворение в реальной задаче).
-                </p>
-
-                <!-- Slider -->
-                <div class="space-y-1">
-                  <div class="flex justify-between text-[10px] font-mono text-slate-300">
-                    <span class="text-rose-400">DMN Руминация (-100)</span>
-                    <span class="text-emerald-400">TPN Поток (+100)</span>
-                  </div>
-                  <input id="slider-gauge-brain" type="range" min="-100" max="100" value="20" oninput="gauge_updateSystem('brain', this.value)" class="w-full accent-emerald-500 cursor-pointer">
-                </div>
+            <!-- 3. Brain (DMN / TPN) -->
+            <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-200 flex items-center gap-1.5">
+                  <span>🧠</span> Нейросети мозга
+                </span>
+                <span id="badge-gauge-brain" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                  +80 • TPN Поток
+                </span>
               </div>
-
-              <div class="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800/80 text-[10px] font-mono text-slate-300 leading-relaxed" id="desc-gauge-brain">
-                DMN спит. Внутренний критик и страх оценки отключены. Префронтальная кора соединена с созидательным действием.
+              <input id="slider-gauge-brain" type="range" min="-100" max="100" value="20" oninput="gauge_updateSystem('brain', this.value)" class="w-full accent-emerald-500 cursor-pointer h-1.5 bg-slate-800 rounded">
+              <div class="text-[10px] font-mono text-slate-400 line-clamp-2" id="desc-gauge-brain">
+                DMN спит. Внутренний критик отключен. Соединение с действием.
               </div>
             </div>
 
-            <!-- 4. Вариабельность пульса (HRV) -->
-            <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-slate-700 transition flex flex-col justify-between space-y-4 shadow-xl">
-              <div>
-                <div class="flex items-center justify-between mb-2">
-                  <div class="flex items-center gap-2">
-                    <span class="text-xl">📊</span>
-                    <h3 class="text-xs font-bold text-slate-200">4. Вариабельность пульса (HRV)</h3>
-                  </div>
-                  <span id="badge-gauge-cardio" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                    +85 • Когерентность
-                  </span>
-                </div>
-                <p class="text-[11px] text-slate-300 mb-3">
-                  <strong>Осциллограф контура:</strong> монотонный спазм сердца (стресс) vs гибкая когерентность ритма.
-                </p>
-
-                <!-- Slider -->
-                <div class="space-y-1">
-                  <div class="flex justify-between text-[10px] font-mono text-slate-300">
-                    <span class="text-rose-400">Спазм ритма (-100)</span>
-                    <span class="text-emerald-400">Когерентность (+100)</span>
-                  </div>
-                  <input id="slider-gauge-cardio" type="range" min="-100" max="100" value="15" oninput="gauge_updateSystem('cardio', this.value)" class="w-full accent-emerald-500 cursor-pointer">
-                </div>
+            <!-- 4. Cardio (HRV) -->
+            <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-200 flex items-center gap-1.5">
+                  <span>📊</span> Вариабельность пульса (HRV)
+                </span>
+                <span id="badge-gauge-cardio" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                  +85 • Когерентность
+                </span>
               </div>
-
-              <div class="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800/80 text-[10px] font-mono text-slate-300 leading-relaxed" id="desc-gauge-cardio">
-                Высокая вариабельность сердечного ритма. Сердце гибко адаптируется к нагрузке, фазы дыхания синхронизированы.
+              <input id="slider-gauge-cardio" type="range" min="-100" max="100" value="15" oninput="gauge_updateSystem('cardio', this.value)" class="w-full accent-emerald-500 cursor-pointer h-1.5 bg-slate-800 rounded">
+              <div class="text-[10px] font-mono text-slate-400 line-clamp-2" id="desc-gauge-cardio">
+                Высокая вариабельность ритма. Сердце когерентно дыханию.
               </div>
             </div>
 
-            <!-- 5. Соматика и диафрагма (Тандэн) -->
-            <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-slate-700 transition flex flex-col justify-between space-y-4 shadow-xl">
-              <div>
-                <div class="flex items-center justify-between mb-2">
-                  <div class="flex items-center gap-2">
-                    <span class="text-xl">🧘</span>
-                    <h3 class="text-xs font-bold text-slate-200">5. Соматика и Тандэн</h3>
-                  </div>
-                  <span id="badge-gauge-soma" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                    +90 • Тандэн
-                  </span>
-                </div>
-                <p class="text-[11px] text-slate-300 mb-3">
-                  <strong>Физическая изоляция:</strong> челюстной панцирь Райха vs свободная диафрагма и опущенный центр тяжести.
-                </p>
-
-                <!-- Slider -->
-                <div class="space-y-1">
-                  <div class="flex justify-between text-[10px] font-mono text-slate-300">
-                    <span class="text-rose-400">Спазм мышц (-100)</span>
-                    <span class="text-emerald-400">Тандэн (+100)</span>
-                  </div>
-                  <input id="slider-gauge-soma" type="range" min="-100" max="100" value="10" oninput="gauge_updateSystem('soma', this.value)" class="w-full accent-emerald-500 cursor-pointer">
-                </div>
+            <!-- 5. Soma (Тандэн) -->
+            <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-200 flex items-center gap-1.5">
+                  <span>🧘</span> Соматика и Тандэн
+                </span>
+                <span id="badge-gauge-soma" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                  +90 • Тандэн
+                </span>
               </div>
-
-              <div class="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800/80 text-[10px] font-mono text-slate-300 leading-relaxed" id="desc-gauge-soma">
-                Челюсти разомкнуты, плечи опущены, дыхание идёт нижним резервуаром живота. Мышечный панцирь полностью разомкнут.
+              <input id="slider-gauge-soma" type="range" min="-100" max="100" value="10" oninput="gauge_updateSystem('soma', this.value)" class="w-full accent-emerald-500 cursor-pointer h-1.5 bg-slate-800 rounded">
+              <div class="text-[10px] font-mono text-slate-400 line-clamp-2" id="desc-gauge-soma">
+                Челюсти разомкнуты, плечи опущены, дыхание в нижний резервуар.
               </div>
             </div>
 
-            <!-- Formula Summary Card -->
-            <div class="p-5 rounded-2xl bg-gradient-to-br from-slate-950 to-slate-900 border border-emerald-500/20 flex flex-col justify-between space-y-3 shadow-xl">
-              <div class="space-y-2">
-                <div class="text-[11px] font-mono uppercase tracking-widest text-emerald-400 font-bold flex items-center gap-1.5">
-                  <span>📐</span>
-                  <span>Математический зонтик</span>
-                </div>
-                <div class="text-[11px] font-mono text-slate-300 space-y-1">
-                  <div>CI = 0.20 × (S₁ + S₂ + S₃ + S₄ + S₅)</div>
-                  <div>Стресс R = (100 - CI) / 2 = <span class="text-cyan-300 font-bold" id="gauge-formula-r">42 Ω</span></div>
-                  <div>КПД H = (CI + 100) / 2 = <span class="text-emerald-300 font-bold" id="gauge-formula-h">58%</span></div>
-                  <div>Потери Q = I² · R_ego · t</div>
-                </div>
+            <!-- Quick Note Card -->
+            <div class="p-3.5 rounded-xl bg-gradient-to-br from-slate-950 to-slate-900 border border-emerald-500/20 flex flex-col justify-between">
+              <div class="text-[11px] font-mono text-emerald-400 font-bold flex items-center gap-1">
+                <span>⚡</span> Инвариант сверхпроводимости
               </div>
-              <p class="text-[10px] text-slate-300 leading-relaxed">
-                Счастье — это объективный физический режим открытого контура с КПД &gt; 60%. Устраняя затор в любой из 5 систем, вы возвращаете стрелку в зеленую зону.
+              <p class="text-[10px] text-slate-300 leading-tight">
+                Устраняя зажим в любой из 5 систем, вы снижаете омический нагрев и возвращаете стрелку спидометра в зелёную зону.
               </p>
             </div>
 
           </div>
         </div>
 
-        <!-- Section 3: 30-Second Recovery Protocol -->
-        <div class="bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-900 border border-emerald-500/30 rounded-2xl p-6 shadow-xl space-y-4">
-          <div class="flex items-center gap-3">
-            <span class="text-2xl p-2 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">🛠️</span>
+        <!-- 30-Second Operator Recovery Protocol -->
+        <div class="bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-900 border border-emerald-500/30 rounded-2xl p-5 shadow-xl space-y-3">
+          <div class="flex items-center gap-2.5">
+            <span class="text-xl p-1.5 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">🛠️</span>
             <div>
-              <h3 class="text-base font-bold text-slate-100">30-секундный протокол оператора: Как вернуть стрелку в Зеленую зону</h3>
-              <p class="text-xs text-slate-300">Детерминированная процедура сброса омического перегрева цепи</p>
+              <h3 class="text-sm font-bold text-slate-100">30-секундный протокол оператора: Сброс омического перегрева цепи</h3>
+              <p class="text-[11px] text-slate-400">Детерминированная соматическая процедура возврата стрелки в Зелёную зону (R → 0)</p>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-xs font-mono">
-            <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
-              <span class="text-emerald-400 font-bold block">1. ТАНДЭН</span>
-              <p class="text-slate-300 text-[11px] leading-relaxed">
-                Сбросить внимание из головы в точку на 3 пальца ниже пупка. Сделать медленный удлинённый выдох (вагусный тормоз).
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2.5 text-xs font-mono">
+            <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1">
+              <span class="text-emerald-400 font-bold block text-[11px]">1. ТАНДЭН</span>
+              <p class="text-slate-300 text-[10px] leading-relaxed">
+                Сбросить внимание из головы в точку на 3 пальца ниже пупка. Удлинённый выдох через рот.
               </p>
             </div>
-            <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
-              <span class="text-teal-400 font-bold block">2. ЧЕЛЮСТЬ &amp; ПЛЕЧИ</span>
-              <p class="text-slate-300 text-[11px] leading-relaxed">
-                Разомкнуть зубы, отпустить плечи вниз. Разомкнуть верхний панцирь напряжения, пустив кровь в конечности.
+            <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1">
+              <span class="text-teal-400 font-bold block text-[11px]">2. ЧЕЛЮСТЬ &amp; ПЛЕЧИ</span>
+              <p class="text-slate-300 text-[10px] leading-relaxed">
+                Разомкнуть зубы, сбросить плечи вниз. Разомкнуть мышечный зажим верхнего пояса.
               </p>
             </div>
-            <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
-              <span class="text-cyan-400 font-bold block">3. ОБРЫВ DMN</span>
-              <p class="text-slate-300 text-[11px] leading-relaxed">
-                Сказать себе: «Я не продавливаю реальность. Ток течёт сам через сверхпроводник». Снять статус подвига.
+            <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1">
+              <span class="text-cyan-400 font-bold block text-[11px]">3. ОБРЫВ DMN</span>
+              <p class="text-slate-300 text-[10px] leading-relaxed">
+                «Я не продавливаю реальность. Ток течёт сам через проводник». Снять статус подвига.
               </p>
             </div>
-            <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
-              <span class="text-amber-400 font-bold block">4. МИКРОДЕЙСТВИЕ</span>
-              <p class="text-slate-300 text-[11px] leading-relaxed">
-                Зажечь лампу нагрузки в точке t = now: сделать одно маленькое физическое действие (выпить глоток воды, написать 1 строчку).
+            <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1">
+              <span class="text-amber-400 font-bold block text-[11px]">4. МИКРОДЕЙСТВИЕ</span>
+              <p class="text-slate-300 text-[10px] leading-relaxed">
+                Зажечь лампу в t = now: сделать одно маленькое физическое действие прямо сейчас.
               </p>
             </div>
           </div>
@@ -1141,8 +899,7 @@
 
       </div>
 
-      <!-- ============================================================== -->
-      <!-- VIEW 2: PAIN-FIRST NAVIGATOR (EMERGENCY AID)                   -->
+<!-- VIEW 2: PAIN-FIRST NAVIGATOR (EMERGENCY AID)                   -->
       <!-- ============================================================== -->
       <div id="view-pains" class="space-y-6 hidden">
         
@@ -1437,6 +1194,100 @@
             <p class="text-xs text-slate-300 leading-relaxed">
               <strong>Предохранитель:</strong> Непоколебимое сохранение духа после выстрела. Автомат защиты от короткого замыкания: проект может разбиться, но реактор мастера цел.
             </p>
+          </div>
+        </div>
+
+        <!-- ==================== LIVE CIRCUIT SCHEMATIC (FLASHLIGHT MODEL) ==================== -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-2xl relative overflow-hidden space-y-4">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+            <div>
+              <h2 class="text-sm font-semibold tracking-wider uppercase text-slate-400 flex items-center gap-2">
+                <span>📡</span> Принципиальная схема человеческого контура (Схема фонарика)
+              </h2>
+              <p class="text-xs text-slate-400 mt-0.5">
+                Показывает физическое прохождение тока внимания через резистор эго в реальность в точке t = now.
+              </p>
+            </div>
+            <div id="circuitStatusTag" class="px-3 py-1 rounded-full text-xs font-mono font-semibold tracking-wide border bg-emerald-500/15 text-emerald-300 border-emerald-500/30">
+              СВЕРХПРОВОДИМОСТЬ • R → 0
+            </div>
+          </div>
+
+          <!-- SVG Visual Stage -->
+          <div class="w-full bg-slate-950/80 rounded-xl border border-slate-800/80 p-4 relative flex items-center justify-center overflow-x-auto">
+            <svg id="liveCircuitSvg" viewBox="0 0 940 230" class="w-full max-w-[940px] min-w-[680px] h-auto select-none">
+              <defs>
+                <radialGradient id="tanden-reactor-glow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#fbbf24" stop-opacity="1"/>
+                  <stop offset="60%" stop-color="#f59e0b" stop-opacity="0.5"/>
+                  <stop offset="100%" stop-color="#d97706" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="wire-flow-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#38bdf8"/>
+                  <stop offset="100%" stop-color="#34d399"/>
+                </linearGradient>
+                <filter id="circuit-glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="4" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+
+              <!-- Return Wire (Bottom Bus) -->
+              <path d="M 760 165 L 140 165" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
+              <path id="svg-return-flow" d="M 760 165 L 140 165" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" class="flow-reverse opacity-70"/>
+              <text x="450" y="185" text-anchor="middle" fill="#64748b" font-size="10" font-family="monospace">ОБРАТНЫЙ ПРОВОД / ЗАЗЕМЛЕНИЕ В СТОПЫ</text>
+
+              <!-- Forward Wire (Attention Bus) -->
+              <path d="M 140 65 L 300 65" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
+              <path id="svg-wire-1" d="M 140 65 L 300 65" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" class="flow-line"/>
+
+              <path d="M 480 65 L 590 65" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
+              <path id="svg-wire-2" d="M 480 65 L 590 65" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" class="flow-line"/>
+
+              <path d="M 680 65 L 760 65" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
+              <path id="svg-wire-3" d="M 680 65 L 760 65" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" class="flow-line"/>
+
+              <!-- Vertical Wires -->
+              <path d="M 140 165 L 140 65" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
+              <path d="M 760 65 L 760 165" stroke="#334155" stroke-width="7" stroke-linecap="round"/>
+
+              <!-- NODE 1: TANDEN REACTOR -->
+              <g transform="translate(140, 115)">
+                <circle r="36" fill="url(#tanden-reactor-glow)" id="svg-tanden-glow"/>
+                <circle r="22" fill="#0f172a" stroke="#f59e0b" stroke-width="3"/>
+                <text y="5" text-anchor="middle" fill="#fbbf24" font-size="14" font-weight="bold" font-family="monospace">丹田</text>
+                <text y="42" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace">ТАНДЭН (ЭДС)</text>
+              </g>
+
+              <!-- NODE 2: PARASITIC EGO RESISTOR -->
+              <g transform="translate(300, 38)" id="svg-resistor-group">
+                <rect x="0" y="0" width="180" height="54" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="2.5" id="svg-resistor-box"/>
+                <text x="90" y="22" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace" font-weight="bold">РЕЗИСТОР ЭГО (R_ego)</text>
+                <text x="90" y="42" text-anchor="middle" fill="#38bdf8" font-size="13" font-weight="bold" font-family="monospace" id="svg-resistor-val">0.05 Ω • МУСИН</text>
+              </g>
+
+              <!-- NODE 3: ZANSHIN CIRCUIT BREAKER (SWITCH) -->
+              <g transform="translate(590, 42)">
+                <rect x="0" y="0" width="90" height="46" rx="8" fill="#0f172a" stroke="#0ea5e9" stroke-width="2"/>
+                <line x1="16" y1="23" x2="74" y2="23" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" id="svg-switch-bar"/>
+                <circle cx="16" cy="23" r="4" fill="#38bdf8"/>
+                <circle cx="74" cy="23" r="4" fill="#38bdf8"/>
+                <text x="45" y="38" text-anchor="middle" fill="#7dd3fc" font-size="9" font-family="monospace">ДЗАНСИН</text>
+              </g>
+
+              <!-- NODE 4: LOAD / FLASHLIGHT BEAM INTO REALITY -->
+              <g transform="translate(760, 115)">
+                <!-- Emitted Light Cone -->
+                <polygon id="svg-light-beam" points="0,-18 140,-50 140,50 0,18" fill="rgba(251, 191, 36, 0.35)" filter="url(#circuit-glow)"/>
+                <circle r="30" fill="rgba(251, 191, 36, 0.4)" id="svg-lamp-glow" filter="url(#circuit-glow)"/>
+                <circle r="18" fill="#1e293b" stroke="#f59e0b" stroke-width="2.5" id="svg-lamp-circle"/>
+                <text y="5" text-anchor="middle" fill="#fbbf24" font-size="13">💡</text>
+                <text y="42" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace">ДЕЙСТВИЕ (t=now)</text>
+              </g>
+            </svg>
           </div>
         </div>
 
@@ -2750,7 +2601,22 @@
       if (sliderI) sliderI.value = i;
       if (sliderR) sliderR.value = r;
       if (sliderU) sliderU.value = Math.round(u * 100);
+      
+      const rNum = parseInt(r, 10);
+      const ci = Math.round(100 - rNum * 2);
+      ['ans', 'endo', 'brain', 'cardio', 'soma'].forEach(sys => {
+        gaugeState[sys] = ci;
+        const slider = document.getElementById('slider-gauge-' + sys);
+        if (slider) slider.value = ci;
+        if (typeof gauge_renderSystemBadgeAndDesc === 'function') {
+          gauge_renderSystemBadgeAndDesc(sys, ci);
+        }
+      });
+
       updateCircuitConsole();
+      if (typeof updateRadarPosition === 'function') updateRadarPosition();
+      if (typeof updateCircuitSvg === 'function') updateCircuitSvg(ci, rNum, 10);
+      playZenChime(640);
     }
     window.setCircuitConsolePreset = setCircuitConsolePreset;
     window.updateCircuitConsole = updateCircuitConsole;

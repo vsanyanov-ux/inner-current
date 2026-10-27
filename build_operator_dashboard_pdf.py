@@ -1,0 +1,711 @@
+import os
+import sys
+import pypdf
+from playwright.sync_api import sync_playwright
+
+if sys.stdout:
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
+
+OUTPUT_HTML = r"c:\Users\vanya\Antigravity Projects\Apps\Inner Current\presentation\operator_dashboard.html"
+OUTPUT_PDF_LIB = r"c:\Users\vanya\Antigravity Projects\Apps\Inner Current\IC Library\Бортовой дашборд оператора — Инструкция к человеку (Inner Current).pdf"
+OUTPUT_PDF_WIKI = r"C:\Users\vanya\Antigravity Projects\Misc\LLM Wiki\02_Wiki\Бортовой дашборд оператора — Инструкция к человеку (Inner Current).pdf"
+OUTPUT_PNG = r"c:\Users\vanya\Antigravity Projects\Apps\Inner Current\presentation\operator_dashboard.png"
+
+os.makedirs(os.path.dirname(OUTPUT_HTML), exist_ok=True)
+os.makedirs(os.path.dirname(OUTPUT_PDF_LIB), exist_ok=True)
+os.makedirs(os.path.dirname(OUTPUT_PDF_WIKI), exist_ok=True)
+
+html_content = """<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Бортовой дашборд оператора — Инструкция к человеку (Inner Current)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700;800&display=swap');
+
+  @page {
+    size: A4 portrait;
+    margin: 10mm 12mm 10mm 12mm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    height: 100%;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #ffffff;
+    color: #0f172a;
+    font-size: 11px;
+    line-height: 1.4;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* HEADER */
+  .header {
+    border-bottom: 2.5px solid #0f172a;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .badge-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+
+  .badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+
+  .badge-primary {
+    background: #ffffff;
+    color: #0f172a;
+    border: 1.5px solid #0f172a;
+  }
+
+  .badge-accent {
+    background: #e0f2fe;
+    color: #0284c7;
+    border: 1px solid #bae6fd;
+  }
+
+  .badge-amber {
+    background: #fef3c7;
+    color: #b45309;
+    border: 1px solid #fde68a;
+  }
+
+  .title {
+    font-size: 21px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+  }
+
+  .subtitle {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #475569;
+    margin-top: 2px;
+  }
+
+  .author-box {
+    text-align: right;
+    font-size: 10px;
+    color: #334155;
+    border-left: 2px solid #cbd5e1;
+    padding-left: 12px;
+    line-height: 1.35;
+  }
+
+  .author-name {
+    font-weight: 800;
+    font-size: 12px;
+    color: #0f172a;
+  }
+
+  .author-tag {
+    color: #0284c7;
+    font-weight: 700;
+  }
+
+  /* INTRO AXIOM STRIP */
+  .axiom-strip {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #0284c7;
+    border-radius: 6px;
+    padding: 7px 12px;
+    margin-bottom: 10px;
+    font-size: 11px;
+    line-height: 1.4;
+    color: #1e293b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .axiom-strip strong {
+    color: #0f172a;
+  }
+
+  .axiom-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    color: #0284c7;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  /* SECTION LABELS */
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    color: #475569;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #e2e8f0;
+  }
+
+  /* BLOCK 1: TELEMETRY 4 GAUGES */
+  .telemetry-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .gauge-card {
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 7px;
+    padding: 8px 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .gauge-card.active-sky { border-top: 3.5px solid #0284c7; }
+  .gauge-card.active-emerald { border-top: 3.5px solid #059669; }
+  .gauge-card.active-amber { border-top: 3.5px solid #d97706; }
+  .gauge-card.active-indigo { border-top: 3.5px solid #6366f1; }
+
+  .gauge-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  .gauge-title {
+    font-weight: 800;
+    font-size: 10.5px;
+    color: #0f172a;
+  }
+
+  .gauge-symbol {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 800;
+    padding: 1px 5px;
+    border-radius: 3px;
+    background: #f1f5f9;
+    color: #334155;
+  }
+
+  .gauge-target {
+    font-size: 9px;
+    font-weight: 700;
+    color: #059669;
+    background: #ecfdf5;
+    padding: 1.5px 4px;
+    border-radius: 3px;
+    margin-bottom: 4px;
+    display: inline-block;
+  }
+
+  .gauge-list {
+    list-style: none;
+    font-size: 9.5px;
+    color: #334155;
+    line-height: 1.35;
+  }
+
+  .gauge-list li {
+    margin-bottom: 2px;
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .gauge-list li::before {
+    content: "•";
+    color: #64748b;
+    font-weight: bold;
+  }
+
+  /* BLOCK 2: PROTOCOL 45 SEC (LIGHT PRINT-FRIENDLY THEME) */
+  .protocol-strip {
+    background: #f8fafc;
+    color: #0f172a;
+    border: 1.5px solid #0284c7;
+    border-radius: 7px;
+    padding: 8px 11px;
+    margin-bottom: 10px;
+  }
+
+  .protocol-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #cbd5e1;
+  }
+
+  .protocol-title {
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: -0.2px;
+    color: #0369a1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .protocol-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px;
+    font-weight: 700;
+    background: #e0f2fe;
+    color: #0284c7;
+    border: 1px solid #bae6fd;
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+
+  .protocol-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .step-box {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 6px 7px;
+  }
+
+  .step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    font-weight: 800;
+    color: #0284c7;
+    margin-bottom: 2px;
+  }
+
+  .step-name {
+    font-weight: 800;
+    font-size: 10px;
+    color: #0f172a;
+    margin-bottom: 2px;
+  }
+
+  .step-desc {
+    font-size: 8.8px;
+    color: #334155;
+    line-height: 1.35;
+  }
+
+  .step-desc strong {
+    color: #b45309;
+  }
+
+  /* BLOCK 3: TROUBLESHOOTING 4 ERRORS */
+  .errors-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .error-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 7px;
+    padding: 8px 10px;
+    position: relative;
+  }
+
+  .error-card.err-01 { border-left: 4px solid #ef4444; }
+  .error-card.err-02 { border-left: 4px solid #f97316; }
+  .error-card.err-03 { border-left: 4px solid #eab308; }
+  .error-card.err-04 { border-left: 4px solid #8b5cf6; }
+
+  .error-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  .error-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 800;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .error-name {
+    font-size: 9px;
+    color: #64748b;
+    font-weight: 600;
+  }
+
+  .error-symptom {
+    font-size: 9.5px;
+    color: #334155;
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+
+  .error-repair {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 9px;
+    color: #0f172a;
+    line-height: 1.35;
+  }
+
+  .error-repair strong {
+    color: #0284c7;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* BLOCK 4: SOP DAY CYCLE */
+  .sop-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .sop-card {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 6px 8px;
+  }
+
+  .sop-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 2px;
+  }
+
+  .sop-text {
+    font-size: 8.8px;
+    color: #475569;
+    line-height: 1.3;
+  }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1.5px solid #0f172a;
+    padding-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9px;
+    color: #64748b;
+  }
+
+  .footer-left {
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .footer-center {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px;
+  }
+
+  .footer-right {
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-container">
+
+  <!-- HEADER -->
+  <div>
+    <div class="header">
+      <div>
+        <div class="badge-row">
+          <span class="badge badge-primary">INNER CURRENT</span>
+          <span class="badge badge-accent">БОРТОВОЙ ДАШБОРД ОПЕРАТОРА</span>
+          <span class="badge badge-amber">QUICK START v2.0</span>
+        </div>
+        <div class="title">ИНСТРУКЦИЯ К ЧЕЛОВЕКУ: ТЕХПАСПОРТ</div>
+        <div class="subtitle">Прикладная электродинамика соматической цепи и экспресс-регламенты поддержания сверхпроводимости</div>
+      </div>
+      <div class="author-box">
+        <div class="author-name">Владимир Аньянов</div>
+        <div>Система «Внутренний ток»</div>
+        <div class="author-tag">Self-Hosted Human</div>
+      </div>
+    </div>
+
+    <!-- INTRO AXIOM STRIP -->
+    <div class="axiom-strip">
+      <div>⚡ <strong>Главная аксиома контура:</strong> Человек — это НЕ эго. Эго — это паразитный реостат <em>R_ego</em> и левополушарный автомат. Счастье — это телеметрия сверхпроводимости замкнутой цепи (<em>R_ego → 0</em>) во время созидательного действия.</div>
+      <div class="axiom-tag">Don't Trust, Verify!</div>
+    </div>
+
+    <!-- BLOCK 1: TELEMETRY GAUGES -->
+    <div class="section-label">[1] ПРИБОРНАЯ ПАНЕЛЬ ТЕЛЕМЕТРИИ (СОМАТИЧЕСКИЙ СКАНЕР СОСТОЯНИЯ)</div>
+    <div class="telemetry-grid">
+      
+      <div class="gauge-card active-sky">
+        <div>
+          <div class="gauge-header">
+            <span class="gauge-title">ВОЛЬТМЕТР</span>
+            <span class="gauge-symbol">U_бат</span>
+          </div>
+          <div class="gauge-target">ТАНДЭН (Низ живота)</div>
+          <ul class="gauge-list">
+            <li><strong>Норма:</strong> низ живота плотный, упругий, тёплый, как свинцовый шар.</li>
+            <li><strong>Дыхание:</strong> свободный длинный выдох в таз (4–8).</li>
+            <li><strong>Сбой:</strong> ком в горле, пустота внизу живота.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="gauge-card active-emerald">
+        <div>
+          <div class="gauge-header">
+            <span class="gauge-title">ОММЕТР</span>
+            <span class="gauge-symbol">R_ego</span>
+          </div>
+          <div class="gauge-target">РЕОСТАТ ЭГО → 0 Ω</div>
+          <ul class="gauge-list">
+            <li><strong>Норма:</strong> челюсть разжата, зубы разомкнуты, язык на дне рта.</li>
+            <li><strong>Плечи:</strong> свободно опущены, шея холодная и мягкая.</li>
+            <li><strong>Сбой:</strong> сжатые зубы, язык вжат в нёбо.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="gauge-card active-amber">
+        <div>
+          <div class="gauge-header">
+            <span class="gauge-title">АМПЕРМЕТР</span>
+            <span class="gauge-symbol">I_attn</span>
+          </div>
+          <div class="gauge-target">ЛУЧ ВНИМАНИЯ (B)</div>
+          <ul class="gauge-list">
+            <li><strong>Норма:</strong> 100% фокуса на внешнем объекте работы. Сам забыт.</li>
+            <li><strong>Видение:</strong> широкий панорамный обзор.</li>
+            <li><strong>Сбой:</strong> луч развернут внутрь черепа: «Как я выгляжу?».</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="gauge-card active-indigo">
+        <div>
+          <div class="gauge-header">
+            <span class="gauge-title">ВАТТМЕТР</span>
+            <span class="gauge-symbol">P_load</span>
+          </div>
+          <div class="gauge-target">НАГРУЗКА В МИРЕ</div>
+          <ul class="gauge-list">
+            <li><strong>Норма:</strong> материальный энтропийный след (код, текст, чертеж).</li>
+            <li><strong>Цепь:</strong> замкнута на внешнее созидание.</li>
+            <li><strong>Сбой:</strong> имитация: 4 часа скроллинга и ноль следа в материи.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BLOCK 2: PROTOCOL 45 SECONDS -->
+    <div class="protocol-strip">
+      <div class="protocol-header">
+        <div class="protocol-title">⚡ [2] АППАРАТНЫЙ ПРОТОКОЛ СВЕРХПРОВОДИМОСТИ (СБРОС В НОЛЬ ЗА 45 СЕКУНД)</div>
+        <div class="protocol-badge">ЭКСПРЕСС-КАЛИБРОВКА</div>
+      </div>
+      <div class="protocol-steps">
+        
+        <div class="step-box">
+          <div class="step-num">ТАКТ 1 (0–10 СЕК)</div>
+          <div class="step-name">ЗАЗЕМЛЕНИЕ</div>
+          <div class="step-desc">Стопы плотно в пол. Ощути гравитацию и вес тела: <strong>«Я в материальном мире, виртуальный сон снят»</strong>.</div>
+        </div>
+
+        <div class="step-box">
+          <div class="step-num">ТАКТ 2 (10–25 СЕК)</div>
+          <div class="step-name">СБРОС В ТАНДЭН</div>
+          <div class="step-desc">Глубокий выдох на 4 см ниже пупка. Сбрось челюсть и плечи: <strong>R_ego → 0</strong>. Отпусти контроль: «Будь что будет».</div>
+        </div>
+
+        <div class="step-box">
+          <div class="step-num">ТАКТ 3 (25–35 СЕК)</div>
+          <div class="step-name">СНЯТИЕ АВТОМАТА</div>
+          <div class="step-desc">Осознай: <strong>голос в голове — автомат Газзаниги</strong>. Я — НЕ это эго. Деятеля нет, есть только чистое поле внимания.</div>
+        </div>
+
+        <div class="step-box">
+          <div class="step-num">ТАКТ 4 (35–45 СЕК)</div>
+          <div class="step-name">ЗАМЫКАНИЕ НА ДЕЛО</div>
+          <div class="step-desc">Сделай <strong>1 простое физическое микродействие руками</strong>. Ток пошёл в нагрузку Z_load. Свет горит сам собой!</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BLOCK 3: TROUBLESHOOTING 4 FAILURES -->
+    <div class="section-label">[3] ТАБЛИЦА АВАРИЙНЫХ КОДОВ И РЕМОНТА (TROUBLESHOOTING)</div>
+    <div class="errors-grid">
+      
+      <div class="error-card err-01">
+        <div class="error-top">
+          <span class="error-code">⚠️ ERR-01 | ОБРЫВ ЦЕПИ</span>
+          <span class="error-name">БАТАРЕЙНАЯ СЛЕПОТА</span>
+        </div>
+        <div class="error-symptom"><strong>Симптомы:</strong> Апатия, паралич выбора, прокрастинация, ощущение полной обесточенности (I = 0).</div>
+        <div class="error-repair"><strong>РЕМОНТ:</strong> Стопы в пол, 3 глотка тёплой воды, 10 диафрагмальных выдохов в Тандэн, сделать 1 микрошаг руками.</div>
+      </div>
+
+      <div class="error-card err-02">
+        <div class="error-top">
+          <span class="error-code">🔥 ERR-02 | ОМИЧЕСКИЙ ПЕРЕГРЕВ</span>
+          <span class="error-name">ЗАЖАТЫЙ РЕОСТАТ ЭГО</span>
+        </div>
+        <div class="error-symptom"><strong>Симптомы:</strong> Тревога, зубы сжаты, мысли бегут по кругу, паника. <strong>Лимит перегрева — 90 минут!</strong></div>
+        <div class="error-repair"><strong>РЕМОНТ:</strong> Разжать челюсть (зубы врозь!), язык на дно, длинный выдох 4–8 в таз: «Я не требую гарантий, будь что будет».</div>
+      </div>
+
+      <div class="error-card err-03">
+        <div class="error-top">
+          <span class="error-code">⚡ ERR-03 | ПРОБОЙ ИЗОЛЯЦИИ</span>
+          <span class="error-name">ФАЛЬШИВАЯ ЛАМПА</span>
+        </div>
+        <div class="error-symptom"><strong>Симптомы:</strong> Ожидание счастья от BMW, статуса, похвалы или гуру. Достигаторское выгорание.</div>
+        <div class="error-repair"><strong>РЕМОНТ:</strong> Осознать: лампа пуста (Суньята)! Батарейка ТОЛЬКО в твоём Тандэне. Светить в мир, а не сосать энергию из вещей.</div>
+      </div>
+
+      <div class="error-card err-04">
+        <div class="error-top">
+          <span class="error-code">🔄 ERR-04 | ПАРАЗИТНЫЙ ШУНТ</span>
+          <span class="error-name">КОРОТКОЕ ЗАМЫКАНИЕ</span>
+        </div>
+        <div class="error-symptom"><strong>Симптомы:</strong> Скроллинг смартфона, порно, самобичевание. Ток закольцован внутри головы (Q = I²·R·t).</div>
+        <div class="error-repair"><strong>РЕМОНТ:</strong> Немедленно отложить экран! Разомкнуть шунт: перенести 100% луча внимания на физический объект за окном.</div>
+      </div>
+
+    </div>
+
+    <!-- BLOCK 4: DAILY CYCLES (SOP) -->
+    <div class="section-label">[4] СУТОЧНЫЕ ЭКСПЛУАТАЦИОННЫЕ РЕГЛАМЕНТЫ (SOP)</div>
+    <div class="sop-row">
+      <div class="sop-card">
+        <div class="sop-title">🌅 SOP-01: ХОЛОДНЫЙ ПУСК (5 МИН)</div>
+        <div class="sop-text">Стопы в пол до экрана. 10 вдохов-выдохов в Тандэн (4–8). 300 мл тёплой воды. Информационный щит от смартфона на 45 минут.</div>
+      </div>
+      <div class="sop-card">
+        <div class="sop-title">⚡ SOP-02: ЦИКЛ 50/10 (ДЕНЬ)</div>
+        <div class="sop-text">1 дискретная задача (не паралеллить лампы). Сброс челюсти. 50 мин чистый ток. 10 мин Дзансин: панорамный расфокус вдаль.</div>
+      </div>
+      <div class="sop-card">
+        <div class="sop-title">🌙 SOP-03: ОСТАНОВ И РАЗГРУЗКА</div>
+        <div class="sop-text">За 60 мин до сна выписать незакрытые задачи на бумагу (обесточить DMN). Ладонь на Тандэн: «Передаю прибор току Вселенной».</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">СИСТЕМА «ВНУТРЕННИЙ ТОК» (INNER CURRENT) • ТЕХПАСПОРТ ОТКРЫТОГО СВЕРХПРОВОДНИКА</div>
+    <div class="footer-center">R_ego → 0 Ω • E_тандэн > 0 • η = 100%</div>
+    <div class="footer-right">Энциклопедия Владимира Аньянова (2026)</div>
+  </div>
+
+</div>
+
+</body>
+</html>
+"""
+
+with open(OUTPUT_HTML, "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print(f"HTML written to {OUTPUT_HTML}")
+
+with sync_playwright() as p:
+    browser = p.chromium.launch()
+    page = browser.new_page()
+    page.goto(f"file:///{os.path.abspath(OUTPUT_HTML).replace(os.sep, '/')}")
+    page.wait_for_load_state("networkidle")
+    
+    # Generate PDF
+    page.pdf(
+        path=OUTPUT_PDF_LIB,
+        format="A4",
+        print_background=True,
+        margin={"top": "8mm", "bottom": "8mm", "left": "10mm", "right": "10mm"}
+    )
+    print(f"PDF written to {OUTPUT_PDF_LIB}")
+
+    # Generate PNG screenshot
+    page.set_viewport_size({"width": 1200, "height": 1697})
+    page.screenshot(path=OUTPUT_PNG, full_page=True)
+    print(f"PNG screenshot saved to {OUTPUT_PNG}")
+    
+    browser.close()
+
+# Copy PDF to Wiki Vault
+import shutil
+shutil.copy2(OUTPUT_PDF_LIB, OUTPUT_PDF_WIKI)
+print(f"PDF mirrored to Obsidian Vault: {OUTPUT_PDF_WIKI}")
+
+# Verify single page
+reader = pypdf.PdfReader(OUTPUT_PDF_LIB)
+num_pages = len(reader.pages)
+print(f"\n==========================================")
+print(f"TOTAL PAGES: {num_pages}")
+print(f"==========================================")
+if num_pages == 1:
+    print("SUCCESS: Perfect 1-page A4 dashboard!")
+else:
+    print(f"WARNING: Output has {num_pages} pages, adjust margins/font sizes.")
