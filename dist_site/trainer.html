@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Тренажёр Внутреннего Тока 2.0 — Спидометр R_ego и Живая Цепь</title>
+  <title>Тренажёр Внутреннего Тока 2.0 — Приборная панель и Живая Цепь</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
     @keyframes pulse-glow {
@@ -76,10 +76,10 @@
         <div class="p-3 rounded-xl bg-slate-950/70 border border-slate-800/80 space-y-1">
           <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 flex items-center justify-between">
             <span>Режим оператора</span>
-            <span id="sidebarActiveBadge" class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Спидометр</span>
+            <span id="sidebarActiveBadge" class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Кокпит</span>
           </div>
           <div id="sidebarModeDesc" class="text-xs text-slate-200 font-medium">
-            Калибровка внутреннего сопротивления R_ego
+            Кластер приборов: Тахометр, Спидометр, Нагрев и Топливо
           </div>
         </div>
 
@@ -91,15 +91,15 @@
 
           <!-- Tab 1: Speedometer (DEFAULT / HERO) -->
           <button id="nav-tab-speedometer" onclick="switchTab('speedometer')" class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden bg-gradient-to-r from-emerald-500/15 via-slate-900 to-slate-900 border-emerald-500/40 cursor-pointer shadow-lg shadow-emerald-500/10">
-            <span class="text-xl shrink-0" id="nav-icon-speedometer">🎯</span>
+            <span class="text-xl shrink-0" id="nav-icon-speedometer">🏎️</span>
             <div class="flex-1 min-w-0">
               <div class="flex items-center justify-between gap-1">
                 <span class="text-xs font-bold text-emerald-300 group-hover:text-emerald-200 transition truncate" id="nav-title-speedometer">
-                  1. Спидометр R_ego
+                  1. Приборная панель (HUD)
                 </span>
                 <span id="nav-ci-pill" class="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">+84</span>
               </div>
-              <p class="text-[10px] text-slate-400 truncate mt-0.5">Зонтик 5 систем • Живая цепь</p>
+              <p class="text-[10px] text-slate-400 truncate mt-0.5">4 прибора • Радар • 5 систем</p>
             </div>
           </button>
 
@@ -220,18 +220,18 @@
           
           <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 relative z-10">
             <div class="flex items-center gap-3">
-              <span class="text-3xl p-2.5 rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/40 text-emerald-300 shadow-lg shadow-emerald-500/10">🎯</span>
+              <span class="text-3xl p-2.5 rounded-xl bg-gradient-to-br from-cyan-500/20 via-emerald-500/20 to-amber-500/20 border border-cyan-500/40 text-cyan-300 shadow-lg shadow-cyan-500/10">🏎️</span>
               <div>
                 <div class="flex items-center gap-2 flex-wrap">
                   <h1 class="text-2xl md:text-3xl font-bold tracking-tight bg-gradient-to-r from-emerald-300 via-teal-200 to-cyan-300 bg-clip-text text-transparent">
-                    Спидометр внутреннего сопротивления
+                    Приборная панель оператора цепи
                   </h1>
                   <span class="text-xs uppercase tracking-widest px-2.5 py-0.5 bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 rounded-full font-mono font-bold">
-                    Калибровка цепи R_ego
+                    HUD ОПЕРАТОРА • 4 ПРИБОРА
                   </span>
                 </div>
                 <p class="text-slate-300 text-xs md:text-sm mt-1">
-                  <strong>Принцип одного спидометра (Кансо):</strong> Напор внимания (<span class="font-bold text-cyan-300">I</span>) vs Тормоз эго (<span class="font-bold text-emerald-300">R</span>). Проводимость контура без омического трения.
+                  <strong>Бортовой автомобильный щиток:</strong> Тахометр (<span class="font-bold text-cyan-300">I</span>), Спидометр (<span class="font-bold text-emerald-300">P</span>), Нагрев (<span class="font-bold text-rose-300">Q</span>) и Бак Тандэна (<span class="font-bold text-amber-300">U</span>). Проводимость контура без омического трения.
                 </p>
               </div>
             </div>
@@ -246,9 +246,6 @@
               </button>
               <button onclick="setCircuitConsolePreset(75, 15, 1.5)" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-cyan-950/80 text-cyan-200 border border-cyan-500/70 hover:bg-cyan-900 transition flex items-center gap-1 cursor-pointer shadow-sm">
                 <span>⚡</span> Ход (15 Ω)
-              </button>
-              <button onclick="setCircuitConsolePreset(60, 42, 1.35)" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-sky-950/80 text-sky-200 border border-sky-500/70 hover:bg-sky-900 transition flex items-center gap-1 cursor-pointer shadow-sm">
-                <span>⌚</span> Браслет (76 bpm)
               </button>
               <button onclick="setCircuitConsolePreset(20, 50, 1.5)" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-amber-950/80 text-amber-200 border border-amber-500/70 hover:bg-amber-900 transition flex items-center gap-1 cursor-pointer shadow-sm">
                 <span>🥱</span> Дрейф (50 Ω)
@@ -1002,7 +999,7 @@
 
           <div id="liveHealingPostActions" class="hidden pt-2 flex flex-wrap gap-2">
             <button onclick="switchTab('speedometer')" class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition">
-              🎯 Посмотреть стрелку на Спидометре ↗
+              🏎️ Открыть приборную панель ↗
             </button>
           </div>
         </div>
@@ -1157,7 +1154,7 @@
             </div>
           </div>
           <button onclick="switchTab('speedometer')" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs border border-slate-700 transition">
-            🎯 Вернуться к Спидометру
+            🏎️ Вернуться к приборной панели
           </button>
         </header>
 
@@ -1438,10 +1435,10 @@
         if (viewSpeedometer) viewSpeedometer.classList.remove('hidden');
         if (navSpeedometer) navSpeedometer.className = 'w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 group relative overflow-hidden bg-gradient-to-r from-emerald-500/15 via-slate-900 to-slate-900 border-emerald-500/40 cursor-pointer shadow-lg shadow-emerald-500/10';
         if (activeBadge) {
-          activeBadge.textContent = 'Спидометр';
+          activeBadge.textContent = 'Кокпит';
           activeBadge.className = 'px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30';
         }
-        if (modeDesc) modeDesc.textContent = 'Калибровка внутреннего сопротивления R_ego';
+        if (modeDesc) modeDesc.textContent = 'Кластер приборов: Тахометр, Спидометр, Нагрев и Топливо';
       }
 
       try {
@@ -1898,7 +1895,7 @@
       }
       // 4. Moderate Flow / Wristband telemetry (I between 40..65, stressR around 25..45)
       else if (stressR > 25) {
-        stateTitle.textContent = '⌚ РАБОЧИЙ ХОД / ТЕЛЕМЕТРИЯ С БРАСЛЕТА (' + restingHR + ' BPM)';
+        stateTitle.textContent = '⚙️ РАБОЧИЙ ХОД: ШТАТНЫЙ РЕЖИМ (' + restingHR + ' BPM)';
         stateTitle.className = 'font-bold text-cyan-300';
         stateDesc.innerHTML = '<strong>Штатный баланс:</strong> Рабочий ток внимания (I = ' + I + ' Ав) при умеренном сопротивлении (R = ' + stressR + ' Ω, CI = ' + (ci > 0 ? '+' : '') + ci + '). Проводка справляется с нагрузкой, но есть резерв для дальнейшего расслабления челюстей и углубления потока.';
         if (stateBadge) {
