@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Путешествие по Цимле: от хазарских тайн к театру</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clay: {
+              50: '#fdf8f6',
+              100: '#f2e8e5',
+              200: '#eaddd7',
+              500: '#c2785c',
+              600: '#a85b3f',
+              800: '#6c3523',
+            },
+            sea: {
+              800: '#1b3446',
+              900: '#102230',
+            },
+            sand: {
+              50: '#fdfbf7',
+              100: '#f8f4ec',
+              200: '#efe6d8',
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom Scrollbar & Aesthetics */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #fdfbf7; }
+    ::-webkit-scrollbar-thumb { background: #eaddd7; border-radius: 999px; }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .hero-gradient {
+      background: linear-gradient(180deg, rgba(16, 34, 48, 0.35) 0%, rgba(16, 34, 48, 0.88) 100%);
+    }
+  </style>
+</head>
+<body class="bg-sand-50 text-stone-800 font-sans antialiased selection:bg-clay-200 selection:text-clay-800">
+
+  <!-- Mobile Floating Quick Bar -->
+  <aside class="fixed bottom-4 left-0 right-0 z-50 px-4 flex justify-center pointer-events-none" aria-label="Быстрые действия">
+    <div class="glass-card shadow-2xl border border-white/60 rounded-full px-5 py-2.5 flex items-center gap-6 pointer-events-auto">
+      <a href="#itinerary" class="text-xs uppercase tracking-wider font-semibold text-stone-600 hover:text-clay-600 transition flex items-center gap-1.5">
+        <i class="fa-regular fa-clock text-clay-500"></i> План
+      </a>
+      <span class="w-1 h-1 rounded-full bg-stone-300"></span>
+      <a href="#wardrobe" class="text-xs uppercase tracking-wider font-semibold text-stone-600 hover:text-clay-600 transition flex items-center gap-1.5">
+        <i class="fa-solid fa-shirt text-clay-500"></i> Образ
+      </a>
+      <span class="w-1 h-1 rounded-full bg-stone-300"></span>
+      <a href="https://www.google.com/maps/dir/%D0%92%D0%BE%D0%BB%D0%B3%D0%BE%D0%B4%D0%BE%D0%BD%D1%81%D0%BA,+%D0%A0%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F/%D0%A1%D0%B0%D1%80%D0%BA%D0%B5%D0%BB,+%D0%A0%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F/47.684444,42.168611/%D0%9F%D0%B0%D1%80%D0%BE%D0%B2%D0%B0%D1%8F+%D0%BC%D0%B5%D0%BB%D1%8C%D0%BD%D0%B8%D1%86%D0%B0+%D0%BA%D1%83%D0%BF%D1%86%D0%B0+%D0%9F%D0%B0%D1%80%D0%B0%D0%BC%D0%BE%D0%BD%D0%BE%D0%B2%D0%B0+%D0%95%D0%BF%D0%B8%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D0%B0+%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D0%B8%D1%87%D0%B0,+Unnamed+Road,+%D0%A5%D0%BE%D1%80%D0%BE%D1%88%D0%B5%D0%B2%D1%81%D0%BA%D0%B0%D1%8F,+%D0%A0%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F/47.7198,42.2155/%D0%94%D0%9A+%22%D0%9E%D0%BA%D1%82%D1%8F%D0%B1%D1%80%D1%8C%22,+%D1%83%D0%BB%D0%B8%D1%86%D0%B0+%D0%9B%D0%B5%D0%BD%D0%B8%D0%BD%D0%B0,+%D0%92%D0%BE%D0%BB%D0%B3%D0%BE%D0%B4%D0%BE%D0%BD%D1%81%D0%BA,+%D0%A0%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F" target="_blank" class="text-xs uppercase tracking-wider font-semibold text-clay-700 hover:text-clay-800 transition flex items-center gap-1.5">
+        <i class="fa-solid fa-location-arrow text-clay-600"></i> Карта
+      </a>
+    </div>
+  </aside>
+
+  <!-- Hero Section -->
+  <header class="relative min-h-[85vh] flex flex-col justify-end px-6 pb-16 pt-24 overflow-hidden bg-sea-900 text-white">
+    <!-- Background Image with fallback -->
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80" 
+           alt="Морской закат" 
+           class="w-full h-full object-cover object-center scale-105 transform duration-1000 ease-out"
+           onerror="this.src='https://placehold.co/1200x800/102230/eaddd7?text=Tsimlyansk+Coast'">
+      <div class="absolute inset-0 hero-gradient"></div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 max-w-xl mx-auto w-full text-center sm:text-left">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-clay-200 text-xs tracking-widest uppercase font-semibold mb-6">
+        <i class="fa-solid fa-compass text-clay-300"></i> Авторский маршрут на 1 день
+      </div>
+      
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.12] text-sand-50 mb-4 tracking-tight">
+        Вдоль правого берега Цимлы
+      </h1>
+      
+      <p class="text-base sm:text-lg text-sand-200 font-normal leading-relaxed mb-8 max-w-md">
+        От хазарских тайн и видовых холмов Саркела до дореволюционных мельниц — с финалом на вечернем спектакле в ДК&nbsp;«Октябрь».
+      </p>
+
+      <!-- Key Trip Badges -->
+      <div class="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-left mb-6">
+        <div>
+          <span class="block text-stone-300 text-[11px] uppercase tracking-wider">Время</span>
+          <span class="font-semibold text-sand-100 text-sm">08:00 – 17:00</span>
+        </div>
+        <div>
+          <span class="block text-stone-300 text-[11px] uppercase tracking-wider">Дистанция</span>
+          <span class="font-semibold text-sand-100 text-sm">~77 км авто</span>
+        </div>
+        <div>
+          <span class="block text-stone-300 text-[11px] uppercase tracking-wider">Финал</span>
+          <span class="font-semibold text-sand-100 text-sm">Театр 17:00</span>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="#itinerary" class="inline-flex justify-center items-center gap-2 px-6 py-3.5 rounded-xl bg-clay-500 hover:bg-clay-600 text-white font-medium text-sm transition shadow-lg shadow-clay-900/30">
+          Смотреть расписание дня <i class="fa-solid fa-arrow-down text-xs"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Route Overview Intro -->
+  <section class="max-w-xl mx-auto px-6 py-12">
+    <div class="text-center mb-8">
+      <span class="text-clay-600 font-semibold tracking-widest text-xs uppercase block mb-1">Настроение дня</span>
+      <h2 class="font-serif text-3xl font-normal text-stone-900">Свобода степи, морской бриз и уют</h2>
+      <div class="w-12 h-0.5 bg-clay-500 mx-auto mt-3"></div>
+    </div>
+    
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-stone-200/80 leading-relaxed text-stone-600 text-[15px] space-y-3">
+      <p>
+        Мы совершим красивое кольцо по высокому правому берегу Цимлянского водохранилища. Это поездка без спешки: просторный берег, террасы виноделен, древний белокаменный мыс и уютный пикник с термосом.
+      </p>
+      <p class="font-medium text-stone-800">
+        В 15:45 мы уже вернемся в Волгодонск, чтобы спокойно переодеться в вечерние наряды перед театром!
+      </p>
+    </div>
+  </section>
+
+  <!-- Timeline Itinerary Section -->
+  <section id="itinerary" class="max-w-xl mx-auto px-6 pb-16">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <span class="text-clay-600 font-semibold tracking-widest text-xs uppercase block">Программа остановок</span>
+        <h2 class="font-serif text-3xl font-normal text-stone-900">Тайминг нашего маршрута</h2>
+      </div>
+      <span class="text-xs px-2.5 py-1 rounded-md bg-clay-100 text-clay-800 font-medium">8 локаций</span>
+    </div>
+
+    <!-- Timeline Wrapper -->
+    <div class="relative pl-7 border-l-2 border-clay-200 space-y-8">
+      
+      <!-- Step 1 -->
+      <div class="relative group">
+        <div class="absolute -left-[35px] top-1.5 w-4 h-4 rounded-full bg-clay-500 border-4 border-sand-50 shadow-sm"></div>
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-stone-200/70 hover:border-clay-300 transition">
+          <div class="flex items-center justify-between text-xs text-stone-400 font-medium mb-1.5">
+            <span class="text-clay-600 font-bold text-sm tracking-wide">08:00 – 08:45</span>
+            <span>Старт из города</span>
+          </div>
+          <h3 class="text-lg font-bold text-stone-900 mb-1">Выезд по плотине Цимлянской ГЭС</h3>
+          <p class="text-stone-600 text-sm leading-relaxed mb-3">
+            Утренний выезд из Волгодонска через Цимлянское шоссе. Вид на просыпающуюся морскую гладь по обе стороны дамбы.
+          </p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-stone-100 text-stone-600">☕ Кофе в авто</span>
+            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-stone-100 text-stone-600">🌊 Панорама ГЭС</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="relative group">
+        <div class="absolute -left-[35px] top-1.5 w-4 h-4 rounded-full bg-clay-500 border-4 border-sand-50 shadow-sm"></div>
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-stone-200/70 hover:border-clay-300 transition">
+          <div class="flex items-center justify-between text-xs text-stone-400 font-medium mb-1.5">
+            <span class="text-clay-600 font-bold text-sm tracking-wide">08:45 – 10:15</span>
+            <span>Остановка I</span>
+          </div>
+          <h3 class="text-lg font-bold text-stone-900 mb-1">Саркел: холмы и террасы</h3>
+          <p class="text-stone-600 text-sm leading-relaxed mb-3">
+            Прогулка по высокому берегу над затопленной крепостью Белая Вежа. Виноградные ряды, простор и свежий утренний степной воздух.
+          </p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-clay-50 text-clay-700 font-medium">📸 Фото на обрыве</span>
+            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-clay-50 text-clay-700 font-medium">🍇 Винодельни</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="relative group">
+        <div class="absolute -left-[35px] top-1.5 w-4 h-4 rounded-full bg-clay-500 border-4 border-sand-50 shadow-sm"></div>
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-stone-200/70 hover:border-clay-300 transition">
+          <div class="flex items-center justify-between text-xs text-stone-400 font-medium mb-1.5">
+            <span class="text-clay-600 font-bold text-sm tracking-wide">10:30 – 11:30</span>
+            <span>Остановка II</span>
+          </div>
+          <h3 class="text-lg font-bold text-stone-900 mb-1">Правобережное городище</h3>
+          <p class="text-stone-600 text-sm leading-relaxed mb-3">
+            Настоящая хазарская цитадель IX века на суше: исследуем сохранившийся глубокий оборонительный ров, земляной вал и белокаменные основания стен над обрывом.
+          </p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-stone-100 text-stone-600">🏛️ Хазары IX в.</span>
+            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-stone-100 text-stone-600">🦅 Дикий мыс</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="relative group">
+        <div class="absolute -left-[35px] top-1.5 w-4 h-4 rounded-full bg-clay-500 border-4 border-sand-50 shadow-sm"></div>
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-stone-200/70 hover:border-clay-300 transition">
+          <div class="flex items-center justify-between text-xs text-stone-400 font-medium mb-1.5">
+            <span class="text-clay-600 font-bold text-sm tracking-wide">12:00 – 13:00</span>
+            <span>Остановка III</span>
+          </div>
+          <h3 class="text-lg font-bold text-stone-900 mb-1">Мельница купца Парамонова</h3>
+          <p class="text-stone-600 text-sm leading-relaxed mb-3">
+            Береговая полоса станицы Хорошевской. Мощный царский красный кирпич дореволюционной паровой мельницы на самом урезе волн Цимлянского моря.
+          </p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-stone-100 text-stone-600">🧱 Старая Цымла</span>
+            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-stone-100 text-stone-600">📷 Колоритные кадры</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="relative group">
+        <div class="absolute -left-[35px] top-1.5 w-4 h-4 rounded-full bg-clay-500 border-4 border-sand-50 shadow-sm"></div>
+        <div class="bg-clay-50/60 rounded-2xl p-5 border border-clay-200/80">
+          <div class="flex items-center justify-between text-xs text-stone-400 font-medium mb-1.5">
+            <span class="text-clay-700 font-bold text-sm tracking-wide">13:00 – 13:45</span>
+            <span>Релакс</span>
+          </div>
+          <h3 class="text-lg font-bold text-stone-900 mb-1">Видовой пикник</h3>
+          <p class="text-stone-600 text-sm leading-relaxed mb-3">
+            Перерыв на чай из термоса, круассаны и легкие закуски на удобном смотровом холме с панорамным обзором на воду.
+          </p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-white text-clay-800 border border-clay-200">🥐 Термос и ланч</span>
+            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-white text-clay-800 border border-clay-200">🌤️ Отдых на пледе</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="relative group">
+        <div class="absolute -left-[35px] top-1.5 w-4 h-4 rounded-full bg-clay-500 border-4 border-sand-50 shadow-sm"></div>
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-stone-200/70 hover:border-clay-300 transition">
+          <div class="flex items-center justify-between text-xs text-stone-400 font-medium mb-1.5">
+            <span class="text-clay-600 font-bold text-sm tracking-wide">13:45 – 14:45</span>
+            <span>Остановка IV</span>
+          </div>
+          <h3 class="text-lg font-bold text-stone-900 mb-1">Петровские подвалы</h3>
+          <p class="text-stone-600 text-sm leading-relaxed mb-3">
+            Шляхтина гора и Каменный спуск. Загадочные арочные каменные залы, врезанные в холм — белокаменный и краснокирпичный своды.
+          </p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-stone-100 text-stone-600">🔦 Подземные своды</span>
+            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-stone-100 text-stone-600">🌿 Шляхтина гора</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 7 -->
+      <div class="relative group">
+        <div class="absolute -left-[35px] top-1.5 w-4 h-4 rounded-full bg-clay-500 border-4 border-sand-50 shadow-sm"></div>
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-stone-200/70 hover:border-clay-300 transition">
+          <div class="flex items-center justify-between text-xs text-stone-400 font-medium mb-1.5">
+            <span class="text-clay-600 font-bold text-sm tracking-wide">14:45 – 16:30</span>
+            <span>Домой в город</span>
+          </div>
+          <h3 class="text-lg font-bold text-stone-900 mb-1">Возвращение и преображение</h3>
+          <p class="text-stone-600 text-sm leading-relaxed mb-2">
+            Дорога обратно в Волгодонск к 15:45. Полтора часа дома: душ, чашка чая, неторопливый макияж и смена удобного аутдора на вечерний театральный наряд.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 8: Final -->
+      <div class="relative group">
+        <div class="absolute -left-[35px] top-1.5 w-4 h-4 rounded-full bg-sea-800 border-4 border-sand-50 shadow-sm"></div>
+        <div class="bg-gradient-to-br from-sea-900 to-sea-800 text-white rounded-2xl p-5 shadow-md">
+          <div class="flex items-center justify-between text-xs text-sand-200 font-medium mb-1.5">
+            <span class="text-clay-200 font-bold text-sm tracking-wide">16:40 – 17:00</span>
+            <span>Кульминация</span>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-1">Спектакль в ДК «Октябрь»</h3>
+          <p class="text-sand-200 text-sm leading-relaxed mb-3">
+            Волгодонск, ул. Ленина, 56. Паркуемся у площади Победы, сдаем пальто в гардероб и занимаем свои места в зрительном зале к началу третьего звонка.
+          </p>
+          <div class="inline-flex items-center gap-1.5 text-xs text-clay-200 font-medium">
+            <i class="fa-solid fa-masks-theater"></i> Театральный вечер
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Wardrobe & Style Guide Section -->
+  <section id="wardrobe" class="max-w-xl mx-auto px-6 py-12 bg-white rounded-3xl shadow-sm border border-stone-200/80 mb-12">
+    <div class="text-center mb-8">
+      <span class="text-clay-600 font-semibold tracking-widest text-xs uppercase block mb-1">Гардеробная капсула</span>
+      <h2 class="font-serif text-3xl font-normal text-stone-900">Что надеть? Концепция дня</h2>
+      <div class="w-12 h-0.5 bg-clay-500 mx-auto mt-3"></div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      
+      <!-- Part 1: Day Outfit -->
+      <div class="p-5 rounded-2xl bg-sand-50 border border-sand-200">
+        <div class="w-10 h-10 rounded-xl bg-clay-100 text-clay-700 flex items-center justify-center mb-3 text-lg">
+          <i class="fa-solid fa-person-walking"></i>
+        </div>
+        <h3 class="font-bold text-stone-900 text-base mb-1">Днем: Степной шик</h3>
+        <p class="text-xs text-stone-500 mb-3 font-medium">08:00 – 15:30 • Природа и ветер</p>
+        <ul class="text-stone-600 text-xs space-y-2">
+          <li class="flex items-start gap-2">
+            <i class="fa-solid fa-check text-clay-500 mt-0.5"></i>
+            <span><strong>Удобная закрытая обувь:</strong> кроссовки или ботинки для ходьбы по траве, мысу и земляным спускам.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fa-solid fa-check text-clay-500 mt-0.5"></i>
+            <span><strong>Многослойность:</strong> стильный тренч, кардиган или ветровка — на обрывах у моря свежий бриз.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fa-solid fa-check text-clay-500 mt-0.5"></i>
+            <span><strong>Шелковый платок или палантин:</strong> спасает прическу на ветру и смотрится эффектно на фото.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Part 2: Theater Outfit -->
+      <div class="p-5 rounded-2xl bg-sea-900 text-white border border-sea-800">
+        <div class="w-10 h-10 rounded-xl bg-white/10 text-clay-200 flex items-center justify-center mb-3 text-lg">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </div>
+        <h3 class="font-bold text-white text-base mb-1">Вечером: Театр</h3>
+        <p class="text-xs text-sand-300 mb-3 font-medium">17:00 • ДК «Октябрь»</p>
+        <ul class="text-sand-100 text-xs space-y-2">
+          <li class="flex items-start gap-2">
+            <i class="fa-solid fa-check text-clay-300 mt-0.5"></i>
+            <span><strong>Остается дома:</strong> вечерний наряд, туфли или изящная обувь спокойно ждут вас дома.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fa-solid fa-check text-clay-300 mt-0.5"></i>
+            <span><strong>Время на себя:</strong> с 15:45 до 16:35 — целый час, чтобы освежиться и надеть вечерний образ.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fa-solid fa-check text-clay-300 mt-0.5"></i>
+            <span><strong>Финальный штрих:</strong> парфюм, украшения и любимая маленькая сумочка для фойе театра.</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Checklist Section -->
+  <section class="max-w-xl mx-auto px-6 pb-16">
+    <div class="bg-white rounded-3xl p-6 shadow-sm border border-stone-200/80">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <span class="text-clay-600 font-semibold tracking-widest text-xs uppercase block">Чек-лист в дорогу</span>
+          <h2 class="font-serif text-2xl font-normal text-stone-900">Что закинуть в сумочку</h2>
+        </div>
+        <i class="fa-solid fa-clipboard-check text-2xl text-clay-500"></i>
+      </div>
+      <p class="text-xs text-stone-500 mb-5">Отмечайте пункты перед выходом:</p>
+
+      <div class="space-y-2.5" id="checklist">
+        
+        <label class="flex items-center gap-3 p-3 rounded-xl bg-sand-50 hover:bg-sand-100 transition cursor-pointer select-none">
+          <input type="checkbox" checked class="w-4 h-4 rounded text-clay-600 focus:ring-clay-500">
+          <span class="text-xs text-stone-700 font-medium">Солнцезащитные очки (у воды яркий свет)</span>
+        </label>
+        
+        <label class="flex items-center gap-3 p-3 rounded-xl bg-sand-50 hover:bg-sand-100 transition cursor-pointer select-none">
+          <input type="checkbox" checked class="w-4 h-4 rounded text-clay-600 focus:ring-clay-500">
+          <span class="text-xs text-stone-700 font-medium">Термос с травяным чаем / кофе & бокалы</span>
+        </label>
+
+        <label class="flex items-center gap-3 p-3 rounded-xl bg-sand-50 hover:bg-sand-100 transition cursor-pointer select-none">
+          <input type="checkbox" class="w-4 h-4 rounded text-clay-600 focus:ring-clay-500">
+          <span class="text-xs text-stone-700 font-medium">Фонарик или заряженный телефон (для погребов)</span>
+        </label>
+
+        <label class="flex items-center gap-3 p-3 rounded-xl bg-sand-50 hover:bg-sand-100 transition cursor-pointer select-none">
+          <input type="checkbox" class="w-4 h-4 rounded text-clay-600 focus:ring-clay-500">
+          <span class="text-xs text-stone-700 font-medium">Плед для сидения на холме во время ланча</span>
+        </label>
+
+        <label class="flex items-center gap-3 p-3 rounded-xl bg-sand-50 hover:bg-sand-100 transition cursor-pointer select-none">
+          <input type="checkbox" class="w-4 h-4 rounded text-clay-600 focus:ring-clay-500">
+          <span class="text-xs text-stone-700 font-medium">Влажные салфетки и крем для рук</span>
+        </label>
+
+        <label class="flex items-center gap-3 p-3 rounded-xl bg-sand-50 hover:bg-sand-100 transition cursor-pointer select-none">
+          <input type="checkbox" class="w-4 h-4 rounded text-clay-600 focus:ring-clay-500">
+          <span class="text-xs text-stone-700 font-medium">Билеты в ДК «Октябрь» (электронные в телефоне)</span>
+        </label>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation CTA Banner -->
+  <section class="max-w-xl mx-auto px-6 pb-24 text-center">
+    <div class="bg-gradient-to-r from-clay-600 to-clay-500 text-white rounded-3xl p-8 shadow-xl relative overflow-hidden">
+      <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+      <i class="fa-solid fa-map-location-dot text-3xl mb-3 text-clay-100"></i>
+      <h2 class="font-serif text-3xl font-normal mb-2">Маршрут уже построен</h2>
+      <p class="text-xs text-clay-100 mb-6 max-w-xs mx-auto leading-relaxed">
+        Все координаты и точки от Волгодонска до Хорошевской и ДК сохранены в единый трек Google Maps.
+      </p>
+      <a href="https://www.google.com/maps/dir/%D0%92%D0%BE%D0%BB%D0%B3%D0%BE%D0%B4%D0%BE%D0%BD%D1%81%D0%BA,+%D0%A0%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F/%D0%A1%D0%B0%D1%80%D0%BA%D0%B5%D0%BB,+%D0%A0%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F/47.684444,42.168611/%D0%9F%D0%B0%D1%80%D0%BE%D0%B2%D0%B0%D1%8F+%D0%BC%D0%B5%D0%BB%D1%8C%D0%BD%D0%B8%D1%86%D0%B0+%D0%BA%D1%83%D0%BF%D1%86%D0%B0+%D0%9F%D0%B0%D1%80%D0%B0%D0%BC%D0%BE%D0%BD%D0%BE%D0%B2%D0%B0+%D0%95%D0%BF%D0%B8%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D0%B0+%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D0%B8%D1%87%D0%B0,+Unnamed+Road,+%D0%A5%D0%BE%D1%80%D0%BE%D1%88%D0%B5%D0%B2%D1%81%D0%BA%D0%B0%D1%8F,+%D0%A0%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F/47.7198,42.2155/%D0%94%D0%9A+%22%D0%9E%D0%BA%D1%82%D1%8F%D0%B1%D1%80%D1%8C%22,+%D1%83%D0%BB%D0%B8%D1%86%D0%B0+%D0%9B%D0%B5%D0%BD%D0%B8%D0%BD%D0%B0,+%D0%92%D0%BE%D0%BB%D0%B3%D0%BE%D0%B4%D0%BE%D0%BD%D1%81%D0%BA,+%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F" 
+         target="_blank" 
+         class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white text-clay-700 font-bold text-xs uppercase tracking-wider hover:bg-sand-100 transition shadow-md">
+        <span>Открыть в навигаторе</span>
+        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 border-t border-stone-200 text-stone-400 text-xs pb-24">
+    Волгодонск — Цимлянский берег • Встречаемся в 08:00 у машины ✨
+  </footer>
+
+</body>
+</html>
